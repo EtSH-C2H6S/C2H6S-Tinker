@@ -1,0 +1,28 @@
+{
+  "condition": {
+    "modid": "powah",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:modifiershocking",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:fluxloaded",
+      "level": 5
+    }
+  ],
+  "perStat" : {
+    "tconstruct:armor": [
+      {
+        "name": "etshtinker:electromotiveforce",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:fluxloaded",
+        "level": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type": "tconstruct:material_fluid", 
+        "fluid": {
+        "name": "etshtinker:molten_trinity_intereactive_alloy",
+         "amount":90
+        },
+         "temperature":1000, 
+         "output":"etshtinker:trinity_intereactive_alloy"
+}

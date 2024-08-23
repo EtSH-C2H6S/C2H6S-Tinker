@@ -1,0 +1,660 @@
+{
+  "itemGroup.etshtinker.materials": "C2H6S Tinker 材料",
+  "itemGroup.etshtinker.toolsandparts": "C2H6S Tinker 工具与部件",
+  "itemGroup.etshtinker.mixc": "C2H6S Tinker 杂项",
+  "itemGroup.etshtinker.blocks": "C2H6S Tinker 方块",
+
+
+  "modifier.etshtinker.adrenaline": "肾上腺素",
+  "modifier.etshtinker.adrenaline.flavor": "区区之事，无伤尔。",
+  "modifier.etshtinker.adrenaline.description": "手持时不受到伤害则持续积累肾上腺素值，受伤时肾上腺素归零。积累超过75%后获得50%减伤，满100%后下次攻击造成20倍的额外伤害(无视护甲)并使肾上腺素值归零。",
+
+  "modifier.etshtinker.tightennerve": "神经紧绷",
+  "modifier.etshtinker.tightennerve.flavor": "高风险，高回报!",
+  "modifier.etshtinker.tightennerve.description":"肾上腺素充能完毕后造成伤害时治疗自己5点生命，并获得急迫和力量效果。但是肾上腺素充能完毕后若5秒内不攻击，则扣除5点生命，失去一半的肾上腺素，失去5点生命，并获得挖掘疲劳和虚弱效果。",
+
+  "modifier.etshtinker.sharpnessex": "究极锋利",
+  "modifier.etshtinker.sharpnessex.flavor": "强互作用材料??!",
+  "modifier.etshtinker.sharpnessex.description":"攻击额外造成50%穿甲伤害，且不造成无敌帧",
+
+  "modifier.etshtinker.gravityaccelerate": "重力加速度",
+  "modifier.etshtinker.gravityaccelerate.flavor": "g=G/m",
+  "modifier.etshtinker.gravityaccelerate.description":"根据竖直方向上的瞬时速率的平方和属性等级增加伤害并把目标剧烈地击飞，同时给予属性等级*下落速度的平方的急迫等级",
+
+  "modifier.etshtinker.overweightex": "究极沉重",
+  "modifier.etshtinker.overweightex.flavor": "也就114514吨吧",
+  "modifier.etshtinker.overweightex.description":"主手持握时，下落时增加下落速度并根据竖直速度增加下落高度",
+
+  "modifier.etshtinker.annilate": "湮灭",
+  "modifier.etshtinker.annilate.flavor": "TOTAL DESTRUCTION",
+  "modifier.etshtinker.annilate.description":"彻底湮灭你的敌人、你自己和你的工具，没有什么能阻止它毁灭一切。 *慎用，会<永远地>摧毁你的工具",
+
+  "modifier.etshtinker.ragedangery": "怒气",
+  "modifier.etshtinker.ragedangery.flavor": "气死我力气死我力气死我力",
+  "modifier.etshtinker.ragedangery.description":"手持时积攒怒气值，满100%后攻击敌人进入5秒愤怒状态。愤怒状态期间你的箭矢会对敌人造成额外伤害，并且自己获得伤害吸收V。但是愤怒状态期间如果你造成了超过10次伤害，你会立刻失去20%生命值",
+
+  "modifier.etshtinker.mentalism": "唯心主义",
+  "modifier.etshtinker.mentalism.flavor": "什么叫精神胜利法（后仰）",
+  "modifier.etshtinker.mentalism.description":"手持时能抵挡一次攻击并获得1秒无敌帧（冷却30秒），但是触发免伤时会给敌人附加2秒无敌帧,受到致命伤害时免死一次，恢复25%最大生命值并获得2秒无敌帧（冷却160秒）。",
+
+  "modifier.etshtinker.thermalstrike": "热力冲击",
+  "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
+  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会产生一片电弧云，并释放一道自动弧向最近生物的脉冲，判定半径为5+属性等级，最多击中10+属性等级个生物，对攻击到的敌人施加震荡效果",
+
+  "modifier.etshtinker.thermalenhance": "热力附层",
+  "modifier.etshtinker.thermalenhance.flavor": "热力元素全收集，达成！",
+  "modifier.etshtinker.thermalenhance.description":"手持时给予自身抗火、夜视和热力系列的三种抗性。攻击附加发光、缓慢和震荡，使敌人护甲归零，在敌人上方召唤闪电球，并附加相当于敌人已损生命10%的额外伤害",
+
+  "modifier.etshtinker.fission": "裂变反应",
+  "modifier.etshtinker.fission.flavor": "MD跟你爆了",
+  "modifier.etshtinker.fission.description":"攻击敌人时同时对敌人和自己施加10Sv的辐射",
+
+  "modifier.etshtinker.chainreaction": "链式反应",
+  "modifier.etshtinker.chainreaction.flavor": "相当于内置了一个裂变反应堆",
+  "modifier.etshtinker.chainreaction.description":"对敌人造成50Sv的辐射，不再对自己造成辐射，需要“裂变反应”强化以生效",
+
+  "modifier.etshtinker.radiationremoval": "消辐",
+  "modifier.etshtinker.radiationremoval.flavor": "让时间抚平伤痛",
+  "modifier.etshtinker.radiationremoval.description":"右击时立刻移除10Sv自己身上带有的辐射，没有冷却",
+
+  "modifier.etshtinker.fusion": "聚变反应",
+  "modifier.etshtinker.fusion.flavor": "相当于内置了一个聚变反应堆",
+  "modifier.etshtinker.fusion.description":"攻击敌人时使周围(15+2*等级)^3的正方体范围内的敌人受到(100*等级)Sv辐射，至多生效(32*等级)个敌人（对玩家无效）,需要“链式反应”强化以生效",
+
+  "modifier.etshtinker.totalinsane": "癫疯",
+  "modifier.etshtinker.totalinsane.flavor": "你疑似有点魔怔了",
+  "modifier.etshtinker.totalinsane.description":"手持时积攒癫疯值，最大1000，工具使用时会优先消耗癫疯值而非耐久，但是癫疯值耗尽后消耗双倍耐久，癫疯值高于500时，依据癫疯值超出400的部分和工具的面板伤害造成真实伤害，但是手持时你受到伤害会立刻趋势",
+
+  "modifier.etshtinker.mindattack": "神经质",
+  "modifier.etshtinker.mindattack.flavor": "神晶，害的我笑了一下",
+  "modifier.etshtinker.mindattack.description":"你的工具普攻伤害设置为0，且无法正常造成伤害。",
+
+  "modifier.etshtinker.gravitymanipulate": "重力操作",
+  "modifier.etshtinker.gravitymanipulate.flavor": "装x让你飞起来",
+  "modifier.etshtinker.gravitymanipulate.description":"手持时能够创造模式飞行，击中敌人时使敌人重力变成0并漂浮在空中",
+
+  "modifier.etshtinker.masseffect": "质速效应",
+  "modifier.etshtinker.masseffect.flavor": "当你跑得越快，你就越重",
+  "modifier.etshtinker.masseffect.description":"根据当前瞬时速率的2倍造成额外伤害",
+
+  "modifier.etshtinker.meteorblessing": "陨石祝福",
+  "modifier.etshtinker.meteorblessing.flavor": "该我许愿了",
+  "modifier.etshtinker.meteorblessing.description":"击中敌人造成爆炸，不破坏方块，威力与属性等级有关",
+
+  "modifier.etshtinker.warpattack": "折跃攻击",
+  "modifier.etshtinker.warpattack.flavor": "扭曲空间",
+  "modifier.etshtinker.warpattack.description":"挥舞武器时，对8*属性等级范围内最近生物造成伤害，冷却0.5秒，附带一定的范围攻击。远程攻击时，箭矢会传送到准星附近距离你最近生物附近。按住shift时箭矢传送效果不生效",
+
+  "modifier.etshtinker.worldforceex": "世界之力",
+  "modifier.etshtinker.worldforceex.flavor": "大地的力量掌握在你手中",
+  "modifier.etshtinker.worldforceex.description":"攻击时对目标造成多段凋灵、火焰、魔法和辐射伤害，对目标施加大量debuff和2kSv的辐射，并移除目标的重力。手持时给予自身多种buff",
+
+  "modifier.etshtinker.mindprotection": "知识护盾",
+  "modifier.etshtinker.mindprotection.flavor": "我觉得你没打到我，你就是没打到我",
+  "modifier.etshtinker.mindprotection.description":"获得75%减伤，免疫部分穿甲伤害，移除自身debuff，被攻击时60%的概率闪避并有概率将大量伤害反弹给对方，获得2秒无敌帧。死亡时免死一次并恢复50%生命值，获得7秒无敌帧，冷却90秒",
+
+  "modifier.etshtinker.godlymetal": "神金质",
+  "modifier.etshtinker.godlymetal.flavor": "来自天堂的地狱赠礼",
+  "modifier.etshtinker.godlymetal.description":"主手攻击时附带5%*属性等级*敌人当前生命值的真实伤害(造成的真实伤害保留目标1点生命值)",
+
+  "modifier.etshtinker.controllableannihl": "可控湮灭",
+  "modifier.etshtinker.controllableannihl.flavor": "3,2,1 毁灭！",
+  "modifier.etshtinker.controllableannihl.description":"[仅近战攻击]工具的基础伤害被取消，全力攻击时消耗工具的1/4的耐久，造成一次湮灭爆炸，爆炸的伤害为工具的耐久。若工具耐久不超过最大耐久的25%则无法造成伤害。",
+
+  "modifier.etshtinker.modifiershocking": "震击",
+  "modifier.etshtinker.modifiershocking.flavor": "滋滋滋！",
+  "modifier.etshtinker.modifiershocking.description":"攻击、挖掘方块时获得充能。充能完毕后攻击、挖掘时获得急迫和速度，并造成额外附加伤害和一定的范围伤害(对远程攻击不生效)",
+
+  "modifier.etshtinker.guardless": "毫无防备",
+  "modifier.etshtinker.guardless.flavor": "你，为何不避",
+  "modifier.etshtinker.guardless.description":"敌人看不到你手上的武器，所以当你被生物攻击时攻击者也会受伤，且攻击者手持武器会立刻消失、攻击伤害和防御力均降低",
+
+  "modifier.etshtinker.invisiiiible": "隐身",
+  "modifier.etshtinker.invisiiiible.flavor": "看不到我看不到我看不到我",
+  "modifier.etshtinker.invisiiiible.description":"手持时获得隐身效果",
+
+  "modifier.etshtinker.electrified": "电流附加",
+  "modifier.etshtinker.electrified.flavor": "雷电法王",
+  "modifier.etshtinker.electrified.description":"攻击敌人/穿戴时受到攻击时给一定范围内敌人施加电离和缓慢，造成百分比伤害",
+
+  "modifier.etshtinker.extralight": "究极轻盈",
+  "modifier.etshtinker.extralight.flavor": "影流之主",
+  "modifier.etshtinker.extralight.description":"你的工具把你也变轻了，手持获得速度、急迫和每级10%（最大20%）的闪避率；穿着此材料制成的护甲时，攻击敌人有概率使自己获得无敌帧。",
+
+  "modifier.etshtinker.ultradenseex": "究极致密",
+  "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
+  "modifier.etshtinker.ultradenseex.description":"挥舞这种材料的工具使你的手直接开始抽搐，攻击间隔越长伤害越高，反之则越低（受急迫加成）;穿戴此材料制成的装甲时则使你免疫部分非近战伤害类型和穿甲伤害。",
+
+  "modifier.etshtinker.extraweight": "万吨沉重EX",
+  "modifier.etshtinker.extraweight.flavor": "泰山压顶",
+  "modifier.etshtinker.extraweight.description":"增加下落速度，并在下落时把周围生物震飞",
+
+  "modifier.etshtinker.modifiernovasickle": "超新星飞镰",
+  "modifier.etshtinker.modifiernovasickle.flavor": "超新星爆发",
+  "modifier.etshtinker.modifiernovasickle.description":"右键扔出一把超新星飞镰，飞行一段时间后会自动传送到最近敌人附近。命中时发生爆炸，对大范围敌人施加新星辐射减益，投掷间隔越大爆炸威力越大",
+
+  "modifier.etshtinker.exoblademodifier": "星流之刃",
+  "modifier.etshtinker.exoblademodifier.flavor": "泰拉之刃ProMaxUltra",
+  "modifier.etshtinker.exoblademodifier.description":"挥舞武器时射出多个星流能量球，飞行一段时间后追踪敌人，造成新星辐射减益",
+
+  "modifier.etshtinker.lightningarrowmodifier": "涌流箭矢",
+  "modifier.etshtinker.lightningarrowmodifier.flavor": "“指的是电流而不是水流（）”",
+  "modifier.etshtinker.lightningarrowmodifier.description":"射出涌流箭矢，会追踪、穿透敌人并施加电击和新星辐射减益，不消耗箭矢",
+
+  "modifier.etshtinker.warpattackex": "强化折跃攻击",
+  "modifier.etshtinker.warpattackex.flavor": "击碎时空",
+  "modifier.etshtinker.warpattackex.description":"更大范围，更短冷却，更高伤害的折跃攻击。（同样按住shift时不生效）",
+
+  "modifier.etshtinker.modifiershadowaxe": "逐影™科技飞斧",
+  "modifier.etshtinker.modifiershadowaxe.flavor": "“其内置的高科技芯片使它能在飞行时解算并向敌人发射激光”",
+  "modifier.etshtinker.modifiershadowaxe.description":"右键扔出一把高科技飞斧，随机朝附近敌人发射激光",
+
+  "modifier.etshtinker.warpengineex": "长距跃迁",
+  "modifier.etshtinker.warpengineex.flavor": "或许可以用来跑图",
+  "modifier.etshtinker.warpengineex.description":"右键长按蓄力，往你看向的方向传送 2500*属性等级 格（不改变y坐标），冷却10秒",
+
+  "modifier.etshtinker.creativenovasickle": "创造模式超新星飞镰",
+  "modifier.etshtinker.creativenovasickle.flavor": "更强大，更高伤的超新星飞镰",
+  "modifier.etshtinker.creativenovasickle.description":"每次扔出的超新星飞镰都是最大威力",
+
+  "modifier.etshtinker.warpengine": "曲率引擎",
+  "modifier.etshtinker.warpengine.flavor": "“曲率引擎启动”",
+  "modifier.etshtinker.warpengine.description":"手持时右键蓄力0.5秒后进入曲率航行模式，左键攻击即可退出曲率航行模式。曲率航行模式下你会无视重力和方块碰撞并逐渐加速至最大速度，每级提供5m/s最大速度。",
+
+  "modifier.etshtinker.warpingenhance": "曲率突击",
+  "modifier.etshtinker.warpingenhance.flavor": "折跃——进攻",
+  "modifier.etshtinker.warpingenhance.description":"曲率航行模式结束的瞬间对触及半径内离你最近的生物造成伤害，伤害与武器面板和曲率航行速度有关(需要曲率引擎强化)",
+
+  "modifier.etshtinker.solidex": "超坚硬",
+  "modifier.etshtinker.solidex.flavor": "其实就是不需要前置的不毁",
+  "modifier.etshtinker.solidex.description":"工具正常使用不再消耗耐久",
+
+  "modifier.etshtinker.plasmawaveslashmodifier": "等离子波动斩",
+  "modifier.etshtinker.plasmawaveslashmodifier.flavor": "等离子狂欢！",
+  "modifier.etshtinker.plasmawaveslashmodifier.description":"主手持握时按住右键蓄力，释放时挥舞出一道无限穿透、穿墙、无视无敌帧的等离子剑气，造成电离减益",
+
+  "modifier.etshtinker.plasmarrow": "等离子矢",
+  "modifier.etshtinker.plasmarrow.flavor": "化无形为有形",
+  "modifier.etshtinker.plasmarrow.description":"将箭矢替换为无限穿透且伤害更高的等离子矢，造成电离减益",
+
+  "modifier.etshtinker.iluminate": "外发光",
+  "modifier.etshtinker.iluminate.flavor": "不再畏惧黑暗！",
+  "modifier.etshtinker.iluminate.description":"手持时获得夜视效果，攻击敌人施加发光效果。",
+
+  "modifier.etshtinker.sidechannelattack": "侧信道攻击",
+  "modifier.etshtinker.sidechannelattack.flavor": "众所周知，生物电也是电信号",
+  "modifier.etshtinker.sidechannelattack.description":"攻击无视无敌帧，并附带0.05*属性等级倍于目标已损生命值的额外伤害。",
+
+  "modifier.etshtinker.shattered": "碎裂",
+  "modifier.etshtinker.shattered.flavor": "破甲！",
+  "modifier.etshtinker.shattered.description":"攻击时减少50%敌人当前护甲，手持时获得爆裂抗性",
+
+  "modifier.etshtinker.shocked": "震荡",
+  "modifier.etshtinker.shocked.flavor": "电疗！",
+  "modifier.etshtinker.shocked.description":"攻击时向敌人施加震荡效果，手持时获得震荡抗性",
+
+  "modifier.etshtinker.chilled": "凛冰",
+  "modifier.etshtinker.chilled.flavor": "激寒！",
+  "modifier.etshtinker.chilled.description":"攻击时向敌人施加冻僵效果，手持时获得霜冻抗性",
+
+  "modifier.etshtinker.fluxloaded": "通量装载",
+  "modifier.etshtinker.fluxloaded.flavor": "简直完美！",
+  "modifier.etshtinker.fluxloaded.description":"每级获得100kFE的能量存储，使用工具时优先消耗FE而非耐久（每点耐久需要1kFE来抵消）",
+
+  "modifier.etshtinker.momentoaccel": "惯性加速",
+  "modifier.etshtinker.momentoaccel.flavor": "十分趁手！",
+  "modifier.etshtinker.momentoaccel.description":"攻击、挖掘时获得可堆叠的急迫效果，急迫的最大等级为属性等级*8。",
+
+  "modifier.etshtinker.crunchyshattered": "酥脆易碎",
+  "modifier.etshtinker.crunchyshattered.flavor": "虽然不能吃，但是口感很不错...嗯？你在说亻",
+  "modifier.etshtinker.crunchyshattered.description":"你的武器很易碎，所以每次攻击时每级减少目标2点护甲，同时给予目标凋零效果。但是由于你的工具烂在目标体内了，每次使用额外消耗属性等级点耐久",
+
+  "modifier.etshtinker.autoionizing": "自动连发",
+  "modifier.etshtinker.autoionizing.flavor": "全自动开火",
+  "modifier.etshtinker.autoionizing.description":"按住右键就能自动开火，无需松手。",
+
+  "modifier.etshtinker.multishotplasma": "多重电离",
+  "modifier.etshtinker.multishotplasma.flavor": "功率过载",
+  "modifier.etshtinker.multishotplasma.description":"每级额外射出一束等离子射线，但是会增大散射角度和冷却时间。",
+
+  "modifier.etshtinker.extrachamber": "外置储液器",
+  "modifier.etshtinker.extrachamber.flavor": "扩容弹夹",
+  "modifier.etshtinker.extrachamber.description":"每级增加75%流体容量。",
+
+  "modifier.etshtinker.fastcooling": "快速冷却",
+  "modifier.etshtinker.fastcooling.flavor": "上!水!冷!",
+  "modifier.etshtinker.fastcooling.description":"每级减少10%冷却时间",
+
+  "modifier.etshtinker.plasmaenhance": "等离子强化",
+  "modifier.etshtinker.plasmaenhance.flavor": "超频！",
+  "modifier.etshtinker.plasmaenhance.description":"等离子射线的波及范围和流体消耗均翻倍，冷却时间小量提高",
+
+  "modifier.etshtinker.warpprotection": "折跃保护",
+  "modifier.etshtinker.warpprotection.flavor": "空间护盾",
+  "modifier.etshtinker.warpprotection.description":"将你周围一定范围内的弹射物传送回它们主人身上，如果这个弹射物没有主人则传送到离你最近的生物附近。",
+
+  "modifier.etshtinker.basalzdefence": "地岩之护",
+  "modifier.etshtinker.basalzdefence.flavor": "地心的力量守护着你",
+  "modifier.etshtinker.basalzdefence.description":"每级提供5%伤害减免并增加装备的10%防御力，穿着时获得爆裂抗性，延长自身受击无敌帧",
+
+  "modifier.etshtinker.blitzdefense": "震荡之护",
+  "modifier.etshtinker.blitzdefense.flavor": "对流层的力量守护着你",
+  "modifier.etshtinker.blitzdefense.description":"每级提供5%闪避率，穿着时获得震荡抗性和夜视效果，受伤时获得速度和急迫效果",
+
+  "modifier.etshtinker.blizzdefense": "极寒之护",
+  "modifier.etshtinker.blizzdefense.flavor": "极寒之境的力量守护着你",
+  "modifier.etshtinker.blizzdefense.description":"受击时给予攻击者冻僵效果，穿着时获得霜冻抗性效果",
+
+  "modifier.etshtinker.electromotiveforce": "动生电动势",
+  "modifier.etshtinker.electromotiveforce.flavor": "力释电！",
+  "modifier.etshtinker.electromotiveforce.description":"受击时对以自身为中心一定范围内的生物造成伤害，等级影响范围。",
+
+  "modifier.etshtinker.solidified": "硬化",
+  "modifier.etshtinker.solidified.flavor": "稳如老狗",
+  "modifier.etshtinker.solidified.description":"每级增加50%护甲值、盔甲韧性、耐久度和10%闪避率。",
+
+  "modifier.etshtinker.phantomreforged": "灵质之锻",
+  "modifier.etshtinker.phantomreforged.flavor": "万物皆有灵",
+  "modifier.etshtinker.phantomreforged.description":"全力攻击目标后在目标头顶召唤向下坠落的幻灵剑，对目标造成一半的伤害，等级越高攻击一次召唤的幻灵剑就越多",
+
+  "modifier.etshtinker.selfassemble": "分形自组装",
+  "modifier.etshtinker.selfassemble.flavor": "如果给予足够高的自由度，或许它能把自己复制一份出来...",
+  "modifier.etshtinker.selfassemble.description":"工具受损时会消耗背包中的反中子充能，工具有充能时会修复自身，最快4096*属性等级点耐久每刻，每个反中子提供8192*属性等级点充能",
+
+  "modifier.etshtinker.stellarblessing": "星之祝福",
+  "modifier.etshtinker.stellarblessing.flavor": "来自天堂的赠礼",
+  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，受到攻击时使攻击者失重并点燃攻击者，移动时获得属性等级*10%的伤害减免。",
+
+  "modifier.etshtinker.reactiveexplosivearmor": "爆炸反应装甲",
+  "modifier.etshtinker.reactiveexplosivearmor.flavor": "最强之矛有时候也会成为最强之盾",
+  "modifier.etshtinker.reactiveexplosivearmor.description":"穿着时免疫爆炸伤害，受到攻击时将50%的伤害以爆炸的形式反射。",
+
+  "modifier.etshtinker.reactiveannihlarmor": "湮灭反应装甲",
+  "modifier.etshtinker.reactiveannihlarmor.flavor": "矛与盾也许并不矛盾",
+  "modifier.etshtinker.reactiveannihlarmor.description":"受到攻击时消耗背包内的反中子锭充能，护甲有充能时消耗充能并抵挡这次伤害，每个反中子能提供2048*属性等级的充能，多件护甲效果不叠加。",
+
+  "modifier.etshtinker.modifierenchantedsword": "蕴魔之剑",
+  "modifier.etshtinker.modifierenchantedsword.flavor": "我没能拿到真空之刃",
+  "modifier.etshtinker.modifierenchantedsword.description":"工具有魔力充能时，空挥时发射一个附魔剑剑气(不消耗魔力)，伤害受强化等级影响。",
+
+  "modifier.etshtinker.manaoverload": "魔力过载",
+  "modifier.etshtinker.manaoverload.flavor": "希望你有足够的魔力使用这个强化",
+  "modifier.etshtinker.manaoverload.description":"身上持有能存储mana的物品时工具获得充能\n每10点mana提供1点充能(不消耗mana)，工具会缓缓消耗魔力恢复耐久\n充能点数超过1000000时攻击时依据当前的充能点数增加伤害并相应的消耗魔力。",
+
+  "modifier.etshtinker.thermaldefense": "热力之护",
+  "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",
+  "modifier.etshtinker.thermaldefense.description":"每级增加25%装备护甲，穿戴时获得每级5%闪避率和15%的减伤和多种正面效果，受击时延长无敌帧并获得抗性提升，减少攻击者75%护甲，对攻击者施加大量负面效果。",
+
+  "modifier.etshtinker.trinityblessing": "三重祝福",
+  "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
+  "modifier.etshtinker.trinityblessing.description":"第一祝福:你的所有攻击穿甲，自己免疫穿甲攻击\n第二祝福:你的工具正常使用不再消耗耐久\n第三祝福:每级使你的工具获得叠乘的33%大部分属性加成;当属性等级为3时，每级使你工具获得叠乘的67%大部分属性加成。",
+
+  "modifier.etshtinker.trinitycurse": "三重诅咒",
+  "modifier.etshtinker.trinitycurse.flavor": "以你的技术，无法操作这种坚硬无比的材料，它生气地对你降下诅咒",
+  "modifier.etshtinker.trinitycurse.description":"第一诅咒:你的武器无法获得强化槽且无法被强化\n第二诅咒:向上运动时，你的竖直速度急剧减小\n第三诅咒:你的受击无敌帧会加速减小;当属性等级为3时，你的受击无敌帧将被移除。",
+
+  "modifier.etshtinker.unknown": "-未知-",
+  "modifier.etshtinker.unknown.flavor": "材料学的发展有时会带来新的领域",
+  "modifier.etshtinker.unknown.description":"可是这个材料带来的知识却令你感到陌生:\n工具的大部分属性乘以0.005倍\n但是这份陌生激发了你的探索欲:\n手持/穿着时免疫部分穿甲伤害，获得50%闪避率",
+
+  "modifier.etshtinker.atomorigin": "核子起源",
+  "modifier.etshtinker.atomorigin.flavor": "“一个特异点”",
+  "modifier.etshtinker.atomorigin.description":"在你的帮助下，曾经坚硬无比的强互作用材料现在变得更加可塑，你终于可以按照你的意志使用它。\n工具大部分属性乘以1.3^所有词条等级总和;\n工具会在槽位数到达一定值时获得特殊效果:\n总槽位数>10时，工具正常使用不消耗耐久，自身获得幸运、饱和和速度效果,\n总槽位数>25时，自身获得急迫、抗性、力量、生命恢复效果。",
+
+  "modifier.etshtinker.semicrystaline": "准晶",
+  "modifier.etshtinker.semicrystaline.flavor": "富有弹性的坚硬材料，当前研究的热点之一",
+  "modifier.etshtinker.semicrystaline.description":"根据工具的当前耐久增加近战伤害、箭矢伤害和伤害减少量。近战伤害加成为耐久/100，上限1000*属性等级；箭矢伤害为耐久/400，上限250*属性等级；护甲减伤为耐久/1000，上限100*属性等级",
+
+  "modifier.etshtinker.organiccr": "有机晶体",
+  "modifier.etshtinker.organiccr.flavor": "远古生物的遗骸堆砌而成",
+  "modifier.etshtinker.organiccr.description":"[仅近战]在你第二次攻击之时，敌人的回血手段全部化为虚无。",
+
+  "modifier.etshtinker.inorganiccr": "无机晶体",
+  "modifier.etshtinker.inorganiccr.flavor": "地心的精华结晶而成",
+  "modifier.etshtinker.inorganiccr.description":"受攻击时，给予敌人重创！",
+
+  "modifier.etshtinker.beconcerted": "齐心协力",
+  "modifier.etshtinker.beconcerted.flavor": "-感谢支持-",
+  "modifier.etshtinker.beconcerted.description":"每装载一个模组，获得大部分属性6.2134%的加成。",
+
+
+
+  "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
+  "item.etshtinker.annihilating_plasma_bucket": "桶装湮灭等离子体",
+
+  "fluid_type.etshtinker.antimatter_l": "液态反物质",
+  "item.etshtinker.antimatter_l_bucket": "反物质(l)",
+
+  "item.etshtinker.stable_plasma": "稳态等离子",
+
+  "item.etshtinker.sandwich_alloy": "三相合金",
+
+  "item.etshtinker.triostatealloy": "三态合金",
+
+  "fluid_type.etshtinker.overchargedneutronium": "超充能流体中子",
+  "item.etshtinker.overchargedneutronium_bucket": "超充能流体中子桶",
+
+  "item.etshtinker.os_induced_netherstarshard": "黑曜石掺杂下界之星碎片",
+  "item.etshtinker.gs_indused_netherite_dust": "萤石掺杂下界合金粉",
+  "item.etshtinker.activated_matter_dust": "活化物质粉",
+  "item.etshtinker.activated_neutronium_dust": "活化中子粉",
+
+  "item.etshtinker.etshtinker_guide": "乙硫醇指导书",
+
+  "item.etshtinker.advanced_sandwich_alloy": "脆皮千层雪三明治合金",
+
+
+
+
+  "item.etshtinker.ultra_dense": "超致密锭",
+  "material.etshtinker.ultra_dense": "超致密",
+  "material.etshtinker.ultra_dense.flavor": "一种致密的金属，由密度最高的金属熔合而成。",
+  "material.etshtinker.ultra_dense.encyclopedia": "有研究表明组成它的物质处于简并态，所以你是怎么在焦黑炉里熔化它的?",
+  "fluid_type.etshtinker.molten_ultra_dense": "致密超流体",
+  "item.etshtinker.molten_ultra_dense_bucket": "致密超流体桶",
+
+  "item.etshtinker.blood_certus": "赛特斯神晶",
+  "material.etshtinker.blood_certus": "赛特斯神晶",
+  "material.etshtinker.blood_certus.flavor": "奇妙的晶体，其内部的能量与你的神经发生了共振",
+  "material.etshtinker.blood_certus.encyclopedia": "与你的精神紧密相连。只要你的毅力还在，它就不会辜负你",
+
+  "item.etshtinker.soul_fluix": "福鲁伊克斯魂晶",
+  "material.etshtinker.soul_fluix": "福鲁伊克斯魂晶",
+  "material.etshtinker.soul_fluix.flavor": "奇妙的晶体，其内部的能量与你的情感发生了共振",
+  "material.etshtinker.soul_fluix.encyclopedia": "与你的灵魂紧密相连，协助你摧毁你所厌恨之物",
+
+  "item.etshtinker.devil_resonate": "谐振魔晶",
+  "material.etshtinker.devil_resonate": "谐振魔晶",
+  "material.etshtinker.devil_resonate.flavor": "奇妙的晶体，其内部的能量与你的思索发生了共振",
+  "material.etshtinker.devil_resonate.encyclopedia": "摒弃一切不安，它会协助你抵抗那些身外之物",
+
+  "item.etshtinker.exo_alloy": "无暇真理·奇迹物质",
+  "material.etshtinker.exo_alloy": "奇迹物质",
+  "material.etshtinker.exo_alloy.flavor": "无所定型，但潜力无穷",
+  "material.etshtinker.exo_alloy.encyclopedia": "你的所有理论研究的成果，铭刻在这个0.11立方米的炫彩金属块上",
+  "fluid_type.etshtinker.molten_exo_alloy": "熔融奇迹物质",
+  "item.etshtinker.molten_exo_alloy_bucket": "熔融奇迹物质桶",
+
+  "item.etshtinker.evil_orb": "邪理魔球",
+  "material.etshtinker.evil_orb": "邪理魔球",
+  "material.etshtinker.evil_orb.flavor": "奇异的晶质小球",
+  "material.etshtinker.evil_orb.encyclopedia": "科技的起点，华丽、锐利但是莽撞",
+
+  "material.etshtinker.pellet_antimatter": "反物质",
+  "material.etshtinker.pellet_antimatter.flavor": "一坨普普通通的无害的安全的反物质球，你可以把它拿在手上",
+  "material.etshtinker.pellet_antimatter.encyclopedia": "mek科技，领先世界114514年。匠魂科技，震撼我妈1919810年",
+
+  "item.etshtinker.chroma_plate": "彩钢板",
+  "material.etshtinker.chroma_plate": "彩钢",
+  "material.etshtinker.chroma_plate.flavor": "被压扁了的三明治（确信）",
+  "material.etshtinker.chroma_plate.encyclopedia": "由三种性质奇特的金属压制而成的致密金属板，而并非被幽匿感染的川香回锅肉",
+
+  "item.etshtinker.activated_chroma_plate": "活化彩钢板",
+  "material.etshtinker.activated_chroma_plate": "活化彩钢",
+  "material.etshtinker.activated_chroma_plate.flavor": "被压扁了的炫彩三明治（确信）",
+  "material.etshtinker.activated_chroma_plate.encyclopedia": "由三种蕴含特殊能量的金属压制而成的致密金属板，是你热力之旅的终点",
+
+  "fluid_type.etshtinker.molten_meteoralloy": "熔融星陨合金",
+  "item.etshtinker.molten_meteoralloy_bucket": "熔融星陨合金桶",
+
+  "fluid_type.etshtinker.molten_stellaralloy": "炽热星钢流体",
+  "item.etshtinker.molten_stellaralloy_bucket": "液态星钢桶",
+  "item.etshtinker.stellaralloy": "星钢锭",
+  "material.etshtinker.stellaralloy": "星钢",
+  "material.etshtinker.stellaralloy.flavor": "来自外星",
+  "material.etshtinker.stellaralloy.encyclopedia": "来自外星的金属，有独特的力学特性",
+
+  "fluid_type.etshtinker.unstable_exotic_matter": "不稳定奇异物质",
+  "item.etshtinker.unstable_exotic_matter_bucket": "不稳定奇异物质桶",
+  "item.etshtinker.exotic_matter": "奇异物质",
+  "material.etshtinker.exotic_matter": "奇异物质",
+  "material.etshtinker.exotic_matter.flavor": "“啊，我的重氢产能又不够了！”",
+  "material.etshtinker.exotic_matter.encyclopedia": "在氘聚变的极端条件下将等离子态铁压缩至简并态，得到的物质与空间发生着强烈的作用。但是我的重氢去哪了？？？",
+
+  "item.etshtinker.anti_neutronium": "反中子锭",
+  "material.etshtinker.anti_neutronium": "反中子",
+  "material.etshtinker.anti_neutronium.flavor": "住手，这不是FU！",
+  "material.etshtinker.anti_neutronium.encyclopedia": "这种物质的存在超出了你的认知，你可能已经疯了",
+
+  "item.etshtinker.earth_crystal": "天地宝晶",
+  "material.etshtinker.earth_crystal": "天地宝晶",
+  "material.etshtinker.earth_crystal.flavor": "怎么感觉有点耳熟",
+  "material.etshtinker.earth_crystal.encyclopedia": "汇聚大地的精华。",
+
+  "item.etshtinker.lightless_alloy": "本影合金",
+  "material.etshtinker.lightless_alloy": "本影合金",
+  "material.etshtinker.lightless_alloy.flavor": "“可以在无光星球挖到”",
+  "material.etshtinker.lightless_alloy.encyclopedia": "“这种金属晶体几乎看不见，可能是由于其中所含的大量铑导致。”",
+  "fluid_type.etshtinker.molten_lightless_alloy": "熔融本影合金",
+  "item.etshtinker.molten_lightless_alloy_bucket": "熔融本影合金桶",
+
+  "item.etshtinker.electronium": "电子锭",
+  "material.etshtinker.electronium": "电子",
+  "material.etshtinker.electronium.flavor": "无时无刻不在释放闪电",
+  "material.etshtinker.electronium.encyclopedia": "一坨游离的却又坚固的电子，密度比水还小",
+  "fluid_type.etshtinker.molten_electronium": "电子流体",
+  "item.etshtinker.molten_electronium_bucket": "电子流体桶",
+
+  "item.etshtinker.protonium": "质子锭",
+  "material.etshtinker.protonium": "质子",
+  "material.etshtinker.protonium.flavor": "超级重",
+  "material.etshtinker.protonium.encyclopedia": "一坨密度超大的凝聚态质子，超级重！",
+  "fluid_type.etshtinker.molten_protonium": "质子流体",
+  "item.etshtinker.molten_protonium_bucket": "质子流体桶",
+
+  "item.etshtinker.coronation_alloy": "星冕合金锭",
+  "material.etshtinker.coronation_alloy": "星冕合金",
+  "material.etshtinker.coronation_alloy.flavor": "热死了",
+  "material.etshtinker.coronation_alloy.encyclopedia": "无时无刻不在迸发着炽热的等离子体，可以安全地储存在8个木板制成的箱子中",
+  "fluid_type.etshtinker.molten_coronation": "熔融星冕",
+  "item.etshtinker.molten_coronation_bucket": "熔融星冕桶",
+
+  "item.etshtinker.basalz_signalum": "地岩信素锭",
+  "material.etshtinker.basalz_signalum": "地岩信素",
+  "material.etshtinker.basalz_signalum.flavor": "来自大地",
+  "material.etshtinker.basalz_signalum.encyclopedia": "这种金属在不断自内而外地发出震波，能轻易震碎敌人的护甲",
+
+  "item.etshtinker.blitz_lumium": "震荡流明锭",
+  "material.etshtinker.blitz_lumium": "震荡流明",
+  "material.etshtinker.blitz_lumium.flavor": "来自低空",
+  "material.etshtinker.blitz_lumium.encyclopedia": "这种金属在不断释放震荡电流，能对敌人进行电疗",
+
+  "item.etshtinker.blizz_enderium": "霜覆末影锭",
+  "material.etshtinker.blizz_enderium": "霜覆末影",
+  "material.etshtinker.blizz_enderium.flavor": "来自高空",
+  "material.etshtinker.blizz_enderium.encyclopedia": "这种金属极端的寒冷，仿佛能冻结空气",
+
+  "item.etshtinker.tungsten_ingot": "钨锭",
+
+  "fluid_type.etshtinker.molten_bismuth": "熔融铋",
+  "item.etshtinker.molten_bismuth_bucket": "熔融铋桶",
+  "item.etshtinker.bismuth_ingot": "铋锭",
+  "material.etshtinker.bismuth": "铋",
+  "material.etshtinker.bismuth.flavor": "太脆了，不适合做工具",
+  "material.etshtinker.bismuth.encyclopedia": "闪耀着氧化膜的彩色光泽",
+
+  "item.etshtinker.hardlead_plate": "硬铅板",
+  "material.etshtinker.hardlead_plate": "硬铅",
+  "material.etshtinker.hardlead_plate.flavor": "适合用作电极",
+  "material.etshtinker.hardlead_plate.encyclopedia": "铅合金，比铅更硬、更耐用",
+
+  "item.etshtinker.manalyn_queen": "魔灵皇钢",
+  "material.etshtinker.manalyn_queen": "魔灵皇钢",
+  "material.etshtinker.manalyn_queen.flavor": "当工匠想向别人证明自己会使用魔力...",
+  "material.etshtinker.manalyn_queen.encyclopedia": "魔力大于10M时，工具伤害乘以(魔力总量的位数-5)^3。",
+
+  "item.etshtinker.trinity_intereactive_alloy": "三位一体强互作用合金",
+  "material.etshtinker.trinity_intereactive_alloy": "三位一体",
+  "material.etshtinker.trinity_intereactive_alloy.flavor": "真正的宇宙金属",
+  "material.etshtinker.trinity_intereactive_alloy.encyclopedia": "无比坚硬，无法定型",
+
+  "item.etshtinker.marcoatom": "宏原子锭",
+  "material.etshtinker.marcoatom": "宏原子",
+  "material.etshtinker.marcoatom.flavor": "未解之谜...",
+  "material.etshtinker.marcoatom.encyclopedia": "你无法理解这种材料的存在，但是它能很配合地在你的意愿下塑形...",
+
+  "material.etshtinker.gemamber": "琥珀结晶",
+  "material.etshtinker.gemamber.flavor": "跨越数万年",
+  "material.etshtinker.gemamber.encyclopedia": "奇特的有机晶体，原本理论上需要数万年才能形成...",
+
+  "material.etshtinker.gemobsidian": "黑曜石结晶",
+  "material.etshtinker.gemobsidian.flavor": "火成岩",
+  "material.etshtinker.gemobsidian.encyclopedia": "奇特的无机晶体，原本理论上需要高温高压才能形成...",
+
+
+
+
+  "effect.etshtinker.ionized": "电离",
+  "effect.etshtinker.novaradiation": "新星辐射",
+
+
+
+  "entity.etshtinker.lightningarrow": "涌流箭矢",
+  "entity.etshtinker.novasickle": "超新星飞镰",
+  "entity.etshtinker.exoslash": "星流能量球",
+  "entity.etshtinker.shadowaxeentity": "逐影飞斧",
+  "entity.etshtinker.plasmawaveslashentity": "等离子波",
+  "entity.etshtinker.plasmarrowentity": "等离子矢",
+  "entity.etshtinker.plasmaexplosionentity": "",
+
+
+
+  "modifier.etshtinker.tooltip.storedenergy": "FE存储: ",
+  "etshtinker.modifier.tooltip.deadpreventcd": "免死冷却: ",
+  "etshtinker.modifier.tooltip.deadpreventready": "免死就绪 ",
+  "etshtinker.modifier.tooltip.charge": "充能: ",
+  "etshtinker.modifier.tooltip.ragevalue": "怒气值: ",
+  "etshtinker.modifier.tooltip.rageduration": "怒气持续时间: ",
+  "etshtinker.modifier.tooltip.nervous": "紧张值: ",
+  "etshtinker.modifier.tooltip.insanity": "疯癫值: ",
+  "etshtinker.modifier.tooltip.tpto": "传送至: ",
+  "etshtinker.modifier.tooltip.cantfix": "此工具无法再次被使用",
+  "etshtinker.modifier.tooltip.activated": "激活",
+  "etshtinker.modifier.tooltip.mananotenough": "你的工具不认可你，也许你身上的魔力气息不够强烈。",
+  "etshtinker.modifier.tooltip.manaenough": "当前魔力充盈，是时候大显身手了",
+  "etshtinker.modifier.tooltip.multiplier": "获得的伤害乘幅:",
+  "etshtinker.modifier.tooltip.manadrain": "当前魔力消耗:",
+  "etshtinker.modifier.tooltip.marconotenough": "工具对你很不满，它认为你没有重塑它的打算",
+  "etshtinker.modifier.tooltip.marconenough": "你的工具现在十分佩服你，愿意为你做任何事",
+  "etshtinker.modifier.tooltip.marcomulti": "当前属性乘幅",
+  "etshtinker.modifier.tooltip.multi": "属性增幅",
+
+  "etshtinker.tool.tooltip.cantfix": "此工具无法再次被使用",
+  "etshtinker.tool.tooltip.scatter": "散射",
+  "etshtinker.tool.tooltip.plasmarange": "射程",
+  "etshtinker.tool.tooltip.damagemultiplier": "伤害倍率",
+  "etshtinker.tool.tooltip.chargespeed": "充能时间",
+  "etshtinker.tool.tooltip.powerfactor": "流体消耗速率",
+  "etshtinker.tool.tooltip.cooldown": "冷却时间",
+  "etshtinker.modifier.tooltip.trinitycurse": "以你目前的技术，无法在这个物品上留下任何痕迹...",
+
+  "item.etshtinker.ionized_cannon": "离子化射线炮",
+  "item.etshtinker.ionized_cannon.description": "重型近战/远程两用武器，具有无限的耐久，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书)，对其路径上的敌人造成多段伤害。",
+  "tool_stat.etshtinker.plasmarange": "射程",
+  "tool_stat.etshtinker.plasmarange.description": "射线的最大距离",
+  "tool_stat.etshtinker.cooldown": "冷却时间",
+  "tool_stat.etshtinker.cooldown.description": "决定冷却的时间，单位为刻",
+  "tool_stat.etshtinker.damagemultiplier": "伤害倍率",
+  "tool_stat.etshtinker.damagemultiplier.description": "伤害的倍率，离子波最终能造成的伤害会乘以此值",
+  "tool_stat.etshtinker.fluid_capacity": "流体容量",
+  "tool_stat.etshtinker.fluid_capacity.description": "额外增加的流体容量",
+  "tool_stat.etshtinker.multiplasma": "多重射击",
+  "tool_stat.etshtinker.multiplasma.description": "额外发射的等离子体射线数量",
+  "etshtinker.tool.tooltip.wrongfluid": "离子化射线炮:无效流体",
+  "etshtinker.tool.tooltip.effectivefluid": "流体基础伤害",
+  "etshtinker.tool.tooltip.fluidhasspecial" : "流体技能",
+  "etshtinker.tool.tooltip.fluidspecial.antimatter_explosion": "大型爆炸",
+  "etshtinker.tool.tooltip.fluidspecial.explosion": "爆炸",
+  "etshtinker.tool.tooltip.fluidspecial.ionize": "电离",
+  "etshtinker.tool.tooltip.fluidspecial.nova_radiation": "新星辐射",
+  "etshtinker.tool.tooltip.fluidspecial.tracking": "自瞄",
+  "etshtinker.tool.tooltip.fluidspecial.magic_damage": "额外魔法伤害",
+  "etshtinker.tool.tooltip.fluidspecial.random_scatter": "随机折射",
+  "etshtinker.tool.tooltip.fluidspecial.burn": "点燃",
+  "etshtinker.tool.tooltip.fluidspecial.radiation": "辐射",
+  "etshtinker.tool.tooltip.fluidspecial.poison": "毒性",
+  "etshtinker.tool.tooltip.fluidspecial.corrosive": "腐蚀性",
+  "stat.etshtinker.fluid_chamber": "储液器",
+  "stat.etshtinker.ionizer": "离子化腔",
+  "item.etshtinker.fluid_chamber": "储液器",
+  "item.etshtinker.ionizer": "离子化腔",
+
+  "item.etshtinker.sculk_energycore": "幽匿能量核心",
+  "item.etshtinker.fluid_chamber_cast": "储液器金质铸膜",
+  "item.etshtinker.fluid_chamber_sand_cast": "储液器沙子铸膜",
+  "item.etshtinker.fluid_chamber_red_sand_cast": "储液器红沙铸膜",
+
+
+
+  "recipe.etshtinker.modifier.exoblade": "星流之刃需要神金质作为前置",
+  "recipe.etshtinker.modifier.chainreaction": "链式反应需要裂变反应作为前置",
+  "recipe.etshtinker.modifier.fusion": "聚变反应需要链式反应作为前置",
+  "recipe.etshtinker.modifier.lightningarrowmodifier": "涌流箭矢需要神金质作为前置",
+  "recipe.etshtinker.modifier.modifiernovasickle": "超新星飞镰需要神金质作为前置",
+  "recipe.etshtinker.modifier.modifiershadowaxe": "你没有足够的知识去制作这个，逐影™科技飞斧需要神金质作为前置",
+  "recipe.etshtinker.modifier.warpattackex": "强化折跃攻击需要神金质作为前置",
+  "recipe.etshtinker.modifier.warpingenhance": "曲率突击需要曲率引擎作为前置",
+
+
+
+  "etshtinker.item.tooltip.meteoralloy_block1": "唯有高温煅烧和低温冷却能使其露出光芒",
+  "etshtinker.item.tooltip.meteoralloy_block2": "“摸起来...很好吃(?)”",
+  "etshtinker.item.tooltip.sculk_energycore1": "监守者体内的高能核心，拥有将流体等离子化的能力",
+  "etshtinker.item.tooltip.sculk_energycore2": "它坏了",
+  "etshtinker.item.tooltip.csdy": "由CSDY贡献",
+  "etshtinker.item.tooltip.antineutronium": "你应该不会把它和超致密放在一起吧",
+  "etshtinker.item.tooltip.antineutroniumwarn": "应该...不会吧?",
+  "etshtinker.item.tooltip.trinityhint": "自湮灭中涅槃，而重获新生...",
+  "etshtinker.item.tooltip.marcoatom": "我们的世界，或许与这块金属大同小异...",
+  "etshtinker.item.tooltip.marcoatom2": "-特殊材料-\n也许你会好奇这个材料怎么获取...别急，或许你在其它材料上能找到线索!",
+  "etshtinker.item.tooltip.underbedrock": "这种生于基岩之下的矿物通常不能被正常挖到",
+
+
+
+  "block.etshtinker.meteoralloy_block": "半熔融星陨合金块",
+  "item.etshtinker.meteoralloy_block": "半熔融星陨合金块",
+
+  "block.etshtinker.bismuthinite_ore_deepslate": "深层辉铋矿",
+  "item.etshtinker.bismuthinite_ore_deepslate": "深层辉铋矿",
+  "item.etshtinker.bismuthinite": "辉铋矿晶体",
+
+  "vein.etshtinker.ironsulfide": "硫铁矿",
+  "desc.immersiveengineering.info.mineral.bismuthinite": "富辉铋矿床",
+
+
+
+  "fluid_type.etshtinker.stablized_exotic_matter": "稳定态奇异物质",
+  "item.etshtinker.stablized_exotic_matter_bucket": "稳定态奇异物质桶",
+
+  "fluid_type.etshtinker.molten_activated_chroma_steel": "熔融彩钢",
+  "item.etshtinker.molten_activated_chroma_steel_bucket": "熔融彩钢桶",
+
+  "fluid_type.etshtinker.molten_anti_neutronium": "熔融反中子",
+  "item.etshtinker.molten_anti_neutronium_bucket": "熔融反中子桶",
+
+  "fluid_type.etshtinker.molten_basalz_signalum": "熔融地岩信素",
+  "item.etshtinker.molten_basalz_signalum_bucket": "熔融地岩信素桶",
+
+  "fluid_type.etshtinker.molten_biltz_lumium": "熔融震荡流明",
+  "item.etshtinker.molten_biltz_lumium_bucket": "熔融震荡流明桶",
+
+  "fluid_type.etshtinker.molten_blizz_enderium": "熔融霜覆末影",
+  "item.etshtinker.molten_blizz_enderium_bucket": "熔融霜覆末影桶",
+
+  "fluid_type.etshtinker.molten_hardlead": "熔融硬铅",
+  "item.etshtinker.molten_hardlead_bucket": "熔融硬铅桶",
+
+  "fluid_type.etshtinker.molten_trinity_intereactive_alloy": "熔融三位一体强互作用合金",
+  "item.etshtinker.molten_trinity_intereactive_alloy_bucket": "熔融三位一体强互作用合金桶",
+
+  "fluid_type.etshtinker.molten_marcoatom": "熔融宏原子",
+  "item.etshtinker.molten_marcoatom_bucket": "熔融宏原子桶",
+
+  "fluid_type.etshtinker.molten_semicrystaline_obsidian": "熔融准晶态黑曜石",
+  "item.etshtinker.molten_semicrystaline_obsidian_bucket": "熔融准晶态黑曜石桶",
+
+
+
+  "infuse_type.etshtinker.ultra_dense":"超致密",
+  "infuse_type.etshtinker.refined_glowstone":"强化荧石"
+}

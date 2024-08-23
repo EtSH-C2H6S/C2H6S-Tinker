@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/lead"
+    },
+    {
+      "tag": "forge:ingots/lead"
+    },
+    {
+      "tag": "forge:ingots/lead"
+    },
+    {
+      "item": "etshtinker:bismuth_ingot"
+    },
+    {
+      "item": "etshtinker:bismuth_ingot"
+    }
+  ],
+  "results": [
+    {
+      "count": 4,
+      "item": "etshtinker:hardlead_plate"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "etshtinker:chroma_plate"
+    },
+    {
+      "item": "etshtinker:chroma_plate"
+    },
+    {
+      "item": "etshtinker:chroma_plate"
+    },
+    {
+      "item": "thermal:blizz_powder"
+    },
+    {
+      "item": "thermal:blizz_powder"
+    },
+    {
+      "item": "thermal:basalz_powder"
+    },
+    {
+      "item": "thermal:basalz_powder"
+    },
+    {
+      "item": "thermal:blitz_powder"
+    },
+    {
+      "item": "thermal:blitz_powder"
+    }
+  ],
+  "result": {
+    "item": "etshtinker:activated_chroma_plate",
+    "count": 1
+  }
+}

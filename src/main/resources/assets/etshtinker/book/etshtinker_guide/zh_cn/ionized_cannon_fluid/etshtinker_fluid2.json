@@ -1,0 +1,25 @@
+{
+  "title": "C2H6S Tinker流体-2",
+  "text": [
+    {
+      "text": "熔融反物质 || 基础伤害 : 14 || 流体能力 : 大爆炸",
+      "paragraph": true
+    },
+    {
+      "text": "熔融奇迹物质 || 基础伤害 : 128 || 流体能力 : 新星辐射",
+      "paragraph": true
+    },
+    {
+      "text": "熔融超致密 || 基础伤害 : 6 ",
+      "paragraph": true
+    },
+    {
+      "text": "质子流体 || 基础伤害 : 20 ",
+      "paragraph": true
+    },
+    {
+      "text": "湮灭等离子体 || 基础伤害 : 15 ",
+      "paragraph": true
+    }
+  ]
+}

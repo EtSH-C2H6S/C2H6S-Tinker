@@ -1,0 +1,19 @@
+{
+    "conditions": [
+        {
+            "modid": "mekanism",
+            "type": "forge:mod_loaded"
+        }
+    ],
+    "type": "tconstruct:casting_table",
+    "cast": {
+        "item": "mekanism:gauge_dropper"
+    },
+    "cast_consumed": true,
+    "fluid": {
+        "name": "etshtinker:stablized_exotic_matter",
+      "amount": 1000
+    },
+    "result": "etshtinker:exotic_matter",
+    "cooling_time": 10
+}

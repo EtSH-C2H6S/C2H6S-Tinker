@@ -1,0 +1,24 @@
+package com.c2h6s.etshtinker.init;
+
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraftforge.registries.RegistryObject;
+import com.c2h6s.etshtinker.Entities.*;
+import slimeknights.mantle.registration.deferred.EntityTypeDeferredRegister;
+
+import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
+
+public class etshtinkerEntity {
+    public static final EntityTypeDeferredRegister ENTITIES = new EntityTypeDeferredRegister(MOD_ID);
+    public static final RegistryObject<EntityType<lightningarrow>> lightningarrow = ENTITIES.register("lightningarrow",()-> EntityType.Builder.<lightningarrow>of(lightningarrow::new, MobCategory.MISC).sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(20));
+    public static final RegistryObject<EntityType<novasickleEntity>> novascikle = ENTITIES.register("novascikle", () -> EntityType.Builder.<novasickleEntity>of(novasickleEntity::new, MobCategory.MISC).sized(0.4F, 0.4F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new novasickleEntity(etshtinkerEntity.novascikle.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<exoSlashEntity>> exoslash = ENTITIES.register("exoslash", () -> EntityType.Builder.<exoSlashEntity>of(exoSlashEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new exoSlashEntity(etshtinkerEntity.exoslash.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<shadowaxeEntity>> shadowaxeentity = ENTITIES.register("shadowaxeentity", () -> EntityType.Builder.<shadowaxeEntity>of(shadowaxeEntity::new, MobCategory.MISC).sized(0.3F, 0.3F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new shadowaxeEntity(etshtinkerEntity.shadowaxeentity.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<plasmawaveslashentity>> plasmawaveslashEntity = ENTITIES.register("plasmawaveslashentity", () -> EntityType.Builder.of(plasmawaveslashentity::new, MobCategory.MISC).sized(8F, 1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new plasmawaveslashentity(etshtinkerEntity.plasmawaveslashEntity.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<plasmarrowentity>> plasmarrowEntity = ENTITIES.register("plasmarrowentity",()-> EntityType.Builder.<plasmarrowentity>of(plasmarrowentity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(20));
+    public static final RegistryObject<EntityType<plasmaexplosionentity>> plasmaexplosionentity = ENTITIES.register("plasmaexplosionentity", () -> EntityType.Builder.of(plasmaexplosionentity::new, MobCategory.MISC).sized(0.75F, 0.75F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<slashentity>> slashentity = ENTITIES.register("slashentity", () -> EntityType.Builder.of(slashentity::new, MobCategory.MISC).sized(0.01F, 0.01F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new slashentity(etshtinkerEntity.slashentity.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<phantomswordentity>> phantomswordentity = ENTITIES.register("phantomswordentity", () -> EntityType.Builder.of(phantomswordentity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new phantomswordentity(etshtinkerEntity.phantomswordentity.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<annihilateexplosionentity>> annihilateexplosionentity = ENTITIES.register("annihilateexplosionentity", () -> EntityType.Builder.of(annihilateexplosionentity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<enchantedswordentity>> enchantedswordentity = ENTITIES.register("enchantedswordentity", () -> EntityType.Builder.<enchantedswordentity>of(enchantedswordentity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new enchantedswordentity(etshtinkerEntity.enchantedswordentity.get(), world)).setShouldReceiveVelocityUpdates(true));
+}

@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "etshtinker:stellaralloy"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:stellaralloy"
+}

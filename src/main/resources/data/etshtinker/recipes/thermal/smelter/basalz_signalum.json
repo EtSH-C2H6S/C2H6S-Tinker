@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "thermal:signalum_ingot",
+      "count": 1
+    },
+    {
+      "item": "thermal:basalz_powder",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "etshtinker:basalz_signalum",
+      "count": 1
+    }
+  ],
+  "energy": 1000
+}

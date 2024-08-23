@@ -1,0 +1,9 @@
+{
+    "type":"tconstruct:material_melting", 
+    "input": "etshtinker:basalz_signalum",
+    "temperature": 600,
+    "result":{
+      "fluid": "etshtinker:molten_basalz_signalum",
+      "amount": 90
+    }
+}

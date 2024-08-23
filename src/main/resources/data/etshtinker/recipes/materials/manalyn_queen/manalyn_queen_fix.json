@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "botania",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "etshtinker:manalyn_queen"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:manalyn_queen"
+}

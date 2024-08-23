@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:ultra_dense"
+    },
+    "temperature": 1800, 
+    "time": 20,
+    "result":{
+      "fluid": "etshtinker:molten_ultra_dense", 
+      "amount": 90
+    }
+}

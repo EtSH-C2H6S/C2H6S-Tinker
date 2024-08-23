@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:ore_melting",
+  "byproducts": [
+    {
+      "amount": 300,
+      "fluid": "etshtinker:molten_protonium"
+    }
+  ],
+  "ingredient": {
+    "item": "etshtinker:activated_neutronium_dust"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "fluid": "etshtinker:overchargedneutronium"
+  },
+  "temperature": 4000,
+  "time": 10
+}

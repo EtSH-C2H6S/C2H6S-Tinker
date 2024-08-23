@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material_fluid", 
+  "fluid": {
+    "name": "etshtinker:molten_hardlead",
+    "amount":90
+  },
+  "temperature":290,
+  "output":"etshtinker:hardlead_plate"
+}

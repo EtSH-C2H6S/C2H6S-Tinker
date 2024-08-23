@@ -1,0 +1,24 @@
+{
+  "condition": {
+    "modid": "ae2",
+    "type": "forge:mod_loaded"
+  },
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 39000
+    },
+    "tconstruct:binding": {},
+    "tconstruct:handle": {
+      "durability": 3.01,
+      "mining_speed": 2.33,
+      "melee_speed": -0.35,
+      "melee_damage": -0.25
+    },
+    "tconstruct:head": {
+      "durability": 760,
+      "mining_speed": 11.25,
+      "mining_tier": "minecraft:netherite",
+      "melee_attack": 0.1
+    }
+  }
+}

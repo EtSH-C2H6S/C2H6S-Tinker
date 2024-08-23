@@ -1,0 +1,22 @@
+{
+  "title": "C2H6S Tinker流体",
+  "item": "etshtinker:annihilating_plasma_bucket",
+  "text": [
+    {
+      "text": "不稳定奇异物质||基础伤害:2.25||流体能力:自瞄",
+      "paragraph": true
+    },
+    {
+      "text": "炽热星钢流体 || 基础伤害 : 4 || 流体能力 : 爆炸",
+      "paragraph": true
+    },
+    {
+      "text": "熔融星陨合金 || 基础伤害 : 3 || 流体能力 : 爆炸",
+      "paragraph": true
+    },
+    {
+      "text": "电子流体 || 基础伤害 : 33 || 流体能力 : 电离",
+      "paragraph": true
+    }
+  ]
+}

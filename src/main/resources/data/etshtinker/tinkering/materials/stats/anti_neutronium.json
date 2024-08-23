@@ -1,0 +1,59 @@
+{
+  "condition": {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+  },
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 131070
+    },
+    "tconstruct:head": {
+      "durability": 64,
+      "mining_speed": 99,
+      "harvestTier": "minecraft:netherite",
+      "melee_attack": 2048
+    },
+    "tconstruct:handle": {
+      "durability": 2,
+      "mining_speed": 2,
+      "melee_speed": 2,
+      "melee_damage": 255
+    },
+    "tconstruct:limb": {
+      "durability": 32,
+      "draw_speed": 1.91,
+      "velocity": -0.2,
+      "accuracy": 1.0
+    },
+    "tconstruct:grip": {
+      "durability": 1.2,
+      "accuracy": 0.5,
+      "melee_damage": 512
+    },
+    "tconstruct:maille": {},
+    "tconstruct:plating_helmet": {
+      "armor": 3.0,
+      "durability": 1000,
+      "knockback_resistance": 1,
+      "toughness": 4
+    },
+    "tconstruct:plating_chestplate": {
+      "armor": 8.0,
+      "durability": 1000,
+      "knockback_resistance": 1,
+      "toughness": 4
+    },
+    "tconstruct:plating_leggings": {
+      "armor": 6.0,
+      "durability": 1000,
+      "knockback_resistance": 1,
+      "toughness": 4
+    },
+    "tconstruct:plating_boots": {
+      "armor": 3.0,
+      "durability": 1000,
+      "knockback_resistance": 1,
+      "toughness": 4
+    }
+  }
+}

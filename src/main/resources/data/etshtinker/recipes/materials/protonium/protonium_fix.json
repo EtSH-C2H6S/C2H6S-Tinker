@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "etshtinker:protonium"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:protonium"
+}

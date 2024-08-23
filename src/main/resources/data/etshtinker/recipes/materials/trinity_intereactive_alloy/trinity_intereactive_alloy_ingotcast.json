@@ -1,0 +1,19 @@
+{
+    "conditions": [
+        {
+            "modid": "mekanism",
+            "type": "forge:mod_loaded"
+        }
+    ],
+    "type": "tconstruct:casting_table",
+    "cast": {
+      "tag": "tconstruct:casts/multi_use/ingot"
+    },
+    "cast_consumed": false,
+    "fluid": {
+        "name": "etshtinker:molten_trinity_intereactive_alloy",
+      "amount": 90
+    },
+    "result": "etshtinker:trinity_intereactive_alloy",
+    "cooling_time": 20
+}

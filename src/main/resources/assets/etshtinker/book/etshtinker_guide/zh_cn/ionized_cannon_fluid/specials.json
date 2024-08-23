@@ -1,0 +1,29 @@
+{
+  "title": "流体技能",
+  "text": [
+    {
+      "text": "点燃:使目标着火",
+      "paragraph": true
+    },
+    {
+      "text": "爆炸:使命中的第一个敌人发生爆炸",
+      "paragraph": true
+    },
+    {
+      "text": "大爆炸:使命中的第一个敌人发生威力较大的爆炸",
+      "paragraph": true
+    },
+    {
+      "text": "毒性:对目标施加中毒",
+      "paragraph": true
+    },
+    {
+      "text": "腐蚀性:使目标护甲归零并获得中毒和虚弱",
+      "paragraph": true
+    },
+    {
+      "text": "额外魔法伤害:额外造成一段魔法伤害",
+      "paragraph": true
+    }
+  ]
+}

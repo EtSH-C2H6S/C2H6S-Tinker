@@ -1,0 +1,9 @@
+{
+    "type":"tconstruct:material_melting", 
+    "input": "etshtinker:bismuth",
+    "temperature": 600,
+    "result":{
+      "fluid": "etshtinker:molten_bismuth",
+      "amount": 90
+    }
+}

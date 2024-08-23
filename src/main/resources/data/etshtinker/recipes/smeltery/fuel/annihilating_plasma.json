@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:melting_fuel",
+  "fluid": {
+    "name": "etshtinker:annihilating_plasma",
+    "amount": 1
+  },
+  "duration": 2,
+  "temperature": 16384
+}

@@ -1,0 +1,12 @@
+{
+  "condition": {
+    "modid": "immersiveengineering",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:crunchyshattered",
+      "level": 1
+    }
+  ]
+}

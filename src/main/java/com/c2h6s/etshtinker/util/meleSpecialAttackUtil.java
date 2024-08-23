@@ -1,0 +1,63 @@
+package com.c2h6s.etshtinker.util;
+
+
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
+import com.c2h6s.etshtinker.Entities.*;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+
+import java.util.List;
+
+import static com.c2h6s.etshtinker.util.vecCalc.*;
+
+public class meleSpecialAttackUtil {
+    public static void createWarp(@NotNull Player attacker, Float radius, Float damage, ToolStack tool){
+        int lvl =(int)(radius/8);
+        Level world =attacker.getLevel();
+        LivingEntity entity =getNearestLiEnt(radius,attacker,world);
+        if (entity!=null&&world!=null&&entity.isAlive()){
+            entity.invulnerableTime=0;
+            entity.hurt(DamageSource.playerAttack(attacker),damage);
+            entity.invulnerableTime=0;
+            if (world.isClientSide) {
+                world.addAlwaysVisibleParticle(ParticleTypes.SWEEP_ATTACK, true, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 0, 0, 0);
+            }
+            else {
+                ((ServerLevel)world).sendParticles(ParticleTypes.SWEEP_ATTACK, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 1,0,0, 0, 0);
+            }
+            world.playSound(attacker, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.NEUTRAL, 1, 1);
+            double x =entity.getX();
+            double y =entity.getY();
+            double z =entity.getZ();
+            List<LivingEntity> ls =world.getEntitiesOfClass(LivingEntity.class,new AABB(x-2-lvl,y-2-lvl,z-2-lvl,x+2+lvl,y+2+lvl,z+2+lvl));
+            for (LivingEntity target : ls){
+                if (target!=null&&target!=attacker){
+                    target.invulnerableTime=0;
+                    target.hurt(DamageSource.playerAttack(attacker),damage/2);
+                    target.invulnerableTime=0;
+                }
+            }
+            attacker.getCooldowns().addCooldown(tool.getItem(), 10);
+        }
+    }
+    public static void createExoSlash(@NotNull Player player, Float damage, Vec3 deltamovement){
+        Level world =player.getLevel();
+        exoSlashEntity entity =new exoSlashEntity(world,player);
+        entity.setPos(player.getX(),player.getEyeY(),player.getZ());
+        entity.setDeltaMovement(deltamovement);
+        entity.setDamage(damage);
+        entity.setOwner(player);
+        entity.setNoGravity(true);
+        world.addFreshEntity(entity);
+    }
+
+}

@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "fluid": "etshtinker:molten_ultra_dense",
+      "amount": 180
+    },
+    {
+      "fluid": "etshtinker:molten_protonium",
+      "amount": 200
+    },
+    {
+      "fluid": "etshtinker:molten_electronium",
+      "amount": 200
+    }
+  ],
+  "result": {
+    "fluid": "etshtinker:molten_trinity_intereactive_alloy",
+    "amount": 90
+  },
+  "temperature": 10240
+}

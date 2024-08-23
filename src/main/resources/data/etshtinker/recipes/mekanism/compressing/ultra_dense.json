@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "mekanism:compressing",
+  "chemicalInput": {
+    "amount": 16,
+    "gas": "mekanism:osmium"
+  },
+  "itemInput": {
+    "ingredient": {
+      "item": "etshtinker:os_induced_netherstarshard"
+    }
+  },
+  "output": {
+    "item": "etshtinker:ultra_dense"
+  }
+}

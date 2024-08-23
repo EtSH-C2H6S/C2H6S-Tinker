@@ -1,0 +1,13 @@
+{
+    "type": "tconstruct:casting_table",
+    "cast": {
+      "tag": "tconstruct:casts/multi_use/ingot"
+    },
+    "cast_consumed": false,
+    "fluid": {
+        "name": "etshtinker:molten_lightless_alloy",
+      "amount": 90
+    },
+    "result": "etshtinker:lightless_alloy",
+    "cooling_time": 50
+}

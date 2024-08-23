@@ -1,0 +1,30 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "etshtinker:basalz_signalum",
+      "count": 1
+    },
+    {
+      "item": "etshtinker:blitz_lumium",
+      "count": 1
+    },
+    {
+      "item": "etshtinker:blizz_enderium",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "etshtinker:triostatealloy",
+      "count": 1
+    }
+  ],
+  "energy": 10000
+}

@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:ender_pearl"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "tconstruct:seared_stone",
+    "amount": 8000
+  },
+  "result": "etshtinker:lightless_alloy",
+  "cooling_time": 20
+}

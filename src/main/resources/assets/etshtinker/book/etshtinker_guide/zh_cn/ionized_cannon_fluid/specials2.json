@@ -1,0 +1,25 @@
+{
+  "title": "流体技能-2",
+  "text": [
+    {
+      "text": "随机折射:射线每次推进时随机朝一个小角度折射",
+      "paragraph": true
+    },
+    {
+      "text": "自瞄:射线会自动朝向离你最近的敌人发射",
+      "paragraph": true
+    },
+    {
+      "text": "电离:对目标施加电离效果",
+      "paragraph": true
+    },
+    {
+      "text": "新星辐射:对目标施加新星辐射效果",
+      "paragraph": true
+    },
+    {
+      "text": "辐射:对目标施加辐射(需要安装通用机械)",
+      "paragraph": true
+    }
+  ]
+}

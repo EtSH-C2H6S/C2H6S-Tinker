@@ -1,0 +1,31 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "limb": "etshtinker:item/tool/ionized_cannon/limb",
+    "ionizer": "etshtinker:item/tool/ionized_cannon/ionizer",
+    "liquid_chamber": "etshtinker:item/tool/ionized_cannon/liquid_chamber",
+    "tough_handle": "etshtinker:item/tool/ionized_cannon/tough_handle"
+  },
+  "modifier_roots": [
+    "etshtinker:item/tool/ionized_cannon/modifiers/"
+  ],
+  "parts": [
+    {
+      "name": "limb",
+      "index": 2
+    },
+    {
+      "name": "ionizer",
+      "index": 3
+    },
+    {
+      "name": "liquid_chamber",
+      "index": 0
+    },
+    {
+      "name": "tough_handle",
+      "index": 1
+    }
+  ]
+}

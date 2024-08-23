@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "name": "etshtinker:molten_meteoralloy",
+    "amount": 1200
+  },
+  "result": "etshtinker:meteoralloy_block",
+  "cooling_time": 20
+}

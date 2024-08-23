@@ -1,0 +1,12 @@
+{
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:lightless_alloy"
+    },
+    "temperature": 1750,
+    "time": 20,
+    "result":{
+      "fluid": "etshtinker:molten_lightless_alloy",
+      "amount": 90
+    }
+}

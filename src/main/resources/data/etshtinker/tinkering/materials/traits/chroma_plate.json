@@ -1,0 +1,20 @@
+{
+  "condition": {
+    "modid": "thermal",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "tconstruct:enderference",
+      "level": 4
+    },
+    {
+      "name": "etshtinker:iluminate",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:sidechannelattack",
+      "level": 1
+    }
+  ]
+}

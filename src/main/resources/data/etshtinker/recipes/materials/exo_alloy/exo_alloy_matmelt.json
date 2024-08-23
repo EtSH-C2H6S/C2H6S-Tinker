@@ -1,0 +1,9 @@
+{
+  "type":"tconstruct:material_melting",
+  "input": "etshtinker:exo_alloy",
+  "temperature": 9550,
+  "result":{
+    "fluid": "etshtinker:molten_exo_alloy",
+    "amount": 90
+  }
+}

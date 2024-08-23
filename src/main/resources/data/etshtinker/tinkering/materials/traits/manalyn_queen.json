@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "modid": "botania",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:manaoverload",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:modifierenchantedsword",
+      "level": 1
+    }
+  ]
+}

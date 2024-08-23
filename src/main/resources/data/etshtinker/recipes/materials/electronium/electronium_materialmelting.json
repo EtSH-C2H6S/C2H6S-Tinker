@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type":"tconstruct:material_melting", 
+    "input": "etshtinker:electronium",
+    "temperature": 3995,
+    "result":{
+      "fluid": "etshtinker:molten_electronium",
+      "amount": 100
+    }
+}

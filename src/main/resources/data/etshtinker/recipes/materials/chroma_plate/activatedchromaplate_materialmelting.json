@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type":"tconstruct:material_melting", 
+    "input": "etshtinker:activated_chroma_plate",
+    "temperature": 600,
+    "result":{
+      "fluid": "etshtinker:molten_activated_chroma_steel",
+      "amount": 90
+    }
+}

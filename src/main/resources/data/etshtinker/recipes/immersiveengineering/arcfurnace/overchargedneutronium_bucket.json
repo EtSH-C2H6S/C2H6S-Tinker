@@ -1,0 +1,30 @@
+{
+  "conditions": [
+    {
+      "modid": "immersiveengineering",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "immersiveengineering:arc_furnace",
+  "additives": [
+    {
+      "item": "etshtinker:stable_plasma"
+    },
+    {
+      "item": "etshtinker:stable_plasma"
+    }
+  ],
+  "energy": 5000000,
+  "input": {
+    "item": "etshtinker:molten_ultra_dense_bucket"
+  },
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "etshtinker:overchargedneutronium_bucket"
+      },
+      "count": 1
+    }
+  ],
+  "time": 100
+}

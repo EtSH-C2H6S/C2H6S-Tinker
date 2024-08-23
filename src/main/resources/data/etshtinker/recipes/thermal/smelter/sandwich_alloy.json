@@ -1,0 +1,30 @@
+{
+	"conditions": [
+		{
+			"modid": "thermal",
+			"type": "forge:mod_loaded"
+		}
+	],
+	"type": "thermal:smelter",
+	"ingredients": [
+		{
+			"item": "thermal:signalum_ingot",
+			"count": 1
+		},
+		{
+			"item": "thermal:lumium_ingot",
+			"count": 1
+		},
+		{
+			"item": "thermal:enderium_ingot",
+			"count": 1
+		}
+	],
+	"result": [
+		{
+			"item": "etshtinker:sandwich_alloy",
+			"count": 1
+		}
+	],
+	"energy": 1000
+}

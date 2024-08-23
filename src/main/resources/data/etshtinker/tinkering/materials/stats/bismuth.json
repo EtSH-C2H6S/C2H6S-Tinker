@@ -1,0 +1,40 @@
+{
+  "condition": {
+    "modid": "immersiveengineering",
+    "type": "forge:mod_loaded"
+  },
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 5000
+    },
+    "etshtinker:ionizer": {
+      "cooldown": 75,
+      "plasmarange": 30,
+      "damagemultiplier": 1.6
+    },
+    "tconstruct:binding": {},
+    "tconstruct:handle": {
+      "durability": -0.2,
+      "mining_speed": 0.2,
+      "melee_speed": -0.1,
+      "melee_damage": 0.2
+    },
+    "tconstruct:head": {
+      "durability": 120,
+      "mining_speed": 4,
+      "mining_tier": "minecraft:iron",
+      "melee_attack": 2.5
+    },
+    "tconstruct:limb": {
+      "durability": 110,
+      "draw_speed": -0.1,
+      "velocity": 0.05,
+      "accuracy": 0.15
+    },
+    "tconstruct:grip": {
+      "durability": -0.2,
+      "accuracy": 0.25,
+      "melee_damage": 2
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:blitz_lumium"
+    },
+    "temperature": 600,
+    "time": 10,
+    "result":{
+      "fluid": "etshtinker:molten_biltz_lumium",
+      "amount": 90
+    }
+}

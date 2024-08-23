@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type":"tconstruct:material_melting", 
+    "input": "etshtinker:marcoatom",
+    "temperature": 16383,
+    "result":{
+      "fluid": "etshtinker:molten_marcoatom",
+      "amount": 90
+    }
+}

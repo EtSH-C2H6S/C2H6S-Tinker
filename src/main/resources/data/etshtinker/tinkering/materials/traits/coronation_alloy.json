@@ -1,0 +1,38 @@
+{
+  "condition": {
+    "modid": "ad_astra",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:plasmawaveslashmodifier",
+      "level": 1
+    }
+  ],
+  "perStat" : {
+    "tconstruct:limb": [
+      {
+        "name": "etshtinker:plasmarrow",
+        "level": 1
+      }
+    ],
+    "tconstruct:grip": [
+      {
+        "name": "etshtinker:plasmarrow",
+        "level": 1
+      }
+    ],
+    "etshtinker:ionizer": [
+      {
+        "name": "etshtinker:plasmaenhance",
+        "level": 1
+      }
+    ],
+    "etshtinker:fluid_chamber": [
+      {
+        "name": "etshtinker:plasmaenhance",
+        "level": 1
+      }
+    ]
+  }
+}

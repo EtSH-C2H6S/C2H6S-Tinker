@@ -1,0 +1,52 @@
+{
+  "conditions": [
+    {
+      "values": [
+        {
+          "modid": "bloodmagic",
+          "type": "forge:mod_loaded"
+        },
+        {
+          "modid": "beyond_earth",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "type": "forge:and"
+    }
+  ],
+  "type": "bloodmagic:meteor",
+  "input": {
+    "item": "beyond_earth:ostrum_block"
+  },
+  "syphon": 1000000,
+  "explosion": 30,
+  "layers": [
+    {
+      "radius": 1,
+      "additionalWeight": 0,
+      "minWeight": 0,
+      "fill": {
+        "block": "etshtinker:meteoralloy_block"
+      }
+    },
+    {
+      "radius": 3,
+      "additionalWeight": 0,
+      "minWeight": 1000,
+      "weightMap": [
+        {
+          "block": "etshtinker:meteoralloy_block",
+          "weight": 100
+        }
+      ],
+      "fill": {
+        "block": "minecraft:air"
+      },
+      "shell": {
+        "block": "minecraft:air",
+        "index": -1
+      }
+    }
+
+  ]
+}

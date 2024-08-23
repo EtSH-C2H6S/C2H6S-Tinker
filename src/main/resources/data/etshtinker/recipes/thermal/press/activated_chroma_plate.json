@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "thermal:press",
+  "ingredient": {
+    "item": "etshtinker:triostatealloy"
+  },
+  "result": [
+    {
+      "item": "etshtinker:activated_chroma_plate"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "immersivepetroleum",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:melting_fuel",
+  "fluid": {
+    "name": "immersivepetroleum:ethylene",
+    "amount": 100
+  },
+  "duration": 250,
+  "temperature": 5250
+}

@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanismgenerators",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:melting_fuel",
+  "fluid": {
+    "name": "mekanismgenerators:fusion_fuel",
+    "amount": 100
+  },
+  "duration": 50,
+  "temperature": 6750
+}

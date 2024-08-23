@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 65535
+    },
+    "tconstruct:head": {
+      "durability": 65535,
+      "mining_speed": 0,
+      "mining_tier": "minecraft:stone",
+      "melee_attack": 0
+    },
+    "tconstruct:limb": {
+      "durability": 32767,
+      "draw_speed": 1,
+      "velocity": 14,
+      "accuracy": 5
+    }
+  }
+}

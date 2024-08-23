@@ -1,0 +1,19 @@
+{
+  "condition": {
+    "modid": "ae2",
+    "type": "forge:mod_loaded"
+  },
+  "stats": {
+    "tconstruct:limb": {
+      "durability": 10,
+      "draw_speed": -0.5,
+      "velocity": 0.15,
+      "accuracy": -0.1
+    },
+    "tconstruct:grip": {
+      "durability": -0.05,
+      "accuracy": 0.1,
+      "melee_damage": 1.1
+    }
+  }
+}

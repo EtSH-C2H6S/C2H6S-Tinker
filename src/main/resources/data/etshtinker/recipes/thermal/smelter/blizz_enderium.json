@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "thermal:enderium_ingot",
+      "count": 1
+    },
+    {
+      "item": "thermal:blizz_powder",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "etshtinker:blizz_enderium",
+      "count": 1
+    }
+  ],
+  "energy": 1000
+}

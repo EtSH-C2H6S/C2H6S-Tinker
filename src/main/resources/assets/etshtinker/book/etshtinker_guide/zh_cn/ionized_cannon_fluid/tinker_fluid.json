@@ -1,0 +1,22 @@
+{
+  "title": "匠魂流体",
+  "item": "tconstruct:blazing_blood_bucket",
+  "text": [
+    {
+      "text": "烈焰血 || 基础伤害 : 1.35 || 流体能力 : 点燃",
+      "paragraph": true
+    },
+    {
+      "text": "焦黑熔石 || 基础伤害 : 1.3 || 流体能力 : 点燃",
+      "paragraph": true
+    },
+    {
+      "text": "焦褐熔石 || 基础伤害 : 1.3 || 流体能力 : 点燃",
+      "paragraph": true
+    },
+    {
+      "text": "熔融末影珍珠 || 基础伤害 : 3.65 || 流体能力 : 随机折射",
+      "paragraph": true
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "condition": {
+    "modid": "thermal",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:thermalstrike",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:thermalenhance",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:fluxloaded",
+      "level": 10
+    }
+  ],
+  "perStat" : {
+    "tconstruct:armor": [
+      {
+        "name": "etshtinker:fluxloaded",
+        "level": 5
+      },
+      {
+        "name": "etshtinker:thermaldefense",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:electromotiveforce",
+        "level": 5
+      }
+    ]
+  }
+}

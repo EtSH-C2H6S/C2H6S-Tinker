@@ -1,0 +1,29 @@
+{
+    "parts": [
+        {
+            "path": "etshtinker:item/tool/fluid_chamber/fluid_chamber",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "etshtinker:item/tool/ionizer/ionizer",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "etshtinker:item/tool/ionized_cannon/ionizer",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "etshtinker:item/tool/ionized_cannon/liquid_chamber",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "etshtinker:item/tool/ionized_cannon/limb",
+            "stat_type": "tconstruct:head"
+        },
+        {
+            "path": "etshtinker:item/tool/ionized_cannon/tough_handle",
+            "stat_type": "tconstruct:handle"
+        }
+    ],
+    "replace": false
+}

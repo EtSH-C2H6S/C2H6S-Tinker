@@ -1,0 +1,13 @@
+{
+  "condition": {
+    "modid": "mekanism",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:annilate",
+      "level": 1
+    }
+  ]
+
+}

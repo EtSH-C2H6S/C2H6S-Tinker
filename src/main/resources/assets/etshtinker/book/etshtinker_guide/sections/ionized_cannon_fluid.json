@@ -1,0 +1,57 @@
+[
+  {
+    "name": "index",
+    "type": "mantle:index",
+    "data": "ionized_cannon_fluid/index.json"
+  },
+  {
+    "name": "minecraft_fluid",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/minecraft_fluid.json"
+  },
+  {
+    "name": "tinker_fluid",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/tinker_fluid.json"
+  },
+  {
+    "name": "tinker_fluid2",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/tinker_fluid2.json"
+  },
+  {
+    "name": "tinker_fluid3",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/tinker_fluid3.json"
+  },
+  {
+    "name": "etshtinker_fluid",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/etshtinker_fluid.json"
+  },
+  {
+    "name": "etshtinker_fluid2",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/etshtinker_fluid2.json"
+  },
+  {
+    "name": "mek_fluid",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/mek_fluid.json"
+  },
+  {
+    "name": "mek_fluid2",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/mek_fluid2.json"
+  },
+  {
+    "name": "specials",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/specials.json"
+  },
+  {
+    "name": "specials2",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/specials2.json"
+  }
+]

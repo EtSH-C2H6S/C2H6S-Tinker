@@ -1,0 +1,12 @@
+{
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "cyclic:gem_obsidian"
+    },
+    "temperature": 1500,
+    "time": 10,
+    "result":{
+      "fluid": "etshtinker:molten_semicrystaline_obsidian",
+      "amount": 90
+    }
+}

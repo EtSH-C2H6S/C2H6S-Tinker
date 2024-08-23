@@ -1,0 +1,12 @@
+{
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:hardlead_plate"
+    },
+    "temperature": 600,
+    "time": 10,
+    "result":{
+      "fluid": "etshtinker:molten_hardlead",
+      "amount": 90
+    }
+}

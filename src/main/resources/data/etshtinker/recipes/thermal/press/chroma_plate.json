@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "thermal:press",
+  "ingredient": {
+    "item": "etshtinker:sandwich_alloy"
+  },
+  "result": [
+    {
+      "item": "etshtinker:chroma_plate"
+    }
+  ]
+}

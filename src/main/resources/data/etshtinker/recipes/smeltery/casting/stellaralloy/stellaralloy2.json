@@ -1,0 +1,19 @@
+{
+  "conditions": [
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "ad_astra:ice_shard"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "etshtinker:molten_stellaralloy",
+    "amount": 90
+  },
+  "result": "etshtinker:stellaralloy",
+  "cooling_time": 1
+}

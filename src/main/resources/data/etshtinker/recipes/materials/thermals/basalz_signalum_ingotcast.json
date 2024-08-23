@@ -1,0 +1,13 @@
+{
+    "type": "tconstruct:casting_table",
+    "cast": {
+      "tag": "tconstruct:casts/multi_use/ingot"
+    },
+    "cast_consumed": false,
+    "fluid": {
+        "name": "etshtinker:molten_basalz_signalum",
+      "amount": 90
+    },
+    "result": "etshtinker:basalz_signalum",
+    "cooling_time": 10
+}

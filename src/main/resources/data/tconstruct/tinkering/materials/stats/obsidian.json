@@ -1,0 +1,12 @@
+{
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 9000
+    },
+    "etshtinker:ionizer": {
+      "cooldown": 58,
+      "plasmarange": 40,
+      "damagemultiplier": 1.25
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "tconstruct:casting_table",
+    "cast": {
+      "tag": "tconstruct:casts/multi_use/ingot"
+    },
+    "cast_consumed": false,
+    "fluid": {
+        "name": "etshtinker:molten_blizz_enderium",
+      "amount": 90
+    },
+    "result": "etshtinker:blizz_enderium",
+    "cooling_time": 10
+}

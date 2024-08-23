@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABC",
+    "DED",
+    "ABC"
+  ],
+  "key": {
+    "A": {
+      "item": "ad_astra:desh_plate"
+    },
+    "B": {
+      "item": "ad_astra:ostrum_plate"
+    },
+    "C": {
+      "item": "ad_astra:calorite_plate"
+    },
+    "D": {
+      "item": "ad_astra:permafrost"
+    },
+    "E": {
+      "item": "ad_astra:cheese"
+    }
+  },
+  "result": {
+    "item": "etshtinker:advanced_sandwich_alloy",
+    "count": 1
+  }
+}

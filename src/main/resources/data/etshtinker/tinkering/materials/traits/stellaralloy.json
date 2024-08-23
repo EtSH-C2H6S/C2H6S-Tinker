@@ -1,0 +1,32 @@
+{
+  "condition": {
+    "modid": "ad_astra",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:masseffect",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:gravitymanipulate",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:meteorblessing",
+      "level": 1
+    }
+  ],
+  "perStat" : {
+    "tconstruct:armor": [
+      {
+        "name": "etshtinker:stellarblessing",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:reactiveexplosivearmor",
+        "level": 1
+      }
+    ]
+  }
+}

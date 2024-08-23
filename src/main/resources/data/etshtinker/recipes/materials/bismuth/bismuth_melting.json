@@ -1,0 +1,12 @@
+{
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:bismuth_ingot"
+    },
+    "temperature": 600,
+    "time": 10,
+    "result":{
+      "fluid": "etshtinker:molten_bismuth",
+      "amount": 90
+    }
+}

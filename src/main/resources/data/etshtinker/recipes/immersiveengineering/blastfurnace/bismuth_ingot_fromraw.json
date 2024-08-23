@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "modid": "immersiveengineering",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "immersiveengineering:blast_furnace",
+  "input": {
+    "item": "etshtinker:bismuthinite",
+    "count": 2
+  },
+  "result": {
+    "item": "etshtinker:bismuth_ingot",
+    "count": 3
+  },
+  "slag": {
+    "tag": "forge:slag"
+  },
+  "time": 350
+}

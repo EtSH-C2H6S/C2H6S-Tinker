@@ -1,0 +1,8 @@
+{
+  "type": "tconstruct:table_casting_material",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/fluid_chamber"
+  },
+  "item_cost": 2,
+  "result": "etshtinker:fluid_chamber"
+}

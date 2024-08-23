@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "industrialforegoing",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:melting_fuel",
+  "fluid": {
+    "name": "industrialforegoing:biofuel",
+    "amount": 100
+  },
+  "duration": 45,
+  "temperature": 3300
+}

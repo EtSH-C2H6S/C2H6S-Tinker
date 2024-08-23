@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "name": "etshtinker:molten_stellaralloy",
+      "amount": 810
+    },
+    {
+      "name": "ad_astra:cryo_fuel",
+      "amount": 27000
+    },
+    {
+      "name": "ad_astra:fuel",
+      "amount": 54000
+    }
+  ],
+  "result": {
+    "fluid": "etshtinker:molten_coronation",
+    "amount": 90
+  },
+  "temperature": 4750
+}

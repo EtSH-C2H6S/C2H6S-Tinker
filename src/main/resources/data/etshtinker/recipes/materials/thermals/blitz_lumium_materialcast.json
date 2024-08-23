@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material_fluid", 
+  "fluid": {
+    "name": "etshtinker:molten_biltz_lumium",
+    "amount":90
+  },
+  "temperature":290,
+  "output":"etshtinker:blitz_lumium"
+}

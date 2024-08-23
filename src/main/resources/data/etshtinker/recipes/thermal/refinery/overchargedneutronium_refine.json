@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "thermal:refinery",
+  "ingredient": {
+    "fluid": "etshtinker:overchargedneutronium",
+    "amount": 90
+  },
+  "result": [
+    {
+      "fluid": "etshtinker:molten_electronium",
+      "amount": 10
+    },
+    {
+      "item": "etshtinker:protonium",
+      "chance": 1
+    }
+  ],
+  "energy": 16000
+}

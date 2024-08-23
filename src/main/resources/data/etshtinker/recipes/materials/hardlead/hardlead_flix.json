@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "etshtinker:hardlead_plate"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:hardlead_plate"
+}

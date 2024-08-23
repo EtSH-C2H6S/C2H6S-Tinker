@@ -1,0 +1,10 @@
+{
+  "coverTexture": "etshtinker:book/images/etshtinker_guide_cover.png",
+  "coverColor": -1,
+  "bookTexture": "etshtinker:book/images/etshtinker_guide_pages.png",
+  "arrowColor": -1,
+  "slotColor": 0xFDF500,
+  "drawSectionListText": true,
+  "largePageTitles": false,
+  "centerPageTitles": true
+}

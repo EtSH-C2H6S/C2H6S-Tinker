@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type": "tconstruct:material_fluid", 
+        "fluid": {
+        "name": "etshtinker:molten_coronation",
+         "amount":90
+        },
+         "temperature":1000, 
+         "output":"etshtinker:coronation_alloy"
+}

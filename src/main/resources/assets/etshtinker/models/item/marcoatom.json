@@ -1,0 +1,47 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "etshtinker:item/ingot/marcoatom"
+  },
+  "display": {
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 1, 0],
+      "scale":[ 2, 2, 1 ]
+    },
+    "head": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 1, 0],
+      "scale":[ 2, 2, 1]
+    },
+    "fixed": {
+      "rotation": [ 0, 0, 0 ],
+      "scale": [ 2, 2, 1 ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 1, 0 ],
+      "scale": [ 2, 2, 1 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 2, 2, 1 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 1, 0 ],
+      "scale": [ 2, 2, 1 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [0, 1, 0 ],
+      "scale": [ 2, 2, 1 ]
+    },
+    "gui": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 0, 0],
+      "scale": [4, 4, 1]
+    }
+  }
+}

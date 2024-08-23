@@ -1,0 +1,16 @@
+[
+  {
+    "name": "ionized_cannon_fluid",
+    "data": "sections/ionized_cannon_fluid.json",
+    "icon": {
+      "item": "etshtinker:sculk_energycore"
+    }
+  },
+  {
+    "name": "ionized_cannon_spec",
+    "data": "sections/ionized_cannon_specs.json",
+    "icon": {
+      "item": "etshtinker:ionized_cannon"
+    }
+  }
+]

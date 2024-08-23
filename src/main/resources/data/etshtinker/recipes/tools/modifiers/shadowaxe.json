@@ -1,0 +1,43 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "etshtinker:exo_alloy",
+      "amount_needed": 32
+    },
+    {
+      "item": "etshtinker:anti_neutronium",
+      "amount_needed": 8
+    },
+    {
+      "item": "etshtinker:stable_plasma",
+      "amount_needed": 8
+    },
+    {
+      "item": "etshtinker:exotic_matter",
+      "amount_needed": 8
+    }
+
+  ],
+  "tools": [
+    {
+    "item": "tconstruct:broad_axe"
+    },
+    {
+      "item": "tconstruct:hand_axe"
+    }
+  ],
+  "slots": {
+    "abilities": 1
+  },
+  "requirements": {
+    "id": "etshtinker:godlymetal",
+    "level": 1,
+    "error": "recipe.etshtinker.modifier.modifiershadowaxe"
+  },
+  "allow_crystal": true,
+  "result": "etshtinker:modifiershadowaxe",
+  "level": {
+    "max": 1
+  }
+}

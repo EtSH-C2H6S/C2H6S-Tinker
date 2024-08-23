@@ -1,0 +1,33 @@
+{
+  "type": "create:crushing",
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "etshtinker:bismuthinite_ore_deepslate"
+    }
+  ],
+  "processingTime": 60,
+  "results": [
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "chance": 0.75,
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "create:experience_nugget"
+    }
+  ]
+}

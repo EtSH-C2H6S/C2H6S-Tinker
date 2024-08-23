@@ -1,0 +1,39 @@
+{
+  "type": "tconstruct:modifier",
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "etshtinker:exo_alloy",
+      "amount_needed": 32
+    },
+    {
+      "item": "etshtinker:earth_crystal",
+      "amount_needed": 16
+    },
+    {
+      "item": "etshtinker:activated_chroma_plate",
+      "amount_needed": 16
+    },
+    {
+      "item": "etshtinker:exotic_matter",
+      "amount_needed": 16
+    }
+
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/melee/sword"
+  },
+  "requirements": {
+    "name": "etshtinker:godlymetal",
+    "level": 1,
+    "error": "recipe.etshtinker.modifier.exoblade"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "allow_crystal": true,
+  "result": "etshtinker:exoblademodifier",
+  "level": {
+    "max": 1
+  }
+}

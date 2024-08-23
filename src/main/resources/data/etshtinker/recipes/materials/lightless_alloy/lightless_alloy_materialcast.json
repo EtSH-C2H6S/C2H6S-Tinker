@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material_fluid", 
+        "fluid": {
+        "name": "etshtinker:molten_lightless_alloy",
+         "amount":90
+        },
+         "temperature":1000, 
+         "output":"etshtinker:lightless_alloy"
+}

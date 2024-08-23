@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:part_builder",
+  "pattern": "etshtinker:fluid_chamber",
+  "pattern_item": [
+    {
+      "tag": "tconstruct:patterns/default"
+    },
+    {
+      "item": "etshtinker:fluid_chamber_cast"
+    }
+  ],
+  "cost": 2,
+  "result": {
+    "item": "etshtinker:fluid_chamber"
+  }
+}

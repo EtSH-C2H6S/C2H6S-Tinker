@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "thermal:lumium_ingot",
+      "count": 1
+    },
+    {
+      "item": "thermal:blitz_powder",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "etshtinker:blitz_lumium",
+      "count": 1
+    }
+  ],
+  "energy": 1000
+}

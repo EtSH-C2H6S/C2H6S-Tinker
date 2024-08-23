@@ -1,0 +1,22 @@
+{
+  "title": "通用机械流体(需要同时安装通用机械)",
+  "item": "etshtinker:stable_plasma",
+  "text": [
+    {
+      "text": "液态过热钠 || 基础伤害 : 9 || 流体能力 : 爆炸",
+      "paragraph": true
+    },
+    {
+      "text": "液态六氟化铀 || 基础伤害 : 4 || 流体能力 : 辐射",
+      "paragraph": true
+    },
+    {
+      "text": "液态氯 || 基础伤害 : 1.5|| 流体能力 : 毒性",
+      "paragraph": true
+    },
+    {
+      "text": "液态二氧化硫 || 基础伤害 : 2 || 流体能力 : 毒性",
+      "paragraph": true
+    }
+  ]
+}

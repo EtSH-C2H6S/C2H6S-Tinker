@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type": "tconstruct:material_fluid", 
+  "fluid": {
+    "name": "etshtinker:molten_activated_chroma_steel",
+    "amount":90
+  },
+  "temperature":290,
+  "output":"etshtinker:activated_chroma_plate"
+}

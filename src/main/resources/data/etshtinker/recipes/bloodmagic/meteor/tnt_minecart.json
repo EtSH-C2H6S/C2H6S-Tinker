@@ -1,0 +1,34 @@
+{
+  "conditions": [
+    {
+      "modid": "bloodmagic",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "bloodmagic:meteor",
+  "input": {
+    "item": "minecraft:tnt_minecart"
+  },
+  "syphon": 1000000,
+  "explosion": 32,
+  "layers": [
+    {
+      "radius": 1,
+      "additionalWeight": 0,
+      "minWeight": 50,
+      "weightMap": [
+        {
+          "block": "minecraft:air",
+          "weight": 50
+        }
+      ],
+      "fill": {
+        "block": "minecraft:air"
+      },
+      "shell": {
+        "block": "minecraft:air",
+        "index": -1
+      }
+    }
+  ]
+}

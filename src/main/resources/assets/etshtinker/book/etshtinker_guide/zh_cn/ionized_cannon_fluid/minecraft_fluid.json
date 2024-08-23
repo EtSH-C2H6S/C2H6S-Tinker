@@ -1,0 +1,10 @@
+{
+  "title": "Minecraft原版流体",
+  "item": "minecraft:lava_bucket",
+  "text": [
+    {
+      "text": "熔岩 || 基础伤害 : 1.15 || 流体能力 : 点燃",
+      "paragraph": true
+    }
+  ]
+}

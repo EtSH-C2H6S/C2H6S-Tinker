@@ -1,0 +1,35 @@
+{
+  "condition": {
+    "modid": "cyclic",
+    "type": "forge:mod_loaded"
+  },
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 6000
+    },
+    "tconstruct:binding": {},
+    "tconstruct:handle": {
+      "durability": 0.1,
+      "mining_speed": 0.1,
+      "melee_speed": 0.25,
+      "melee_damage": -0.2
+    },
+    "tconstruct:head": {
+      "durability": 339,
+      "mining_speed": 5,
+      "mining_tier": "minecraft:diamond",
+      "melee_attack": 3
+    },
+    "tconstruct:limb": {
+      "durability": 240,
+      "draw_speed": 0.2,
+      "velocity": -0.2,
+      "accuracy": 0.05
+    },
+    "tconstruct:grip": {
+      "durability": 1.1,
+      "accuracy": -0.06,
+      "melee_damage": 3.0
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:basalz_signalum"
+    },
+    "temperature": 600,
+    "time": 10,
+    "result":{
+      "fluid": "etshtinker:molten_basalz_signalum",
+      "amount": 90
+    }
+}

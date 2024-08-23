@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:melting_fuel",
+  "fluid": {
+    "name": "etshtinker:overchargedneutronium",
+    "amount": 10
+  },
+  "duration": 256,
+  "temperature": 9726
+}

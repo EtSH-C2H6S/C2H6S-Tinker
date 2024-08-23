@@ -1,0 +1,48 @@
+{
+  "type": "immersiveengineering:mineral_mix",
+  "dimensions": [
+    "minecraft:overworld"
+  ],
+  "fail_chance": 0.0,
+  "ores": [
+    {
+      "chance": 0.8,
+      "output": {
+        "item": "etshtinker:bismuthinite_ore_deepslate"
+      }
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "minecraft:deepslate_iron_ore"
+      }
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "minecraft:deepslate_copper_ore"
+      }
+    }
+  ],
+  "spoils": [
+    {
+      "chance": 0.3,
+      "output": {
+        "item": "minecraft:gravel"
+      }
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "minecraft:cobblestone"
+      }
+    },
+    {
+      "chance": 0.6,
+      "output": {
+        "item": "minecraft:cobbled_deepslate"
+      }
+    }
+  ],
+  "weight": 15
+}

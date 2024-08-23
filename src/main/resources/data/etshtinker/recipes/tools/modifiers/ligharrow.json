@@ -1,0 +1,45 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "etshtinker:exo_alloy",
+      "amount_needed": 32
+    },
+    {
+      "item": "etshtinker:molten_protonium_bucket",
+      "amount_needed": 1
+    },
+    {
+      "item": "etshtinker:molten_electronium_bucket",
+      "amount_needed": 1
+    },
+    {
+      "item": "etshtinker:annihilating_plasma_bucket",
+      "amount_needed": 1
+    }
+
+  ],
+  "tools": [{
+    "item": "tconstruct:longbow"
+  },
+    {
+      "item": "tinkers_things:shortbow"
+    },
+    {
+      "item": "tconstruct:crossbow"
+    }
+  ],
+  "slots": {
+    "abilities": 1
+  },
+  "requirements": {
+    "name": "etshtinker:godlymetal",
+    "level": 1,
+    "error": "recipe.etshtinker.modifier.lightningarrowmodifier"
+  },
+  "allow_crystal": true,
+  "result": "etshtinker:lightningarrowmodifier",
+  "level": {
+    "max": 1
+  }
+}

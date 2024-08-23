@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "modid": "botania",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "botania:terra_plate",
+  "ingredients": [
+    {
+      "item": "botania:mana_ring_greater"
+    },
+    {
+      "item": "botania:mana_tablet"
+    },
+    {
+      "item": "botania:fabulous_pool"
+    },
+    {
+      "item": "tconstruct:manyullyn_ingot"
+    },
+    {
+      "item": "tconstruct:queens_slime_ingot"
+    },
+    {
+      "item": "botania:gaia_ingot"
+    }
+  ],
+  "mana": 10000000,
+  "result": {
+    "item": "etshtinker:manalyn_queen"
+  }
+}

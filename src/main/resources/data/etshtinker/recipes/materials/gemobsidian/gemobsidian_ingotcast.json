@@ -1,0 +1,13 @@
+{
+    "type": "tconstruct:casting_table",
+    "cast": {
+      "tag": "tconstruct:casts/multi_use/gem"
+    },
+    "cast_consumed": false,
+    "fluid": {
+        "name": "etshtinker:molten_semicrystaline_obsidian",
+      "amount": 90
+    },
+    "result": "cyclic:gem_obsidian",
+    "cooling_time": 10
+}

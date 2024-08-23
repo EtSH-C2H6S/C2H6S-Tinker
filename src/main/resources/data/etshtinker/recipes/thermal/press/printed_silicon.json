@@ -1,0 +1,34 @@
+{
+  "conditions": [
+    {
+      "values": [
+        {
+          "modid": "thermal",
+          "type": "forge:mod_loaded"
+        },
+        {
+          "modid": "ae2",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "type": "forge:and"
+    }
+  ],
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "ae2:silicon",
+      "count": 4
+    },
+    {
+      "item": "ae2:silicon_press"
+    }
+  ],
+  "result": [
+    {
+      "item": "ae2:printed_silicon",
+      "count": 4
+    }
+  ],
+  "energy": 300
+}

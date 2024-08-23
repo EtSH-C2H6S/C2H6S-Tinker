@@ -1,0 +1,45 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "etshtinker:bismuthinite"
+    },
+    {
+      "item": "create:andesite_alloy"
+    }
+  ],
+  "results": [
+    {
+      "amount": 900,
+      "fluid": "etshtinker:molten_bismuth"
+    }
+  ]
+}

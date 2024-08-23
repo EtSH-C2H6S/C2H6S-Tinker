@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type":"tconstruct:material_melting",
+  "input": "etshtinker:pellet_antimatter",
+  "temperature": 100,
+  "result":{
+    "fluid": "etshtinker:antimatter_l",
+    "amount": 1000
+  }
+}

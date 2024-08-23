@@ -1,0 +1,39 @@
+{
+  "conditions": [
+    {
+      "modid": "immersiveengineering",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "immersiveengineering:arc_furnace",
+  "additives": [
+    {
+      "item": "etshtinker:anti_neutronium"
+    },
+    {
+      "item": "etshtinker:ultra_dense"
+    },
+    {
+      "item": "etshtinker:coronation_alloy"
+    },
+    {
+      "item": "etshtinker:activated_chroma_plate"
+    }
+  ],
+  "energy": 12800000,
+  "input": {
+    "base_ingredient": {
+      "item": "etshtinker:evil_orb"
+    },
+    "count": 2
+  },
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "etshtinker:exo_alloy"
+      },
+      "count": 1
+    }
+  ],
+  "time": 256
+}

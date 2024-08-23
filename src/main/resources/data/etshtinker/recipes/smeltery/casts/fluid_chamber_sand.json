@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:molding_table",
+  "material": {
+    "item": "tconstruct:blank_sand_cast"
+  },
+  "pattern": {
+    "type": "tconstruct:material",
+    "item": "etshtinker:fluid_chamber"
+  },
+  "result": "etshtinker:fluid_chamber_sand_cast"
+}

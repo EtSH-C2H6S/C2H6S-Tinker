@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type":"tconstruct:material_melting", 
+    "input": "etshtinker:anti_neutronium",
+    "temperature": 9999,
+    "result":{
+      "fluid": "etshtinker:molten_anti_neutronium",
+      "amount": 90
+    }
+}

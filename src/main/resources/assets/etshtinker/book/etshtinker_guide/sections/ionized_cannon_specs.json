@@ -1,0 +1,12 @@
+[
+  {
+    "name": "spec",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_specs/specs.json"
+  },
+  {
+    "name": "spec2",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_specs/specs2.json"
+  }
+]

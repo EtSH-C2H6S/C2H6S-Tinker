@@ -1,0 +1,56 @@
+{
+  "condition": {
+    "type": "forge:or",
+    "values": [
+      {
+        "type": "tconstruct:config",
+        "prop": "force_integration_materials"
+      },
+      {
+        "type": "forge:not",
+        "value": {
+          "type": "tconstruct:config",
+          "prop": "hide_tungsten"
+        }
+      }
+    ]
+  },
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 19350
+    },
+    "etshtinker:ionizer": {
+      "cooldown": 74,
+      "plasmarange": 20,
+      "damagemultiplier": 3.41
+    },
+    "tconstruct:handle": {
+      "durability": 0.8,
+      "melee_damage": 0.75,
+      "melee_speed": -0.35,
+      "mining_speed": 0.6
+    },
+    "tconstruct:head": {
+      "durability": 1300,
+      "melee_attack": 5.9,
+      "mining_speed": 6.5,
+      "mining_tier": "minecraft:netherite"
+    },
+    "tconstruct:plating_boots": {
+      "armor": 3.0,
+      "durability": 720
+    },
+    "tconstruct:plating_chestplate": {
+      "armor": 9.0,
+      "durability": 926
+    },
+    "tconstruct:plating_helmet": {
+      "armor": 4.0,
+      "durability": 835
+    },
+    "tconstruct:plating_leggings": {
+      "armor": 7.0,
+      "durability": 880
+    }
+  }
+}
