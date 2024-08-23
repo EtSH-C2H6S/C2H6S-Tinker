@@ -79,7 +79,7 @@ public class electrified extends etshmodifieriii {
                         if (level!=null) {
                             target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
                             mob1.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
-                            ParticleChainUtil.summonElectricFromTowithlimit(level,attacker.getId(),mob1.getId(),128);
+                            ParticleChainUtil.summonElectricFromTowithlimit(level,target.getId(),mob1.getId(),128);
                         }
                     }
                 }
@@ -109,7 +109,7 @@ public class electrified extends etshmodifieriii {
                     if (level!=null) {
                         target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
                         mob1.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
-                        ParticleChainUtil.summonElectricFromTowithlimit(level,attacker.getId(),mob1.getId(),128);
+                        ParticleChainUtil.summonElectricFromTowithlimit(level,target.getId(),mob1.getId(),128);
                     }
                 }
             }

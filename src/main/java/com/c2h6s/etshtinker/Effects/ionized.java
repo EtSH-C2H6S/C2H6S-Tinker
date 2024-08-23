@@ -1,13 +1,18 @@
 package com.c2h6s.etshtinker.Effects;
 
+import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 
 import java.security.SecureRandom;
+import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
@@ -33,6 +38,18 @@ public class ionized extends etsheffect {
                 living.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor(), living.getHealth() * 0.01f * (amplifier + 1));
                 living.invulnerableTime = 0;
             }
+            double x = living.getX();
+            double y =living.getY()+0.5*living.getBbHeight();
+            double z =living.getZ();
+            if (amplifier>0) {
+                List<Mob> ls = world.getEntitiesOfClass(Mob.class, new AABB(x - 1.5, y - 1.5, z - 1.5, x + 1.5, y + 1.5, z + 1.5));
+                for (Mob entity : ls) {
+                    if (entity != null) {
+                        entity.addEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),60,amplifier-1,false,false));
+                    }
+                }
+            }
         }
+
     }
 }

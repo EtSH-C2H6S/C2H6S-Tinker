@@ -6,8 +6,6 @@ import mekanism.api.MekanismAPI;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -43,15 +41,17 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (enabled && getMainLevel(attacker, this) > 0) {
+            if (getMainLevel(attacker, this) > 0) {
                 target.invulnerableTime = 0;
                 target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
                 target.invulnerableTime = 0;
                 target.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
                 target.invulnerableTime = 0;
-                MekanismAPI.getRadiationManager().radiate(target, 2000);
-                target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.5F * damage);
-                target.invulnerableTime = 0;
+                if (enabled) {
+                    MekanismAPI.getRadiationManager().radiate(target, 2000);
+                    target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.5F * damage);
+                    target.invulnerableTime = 0;
+                }
                 target.setNoGravity(true);
             }
         }
@@ -89,16 +89,18 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (enabled&&projectile instanceof AbstractArrow arrow&&target!=null&&attacker instanceof Player player&&getMainLevel(player, this)>0) {
+        if (projectile instanceof AbstractArrow arrow&&target!=null&&attacker instanceof Player player&&getMainLevel(player, this)>0) {
             float damageDealt =(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
             target.invulnerableTime =0;
             target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(),0.3F*damageDealt);
             target.invulnerableTime =0;
             target.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor().bypassMagic(),0.3F*damageDealt);
             target.invulnerableTime =0;
-            MekanismAPI.getRadiationManager().radiate(target,2000);
-            target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(),0.3F*damageDealt);
-            target.invulnerableTime=0;
+            if (enabled) {
+                MekanismAPI.getRadiationManager().radiate(target, 2000);
+                target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.3F * damageDealt);
+                target.invulnerableTime = 0;
+            }
             target.setNoGravity(true);
             if (target.getHealth()>=1) {
                 target.setHealth(Math.max(1, target.getHealth() - damageDealt));
