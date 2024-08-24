@@ -16,6 +16,7 @@ public class packetHandler {
         INSTANCE.registerMessage(id++, warpattackPacket.class, warpattackPacket::encode, warpattackPacket::decode, warpattackPacket::handle);
         INSTANCE.registerMessage(id++, exoslashPacket.class, exoslashPacket::encode, exoslashPacket::decode, exoslashPacket::handle);
         INSTANCE.registerMessage(id++, enchantedswordPacket.class, enchantedswordPacket::encode, enchantedswordPacket::decode, enchantedswordPacket::handle);
+        INSTANCE.registerMessage(id++, alfbeamPacket.class, alfbeamPacket::encode, alfbeamPacket::decode, alfbeamPacket::handle);
 
     }
 }
