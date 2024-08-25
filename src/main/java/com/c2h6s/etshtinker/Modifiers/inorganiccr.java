@@ -40,7 +40,7 @@ public class inorganiccr extends etshmodifieriii {
                 tag.putFloat("dmg_amplifier",1.5f);
             }
             else {
-                tag.putFloat("dmg_amplifier",Math.max(1.5f,tag.getFloat("dmg_amplifier")+0.5f));
+                tag.putFloat("dmg_amplifier",Math.min(5, Math.max(1.5f,tag.getFloat("dmg_amplifier")+0.5f)));
             }
         }
     }

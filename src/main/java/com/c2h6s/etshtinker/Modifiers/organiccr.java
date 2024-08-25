@@ -28,7 +28,7 @@ public class organiccr extends etshmodifieriii {
         if (target!=null&&modifier.getLevel()>0){
             if (target.getPersistentData().contains("legacyhealth")){
                 if (target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
-                    attacker.heal(target.getHealth()-target.getPersistentData().getFloat("legacyhealth"));
+                    attacker.heal(Math.min( 20,target.getHealth()-target.getPersistentData().getFloat("legacyhealth")));
                     target.setHealth(target.getPersistentData().getFloat("legacyhealth")-damage);
                     target.getPersistentData().putFloat("legacyhealth",target.getHealth());
                 }
