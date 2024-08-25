@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mythicbotany",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "mythicbotany:alfsteel_ingot"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:alfsteel"
+}

@@ -32,7 +32,6 @@ public class etshtinkerItems {
 
     //材料
     public static final RegistryObject<Item> lightless_alloy = ITEMS.register("lightless_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));//本影合金
-    public static final RegistryObject<Item> tungsten_ingot = ITEMS.register("tungsten_ingot",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));//钨锭
 
 
 

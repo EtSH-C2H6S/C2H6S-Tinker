@@ -11,4 +11,5 @@ public class modloaded {
     public static boolean AE2loaded = ModList.get().isLoaded("ae2");
     public static boolean IEloaded=ModList.get().isLoaded("immersiveengineering");
     public static boolean CYCloaded=ModList.get().isLoaded("cyclic");
+    public static boolean MBOTloaded = ModList.get().isLoaded("mythicbotany");
 }

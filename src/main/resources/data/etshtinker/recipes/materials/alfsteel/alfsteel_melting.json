@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "modid": "mythicbotany",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "mythicbotany:alfsteel_ingot"
+    },
+    "temperature": 1200,
+    "time": 10,
+    "result":{
+      "fluid": "etshtinker:molten_alfsteel",
+      "amount": 90
+    }
+}

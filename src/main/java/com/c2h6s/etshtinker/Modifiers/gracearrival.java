@@ -31,8 +31,8 @@ public class gracearrival extends etshmodifieriii {
             for (ItemStack stack:player.getInventory().armor){
                 if (stack.getItem() instanceof ModifiableItem){
                     ToolStack tool = ToolStack.from(stack);
-                    if (tool.getModifierLevel(this)>0&& ManaItemHandler.INSTANCE.requestManaExactForTool(stack,player,200,true)){
-                        event.setAmount(event.getAmount()*(1+0.1f*tool.getModifierLevel(this)));
+                    if (tool.getModifierLevel(this)>0&& ManaItemHandler.INSTANCE.requestManaExactForTool(stack,player,400,true)){
+                        event.setAmount(event.getAmount()*(1+0.2f*tool.getModifierLevel(this)));
                     }
                 }
             }
@@ -43,10 +43,12 @@ public class gracearrival extends etshmodifieriii {
             if (tool.getPersistentData().getInt(ticks)<40){
                 tool.getPersistentData().putInt(ticks,tool.getPersistentData().getInt(ticks)+1);
             }else {
-                if (ManaItemHandler.INSTANCE.requestManaExactForTool(itemStack, player, 200, true)) {
-                    player.heal(1);
+                if (player.getHealth()<player.getMaxHealth()) {
+                    if (ManaItemHandler.INSTANCE.requestManaExactForTool(itemStack, player, 200, true)) {
+                        player.heal(1);
+                    }
+                    tool.getPersistentData().putInt(ticks, 0);
                 }
-                tool.getPersistentData().putInt(ticks,0);
             }
         }
     }

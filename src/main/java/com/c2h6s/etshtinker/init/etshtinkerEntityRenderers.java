@@ -1,8 +1,8 @@
 package com.c2h6s.etshtinker.init;
 
 
-import com.c2h6s.etshtinker.Entities.annihilateexplosionentity;
-import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
+import com.c2h6s.etshtinker.init.entityReg.etshtinkerBotEntity;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
+import static com.c2h6s.etshtinker.util.modloaded.BOTloaded;
 
 
 @EventBusSubscriber(modid = MOD_ID, value = {Dist.CLIENT}, bus = Bus.MOD)
@@ -24,11 +25,14 @@ public class etshtinkerEntityRenderers {
         event.registerEntityRenderer(etshtinkerEntity.lightningarrow.get(), lightningarrowRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.plasmawaveslashEntity.get(), renderSlash::new);
         event.registerEntityRenderer(etshtinkerEntity.plasmarrowEntity.get(), renderplasmarrow::new);
-        event.registerEntityRenderer(etshtinkerEntity.plasmaexplosionentity.get(), renderSlash::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasmaexplosionentity.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.slashentity.get(), renderSlash::new);
         event.registerEntityRenderer(etshtinkerEntity.phantomswordentity.get(), rendersword::new);
-        event.registerEntityRenderer(etshtinkerEntity.annihilateexplosionentity.get(), renderSlash::new);
+        event.registerEntityRenderer(etshtinkerEntity.annihilateexplosionentity.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.enchantedswordentity.get(), renderenchantsword::new);
+        if (BOTloaded){
+            event.registerEntityRenderer(etshtinkerBotEntity.ALFBURST.get(), NoopRenderer::new);
+        }
     }
 }
 

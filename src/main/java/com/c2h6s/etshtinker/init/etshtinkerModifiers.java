@@ -89,6 +89,6 @@ public class etshtinkerModifiers {
     public static final StaticModifier<gracearrival>gracearrival_STATIC_MODIFIER= MODIFIERS.register("gracearrival", gracearrival::new);
     //public static final StaticModifier<ultraviolet>ultraviolet_STATIC_MODIFIER= MODIFIERS.register("ultraviolet", ultraviolet::new);
     public static final StaticModifier<manarepair>manarepair_STATIC_MODIFIER= MODIFIERS.register("manarepair", manarepair::new);
-    public static final StaticModifier<alfrage>alfrage_STATIC_MODIFIER= MODIFIERS.register("alfrage", alfrage::new);
+
 
 }

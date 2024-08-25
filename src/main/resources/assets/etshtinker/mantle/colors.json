@@ -78,7 +78,12 @@
     "semicrystaline": "#DBDCFF",
     "organiccr": "#FFA145",
     "inorganiccr": "#76189C",
-    "beconcerted": "#CA73FF"
+    "beconcerted": "#CA73FF",
+    "gracearrival": "#E6C011",
+    "manarepair": "#00A2E8",
+    "alfrage": "#E6C011",
+    "threshold": "#E6C011",
+    "alfsmind": "#E6C011"
   },
   "material.etshtinker":
   {
@@ -104,6 +109,9 @@
     "hardlead_plate": "#675D70",
     "manalyn_queen": "#35A9FF",
     "trinity_intereactive_alloy": "#333333",
-    "marcoatom": "#75C4FF"
+    "marcoatom": "#75C4FF",
+    "gemobsidian": "#42008A",
+    "gemamber": "#8A5700",
+    "alfsteel": "#E6C011"
   }
 }

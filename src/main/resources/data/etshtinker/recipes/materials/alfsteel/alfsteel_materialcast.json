@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mythicbotany",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type": "tconstruct:material_fluid", 
+  "fluid": {
+    "name": "etshtinker:molten_alfsteel",
+    "amount":90
+  },
+  "temperature":290,
+  "output":"etshtinker:alfsteel"
+}

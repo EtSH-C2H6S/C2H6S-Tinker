@@ -12,6 +12,9 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import static com.c2h6s.etshtinker.util.modloaded.BOTloaded;
 
 public class manarepair extends etshmodifieriii {
+    public boolean isNoLevels() {
+        return true;
+    }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel() > 0 && BOTloaded) {
             if (tool.getDamage()>0&&holder instanceof Player player){

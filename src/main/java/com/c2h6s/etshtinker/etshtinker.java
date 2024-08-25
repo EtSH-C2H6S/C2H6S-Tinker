@@ -4,6 +4,8 @@ import com.c2h6s.etshtinker.client.book.etshtinkerBook;
 //import com.c2h6s.etshtinker.config.etshtinkerConfig;
 import com.c2h6s.etshtinker.init.*;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
+import com.c2h6s.etshtinker.init.entityReg.etshtinkerBotEntity;
+import com.c2h6s.etshtinker.init.modifierReg.etshtinkerBotModifier;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -50,6 +52,8 @@ public class etshtinker {
         }
         if (BOTloaded){
             etshtinkerBotaniaMaterial.ITEMS.register(eventBus);
+            etshtinkerBotEntity.ENTITIES.register(eventBus);
+            etshtinkerBotModifier.MODIFIERS.register(eventBus);
         }
         if (Powahloaded){
             etshtinkerPowahMaterial.ITEMS.register(eventBus);
@@ -68,6 +72,9 @@ public class etshtinker {
         }
         if (CYCloaded){
             etshtinkerFluids.etshtinkerFluidCyclic.FLUIDS.register(eventBus);
+        }
+        if (MBOTloaded){
+            etshtinkerFluids.etshtinkerFluidMBOT.FLUIDS.register(eventBus);
         }
     }
     public static synchronized SecureRandom EtSHrnd(){

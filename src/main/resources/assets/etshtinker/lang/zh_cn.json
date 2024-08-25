@@ -15,19 +15,19 @@
 
   "modifier.etshtinker.sharpnessex": "究极锋利",
   "modifier.etshtinker.sharpnessex.flavor": "强互作用材料??!",
-  "modifier.etshtinker.sharpnessex.description":"攻击额外造成50%穿甲伤害，且不造成无敌帧",
+  "modifier.etshtinker.sharpnessex.description":"攻击额外造成50%穿甲伤害，且不造成无敌帧。",
 
   "modifier.etshtinker.gravityaccelerate": "重力加速度",
   "modifier.etshtinker.gravityaccelerate.flavor": "g=G/m",
-  "modifier.etshtinker.gravityaccelerate.description":"根据竖直方向上的瞬时速率的平方和属性等级增加伤害并把目标剧烈地击飞，同时给予属性等级*下落速度的平方的急迫等级",
+  "modifier.etshtinker.gravityaccelerate.description":"根据竖直方向上的瞬时速率的平方增加伤害并把目标剧烈地击飞，下落时给予急迫效果。",
 
   "modifier.etshtinker.overweightex": "究极沉重",
   "modifier.etshtinker.overweightex.flavor": "也就114514吨吧",
-  "modifier.etshtinker.overweightex.description":"主手持握时，下落时增加下落速度并根据竖直速度增加下落高度",
+  "modifier.etshtinker.overweightex.description":"主手持握时，下落时增加下落速度。",
 
   "modifier.etshtinker.annilate": "湮灭",
   "modifier.etshtinker.annilate.flavor": "TOTAL DESTRUCTION",
-  "modifier.etshtinker.annilate.description":"彻底湮灭你的敌人、你自己和你的工具，没有什么能阻止它毁灭一切。 *慎用，会<永远地>摧毁你的工具",
+  "modifier.etshtinker.annilate.description":"彻底湮灭你的敌人、你自己和你的工具。 *慎用，会<永远地>摧毁你的工具",
 
   "modifier.etshtinker.ragedangery": "怒气",
   "modifier.etshtinker.ragedangery.flavor": "气死我力气死我力气死我力",
@@ -35,11 +35,11 @@
 
   "modifier.etshtinker.mentalism": "唯心主义",
   "modifier.etshtinker.mentalism.flavor": "什么叫精神胜利法（后仰）",
-  "modifier.etshtinker.mentalism.description":"手持时能抵挡一次攻击并获得1秒无敌帧（冷却30秒），但是触发免伤时会给敌人附加2秒无敌帧,受到致命伤害时免死一次，恢复25%最大生命值并获得2秒无敌帧（冷却160秒）。",
+  "modifier.etshtinker.mentalism.description":"手持时能抵挡一次攻击（冷却30秒）,但是触发免伤时会给敌人附加2秒无敌帧,受到致命伤害时免死一次，恢复25%最大生命值并获得2秒无敌帧（冷却160秒）。",
 
   "modifier.etshtinker.thermalstrike": "热力冲击",
   "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
-  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会产生一片电弧云，并释放一道自动弧向最近生物的脉冲，判定半径为5+属性等级，最多击中10+属性等级个生物，对攻击到的敌人施加震荡效果",
+  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会产生一片电弧云，并释放一道自动弧向最近生物的脉冲，对攻击到的敌人施加震荡效果",
 
   "modifier.etshtinker.thermalenhance": "热力附层",
   "modifier.etshtinker.thermalenhance.flavor": "热力元素全收集，达成！",
@@ -47,23 +47,23 @@
 
   "modifier.etshtinker.fission": "裂变反应",
   "modifier.etshtinker.fission.flavor": "MD跟你爆了",
-  "modifier.etshtinker.fission.description":"攻击敌人时同时对敌人和自己施加10Sv的辐射",
+  "modifier.etshtinker.fission.description":"攻击敌人时同时对敌人和自己施加少量辐射。",
 
   "modifier.etshtinker.chainreaction": "链式反应",
   "modifier.etshtinker.chainreaction.flavor": "相当于内置了一个裂变反应堆",
-  "modifier.etshtinker.chainreaction.description":"对敌人造成50Sv的辐射，不再对自己造成辐射，需要“裂变反应”强化以生效",
+  "modifier.etshtinker.chainreaction.description":"对敌人造成大量辐射，不再对自己造成辐射。",
 
   "modifier.etshtinker.radiationremoval": "消辐",
   "modifier.etshtinker.radiationremoval.flavor": "让时间抚平伤痛",
-  "modifier.etshtinker.radiationremoval.description":"右击时立刻移除10Sv自己身上带有的辐射，没有冷却",
+  "modifier.etshtinker.radiationremoval.description":"右击时立刻移除10Sv自己身上带有的辐射，没有冷却。",
 
   "modifier.etshtinker.fusion": "聚变反应",
   "modifier.etshtinker.fusion.flavor": "相当于内置了一个聚变反应堆",
-  "modifier.etshtinker.fusion.description":"攻击敌人时使周围(15+2*等级)^3的正方体范围内的敌人受到(100*等级)Sv辐射，至多生效(32*等级)个敌人（对玩家无效）,需要“链式反应”强化以生效",
+  "modifier.etshtinker.fusion.description":"攻击敌人时使周围一定范围内的敌人受到巨量辐射（对玩家无效）。",
 
   "modifier.etshtinker.totalinsane": "癫疯",
   "modifier.etshtinker.totalinsane.flavor": "你疑似有点魔怔了",
-  "modifier.etshtinker.totalinsane.description":"手持时积攒癫疯值，最大1000，工具使用时会优先消耗癫疯值而非耐久，但是癫疯值耗尽后消耗双倍耐久，癫疯值高于500时，依据癫疯值超出400的部分和工具的面板伤害造成真实伤害，但是手持时你受到伤害会立刻趋势",
+  "modifier.etshtinker.totalinsane.description":"受到任何伤害时立刻趋势，手持时积攒癫疯值，最大1000，工具使用时会优先消耗癫疯值而非耐久，癫疯值高于500时，攻击时造成高额真实伤害。",
 
   "modifier.etshtinker.mindattack": "神经质",
   "modifier.etshtinker.mindattack.flavor": "神晶，害的我笑了一下",
@@ -83,7 +83,7 @@
 
   "modifier.etshtinker.warpattack": "折跃攻击",
   "modifier.etshtinker.warpattack.flavor": "扭曲空间",
-  "modifier.etshtinker.warpattack.description":"挥舞武器时，对8*属性等级范围内最近生物造成伤害，冷却0.5秒，附带一定的范围攻击。远程攻击时，箭矢会传送到准星附近距离你最近生物附近。按住shift时箭矢传送效果不生效",
+  "modifier.etshtinker.warpattack.description":"挥舞武器时，对一定范围内最近生物造成伤害，冷却0.5秒。远程攻击时，箭矢会传送到准星附近距离你最近生物附近，按住shift时此效果不生效。",
 
   "modifier.etshtinker.worldforceex": "世界之力",
   "modifier.etshtinker.worldforceex.flavor": "大地的力量掌握在你手中",
@@ -91,23 +91,23 @@
 
   "modifier.etshtinker.mindprotection": "知识护盾",
   "modifier.etshtinker.mindprotection.flavor": "我觉得你没打到我，你就是没打到我",
-  "modifier.etshtinker.mindprotection.description":"获得75%减伤，免疫部分穿甲伤害，移除自身debuff，被攻击时60%的概率闪避并有概率将大量伤害反弹给对方，获得2秒无敌帧。死亡时免死一次并恢复50%生命值，获得7秒无敌帧，冷却90秒",
+  "modifier.etshtinker.mindprotection.description":"获得75%减伤，免疫部分穿甲伤害，移除自身debuff，被攻击时60%的概率闪避并有概率将大量伤害反弹给对方，获得2秒无敌帧。死亡时免死一次并恢复50%生命值，获得7秒无敌帧，冷却90秒。",
 
   "modifier.etshtinker.godlymetal": "神金质",
   "modifier.etshtinker.godlymetal.flavor": "来自天堂的地狱赠礼",
-  "modifier.etshtinker.godlymetal.description":"主手攻击时附带5%*属性等级*敌人当前生命值的真实伤害(造成的真实伤害保留目标1点生命值)",
+  "modifier.etshtinker.godlymetal.description":"主手攻击时附带5%*属性等级*敌人当前生命值的真实伤害(造成的真实伤害会保留目标1点生命值)",
 
   "modifier.etshtinker.controllableannihl": "可控湮灭",
   "modifier.etshtinker.controllableannihl.flavor": "3,2,1 毁灭！",
-  "modifier.etshtinker.controllableannihl.description":"[仅近战攻击]工具的基础伤害被取消，全力攻击时消耗工具的1/4的耐久，造成一次湮灭爆炸，爆炸的伤害为工具的耐久。若工具耐久不超过最大耐久的25%则无法造成伤害。",
+  "modifier.etshtinker.controllableannihl.description":"[仅近战]工具的基础伤害被取消，全力攻击时消耗工具的1/4的耐久，造成一次湮灭爆炸，爆炸的伤害为工具的耐久。若工具耐久不超过最大耐久的25%则无法造成伤害。",
 
   "modifier.etshtinker.modifiershocking": "震击",
   "modifier.etshtinker.modifiershocking.flavor": "滋滋滋！",
-  "modifier.etshtinker.modifiershocking.description":"攻击、挖掘方块时获得充能。充能完毕后攻击、挖掘时获得急迫和速度，并造成额外附加伤害和一定的范围伤害(对远程攻击不生效)",
+  "modifier.etshtinker.modifiershocking.description":"[仅近战]攻击、挖掘方块时获得充能。充能完毕后攻击、挖掘时获得急迫和速度，并造成额外附加伤害和一定的范围伤害。",
 
   "modifier.etshtinker.guardless": "毫无防备",
   "modifier.etshtinker.guardless.flavor": "你，为何不避",
-  "modifier.etshtinker.guardless.description":"敌人看不到你手上的武器，所以当你被生物攻击时攻击者也会受伤，且攻击者手持武器会立刻消失、攻击伤害和防御力均降低",
+  "modifier.etshtinker.guardless.description":"敌人看不到你手上的武器，所以当你被生物攻击时使攻击者被缴械且伤害、防御减少。",
 
   "modifier.etshtinker.invisiiiible": "隐身",
   "modifier.etshtinker.invisiiiible.flavor": "看不到我看不到我看不到我",
@@ -119,11 +119,11 @@
 
   "modifier.etshtinker.extralight": "究极轻盈",
   "modifier.etshtinker.extralight.flavor": "影流之主",
-  "modifier.etshtinker.extralight.description":"你的工具把你也变轻了，手持获得速度、急迫和每级10%（最大20%）的闪避率；穿着此材料制成的护甲时，攻击敌人有概率使自己获得无敌帧。",
+  "modifier.etshtinker.extralight.description":"你的工具把你也变轻了，手持获得速度、急迫和每级10%（最大20%）的闪避率。\n穿着此材料制成的护甲时，攻击敌人有概率使自己获得无敌帧。",
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"挥舞这种材料的工具使你的手直接开始抽搐，攻击间隔越长伤害越高，反之则越低（受急迫加成）;穿戴此材料制成的装甲时则使你免疫部分非近战伤害类型和穿甲伤害。",
+  "modifier.etshtinker.ultradenseex.description":"挥舞这种材料的工具使你的手直接开始抽搐，攻击间隔越长伤害越高，反之则越低。\n穿戴此材料制成的装甲时则使你免疫部分非近战伤害类型和穿甲伤害。",
 
   "modifier.etshtinker.extraweight": "万吨沉重EX",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
@@ -159,11 +159,11 @@
 
   "modifier.etshtinker.warpengine": "曲率引擎",
   "modifier.etshtinker.warpengine.flavor": "“曲率引擎启动”",
-  "modifier.etshtinker.warpengine.description":"手持时右键蓄力0.5秒后进入曲率航行模式，左键攻击即可退出曲率航行模式。曲率航行模式下你会无视重力和方块碰撞并逐渐加速至最大速度，每级提供5m/s最大速度。",
+  "modifier.etshtinker.warpengine.description":"手持时右键蓄力0.5秒后进入曲率航行模式，左键攻击即可退出曲率航行模式。曲率航行模式下你会无视重力和方块碰撞并逐渐加速至最大速度，等级越高速度越快。",
 
   "modifier.etshtinker.warpingenhance": "曲率突击",
   "modifier.etshtinker.warpingenhance.flavor": "折跃——进攻",
-  "modifier.etshtinker.warpingenhance.description":"曲率航行模式结束的瞬间对触及半径内离你最近的生物造成伤害，伤害与武器面板和曲率航行速度有关(需要曲率引擎强化)",
+  "modifier.etshtinker.warpingenhance.description":"曲率航行模式结束的瞬间对触及半径内离你最近的生物造成伤害，伤害与曲率航行速度有关。",
 
   "modifier.etshtinker.solidex": "超坚硬",
   "modifier.etshtinker.solidex.flavor": "其实就是不需要前置的不毁",
@@ -171,7 +171,7 @@
 
   "modifier.etshtinker.plasmawaveslashmodifier": "等离子波动斩",
   "modifier.etshtinker.plasmawaveslashmodifier.flavor": "等离子狂欢！",
-  "modifier.etshtinker.plasmawaveslashmodifier.description":"主手持握时按住右键蓄力，释放时挥舞出一道无限穿透、穿墙、无视无敌帧的等离子剑气，造成电离减益",
+  "modifier.etshtinker.plasmawaveslashmodifier.description":"按住右键蓄力，释放时挥舞出一道无限穿透、穿墙、无视无敌帧的等离子剑气。",
 
   "modifier.etshtinker.plasmarrow": "等离子矢",
   "modifier.etshtinker.plasmarrow.flavor": "化无形为有形",
@@ -199,7 +199,7 @@
 
   "modifier.etshtinker.fluxloaded": "通量装载",
   "modifier.etshtinker.fluxloaded.flavor": "简直完美！",
-  "modifier.etshtinker.fluxloaded.description":"每级获得100kFE的能量存储，使用工具时优先消耗FE而非耐久（每点耐久需要1kFE来抵消）",
+  "modifier.etshtinker.fluxloaded.description":"每级获得100kFE的能量存储，使用工具时优先消耗FE而非耐久。",
 
   "modifier.etshtinker.momentoaccel": "惯性加速",
   "modifier.etshtinker.momentoaccel.flavor": "十分趁手！",
@@ -207,7 +207,7 @@
 
   "modifier.etshtinker.crunchyshattered": "酥脆易碎",
   "modifier.etshtinker.crunchyshattered.flavor": "虽然不能吃，但是口感很不错...嗯？你在说亻",
-  "modifier.etshtinker.crunchyshattered.description":"你的武器很易碎，所以每次攻击时每级减少目标2点护甲，同时给予目标凋零效果。但是由于你的工具烂在目标体内了，每次使用额外消耗属性等级点耐久",
+  "modifier.etshtinker.crunchyshattered.description":"你的武器很易碎，所以每次攻击时每级减少目标2点护甲，同时给予目标凋零效果。但是由于你的工具烂在目标体内了，每次使用额外消耗更多耐久",
 
   "modifier.etshtinker.autoionizing": "自动连发",
   "modifier.etshtinker.autoionizing.flavor": "全自动开火",
@@ -231,7 +231,7 @@
 
   "modifier.etshtinker.warpprotection": "折跃保护",
   "modifier.etshtinker.warpprotection.flavor": "空间护盾",
-  "modifier.etshtinker.warpprotection.description":"将你周围一定范围内的弹射物传送回它们主人身上，如果这个弹射物没有主人则传送到离你最近的生物附近。",
+  "modifier.etshtinker.warpprotection.description":"将你周围一定范围内的来犯弹射物传送走，等级越高范围越大。",
 
   "modifier.etshtinker.basalzdefence": "地岩之护",
   "modifier.etshtinker.basalzdefence.flavor": "地心的力量守护着你",
@@ -259,11 +259,11 @@
 
   "modifier.etshtinker.selfassemble": "分形自组装",
   "modifier.etshtinker.selfassemble.flavor": "如果给予足够高的自由度，或许它能把自己复制一份出来...",
-  "modifier.etshtinker.selfassemble.description":"工具受损时会消耗背包中的反中子充能，工具有充能时会修复自身，最快4096*属性等级点耐久每刻，每个反中子提供8192*属性等级点充能",
+  "modifier.etshtinker.selfassemble.description":"工具受损时会消耗背包中的反中子充能，工具有充能时会急速修复自身，每个反中子提供8192*属性等级点充能",
 
   "modifier.etshtinker.stellarblessing": "星之祝福",
   "modifier.etshtinker.stellarblessing.flavor": "来自天堂的赠礼",
-  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，受到攻击时使攻击者失重并点燃攻击者，移动时获得属性等级*10%的伤害减免。",
+  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，受到攻击时使攻击者失重并点燃攻击者，移动时获得每级10%的伤害减免。",
 
   "modifier.etshtinker.reactiveexplosivearmor": "爆炸反应装甲",
   "modifier.etshtinker.reactiveexplosivearmor.flavor": "最强之矛有时候也会成为最强之盾",
@@ -271,11 +271,11 @@
 
   "modifier.etshtinker.reactiveannihlarmor": "湮灭反应装甲",
   "modifier.etshtinker.reactiveannihlarmor.flavor": "矛与盾也许并不矛盾",
-  "modifier.etshtinker.reactiveannihlarmor.description":"受到攻击时消耗背包内的反中子锭充能，护甲有充能时消耗充能并抵挡这次伤害，每个反中子能提供2048*属性等级的充能，多件护甲效果不叠加。",
+  "modifier.etshtinker.reactiveannihlarmor.description":"受到攻击时消耗背包内的反中子锭充能，护甲有充能时消耗充能并抵挡这次伤害，多件护甲效果不叠加。",
 
   "modifier.etshtinker.modifierenchantedsword": "蕴魔之剑",
   "modifier.etshtinker.modifierenchantedsword.flavor": "我没能拿到真空之刃",
-  "modifier.etshtinker.modifierenchantedsword.description":"工具有魔力充能时，空挥时发射一个附魔剑剑气(不消耗魔力)，伤害受强化等级影响。",
+  "modifier.etshtinker.modifierenchantedsword.description":"工具有魔力充能时，空挥时发射一个附魔剑剑气。",
 
   "modifier.etshtinker.manaoverload": "魔力过载",
   "modifier.etshtinker.manaoverload.flavor": "希望你有足够的魔力使用这个强化",
@@ -283,7 +283,7 @@
 
   "modifier.etshtinker.thermaldefense": "热力之护",
   "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",
-  "modifier.etshtinker.thermaldefense.description":"每级增加25%装备护甲，穿戴时获得每级5%闪避率和15%的减伤和多种正面效果，受击时延长无敌帧并获得抗性提升，减少攻击者75%护甲，对攻击者施加大量负面效果。",
+  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性，额外附带减少攻击者75%护甲。",
 
   "modifier.etshtinker.trinityblessing": "三重祝福",
   "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
@@ -316,6 +316,26 @@
   "modifier.etshtinker.beconcerted": "齐心协力",
   "modifier.etshtinker.beconcerted.flavor": "-感谢支持-",
   "modifier.etshtinker.beconcerted.description":"每装载一个模组，获得大部分属性6.2134%的加成。",
+
+  "modifier.etshtinker.gracearrival": "恩赐降临",
+  "modifier.etshtinker.gracearrival.flavor": "奇迹和魔法可不是免费的！",
+  "modifier.etshtinker.gracearrival.description":"消耗魔力增强穿戴者的治疗效果，每级消耗400魔力增强20%。每2秒被动恢复1点生命值。",
+
+  "modifier.etshtinker.manarepair": "魔力修复",
+  "modifier.etshtinker.manarepair.flavor": "魔法与熵",
+  "modifier.etshtinker.manarepair.description":"工具会缓缓消耗魔力恢复耐久。",
+
+  "modifier.etshtinker.alfrage": "精灵之怒",
+  "modifier.etshtinker.alfrage.flavor": "黑与白！",
+  "modifier.etshtinker.alfrage.description":"挥舞武器时释放精灵光束。",
+
+  "modifier.etshtinker.threshold": "阈值",
+  "modifier.etshtinker.threshold.flavor": "到此为止了！",
+  "modifier.etshtinker.threshold.description":"受到的伤害超过自身血量上限的一定百分比时，消耗魔力减少这次伤害。",
+
+  "modifier.etshtinker.alfsmind": "精灵意志",
+  "modifier.etshtinker.alfsmind.flavor": "海尔特沃夫不容侵犯！",
+  "modifier.etshtinker.alfsmind.description":"受到的伤害/攻击敌人时召唤精灵，精灵会携带5秒随机的部分原版效果。",
 
 
 
@@ -501,6 +521,10 @@
   "material.etshtinker.gemobsidian.flavor": "火成岩",
   "material.etshtinker.gemobsidian.encyclopedia": "奇特的无机晶体，原本理论上需要高温高压才能形成...",
 
+  "material.etshtinker.alfsteel": "精灵钢",
+  "material.etshtinker.alfsteel.flavor": "精灵钢",
+  "material.etshtinker.alfsteel.encyclopedia": "汇聚了精灵的力量...",
+
 
 
 
@@ -652,6 +676,9 @@
 
   "fluid_type.etshtinker.molten_semicrystaline_obsidian": "熔融准晶态黑曜石",
   "item.etshtinker.molten_semicrystaline_obsidian_bucket": "熔融准晶态黑曜石桶",
+
+  "fluid_type.etshtinker.molten_alfsteel": "熔融精灵钢",
+  "item.etshtinker.molten_alfsteel_bucket": "熔融精灵钢桶",
 
 
 
