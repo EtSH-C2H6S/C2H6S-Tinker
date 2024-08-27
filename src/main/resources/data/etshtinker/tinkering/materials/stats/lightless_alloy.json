@@ -31,11 +31,6 @@
       "durability": 1.1,
       "accuracy": -0.06,
       "melee_damage": 6.0
-    },
-    "tconstruct:plating_shield": {
-      "durability": 190,
-      "knockback_resistance": 0.02,
-      "toughness": 0.5
     }
   }
 }

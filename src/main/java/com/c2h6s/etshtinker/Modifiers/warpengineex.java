@@ -9,13 +9,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.phys.Vec3;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
-public class warpengineex extends etshmodifieriii {
-    public InteractionResult onModifierToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
+public class warpengineex extends etshmodifieriii implements GeneralInteractionModifierHook{
+    protected void registerHooks(ModuleHookMap.Builder builder){
+        builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
+    }
+    public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
         if (interactionSource==InteractionSource.RIGHT_CLICK){
             if (player!=null) {
                 GeneralInteractionModifierHook.startUsing(tool,modifier.getId(),player,interactionHand);
@@ -25,7 +30,7 @@ public class warpengineex extends etshmodifieriii {
         else return InteractionResult.PASS;
     }
 
-    public void ModifierOnFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
+    public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
         if (tool.getModifierLevel(this)>0&&entity instanceof Player player&&!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())){
             Vec3 vec3 =new Vec3(player.getLookAngle().x,0,player.getLookAngle().z);
             if (getUnitizedVec3(vec3)!=null){
@@ -37,11 +42,11 @@ public class warpengineex extends etshmodifieriii {
         }
     }
 
-    public UseAnim ModifierGetUseAction(IToolStackView tool, ModifierEntry modifier) {
+    public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
         return UseAnim.SPEAR;
     }
 
-    public int ModifierGetUseDuration(IToolStackView tool, ModifierEntry modifier) {
+    public int getUseDuration(IToolStackView tool, ModifierEntry modifier) {
         return 20;
     }
 }

@@ -14,7 +14,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -23,10 +26,16 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.modloaded.*;
 
-public class modifierenchantedsword extends etshmodifieriii {
+public class modifierenchantedsword extends etshmodifieriii implements GeneralInteractionModifierHook {
     private static final ResourceLocation manacharge = new ResourceLocation(MOD_ID, "manacharge");
     public modifierenchantedsword(){
         MinecraftForge.EVENT_BUS.addListener(this::leftclick);
+    }
+
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
     }
 
     protected boolean canAttack(IToolStackView tool, Player player, InteractionHand hand) {
@@ -51,7 +60,7 @@ public class modifierenchantedsword extends etshmodifieriii {
         }
     }
 
-    public InteractionResult onModifierToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource interactionSource) {
+    public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource interactionSource) {
         if (OffhandCooldownTracker.isAttackReady(player)&&BOTloaded) {
             if (this.canAttack(tool, player, hand)) {
                 if (tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get()) > 0 && tool.getPersistentData().getInt(manacharge)>1) {

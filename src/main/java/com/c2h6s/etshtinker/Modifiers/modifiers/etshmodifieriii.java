@@ -42,13 +42,12 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
 import java.util.List;
 
-public class etshmodifieriii extends etshmodifierii implements EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook , ModifyDamageModifierHook, ModifierRemovalHook  , GeneralInteractionModifierHook, BlockBreakModifierHook , EntityInteractionModifierHook , ToolStatsModifierHook {
+public class etshmodifieriii extends etshmodifierii implements EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook , ModifyDamageModifierHook, ModifierRemovalHook  , BlockBreakModifierHook , EntityInteractionModifierHook , ToolStatsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.EQUIPMENT_CHANGE ,ModifierHooks.INVENTORY_TICK,ModifierHooks.ON_ATTACKED);
         builder.addHook(this,ModifierHooks.TOOLTIP,ModifierHooks.REMOVE);
-        builder.addHook(this,ModifierHooks.GENERAL_INTERACT);
         builder.addHook(this,ModifierHooks.BLOCK_BREAK,ModifierHooks.ENTITY_INTERACT,ModifierHooks.TOOL_STATS);
     }
 
@@ -78,31 +77,6 @@ public class etshmodifieriii extends etshmodifierii implements EquipmentChangeMo
 
 
 
-
-    @Override
-    public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
-        return this.onModifierToolUse(tool,modifier,player,interactionHand,interactionSource);
-    }
-    @Override
-    public void onUsingTick(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
-        this.ModifierOnUsingTick(tool,modifier,entity,timeLeft);
-    }
-    @Override
-    public void onStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
-        this.ModifierOnStoppedUsing(tool, modifier, entity, timeLeft);
-    }
-    @Override
-    public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
-        this.ModifierOnFinishUsing(tool, modifier, entity);
-    }
-    @Override
-    public int getUseDuration(IToolStackView tool, ModifierEntry modifier) {
-        return this.ModifierGetUseDuration(tool, modifier);
-    }
-    @Override
-    public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
-        return this.ModifierGetUseAction(tool, modifier);
-    }
     @Override
     public void afterBlockBreak(IToolStackView tool, ModifierEntry modifier, ToolHarvestContext context) {
         this.modifierAfterBlockBreak(tool,modifier,context);
@@ -138,23 +112,6 @@ public class etshmodifieriii extends etshmodifierii implements EquipmentChangeMo
     }
 
 
-
-
-    public InteractionResult onModifierToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
-        return InteractionResult.PASS;
-    }
-    public void ModifierOnUsingTick(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
-    }
-    public void ModifierOnStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
-    }
-    public void ModifierOnFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
-    }
-    public int ModifierGetUseDuration(IToolStackView tool, ModifierEntry modifier) {
-        return 0;
-    }
-    public UseAnim ModifierGetUseAction(IToolStackView tool, ModifierEntry modifier) {
-        return UseAnim.NONE;
-    }
 
 
     public void modifierAfterBlockBreak(IToolStackView tool, ModifierEntry modifier, ToolHarvestContext context) {

@@ -21,7 +21,6 @@ public class etshtinkerModifiers {
     public static final StaticModifier<thermalenhance>thermalenhance_STATIC_MODIFIER= MODIFIERS.register("thermalenhance", thermalenhance::new);
     public static final StaticModifier<thermalstrike>thermalstrike_STATIC_MODIFIER= MODIFIERS.register("thermalstrike", thermalstrike::new);
     public static final StaticModifier<chainreaction>chainreaction_STATIC_MODIFIER= MODIFIERS.register("chainreaction", chainreaction::new);//链式反应
-    public static final StaticModifier<radiationremoval>radiationremoval_STATIC_MODIFIER= MODIFIERS.register("radiationremoval", radiationremoval::new);
     public static final StaticModifier<fusion>fusion_STATIC_MODIFIER= MODIFIERS.register("fusion", fusion::new);
     public static final StaticModifier<totalinsane>totalinsane_STATIC_MODIFIER= MODIFIERS.register("totalinsane", totalinsane::new);
     public static final StaticModifier<mindattack>mindattack_STATIC_MODIFIER= MODIFIERS.register("mindattack", mindattack::new);
@@ -90,5 +89,9 @@ public class etshtinkerModifiers {
     //public static final StaticModifier<ultraviolet>ultraviolet_STATIC_MODIFIER= MODIFIERS.register("ultraviolet", ultraviolet::new);
     public static final StaticModifier<manarepair>manarepair_STATIC_MODIFIER= MODIFIERS.register("manarepair", manarepair::new);
 
-
+    public class etshMekModifier{
+        public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
+        public static final StaticModifier<radiationproof>radiationproof_STATIC_MODIFIER= MODIFIERS.register("radiationproof", radiationproof::new);
+        public static final StaticModifier<radiationremoval>radiationremoval_STATIC_MODIFIER= MODIFIERS.register("radiationremoval", radiationremoval::new);
+    }
 }

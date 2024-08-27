@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker;
 import com.c2h6s.etshtinker.Mapping.*;
+import com.c2h6s.etshtinker.Modifiers.modifiers.etshRadiationShieldCap;
 import com.c2h6s.etshtinker.client.book.etshtinkerBook;
 //import com.c2h6s.etshtinker.config.etshtinkerConfig;
 import com.c2h6s.etshtinker.init.*;
@@ -45,6 +46,7 @@ public class etshtinker {
             etshtinkerMekansimMaterial.ITEMS.register(eventBus);
             etshtinkerChemicals.INFUSE_TYPES.register(eventBus);
             etshtinkerFluids.etshtinkerFluidMekanism.FLUIDS.register(eventBus);
+            etshtinkerModifiers.etshMekModifier.MODIFIERS.register(eventBus);
         }
         if (Cofhloaded){
             etshtinkerThermalMaterial.ITEMS.register(eventBus);
@@ -82,6 +84,9 @@ public class etshtinker {
     }
     private void commonSetup(FMLCommonSetupEvent event) {
         ToolCapabilityProvider.register(etshmodifierfluxed::new);
+        if (Mekenabled){
+            ToolCapabilityProvider.register(etshRadiationShieldCap::new);
+        }
         event.enqueueWork(etshtinkerMaterialStats::setup);
         event.enqueueWork(ionizerFluidMap::extendMap);
         packetHandler.init();

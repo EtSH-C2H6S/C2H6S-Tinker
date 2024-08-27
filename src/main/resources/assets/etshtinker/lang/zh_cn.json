@@ -55,7 +55,7 @@
 
   "modifier.etshtinker.radiationremoval": "消辐",
   "modifier.etshtinker.radiationremoval.flavor": "让时间抚平伤痛",
-  "modifier.etshtinker.radiationremoval.description":"右击时立刻移除10Sv自己身上带有的辐射，没有冷却。",
+  "modifier.etshtinker.radiationremoval.description":"每级提供400倍辐射自然消散速度[温馨提示：等级太高可能会卡]",
 
   "modifier.etshtinker.fusion": "聚变反应",
   "modifier.etshtinker.fusion.flavor": "相当于内置了一个聚变反应堆",
@@ -336,6 +336,10 @@
   "modifier.etshtinker.alfsmind": "精灵意志",
   "modifier.etshtinker.alfsmind.flavor": "海尔特沃夫不容侵犯！",
   "modifier.etshtinker.alfsmind.description":"受到的伤害/攻击敌人时召唤精灵，精灵会携带5秒随机的部分原版效果。",
+
+  "modifier.etshtinker.radiationproof": "辐射防护",
+  "modifier.etshtinker.radiationproof.flavor": "连伽马射线都无法穿透！",
+  "modifier.etshtinker.radiationproof.description":"每件带有此强化的护甲提供25%辐射抗性。",
 
 
 
