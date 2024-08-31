@@ -1,16 +1,22 @@
 package com.c2h6s.etshtinker.Entities;
 
+import cofh.core.init.CoreMobEffects;
+import com.c2h6s.etshtinker.init.ItemReg.etshtinkerThermalMaterial;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
+import com.c2h6s.etshtinker.init.etshtinkerEntity;
+import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import mekanism.api.MekanismAPI;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,9 +27,12 @@ import net.minecraft.world.phys.Vec3;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
+import static com.c2h6s.etshtinker.util.modloaded.Cofhloaded;
 import static com.c2h6s.etshtinker.util.modloaded.Mekenabled;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
@@ -35,6 +44,17 @@ public class plasmaexplosionentity extends ItemProjectile{
     public String special =null;
     public ToolStack tool =null;
     public float scale =1;
+    private SecureRandom random =EtSHrnd();
+    public List<SimpleParticleType> lsp=List.of(
+            etshtinkerParticleType.plasmaexplosionred.get(),
+            etshtinkerParticleType.plasmaexplosionorange.get(),
+            etshtinkerParticleType.plasmaexplosionyellow.get(),
+            etshtinkerParticleType.plasmaexplosionlime.get(),
+            etshtinkerParticleType.plasmaexplosiongreen.get(),
+            etshtinkerParticleType.plasmaexplosioncyan.get(),
+            etshtinkerParticleType.plasmaexplosionblue.get(),
+            etshtinkerParticleType.plasmaexplosionpurple.get()
+            );
 
     public void getRayVec3(Vec3 vec3){
         this.rayVec3 =vec3;
@@ -85,6 +105,9 @@ public class plasmaexplosionentity extends ItemProjectile{
                     List<LivingEntity> ls1 = new ArrayList<>(List.of());
                     while (i < range) {
                         i += 2;
+                        if (special!=null&&special.equals("elemental")){
+                            this.particle = lsp.get(random.nextInt(8));
+                        }
                         double x = pos.x + i * vec3.x;
                         double y = pos.y + 0.5 * this.getBbHeight() + i * vec3.y;
                         double z = pos.z + i * vec3.z;
@@ -98,6 +121,18 @@ public class plasmaexplosionentity extends ItemProjectile{
                         }
                         AABB aabb = new AABB(x + 0.75*scale, y + 0.5+0.75*scale, z + 0.75*scale, x - 0.75*scale, y - 0.75*scale+0.5, z - 0.75*scale);
                         List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb.expandTowards(vec3));
+                        List<ItemEntity> ls2;
+                        if (special!=null&&special.equals("elemental")&&Cofhloaded){
+                            ls2 =this.level.getEntitiesOfClass(ItemEntity.class, aabb.expandTowards(vec3));
+                            if (!ls2.isEmpty()){
+                                for (ItemEntity item:ls2){
+                                    if (item.getItem().getItem().equals(etshtinkerThermalMaterial.activated_chroma_plate.get())){
+                                        item.getPersistentData().putInt("progress",item.getPersistentData().getInt("progress")+(int) this.damage);
+                                        item.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR,1.25f,1.25f);
+                                    }
+                                }
+                            }
+                        }
                         if (!ls0.isEmpty()) {
                             for (LivingEntity target : ls0) {
                                 if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)) {
@@ -123,8 +158,17 @@ public class plasmaexplosionentity extends ItemProjectile{
                             if (special.equals("explosion")) {
                                 this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 2f, Explosion.BlockInteraction.NONE);
                             }
+                            if (special.equals("annihilate")){
+                                annihilateexplosionentity explosion =new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(),level);
+                                explosion.damage =1024;
+                                explosion.radius =20;
+                                explosion.proceedRecipe =true;
+                                explosion.proceedamount =8;
+                                explosion.setPos(entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ());
+                                level.addFreshEntity(explosion);
+                            }
                         }
-                        if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion")) {
+                        if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion")&&!special.equals("annihilate")) {
                             for (LivingEntity targets : ls1) {
                                 if (targets != null) {
                                     if (special.equals("ionize")) {
@@ -153,6 +197,26 @@ public class plasmaexplosionentity extends ItemProjectile{
                                         }
                                         targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 100, 4), this.getOwner());
                                         targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4), this.getOwner());
+                                    } else if (special.equals("elemental")){
+                                        targets.invulnerableTime = 0;
+                                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
+                                        targets.invulnerableTime = 0;
+                                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
+                                        targets.invulnerableTime = 0;
+                                        targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
+                                        targets.invulnerableTime = 0;
+                                        targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
+                                        targets.invulnerableTime = 0;
+                                        targets.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
+                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS,100,4,false,false),this.getOwner());
+                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,4,false,false),this.getOwner());
+                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,100,4,false,false),this.getOwner());
+                                        if (Cofhloaded){
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(),100,4,false,false),this.getOwner());
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(),100,4,false,false),this.getOwner());
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),100,4,false,false),this.getOwner());
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),100,4,false,false),this.getOwner());
+                                        }
                                     }
                                 }
                             }
@@ -176,6 +240,9 @@ public class plasmaexplosionentity extends ItemProjectile{
                 List<LivingEntity> ls1 =new ArrayList<>(List.of());
                 while (i<range){
                     i+=2;
+                    if (special!=null&&special.equals("elemental")){
+                        this.particle = lsp.get(random.nextInt(8));
+                    }
                     double x=pos.x + i * vec3.x;
                     double y=pos.y + 0.5*this.getBbHeight() + i * vec3.y;
                     double z=pos.z + i * vec3.z;

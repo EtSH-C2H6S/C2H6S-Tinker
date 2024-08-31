@@ -2,6 +2,7 @@ package com.c2h6s.etshtinker.Entities;
 
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,6 +15,8 @@ import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.List;
+
+import static slimeknights.tconstruct.library.tools.helper.ToolAttackUtil.getCooldownFunction;
 
 public class plasmawaveslashentity extends ItemProjectile {
     public float baseDamage;
@@ -51,10 +54,10 @@ public class plasmawaveslashentity extends ItemProjectile {
             if (entity!=null&&entity!=this.getOwner()&&this.getOwner() instanceof Player player){
                 if (tool!=null) {
                     entity.invulnerableTime = 0;
-                    ToolAttackUtil.attackEntity(tool,player,entity);
+                    ToolAttackUtil.attackEntity(tool,player,InteractionHand.MAIN_HAND,entity,getCooldownFunction(player, InteractionHand.MAIN_HAND),true);
                 }
                 entity.setSecondsOnFire(65535);
-                entity.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),1000,0,false,false),player);
+                entity.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),1000,3,false,false),player);
             }
         }
     }

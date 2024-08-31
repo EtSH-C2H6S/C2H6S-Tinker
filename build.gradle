@@ -5,7 +5,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = '1.19.2-2.0.0-alpha-06c'
+version = '1.19.2-2.0.0-alpha-07'
 group = 'com.c2h6s.etshtinker'
 
 base {

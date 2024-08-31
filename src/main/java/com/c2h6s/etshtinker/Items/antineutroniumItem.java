@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class antineutroniumItem extends Item {
     public antineutroniumItem(Properties p_41383_) {
-        super(p_41383_.tab(etshtinkerTab.MATERIALS).fireResistant().stacksTo(64));
+        super(p_41383_.tab(etshtinkerTab.MATERIALS).fireResistant().stacksTo(64).rarity(Rarity.RARE));
     }
     @Override
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
@@ -45,7 +46,7 @@ public class antineutroniumItem extends Item {
                     explosion.radius =Math.min(amount*2,32);
                     explosion.proceedRecipe =true;
                     explosion.proceedamount =amount;
-                    explosion.setPos(entity.getX(),entity.getY(),entity.getZ());
+                    explosion.setPos(entity.getX(),entity.getY()+0.25,entity.getZ());
                     level.addFreshEntity(explosion);
                     entity.getItem().setCount(entity.getItem().getCount()-amount);
                     neut.getItem().setCount(neut.getItem().getCount()-amount);

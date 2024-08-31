@@ -43,6 +43,7 @@ public class plasmawaveslashmodifier extends etshmodifieriii implements GeneralI
     public void onStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
         float amplifier = Math.min(1.25F,(float) (72000-timeLeft)/8.0F);
         if (entity instanceof Player player&&amplifier>=1){
+            OffhandCooldownTracker.applyCooldown(player,10);
             this.createslash(player,(float)tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*amplifier,tool);
             OffhandCooldownTracker.swingHand(player,InteractionHand.MAIN_HAND,false);
         }

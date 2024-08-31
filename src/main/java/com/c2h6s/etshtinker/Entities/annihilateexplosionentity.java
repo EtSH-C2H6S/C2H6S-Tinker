@@ -73,6 +73,7 @@ public class annihilateexplosionentity extends ItemProjectile{
         }
         if (this.proceedRecipe){
             if (this.time>=6){
+                ((ServerLevel)this.level).sendParticles(etshtinkerParticleType.nova.get(),this.getX(),this.getY(),this.getZ(),64,1,1,1,8);
                 AABB aabb =new AABB(this.getX()-this.radius,this.getY()-this.radius,this.getZ()-this.radius,this.getX()+this.radius,this.getY()+this.radius,this.getZ()+this.radius);
                 List<LivingEntity> livingEntities =this.level.getEntitiesOfClass(LivingEntity.class,aabb);
                 List<ItemEntity> itemEntities =this.level.getEntitiesOfClass(ItemEntity.class,aabb);

@@ -59,7 +59,6 @@ public class plasmarrowentity extends AbstractArrow {
         super.tick();
     }
     public void onHitEntity(EntityHitResult result) {
-        Level world =this.getLevel();
         this.setPierceLevel((byte)(1+ this.getPierceLevel()));
         Entity e =result.getEntity();
         if (e instanceof LivingEntity entity) {
@@ -67,8 +66,6 @@ public class plasmarrowentity extends AbstractArrow {
                 entity.invulnerableTime = 0;
                 entity.hurt(DamageSource.playerAttack(player), (float) (4 * getMold(this.getDeltaMovement())));
                 entity.setSecondsOnFire(65535);
-                Vec3 vec3 = this.getDeltaMovement();
-                world.createFireworks(this.getX(), this.getY(), this.getZ(), vec3.x, vec3.y, vec3.z, null);
                 entity.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),1000,1,false,false),player);
                 entity.invulnerableTime = 0;
             }
