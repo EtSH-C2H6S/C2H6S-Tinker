@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
@@ -23,6 +24,7 @@ public class NightSlashEntityB extends ItemProjectile{
     public int time =0;
     public float damage =0;
     public int hittimes=0;
+    public List<LivingEntity> hitent=new ArrayList<>(List.of());
 
     public NightSlashEntityB(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -38,6 +40,9 @@ public class NightSlashEntityB extends ItemProjectile{
         Level world = this.level;
         Player player =this.getOwner() instanceof Player e ? e:null;
         time++;
+        if (time%4==0){
+            hitent.clear();
+        }
         Vec3 movement =this.getDeltaMovement();
         this.setPos(movement.x+this.getX(),movement.y+this.getY(),movement.z+this.getZ());
         double angle =((this.tickCount * 100 % 360)*Math.PI)/180;
@@ -49,7 +54,7 @@ public class NightSlashEntityB extends ItemProjectile{
         List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class,aabb);
         if (!ls.isEmpty()){
             for (LivingEntity targets:ls){
-                if (targets!=null&&player!=null&&targets!=this.getOwner()) {
+                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)) {
                     targets.invulnerableTime = 0;
                     targets.hurt(DamageSource.playerAttack(player), this.damage);
                     AttributeInstance instance = targets.getAttributes().getInstance(Attributes.ARMOR);
@@ -63,6 +68,7 @@ public class NightSlashEntityB extends ItemProjectile{
                     targets.invulnerableTime = 0;
                     targets.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor(), this.damage * 0.25F);
                     hittimes++;
+                    hitent.add(targets);
                 }
             }
         }

@@ -105,7 +105,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                     List<LivingEntity> ls1 = new ArrayList<>(List.of());
                     while (i < range) {
                         i += 2;
-                        if (special!=null&&special.equals("elemental")){
+                        if (special!=null&&(special.equals("elemental")||special.equals("nova"))){
                             this.particle = lsp.get(random.nextInt(8));
                         }
                         double x = pos.x + i * vec3.x;
