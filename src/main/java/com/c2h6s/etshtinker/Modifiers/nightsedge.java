@@ -52,7 +52,7 @@ public class nightsedge extends etshmodifieriii {
                 if (etshmodifierfluxed.getEnergyStored(tool)>0){
                     float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
                     entity.damage += dmgup;
-                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
+                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
                 }
                 entity.setOwner(player);
                 entity.setPos(player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ());
@@ -65,7 +65,7 @@ public class nightsedge extends etshmodifieriii {
                 if (etshmodifierfluxed.getEnergyStored(tool)>0){
                     float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
                     entity.damage += dmgup;
-                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
+                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
                 }
                 entity.setOwner(player);
                 entity.setPos(player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ());

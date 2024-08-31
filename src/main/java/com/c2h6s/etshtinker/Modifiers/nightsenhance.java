@@ -61,7 +61,7 @@ public class nightsenhance extends etshmodifieriii {
     }
 
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
-        int LightLevel =Math.max( context.getAttacker().level.getBrightness(LightLayer.BLOCK,context.getAttacker().blockPosition()) , context.getAttacker().level.getBrightness(LightLayer.SKY,context.getAttacker().blockPosition()));
+        int LightLevel =context.getAttacker().level.getBrightness(LightLayer.BLOCK,context.getAttacker().blockPosition()) ;
         if (LightLevel >7){
             return damage *0.5f;
         }
