@@ -7,9 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.TConstruct;
-import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
@@ -38,7 +36,8 @@ public class threshold extends etshmodifieriii {
                     ToolStack tool = ToolStack.from(stack);
                     float amount = player.getMaxHealth()/(tool.getModifierLevel(this)+1);
                     if (tool.getModifierLevel(this)>0&&event.getAmount()> amount ){
-                        if (ManaItemHandler.INSTANCE.requestManaExactForTool(stack,player,(int) (20* amount),true)){
+                        float amount2 =event.getAmount()- amount;
+                        if (ManaItemHandler.INSTANCE.requestManaExactForTool(stack,player,(int) (20* amount2),true)){
                             event.setAmount(amount);
                         }
                     }
