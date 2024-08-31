@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "etshtinker:nights_alloy"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:nights_alloy"
+}

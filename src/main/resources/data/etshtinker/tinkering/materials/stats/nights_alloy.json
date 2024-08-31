@@ -1,0 +1,32 @@
+{
+  "condition": {
+    "modid": "thermal",
+    "type": "forge:mod_loaded"
+  },
+  "stats": {
+    "tconstruct:binding": {},
+    "tconstruct:handle": {
+      "durability": 0.95,
+      "mining_speed": 0.75,
+      "melee_speed": 0.4,
+      "melee_damage": 0.2
+    },
+    "tconstruct:head": {
+      "durability": 2899,
+      "mining_speed": 10,
+      "mining_tier": "minecraft:netherite",
+      "melee_attack": 8.5
+    },
+    "tconstruct:limb": {
+      "durability": 1098,
+      "draw_speed": 0.2,
+      "velocity": 0.1,
+      "accuracy": 0.1
+    },
+    "tconstruct:grip": {
+      "durability": 0.2,
+      "accuracy": -0.1,
+      "melee_damage": 8
+    }
+  }
+}

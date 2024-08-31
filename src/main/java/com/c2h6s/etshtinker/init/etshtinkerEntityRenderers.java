@@ -30,6 +30,8 @@ public class etshtinkerEntityRenderers {
         event.registerEntityRenderer(etshtinkerEntity.phantomswordentity.get(), rendersword::new);
         event.registerEntityRenderer(etshtinkerEntity.annihilateexplosionentity.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.enchantedswordentity.get(), renderenchantsword::new);
+        event.registerEntityRenderer(etshtinkerEntity.nights_slash_entity.get(), renderNightSlash::new);
+        event.registerEntityRenderer(etshtinkerEntity.nights_slash_entity_b.get(), renderNightSlash::new);
         if (BOTloaded){
             event.registerEntityRenderer(etshtinkerBotEntity.ALFBURST.get(), NoopRenderer::new);
         }

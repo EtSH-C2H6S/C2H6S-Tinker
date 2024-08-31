@@ -7,6 +7,11 @@
     "etshtinker:fluid_chamber": {
       "fluid_capacity": 16000
     },
+    "etshtinker:ionizer": {
+      "cooldown": 16,
+      "plasmarange": 32,
+      "damagemultiplier": 2.75
+    },
     "tconstruct:binding": {},
     "tconstruct:handle": {
       "durability": -0.1,

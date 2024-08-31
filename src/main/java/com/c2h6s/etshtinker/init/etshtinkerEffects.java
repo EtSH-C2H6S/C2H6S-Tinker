@@ -13,4 +13,5 @@ public class etshtinkerEffects {
     public static final DeferredRegister<MobEffect> EFFECT = DeferredRegister.create(MOB_EFFECTS, MOD_ID);
     public static final RegistryObject<MobEffect>novaradiation = EFFECT.register("novaradiation",novaradiation::new);
     public static final RegistryObject<MobEffect>ionized = EFFECT.register("ionized",ionized::new);
+    public static final RegistryObject<MobEffect>cursefire = EFFECT.register("cursefire", cursefireEffect::new);
 }

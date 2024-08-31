@@ -84,7 +84,10 @@
     "alfrage": "#E6C011",
     "threshold": "#E6C011",
     "alfsmind": "#E6C011",
-    "radiationproof": "#22B14C"
+    "radiationproof": "#22B14C",
+    "nightsedge": "#AFFF00",
+    "nightsenhance": "#25183D",
+    "hyperfluxloaded": "#FF2214"
   },
   "material.etshtinker":
   {
@@ -113,6 +116,7 @@
     "marcoatom": "#75C4FF",
     "gemobsidian": "#42008A",
     "gemamber": "#8A5700",
-    "alfsteel": "#E6C011"
+    "alfsteel": "#E6C011",
+    "nights_alloy": "#800002"
   }
 }

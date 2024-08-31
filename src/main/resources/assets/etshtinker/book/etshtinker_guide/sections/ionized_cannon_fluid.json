@@ -35,6 +35,11 @@
     "data": "ionized_cannon_fluid/etshtinker_fluid2.json"
   },
   {
+    "name": "etshtinker_fluid3",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/etshtinker_fluid3.json"
+  },
+  {
     "name": "mek_fluid",
     "type": "mantle:showcase",
     "data": "ionized_cannon_fluid/mek_fluid.json"
@@ -53,5 +58,10 @@
     "name": "specials2",
     "type": "mantle:showcase",
     "data": "ionized_cannon_fluid/specials2.json"
+  },
+  {
+    "name": "specials3",
+    "type": "mantle:showcase",
+    "data": "ionized_cannon_fluid/specials3.json"
   }
 ]

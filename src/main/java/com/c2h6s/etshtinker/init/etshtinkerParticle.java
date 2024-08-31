@@ -24,5 +24,6 @@ public class etshtinkerParticle {
         event.register(etshtinkerParticleType.slash.get(), slashparticle::provider);
         event.register(etshtinkerParticleType.annihilateexplosionparticle.get(), annihilateexplosionparticle::provider);
         event.register(etshtinkerParticleType.mana.get(), manaparticle::provider);
+        event.register(etshtinkerParticleType.curse.get(), curseParticle::provider);
     }
 }

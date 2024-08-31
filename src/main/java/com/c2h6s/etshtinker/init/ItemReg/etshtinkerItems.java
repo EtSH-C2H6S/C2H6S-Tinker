@@ -53,6 +53,8 @@ public class etshtinkerItems {
     public static final RegistryObject<Item> plasmaexplosion = ITEMS.register("plasmaexplosion", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> phantom_sword = ITEMS.register("phantom_sword", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> enchantedsword = ITEMS.register("enchantedsword", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> night_slash_a = ITEMS.register("night_slash_a", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> night_slash_b = ITEMS.register("night_slash_b", ()->new Item(new Item.Properties()));
 
 
     //工具

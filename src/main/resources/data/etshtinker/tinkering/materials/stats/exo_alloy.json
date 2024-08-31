@@ -10,7 +10,7 @@
     "etshtinker:ionizer": {
       "cooldown": 18,
       "plasmarange": 90,
-      "damagemultiplier": 8
+      "damagemultiplier": 12
     },
     "tconstruct:binding": {},
     "tconstruct:handle": {

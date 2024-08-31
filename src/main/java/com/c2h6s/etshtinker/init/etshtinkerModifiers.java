@@ -88,6 +88,9 @@ public class etshtinkerModifiers {
     public static final StaticModifier<gracearrival>gracearrival_STATIC_MODIFIER= MODIFIERS.register("gracearrival", gracearrival::new);
     //public static final StaticModifier<ultraviolet>ultraviolet_STATIC_MODIFIER= MODIFIERS.register("ultraviolet", ultraviolet::new);
     public static final StaticModifier<manarepair>manarepair_STATIC_MODIFIER= MODIFIERS.register("manarepair", manarepair::new);
+    public static final StaticModifier<nightsedge>nightsedge_STATIC_MODIFIER= MODIFIERS.register("nightsedge", nightsedge::new);
+    public static final StaticModifier<hyperfluxloaded>hyperfluxloaded_STATIC_MODIFIER= MODIFIERS.register("hyperfluxloaded", hyperfluxloaded::new);
+    public static final StaticModifier<nightsenhance>nightsenhance_STATIC_MODIFIER= MODIFIERS.register("nightsenhance", nightsenhance::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

@@ -341,6 +341,18 @@
   "modifier.etshtinker.radiationproof.flavor": "连伽马射线都无法穿透！",
   "modifier.etshtinker.radiationproof.description":"每件带有此强化的护甲提供25%辐射抗性。",
 
+  "modifier.etshtinker.hyperfluxloaded": "高级通量装载",
+  "modifier.etshtinker.hyperfluxloaded.flavor": "太棒了！",
+  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具10%的能量增加伤害，每100kFE增加一点伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
+
+  "modifier.etshtinker.nightsenhance": "暗影附层",
+  "modifier.etshtinker.nightsenhance.flavor": "尽管扭曲了，但是这种能量依然强大",
+  "modifier.etshtinker.nightsenhance.description":"远离光源时攻击伤害加倍，反之攻击伤害减少但额外造成多次伤害。手持时免疫黑暗、致盲，获得夜视效果。弱小的敌人不再敢于直视你。",
+
+  "modifier.etshtinker.nightsedge": "永夜之刃",
+  "modifier.etshtinker.nightsedge.flavor": "是“原版”的!",
+  "modifier.etshtinker.nightsedge.description":"主手攻击时发射旋转剑气，工具有能量存储时则消耗能量增加剑气伤害。绿色的剑气会造成咒火减益，黄色的剑气会削减敌人的防御力。",
+
 
 
   "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -529,11 +541,16 @@
   "material.etshtinker.alfsteel.flavor": "精灵钢",
   "material.etshtinker.alfsteel.encyclopedia": "汇聚了精灵的力量...",
 
+  "item.etshtinker.nights_alloy": "暗影复相钢锭",
+  "material.etshtinker.nights_alloy": "暗影复相钢",
+  "material.etshtinker.nights_alloy.flavor": "异常罕见的元素的合金形态...",
+  "material.etshtinker.nights_alloy.encyclopedia": "组成世界的各种元素被粗暴地融合，逆变为了光与暗。光元素伴随爆炸而逸散，留下了这种金属。",
 
 
 
   "effect.etshtinker.ionized": "电离",
   "effect.etshtinker.novaradiation": "新星辐射",
+  "effect.etshtinker.cursefire": "咒火",
 
 
 
@@ -602,10 +619,14 @@
   "etshtinker.tool.tooltip.fluidspecial.radiation": "辐射",
   "etshtinker.tool.tooltip.fluidspecial.poison": "毒性",
   "etshtinker.tool.tooltip.fluidspecial.corrosive": "腐蚀性",
+  "etshtinker.tool.tooltip.fluidspecial.annihilate": "湮灭爆炸",
+  "etshtinker.tool.tooltip.fluidspecial.elemental": "元素怒焰",
   "stat.etshtinker.fluid_chamber": "储液器",
   "stat.etshtinker.ionizer": "离子化腔",
   "item.etshtinker.fluid_chamber": "储液器",
   "item.etshtinker.ionizer": "离子化腔",
+
+
 
   "item.etshtinker.sculk_energycore": "幽匿能量核心",
   "item.etshtinker.fluid_chamber_cast": "储液器金质铸膜",
@@ -634,8 +655,15 @@
   "etshtinker.item.tooltip.antineutroniumwarn": "应该...不会吧?",
   "etshtinker.item.tooltip.trinityhint": "自湮灭中涅槃，而重获新生...",
   "etshtinker.item.tooltip.marcoatom": "我们的世界，或许与这块金属大同小异...",
-  "etshtinker.item.tooltip.marcoatom2": "-特殊材料-\n也许你会好奇这个材料怎么获取...别急，或许你在其它材料上能找到线索!",
+  "etshtinker.item.tooltip.special": "-特殊材料-",
+  "etshtinker.item.tooltip.special2": "也许你会好奇这个材料怎么获取...别急，或许你在其它材料上能找到线索!",
   "etshtinker.item.tooltip.underbedrock": "这种生于基岩之下的矿物通常不能被正常挖到",
+  "etshtinker.item.tooltip.nights_alloy": "通常认为，光与暗两元素相遇时，",
+  "etshtinker.item.tooltip.nights_alloy2": "会在剧烈的爆炸中释放出地、火、电等大量其它元素。",
+  "etshtinker.item.tooltip.nights_alloy3": "这种材料的存在则揭示了一个截然相反的过程。",
+  "etshtinker.item.tooltip.activated_chroma_plate": "彩钢是与各种元素能量亲和度都很高的金属，",
+  "etshtinker.item.tooltip.activated_chroma_plate3": "或许你会好奇进一步引入元素能量会发生什么...",
+  "etshtinker.item.tooltip.activated_chroma_plate2": "离子化的活化彩钢也许是个很好的切入点。",
 
 
 
@@ -646,7 +674,6 @@
   "item.etshtinker.bismuthinite_ore_deepslate": "深层辉铋矿",
   "item.etshtinker.bismuthinite": "辉铋矿晶体",
 
-  "vein.etshtinker.ironsulfide": "硫铁矿",
   "desc.immersiveengineering.info.mineral.bismuthinite": "富辉铋矿床",
 
 
@@ -654,8 +681,8 @@
   "fluid_type.etshtinker.stablized_exotic_matter": "稳定态奇异物质",
   "item.etshtinker.stablized_exotic_matter_bucket": "稳定态奇异物质桶",
 
-  "fluid_type.etshtinker.molten_activated_chroma_steel": "熔融彩钢",
-  "item.etshtinker.molten_activated_chroma_steel_bucket": "熔融彩钢桶",
+  "fluid_type.etshtinker.molten_activated_chroma_steel": "熔融活化彩钢",
+  "item.etshtinker.molten_activated_chroma_steel_bucket": "熔融活化彩钢桶",
 
   "fluid_type.etshtinker.molten_anti_neutronium": "熔融反中子",
   "item.etshtinker.molten_anti_neutronium_bucket": "熔融反中子桶",

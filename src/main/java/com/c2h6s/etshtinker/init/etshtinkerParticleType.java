@@ -23,4 +23,5 @@ public class etshtinkerParticleType {
     public static final RegistryObject<SimpleParticleType> slash = REGISTRY.register("slash", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> annihilateexplosionparticle = REGISTRY.register("annihilateexplosionparticle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> mana = REGISTRY.register("mana", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> curse = REGISTRY.register("curse", () -> new SimpleParticleType(false));
 }
