@@ -2,7 +2,9 @@ package com.c2h6s.etshtinker.network.handler;
 
 import com.c2h6s.etshtinker.network.packet.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
@@ -19,6 +21,15 @@ public class packetHandler {
         INSTANCE.registerMessage(id++, alfbeamPacket.class, alfbeamPacket::encode, alfbeamPacket::decode, alfbeamPacket::handle);
         INSTANCE.registerMessage(id++, nightslashPacket.class, nightslashPacket::encode, nightslashPacket::decode, nightslashPacket::handle);
 
+
+    }
+
+    public static <MSG> void sendToServer(MSG msg){
+        INSTANCE.sendToServer(msg);
+    }
+
+    public static <MSG> void sendToPlayer(MSG msg, ServerPlayer player){
+        INSTANCE.send(PacketDistributor.PLAYER.with(()->player),msg);
     }
 }
 

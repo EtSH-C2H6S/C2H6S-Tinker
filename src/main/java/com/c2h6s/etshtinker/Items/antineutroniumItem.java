@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerTab;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
@@ -26,8 +27,12 @@ public class antineutroniumItem extends Item {
     }
     @Override
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("etshtinker.item.tooltip.antineutronium").withStyle(ChatFormatting.YELLOW));
-        list.add(Component.translatable("etshtinker.item.tooltip.antineutroniumwarn").withStyle(ChatFormatting.RED));
+        if (Screen.hasShiftDown()) {
+            list.add(Component.translatable("etshtinker.item.tooltip.antineutronium").withStyle(ChatFormatting.YELLOW));
+            list.add(Component.translatable("etshtinker.item.tooltip.antineutroniumwarn").withStyle(ChatFormatting.RED));
+        }else {
+            list.add(Component.translatable("etshtinker.item.tooltip.shift").withStyle(ChatFormatting.YELLOW));
+        }
         super.appendHoverText(itemstack, world, list, flag);
     }
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity){

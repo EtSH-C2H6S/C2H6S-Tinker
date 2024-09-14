@@ -14,14 +14,14 @@
     },
     {
       "name": "etshtinker:fluxloaded",
-      "level": 10
+      "level": 2
     }
   ],
   "perStat" : {
     "tconstruct:armor": [
       {
         "name": "etshtinker:fluxloaded",
-        "level": 5
+        "level": 1
       },
       {
         "name": "etshtinker:thermaldefense",

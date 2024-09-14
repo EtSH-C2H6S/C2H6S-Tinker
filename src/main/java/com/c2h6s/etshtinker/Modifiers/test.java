@@ -20,6 +20,7 @@ public class test extends etshmodifieriii {
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isCorrectSlot&&holder instanceof Player player){
+            player.sendSystemMessage(Component.literal(player.level.getBiome(player.blockPosition()).toString()));
         }
     }
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){

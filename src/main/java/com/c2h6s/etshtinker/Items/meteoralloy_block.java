@@ -2,6 +2,7 @@ package com.c2h6s.etshtinker.Items;
 
 import com.c2h6s.etshtinker.init.etshtinkerTab;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -16,8 +17,12 @@ public class meteoralloy_block extends BlockItem {
     }
     @Override
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("etshtinker.item.tooltip.meteoralloy_block1").withStyle(ChatFormatting.YELLOW));
-        list.add(Component.translatable("etshtinker.item.tooltip.meteoralloy_block2").withStyle(ChatFormatting.RED));
+        if (Screen.hasShiftDown()) {
+            list.add(Component.translatable("etshtinker.item.tooltip.meteoralloy_block1").withStyle(ChatFormatting.YELLOW));
+            list.add(Component.translatable("etshtinker.item.tooltip.meteoralloy_block2").withStyle(ChatFormatting.RED));
+        }else {
+            list.add(Component.translatable("etshtinker.item.tooltip.shift").withStyle(ChatFormatting.YELLOW));
+        }
         super.appendHoverText(itemstack, world, list, flag);
     }
 }

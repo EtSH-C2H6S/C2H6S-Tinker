@@ -29,6 +29,7 @@ public class renderScikle extends EntityRenderer<ShurikenEntityBase> {
             matrixStackIn.translate(-0.03125, -0.09375, 0);
             this.itemRenderer.renderStatic(entity.getItem(), ItemTransforms.TransformType.GROUND, packedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn, entity.getId());
             matrixStackIn.popPose();
+            
             super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         }
     }
