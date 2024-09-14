@@ -3,7 +3,9 @@ package com.c2h6s.etshtinker.init.ItemReg;
 import com.c2h6s.etshtinker.Entities.*;
 import com.c2h6s.etshtinker.init.etshtinkerBlocks;
 import com.c2h6s.etshtinker.init.etshtinkerTab;
+import com.c2h6s.etshtinker.tools.item.tinker.ConstrainedPlasmaSaber;
 import com.c2h6s.etshtinker.tools.item.tinker.IonizedCannon;
+import com.c2h6s.etshtinker.tools.stats.PlasmaGeneratorMaterialStats;
 import com.c2h6s.etshtinker.tools.stats.fluidChamberMaterialStats;
 import com.c2h6s.etshtinker.tools.stats.ionizerMaterialStats;
 import net.minecraft.world.item.BlockItem;
@@ -55,16 +57,29 @@ public class etshtinkerItems {
     public static final RegistryObject<Item> enchantedsword = ITEMS.register("enchantedsword", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> night_slash_a = ITEMS.register("night_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> night_slash_b = ITEMS.register("night_slash_b", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_anti = ITEMS.register("plasma_slash_anti", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_blue = ITEMS.register("plasma_slash_blue", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_cyan = ITEMS.register("plasma_slash_cyan", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_green = ITEMS.register("plasma_slash_green", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_lime = ITEMS.register("plasma_slash_lime", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_orange = ITEMS.register("plasma_slash_orange", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_purple = ITEMS.register("plasma_slash_purple", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_red = ITEMS.register("plasma_slash_red", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_yellow = ITEMS.register("plasma_slash_yellow", ()->new Item(new Item.Properties()));
 
 
     //工具
-    public static final RegistryObject<ModifiableItem> IONIZED_CANNON = ITEMS.register("ionized_cannon", () -> new IonizedCannon(TOOL, toolDefinitions.IONIZED_CANNON));;
+    public static final RegistryObject<ModifiableItem> IONIZED_CANNON = ITEMS.register("ionized_cannon", () -> new IonizedCannon(TOOL, toolDefinitions.IONIZED_CANNON));
+    public static final RegistryObject<ModifiableItem> constrained_plasma_saber = ITEMS.register("constrained_plasma_saber", () -> new ConstrainedPlasmaSaber(TOOL, toolDefinitions.CONSTRAINED_PLASMA_SABER));
+
+
 
 
 
     //部件
     public static final RegistryObject<ToolPartItem> ionizer = ITEMS.register("ionizer", () -> new ToolPartItem(PARTS, ionizerMaterialStats.ID));
     public static final RegistryObject<ToolPartItem> fluid_chamber = ITEMS.register("fluid_chamber", () -> new ToolPartItem(PARTS, fluidChamberMaterialStats.ID));
+    public static final RegistryObject<ToolPartItem> plasma_generator = ITEMS.register("plasma_generator", () -> new ToolPartItem(PARTS, PlasmaGeneratorMaterialStats.ID));
 
 
 

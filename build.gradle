@@ -1,3 +1,15 @@
+buildscript {
+    repositories {
+        // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6.0.21+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7.+'
+    }
+}
+
 plugins {
     id 'eclipse'
     id 'idea'
@@ -5,7 +17,9 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = '1.19.2-2.0.0-alpha-07'
+apply plugin: 'org.spongepowered.mixin'
+
+version = '1.19.2-2.0.0-alpha-08'
 group = 'com.c2h6s.etshtinker'
 
 base {
@@ -87,11 +101,13 @@ minecraft {
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', "etshtinker"
+            arg '-mixin.config=etshtinker.mixins.json'
         }
 
         server {
             property 'forge.enabledGameTestNamespaces', "etshtinker"
             args '--nogui'
+            arg '-mixin.config=etshtinker.mixins.json'
         }
 
         // This run config launches GameTestServer and runs all registered gametests, then exits.
@@ -99,12 +115,13 @@ minecraft {
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
             property 'forge.enabledGameTestNamespaces', "etshtinker"
+            arg '-mixin.config=etshtinker.mixins.json'
         }
 
         data {
             // example of overriding the workingDirectory set in configureEach above
             workingDirectory project.file('run-data')
-
+            arg '-mixin.config=etshtinker.mixins.json'
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', "etshtinker", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
@@ -147,6 +164,7 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -178,7 +196,8 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : "c2h6s",
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "etshtinker.mixins.json"
         ])
     }
 
@@ -207,3 +226,7 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+mixin {
+    add sourceSets.main, "etshtinker.refmap.json"
+}
+
