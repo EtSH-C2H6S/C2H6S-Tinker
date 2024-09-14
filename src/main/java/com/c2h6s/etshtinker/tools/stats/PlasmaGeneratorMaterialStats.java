@@ -18,9 +18,9 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public record PlasmaGeneratorMaterialStats(float damageMultiplier, float criticalRate, float fluidEfficiency) {
+public record PlasmaGeneratorMaterialStats(float damageMultiplier, float criticalRate, float fluidEfficiency) implements IMaterialStats{
     public static final MaterialStatsId ID = new MaterialStatsId(MOD_ID, "plasma_generator");
-    public static final MaterialStatType<ionizerMaterialStats> TYPE=new MaterialStatType(ID, new ionizerMaterialStats(0F, 0F,0f), RecordLoadable.create( FloatLoadable.ANY.defaultField("cooldown", 0.0F, true, ionizerMaterialStats::cooldown),FloatLoadable.ANY.defaultField("plasmarange", 1.0F, true, ionizerMaterialStats::baseRange),FloatLoadable.ANY.defaultField("damagemultiplier", 0.0F, true, ionizerMaterialStats::damageMultiplier), ionizerMaterialStats::new));;
+    public static final MaterialStatType<PlasmaGeneratorMaterialStats> TYPE=new MaterialStatType(ID, new PlasmaGeneratorMaterialStats(0F, 0F,1f), RecordLoadable.create( FloatLoadable.ANY.defaultField("damagemultiplier", 0.0F, true, PlasmaGeneratorMaterialStats::damageMultiplier),FloatLoadable.ANY.defaultField("criticalrate", 0.0F, true, PlasmaGeneratorMaterialStats::criticalRate),FloatLoadable.ANY.defaultField("fluidefficiency", 1.0F, true, PlasmaGeneratorMaterialStats::fluidEfficiency), PlasmaGeneratorMaterialStats::new));;
     private static final String DAMAGE_PREFIX;
     private static final String CRITICAL_PREFIX;
     private static final String EFFICIENCY_PREFIX;

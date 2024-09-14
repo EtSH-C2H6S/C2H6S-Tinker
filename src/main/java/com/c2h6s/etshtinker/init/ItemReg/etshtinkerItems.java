@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.init.etshtinkerBlocks;
 import com.c2h6s.etshtinker.init.etshtinkerTab;
 import com.c2h6s.etshtinker.tools.item.tinker.ConstrainedPlasmaSaber;
 import com.c2h6s.etshtinker.tools.item.tinker.IonizedCannon;
+import com.c2h6s.etshtinker.tools.stats.PlasmaGeneratorMaterialStats;
 import com.c2h6s.etshtinker.tools.stats.fluidChamberMaterialStats;
 import com.c2h6s.etshtinker.tools.stats.ionizerMaterialStats;
 import net.minecraft.world.item.BlockItem;
@@ -69,7 +70,7 @@ public class etshtinkerItems {
 
     //工具
     public static final RegistryObject<ModifiableItem> IONIZED_CANNON = ITEMS.register("ionized_cannon", () -> new IonizedCannon(TOOL, toolDefinitions.IONIZED_CANNON));
-    public static final RegistryObject<ModifiableItem> constrained_plasma_saber = ITEMS.register("constrained_plasma_saber", () -> new ConstrainedPlasmaSaber(TOOL, toolDefinitions.IONIZED_CANNON));
+    public static final RegistryObject<ModifiableItem> constrained_plasma_saber = ITEMS.register("constrained_plasma_saber", () -> new ConstrainedPlasmaSaber(TOOL, toolDefinitions.CONSTRAINED_PLASMA_SABER));
 
 
 
@@ -78,6 +79,7 @@ public class etshtinkerItems {
     //部件
     public static final RegistryObject<ToolPartItem> ionizer = ITEMS.register("ionizer", () -> new ToolPartItem(PARTS, ionizerMaterialStats.ID));
     public static final RegistryObject<ToolPartItem> fluid_chamber = ITEMS.register("fluid_chamber", () -> new ToolPartItem(PARTS, fluidChamberMaterialStats.ID));
+    public static final RegistryObject<ToolPartItem> plasma_generator = ITEMS.register("plasma_generator", () -> new ToolPartItem(PARTS, PlasmaGeneratorMaterialStats.ID));
 
 
 
