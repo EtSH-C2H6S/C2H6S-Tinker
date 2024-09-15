@@ -7,6 +7,12 @@
     "etshtinker:fluid_chamber": {
       "fluid_capacity": 10000
     },
+    "etshtinker:plasma_generator": {
+      "damagemultiplier": 0.9,
+      "criticalrate": 0.7,
+      "fluidefficiency": 5,
+      "slash_color": 10
+    },
     "tconstruct:binding": {},
     "tconstruct:handle": {
       "durability": 1.5,

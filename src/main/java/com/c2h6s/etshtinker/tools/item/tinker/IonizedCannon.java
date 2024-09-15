@@ -138,6 +138,10 @@ public class IonizedCannon extends ModifiableItem {
         Fluid fluid =TANK_HELPER.getFluid(tool).getFluid();
         return getFluidparticle(fluid) == null;
     }
+    public boolean noFluid(IToolStackView tool){
+        FluidStack fluid =TANK_HELPER.getFluid(tool);
+        return fluid.getAmount()<=0;
+    }
     @Override
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         ToolStack tool = ToolStack.from(stack);
@@ -208,7 +212,12 @@ public class IonizedCannon extends ModifiableItem {
             }
         }
         else{
-            builder.add(Component.translatable("etshtinker.tool.tooltip.wrongfluid").withStyle(ChatFormatting.RED));
+            if (noFluid(tool)){
+                builder.add(Component.translatable("etshtinker.tool.tooltip.nofluid").withStyle(ChatFormatting.RED));
+            }
+            else {
+                builder.add(Component.translatable("etshtinker.tool.tooltip.wrongfluid").withStyle(ChatFormatting.RED));
+            }
         }
         Iterator var7 = tool.getModifierList().iterator();
 

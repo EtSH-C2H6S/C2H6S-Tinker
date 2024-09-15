@@ -66,6 +66,8 @@ public class etshtinkerItems {
     public static final RegistryObject<Item> plasma_slash_purple = ITEMS.register("plasma_slash_purple", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> plasma_slash_red = ITEMS.register("plasma_slash_red", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> plasma_slash_yellow = ITEMS.register("plasma_slash_yellow", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> plasma_slash_dark = ITEMS.register("plasma_slash_dark", ()->new Item(new Item.Properties()));
+
 
 
     //工具

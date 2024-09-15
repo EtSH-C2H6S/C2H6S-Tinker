@@ -595,6 +595,10 @@
   "etshtinker.tool.tooltip.cooldown": "冷却时间",
   "etshtinker.modifier.tooltip.trinitycurse": "以你目前的技术，无法在这个物品上留下任何痕迹...",
 
+  "etshtinker.tool.tooltip.wrongfluid": "无效流体",
+  "etshtinker.tool.tooltip.nofluid": "无流体",
+  "etshtinker.tool.tooltip.effectivefluid": "流体基础伤害",
+
   "item.etshtinker.ionized_cannon": "离子化射线炮",
   "item.etshtinker.ionized_cannon.description": "重型近战/远程两用武器，具有无限的耐久，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书)，对其路径上的敌人造成多段伤害。",
   "tool_stat.etshtinker.plasmarange": "射程",
@@ -602,13 +606,12 @@
   "tool_stat.etshtinker.cooldown": "冷却时间",
   "tool_stat.etshtinker.cooldown.description": "决定冷却的时间，单位为刻",
   "tool_stat.etshtinker.damagemultiplier": "伤害倍率",
-  "tool_stat.etshtinker.damagemultiplier.description": "伤害的倍率，离子波最终能造成的伤害会乘以此值",
+  "tool_stat.etshtinker.damagemultiplier.description": "伤害的倍率，最终能造成的伤害会乘以此值",
   "tool_stat.etshtinker.fluid_capacity": "流体容量",
   "tool_stat.etshtinker.fluid_capacity.description": "额外增加的流体容量",
   "tool_stat.etshtinker.multiplasma": "多重射击",
   "tool_stat.etshtinker.multiplasma.description": "额外发射的等离子体射线数量",
-  "etshtinker.tool.tooltip.wrongfluid": "离子化射线炮:无效流体",
-  "etshtinker.tool.tooltip.effectivefluid": "流体基础伤害",
+
   "etshtinker.tool.tooltip.fluidhasspecial" : "流体技能",
   "etshtinker.tool.tooltip.fluidspecial.antimatter_explosion": "大型爆炸",
   "etshtinker.tool.tooltip.fluidspecial.explosion": "爆炸",
@@ -628,6 +631,29 @@
   "item.etshtinker.fluid_chamber": "储液器",
   "item.etshtinker.ionizer": "离子化腔",
 
+  "item.etshtinker.constrained_plasma_saber": "约束等离子阔剑",
+  "item.etshtinker.constrained_plasma_saber.description": "高攻速近战武器，具有无限的耐久，使用时副手不能有其它工具。挥舞时消耗工具存储的冶炼炉燃料释放等离子波，造成范围伤害，伤害受燃料的温度影响。",
+  "tool_stat.etshtinker.critical_rate": "暴击率",
+  "tool_stat.etshtinker.critical_rate.description": "攻击时发生暴击的概率",
+  "tool_stat.etshtinker.fluid_efficiency": "流体效率",
+  "tool_stat.etshtinker.fluid_efficiency.description": "流体的消耗量最终会除以此值",
+  "item.etshtinker.plasma_generator": "约束场发生器",
+
+  "etshtinker.tool.tooltip.offhand_hastool": "错误:副手有工具",
+  "etshtinker.tool.tooltip.nofluid": "没有流体",
+
+  "etshtinker.tooltip.slashcolor_index": "斩击颜色",
+  "etshtinker.tooltip.red": "红色",
+  "etshtinker.tooltip.orange": "橙色",
+  "etshtinker.tooltip.yellow": "黄色",
+  "etshtinker.tooltip.lime": "黄绿色",
+  "etshtinker.tooltip.green": "绿色",
+  "etshtinker.tooltip.cyan": "青色",
+  "etshtinker.tooltip.blue": "蓝色",
+  "etshtinker.tooltip.purple": "紫色",
+  "etshtinker.tooltip.anti": "反",
+  "etshtinker.tooltip.dark": "暗影",
+  "etshtinker.tooltip.rainbow": "彩色",
 
 
   "item.etshtinker.sculk_energycore": "幽匿能量核心",
