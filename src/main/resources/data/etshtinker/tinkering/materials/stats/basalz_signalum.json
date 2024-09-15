@@ -8,10 +8,10 @@
       "fluid_capacity": 10000
     },
     "etshtinker:plasma_generator": {
-      "damagemultiplier": 0.9,
+      "damagemultiplier": -0.1,
       "criticalrate": 0.7,
       "fluidefficiency": 1.25,
-      "slash_color": 2
+      "slash_color": 1
     },
     "tconstruct:binding": {},
     "tconstruct:handle": {

@@ -3,6 +3,7 @@ import com.c2h6s.etshtinker.Mapping.*;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshRadiationShieldCap;
 import com.c2h6s.etshtinker.client.book.etshtinkerBook;
 //import com.c2h6s.etshtinker.config.etshtinkerConfig;
+//import com.c2h6s.etshtinker.client.gui.adrenaline.AdrenalineHUD;
 import com.c2h6s.etshtinker.init.*;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.entityReg.etshtinkerBotEntity;
@@ -10,11 +11,14 @@ import com.c2h6s.etshtinker.init.modifierReg.etshtinkerBotModifier;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifierfluxed;
 import com.c2h6s.etshtinker.init.ItemReg.*;
@@ -33,6 +37,7 @@ public class etshtinker {
     public etshtinker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::commonSetup);
+        //eventBus.addListener(this::registerGuiOverlay);
         etshtinkerItems.ITEMS.register(eventBus);//物品
         etshtinkerModifiers.MODIFIERS.register(eventBus);//词条类
         etshtinkerFluids.FLUIDS.register(eventBus);//流体类
@@ -92,6 +97,12 @@ public class etshtinker {
         packetHandler.init();
         if (Mekenabled){
             event.enqueueWork(ionizerFluidMapMek::extendMap);
+        }
+    }
+    @SubscribeEvent
+    public void registerGuiOverlay(RegisterGuiOverlaysEvent event){
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            //event.registerAboveAll("adrenalin", AdrenalineHUD.ADRENALINE_OVERLAY);
         }
     }
 }

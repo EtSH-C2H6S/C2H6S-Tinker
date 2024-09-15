@@ -643,6 +643,7 @@
   "tool_stat.etshtinker.fluidefficiency": "流体效率",
   "tool_stat.etshtinker.fluidefficiency.description": "流体的消耗量最终会除以此值",
   "item.etshtinker.plasma_generator": "约束场发生器",
+  "stat.etshtinker.plasma_generator": "约束场发生器",
 
   "etshtinker.tool.tooltip.fluid_efficiency": "流体效率",
   "etshtinker.tool.tooltip.critical_rate": "暴击率",
@@ -755,5 +756,7 @@
 
 
   "death.attack.etshtinker.annihilate": "%1$s 变成了纯粹的能量",
-  "death.attack.etshtinker.annihilate.player": "%1$s 变成了纯粹的能量"
+  "death.attack.etshtinker.annihilate.player": "%1$s 变成了纯粹的能量",
+  "death.attack.etshtinker.pierce": "%1$s 被穿透了",
+  "death.attack.etshtinker.pierce.player": "%1$s 被 %2$s 穿透了"
 }

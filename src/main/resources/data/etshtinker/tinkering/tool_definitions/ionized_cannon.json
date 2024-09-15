@@ -10,7 +10,7 @@
         },
         {
           "item": "tconstruct:broad_blade",
-          "scale": 0.75
+          "scale": 1
         },
         "etshtinker:ionizer"
       ]
@@ -39,15 +39,15 @@
     {
       "type": "tconstruct:base_stats",
       "stats": {
-        "tconstruct:attack_damage": 1,
-        "tconstruct:attack_speed": 1
+        "tconstruct:attack_damage": 1.2,
+        "tconstruct:attack_speed": 0.8
       }
     },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 1.2,
-        "tconstruct:attack_speed": 1.2
+        "tconstruct:attack_damage": 1.4,
+        "tconstruct:attack_speed": 0.8
       }
     },
     {

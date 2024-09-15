@@ -21,8 +21,7 @@ public class packetHandler {
         INSTANCE.registerMessage(id++, alfbeamPacket.class, alfbeamPacket::encode, alfbeamPacket::decode, alfbeamPacket::handle);
         INSTANCE.registerMessage(id++, nightslashPacket.class, nightslashPacket::encode, nightslashPacket::decode, nightslashPacket::handle);
         INSTANCE.registerMessage(id++, plasmaSlashPacket.class, plasmaSlashPacket::encode, plasmaSlashPacket::decode, plasmaSlashPacket::handle);
-
-
+        INSTANCE.registerMessage(id++, adrenalineSyncPacket.class, adrenalineSyncPacket::encode, adrenalineSyncPacket::decode, adrenalineSyncPacket::handle);
     }
 
     public static <MSG> void sendToServer(MSG msg){

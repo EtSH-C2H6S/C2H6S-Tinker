@@ -1,8 +1,11 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.network.handler.packetHandler;
+import com.c2h6s.etshtinker.network.packet.adrenalineSyncPacket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -30,6 +33,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
+import static com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource.PlayerPierce;
 import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
 import java.util.List;
@@ -96,6 +100,9 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
         if (toolData.getInt(adrenaline)<90&&toolData.getInt(sound1)==0){
             toolData.putInt(sound1, 1);
         }
+        if (livingEntity instanceof ServerPlayer player) {
+            packetHandler.sendToPlayer(new adrenalineSyncPacket(toolData.getInt(adrenaline), isSelected),player);
+        }
     }
 
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
@@ -106,13 +113,13 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
         if (toolData.getInt(adrenaline) > 99&&attacker instanceof Player player){
             attacker.invulnerableTime = 5;
             attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 120, 9));
-            attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120, 2));
-            attacker.heal(3);
+            attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120, 4));
+            attacker.heal(5);
             if (target instanceof LivingEntity) {
                 if (getMainLevel(player,this)>0) {
                     DamageSource.playerAttack(player).bypassArmor().bypassMagic();
                     target.invulnerableTime = 0;
-                    target.hurt(DamageSource.playerAttack(player), damage * 20);
+                    target.hurt(PlayerPierce(player,damage*25), damage * 25);
                 }
             }
             world.playSound( null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.TOTEM_USE, SoundSource.NEUTRAL, 0.7F, 1.0F);
