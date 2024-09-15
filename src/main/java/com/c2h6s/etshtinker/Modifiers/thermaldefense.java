@@ -54,20 +54,20 @@ public class thermaldefense extends etshmodifieriii {
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
             int level = holder.get(key, 0);
             if (level > 0) {
-                living.invulnerableTime += 10*level;
+                living.invulnerableTime += 5*level;
             }
         });
     }
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.ARMOR.multiply(builder,1+0.25*modifier.getLevel());
+        ToolStats.ARMOR.multiply(builder,1+0.2*modifier.getLevel());
     }
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         SecureRandom random =EtSHrnd();
         if (random.nextInt(20)>modifier.getLevel()){
             LivingEntity entity =context.getEntity();
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,2,false,false));
-            return amount*(1-0.15f*modifier.getLevel());
+            return amount*(1-0.05f*modifier.getLevel());
         }
         else return  0;
     }
@@ -82,7 +82,7 @@ public class thermaldefense extends etshmodifieriii {
                 attacker.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0, false, false));
                 AttributeInstance attribute = attacker.getAttributes().getInstance(Attributes.ARMOR);
                 if (attribute!=null){
-                    attribute.setBaseValue(attribute.getBaseValue()-0.75*attacker.getArmorValue());
+                    attribute.setBaseValue(attribute.getBaseValue()-0.5*attacker.getArmorValue());
                 }
                 summonElectricField(attacker.level, attacker, new Vec3(attacker.getX(), attacker.getY(), attacker.getZ()), 8, 120, modilvl);
             }

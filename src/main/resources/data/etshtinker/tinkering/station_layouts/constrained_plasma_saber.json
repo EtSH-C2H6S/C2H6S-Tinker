@@ -54,7 +54,7 @@
 
     {
       "filter": {
-        "item": "etshtinker:ionizer"
+        "item": "etshtinker:plasma_generator"
       },
       "icon": "etshtinker:plasma_generator",
       "translation_key": "item.etshtinker.plasma_generator",

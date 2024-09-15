@@ -67,7 +67,7 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
                             explode.target =attacker;
                         }
                         explode.setPos(player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ());
-                        explode.damage=2048*lvl;
+                        explode.damage=1024*lvl;
                         explode.setOwner(player);
                         player.level.addFreshEntity(explode);
                         event.setCanceled(true);
@@ -78,11 +78,11 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
                             if (stack.getItem() == anti_neutronium.get() && stack.getCount() > 0) {
                                 while (stack.getCount()>0&&event.getAmount()>0){
                                     stack.setCount(stack.getCount()-1);
-                                    if (event.getAmount()>2048*lvl){
-                                        event.setAmount(event.getAmount()-2048*lvl);
+                                    if (event.getAmount()>1024*lvl){
+                                        event.setAmount(event.getAmount()-1024*lvl);
                                     }else {
                                         event.setAmount(0);
-                                        toolData.putFloat(antineutron,toolData.getFloat(antineutron)-event.getAmount()+2048*lvl);
+                                        toolData.putFloat(antineutron,toolData.getFloat(antineutron)-event.getAmount()+1024*lvl);
                                     }
                                     if (event.getAmount()<=0){
                                         event.setCanceled(true);
@@ -93,7 +93,7 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
                                         explode.target =attacker;
                                     }
                                     explode.setPos(player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ());
-                                    explode.damage=2048*lvl;
+                                    explode.damage=1024*lvl;
                                     explode.setOwner(player);
                                     player.level.addFreshEntity(explode);
                                 }

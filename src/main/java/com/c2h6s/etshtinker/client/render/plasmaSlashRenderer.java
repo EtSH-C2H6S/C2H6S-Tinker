@@ -24,11 +24,12 @@ public class plasmaSlashRenderer extends EntityRenderer<PlasmaSlashEntity> {
     public void render(PlasmaSlashEntity entity, float entityYaw, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn) {
         if (entity.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(entity) < 12.25D)) {
             matrixStackIn.pushPose();
-            matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(Mth.lerp(entityYaw, entity.yRotO, entity.getYRot()) ));
+            matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(Mth.lerp(entityYaw, entity.yRotO, entity.getYRot())- 90.0F ));
             matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(Mth.lerp(entityYaw, entity.xRotO, entity.getXRot())));
-            matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(entity.angle));
-            matrixStackIn.translate(-0.03125, -0.09375,0);
-            this.itemRenderer.renderStatic(entity.Slash, ItemTransforms.TransformType.GROUND, packedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn, entity.getId());
+            matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(270+entity.angle));
+            matrixStackIn.translate(-0.03125*entity.size, -0.09375*entity.size,0);
+            matrixStackIn.scale(entity.size,entity.size,1);
+            this.itemRenderer.renderStatic(entity.getSlash(), ItemTransforms.TransformType.GROUND, packedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn, entity.getId());
             matrixStackIn.popPose();
             super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         }

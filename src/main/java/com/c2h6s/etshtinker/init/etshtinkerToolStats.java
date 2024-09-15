@@ -17,6 +17,7 @@ public class etshtinkerToolStats {
     public static final FloatToolStat SCALE = (FloatToolStat) ToolStats.register(new FloatToolStat(name("scale"), -3135232, 1.0F, 0.0F, Integer.MAX_VALUE));
     public static final FloatToolStat FLUID_EFFICIENCY = (FloatToolStat) ToolStats.register(new FloatToolStat(name("fluid_efficiency"), -3135232, 1.0F, 0.0F, 100));
     public static final FloatToolStat CRITICAL_RATE = (FloatToolStat) ToolStats.register(new FloatToolStat(name("critical_rate"), -3135232, 0.0F, 0.0F, 1));
+    public static final FloatToolStat SLASH_COLOR =(FloatToolStat) ToolStats.register(new FloatToolStat(name("slash_color"), -3135232, 0.0F, 0.0F, 11));
 
     private static ToolStatId name(String name) {
         return new ToolStatId(MOD_ID, name);

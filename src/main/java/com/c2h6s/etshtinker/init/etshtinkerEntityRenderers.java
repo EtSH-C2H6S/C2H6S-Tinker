@@ -32,6 +32,17 @@ public class etshtinkerEntityRenderers {
         event.registerEntityRenderer(etshtinkerEntity.enchantedswordentity.get(), renderenchantsword::new);
         event.registerEntityRenderer(etshtinkerEntity.nights_slash_entity.get(), renderNightSlash::new);
         event.registerEntityRenderer(etshtinkerEntity.nights_slash_entity_b.get(), renderNightSlash::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_red.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_rainbow.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_lime.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_anti.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_blue.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_cyan.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_dark.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_green.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_orange.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_purple.get(), plasmaSlashRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.plasma_slash_yellow.get(), plasmaSlashRenderer::new);
         if (BOTloaded){
             event.registerEntityRenderer(etshtinkerBotEntity.ALFBURST.get(), NoopRenderer::new);
         }
