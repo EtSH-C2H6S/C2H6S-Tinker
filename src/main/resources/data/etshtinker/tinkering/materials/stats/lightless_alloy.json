@@ -4,7 +4,7 @@
       "fluid_capacity": 3000
     },
     "etshtinker:plasma_generator": {
-      "damagemultiplier": 0.75,
+      "damagemultiplier": 1,
       "criticalrate": 0.25,
       "fluidefficiency": 0.5,
       "slash_color": 9

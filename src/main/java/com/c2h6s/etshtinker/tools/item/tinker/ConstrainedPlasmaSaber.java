@@ -93,7 +93,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         if (fluidStack.getAmount()< consumption){
             return;
         }
-        float damage = (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER))*(tool.getStats().get(ToolStats.ATTACK_DAMAGE)/2)*getFuelDamage(fuel);
+        float damage = (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER))*(tool.getStats().get(ToolStats.ATTACK_DAMAGE))*getFuelDamage(fuel);
         ItemStack color = getSlash(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
         Level level =player.getLevel();
         EntityType<PlasmaSlashEntity> entityType = getSlashType(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
@@ -129,11 +129,11 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     public static float getFuelDamage(MeltingFuel fuel){
-        return fuel.getTemperature()*0.0008f;
+        return fuel.getTemperature()*0.003f;
     }
 
     public static int getFuelCumsp(MeltingFuel fuel,Fluid fluid,IToolStackView tool){
-        return (int) Math.max( fuel.getAmount(fluid)*10/(fuel.getDuration()*tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY)),5);
+        return (int) Math.max( fuel.getAmount(fluid)*15/(fuel.getDuration()*tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY)),4);
     }
 
 
