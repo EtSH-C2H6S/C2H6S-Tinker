@@ -43,6 +43,6 @@ public class etshtinkerEntity {
 
 
     public static RegistryObject<EntityType<PlasmaSlashEntity>> registerPlasmaSlash(String name,RegistryObject<EntityType<PlasmaSlashEntity>> Type,int index){
-        return ENTITIES.register(name, () -> EntityType.Builder.<PlasmaSlashEntity>of((entityType, level)-> new PlasmaSlashEntity(entityType, level,getSlash(index)), MobCategory.MISC).sized(1F, 0.1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new PlasmaSlashEntity(Type.get(), world,getSlash(index))).setShouldReceiveVelocityUpdates(true));
+        return ENTITIES.register(name, () -> EntityType.Builder.<PlasmaSlashEntity>of((entityType, level)-> new PlasmaSlashEntity(entityType, level,getSlash(index)), MobCategory.MISC).sized(3F, 0.1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new PlasmaSlashEntity(Type.get(), world,getSlash(index))).setShouldReceiveVelocityUpdates(true));
     }
 }

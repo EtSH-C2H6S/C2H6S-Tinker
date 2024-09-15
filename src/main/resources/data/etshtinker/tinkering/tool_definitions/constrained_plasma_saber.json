@@ -9,15 +9,11 @@
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.2
+          "scale": 0.4
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.2
-        },
-        {
-          "item": "tconstruct:tough_handle",
-          "scale": 0.2
+          "scale": 0.4
         },
         "etshtinker:fluid_chamber",
         "etshtinker:plasma_generator"

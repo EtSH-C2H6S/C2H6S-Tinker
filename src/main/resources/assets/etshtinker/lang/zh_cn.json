@@ -638,12 +638,14 @@
 
   "item.etshtinker.constrained_plasma_saber": "约束等离子阔剑",
   "item.etshtinker.constrained_plasma_saber.description": "高攻速近战武器，具有无限的耐久，使用时副手不能有其它工具。挥舞时消耗工具存储的冶炼炉燃料释放等离子波，造成范围伤害，伤害受燃料的温度影响。",
-  "tool_stat.etshtinker.critical_rate": "暴击率",
-  "tool_stat.etshtinker.critical_rate.description": "攻击时发生暴击的概率",
-  "tool_stat.etshtinker.fluid_efficiency": "流体效率",
-  "tool_stat.etshtinker.fluid_efficiency.description": "流体的消耗量最终会除以此值",
+  "tool_stat.etshtinker.criticalrate": "暴击率",
+  "tool_stat.etshtinker.criticalrate.description": "攻击时发生暴击的概率",
+  "tool_stat.etshtinker.fluidefficiency": "流体效率",
+  "tool_stat.etshtinker.fluidefficiency.description": "流体的消耗量最终会除以此值",
   "item.etshtinker.plasma_generator": "约束场发生器",
 
+  "etshtinker.tool.tooltip.fluid_efficiency": "流体效率",
+  "etshtinker.tool.tooltip.critical_rate": "暴击率",
   "etshtinker.tool.tooltip.offhand_hastool": "错误:副手有工具",
   "etshtinker.tool.tooltip.nofluid": "没有流体",
 
