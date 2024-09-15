@@ -79,9 +79,9 @@ public record PlasmaGeneratorMaterialStats(float damageMultiplier, float critica
     }
 
     static {
-        DAMAGE_PREFIX = IMaterialStats.makeTooltipKey(etshtinker.getResourceLoc("fluidefficiency"));
+        DAMAGE_PREFIX = IMaterialStats.makeTooltipKey(etshtinker.getResourceLoc("damagemultiplier"));
         CRITICAL_PREFIX = IMaterialStats.makeTooltipKey(etshtinker.getResourceLoc("criticalrate"));
-        EFFICIENCY_PREFIX = IMaterialStats.makeTooltipKey(etshtinker.getResourceLoc("damagemultiplier"));
+        EFFICIENCY_PREFIX = IMaterialStats.makeTooltipKey(etshtinker.getResourceLoc("fluidefficiency"));
         COLOR_PREFIX = IMaterialStats.makeTooltipKey(etshtinker.getResourceLoc("slashcolor"));
         DESCRIPTION = ImmutableList.of(IMaterialStats.makeTooltip(etshtinker.getResourceLoc("plasma_generator.damagemultiplier.description")), IMaterialStats.makeTooltip(etshtinker.getResourceLoc("plasma_generator.criticalrate.description")),IMaterialStats.makeTooltip(etshtinker.getResourceLoc("plasma_generator.fluidefficiency.description")),IMaterialStats.makeTooltip(etshtinker.getResourceLoc("plasma_generator.slashcolor.description")));
     }

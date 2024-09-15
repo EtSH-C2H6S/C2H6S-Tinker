@@ -115,7 +115,11 @@
 
   "modifier.etshtinker.electrified": "电流附加",
   "modifier.etshtinker.electrified.flavor": "雷电法王",
-  "modifier.etshtinker.electrified.description":"攻击敌人/穿戴时受到攻击时给一定范围内敌人施加电离和缓慢，造成百分比伤害",
+  "modifier.etshtinker.electrified.description":"攻击敌人时给一定范围内敌人施加电离和缓慢，造成百分比伤害",
+
+  "modifier.etshtinker.electricarmor": "电流附加",
+  "modifier.etshtinker.electricarmor.flavor": "雷电法王",
+  "modifier.etshtinker.electricarmor.description":"受到攻击时给一定范围内敌人施加电离和缓慢，造成百分比伤害",
 
   "modifier.etshtinker.extralight": "究极轻盈",
   "modifier.etshtinker.extralight.flavor": "影流之主",
@@ -551,6 +555,7 @@
   "effect.etshtinker.ionized": "电离",
   "effect.etshtinker.novaradiation": "新星辐射",
   "effect.etshtinker.cursefire": "咒火",
+  "effect.etshtinker.destruction": "毁灭倒计时",
 
 
 
@@ -638,6 +643,7 @@
   "tool_stat.etshtinker.fluidefficiency": "流体效率",
   "tool_stat.etshtinker.fluidefficiency.description": "流体的消耗量最终会除以此值",
   "item.etshtinker.plasma_generator": "约束场发生器",
+  "stat.etshtinker.plasma_generator": "约束场发生器",
 
   "etshtinker.tool.tooltip.fluid_efficiency": "流体效率",
   "etshtinker.tool.tooltip.critical_rate": "暴击率",
@@ -694,6 +700,7 @@
   "etshtinker.item.tooltip.activated_chroma_plate": "彩钢是与各种元素能量亲和度都很高的金属，",
   "etshtinker.item.tooltip.activated_chroma_plate3": "或许你会好奇进一步引入元素能量会发生什么...",
   "etshtinker.item.tooltip.activated_chroma_plate2": "离子化的活化彩钢也许是个很好的切入点。",
+  "etshtinker.item.tooltip.shift": "按下shift，聆听材料的故事...",
 
 
 
@@ -744,5 +751,12 @@
 
 
   "infuse_type.etshtinker.ultra_dense":"超致密",
-  "infuse_type.etshtinker.refined_glowstone":"强化荧石"
+  "infuse_type.etshtinker.refined_glowstone":"强化荧石",
+
+
+
+  "death.attack.etshtinker.annihilate": "%1$s 变成了纯粹的能量",
+  "death.attack.etshtinker.annihilate.player": "%1$s 变成了纯粹的能量",
+  "death.attack.etshtinker.pierce": "%1$s 被穿透了",
+  "death.attack.etshtinker.pierce.player": "%1$s 被 %2$s 穿透了"
 }

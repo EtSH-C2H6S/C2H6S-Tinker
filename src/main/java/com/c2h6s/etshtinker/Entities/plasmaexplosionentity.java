@@ -6,10 +6,12 @@ import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
+import com.c2h6s.etshtinker.util.attackUtil;
 import mekanism.api.MekanismAPI;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -26,6 +28,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.utils.Util;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -35,6 +38,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.modloaded.Cofhloaded;
 import static com.c2h6s.etshtinker.util.modloaded.Mekenabled;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
+import static slimeknights.tconstruct.library.tools.helper.ToolAttackUtil.getCooldownFunction;
 
 public class plasmaexplosionentity extends ItemProjectile{
     public Vec3 rayVec3 =new Vec3(0,0,0);
@@ -44,7 +48,10 @@ public class plasmaexplosionentity extends ItemProjectile{
     public String special =null;
     public ToolStack tool =null;
     public float scale =1;
-    private SecureRandom random =EtSHrnd();
+    public float criticalChance =0.0f;
+    public boolean isCritical =Math.abs(EtSHrnd().nextFloat())<criticalChance;
+    public InteractionHand HAND = InteractionHand.MAIN_HAND;
+    private final SecureRandom random =EtSHrnd();
     public List<SimpleParticleType> lsp=List.of(
             etshtinkerParticleType.plasmaexplosionred.get(),
             etshtinkerParticleType.plasmaexplosionorange.get(),
@@ -100,7 +107,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                     }
                 }
                 Vec3 pos = new Vec3(this.getX(), this.getY(), this.getZ());
-                if (world != null && vec3 != null && range > 0 && particle != null) {
+                if (vec3 != null && range > 0 && particle != null) {
                     int i = 0;
                     List<LivingEntity> ls1 = new ArrayList<>(List.of());
                     while (i < range) {
@@ -137,15 +144,16 @@ public class plasmaexplosionentity extends ItemProjectile{
                             for (LivingEntity target : ls0) {
                                 if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)) {
                                     target.invulnerableTime = 0;
-                                    ToolAttackUtil.attackEntity(tool, player, target);
+                                    attackUtil.attackEntity(tool,player,HAND,target,getCooldownFunction(player, InteractionHand.MAIN_HAND),true, Util.getSlotType(HAND),this.damage*0.75f,this.isCritical||EtSHrnd().nextInt(100)<10,true,true,true);
                                     target.invulnerableTime = 0;
-                                    target.hurt(DamageSource.playerAttack(player), damage * 0.5f);
-                                    target.invulnerableTime = 0;
+                                    ls1.add(target);
+                                }
+                                else if (special!=null&&special.equals("entropic")&&target!=null){
                                     ls1.add(target);
                                 }
                             }
                         }
-                        if (special != null && special.equals("random_scatter")) {
+                        if (special != null && (special.equals("random_scatter")||special.equals("entropic"))) {
                             vec3 = getScatteredVec3(vec3, 0.25);
                         }
                     }
@@ -197,7 +205,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                                         }
                                         targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 100, 4), this.getOwner());
                                         targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4), this.getOwner());
-                                    } else if (special.equals("elemental")){
+                                    } else if (special.equals("elemental")||special.equals("entropic")){
                                         targets.invulnerableTime = 0;
                                         targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
                                         targets.invulnerableTime = 0;
@@ -208,14 +216,14 @@ public class plasmaexplosionentity extends ItemProjectile{
                                         targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
                                         targets.invulnerableTime = 0;
                                         targets.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS,100,4,false,false),this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,4,false,false),this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,100,4,false,false),this.getOwner());
+                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS,50,4,false,false),this.getOwner());
+                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,50,4,false,false),this.getOwner());
+                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,50,4,false,false),this.getOwner());
                                         if (Cofhloaded){
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(),100,4,false,false),this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(),100,4,false,false),this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),100,4,false,false),this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),100,4,false,false),this.getOwner());
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(),50,4,false,false),this.getOwner());
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(),50,4,false,false),this.getOwner());
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),50,4,false,false),this.getOwner());
+                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),50,4,false,false),this.getOwner());
                                         }
                                     }
                                 }
@@ -250,11 +258,9 @@ public class plasmaexplosionentity extends ItemProjectile{
                     List<LivingEntity> ls0 =this.level.getEntitiesOfClass(LivingEntity.class,aabb.expandTowards(vec3.scale(2)));
                     for (LivingEntity target:ls0){
                         if (target!=null&&target!=this.getOwner()&&this.getOwner() instanceof Player player&&tool!=null&&!ls1.contains(target)){
-                            target.invulnerableTime=0;
-                            ToolAttackUtil.attackEntity(tool,player,target);
-                            target.invulnerableTime=0;
-                            target.hurt(DamageSource.playerAttack(player),damage);
-                            target.invulnerableTime=0;
+                            target.invulnerableTime = 0;
+                            attackUtil.attackEntity(tool,player,HAND,target,getCooldownFunction(player, InteractionHand.MAIN_HAND),true, Util.getSlotType(HAND),this.damage, this.isCritical ||( EtSHrnd().nextInt(100)<45), true,true,true);
+                            target.invulnerableTime = 0;
                             ls1.add(target);
                         }
                     }
