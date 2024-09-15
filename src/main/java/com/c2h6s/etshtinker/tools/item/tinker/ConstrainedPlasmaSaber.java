@@ -129,7 +129,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     public static float getFuelDamage(MeltingFuel fuel){
-        return fuel.getTemperature()*0.003f;
+        return fuel.getTemperature()*0.005f;
     }
 
     public static int getFuelCumsp(MeltingFuel fuel,Fluid fluid,IToolStackView tool){
