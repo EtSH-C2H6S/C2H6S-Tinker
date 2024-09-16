@@ -14,6 +14,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.InventoryMenu;
 
+import static com.c2h6s.etshtinker.util.vecCalc.getMold;
+
 public class plasmaSlashRenderer extends EntityRenderer<PlasmaSlashEntity> {
 
     private final ItemRenderer itemRenderer;
@@ -27,8 +29,8 @@ public class plasmaSlashRenderer extends EntityRenderer<PlasmaSlashEntity> {
             matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(Mth.lerp(entityYaw, entity.yRotO, entity.getYRot())- 90.0F ));
             matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(Mth.lerp(entityYaw, entity.xRotO, entity.getXRot())));
             matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(270+entity.angle));
-            matrixStackIn.translate(-0.03125*entity.size, -0.09375*entity.size,0);
-            matrixStackIn.scale(entity.size,entity.size,1);
+            matrixStackIn.translate(-0.03125*Math.max(1, getMold(entity.getDeltaMovement())), -0.09375*Math.max(1, getMold(entity.getDeltaMovement())),0);
+            matrixStackIn.scale((float)Math.max(1, getMold(entity.getDeltaMovement())),(float) Math.max(1, getMold(entity.getDeltaMovement())),(float) Math.max(1, getMold(entity.getDeltaMovement())));
             this.itemRenderer.renderStatic(entity.getSlash(), ItemTransforms.TransformType.GROUND, packedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn, entity.getId());
             matrixStackIn.popPose();
             super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
