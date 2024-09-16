@@ -23,6 +23,27 @@
         {
             "path": "etshtinker:item/tool/ionized_cannon/tough_handle",
             "stat_type": "tconstruct:handle"
+        },
+
+        {
+            "path": "etshtinker:item/tool/plasma_generator/plasma_generator",
+            "stat_type": "tconstruct:head"
+        },
+        {
+            "path": "etshtinker:item/tool/constrained_plasma_saber/fluid_chamber",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "etshtinker:item/tool/constrained_plasma_saber/tough_handle_1",
+            "stat_type": "tconstruct:handle"
+        },
+        {
+            "path": "etshtinker:item/tool/constrained_plasma_saber/plasma_generator/plasma_generator",
+            "stat_type": "tconstruct:head"
+        },
+        {
+            "path": "etshtinker:item/tool/constrained_plasma_saber/tough_handle_2",
+            "stat_type": "tconstruct:handle"
         }
     ],
     "replace": false

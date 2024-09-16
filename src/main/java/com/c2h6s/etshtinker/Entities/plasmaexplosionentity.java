@@ -144,7 +144,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                             for (LivingEntity target : ls0) {
                                 if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)) {
                                     target.invulnerableTime = 0;
-                                    attackUtil.attackEntity(tool,player,HAND,target,getCooldownFunction(player, InteractionHand.MAIN_HAND),true, Util.getSlotType(HAND),this.damage*0.75f,this.isCritical||EtSHrnd().nextInt(100)<10,true,true,true);
+                                    attackUtil.attackEntity(tool,player,HAND,target,getCooldownFunction(player, InteractionHand.MAIN_HAND),true, Util.getSlotType(HAND),this.damage*0.75f,this.isCritical||EtSHrnd().nextInt(100)<10,true,true,true,0);
                                     target.invulnerableTime = 0;
                                     ls1.add(target);
                                 }
@@ -259,7 +259,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                     for (LivingEntity target:ls0){
                         if (target!=null&&target!=this.getOwner()&&this.getOwner() instanceof Player player&&tool!=null&&!ls1.contains(target)){
                             target.invulnerableTime = 0;
-                            attackUtil.attackEntity(tool,player,HAND,target,getCooldownFunction(player, InteractionHand.MAIN_HAND),true, Util.getSlotType(HAND),this.damage, this.isCritical ||( EtSHrnd().nextInt(100)<45), true,true,true);
+                            attackUtil.attackEntity(tool,player,HAND,target,()->1,true, Util.getSlotType(HAND),this.damage, this.isCritical ||( EtSHrnd().nextInt(100)<45), true,true,true,0);
                             target.invulnerableTime = 0;
                             ls1.add(target);
                         }

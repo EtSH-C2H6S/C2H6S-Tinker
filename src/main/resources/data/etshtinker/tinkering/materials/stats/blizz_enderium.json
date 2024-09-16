@@ -3,13 +3,13 @@
     "modid": "thermal",
     "type": "forge:mod_loaded"
   },
-  "conditions": [
-    {
-      "modid": "thermal",
-      "type": "forge:mod_loaded"
-    }
-  ],
   "stats": {
+    "etshtinker:plasma_generator": {
+      "damagemultiplier": 0.17,
+      "criticalrate": 0.455,
+      "fluidefficiency": 1.25,
+      "slash_color": 5
+    },
     "etshtinker:fluid_chamber": {
       "fluid_capacity": 10000
     },

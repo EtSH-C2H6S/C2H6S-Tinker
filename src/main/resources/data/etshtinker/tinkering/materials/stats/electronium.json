@@ -4,6 +4,12 @@
     "type": "forge:mod_loaded"
   },
   "stats": {
+    "etshtinker:plasma_generator": {
+      "damagemultiplier": 0.55,
+      "criticalrate": 0.15,
+      "fluidefficiency": 1.7,
+      "slash_color": 5
+    },
     "etshtinker:fluid_chamber": {
       "fluid_capacity": 80000
     },

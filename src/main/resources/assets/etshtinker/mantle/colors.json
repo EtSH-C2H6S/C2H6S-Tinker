@@ -87,7 +87,13 @@
     "radiationproof": "#22B14C",
     "nightsedge": "#AFFF00",
     "nightsenhance": "#25183D",
-    "hyperfluxloaded": "#FF2214"
+    "hyperfluxloaded": "#FF2214",
+    "electricarmor": "#AFFFFD",
+    "magic_damage": "#EECAFF",
+    "deep_catalysis": "#DEBAFF",
+    "heavy_crit": "#DEBAFF",
+    "power_enhance": "#DEBAFF",
+    "light_equipped": "#DEBAFF"
   },
   "material.etshtinker":
   {

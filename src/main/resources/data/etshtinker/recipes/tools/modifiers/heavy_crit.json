@@ -1,0 +1,30 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
+    },
+    {
+      "item": "minecraft:gold_block",
+      "amount_needed": 1
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
+    }
+  ],
+  "tools":[
+    {
+      "item": "etshtinker:constrained_plasma_saber"
+    }
+  ],
+  "slots": {
+    "upgrades": 1
+  },
+  "allow_crystal": true,
+  "result": "etshtinker:heavy_crit",
+  "level": {
+    "max": 5
+  }
+}
