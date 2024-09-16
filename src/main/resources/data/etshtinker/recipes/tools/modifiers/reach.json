@@ -1,0 +1,30 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
+    },
+    {
+      "item": "etshtinker:sculk_energycore",
+      "amount_needed": 1
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "amount_needed": 1
+    }
+  ],
+  "tools":[
+    {
+      "item": "etshtinker:constrained_plasma_saber"
+    }
+  ],
+  "slots": {
+    "abilities": 1
+  },
+  "allow_crystal": true,
+  "result": "tconstruct:reach",
+  "level": {
+    "max": 10
+  }
+}

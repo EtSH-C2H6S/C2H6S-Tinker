@@ -93,7 +93,9 @@
     "deep_catalysis": "#DEBAFF",
     "heavy_crit": "#DEBAFF",
     "power_enhance": "#DEBAFF",
-    "light_equipped": "#DEBAFF"
+    "light_equipped": "#DEBAFF",
+    "heavy_crit_ex": "#FF0094",
+    "annihilating_slash": "#FF0000"
   },
   "material.etshtinker":
   {

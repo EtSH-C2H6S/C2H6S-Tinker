@@ -30,8 +30,8 @@
     ],
     "etshtinker:plasma_generator": [
       {
-        "name": "etshtinker:heavy_crit",
-        "level": 10
+        "name": "etshtinker:heavy_crit_ex",
+        "level": 1
       }
     ]
   }

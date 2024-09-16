@@ -7,17 +7,23 @@
     "etshtinker:fluid_chamber": {
       "fluid_capacity": 131070
     },
+    "etshtinker:plasma_generator": {
+      "damagemultiplier": 2.55,
+      "criticalrate": 2.55,
+      "fluidefficiency": 0.1,
+      "slash_color": 8
+    },
     "tconstruct:head": {
       "durability": 64,
       "mining_speed": 99,
       "harvestTier": "minecraft:netherite",
-      "melee_attack": 2048
+      "melee_attack": 16
     },
     "tconstruct:handle": {
       "durability": 2,
       "mining_speed": 2,
       "melee_speed": 2,
-      "melee_damage": 255
+      "melee_damage": 2
     },
     "tconstruct:limb": {
       "durability": 32,

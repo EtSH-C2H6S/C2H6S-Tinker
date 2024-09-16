@@ -168,9 +168,9 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
         int amount =tool.getCurrentDurability();
         return amount >= max ? 13 : 1 + 13 * (amount - 1) / max;
     }
-
+    @Override
     public int getDurabilityRGB(IToolStackView tool, ModifierEntry modifier) {
         ModDataNBT toolData =tool.getPersistentData();
-        return toolData.getInt(adrenaline)>0 ? 0x9530FF : - 1;
+        return toolData.getInt(adrenaline)>99 ? 0x9530FF : - 1;
     }
 }

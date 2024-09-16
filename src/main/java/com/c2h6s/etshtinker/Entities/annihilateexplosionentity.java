@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.Entities;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.server.level.ServerLevel;
@@ -43,7 +44,7 @@ public class annihilateexplosionentity extends ItemProjectile{
     @Override
     public void tick() {
         Level level1 = this.level;
-        if (this.time==2&&level1!=null){
+        if (this.time == 2){
             level1.addAlwaysVisibleParticle(etshtinkerParticleType.annihilateexplosionparticle.get(),this.getX(),this.getY(),this.getZ(),0,0,0);
         }
         if (this.time>10){
@@ -66,7 +67,7 @@ public class annihilateexplosionentity extends ItemProjectile{
                 for (LivingEntity targets:livingEntities){
                     if (targets!=this.getOwner()){
                         targets.invulnerableTime=0;
-                        targets.hurt(DamageSource.playerAttack(player),this.damage);
+                        targets.hurt(playerThroughSource.PlayerAnnihilate(player,this.damage).bypassArmor(),this.damage);
                     }
                 }
             }

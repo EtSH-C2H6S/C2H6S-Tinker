@@ -1,6 +1,8 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.tools.item.tinker.ConstrainedPlasmaSaber;
+import com.c2h6s.etshtinker.tools.item.tinker.IonizedCannon;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -67,7 +69,7 @@ public class ultradenseex extends etshmodifieriii {
         ModDataNBT toolData =tool.getPersistentData();
         int modlvl10=tool.getModifierLevel(this);
         if (modlvl10>0&&isCorrectSlot&&!tool.isBroken()){
-            if (toolData.getFloat(multiplier)<=3*modlvl10 && !holder.swinging){
+            if (toolData.getFloat(multiplier)<=3*modlvl10 ){
                 toolData.putFloat(multiplier,toolData.getFloat(multiplier)+0.015f*modlvl10);
                 if (toolData.getFloat(multiplier)<=1) {
                     holder.attackAnim = (float) 5 / 6;
@@ -82,7 +84,13 @@ public class ultradenseex extends etshmodifieriii {
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
         ModDataNBT toolData =tool.getPersistentData();
         damage =damage*(float) Math.pow(toolData.getFloat(multiplier),2d);
-        toolData.putFloat(multiplier,0);
+        if (tool instanceof ConstrainedPlasmaSaber||tool instanceof IonizedCannon){
+            toolData.putFloat(multiplier, toolData.getFloat(multiplier)-0.1f);
+            return damage;
+        }
+        else {
+            toolData.putFloat(multiplier, 0);
+        }
         return damage;
 
     }

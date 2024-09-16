@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker.tools.item.tinker;
 
 import com.c2h6s.etshtinker.Entities.PlasmaSlashEntity;
+import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.plasmaSlashPacket;
@@ -22,6 +23,7 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.recipe.fuel.MeltingFuel;
@@ -32,6 +34,7 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.data.ModifierIds;
 import slimeknights.tconstruct.tools.item.ModifiableSwordItem;
 
 import java.util.Iterator;
@@ -100,7 +103,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         PlasmaSlashEntity slash =new PlasmaSlashEntity(entityType,level,color);
         slash.damage=damage;
         slash.setOwner(player);
-        slash.setDeltaMovement(player.getLookAngle());
+        slash.setDeltaMovement(player.getLookAngle().scale(tool.getModifierLevel(ModifierIds.reach)*0.5+1));
         slash.setToolstack(tool);
         slash.CriticalRate=tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE);
         double x =player.getLookAngle().x;

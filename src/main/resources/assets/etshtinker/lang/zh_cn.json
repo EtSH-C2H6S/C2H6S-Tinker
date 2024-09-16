@@ -99,7 +99,7 @@
 
   "modifier.etshtinker.controllableannihl": "可控湮灭",
   "modifier.etshtinker.controllableannihl.flavor": "3,2,1 毁灭！",
-  "modifier.etshtinker.controllableannihl.description":"[仅近战]工具的基础伤害被取消，全力攻击时消耗工具的1/4的耐久，造成一次湮灭爆炸，爆炸的伤害为工具的耐久。若工具耐久不超过最大耐久的25%则无法造成伤害。",
+  "modifier.etshtinker.controllableannihl.description":"工具的基础伤害被取消，全力攻击时消耗工具的1/4的耐久，造成一次湮灭爆炸，爆炸的伤害为工具的耐久。若工具耐久不超过最大耐久的25%则无法造成伤害。\n[对远程攻击、无耐久武器无效]",
 
   "modifier.etshtinker.modifiershocking": "震击",
   "modifier.etshtinker.modifiershocking.flavor": "滋滋滋！",
@@ -366,7 +366,7 @@
   "modifier.etshtinker.deep_catalysis.description":"每级增加0.25流体效率和0.1伤害倍率",
 
   "modifier.etshtinker.heavy_crit": "沉重一击",
-  "modifier.etshtinker.heavy_crit.flavor": "XXX发明了重力",
+  "modifier.etshtinker.heavy_crit.flavor": "重力势能的力量",
   "modifier.etshtinker.heavy_crit.description":"每级增加0.255暴击率但减少0.125攻速",
 
   "modifier.etshtinker.power_enhance": "功率提升",
@@ -376,6 +376,14 @@
   "modifier.etshtinker.light_equipped": "极致轻量化",
   "modifier.etshtinker.light_equipped.flavor": "轻装上阵",
   "modifier.etshtinker.light_equipped.description":"每级增加0.2攻速但减少0.05伤害倍率和15%流体容量",
+
+  "modifier.etshtinker.heavy_crit_ex": "沉重一击EX",
+  "modifier.etshtinker.heavy_crit_ex.flavor": "小时候看这集时发明了重力",
+  "modifier.etshtinker.heavy_crit_ex.description":"增加300%的暴击率(乘算)，但是-75%的攻击速度",
+
+  "modifier.etshtinker.annihilating_slash": "湮灭斩击",
+  "modifier.etshtinker.annihilating_slash.flavor": "Description: Null \njava.lang.NullPointerException: Cannot invoke \"slimeknights.tconstruct.library.tools.nbt.IToolStackView.isBroken()\" because \"tool\" is null\n",
+  "modifier.etshtinker.annihilating_slash.description":"斩击能攻击到的敌人减少，但是攻击敌人时造成湮灭爆炸",
 
 
 
