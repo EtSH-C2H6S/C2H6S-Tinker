@@ -55,7 +55,7 @@ public class attackUtil {
                 .filter(attribute -> !attribute.hasModifier(ANTI_KNOCKBACK_MODIFIER));
     }
 
-    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,boolean SetCritical,boolean notDamageTool,boolean removeInvTime,boolean ignoreEnchant) {
+    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,boolean SetCritical,boolean notDamageTool,boolean removeInvTime,boolean ignoreEnchant,float additionalCrit) {
         if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
             return false;
         }
@@ -104,9 +104,9 @@ public class attackUtil {
         }
 
 
-        float criticalModifier = isCritical ? 1.5f : 1.0f;
+        float criticalModifier = isCritical ? 1.5f+additionalCrit : 1.0f;
         if (attackerPlayer != null) {
-            CriticalHitEvent hitResult = ForgeHooks.getCriticalHit(attackerPlayer, targetEntity, isCritical, isCritical ? 1.5F : 1.0F);
+            CriticalHitEvent hitResult = ForgeHooks.getCriticalHit(attackerPlayer, targetEntity, isCritical, isCritical ? 1.5F+additionalCrit : 1.0F);
             isCritical = hitResult != null;
             if (isCritical) {
                 criticalModifier = hitResult.getDamageModifier();

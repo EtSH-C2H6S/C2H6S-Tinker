@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
-import static slimeknights.tconstruct.library.tools.helper.ToolAttackUtil.getCooldownFunction;
 
 public class PlasmaSlashEntity extends ItemProjectile {
     public final ItemStack Slash;
@@ -75,13 +74,12 @@ public class PlasmaSlashEntity extends ItemProjectile {
             AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(2)).expandTowards(vec3.scale(-1));
             List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
             int i = 0;
+            float overCrit =Math.max( CriticalRate -1,0);
             for (LivingEntity targets : ls0) {
                 if (targets != null && targets.isAlive() && targets != this.getOwner() && !hitList.contains(targets)) {
                     targets.invulnerableTime = 0;
-                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, getCooldownFunction(player, InteractionHand.MAIN_HAND), true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, EtSHrnd().nextFloat(0, 1) <= this.CriticalRate, true, true, true);
-                    if (targets.isAlive()) {
-                        hitList.add(targets);
-                    }
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, EtSHrnd().nextFloat(0, 1) <= this.CriticalRate, true, true, true,overCrit);
+                    hitList.add(targets);
                 }
                 i++;
                 if (i >= 16) {

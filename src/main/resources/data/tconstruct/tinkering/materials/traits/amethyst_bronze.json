@@ -1,0 +1,10 @@
+{
+  "perStat" : {
+    "etshtinker:plasma_generator": [
+      {
+        "name": "etshtinker:magic_damage",
+        "level": 1
+      }
+    ]
+  }
+}

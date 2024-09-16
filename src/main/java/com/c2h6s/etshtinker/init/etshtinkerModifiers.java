@@ -92,6 +92,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<hyperfluxloaded>hyperfluxloaded_STATIC_MODIFIER= MODIFIERS.register("hyperfluxloaded", hyperfluxloaded::new);
     public static final StaticModifier<nightsenhance>nightsenhance_STATIC_MODIFIER= MODIFIERS.register("nightsenhance", nightsenhance::new);
     public static final StaticModifier<electricArmor>electricArmor= MODIFIERS.register("electricarmor", electricArmor::new);
+    public static final StaticModifier<MagicDamage>MagicDamage= MODIFIERS.register("magic_damage", MagicDamage::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

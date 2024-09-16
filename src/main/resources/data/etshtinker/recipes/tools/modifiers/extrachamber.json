@@ -10,9 +10,14 @@
       "amount_needed": 16
     }
   ],
-  "tools": {
-    "item": "etshtinker:ionized_cannon"
-  },
+  "tools":[
+    {
+      "item": "etshtinker:ionized_cannon"
+    },
+    {
+      "item": "etshtinker:constrained_plasma_saber"
+    }
+  ],
   "slots": {
     "upgrades": 1
   },

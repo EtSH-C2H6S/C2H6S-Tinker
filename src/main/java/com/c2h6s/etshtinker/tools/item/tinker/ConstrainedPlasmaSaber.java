@@ -93,7 +93,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         if (fluidStack.getAmount()< consumption){
             return;
         }
-        float damage = (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER))*tool.getStats().get(ToolStats.ATTACK_DAMAGE)*getFuelDamage(fuel)*4.28F;
+        float damage = (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER))*tool.getStats().get(ToolStats.ATTACK_DAMAGE)*getFuelDamage(fuel);
         ItemStack color = getSlash(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
         Level level =player.getLevel();
         EntityType<PlasmaSlashEntity> entityType = getSlashType(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
@@ -108,6 +108,8 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         double z =player.getLookAngle().z;
         slash.setPos(player.getX()+x*1.5,player.getY()+0.6*player.getBbHeight()+y*1.5,player.getZ()+z*1.5);
         level.addFreshEntity(slash);
+        fluidStack.shrink(consumption);
+        TANK_HELPER.setFluid(tool,fluidStack);
     }
 
     public static boolean checkOffHand(Player player){
@@ -133,7 +135,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     public static int getFuelCumsp(MeltingFuel fuel,Fluid fluid,IToolStackView tool){
-        return (int) Math.max( fuel.getAmount(fluid)*15/(fuel.getDuration()*tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY)),4);
+        return (int) Math.max( fuel.getAmount(fluid)*20/(fuel.getDuration()*tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY)),1);
     }
 
 
@@ -144,9 +146,9 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);
         }
-        builder.add(Component.translatable("etshtinker.tool.tooltip.damagemultiplier").append(":"+String.format("%.01f",(1+tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)))));
-        builder.add(Component.translatable("etshtinker.tool.tooltip.critical_rate").append(":"+String.format("%.01f", tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE)*100)+"%").withStyle(ChatFormatting.AQUA));
-        builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_efficiency").append(":"+String.format("%.01f",tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY))).withStyle(ChatFormatting.DARK_AQUA));
+        builder.add(Component.translatable("etshtinker.tool.tooltip.damagemultiplier").append(":"+String.format("%.001f",(1+tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)))));
+        builder.add(Component.translatable("etshtinker.tool.tooltip.critical_rate").append(":"+String.format("%.1f", tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE)*100)+"%").withStyle(ChatFormatting.AQUA));
+        builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_efficiency").append(":"+String.format("%.001f",tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY))).withStyle(ChatFormatting.DARK_AQUA));
         builder.addAllFreeSlots();
 
         if (!checkOffHand(player)){

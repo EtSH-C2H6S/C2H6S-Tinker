@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:composable",
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:rarity",
+      "rarity": "uncommon"
+    },
+    {
+      "type": "tconstruct:stat_boost",
+      "each_level": 0.255,
+      "operation": "add",
+      "stat": "etshtinker:critical_rate"
+    },
+    {
+      "type": "tconstruct:stat_boost",
+      "each_level": -0.125,
+      "operation": "add",
+      "stat": "tconstruct:attack_speed"
+    }
+  ],
+  "tooltip_display": "always"
+}

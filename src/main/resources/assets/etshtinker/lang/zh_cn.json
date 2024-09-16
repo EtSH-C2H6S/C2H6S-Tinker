@@ -357,6 +357,26 @@
   "modifier.etshtinker.nightsedge.flavor": "是“原版”的!",
   "modifier.etshtinker.nightsedge.description":"主手攻击时发射旋转剑气，工具有能量存储时则消耗能量增加剑气伤害。绿色的剑气会造成咒火减益，黄色的剑气会削减敌人的防御力。",
 
+  "modifier.etshtinker.magic_damage": "魔法传导",
+  "modifier.etshtinker.magic_damage.flavor": "超导攻击",
+  "modifier.etshtinker.magic_damage.description":"额外造成10%魔法伤害",
+
+  "modifier.etshtinker.deep_catalysis": "深度催化",
+  "modifier.etshtinker.deep_catalysis.flavor": "环保无污染",
+  "modifier.etshtinker.deep_catalysis.description":"每级增加0.25流体效率和0.1伤害倍率",
+
+  "modifier.etshtinker.heavy_crit": "沉重一击",
+  "modifier.etshtinker.heavy_crit.flavor": "XXX发明了重力",
+  "modifier.etshtinker.heavy_crit.description":"每级增加0.255暴击率但减少0.125攻速",
+
+  "modifier.etshtinker.power_enhance": "功率提升",
+  "modifier.etshtinker.power_enhance.flavor": "堆量！",
+  "modifier.etshtinker.power_enhance.description":"每级增加0.1伤害倍率但减少15%流体容量",
+
+  "modifier.etshtinker.light_equipped": "极致轻量化",
+  "modifier.etshtinker.light_equipped.flavor": "轻装上阵",
+  "modifier.etshtinker.light_equipped.description":"每级增加0.2攻速但减少0.05伤害倍率和15%流体容量",
+
 
 
   "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -639,7 +659,7 @@
   "item.etshtinker.constrained_plasma_saber": "约束等离子阔剑",
   "item.etshtinker.constrained_plasma_saber.description": "高攻速近战武器，具有无限的耐久，使用时副手不能有其它工具。挥舞时消耗工具存储的冶炼炉燃料释放等离子波，造成范围伤害，伤害受燃料的温度影响。",
   "tool_stat.etshtinker.criticalrate": "暴击率",
-  "tool_stat.etshtinker.criticalrate.description": "攻击时发生暴击的概率",
+  "tool_stat.etshtinker.criticalrate.description": "攻击时发生暴击的概率，高于100%的部分会转换为额外暴击伤害",
   "tool_stat.etshtinker.fluidefficiency": "流体效率",
   "tool_stat.etshtinker.fluidefficiency.description": "流体的消耗量最终会除以此值",
   "item.etshtinker.plasma_generator": "约束场发生器",
