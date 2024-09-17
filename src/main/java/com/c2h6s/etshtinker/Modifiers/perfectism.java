@@ -1,55 +1,92 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import net.minecraft.network.chat.Component;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.ranged.ModifiableLauncherItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
+
 public class perfectism extends etshmodifieriii {
+    private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("perfectism");
     public perfectism(){
         MinecraftForge.EVENT_BUS.addListener(this::AttackEvent);
+        MinecraftForge.EVENT_BUS.addListener(this::DamageEvent);
     }
 
     private void AttackEvent(LivingAttackEvent event) {
         if (event.getSource().getEntity() instanceof Player player&&event.getEntity() !=null){
-            player.sendSystemMessage(Component.translatable("1"+String.valueOf(event.amount)));
             LivingEntity target =event.getEntity();
             InteractionHand hand =player.getUsedItemHand();
-            if (player.getItemInHand(hand).getItem() instanceof ModifiableItem){
+            if (player.getItemInHand(hand).getItem() instanceof ModifiableItem||player.getItemInHand(hand).getItem() instanceof ModifiableLauncherItem){
                 ToolStack tool = ToolStack.from(player.getItemInHand(hand));
-                if (tool.getModifierLevel(this)>0){
-                    float am =event.amount * tool.getModifierLevel(this);
-                    int dmgBit =(int) Math.log10(am);
-                    if (dmgBit <=0){
+                if (tool.getModifierLevel(this)>0&&target!=null){
+                    CompoundTag nbt =target.getPersistentData();
+                    nbt.putFloat("etsh.perfect_damage",event.getAmount()*tool.getModifierLevel(this));
+                }
+            }
+        }
+        if (event.getEntity() instanceof Player player){
+            player.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
+                int level = holder.get(key, 0);
+                if (level > 0) {
+                    if (event.getAmount()<=10*level){
                         event.setCanceled(true);
-                        event.source = playerThroughSource.PlayerPierce(player,10f);
-                        event.amount=10;
-                        player.sendSystemMessage(Component.translatable("2"+String.valueOf(event.amount)));
                     }
-                    else {
-                        int a =(int) (am/Math.pow(10,dmgBit));
-                        if (a<5){
-                            event.amount=(float) Math.max(10,Math.pow(10,dmgBit-1));
-                            player.sendSystemMessage(Component.translatable("3"+String.valueOf(event.amount)));
-                            event.source = playerThroughSource.PlayerPierce(player,event.amount);
-                        }
-                        else {
-                            event.amount =(float) Math.pow(10,dmgBit+1);
-                            if (a>=9){
-                                event.amount*=10;
-                            }
-                            event.source = playerThroughSource.PlayerPierce(player,event.amount);
-                            player.sendSystemMessage(Component.translatable("4"+String.valueOf(event.amount)));
+                }
+            });
+        }
+    }
+    private void DamageEvent(LivingDamageEvent event) {
+        LivingEntity entity =event.getEntity();
+        CompoundTag nbt =entity.getPersistentData();
+        if (nbt.contains("etsh.perfect_damage")){
+            float amount =nbt.getFloat("etsh.perfect_damage");
+            nbt.remove("etsh.perfect_damage");
+            if (amount<50){
+                event.setAmount(10);
+            }else {
+                int dmgBit =(int) Math.log10(amount);
+                int a =(int)( amount/Math.pow(10,dmgBit));
+                if (a<=4){
+                    event.setAmount((float) Math.pow(10,dmgBit));
+                }else {
+                    event.setAmount((float) Math.pow(10,dmgBit+1));
+                    if (a>=8){
+                        event.setAmount((float) Math.pow(10,dmgBit+2));
+                        if (a==9){
+                            event.setAmount((float) Math.pow(10,dmgBit+3));
                         }
                     }
                 }
             }
+        }
+        if (event.getEntity() instanceof Player player){
+            player.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
+                int level = holder.get(key, 0);
+                if (level > 0) {
+                    if (event.getAmount()<=10*level){
+                        event.setCanceled(true);
+                    }else {
+                        float amount =event.getAmount();
+                        int dmgBit =(int) Math.log10(amount);
+                        int a =(int)( amount/Math.pow(10,dmgBit));
+                        if (a<=4){
+                            event.setAmount((float) Math.pow(10,dmgBit-1));
+                        }else {
+                            event.setAmount((float) Math.pow(10,dmgBit));
+                        }
+                    }
+                }
+            });
         }
     }
 }

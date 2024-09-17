@@ -5,10 +5,10 @@
   "minVersion": "0.7",
   "refmap": "etshtinker.refmap.json",
   "mixins": [
+    "EntityMixin",
     "LivingEntityMixin"
   ],
   "client": [
-
   ],
   "injectors": {
     "defaultRequire": 1

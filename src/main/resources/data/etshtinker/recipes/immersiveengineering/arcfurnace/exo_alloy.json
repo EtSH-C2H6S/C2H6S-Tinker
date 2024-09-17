@@ -3,6 +3,13 @@
     {
       "modid": "immersiveengineering",
       "type": "forge:mod_loaded"
+    },
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ingots/exo_alloy"
+      }
     }
   ],
   "type": "immersiveengineering:arc_furnace",

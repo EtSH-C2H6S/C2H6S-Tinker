@@ -95,7 +95,8 @@
     "power_enhance": "#DEBAFF",
     "light_equipped": "#DEBAFF",
     "heavy_crit_ex": "#FF0094",
-    "annihilating_slash": "#FF0000"
+    "annihilating_slash": "#FF0000",
+    "perfectism": "#90FF90"
   },
   "material.etshtinker":
   {

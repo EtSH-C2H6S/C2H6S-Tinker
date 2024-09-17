@@ -28,6 +28,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -67,18 +68,20 @@ public class mindprotection extends etshmodifieriii {
                 if (entity instanceof Player player ) {
                     List<ItemStack> equipments = player.getInventory().armor;
                     for (ItemStack equipment : equipments) {
-                        ToolStack tool = ToolStack.from(equipment);
-                        if (tool.getModifierLevel(this)>0&&tool.getPersistentData().getInt(dpreventcd2) == 0) {
-                            ModDataNBT toolData = tool.getPersistentData();
-                            if (toolData.getInt(dpreventcd2) == 0) {
-                                toolData.putInt(dpreventcd2, 1800);
-                                event.setCanceled(true);
-                                player.deathTime = -2;
-                                player.fallDistance = 0;
-                                player.setHealth(player.getMaxHealth() * 0.5f);
-                                player.invulnerableTime = 100;
-                                entity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
-                                break;
+                        if (equipment.getItem() instanceof ModifiableItem) {
+                            ToolStack tool = ToolStack.from(equipment);
+                            if (tool.getModifierLevel(this) > 0 && tool.getPersistentData().getInt(dpreventcd2) == 0) {
+                                ModDataNBT toolData = tool.getPersistentData();
+                                if (toolData.getInt(dpreventcd2) == 0) {
+                                    toolData.putInt(dpreventcd2, 1800);
+                                    event.setCanceled(true);
+                                    player.deathTime = -2;
+                                    player.fallDistance = 0;
+                                    player.setHealth(player.getMaxHealth() * 0.5f);
+                                    player.invulnerableTime = 100;
+                                    entity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
+                                    break;
+                                }
                             }
                         }
                     }

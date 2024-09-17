@@ -6,7 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
 public class playerThroughSource extends EntityDamageSource {
-    private final float AMOUNT;
+    private float AMOUNT;
     public playerThroughSource(String p_19394_, Entity p_19395_,Float am) {
         super(p_19394_, p_19395_);
         this.AMOUNT =am;
@@ -22,4 +22,5 @@ public class playerThroughSource extends EntityDamageSource {
     public float getgetAmount(){
         return this.AMOUNT;
     }
+
 }

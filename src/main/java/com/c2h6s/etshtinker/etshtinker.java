@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker;
 import com.c2h6s.etshtinker.Event.LivingEvents;
 import com.c2h6s.etshtinker.Mapping.*;
+import com.c2h6s.etshtinker.Modifiers.modifiers.etshDampenToolCap;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshRadiationShieldCap;
 import com.c2h6s.etshtinker.client.book.etshtinkerBook;
 //import com.c2h6s.etshtinker.client.gui.adrenaline.AdrenalineHUD;
@@ -86,9 +87,9 @@ public class etshtinker {
         if (MBOTloaded){
             etshtinkerFluids.etshtinkerFluidMBOT.FLUIDS.register(eventBus);
         }
-        if (etshtinkerConfig.COMMON.EnableExoAlloy.get()){
-            etshtinkerItems.configuredMaterial.ITEMSC.register(eventBus);
-        }
+        etshtinkerItems.configuredMaterial.ITEMSC.register(eventBus);
+
+
     }
     public static synchronized SecureRandom EtSHrnd(){
         return new SecureRandom();
@@ -97,6 +98,7 @@ public class etshtinker {
         ToolCapabilityProvider.register(etshmodifierfluxed::new);
         if (Mekenabled){
             ToolCapabilityProvider.register(etshRadiationShieldCap::new);
+            ToolCapabilityProvider.register(etshDampenToolCap::new);
         }
         event.enqueueWork(etshtinkerMaterialStats::setup);
         event.enqueueWork(ionizerFluidMap::extendMap);

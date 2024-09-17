@@ -28,6 +28,7 @@ import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayM
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -56,20 +57,24 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity target =event.getEntity();
         if (target !=null){
-            IToolStackView maintool = ToolStack.from( target.getMainHandItem());
-            IToolStackView offtool = ToolStack.from( target.getOffhandItem());
-            if (!maintool.isBroken()&&maintool.getPersistentData().getInt(adrenaline)>0&&event.getAmount()>=0.5){
-                maintool.getPersistentData().putInt(adrenaline,0);
-                if (maintool.getPersistentData().getInt(adrenaline)>75){
-                    event.setAmount(event.getAmount()*0.5f);
-                    target.playSound(SoundEvents.BEACON_DEACTIVATE,1,1);
+            if (target.getMainHandItem().getItem() instanceof ModifiableItem) {
+                IToolStackView maintool = ToolStack.from(target.getMainHandItem());
+                if (!maintool.isBroken()&&maintool.getPersistentData().getInt(adrenaline)>0&&event.getAmount()>=0.5){
+                    maintool.getPersistentData().putInt(adrenaline,0);
+                    if (maintool.getPersistentData().getInt(adrenaline)>75){
+                        event.setAmount(event.getAmount()*0.5f);
+                        target.playSound(SoundEvents.BEACON_DEACTIVATE,1,1);
+                    }
                 }
             }
-            if (!offtool.isBroken()&&offtool.getPersistentData().getInt(adrenaline)>0&&event.getAmount()>=0.5){
-                offtool.getPersistentData().putInt(adrenaline,0);
-                if (offtool.getPersistentData().getInt(adrenaline)>75){
-                    event.setAmount(event.getAmount()*0.5f);
-                    target.playSound(SoundEvents.BEACON_DEACTIVATE,1,1);
+            if (target.getOffhandItem().getItem() instanceof ModifiableItem) {
+                IToolStackView offtool = ToolStack.from(target.getOffhandItem());
+                if (!offtool.isBroken() && offtool.getPersistentData().getInt(adrenaline) > 0 && event.getAmount() >= 0.5) {
+                    offtool.getPersistentData().putInt(adrenaline, 0);
+                    if (offtool.getPersistentData().getInt(adrenaline) > 75) {
+                        event.setAmount(event.getAmount() * 0.5f);
+                        target.playSound(SoundEvents.BEACON_DEACTIVATE, 1, 1);
+                    }
                 }
             }
         }
