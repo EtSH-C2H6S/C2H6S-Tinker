@@ -1,9 +1,10 @@
 package com.c2h6s.etshtinker;
+import com.c2h6s.etshtinker.Event.LivingEvents;
 import com.c2h6s.etshtinker.Mapping.*;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshRadiationShieldCap;
 import com.c2h6s.etshtinker.client.book.etshtinkerBook;
-//import com.c2h6s.etshtinker.config.etshtinkerConfig;
 //import com.c2h6s.etshtinker.client.gui.adrenaline.AdrenalineHUD;
+import com.c2h6s.etshtinker.config.etshtinkerConfig;
 import com.c2h6s.etshtinker.init.*;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.entityReg.etshtinkerBotEntity;
@@ -12,6 +13,7 @@ import com.c2h6s.etshtinker.network.handler.packetHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -38,6 +40,7 @@ public class etshtinker {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::commonSetup);
         //eventBus.addListener(this::registerGuiOverlay);
+        MinecraftForge.EVENT_BUS.register(new LivingEvents());
         etshtinkerItems.ITEMS.register(eventBus);//物品
         etshtinkerModifiers.MODIFIERS.register(eventBus);//词条类
         etshtinkerFluids.FLUIDS.register(eventBus);//流体类
@@ -45,7 +48,7 @@ public class etshtinker {
         etshtinkerEffects.EFFECT.register(eventBus);//状态
         etshtinkerEntity.ENTITIES.register(eventBus);//实体
         etshtinkerParticleType.REGISTRY.register(eventBus);//粒子
-        //etshtinkerConfig.init();
+        etshtinkerConfig.init();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> etshtinkerBook::initBook);
         if (Mekenabled){
             etshtinkerMekansimMaterial.ITEMS.register(eventBus);
@@ -82,6 +85,9 @@ public class etshtinker {
         }
         if (MBOTloaded){
             etshtinkerFluids.etshtinkerFluidMBOT.FLUIDS.register(eventBus);
+        }
+        if (etshtinkerConfig.COMMON.EnableExoAlloy.get()){
+            etshtinkerItems.configuredMaterial.ITEMSC.register(eventBus);
         }
     }
     public static synchronized SecureRandom EtSHrnd(){

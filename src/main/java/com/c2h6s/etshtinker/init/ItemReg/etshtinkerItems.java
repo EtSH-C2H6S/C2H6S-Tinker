@@ -33,8 +33,8 @@ public class etshtinkerItems {
     private static final Item.Properties PARTS =(new Item.Properties().tab(TOOLS));
 
     //材料
-    public static final RegistryObject<Item> lightless_alloy = ITEMS.register("lightless_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));//本影合金
-
+    public static final RegistryObject<Item> lightless_alloy = ITEMS.register("lightless_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> energized_sculk_alloy = ITEMS.register("energized_sculk_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
 
 
     //方块
@@ -89,5 +89,10 @@ public class etshtinkerItems {
     public static final RegistryObject<Item> fluid_chamber_cast = ITEMS.register("fluid_chamber_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
     public static final RegistryObject<Item> fluid_chamber_sand_cast = ITEMS.register("fluid_chamber_sand_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
     public static final RegistryObject<Item> fluid_chamber_red_sand_cast = ITEMS.register("fluid_chamber_red_sand_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
+
+    public class configuredMaterial{
+        public static final DeferredRegister<Item> ITEMSC = DeferredRegister.create( ForgeRegistries.ITEMS, MOD_ID);
+        public static final RegistryObject<Item> exo_alloy = ITEMSC.register("exo_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));//星流合金
+    }
 
 }

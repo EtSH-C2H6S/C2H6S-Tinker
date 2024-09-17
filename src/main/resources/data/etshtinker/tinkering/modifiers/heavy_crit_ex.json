@@ -8,13 +8,13 @@
     },
     {
       "type": "tconstruct:stat_boost",
-      "each_level": 3,
+      "each_level": 7.5,
       "operation": "multiply_base",
       "stat": "etshtinker:critical_rate"
     },
     {
       "type": "tconstruct:stat_boost",
-      "each_level": -0.75,
+      "each_level": -0.85,
       "operation": "multiply_base",
       "stat": "tconstruct:attack_speed"
     }

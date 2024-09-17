@@ -17,6 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
@@ -49,7 +50,10 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     public ConstrainedPlasmaSaber(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
+        MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
+
+
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getPlasmaSaberStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
@@ -71,6 +75,9 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
+        packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
+    }
+    private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
     }
 

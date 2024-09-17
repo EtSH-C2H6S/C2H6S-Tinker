@@ -63,7 +63,7 @@
 
   "modifier.etshtinker.totalinsane": "癫疯",
   "modifier.etshtinker.totalinsane.flavor": "你疑似有点魔怔了",
-  "modifier.etshtinker.totalinsane.description":"受到任何伤害时立刻趋势，手持时积攒癫疯值，最大1000，工具使用时会优先消耗癫疯值而非耐久，癫疯值高于500时，攻击时造成高额真实伤害。",
+  "modifier.etshtinker.totalinsane.description":"受到任何伤害时立刻趋势，手持时积攒癫疯值，最大1000，工具使用时会优先消耗癫疯值而非耐久，癫疯值高于500时，攻击时造成高额真实+穿刺伤害并获得一次免死。",
 
   "modifier.etshtinker.mindattack": "神经质",
   "modifier.etshtinker.mindattack.flavor": "神晶，害的我笑了一下",
@@ -287,7 +287,7 @@
 
   "modifier.etshtinker.thermaldefense": "热力之护",
   "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",
-  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性，额外附带减少攻击者75%护甲。",
+  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性，额外附带减少攻击者50%护甲。",
 
   "modifier.etshtinker.trinityblessing": "三重祝福",
   "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
@@ -307,7 +307,7 @@
 
   "modifier.etshtinker.semicrystaline": "准晶",
   "modifier.etshtinker.semicrystaline.flavor": "富有弹性的坚硬材料，当前研究的热点之一",
-  "modifier.etshtinker.semicrystaline.description":"根据工具的当前耐久增加近战伤害、箭矢伤害和伤害减少量。近战伤害加成为耐久/100，上限1000*属性等级；箭矢伤害为耐久/400，上限250*属性等级；护甲减伤为耐久/1000，上限100*属性等级",
+  "modifier.etshtinker.semicrystaline.description":"根据工具的当前耐久增加近战伤害、箭矢伤害和伤害减少量。近战伤害加成为耐久/350，上限2000*属性等级；箭矢伤害为耐久/500，上限1000*属性等级；护甲减伤为耐久/1000，上限100*属性等级",
 
   "modifier.etshtinker.organiccr": "有机晶体",
   "modifier.etshtinker.organiccr.flavor": "远古生物的遗骸堆砌而成",
@@ -379,7 +379,7 @@
 
   "modifier.etshtinker.heavy_crit_ex": "沉重一击EX",
   "modifier.etshtinker.heavy_crit_ex.flavor": "小时候看这集时发明了重力",
-  "modifier.etshtinker.heavy_crit_ex.description":"增加300%的暴击率(乘算)，但是-75%的攻击速度",
+  "modifier.etshtinker.heavy_crit_ex.description":"增加750%的暴击率(乘算)，但是-85%的攻击速度",
 
   "modifier.etshtinker.annihilating_slash": "湮灭斩击",
   "modifier.etshtinker.annihilating_slash.flavor": "Description: Null \njava.lang.NullPointerException: Cannot invoke \"slimeknights.tconstruct.library.tools.nbt.IToolStackView.isBroken()\" because \"tool\" is null\n",
@@ -577,6 +577,16 @@
   "material.etshtinker.nights_alloy": "暗影复相钢",
   "material.etshtinker.nights_alloy.flavor": "异常罕见的元素的合金形态...",
   "material.etshtinker.nights_alloy.encyclopedia": "组成世界的各种元素被粗暴地融合，逆变为了光与暗。光元素伴随爆炸而逸散，留下了这种金属。",
+
+  "item.etshtinker.perfect_generic_item": "完美通用物品",
+  "material.etshtinker.perfect_generic_item": "完美",
+  "material.etshtinker.perfect_generic_item.flavor": "完美通用物品",
+  "material.etshtinker.perfect_generic_item.encyclopedia": "一个完美通用物品，非常的完美",
+
+  "item.etshtinker.energized_sculk_alloy": "谐振幽匿合金",
+  "material.etshtinker.energized_sculk_alloy": "谐振幽匿",
+  "material.etshtinker.energized_sculk_alloy.flavor": "共振...",
+  "material.etshtinker.energized_sculk_alloy.encyclopedia": "充满了幽匿能量的物品，与声音发生共鸣。\n“不要与谐振末影混淆”",
 
 
 
@@ -781,6 +791,8 @@
   "infuse_type.etshtinker.ultra_dense":"超致密",
   "infuse_type.etshtinker.refined_glowstone":"强化荧石",
 
+
+  "etshtinker.message.death_prevent": "你复活了!",
 
 
   "death.attack.etshtinker.annihilate": "%1$s 变成了纯粹的能量",

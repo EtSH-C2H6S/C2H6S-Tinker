@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -68,16 +69,22 @@ public class totalinsane extends etshmodifieriii implements DurabilityDisplayMod
             }
         }
         if (entity1 instanceof Player attacker&& target !=null){
+            if (event.getSource() instanceof playerThroughSource){
+                return;
+            }
             InteractionHand hand =attacker.getUsedItemHand();
             ToolStack tool =ToolStack.from(attacker.getItemInHand(hand));
             if (tool.getModifierLevel(this)>0&&!tool.isBroken()){
                 ModDataNBT toolData = tool.getPersistentData();
                 if (toolData.getInt(insanity)>=500){
                     target.setLastHurtByPlayer(attacker);
-                    target.setHealth(target.getHealth()-(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE));
+                    target.setHealth(Math.max(1, target.getHealth()-(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F));
+                    target.invulnerableTime=0;
+                    target.hurt(playerThroughSource.PlayerPierce(attacker,(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F),(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F);
                     toolData.putInt(insanity,0);
                     toolData.putInt(fullcharged,0);
                     event.setCanceled(true);
+                    attacker.getPersistentData().putInt("etshtinker.death_prevent",attacker.getPersistentData().getInt("etshtinker.death_prevent")<=0?1:attacker.getPersistentData().getInt("etshtinker.death_prevent"));
                 }
                 if (toolData.getInt(insanity)<500){
                     event.setCanceled(true);
@@ -85,7 +92,6 @@ public class totalinsane extends etshmodifieriii implements DurabilityDisplayMod
             }
         }
     }
-
 
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
