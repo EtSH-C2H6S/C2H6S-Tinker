@@ -385,6 +385,10 @@
   "modifier.etshtinker.annihilating_slash.flavor": "Description: Null \njava.lang.NullPointerException: Cannot invoke \"slimeknights.tconstruct.library.tools.nbt.IToolStackView.isBroken()\" because \"tool\" is null\n",
   "modifier.etshtinker.annihilating_slash.description":"斩击能攻击到的敌人减少，但是攻击敌人时造成湮灭爆炸",
 
+  "modifier.etshtinker.perfectism": "完美主义",
+  "modifier.etshtinker.perfectism.flavor": "追求完美不总是好事",
+  "modifier.etshtinker.perfectism.description":"你造成的伤害会乘以属性等级，然后根据伤害的末位数修正:<=4时退位>4时进位，=8时额外乘以10，=9时乘以100。\n你免疫<=10的伤害，受到的伤害会除以属性等级，然后根据伤害的末位数修正:<=4时退2位，>4时退1位。",
+
 
 
   "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -798,5 +802,7 @@
   "death.attack.etshtinker.annihilate": "%1$s 变成了纯粹的能量",
   "death.attack.etshtinker.annihilate.player": "%1$s 变成了纯粹的能量",
   "death.attack.etshtinker.pierce": "%1$s 被穿透了",
-  "death.attack.etshtinker.pierce.player": "%1$s 被 %2$s 穿透了"
+  "death.attack.etshtinker.pierce.player": "%1$s 被 %2$s 穿透了",
+  "death.attack.etshtinker.perfect": "%1$s 被穿透了",
+  "death.attack.etshtinker.perfect.player": "%1$s 被 %2$s 穿透了"
 }

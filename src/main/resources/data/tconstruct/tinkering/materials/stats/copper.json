@@ -7,6 +7,12 @@
       "cooldown": 46,
       "plasmarange": 16,
       "damagemultiplier": 0.5
+    },
+    "etshtinker:plasma_generator": {
+      "damagemultiplier": 1.75,
+      "criticalrate": 0.0,
+      "fluidefficiency": 0.345,
+      "slash_color": 4
     }
   }
 }

@@ -11,8 +11,8 @@ public class etshtinkerConfig {
 
     static {
         Pair<etshtinkerConfig.CommonConfig, ForgeConfigSpec> pair = (new ForgeConfigSpec.Builder()).configure(CommonConfig::new);
-        COMMON = (etshtinkerConfig.CommonConfig)pair.getLeft();
-        config = (ForgeConfigSpec)pair.getRight();
+        COMMON = pair.getLeft();
+        config = pair.getRight();
     }
 
     public etshtinkerConfig() {
@@ -25,10 +25,10 @@ public class etshtinkerConfig {
 
 
     public static class CommonConfig {
-        public final ForgeConfigSpec.BooleanValue EnableExoAlloy;
+        //public final ForgeConfigSpec.BooleanValue EnableExoAlloy;
 
         public CommonConfig(ForgeConfigSpec.Builder builder) {
-            EnableExoAlloy = builder.comment("Enable exo_alloy item when is true.").worldRestart().define("enable_exoalloy_recipe",false);
+            //EnableExoAlloy = builder.comment("Enable exo_alloy item when is true.").define("enable_exoalloy_recipe",false);
         }
     }
 }

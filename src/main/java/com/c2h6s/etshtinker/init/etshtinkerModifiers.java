@@ -95,7 +95,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<MagicDamage>MagicDamage= MODIFIERS.register("magic_damage", MagicDamage::new);
     public static final StaticModifier<AnnihilatingSlash>AnnihilatingSlash= MODIFIERS.register("annihilating_slash", AnnihilatingSlash::new);
     public static final StaticModifier<perfectism>perfectism= MODIFIERS.register("perfectism", perfectism::new);
-
+    public static final StaticModifier<SculkEnhance>SculkEnhance= MODIFIERS.register("sculk_enhance", SculkEnhance::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
