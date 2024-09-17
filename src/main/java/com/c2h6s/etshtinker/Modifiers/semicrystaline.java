@@ -15,10 +15,12 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 public class semicrystaline extends etshmodifieriii {
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
-        return damage+Math.min(1000*modifier.getLevel(),tool.getCurrentDurability()/100);
+        return damage+Math.min(2000*modifier.getLevel(),tool.getCurrentDurability()/300);
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        abstractArrow.setBaseDamage(abstractArrow.getBaseDamage()+Math.min(250*modifier.getLevel(),tool.getCurrentDurability()/400));
+        if (abstractArrow != null) {
+            abstractArrow.setBaseDamage(abstractArrow.getBaseDamage()+Math.min(1000*modifier.getLevel(),tool.getCurrentDurability()/500));
+        }
     }
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         return amount-Math.min(100*modifier.getLevel(),tool.getCurrentDurability()/1000);

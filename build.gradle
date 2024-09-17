@@ -19,7 +19,7 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.19.2-2.0.0-alpha-08'
+version = '1.19.2-2.0.0-alpha-08a'
 group = 'com.c2h6s.etshtinker'
 
 base {
@@ -67,7 +67,7 @@ minecraft {
     // However, it must be at "META-INF/accesstransformer.cfg" in the final mod jar to be loaded by Forge.
     // This default location is a best practice to automatically put the file in the right place in the final jar.
     // See https://docs.minecraftforge.net/en/latest/advanced/accesstransformers/ for more information.
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
@@ -197,7 +197,8 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : "c2h6s",
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "etshtinker.mixins.json"
+                "MixinConfigs": "etshtinker.mixins.json",
+                'FMLAT':'accesstransformer.cfg'
         ])
     }
 

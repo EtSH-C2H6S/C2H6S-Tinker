@@ -2,6 +2,7 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -76,6 +77,7 @@ public class mindprotection extends etshmodifieriii {
                                 player.fallDistance = 0;
                                 player.setHealth(player.getMaxHealth() * 0.5f);
                                 player.invulnerableTime = 100;
+                                entity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
                                 break;
                             }
                         }

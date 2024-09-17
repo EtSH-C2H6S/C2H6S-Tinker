@@ -11,11 +11,11 @@ public class playerThroughSource extends EntityDamageSource {
         super(p_19394_, p_19395_);
         this.AMOUNT =am;
     }
-    public static DamageSource PlayerAnnihilate(Player player,Float am){
+    public static DamageSource PlayerAnnihilate(Player player,float am){
         return new playerThroughSource("etshtinker.annihilate",player,am);
     }
 
-    public static DamageSource PlayerPierce(Player player,Float am){
+    public static DamageSource PlayerPierce(Player player,float am){
         return new playerThroughSource("etshtinker.pierce",player,am);
     }
 
