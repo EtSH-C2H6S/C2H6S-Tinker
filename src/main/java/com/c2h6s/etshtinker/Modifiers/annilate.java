@@ -72,7 +72,7 @@ public class annilate extends etshmodifieriii  {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (target !=null&&attacker!=null){
             target.getPersistentData().putInt("annih_countdown",60);
-            attacker.getPersistentData().putInt("annih_countdown",60);
+            attacker.getPersistentData().putInt("annih_countdown",80);
             target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
             attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
         }

@@ -26,7 +26,7 @@
   "modifier.etshtinker.overweightex.description":"主手持握时，下落时增加下落速度。",
 
   "modifier.etshtinker.annilate": "湮灭",
-  "modifier.etshtinker.annilate.flavor": "TOTAL DESTRUCTION",
+  "modifier.etshtinker.annilate.flavor": "灰都不剩",
   "modifier.etshtinker.annilate.description":"彻底湮灭你的敌人、你自己和你的工具。 *慎用，会<永远地>摧毁你的工具",
 
   "modifier.etshtinker.ragedangery": "怒气",
@@ -98,7 +98,7 @@
   "modifier.etshtinker.godlymetal.description":"主手攻击时附带5%*属性等级*敌人当前生命值的真实伤害(造成的真实伤害会保留目标1点生命值)",
 
   "modifier.etshtinker.controllableannihl": "可控湮灭",
-  "modifier.etshtinker.controllableannihl.flavor": "3,2,1 毁灭！",
+  "modifier.etshtinker.controllableannihl.flavor": "能量等于我的世界的平方！",
   "modifier.etshtinker.controllableannihl.description":"工具的基础伤害被取消，全力攻击时消耗工具的1/4的耐久，造成一次湮灭爆炸，爆炸的伤害为工具的耐久。若工具耐久不超过最大耐久的25%则无法造成伤害。\n[对远程攻击、无耐久武器无效]",
 
   "modifier.etshtinker.modifiershocking": "震击",
@@ -597,7 +597,7 @@
   "effect.etshtinker.ionized": "电离",
   "effect.etshtinker.novaradiation": "新星辐射",
   "effect.etshtinker.cursefire": "咒火",
-  "effect.etshtinker.destruction": "毁灭倒计时",
+  "effect.etshtinker.destruction": "湮灭",
 
 
 
