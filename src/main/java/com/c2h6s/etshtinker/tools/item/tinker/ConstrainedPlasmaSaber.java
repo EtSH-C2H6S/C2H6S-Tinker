@@ -156,16 +156,16 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);
         }
-        builder.add(Component.translatable("etshtinker.tool.tooltip.damagemultiplier").append(":"+String.format("%.001f",(1+tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)))));
-        builder.add(Component.translatable("etshtinker.tool.tooltip.critical_rate").append(":"+String.format("%.1f", tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE)*100)+"%").withStyle(ChatFormatting.AQUA));
-        builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_efficiency").append(":"+String.format("%.001f",tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY))).withStyle(ChatFormatting.DARK_AQUA));
+        builder.add(Component.translatable("etshtinker.tool.tooltip.damagemultiplier").append(":"+String.format("%.2f",(1+tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)))));
+        builder.add(Component.translatable("etshtinker.tool.tooltip.critical_rate").append(":"+String.format("%.2f", tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE)*100)+"%").withStyle(ChatFormatting.AQUA));
+        builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_efficiency").append(":"+String.format("%.2f",tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY))).withStyle(ChatFormatting.DARK_AQUA));
         builder.addAllFreeSlots();
 
         if (!checkOffHand(player)){
             builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
         else if (checkFluid(tool)){
-            builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":" +String.format("%.01f",getFuelDamage(getFuel(TANK_HELPER.getFluid(tool).getFluid())))).withStyle(ChatFormatting.GOLD));
+            builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":" +String.format("%.2f",getFuelDamage(getFuel(TANK_HELPER.getFluid(tool).getFluid())))).withStyle(ChatFormatting.GOLD));
             builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":" +String.valueOf(getFuelCumsp(getFuel(TANK_HELPER.getFluid(tool).getFluid()),TANK_HELPER.getFluid(tool).getFluid(),tool))).withStyle(ChatFormatting.YELLOW));
         }else{
             if (noFluid(tool)){

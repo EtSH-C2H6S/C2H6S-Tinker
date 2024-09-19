@@ -1,0 +1,31 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "battery": "etshtinker:item/tool/matter_manipulator/battery",
+    "pickaxe": "etshtinker:item/tool/matter_manipulator/pickaxe",
+    "power_core": "etshtinker:item/tool/matter_manipulator/power_core",
+    "tough_handle": "etshtinker:item/tool/matter_manipulator/tough_handle"
+  },
+  "modifier_roots": [
+    "etshtinker:item/tool/matter_manipulator/modifiers/"
+  ],
+  "parts": [
+    {
+      "name": "tough_handle",
+      "index": 0
+    },
+    {
+      "name": "battery",
+      "index": 1
+    },
+    {
+      "name": "pickaxe",
+      "index": 2
+    },
+    {
+      "name": "power_core",
+      "index": 3
+    }
+  ]
+}

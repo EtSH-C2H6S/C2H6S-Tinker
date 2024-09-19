@@ -29,6 +29,12 @@ public class etshtinkerEntity {
     public static final RegistryObject<EntityType<NightSlashEntity>> nights_slash_entity = ENTITIES.register("nights_slash_entity", () -> EntityType.Builder.<NightSlashEntity>of(NightSlashEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new NightSlashEntity(etshtinkerEntity.nights_slash_entity.get(), world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<NightSlashEntityB>> nights_slash_entity_b = ENTITIES.register("nights_slash_entity_b", () -> EntityType.Builder.<NightSlashEntityB>of(NightSlashEntityB::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new NightSlashEntityB(etshtinkerEntity.nights_slash_entity_b.get(), world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<PlasmaSlashEntity>> PlasmaSlashType = ENTITIES.register("plasma_slash", () -> EntityType.Builder.<PlasmaSlashEntity>of((entityType, level)-> new PlasmaSlashEntity(entityType, level,getSlash(0)), MobCategory.MISC).sized(0.1F, 0.1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new PlasmaSlashEntity(etshtinkerEntity.PlasmaSlashType.get(), world,getSlash(0))).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<VibrationAcceptor>> vibration_acceptor = ENTITIES.register("vibration_acceptor", () -> EntityType.Builder.<VibrationAcceptor>of(VibrationAcceptor::new, MobCategory.MISC).sized(0.05F, 0.05F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new VibrationAcceptor(etshtinkerEntity.vibration_acceptor.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<SculkSwordEntity>> sculk_sword = ENTITIES.register("sculk_sword", () -> EntityType.Builder.<SculkSwordEntity>of(SculkSwordEntity::new, MobCategory.MISC).sized(0.05F, 0.05F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new SculkSwordEntity(etshtinkerEntity.sculk_sword.get(), world)).setShouldReceiveVelocityUpdates(true));
+
+
+
+
     public static final RegistryObject<EntityType<PlasmaSlashEntity>> plasma_slash_red = registerPlasmaSlash("plasma_slash_red",etshtinkerEntity.plasma_slash_red,0);
     public static final RegistryObject<EntityType<PlasmaSlashEntity>> plasma_slash_orange = registerPlasmaSlash("plasma_slash_orange",etshtinkerEntity.plasma_slash_orange,1);
     public static final RegistryObject<EntityType<PlasmaSlashEntity>> plasma_slash_yellow = registerPlasmaSlash("plasma_slash_yellow",etshtinkerEntity.plasma_slash_yellow,2);
@@ -40,8 +46,6 @@ public class etshtinkerEntity {
     public static final RegistryObject<EntityType<PlasmaSlashEntity>> plasma_slash_anti = registerPlasmaSlash("plasma_slash_anti",etshtinkerEntity.plasma_slash_anti,8);
     public static final RegistryObject<EntityType<PlasmaSlashEntity>> plasma_slash_dark = registerPlasmaSlash("plasma_slash_dark",etshtinkerEntity.plasma_slash_dark,9);
     public static final RegistryObject<EntityType<PlasmaSlashEntity>> plasma_slash_rainbow = registerPlasmaSlash("plasma_slash_rainbow",etshtinkerEntity.plasma_slash_rainbow,10);
-
-
     public static RegistryObject<EntityType<PlasmaSlashEntity>> registerPlasmaSlash(String name,RegistryObject<EntityType<PlasmaSlashEntity>> Type,int index){
         return ENTITIES.register(name, () -> EntityType.Builder.<PlasmaSlashEntity>of((entityType, level)-> new PlasmaSlashEntity(entityType, level,getSlash(index)), MobCategory.MISC).sized(3F, 0.1F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new PlasmaSlashEntity(Type.get(), world,getSlash(index))).setShouldReceiveVelocityUpdates(true));
     }

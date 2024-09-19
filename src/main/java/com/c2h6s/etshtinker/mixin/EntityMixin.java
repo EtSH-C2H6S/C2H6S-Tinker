@@ -18,7 +18,7 @@ import java.util.Optional;
 @Mixin({Entity.class})
 public class EntityMixin {
 
-    @Inject(at = @At(value = "HEAD"), method = "dampensVibrations")
+    @Inject(at = @At(value = "HEAD"), method = "dampensVibrations",cancellable = true)
     public void etshDampen(CallbackInfoReturnable<Boolean> callbackinfo){
         float dampen =0;
         List<EquipmentSlot> Slots =List.of(EquipmentSlot.CHEST,EquipmentSlot.FEET,EquipmentSlot.HEAD,EquipmentSlot.LEGS,EquipmentSlot.MAINHAND,EquipmentSlot.MAINHAND);

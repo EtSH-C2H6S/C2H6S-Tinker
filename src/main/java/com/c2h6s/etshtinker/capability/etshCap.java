@@ -6,4 +6,5 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
 
 public class etshCap {
     public static final Capability<IDampenCapability> DAMPEN_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<IVibrationRecieve> VIBR_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
 }
