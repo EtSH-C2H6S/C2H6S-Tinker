@@ -1,8 +1,10 @@
 package com.c2h6s.etshtinker.Modifiers;
+import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -39,18 +41,12 @@ public class annilate extends etshmodifieriii  {
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         LivingEntity attacker =context.getAttacker();
         Entity target =context.getTarget();
-        if (target instanceof LivingEntity&&tool.getModifierLevel(this)>0){
-            int i =0;
-            while (i<100){
-                target.hurt(DamageSource.mobAttack(attacker),0.01f*((LivingEntity) target).getMaxHealth());
-                attacker.hurt(DamageSource.OUT_OF_WORLD,0.01f*((LivingEntity) target).getMaxHealth());
-                attacker.playSound(SoundEvents.ITEM_BREAK,1,1+0.01f*i);
-                target.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE,1,1+0.01f*i);
-                i++;
-            }
-            target.kill();
-            attacker.setHealth(0);
-            tool.getPersistentData().putInt(des,114514);
+        if (target instanceof LivingEntity living&&tool.getModifierLevel(this)>0){
+            tool.getPersistentData().putInt(des, 114514);
+            living.getPersistentData().putInt("annih_countdown",60);
+            attacker.getPersistentData().putInt("annih_countdown",60);
+            living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
+            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
         }
         return knockback;
     }
@@ -74,17 +70,11 @@ public class annilate extends etshmodifieriii  {
         }
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (target instanceof LivingEntity&&attacker!=null){
-            int i =0;
-            while (i<100){
-                target.hurt(DamageSource.mobAttack(attacker),0.01f*((LivingEntity) target).getMaxHealth());
-                attacker.hurt(DamageSource.OUT_OF_WORLD,0.01f*((LivingEntity) target).getMaxHealth());
-                attacker.playSound(SoundEvents.ITEM_BREAK,1,1+0.01f*i);
-                target.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE,1,1+0.01f*i);
-                i++;
-            }
-            target.kill();
-            attacker.kill();
+        if (target !=null&&attacker!=null){
+            target.getPersistentData().putInt("annih_countdown",60);
+            attacker.getPersistentData().putInt("annih_countdown",80);
+            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
+            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
         }
         return false;
     }
