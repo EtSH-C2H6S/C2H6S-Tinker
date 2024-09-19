@@ -387,7 +387,7 @@
 
   "modifier.etshtinker.perfectism": "完美主义",
   "modifier.etshtinker.perfectism.flavor": "追求完美不总是好事",
-  "modifier.etshtinker.perfectism.description":"你造成的伤害会乘以属性等级，然后根据伤害的末位数修正:<=4时退位>4时进位，=8时额外乘以10，=9时乘以100。\n你免疫<=10的伤害，受到的伤害会除以属性等级，然后根据伤害的末位数修正:<=4时退2位，>4时退1位。",
+  "modifier.etshtinker.perfectism.description":"你造成的伤害会乘以属性等级，然后根据伤害的末位数修正:<=4时退位>4时进位，>=8时额外乘以10。\n你免疫<=10的伤害，受到的伤害会除以属性等级，然后根据伤害的末位数修正:<=4时退2位，>4时退1位。",
 
 
 

@@ -3,6 +3,7 @@ import com.c2h6s.etshtinker.Event.LivingEvents;
 import com.c2h6s.etshtinker.Mapping.*;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshDampenToolCap;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshRadiationShieldCap;
+import com.c2h6s.etshtinker.Modifiers.modifiers.etshVibrCap;
 import com.c2h6s.etshtinker.client.book.etshtinkerBook;
 //import com.c2h6s.etshtinker.client.gui.adrenaline.AdrenalineHUD;
 import com.c2h6s.etshtinker.config.etshtinkerConfig;
@@ -96,9 +97,10 @@ public class etshtinker {
     }
     private void commonSetup(FMLCommonSetupEvent event) {
         ToolCapabilityProvider.register(etshmodifierfluxed::new);
+        ToolCapabilityProvider.register(etshDampenToolCap::new);
+        ToolCapabilityProvider.register(etshVibrCap::new);
         if (Mekenabled){
             ToolCapabilityProvider.register(etshRadiationShieldCap::new);
-            ToolCapabilityProvider.register(etshDampenToolCap::new);
         }
         event.enqueueWork(etshtinkerMaterialStats::setup);
         event.enqueueWork(ionizerFluidMap::extendMap);

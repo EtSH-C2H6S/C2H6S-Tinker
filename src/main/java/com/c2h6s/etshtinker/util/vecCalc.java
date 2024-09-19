@@ -129,7 +129,7 @@ public class vecCalc {
         }
         else return null;
     }
-    public static Vec3 getScatteredVec3(Vec3 centVec,Double angletangentMax){
+    public static Vec3 getScatteredVec3(Vec3 centVec,double angletangentMax){
         SecureRandom random =EtSHrnd();
         double x =random.nextDouble()-0.5;
         double y =random.nextDouble()-0.5;

@@ -23,7 +23,7 @@ public class LivingEntityTick {
                 entity.getPersistentData().putInt("annih_countdown", entity.getPersistentData().getInt("annih_countdown") - 1);
                 entity.playSound(SoundEvents.ITEM_BREAK, 1f + EtSHrnd().nextFloat()*2, 1 + EtSHrnd().nextFloat() * 2);
                 entity.setHealth(EtSHrnd().nextFloat(0.5f, Math.max(1, entity.getMaxHealth())));
-                level.sendParticles(etshtinkerParticleType.annihl.get(), entity.getX(), entity.getY()+0.5*entity.getBbHeight(), entity.getZ(), 32, entity.getBbWidth()/2, entity.getBbHeight()/2, entity.getBbWidth()/2, 0);
+                level.sendParticles(etshtinkerParticleType.annihl.get(), entity.getX(), entity.getY()+0.5*entity.getBbHeight(), entity.getZ(), 3, entity.getBbWidth()/2, entity.getBbHeight()/2, entity.getBbWidth()/2, 0.25);
             }
         }
     }

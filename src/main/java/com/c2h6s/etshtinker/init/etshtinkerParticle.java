@@ -27,5 +27,6 @@ public class etshtinkerParticle {
         event.register(etshtinkerParticleType.curse.get(), curseParticle::provider);
         event.register(etshtinkerParticleType.annihl.get(), annhilParticle::provider);
         event.register(etshtinkerParticleType.annihl_scatter.get(), annhilScatterParticle::provider);
+        event.register(etshtinkerParticleType.sonic_energy.get(), SculkEnergyParticle::provider);
     }
 }

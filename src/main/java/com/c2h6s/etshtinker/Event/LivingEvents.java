@@ -5,11 +5,14 @@ import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 
 public class LivingEvents {
@@ -19,6 +22,7 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onPierceHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onDeathPrevent);
     }
+
 
     private void onDeathPrevent(LivingDeathEvent event) {
         LivingEntity entity =event.getEntity();

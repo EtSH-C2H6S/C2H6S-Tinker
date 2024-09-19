@@ -19,7 +19,7 @@ public class annhilParticle extends TextureSheetParticle {
         }
 
         public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new ElectricParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
+            return new annhilParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
         }
     }
 
@@ -36,7 +36,7 @@ public class annhilParticle extends TextureSheetParticle {
         this.xd = 0;
         this.yd = vy;
         this.zd = 0;
-        this.quadSize=0.5F+(this.random.nextFloat() * 4F + 4F) * 2.0F;
+        this.quadSize=0.25F+(this.random.nextFloat() * 1.5F + 1F) * 0.25F;
         this.pickSprite(spriteSet);
     }
 
@@ -61,6 +61,6 @@ public class annhilParticle extends TextureSheetParticle {
     @Override
     public void move(double p_107246_, double p_107247_, double p_107248_) {
         super.move(p_107246_, p_107247_, p_107248_);
-        this.setPos(this.x,this.y+0.25,this.z);
+        //this.setPos(this.x,this.y+0.25,this.z);
     }
 }

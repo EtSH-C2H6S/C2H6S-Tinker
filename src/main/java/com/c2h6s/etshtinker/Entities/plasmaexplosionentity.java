@@ -62,6 +62,7 @@ public class plasmaexplosionentity extends ItemProjectile{
             etshtinkerParticleType.plasmaexplosionblue.get(),
             etshtinkerParticleType.plasmaexplosionpurple.get()
             );
+    public List<AABB> aabbList =new ArrayList<>(List.of());
 
     public void getRayVec3(Vec3 vec3){
         this.rayVec3 =vec3;
@@ -127,6 +128,8 @@ public class plasmaexplosionentity extends ItemProjectile{
                             }
                         }
                         AABB aabb = new AABB(x + 0.75*scale, y + 0.5+0.75*scale, z + 0.75*scale, x - 0.75*scale, y - 0.75*scale+0.5, z - 0.75*scale);
+                        aabbList.add(aabb);
+
                         List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb.expandTowards(vec3));
                         List<ItemEntity> ls2;
                         if (special!=null&&special.equals("elemental")&&Cofhloaded){
@@ -151,10 +154,17 @@ public class plasmaexplosionentity extends ItemProjectile{
                                 else if (special!=null&&special.equals("entropic")&&target!=null){
                                     ls1.add(target);
                                 }
+//                                else if (special!=null&&special.equals("sculk_scatter")&&target!=null&& this.getOwner() instanceof Player player){
+//                                    target.hurt(DamageSource.sonicBoom(player),this.damage);
+//                                }
                             }
                         }
                         if (special != null && (special.equals("random_scatter")||special.equals("entropic"))) {
                             vec3 = getScatteredVec3(vec3, 0.25);
+                        }
+                        if (special!=null&&special.equals("sculk_scatter")){
+                            vec3 =getScatteredVec3(vec3,0.25);
+                            vec3 =getScatteredVec3(vec3,0.5);
                         }
                     }
                     if (!ls1.isEmpty() && special != null) {
@@ -264,8 +274,11 @@ public class plasmaexplosionentity extends ItemProjectile{
                             ls1.add(target);
                         }
                     }
-                    if (special!=null&&special.equals("random_scatter")){
+                    if (special!=null&&(special.equals("random_scatter")||special.equals("sculk_scatter"))){
                         vec3 =getScatteredVec3(vec3,0.25);
+                    }
+                    if (special!=null&&special.equals("sculk_scatter")){
+                        vec3 =getScatteredVec3(vec3,0.5);
                     }
                 }
             }

@@ -62,9 +62,6 @@ public class perfectism extends etshmodifieriii {
                     event.setAmount((float) Math.pow(10,dmgBit+1));
                     if (a>=8){
                         event.setAmount((float) Math.pow(10,dmgBit+2));
-                        if (a==9){
-                            event.setAmount((float) Math.pow(10,dmgBit+3));
-                        }
                     }
                 }
             }

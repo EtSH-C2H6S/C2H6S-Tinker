@@ -18,7 +18,8 @@ public class etshtinkerToolStats {
     public static final FloatToolStat FLUID_EFFICIENCY = (FloatToolStat) ToolStats.register(new FloatToolStat(name("fluid_efficiency"), -3135232, 1.0F, 0.0F, 100));
     public static final FloatToolStat CRITICAL_RATE = (FloatToolStat) ToolStats.register(new FloatToolStat(name("critical_rate"), -3135232, 0.0F, 0.0F, 10f));
     public static final FloatToolStat SLASH_COLOR =(FloatToolStat) ToolStats.register(new FloatToolStat(name("slash_color"), -3135232, 0.0F, 0.0F, 11));
-    public static final FloatToolStat DAMPEN =(FloatToolStat) ToolStats.register(new FloatToolStat(name("dampen"), -3135232, 0.0F, 0.0F, 2));
+    public static final FloatToolStat DAMPEN =(FloatToolStat) ToolStats.register(new FloatToolStat(name("dampen"), -3135232, 0.0F, 0.0F, 5));
+    public static final FloatToolStat VIBR =(FloatToolStat) ToolStats.register(new FloatToolStat(name("vibration_receive"), -3135232, 0.0F, 0.0F, 5));
 
     private static ToolStatId name(String name) {
         return new ToolStatId(MOD_ID, name);

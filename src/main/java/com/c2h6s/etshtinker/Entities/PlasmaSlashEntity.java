@@ -92,7 +92,7 @@ public class PlasmaSlashEntity extends ItemProjectile {
                         annihilateexplosionentity explode = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), targets.getLevel());
                         float d = tool.getCurrentDurability() * 0.25f;
                         tool.setDamage(tool.getDamage() + (int) d);
-                        explode.damage = damage/2;
+                        explode.damage = damage;
                         explode.target = targets;
                         explode.setPos(targets.getX(), targets.getY() + 0.5 * targets.getBbHeight(), targets.getZ());
                         explode.setOwner(player);
