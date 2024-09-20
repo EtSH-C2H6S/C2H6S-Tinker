@@ -34,7 +34,7 @@ public class etshtinkerItems {
 
     //材料
     public static final RegistryObject<Item> lightless_alloy = ITEMS.register("lightless_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
-    public static final RegistryObject<Item> energized_sculk_alloy = ITEMS.register("energized_sculk_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> energized_sculk_alloy = ITEMS.register("energized_sculk_alloy",( ) -> new EnergizedSculkAlloyItem(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
 
 
     //方块
@@ -44,6 +44,10 @@ public class etshtinkerItems {
     //杂项
     public static final RegistryObject<Item> sculk_energycore = ITEMS.register("sculk_energycore", ()->new sculk_energycore(new Item.Properties().stacksTo(64).tab(etshtinkerTab.MIXC)));
     public static final RegistryObject<Item> etshtinker_guide = ITEMS.register("etshtinker_guide", () -> new etshbookitem(new Item.Properties().stacksTo(1).tab(etshtinkerTab.MIXC)));
+    public static final RegistryObject<Item> ionized_cannon_prototype = ITEMS.register("ionized_cannon_prototype", ()->new IonizedCannonPrototype(new Item.Properties().stacksTo(1).tab(etshtinkerTab.MIXC)));
+    public static final RegistryObject<Item> knsu = ITEMS.register("knsu",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
+
+
 
     //弹射物
     public static final RegistryObject<Item> novasickle = ITEMS.register("novasickle", ()->new ShurikenItem(THROWABLE_PROPS, novasickleEntity::new));

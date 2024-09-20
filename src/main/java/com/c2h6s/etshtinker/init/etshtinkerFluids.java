@@ -21,6 +21,8 @@ public class etshtinkerFluids {
     }
 
     public static FluidObject<ForgeFlowingFluid> molten_lightless_alloy = register("molten_lightless_alloy", 1800);//熔融本影合金
+    public static FluidObject<ForgeFlowingFluid> molten_energy_sculk = register("molten_energy_sculk", 2200);
+    public static FluidObject<ForgeFlowingFluid> molten_knsu = register("molten_knsu", 3000);
 
 
     public class etshtinkerFluidMekanism{

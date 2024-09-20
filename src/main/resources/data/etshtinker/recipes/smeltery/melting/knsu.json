@@ -1,0 +1,13 @@
+{
+  "type":"tconstruct:melting",
+  "ingredient":{
+    "item":"etshtinker:knsu"
+  },
+  "temperature": 450,
+  "time": 5,
+  "result":
+  {
+    "fluid": "etshtinker:molten_knsu",
+    "amount": 100
+  }
+}

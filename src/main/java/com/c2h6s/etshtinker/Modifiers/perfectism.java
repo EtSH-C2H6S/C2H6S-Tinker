@@ -66,24 +66,5 @@ public class perfectism extends etshmodifieriii {
                 }
             }
         }
-        if (event.getEntity() instanceof Player player){
-            player.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-                int level = holder.get(key, 0);
-                if (level > 0) {
-                    if (event.getAmount()<=10*level){
-                        event.setCanceled(true);
-                    }else {
-                        float amount =event.getAmount();
-                        int dmgBit =(int) Math.log10(amount);
-                        int a =(int)( amount/Math.pow(10,dmgBit));
-                        if (a<=4){
-                            event.setAmount((float) Math.pow(10,dmgBit-1));
-                        }else {
-                            event.setAmount((float) Math.pow(10,dmgBit));
-                        }
-                    }
-                }
-            });
-        }
     }
 }

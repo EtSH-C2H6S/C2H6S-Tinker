@@ -61,12 +61,13 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
         if (entity instanceof ServerPlayer player){
             ServerLevel level = player.getLevel();
             ModDataNBT nbt =tool.getPersistentData();
-            if (nbt.getInt(charge)<=maxMaxCharge&&player.totalExperience>0){
-                player.giveExperiencePoints(-1);
-                nbt.putInt(charge,nbt.getInt(charge)+1);
-                if (nbt.getInt(charge)<maxCharge) {
-                    level.sendParticles(ParticleTypes.TOTEM_OF_UNDYING, player.getX(), player.getY()+player.getBbHeight(), player.getZ(), 1, 0.25, 0.5, 0.25, 0.25);
-                }else if (nbt.getInt(charge)<=maxMaxCharge){
+            if (useTime<maxCharge||nbt.getInt(charge)<maxCharge) {
+                level.sendParticles(ParticleTypes.TOTEM_OF_UNDYING, player.getX(), player.getY()+player.getBbHeight(), player.getZ(), 1, 0.25, 0.5, 0.25, 0.25);
+            }
+            if (nbt.getInt(charge)<=maxMaxCharge&&player.totalExperience>modifier.getLevel()){
+                player.giveExperiencePoints(-modifier.getLevel());
+                nbt.putInt(charge,nbt.getInt(charge)+modifier.getLevel());
+                if (nbt.getInt(charge)<=maxMaxCharge){
                     level.sendParticles(ParticleTypes.SCULK_CHARGE_POP, player.getX(), player.getY()+player.getBbHeight(), player.getZ(), 1, 0.25, 0.5, 0.25, 0.1);
                 }
             }
@@ -74,7 +75,7 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
             Vec3 direction = new Vec3(Math.cos((player.yBodyRot-90)*Math.PI/180),0.4,Math.sin((player.yBodyRot-90)*Math.PI/180)).scale(1.5);
             Vec3 position = new Vec3(player.getX(),player.getEyeY(),player.getZ()).add(offset);
             position.add(direction);
-            int amount = Math.min(useTime/5,8);
+            int amount =Math.min(Math.min(useTime/5,8),nbt.getInt(charge)/5) ;
             for(int i =0;i<amount;i++){
                 double x =direction.x*(i+1) +position.x+0.1*EtSHrnd().nextFloat() -0.05;
                 double y =direction.y*(i+1) +position.y+0.1*EtSHrnd().nextFloat() -0.05;
@@ -100,7 +101,7 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
             swordEntity.offset =offset;
             swordEntity.Rawdirection =entDirect;
             swordEntity.setOwner(player);
-            swordEntity.damage = (float) tool.getPersistentData().getInt(charge) /2;
+            swordEntity.damage = (float) tool.getPersistentData().getInt(charge) *0.75F;
             serverLevel.addFreshEntity(swordEntity);
             tool.getPersistentData().putInt(charge,0);
             OffhandCooldownTracker.swingHand(player,InteractionHand.MAIN_HAND,false);

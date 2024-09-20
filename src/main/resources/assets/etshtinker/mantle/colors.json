@@ -96,7 +96,12 @@
     "light_equipped": "#DEBAFF",
     "heavy_crit_ex": "#FF0094",
     "annihilating_slash": "#FF0000",
-    "perfectism": "#90FF90"
+    "perfectism": "#90FF90",
+    "reactive_resonate_armor": "#00FFD0",
+    "phase_characteristic": "#00FFD0",
+    "amplitude_characteristic": "#00FFD0",
+    "resonance_effect": "#00FFD0",
+    "perfect_armor": "#90FF90"
   },
   "material.etshtinker":
   {
@@ -127,6 +132,7 @@
     "gemamber": "#8A5700",
     "alfsteel": "#E6C011",
     "nights_alloy": "#800002",
-    "perfect_generic_item": "#90FF90"
+    "perfect_generic_item": "#90FF90",
+    "energized_sculk_alloy": "#00FFD0"
   }
 }

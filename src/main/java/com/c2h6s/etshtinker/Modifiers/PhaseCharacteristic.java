@@ -29,12 +29,16 @@ import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 public class PhaseCharacteristic extends etshmodifieriii {
     private final String sonic ="etsh.sonic";
 
+    @Override
+    public int getPriority() {
+        return 512;
+    }
 
     @Override
     public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
         if (livingEntity instanceof ServerPlayer player){
-            if (player.experienceLevel>20){
-                player.experienceLevel-=20;
+            if (player.totalExperience>5){
+                player.giveExperiencePoints(-5);
                 return new ItemStack(Items.ARROW);
             }
         }
@@ -44,6 +48,12 @@ public class PhaseCharacteristic extends etshmodifieriii {
     @Override
     public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (abstractArrow!=null){
+            if (livingEntity instanceof ServerPlayer player){
+                if (player.totalExperience>15){
+                    player.giveExperiencePoints(-15);
+                }
+                else return;
+            }
             abstractArrow.getPersistentData().putInt(sonic,modifiers.getLevel());
         }
     }
@@ -58,17 +68,17 @@ public class PhaseCharacteristic extends etshmodifieriii {
                     CustomSonicBoomEntity entity =new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(),arrow.level);
                     entity.setOwner(serverPlayer);
                     entity.direction=getScatteredVec3( new Vec3(0,1,0),87);
-                    entity.damage= (float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
+                    entity.damage= (float) (0.5*arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
                     entity.setPos(arrow.getX(),arrow.getY()-0.25,arrow.getZ());
-                    entity.range=8;
+                    entity.range=4;
                     arrow.level.addFreshEntity(entity);
                     CustomSonicBoomEntity entity1 =new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(),arrow.level);
                     entity1.setOwner(serverPlayer);
                     entity1.direction=getScatteredVec3( new Vec3(0,-1,0),87);
-                    entity1.damage= (float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
+                    entity1.damage= (float) (0.5*arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
                     entity1.setPos(arrow.getX(),arrow.getY()-0.25,arrow.getZ());
                     arrow.level.addFreshEntity(entity1);
-                    entity1.range=8;
+                    entity1.range=4;
                 }
                 ExperienceOrb orb =new ExperienceOrb(EntityType.EXPERIENCE_ORB,arrow.level);
                 orb.setPos(arrow.getX(),arrow.getY(),arrow.getZ());
@@ -89,17 +99,17 @@ public class PhaseCharacteristic extends etshmodifieriii {
                     CustomSonicBoomEntity entity =new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(),arrow.level);
                     entity.setOwner(serverPlayer);
                     entity.direction=getScatteredVec3( new Vec3(0,1,0),87);
-                    entity.damage= (float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
+                    entity.damage= (float) (0.5*arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
                     entity.setPos(arrow.getX(),arrow.getY(),arrow.getZ());
-                    entity.range=8;
+                    entity.range=4;
                     arrow.level.addFreshEntity(entity);
                     CustomSonicBoomEntity entity1 =new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(),arrow.level);
                     entity1.setOwner(serverPlayer);
                     entity1.direction=getScatteredVec3( new Vec3(0,-1,0),87);
-                    entity1.damage= (float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
+                    entity1.damage= (float) (0.5*arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
                     entity1.setPos(arrow.getX(),arrow.getY(),arrow.getZ());
                     arrow.level.addFreshEntity(entity1);
-                    entity1.range=8;
+                    entity1.range=4;
                 }
                 ExperienceOrb orb =new ExperienceOrb(EntityType.EXPERIENCE_ORB,arrow.level);
                 orb.setPos(arrow.getX(),arrow.getY(),arrow.getZ());

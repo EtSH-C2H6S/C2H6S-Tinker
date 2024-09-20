@@ -1,0 +1,13 @@
+{
+
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:energized_sculk_alloy"
+    },
+    "temperature": 2200,
+    "time": 20,
+    "result":{
+      "fluid": "etshtinker:molten_energy_sculk",
+      "amount": 90
+    }
+}

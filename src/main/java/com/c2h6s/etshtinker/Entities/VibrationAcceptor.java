@@ -63,17 +63,17 @@ public class VibrationAcceptor extends ItemProjectile implements VibrationListen
                     }
                 }
                 float amount = this.getPersistentData().getFloat(freq);
-                int level = (int) (amount / 15);
+                int level = (int) (amount / 20);
                 if (level > 0) {
                     player.addEffect(new MobEffectInstance(MobEffects.SATURATION,level*20,level-1,false,false));
                     if (level>1){
-                        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,level*20,level-1,false,false));
+                        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,level*20, Math.min(7,level-1),false,false));
                         if (level>3){
-                            player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,level*20,level-1,false,false));
+                            player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,level*20,level-2,false,false));
                             if (level>5){
-                                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,level*20,level-1,false,false));
+                                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,level*20,level-4,false,false));
                                 if (level>7){
-                                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,level*20,level-1,false,false));
+                                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,level*20,level-6,false,false));
                                 }
                             }
                         }

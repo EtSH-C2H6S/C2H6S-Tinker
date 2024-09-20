@@ -16,6 +16,7 @@ public class LivingEntityTick {
                 entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassMagic(),Float.MAX_VALUE);
                 entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassArmor(),Float.MAX_VALUE);
                 entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassInvul(),Float.MAX_VALUE);
+                entity.getPersistentData().remove("annih_countdown");
                 level.sendParticles(etshtinkerParticleType.annihl.get(),entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ(),64,0.1,0.1,0.1,1);
                 return;
             }

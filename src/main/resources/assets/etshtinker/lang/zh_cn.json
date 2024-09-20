@@ -387,7 +387,27 @@
 
   "modifier.etshtinker.perfectism": "完美主义",
   "modifier.etshtinker.perfectism.flavor": "追求完美不总是好事",
-  "modifier.etshtinker.perfectism.description":"你造成的伤害会乘以属性等级，然后根据伤害的末位数修正:<=4时退位>4时进位，>=8时额外乘以10。\n你免疫<=10的伤害，受到的伤害会除以属性等级，然后根据伤害的末位数修正:<=4时退2位，>4时退1位。",
+  "modifier.etshtinker.perfectism.description":"你造成的伤害会乘以属性等级，然后根据伤害的末位数修正:<=4时退位>4时进位，>=8时额外乘以10。",
+
+  "modifier.etshtinker.perfect_armor": "完美护甲",
+  "modifier.etshtinker.perfect_armor.flavor": "追求完美不总是好事",
+  "modifier.etshtinker.perfect_armor.description":"受伤时有99%的概率使受到的伤害归零，剩下1%则使伤害变为100。",
+
+  "modifier.etshtinker.reactive_resonate_armor": "谐振反应装甲",
+  "modifier.etshtinker.reactive_resonate_armor.flavor": "力释音",
+  "modifier.etshtinker.reactive_resonate_armor.description":"获得25%减伤，将所受伤害以音爆的形式释放",
+
+  "modifier.etshtinker.phase_characteristic": "相频特性",
+  "modifier.etshtinker.phase_characteristic.flavor": "声形俱灭！",
+  "modifier.etshtinker.phase_characteristic.description":"射击时消耗20点经验值凭空产生箭矢，箭矢击中后造成音爆并返还10点经验。",
+
+  "modifier.etshtinker.amplitude_characteristic": "幅频特性",
+  "modifier.etshtinker.amplitude_characteristic.flavor": "灵魂共振！",
+  "modifier.etshtinker.amplitude_characteristic.description":"右键长按时消耗经验给武器充能。蓄力2秒后松手将释放所有充能造成一次声波打击并返还75%经验，根据充能量造成伤害。等级越高最大充能时长越长",
+
+  "modifier.etshtinker.resonance_effect": "稳态谐振",
+  "modifier.etshtinker.resonance_effect.flavor": "别出声......",
+  "modifier.etshtinker.resonance_effect.description":"每5刻，工具会从环境接收震动，并每隔2秒根据2秒内接收到震动的频率总和给予使用者正面效果。",
 
 
 
@@ -589,8 +609,8 @@
 
   "item.etshtinker.energized_sculk_alloy": "谐振幽匿合金",
   "material.etshtinker.energized_sculk_alloy": "谐振幽匿",
-  "material.etshtinker.energized_sculk_alloy.flavor": "共振...",
-  "material.etshtinker.energized_sculk_alloy.encyclopedia": "充满了幽匿能量的物品，与声音发生共鸣。\n“不要与谐振末影混淆”",
+  "material.etshtinker.energized_sculk_alloy.flavor": "来自遥远文明的回响",
+  "material.etshtinker.energized_sculk_alloy.encyclopedia": "来自远古文明的一小块金属，与振荡能量发生着共鸣。",
 
 
 
@@ -610,6 +630,20 @@
   "entity.etshtinker.plasmaexplosionentity": "",
   "entity.etshtinker.nights_slash_entity": "",
   "entity.etshtinker.nights_slash_entity_b": "",
+  "entity.etshtinker.plasma_slash_red": "",
+  "entity.etshtinker.plasma_slash_orange": "",
+  "entity.etshtinker.plasma_slash_yellow": "",
+  "entity.etshtinker.plasma_slash_lime": "",
+  "entity.etshtinker.plasma_slash_green": "",
+  "entity.etshtinker.plasma_slash_cyan": "",
+  "entity.etshtinker.plasma_slash_blue": "",
+  "entity.etshtinker.plasma_slash_purple": "",
+  "entity.etshtinker.plasma_slash_anti": "",
+  "entity.etshtinker.plasma_slash_dark": "",
+  "entity.etshtinker.plasma_slash_rainbow": "",
+  "entity.etshtinker.sonic_boom": "",
+  "entity.etshtinker.sculk_sword": "",
+  "entity.etshtinker.vibration_acceptor": "",
 
 
 
@@ -711,7 +745,14 @@
   "item.etshtinker.fluid_chamber_sand_cast": "储液器沙子铸膜",
   "item.etshtinker.fluid_chamber_red_sand_cast": "储液器红沙铸膜",
 
+  "item.etshtinker.ionized_cannon_prototype": "离子化射线炮原型机",
+  "etshtinker.item.tooltip.ionized_cannon_prototype": "令人震惊的是，这个老古董居然没有坏！",
+  "etshtinker.item.tooltip.ionized_cannon_prototype1": "按住右键蓄力，发射大范围音爆",
+  "etshtinker.item.tooltip.ionized_cannon_prototype2": "击杀监守者2%概率掉落",
 
+  "etshtinker.item.tooltip.energized_sculk_alloy": "各种勘探结果表明，我们有着一个无比先进的祖先。",
+  "etshtinker.item.tooltip.energized_sculk_alloy1": "它们十分擅长利用谐振能量，这块金属就是主要证据之一。",
+  "etshtinker.item.tooltip.energized_sculk_alloy2": "只使用音波攻击击杀监守者时掉落",
 
   "recipe.etshtinker.modifier.exoblade": "星流之刃需要神金质作为前置",
   "recipe.etshtinker.modifier.chainreaction": "链式反应需要裂变反应作为前置",
@@ -753,6 +794,8 @@
   "item.etshtinker.bismuthinite_ore_deepslate": "深层辉铋矿",
   "item.etshtinker.bismuthinite": "辉铋矿晶体",
 
+  "item.etshtinker.knsu": "重结晶KNSU",
+
   "desc.immersiveengineering.info.mineral.bismuthinite": "富辉铋矿床",
 
 
@@ -789,6 +832,12 @@
 
   "fluid_type.etshtinker.molten_alfsteel": "熔融精灵钢",
   "item.etshtinker.molten_alfsteel_bucket": "熔融精灵钢桶",
+
+  "fluid_type.etshtinker.molten_energy_sculk": "熔融谐振幽匿",
+  "item.etshtinker.molten_energy_sculk_bucket": "熔融谐振幽匿桶",
+
+  "fluid_type.etshtinker.molten_knsu": "熔融KNSU燃料",
+  "item.etshtinker.molten_knsu_bucket": "熔融KNSU燃料桶",
 
 
 

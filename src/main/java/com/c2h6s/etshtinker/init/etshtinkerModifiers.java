@@ -98,6 +98,8 @@ public class etshtinkerModifiers {
     public static final StaticModifier<ResonanceEffect>resonance_effect= MODIFIERS.register("resonance_effect", ResonanceEffect::new);
     public static final StaticModifier<AmplitudeCharacteristic>amplitude_characteristic= MODIFIERS.register("amplitude_characteristic", AmplitudeCharacteristic::new);
     public static final StaticModifier<PhaseCharacteristic>phase_characteristic= MODIFIERS.register("phase_characteristic", PhaseCharacteristic::new);
+    public static final StaticModifier<perfectArmor>perfect_armor= MODIFIERS.register("perfect_armor", perfectArmor::new);
+    public static final StaticModifier<ReactiveResonateArmor>reactive_resonate_armor= MODIFIERS.register("reactive_resonate_armor", ReactiveResonateArmor::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
