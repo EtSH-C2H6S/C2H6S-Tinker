@@ -8,15 +8,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import slimeknights.tconstruct.TConstruct;
-import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.item.ranged.ModifiableLauncherItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 
 public class perfectism extends etshmodifieriii {
-    private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("perfectism");
     public perfectism(){
         MinecraftForge.EVENT_BUS.addListener(this::AttackEvent);
         MinecraftForge.EVENT_BUS.addListener(this::DamageEvent);
@@ -33,16 +30,6 @@ public class perfectism extends etshmodifieriii {
                     nbt.putFloat("etsh.perfect_damage",event.getAmount()*tool.getModifierLevel(this));
                 }
             }
-        }
-        if (event.getEntity() instanceof Player player){
-            player.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-                int level = holder.get(key, 0);
-                if (level > 0) {
-                    if (event.getAmount()<=10*level){
-                        event.setCanceled(true);
-                    }
-                }
-            });
         }
     }
     private void DamageEvent(LivingDamageEvent event) {

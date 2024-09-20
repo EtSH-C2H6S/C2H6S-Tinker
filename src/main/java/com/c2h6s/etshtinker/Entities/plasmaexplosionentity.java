@@ -111,7 +111,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                 if (vec3 != null && range > 0 && particle != null) {
                     int i = 0;
 
-                    while (i < range*2) {
+                    while (i < range) {
                         i += 1;
                         if (special != null && (special.equals("elemental") || special.equals("nova_radiation"))) {
                             this.particle = lsp.get(random.nextInt(8));

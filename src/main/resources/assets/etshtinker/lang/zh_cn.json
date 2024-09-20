@@ -681,7 +681,7 @@
   "etshtinker.tool.tooltip.effectivefluid": "流体基础伤害",
 
   "item.etshtinker.ionized_cannon": "离子化射线炮",
-  "item.etshtinker.ionized_cannon.description": "重型近战/远程两用武器，具有无限的耐久，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书)，对其路径上的敌人造成多段伤害。",
+  "item.etshtinker.ionized_cannon.description": "重型远距离近战武器，具有无限的耐久，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书)，对其路径上的敌人造成多段伤害。",
   "tool_stat.etshtinker.plasmarange": "射程",
   "tool_stat.etshtinker.plasmarange.description": "射线的最大距离",
   "tool_stat.etshtinker.cooldown": "冷却时间",

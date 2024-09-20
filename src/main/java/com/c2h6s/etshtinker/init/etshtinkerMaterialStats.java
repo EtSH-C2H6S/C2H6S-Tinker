@@ -10,8 +10,8 @@ import static slimeknights.tconstruct.library.materials.MaterialRegistry.RANGED;
 public class etshtinkerMaterialStats {
     public static void setup() {
         IMaterialRegistry registry = MaterialRegistry.getInstance();
-        registry.registerStatType(ionizerMaterialStats.TYPE, RANGED);
-        registry.registerStatType(fluidChamberMaterialStats.TYPE, RANGED);
+        registry.registerStatType(ionizerMaterialStats.TYPE, MELEE_HARVEST);
+        registry.registerStatType(fluidChamberMaterialStats.TYPE, MELEE_HARVEST);
         registry.registerStatType(PlasmaGeneratorMaterialStats.TYPE,MELEE_HARVEST);
     }
 
