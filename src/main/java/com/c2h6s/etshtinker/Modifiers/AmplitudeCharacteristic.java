@@ -100,7 +100,6 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
             swordEntity.offset =offset;
             swordEntity.Rawdirection =entDirect;
             swordEntity.setOwner(player);
-            swordEntity.tool = (ToolStack) tool;
             swordEntity.damage = (float) tool.getPersistentData().getInt(charge) /2;
             serverLevel.addFreshEntity(swordEntity);
             tool.getPersistentData().putInt(charge,0);

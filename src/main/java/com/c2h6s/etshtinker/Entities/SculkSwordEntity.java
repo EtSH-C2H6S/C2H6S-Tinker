@@ -23,7 +23,6 @@ public class SculkSwordEntity extends ItemProjectile{
     public Vec3 offset;
     public float damage =24;
     public int charge =40;
-    public ToolStack tool;
 
     public SculkSwordEntity(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -107,15 +106,11 @@ public class SculkSwordEntity extends ItemProjectile{
                         this.charge=0;
                     }
                     this.playSound(SoundEvents.WARDEN_SONIC_BOOM,1,1);
-                    plasmaexplosionentity entity =new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(),level);
+                    CustomSonicBoomEntity entity =new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(),level);
                     entity.setOwner(player);
-                    entity.particle = ParticleTypes.SONIC_BOOM;
-                    entity.special ="sculk_scatter";
-                    entity.rayVec3=getScatteredVec3( new Vec3(0,range,0),87);
-                    entity.scale=1.5f;
+                    entity.direction=getScatteredVec3( new Vec3(0,range,0),87);
                     entity.damage=this.damage;
                     entity.setPos(x,y,z);
-                    entity.tool =this.tool;
                     level.addFreshEntity(entity);
                 }
                 this.discard();

@@ -45,6 +45,7 @@ public class etshtinkerEntityRenderers {
         event.registerEntityRenderer(etshtinkerEntity.plasma_slash_yellow.get(), plasmaSlashRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.vibration_acceptor.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.sculk_sword.get(), NoopRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.sonic_boom.get(), NoopRenderer::new);
         if (BOTloaded){
             event.registerEntityRenderer(etshtinkerBotEntity.ALFBURST.get(), NoopRenderer::new);
         }

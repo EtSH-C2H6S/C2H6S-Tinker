@@ -97,6 +97,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<perfectism>perfectism= MODIFIERS.register("perfectism", perfectism::new);
     public static final StaticModifier<ResonanceEffect>resonance_effect= MODIFIERS.register("resonance_effect", ResonanceEffect::new);
     public static final StaticModifier<AmplitudeCharacteristic>amplitude_characteristic= MODIFIERS.register("amplitude_characteristic", AmplitudeCharacteristic::new);
+    public static final StaticModifier<PhaseCharacteristic>phase_characteristic= MODIFIERS.register("phase_characteristic", PhaseCharacteristic::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
