@@ -14,5 +14,5 @@ public class etshtinkerEffects {
     public static final RegistryObject<MobEffect>novaradiation = EFFECT.register("novaradiation",novaradiation::new);
     public static final RegistryObject<MobEffect>ionized = EFFECT.register("ionized",ionized::new);
     public static final RegistryObject<MobEffect>cursefire = EFFECT.register("cursefire", cursefireEffect::new);
-    public static final RegistryObject<MobEffect> destruction = EFFECT.register("destruction", Destruction::new);
+    public static final RegistryObject<MobEffect> annihilating = EFFECT.register("annihilating", Destruction::new);
 }

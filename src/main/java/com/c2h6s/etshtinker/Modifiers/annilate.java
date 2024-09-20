@@ -3,7 +3,6 @@ import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +19,6 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import com.c2h6s.etshtinker.Modifiers.modifiers.*;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
@@ -45,8 +43,8 @@ public class annilate extends etshmodifieriii  {
             tool.getPersistentData().putInt(des, 114514);
             living.getPersistentData().putInt("annih_countdown",60);
             attacker.getPersistentData().putInt("annih_countdown",60);
-            living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
-            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
+            living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
+            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
         }
         return knockback;
     }
@@ -73,8 +71,8 @@ public class annilate extends etshmodifieriii  {
         if (target !=null&&attacker!=null){
             target.getPersistentData().putInt("annih_countdown",60);
             attacker.getPersistentData().putInt("annih_countdown",80);
-            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
-            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.destruction.get(),60,0,false,false),attacker);
+            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
+            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
         }
         return false;
     }
