@@ -16,5 +16,21 @@
       "name": "etshtinker:solidex",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "etshtinker:electricarmor",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:extralight",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:solidex",
+        "level": 1
+      }
+    ]
+  }
 }

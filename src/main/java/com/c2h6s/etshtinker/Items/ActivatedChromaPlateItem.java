@@ -4,6 +4,7 @@ import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import com.c2h6s.etshtinker.init.etshtinkerTab;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -28,9 +29,13 @@ public class ActivatedChromaPlateItem extends Item {
     }
     @Override
     public void appendHoverText(@NotNull ItemStack itemstack, Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-        list.add(Component.translatable("etshtinker.item.tooltip.activated_chroma_plate").withStyle(ChatFormatting.YELLOW));
-        list.add(Component.translatable("etshtinker.item.tooltip.activated_chroma_plate3").withStyle(ChatFormatting.YELLOW));
-        list.add(Component.translatable("etshtinker.item.tooltip.activated_chroma_plate2").withStyle(ChatFormatting.GOLD));
+        if (Screen.hasShiftDown()) {
+            list.add(Component.translatable("etshtinker.item.tooltip.activated_chroma_plate").withStyle(ChatFormatting.YELLOW));
+            list.add(Component.translatable("etshtinker.item.tooltip.activated_chroma_plate3").withStyle(ChatFormatting.YELLOW));
+            list.add(Component.translatable("etshtinker.item.tooltip.activated_chroma_plate2").withStyle(ChatFormatting.GOLD));
+        }else {
+            list.add(Component.translatable("etshtinker.item.tooltip.shift").withStyle(ChatFormatting.YELLOW));
+        }
         super.appendHoverText(itemstack, world, list, flag);
     }
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity){

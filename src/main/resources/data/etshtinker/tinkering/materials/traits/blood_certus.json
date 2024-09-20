@@ -11,8 +11,11 @@
     {
       "name": "etshtinker:tightennerve",
       "level": 1
+    },
+    {
+      "name": "etshtinker:semicrystaline",
+      "level": 1
     }
-
   ],
   "perStat": {
     "tconstruct:binding": [

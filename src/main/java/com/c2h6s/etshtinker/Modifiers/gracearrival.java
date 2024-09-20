@@ -18,10 +18,6 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.modloaded.*;
 
 public class gracearrival extends etshmodifieriii {
-    private final ResourceLocation ticks = new ResourceLocation(MOD_ID, "ticks");
-    public void onModifierRemoved(IToolStackView tool) {
-        tool.getPersistentData().remove(ticks);
-    }
     public gracearrival(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghealevent);
     }
@@ -40,14 +36,11 @@ public class gracearrival extends etshmodifieriii {
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel()>0&&isCorrectSlot&&BOTloaded&&holder instanceof Player player){
-            if (tool.getPersistentData().getInt(ticks)<40){
-                tool.getPersistentData().putInt(ticks,tool.getPersistentData().getInt(ticks)+1);
-            }else {
+            if (player.level.getGameTime()%20==0) {
                 if (player.getHealth()<player.getMaxHealth()) {
                     if (ManaItemHandler.INSTANCE.requestManaExactForTool(itemStack, player, 200, true)) {
                         player.heal(1);
                     }
-                    tool.getPersistentData().putInt(ticks, 0);
                 }
             }
         }
