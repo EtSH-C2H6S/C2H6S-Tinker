@@ -390,8 +390,8 @@
   "modifier.etshtinker.perfectism.description":"你造成的伤害会乘以属性等级，然后根据伤害的末位数修正:<=4时退位>4时进位，>=8时额外乘以10。",
 
   "modifier.etshtinker.perfect_armor": "完美护甲",
-  "modifier.etshtinker.perfect_armor.flavor": "追求完美不总是好事",
-  "modifier.etshtinker.perfect_armor.description":"受伤时有99%的概率使受到的伤害归零，剩下1%则使伤害变为100。",
+  "modifier.etshtinker.perfect_armor.flavor": "追求完美也不总是坏事",
+  "modifier.etshtinker.perfect_armor.description":"先将所受伤害除以属性等级，若小于5则免疫，若大于等于5，则设置为10",
 
   "modifier.etshtinker.reactive_resonate_armor": "谐振反应装甲",
   "modifier.etshtinker.reactive_resonate_armor.flavor": "力释音",
