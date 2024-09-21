@@ -403,7 +403,7 @@
 
   "modifier.etshtinker.amplitude_characteristic": "幅频特性",
   "modifier.etshtinker.amplitude_characteristic.flavor": "灵魂共振！",
-  "modifier.etshtinker.amplitude_characteristic.description":"右键长按时消耗经验给武器充能。蓄力2秒后松手将释放所有充能造成一次声波打击并返还75%经验，根据充能量造成伤害。等级越高最大充能时长越长",
+  "modifier.etshtinker.amplitude_characteristic.description":"右键长按时消耗经验给武器充能。蓄力2秒后松手释放所有充能造成一次声波打击并返还75%经验，根据充能量造成伤害。等级越高最大充能越大",
 
   "modifier.etshtinker.resonance_effect": "稳态谐振",
   "modifier.etshtinker.resonance_effect.flavor": "别出声......",
