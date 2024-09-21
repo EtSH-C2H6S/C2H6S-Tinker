@@ -9,7 +9,7 @@ import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 
 
 public class ParticleChainUtil {
-    public static void summonSparkFromTo(Level level, int idStart, int idEnd) {
+    public static void summonSparkFromTo(ServerLevel level, int idStart, int idEnd) {
         Entity entityStart = level.getEntity(idStart);
         Entity entityEnd = level.getEntity(idEnd);
         if (entityStart == null || entityEnd == null) {
@@ -23,10 +23,10 @@ public class ParticleChainUtil {
             Vec3 pos = new Vec3(x, y, z);
             if (pos.distanceToSqr(entityEnd.position()) <= 0.04d)
                 break;
-            ((ServerLevel)level).sendParticles(ParticleTypes.CRIT, x, y + (entityStart.getBbHeight() / 2f), z,1,0, 0d, 0d, 0d);
+            level.sendParticles(ParticleTypes.CRIT, x, y + (entityStart.getBbHeight() / 2f), z,1,0, 0d, 0d, 0d);
         }
     }
-    public static void summonELECSPARKFromTo(Level level, int idStart, int idEnd) {
+    public static void summonELECSPARKFromTo(ServerLevel level, int idStart, int idEnd) {
         Entity entityStart = level.getEntity(idStart);
         Entity entityEnd = level.getEntity(idEnd);
         if (entityStart == null || entityEnd == null) {
@@ -40,11 +40,11 @@ public class ParticleChainUtil {
             Vec3 pos = new Vec3(x, y, z);
             if (pos.distanceToSqr(entityEnd.position()) <= 0.04d)
                 break;
-            ((ServerLevel)level).sendParticles(ParticleTypes.ELECTRIC_SPARK, x, y, z,1,0, 0d, 0d, 0d);
+            level.sendParticles(ParticleTypes.ELECTRIC_SPARK, x, y, z,1,0, 0d, 0d, 0d);
 
         }
     }
-    public static void summonElectricFromTowithlimit(Level level, int idStart, int idEnd, int limit) {
+    public static void summonElectricFromTowithlimit(ServerLevel level, int idStart, int idEnd, int limit) {
         Entity entityStart = level.getEntity(idStart);
         Entity entityEnd = level.getEntity(idEnd);
         if (entityStart == null || entityEnd == null) {
@@ -58,11 +58,11 @@ public class ParticleChainUtil {
             Vec3 pos = new Vec3(x, y, z);
             if (pos.distanceToSqr(entityEnd.position()) <= 0.04d)
                 break;
-            ((ServerLevel)level).sendParticles(etshtinkerParticleType.electric.get(), x, y + (entityStart.getBbHeight() / 2f), z,1,0, 0d, 0d, 0d);
+            level.sendParticles(etshtinkerParticleType.electric.get(), x, y + (entityStart.getBbHeight() / 2f), z,1,0, 0d, 0d, 0d);
 
         }
     }
-    public static void summonLaserFromTo(Level level, int idStart, int idEnd) {
+    public static void summonLaserFromTo(ServerLevel level, int idStart, int idEnd) {
         Entity entityStart = level.getEntity(idStart);
         Entity entityEnd = level.getEntity(idEnd);
         if (entityStart == null || entityEnd == null) {
@@ -76,7 +76,7 @@ public class ParticleChainUtil {
             Vec3 pos = new Vec3(x, y, z);
             if (pos.distanceToSqr(entityEnd.position()) <= 0.04d)
                 break;
-            ((ServerLevel)level).sendParticles(etshtinkerParticleType.laserparticle.get(), x, y, z,1,0, 0d, 0d, 0d);
+            level.sendParticles(etshtinkerParticleType.laserparticle.get(), x, y, z,1,0, 0d, 0d, 0d);
 
         }
     }

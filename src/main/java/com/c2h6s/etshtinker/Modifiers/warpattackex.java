@@ -6,6 +6,7 @@ import com.c2h6s.etshtinker.util.ParticleChainUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -59,8 +60,8 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
                 entity1.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic(), getMainLevel(player,this) * tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*6.4F);
                 entity1.invulnerableTime = 0;
                 Level level1 = entity1.level;
-                if (level1 != null) {
-                    ParticleChainUtil.summonELECSPARKFromTo(level1, player.getId(), entity1.getId());
+                if (level1 instanceof ServerLevel serverLevel) {
+                    ParticleChainUtil.summonELECSPARKFromTo(serverLevel, player.getId(), entity1.getId());
                 }
                 entity1.playSound(SoundEvents.PLAYER_ATTACK_SWEEP, 1, 1);
                 holder.level.addAlwaysVisibleParticle(ParticleTypes.SWEEP_ATTACK, true, entity1.getX(), 0.5 * (entity1.getY() + entity1.getEyeY()), entity1.getZ(), 0, 0, 0);

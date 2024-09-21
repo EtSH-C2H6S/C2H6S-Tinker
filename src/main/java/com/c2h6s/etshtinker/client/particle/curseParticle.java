@@ -4,6 +4,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 
+import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
+
 public class curseParticle extends TextureSheetParticle {
     public static curseParticleProvider provider(SpriteSet spriteSet) {
         return new curseParticleProvider(spriteSet);
@@ -34,7 +36,7 @@ public class curseParticle extends TextureSheetParticle {
         this.yd = Math.pow(vx*vx+vy*vy+vz*vz,0.5)*0.5;
         this.zd = vz * 0.25;
         this.pickSprite(spriteSet);
-        this.quadSize =4;
+        this.quadSize =EtSHrnd().nextFloat()*0.55F+0.1F;
     }
 
     @Override
@@ -49,6 +51,7 @@ public class curseParticle extends TextureSheetParticle {
         if (this.age>this.lifetime){
             this.remove();
         }
+        this.alpha*=0.9f;
         super.tick();
     }
 }

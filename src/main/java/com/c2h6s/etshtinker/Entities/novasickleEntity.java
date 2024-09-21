@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -99,9 +100,9 @@ public class novasickleEntity extends ShurikenEntityBase {
             Vec3 vec3 = Entity1ToEntity2(this,entity);
             if (entity!=null) {
                 Level world = entity.level;
-                if (world != null) {
+                if (world instanceof ServerLevel serverLevel) {
                     if (this.getOwner() instanceof Player player) {
-                        summonELECSPARKFromTo(world, this.getId(), entity.getId());
+                        summonELECSPARKFromTo(serverLevel, this.getId(), entity.getId());
                         double vx = Objects.requireNonNull(getUnitizedVec3(vec3)).x;
                         double vy = Objects.requireNonNull(getUnitizedVec3(vec3)).y;
                         double vz = Objects.requireNonNull(getUnitizedVec3(vec3)).z;

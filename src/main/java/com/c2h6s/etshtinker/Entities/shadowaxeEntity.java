@@ -4,6 +4,7 @@ import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -103,8 +104,8 @@ public class shadowaxeEntity extends ShurikenEntityBase {
                     }
                     entity.forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(),100,10,false,false),player);
                     Level level1 =this.level;
-                    if (level1!=null){
-                        summonLaserFromTo(level1,this.getId(),entity.getId());
+                    if (level instanceof ServerLevel serverLevel){
+                        summonLaserFromTo(serverLevel,this.getId(),entity.getId());
                     }
                     this.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR,1,2.25f);
                     i++;

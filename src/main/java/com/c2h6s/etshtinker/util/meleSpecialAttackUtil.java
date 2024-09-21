@@ -5,6 +5,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -14,25 +15,28 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import com.c2h6s.etshtinker.Entities.*;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.utils.Util;
 
 import java.util.List;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
+import static net.minecraft.world.entity.EquipmentSlot.Type.HAND;
 
 public class meleSpecialAttackUtil {
-    public static void createWarp(@NotNull Player attacker, Float radius, Float damage, ToolStack tool){
+    public static void createWarp(@NotNull Player attacker, Float radius, Float damage, ToolStack tool, InteractionHand hand){
         int lvl =(int)(radius/8);
         Level world =attacker.getLevel();
         LivingEntity entity =getNearestLiEnt(radius,attacker,world);
-        if (entity!=null&&world!=null&&entity.isAlive()){
+        if (entity!=null&&entity.isAlive()){
             entity.invulnerableTime=0;
-            entity.hurt(DamageSource.playerAttack(attacker),damage);
+            attackUtil.attackEntity(tool,attacker,hand,entity,()->1,true, Util.getSlotType(hand),damage,true,true,true,true,0.5f);
             entity.invulnerableTime=0;
             if (world.isClientSide) {
                 world.addAlwaysVisibleParticle(ParticleTypes.SWEEP_ATTACK, true, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 0, 0, 0);
             }
             else {
                 ((ServerLevel)world).sendParticles(ParticleTypes.SWEEP_ATTACK, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 1,0,0, 0, 0);
+                ParticleChainUtil.summonELECSPARKFromTo((ServerLevel)world,attacker.getId(),entity.getId() );
             }
             world.playSound(attacker, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.NEUTRAL, 1, 1);
             double x =entity.getX();

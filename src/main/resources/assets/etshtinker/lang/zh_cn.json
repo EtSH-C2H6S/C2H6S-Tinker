@@ -55,7 +55,7 @@
 
   "modifier.etshtinker.radiationremoval": "消辐",
   "modifier.etshtinker.radiationremoval.flavor": "让时间抚平伤痛",
-  "modifier.etshtinker.radiationremoval.description":"每级提供400倍辐射自然消散速度[温馨提示：等级太高可能会卡]",
+  "modifier.etshtinker.radiationremoval.description":"每级提供400倍辐射自然消散速度",
 
   "modifier.etshtinker.fusion": "聚变反应",
   "modifier.etshtinker.fusion.flavor": "相当于内置了一个聚变反应堆",

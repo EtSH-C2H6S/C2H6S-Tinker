@@ -1,6 +1,8 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.util.ParticleChainUtil;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -26,6 +28,7 @@ public class electromotiveforce extends etshmodifieriii {
                     double xx = attacker.getX();
                     double yy = attacker.getY();
                     double zz = attacker.getZ();
+                    int id0 =attacker.getId();
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR, 2f, 2f);
                     List<Mob> ls001 = attacker.level.getEntitiesOfClass(Mob.class, new AABB(xx + 4 * lvl000, yy + 4 * lvl000, zz + 4 * lvl000, xx - 4 * lvl000, yy - 4 * lvl000, zz - 4 * lvl000));
                     for (Mob mob1 : ls001) {
@@ -33,6 +36,10 @@ public class electromotiveforce extends etshmodifieriii {
                             mob1.invulnerableTime = 0;
                             mob1.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor(), amount);
                             mob1.invulnerableTime = 0;
+                            int id1=mob1.getId();
+                            if (mob1.level instanceof ServerLevel serverLevel){
+                                ParticleChainUtil.summonSparkFromTo(serverLevel,id0,id1);
+                            }
                         }
                     }
                 }

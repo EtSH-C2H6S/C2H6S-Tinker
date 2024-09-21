@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.util.ParticleChainUtil;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -41,10 +42,10 @@ public class electricArmor extends etshmodifieriii {
                             mob1.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor(), mob1.getMaxHealth() * 0.01f * lvl000);
                             mob1.invulnerableTime = 0;
                             mob1.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, Math.min(100 * lvl000, 200), 100, false, false), attacker);
-                            if (level!=null) {
-                                attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
-                                mob1.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
-                                ParticleChainUtil.summonElectricFromTowithlimit(level,attacker.getId(),mob1.getId(),128);
+                            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
+                            mob1.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
+                            if (level instanceof ServerLevel serverLevel) {
+                                ParticleChainUtil.summonElectricFromTowithlimit(serverLevel,attacker.getId(),mob1.getId(),128);
                             }
                         }
                     }

@@ -1,6 +1,8 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.util.ParticleChainUtil;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -43,6 +45,7 @@ public class thermalstrike extends etshmodifieriii {
                 LivingEntity entity1 = getNearestLiEnt((float) 5 + modilvl, player, player.level);
                 while (a < 11 + modilvl) {
                     if (entity1 != null) {
+                        int id0 =entity1.getId();
                         etshmodifierfluxed.removeEnergy(tool,2000,false,false);
                         ls0.add(entity1);
                         DamageSource dam = DamageSource.playerAttack(player).bypassMagic().bypassArmor();
@@ -51,6 +54,10 @@ public class thermalstrike extends etshmodifieriii {
                         entity1.invulnerableTime =0;
                         if (getNearestLiEnt((float) 5 + modilvl, entity1, entity1.level) != null) {
                             entity1 = getNearestLiEntWithBL((float) 5 + modilvl, entity1, entity1.level, ls0);
+                            int id1=entity1.getId();
+                            if (target.level instanceof ServerLevel serverLevel) {
+                                ParticleChainUtil.summonSparkFromTo(serverLevel,id0,id1);
+                            }
                         } else break;
                     }
                     a++;
@@ -71,6 +78,7 @@ public class thermalstrike extends etshmodifieriii {
                 LivingEntity entity = getNearestLiEnt((float) 5 + modilvl, player, player.level);
                 while (a < 11 + modilvl && etshmodifierfluxed.getEnergyStored(tool) > 2000) {
                     if (entity != null) {
+                        int id0=entity.getId();
                         etshmodifierfluxed.removeEnergy(tool, 2000, false, false);
                         ls0.add(entity);
                         DamageSource dam = DamageSource.playerAttack(player).bypassMagic().bypassArmor();
@@ -79,6 +87,10 @@ public class thermalstrike extends etshmodifieriii {
                         entity.invulnerableTime = 0;
                         if (getNearestLiEnt((float) 5 + modilvl, entity, entity.level) != null) {
                             entity = getNearestLiEntWithBL((float) 5 + modilvl, entity, entity.level, ls0);
+                            int id1=entity.getId();
+                            if (entity.level instanceof ServerLevel serverLevel) {
+                                ParticleChainUtil.summonSparkFromTo(serverLevel,id0,id1);
+                            }
                         } else break;
                     }
                     a++;
