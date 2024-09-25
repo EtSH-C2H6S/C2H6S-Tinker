@@ -87,6 +87,7 @@ public class etshtinkerFluids {
             return FLUIDS.register(name).type(FluidType.Properties.create().density(2000).viscosity(10000).temperature(temp).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_EMPTY_LAVA)).bucket().flowing();
         }
         public static FluidObject<ForgeFlowingFluid> molten_exo_alloy = register("molten_exo_alloy", 9000);//熔融奇迹物质
+        public static FluidObject<ForgeFlowingFluid> molten_perfect = register("molten_perfect", 4500);
     }
     public class etshtinkerFluidMBOT {
         public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(MOD_ID);

@@ -1,7 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -9,12 +8,11 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import vazkii.botania.api.mana.ManaItemHandler;
 
-import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.modloaded.*;
 
 public class gracearrival extends etshmodifieriii {
@@ -25,7 +23,7 @@ public class gracearrival extends etshmodifieriii {
         LivingEntity living = event.getEntity();
         if (BOTloaded&&living instanceof Player player){
             for (ItemStack stack:player.getInventory().armor){
-                if (stack.getItem() instanceof ModifiableItem){
+                if (stack.getItem() instanceof ModifiableArmorItem){
                     ToolStack tool = ToolStack.from(stack);
                     if (tool.getModifierLevel(this)>0&& ManaItemHandler.INSTANCE.requestManaExactForTool(stack,player,400,true)){
                         event.setAmount(event.getAmount()*(1+0.2f*tool.getModifierLevel(this)));

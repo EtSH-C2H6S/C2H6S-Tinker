@@ -39,6 +39,11 @@ import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
 public class ResonanceEffect extends etshmodifieriii implements ToolStatsModifierHook {
     @Override
+    public boolean isNoLevels() {
+        return true;
+    }
+
+    @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.TOOL_STATS);

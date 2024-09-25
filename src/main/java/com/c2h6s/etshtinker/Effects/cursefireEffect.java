@@ -21,13 +21,10 @@ public class cursefireEffect extends etsheffect{
         Level world =living.level;
         living.invulnerableTime =0;
         living.hurt(DamageSource.DRAGON_BREATH,amplifier+1);
-        if (world!=null) {
-            if (world.isClientSide) {
-                world.addParticle(etshtinkerParticleType.curse.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), RANDOM.nextDouble() * 0.7 - 0.35, RANDOM.nextDouble() * 0.9, RANDOM.nextDouble() * 0.7 - 0.35);
-            } else {
-                ((ServerLevel) world).sendParticles(etshtinkerParticleType.curse.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 4, 0.3, 0.3, 0.3, RANDOM.nextDouble() * 0.7 - 0.35);
-            }
-
+        if (world.isClientSide) {
+            world.addParticle(etshtinkerParticleType.curse.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), RANDOM.nextDouble() * 0.7 - 0.35, RANDOM.nextDouble() * 0.9, RANDOM.nextDouble() * 0.7 - 0.35);
+        } else {
+            ((ServerLevel) world).sendParticles(etshtinkerParticleType.curse.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 4, 0.3, 0.3, 0.3, RANDOM.nextDouble() * 0.7 - 0.35);
         }
 
     }

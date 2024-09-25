@@ -4,6 +4,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 
+import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
+
 public class annihilateexplosionparticle extends TextureSheetParticle {
     public static annihilateexplosionparticleParticleProvider provider(SpriteSet spriteSet) {
         return new annihilateexplosionparticleParticleProvider(spriteSet);
@@ -34,6 +36,8 @@ public class annihilateexplosionparticle extends TextureSheetParticle {
         this.xd = vx * 0;
         this.yd = vy * 0;
         this.zd = vz * 0;
+        this.roll = (float)( EtSHrnd().nextFloat()*2*Math.PI);
+        this.oRoll =this.roll;
         this.setSpriteFromAge(spriteSet);
     }
 

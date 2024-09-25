@@ -8,7 +8,7 @@
     "type": "tconstruct:material_fluid", 
         "fluid": {
         "name": "etshtinker:molten_electronium",
-         "amount":100
+         "amount":90
         },
          "temperature":1000, 
          "output":"etshtinker:electronium"

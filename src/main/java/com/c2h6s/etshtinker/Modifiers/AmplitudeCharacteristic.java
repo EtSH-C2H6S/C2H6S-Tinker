@@ -25,7 +25,6 @@ import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSou
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;

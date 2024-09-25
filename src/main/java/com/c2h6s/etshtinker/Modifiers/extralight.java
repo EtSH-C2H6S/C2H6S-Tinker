@@ -29,7 +29,6 @@ public class extralight extends etshmodifieriii {
     }
 
 
-
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("extralight");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
@@ -41,21 +40,12 @@ public class extralight extends etshmodifieriii {
         if (entity !=null) {
             int main = getMainLevel(entity,this);
             int off=getOffLevel(entity,this);
-            if (main>0&&RANDOM.nextInt(100)<Math.min(20,main*10)) {
+            if (main>0&&RANDOM.nextInt(100)<Math.min(24,main*8)) {
                 event.setCanceled(true);
             }
-            if (off>0&&RANDOM.nextInt(100)<Math.min(20,off*10)) {
+            if (off>0&&RANDOM.nextInt(100)<Math.min(24,off*8)) {
                 event.setCanceled(true);
             }
-            entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-                int level = holder.get(key, 0);
-                if (level > 0) {
-                    SecureRandom random =EtSHrnd();
-                    if (random.nextInt(100)<Math.min(20,level*10)){
-                        event.setCanceled(true);
-                    }
-                }
-            });
         }
     }
     private void livingattackevent(LivingAttackEvent event) {
@@ -65,8 +55,9 @@ public class extralight extends etshmodifieriii {
                 int level = holder.get(key, 0);
                 if (level > 0) {
                     SecureRandom random =EtSHrnd();
-                    if (random.nextInt(4)==1){
+                    if (random.nextInt(5)==1){
                         entity.invulnerableTime+=2;
+                        event.setCanceled(true);
                     }
                 }
             });
@@ -75,7 +66,7 @@ public class extralight extends etshmodifieriii {
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if(isCorrectSlot&&!tool.isBroken()){
             holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,20,tool.getModifierLevel(this)+1,false,false));
-            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,20,tool.getModifierLevel(this)*10,false,false));
+            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,20,tool.getModifierLevel(this)*2,false,false));
         }
     }
 }

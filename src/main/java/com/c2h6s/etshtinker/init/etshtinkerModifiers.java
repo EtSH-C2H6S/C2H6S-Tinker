@@ -100,6 +100,9 @@ public class etshtinkerModifiers {
     public static final StaticModifier<PhaseCharacteristic>phase_characteristic= MODIFIERS.register("phase_characteristic", PhaseCharacteristic::new);
     public static final StaticModifier<perfectArmor>perfect_armor= MODIFIERS.register("perfect_armor", perfectArmor::new);
     public static final StaticModifier<ReactiveResonateArmor>reactive_resonate_armor= MODIFIERS.register("reactive_resonate_armor", ReactiveResonateArmor::new);
+    public static final StaticModifier<ModifierAtomicDecompose>atomic_decompose= MODIFIERS.register("atomic_decompose", ModifierAtomicDecompose::new);
+    public static final StaticModifier<AtomicRestructer>atomic_restructer= MODIFIERS.register("atomic_restructer", AtomicRestructer::new);
+    public static final StaticModifier<ModifierQuarkDisassemble>quark_disassemble= MODIFIERS.register("quark_disassemble", ModifierQuarkDisassemble::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

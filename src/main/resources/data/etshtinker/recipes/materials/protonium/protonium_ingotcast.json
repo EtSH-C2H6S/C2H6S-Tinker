@@ -12,7 +12,7 @@
     "cast_consumed": false,
     "fluid": {
         "name": "etshtinker:molten_protonium",
-      "amount": 100
+      "amount": 90
     },
     "result": "etshtinker:protonium",
     "cooling_time": 20

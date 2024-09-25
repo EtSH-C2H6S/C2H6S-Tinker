@@ -123,11 +123,11 @@
 
   "modifier.etshtinker.extralight": "究极轻盈",
   "modifier.etshtinker.extralight.flavor": "影流之主",
-  "modifier.etshtinker.extralight.description":"你的工具把你也变轻了，手持获得速度、急迫和每级10%（最大20%）的闪避率。\n穿着此材料制成的护甲时，攻击敌人有概率使自己获得无敌帧。",
+  "modifier.etshtinker.extralight.description":"你的工具把你也变轻了，手持获得速度、急迫和每级8%（最大24%）的闪避率。\n穿着此材料制成的护甲时，被攻击时20%概率闪避。",
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"挥舞这种材料的工具使你的手直接开始抽搐，攻击间隔越长伤害越高，反之则越低。\n穿戴此材料制成的装甲时则使你免疫部分非近战伤害类型和穿甲伤害。",
+  "modifier.etshtinker.ultradenseex.description":"挥舞这种材料的工具使你的手直接开始抽搐，攻击间隔越长伤害越高，反之则越低。\n穿戴此材料制成的装甲时获得25%的减伤，对穿甲伤害则再次减免50%。",
 
   "modifier.etshtinker.extraweight": "万吨沉重EX",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
@@ -267,11 +267,11 @@
 
   "modifier.etshtinker.stellarblessing": "星之祝福",
   "modifier.etshtinker.stellarblessing.flavor": "来自天堂的赠礼",
-  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，受到攻击时使攻击者失重并点燃攻击者，移动时获得每级10%的伤害减免。",
+  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，获得创造模式飞行能力，受到攻击时使攻击者失重并点燃攻击者，移动时获得10%的伤害减免。",
 
   "modifier.etshtinker.reactiveexplosivearmor": "爆炸反应装甲",
   "modifier.etshtinker.reactiveexplosivearmor.flavor": "最强之矛有时候也会成为最强之盾",
-  "modifier.etshtinker.reactiveexplosivearmor.description":"穿着时免疫爆炸伤害，受到攻击时将50%的伤害以爆炸的形式反射。",
+  "modifier.etshtinker.reactiveexplosivearmor.description":"穿着时免疫爆炸伤害，受到攻击时将25%的伤害以爆炸的形式反射。",
 
   "modifier.etshtinker.reactiveannihlarmor": "湮灭反应装甲",
   "modifier.etshtinker.reactiveannihlarmor.flavor": "矛与盾也许并不矛盾",
@@ -307,7 +307,7 @@
 
   "modifier.etshtinker.semicrystaline": "准晶",
   "modifier.etshtinker.semicrystaline.flavor": "富有弹性的坚硬材料，当前研究的热点之一",
-  "modifier.etshtinker.semicrystaline.description":"根据工具的当前耐久增加近战伤害、箭矢伤害和伤害减少量。近战伤害加成为耐久/350，上限2000*属性等级；箭矢伤害为耐久/500，上限1000*属性等级；护甲减伤为耐久/1000，上限100*属性等级",
+  "modifier.etshtinker.semicrystaline.description":"根据工具的当前耐久增加近战伤害、箭矢伤害和伤害减少量。近战伤害加成为耐久/500，上限2000*属性等级；箭矢伤害为耐久/1000，上限500*属性等级；护甲减伤为全部护甲耐久/2000，上限25*全部护甲属性等级",
 
   "modifier.etshtinker.organiccr": "有机晶体",
   "modifier.etshtinker.organiccr.flavor": "远古生物的遗骸堆砌而成",
@@ -408,6 +408,14 @@
   "modifier.etshtinker.resonance_effect": "稳态谐振",
   "modifier.etshtinker.resonance_effect.flavor": "别出声......",
   "modifier.etshtinker.resonance_effect.description":"每5刻，工具会从环境接收震动，并每隔2秒根据2秒内接收到震动的频率总和给予使用者正面效果。",
+
+  "modifier.etshtinker.atomic_decompose": "原子分解",
+  "modifier.etshtinker.atomic_decompose.flavor": "溃不成形！",
+  "modifier.etshtinker.atomic_decompose.description":"攻击时对目标施加可叠加的原子分解效果，造成百分比伤害，等级越高叠加越快。会加速湮灭效果的作用。",
+
+  "modifier.etshtinker.atomic_restructer": "原子再构",
+  "modifier.etshtinker.atomic_restructer.flavor": "一即全，全即一",
+  "modifier.etshtinker.atomic_restructer.description":"暴击时清除自己和目标身上的全部状态并根据状态数造成爆炸。能逆转湮灭反应损毁工具的效果。",
 
 
 
@@ -612,12 +620,17 @@
   "material.etshtinker.energized_sculk_alloy.flavor": "来自遥远文明的回响",
   "material.etshtinker.energized_sculk_alloy.encyclopedia": "来自远古文明的一小块金属，与振荡能量发生着共鸣。",
 
+  "material.etshtinker.atomic_alloy": "原子合金",
+  "material.etshtinker.atomic_alloy.flavor": "原子级工艺",
+  "material.etshtinker.atomic_alloy.encyclopedia": "现代科技的结晶，其内部的精密结构使它能够用于操作原子。",
+
 
 
   "effect.etshtinker.ionized": "电离",
   "effect.etshtinker.novaradiation": "新星辐射",
   "effect.etshtinker.cursefire": "咒火",
   "effect.etshtinker.annihilating": "湮灭",
+  "effect.etshtinker.atomic_dec": "原子分解",
 
 
 
@@ -839,6 +852,9 @@
   "fluid_type.etshtinker.molten_knsu": "熔融KNSU燃料",
   "item.etshtinker.molten_knsu_bucket": "熔融KNSU燃料桶",
 
+  "fluid_type.etshtinker.molten_perfect": "熔融完美通用物品",
+  "item.etshtinker.molten_perfect_bucket": "熔融完美通用物品桶",
+
 
 
   "infuse_type.etshtinker.ultra_dense":"超致密",
@@ -853,5 +869,7 @@
   "death.attack.etshtinker.pierce": "%1$s 被穿透了",
   "death.attack.etshtinker.pierce.player": "%1$s 被 %2$s 穿透了",
   "death.attack.etshtinker.perfect": "%1$s 被穿透了",
-  "death.attack.etshtinker.perfect.player": "%1$s 被 %2$s 穿透了"
+  "death.attack.etshtinker.perfect.player": "%1$s 被 %2$s 穿透了",
+  "death.attack.etshtinker.atomic_dec": "%1$s 被拆成了原子",
+  "death.attack.etshtinker.atomic_dec.player": "%1$s 被 %2$s 拆成了原子"
 }

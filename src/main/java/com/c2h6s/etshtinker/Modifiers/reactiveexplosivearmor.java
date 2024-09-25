@@ -31,8 +31,8 @@ public class reactiveexplosivearmor extends etshmodifieriii {
                 if (event.getSource().isExplosion()){
                     event.setCanceled(true);
                 }
-                living.level.explode(living,living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ(),event.getAmount()*0.5f, Explosion.BlockInteraction.NONE);
-                event.setAmount(event.getAmount()*0.5f);
+                living.level.explode(living,living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ(),event.getAmount()*0.25f, Explosion.BlockInteraction.NONE);
+                event.setAmount(event.getAmount()*0.75f);
             }
         });
     }

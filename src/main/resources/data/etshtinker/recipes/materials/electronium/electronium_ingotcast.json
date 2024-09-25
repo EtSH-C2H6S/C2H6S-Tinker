@@ -12,7 +12,7 @@
     "cast_consumed": false,
     "fluid": {
         "name": "etshtinker:molten_electronium",
-      "amount": 100
+      "amount": 90
     },
     "result": "etshtinker:electronium",
     "cooling_time": 20

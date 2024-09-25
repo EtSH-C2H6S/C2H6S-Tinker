@@ -16,11 +16,18 @@ import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.behavior.RepairFactorModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import com.c2h6s.etshtinker.Modifiers.modifiers.*;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 
@@ -28,7 +35,14 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 
 
-public class annilate extends etshmodifieriii  {
+public class annilate extends etshmodifieriii implements RepairFactorModifierHook {
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this,ModifierHooks.REPAIR_FACTOR);
+    }
+
+
     public boolean isNoLevels() {
         return true;
     }
@@ -47,6 +61,11 @@ public class annilate extends etshmodifieriii  {
             attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
         }
         return knockback;
+    }
+
+    @Override
+    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
+        return 1;
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
@@ -70,10 +89,18 @@ public class annilate extends etshmodifieriii  {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (target !=null&&attacker!=null){
             target.getPersistentData().putInt("annih_countdown",60);
-            attacker.getPersistentData().putInt("annih_countdown",80);
+            attacker.getPersistentData().putInt("annih_countdown",60);
+            if (projectile!=null){
+                projectile.discard();
+            }
             target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
             attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
         }
-        return false;
+        return true;
+    }
+
+    @Override
+    public float getRepairFactor(IToolStackView iToolStackView, ModifierEntry modifierEntry, float v) {
+        return 0.01f;
     }
 }

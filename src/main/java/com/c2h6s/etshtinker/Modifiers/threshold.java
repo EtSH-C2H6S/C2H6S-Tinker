@@ -12,6 +12,7 @@ import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelMod
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import vazkii.botania.api.mana.ManaItemHandler;
 
@@ -32,7 +33,7 @@ public class threshold extends etshmodifieriii {
         LivingEntity living = event.getEntity();
         if (BOTloaded&&living instanceof Player player){
             for (ItemStack stack:player.getInventory().armor){
-                if (stack.getItem() instanceof ModifiableItem){
+                if (stack.getItem() instanceof ModifiableArmorItem){
                     ToolStack tool = ToolStack.from(stack);
                     float amount = player.getMaxHealth()/(tool.getModifierLevel(this)+1);
                     if (tool.getModifierLevel(this)>0&&event.getAmount()> amount ){

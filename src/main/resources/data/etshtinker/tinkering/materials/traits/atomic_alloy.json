@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "modid": "mekanism",
+    "type": "forge:mod_loaded"
+  },
+  "default": [
+    {
+      "name": "etshtinker:atomic_decompose",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:atomic_restructer",
+      "level": 1
+    }
+  ]
+}

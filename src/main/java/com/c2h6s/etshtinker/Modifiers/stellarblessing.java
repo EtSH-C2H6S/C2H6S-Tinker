@@ -22,6 +22,12 @@ public class stellarblessing extends etshmodifieriii {
     public stellarblessing(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
+
+    @Override
+    public boolean isNoLevels() {
+        return true;
+    }
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
@@ -37,7 +43,7 @@ public class stellarblessing extends etshmodifieriii {
                     event.setCanceled(true);
                 }
                 if (getMold(living.getDeltaMovement())>0.08){
-                    event.setAmount(event.getAmount()*(1-(0.1f*level)));
+                    event.setAmount(event.getAmount()*0.9f);
                 }
                 if (entity instanceof LivingEntity attacker){
                     attacker.setNoGravity(true);

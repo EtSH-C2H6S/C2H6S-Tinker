@@ -101,7 +101,9 @@
     "phase_characteristic": "#00FFD0",
     "amplitude_characteristic": "#00FFD0",
     "resonance_effect": "#00FFD0",
-    "perfect_armor": "#90FF90"
+    "perfect_armor": "#90FF90",
+    "atomic_decompose": "#DEC9FF",
+    "atomic_restructer": "#DEC9FF"
   },
   "material.etshtinker":
   {
@@ -133,6 +135,7 @@
     "alfsteel": "#E6C011",
     "nights_alloy": "#800002",
     "perfect_generic_item": "#90FF90",
-    "energized_sculk_alloy": "#00FFD0"
+    "energized_sculk_alloy": "#00FFD0",
+    "atomic_alloy": "#5D288C"
   }
 }
