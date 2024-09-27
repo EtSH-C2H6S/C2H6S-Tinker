@@ -871,5 +871,7 @@
   "death.attack.etshtinker.perfect": "%1$s 被穿透了",
   "death.attack.etshtinker.perfect.player": "%1$s 被 %2$s 穿透了",
   "death.attack.etshtinker.atomic_dec": "%1$s 被拆成了原子",
-  "death.attack.etshtinker.atomic_dec.player": "%1$s 被 %2$s 拆成了原子"
+  "death.attack.etshtinker.atomic_dec.player": "%1$s 被 %2$s 拆成了原子",
+  "death.attack.etshtinker.quark": "%1$s 体内的粒子被错误地重新排列了",
+  "death.attack.etshtinker.quark.player": "%1$s 体内的粒子被错误地重新排列了，凶手是 %2$s"
 }

@@ -14,13 +14,11 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
@@ -122,9 +120,7 @@ public class novasickleEntity extends ShurikenEntityBase {
         }
         if(this.back&&this.getOwner()!=null){
             Vec3 vec3=getUnitizedVec3(Entity1ToEntity2Eye(this,this.getOwner()));
-            if (vec3 != null) {
-                this.setDeltaMovement(vec3.x,vec3.y,vec3.z);
-            }
+            this.setDeltaMovement(vec3.x, vec3.y, vec3.z);
         }
         super.tick();
     }

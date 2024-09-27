@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "ABC",

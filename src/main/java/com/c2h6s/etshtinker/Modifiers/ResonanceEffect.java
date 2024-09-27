@@ -5,20 +5,26 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.capability.IDampenCapability;
 import com.c2h6s.etshtinker.capability.etshCap;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
+import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.util.Cap;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -34,6 +40,8 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import java.util.List;
 import java.util.Optional;
 
+import static com.c2h6s.etshtinker.util.getMainOrOff.getMainLevel;
+import static com.c2h6s.etshtinker.util.getMainOrOff.getOffLevel;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
 
@@ -50,6 +58,25 @@ public class ResonanceEffect extends etshmodifieriii implements ToolStatsModifie
     }
     public ResonanceEffect(){
         MinecraftForge.EVENT_BUS.addListener(this::LivingHurt);
+        MinecraftForge.EVENT_BUS.addListener(this::onapplyeffect);
+        MinecraftForge.EVENT_BUS.addListener(this::onmobfindtarget);
+    }
+
+    private void onapplyeffect(MobEffectEvent.Applicable event) {
+        LivingEntity target =event.getEntity();
+        if (target!=null&&(getMainLevel(target, etshtinkerModifiers.resonance_effect.get())>0||getOffLevel(target,etshtinkerModifiers.resonance_effect.get())>0)&&(event.getEffectInstance().getEffect()== MobEffects.DARKNESS||event.getEffectInstance().getEffect()== MobEffects.BLINDNESS)){
+            event.setResult(Event.Result.DENY);
+        }
+    }
+
+    private void onmobfindtarget(LivingChangeTargetEvent event) {
+        LivingEntity target =event.getNewTarget();
+        LivingEntity entity =event.getEntity();
+        if (target!=null&&(getMainLevel(target, etshtinkerModifiers.resonance_effect.get())>0||getOffLevel(target,etshtinkerModifiers.resonance_effect.get())>0)){
+            if (entity instanceof Warden){
+                event.setCanceled(true);
+            }
+        }
     }
 
     @Override

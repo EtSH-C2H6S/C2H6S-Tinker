@@ -18,13 +18,12 @@ import static com.c2h6s.etshtinker.util.vecCalc.*;
 
 public class warpengineex extends etshmodifieriii implements GeneralInteractionModifierHook{
     protected void registerHooks(ModuleHookMap.Builder builder){
+        super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
     }
     public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
         if (interactionSource==InteractionSource.RIGHT_CLICK){
-            if (player!=null) {
-                GeneralInteractionModifierHook.startUsing(tool,modifier.getId(),player,interactionHand);
-            }
+            GeneralInteractionModifierHook.startUsing(tool, modifier.getId(), player, interactionHand);
             return InteractionResult.CONSUME;
         }
         else return InteractionResult.PASS;
@@ -33,12 +32,11 @@ public class warpengineex extends etshmodifieriii implements GeneralInteractionM
     public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
         if (tool.getModifierLevel(this)>0&&entity instanceof Player player&&!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())){
             Vec3 vec3 =new Vec3(player.getLookAngle().x,0,player.getLookAngle().z);
-            if (getUnitizedVec3(vec3)!=null){
-                vec3=getUnitizedVec3(vec3);
-                player.setPos(player.getX()+vec3.x*2500*tool.getModifierLevel(this),player.getY(),player.getZ()+vec3.z*2500*tool.getModifierLevel(this));
-                player.sendSystemMessage(Component.translatable("etshtinker.modifier.tooltip.tpto").append(String.valueOf(entity.position())));
-                player.getCooldowns().addCooldown(player.getMainHandItem().getItem(),200);
-            }
+            getUnitizedVec3(vec3);
+            vec3 = getUnitizedVec3(vec3);
+            player.setPos(player.getX()+vec3.x*2500*tool.getModifierLevel(this),player.getY(),player.getZ()+vec3.z*2500*tool.getModifierLevel(this));
+            player.sendSystemMessage(Component.translatable("etshtinker.modifier.tooltip.tpto").append(String.valueOf(entity.position())));
+            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(),200);
         }
     }
 

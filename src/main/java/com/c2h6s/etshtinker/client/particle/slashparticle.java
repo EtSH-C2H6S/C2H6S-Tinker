@@ -31,15 +31,16 @@ public class slashparticle extends TextureSheetParticle {
         super(world, x, y, z);
         this.spriteSet = spriteSet;
         this.setSize(0.2f, 0.2f);
-        SecureRandom random1 =EtSHrnd();
-        this.roll = random1.nextFloat(180);
-        this.oRoll = 0;
+        this.quadSize =1;
+        this.roll = (float)( EtSHrnd().nextFloat()*2*Math.PI);
+        this.oRoll =this.roll;
         this.lifetime = 4;
         this.gravity = 0f;
         this.hasPhysics = false;
         this.xd = vx * 0;
         this.yd = vy * 0;
         this.zd = vz * 0;
+        this.pickSprite(spriteSet);
     }
 
     @Override
@@ -52,8 +53,10 @@ public class slashparticle extends TextureSheetParticle {
     @Override
     public void tick() {
         super.tick();
-        this.quadSize *=2f;
-        this.alpha *=0.7f;
+        this.quadSize *=1.5f;
+        if (this.lifetime>1) {
+            this.alpha *= 0.5f;
+        }
         if (this.age>this.lifetime){
             this.remove();
         }

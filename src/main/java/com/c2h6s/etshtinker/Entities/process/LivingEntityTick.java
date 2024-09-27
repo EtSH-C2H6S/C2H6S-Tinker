@@ -67,7 +67,7 @@ public class LivingEntityTick {
             if ((entity.level.getGameTime()%5)<=amplifier) {
                 float b = Math.max(1,(float) amplifier/5);
                 entity.invulnerableTime=0;
-                entity.hurt(throughSources.atomic(entity.getMaxHealth() * 0.005f*b), entity.getMaxHealth() * 0.005f*b);
+                entity.hurt(throughSources.quark(entity.getMaxHealth() * 0.005f*b), entity.getMaxHealth() * 0.005f*b);
             }
             entity.getPersistentData().putInt("quark_disassemble",dura-1);
             if (entity.getPersistentData().getInt("quark_disassemble")<=0){

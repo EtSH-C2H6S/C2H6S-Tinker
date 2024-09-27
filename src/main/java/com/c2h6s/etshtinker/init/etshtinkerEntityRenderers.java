@@ -20,7 +20,7 @@ public class etshtinkerEntityRenderers {
     @SubscribeEvent
     static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(etshtinkerEntity.novascikle.get(), renderScikle::new);
-        event.registerEntityRenderer(etshtinkerEntity.exoslash.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.exoslash.get(), GlowingThrownRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.shadowaxeentity.get(), renderScikle::new);
         event.registerEntityRenderer(etshtinkerEntity.lightningarrow.get(), lightningarrowRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.plasmawaveslashEntity.get(), renderSlash::new);
@@ -47,6 +47,8 @@ public class etshtinkerEntityRenderers {
         event.registerEntityRenderer(etshtinkerEntity.sculk_sword.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.sonic_boom.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.shock_wave.get(), ShockWaveRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.exo_ligh.get(), NoopRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.exo_orb.get(), GlowingThrownRenderer::new);
         if (BOTloaded){
             event.registerEntityRenderer(etshtinkerBotEntity.ALFBURST.get(), NoopRenderer::new);
         }

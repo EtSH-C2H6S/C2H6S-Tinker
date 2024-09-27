@@ -5,12 +5,16 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 
 public abstract class ItemProjectile extends Projectile implements ItemSupplier {
     static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK;
@@ -62,5 +66,11 @@ public abstract class ItemProjectile extends Projectile implements ItemSupplier 
         DATA_ITEM_STACK = SynchedEntityData.defineId(ItemProjectile.class, EntityDataSerializers.ITEM_STACK);
     }
 
-
+    @Override
+    public void tick() {
+        HitResult hitresult = ProjectileUtil.getHitResult(this, this::canHitEntity);
+        if (hitresult.getType() == HitResult.Type.ENTITY){
+            this.onHitEntity((EntityHitResult) hitresult);
+        }
+    }
 }

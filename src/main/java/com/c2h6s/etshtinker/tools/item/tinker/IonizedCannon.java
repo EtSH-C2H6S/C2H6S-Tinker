@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.tools.item.tinker;
 
+import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
@@ -108,7 +109,8 @@ public class IonizedCannon extends ModifiableItem {
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
         ToolStack tool = ToolStack.from(stack);
-        Fluid fluid =TANK_HELPER.getFluid(tool).getFluid();
+        FluidStack fluidStack =TANK_HELPER.getFluid(tool);
+        Fluid fluid =fluidStack.getFluid();
         int times =tool.getStats().getInt(etshtinkerToolStats.MULTIPLASMA);
         int a =0;
         while (a<=times) {
@@ -124,11 +126,14 @@ public class IonizedCannon extends ModifiableItem {
                 entity.special = getFluidSpecial(fluid);
                 entity.setPos(living.getEyePosition().x, living.getEyePosition().y - 0.5 * entity.getBbHeight(), living.getEyePosition().z);
                 entity.setOwner(living);
+                for (ModifierEntry modifier : tool.getModifierList()) {
+                    entity = modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_CREATE).plasmaExplosionCreate(tool,fluidStack,player,entity);
+                }
                 level.addFreshEntity(entity);
                 living.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);
                 player.getCooldowns().addCooldown(stack.getItem(), tool.getStats().getInt(etshtinkerToolStats.COOLDOWN));
-                FluidStack fluidStack = new FluidStack(TANK_HELPER.getFluid(tool), TANK_HELPER.getFluid(tool).getAmount() - Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 20));
-                TANK_HELPER.setFluid(tool, fluidStack);
+                FluidStack fluidStack2 = new FluidStack(TANK_HELPER.getFluid(tool), TANK_HELPER.getFluid(tool).getAmount() - Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 20));
+                TANK_HELPER.setFluid(tool, fluidStack2);
             }
             else break;
             a++;

@@ -28,6 +28,7 @@ public class plasmawaveslashmodifier extends etshmodifieriii implements GeneralI
         return true;
     }
     protected void registerHooks(ModuleHookMap.Builder builder){
+        super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
     }
     public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modfier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {

@@ -16,14 +16,14 @@ public class ModifierQuarkDisassemble extends etshmodifieriii {
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         LivingEntity target =context.getLivingTarget();
         if (target!=null){
-            target.getPersistentData().putInt("quark_disassemble",target.getPersistentData().getInt("atomic_dec")+20*modifier.getLevel()+40);
+            target.getPersistentData().putInt("quark_disassemble",target.getPersistentData().getInt("quark_disassemble")+20*modifier.getLevel()+40);
         }
     }
 
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (attacker!=null && target!=null){
-            target.getPersistentData().putInt("quark_disassemble",target.getPersistentData().getInt("atomic_dec")+20*modifier.getLevel()+40);
+            target.getPersistentData().putInt("quark_disassemble",target.getPersistentData().getInt("quark_disassemble")+20*modifier.getLevel()+40);
         }
         return false;
     }

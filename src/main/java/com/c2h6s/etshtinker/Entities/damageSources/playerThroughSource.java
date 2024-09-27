@@ -23,6 +23,10 @@ public class playerThroughSource extends EntityDamageSource {
         return new playerThroughSource("etshtinker.atomic_dec",player,am);
     }
 
+    public static DamageSource PlayerQuark(Player player,float am){
+        return new playerThroughSource("etshtinker.quark",player,am);
+    }
+
     public float getgetAmount(){
         return this.AMOUNT;
     }

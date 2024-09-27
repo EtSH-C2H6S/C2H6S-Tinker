@@ -16,6 +16,7 @@ import java.util.List;
 public class chainreaction extends etshmodifieriii implements RequirementsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.REQUIREMENTS);
     }
     @Nullable

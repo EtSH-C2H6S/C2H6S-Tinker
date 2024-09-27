@@ -38,6 +38,7 @@ import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 public class warpattackex extends etshmodifieriii implements RequirementsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.REQUIREMENTS);
     }
 

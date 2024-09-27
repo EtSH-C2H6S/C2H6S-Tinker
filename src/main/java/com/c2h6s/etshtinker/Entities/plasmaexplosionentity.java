@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.init.ItemReg.etshtinkerThermalMaterial;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
+import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import com.c2h6s.etshtinker.util.attackUtil;
 import mekanism.api.MekanismAPI;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.Util;
@@ -103,12 +105,12 @@ public class plasmaexplosionentity extends ItemProjectile{
                 Vec3 vec3 = getUnitizedVec3(rayVec3);
                 if (special != null && special.equals("tracking")) {
                     Vec3 vec31 = getUnitizedVec3(Entity1ToEntity2(this, getNearestLiEnt((float) range, this, this.level)));
-                    if (vec31 != null) {
+                    if (getMold(vec3)!=0) {
                         vec3 = vec31;
                     }
                 }
                 Vec3 pos = new Vec3(this.getX(), this.getY(), this.getZ());
-                if (vec3 != null && range > 0 && particle != null) {
+                if (range > 0 && particle != null) {
                     int i = 0;
 
                     while (i < range) {
@@ -158,9 +160,16 @@ public class plasmaexplosionentity extends ItemProjectile{
                         if (!ls0.isEmpty()) {
                             for (LivingEntity target : ls0) {
                                 if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)) {
+                                    boolean isCrit =this.isCritical || EtSHrnd().nextInt(100) < 10;
+                                    for (ModifierEntry modifier : tool.getModifierList()) {
+                                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
+                                    }
                                     target.invulnerableTime = 0;
-                                    attackUtil.attackEntity(tool, player, HAND, target, ()->1, true, Util.getSlotType(HAND), this.damage * 0.75f, this.isCritical || EtSHrnd().nextInt(100) < 10, true, true, true, 0);
+                                    attackUtil.attackEntity(tool, player, HAND, target, ()->1, true, Util.getSlotType(HAND), this.damage * 0.75f, isCrit, true, true, true, 0);
                                     target.invulnerableTime = 0;
+                                    for (ModifierEntry modifier : tool.getModifierList()) {
+                                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,target,this,isCrit);
+                                    }
                                     ls1.add(target);
                                 } else if (special != null && special.equals("entropic") && target != null) {
                                     ls1.add(target);
@@ -168,6 +177,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                             }
                         }
                     }
+                    String special =this.special;
                     if (!ls1.isEmpty() && special != null) {
                         if (ls1.get(0) != null) {
                             LivingEntity entity = ls1.get(0);
@@ -186,6 +196,11 @@ public class plasmaexplosionentity extends ItemProjectile{
                                 explosion.proceedamount = 8;
                                 explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
                                 level.addFreshEntity(explosion);
+                            }
+                            if (tool != null) {
+                                for (ModifierEntry modifier : tool.getModifierList()) {
+                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,entity,this,special);
+                                }
                             }
                         }
                         if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion") && !special.equals("annihilate")) {
@@ -238,6 +253,11 @@ public class plasmaexplosionentity extends ItemProjectile{
                                             targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
                                         }
                                     }
+                                    if (tool != null) {
+                                        for (ModifierEntry modifier : tool.getModifierList()) {
+                                            modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,targets,this,special);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -248,13 +268,21 @@ public class plasmaexplosionentity extends ItemProjectile{
                         List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb.inflate(1.5));
                         for (LivingEntity target : ls0) {
                             if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)) {
+                                boolean isCrit =this.isCritical || EtSHrnd().nextInt(100) < 45;
+                                for (ModifierEntry modifier : tool.getModifierList()) {
+                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
+                                }
                                 target.invulnerableTime = 0;
                                 attackUtil.attackEntity(tool, player, HAND, target, () -> 1, true, Util.getSlotType(HAND), this.damage, this.isCritical || (EtSHrnd().nextInt(100) < 45), true, true, true, 0);
                                 target.invulnerableTime = 0;
+                                for (ModifierEntry modifier : tool.getModifierList()) {
+                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,target,this,isCrit);
+                                }
                                 ls1.add(target);
                             }
                         }
                     }
+                    String special =this.special;
                     if (!ls1.isEmpty() && special != null) {
                         if (ls1.get(0) != null) {
                             LivingEntity entity = ls1.get(0);
@@ -273,6 +301,11 @@ public class plasmaexplosionentity extends ItemProjectile{
                                 explosion.proceedamount = 8;
                                 explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
                                 level.addFreshEntity(explosion);
+                            }
+                            if (tool != null) {
+                                for (ModifierEntry modifier : tool.getModifierList()) {
+                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,entity,this,special);
+                                }
                             }
                         }
                         if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion") && !special.equals("annihilate")) {
@@ -323,6 +356,11 @@ public class plasmaexplosionentity extends ItemProjectile{
                                             targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(), 50, 4, false, false), this.getOwner());
                                             targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(), 50, 4, false, false), this.getOwner());
                                             targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
+                                        }
+                                    }
+                                    if (tool != null) {
+                                        for (ModifierEntry modifier : tool.getModifierList()) {
+                                            modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,targets,this,special);
                                         }
                                     }
                                 }

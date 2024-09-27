@@ -15,6 +15,10 @@ public class throughSources extends DamageSource {
         return new throughSources("etshtinker.atomic_dec",am);
     }
 
+    public static DamageSource quark(float am){
+        return new throughSources("etshtinker.quark",am);
+    }
+
     public float getgetAmount(){
         return this.AMOUNT;
     }

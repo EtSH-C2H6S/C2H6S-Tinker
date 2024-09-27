@@ -103,6 +103,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<ModifierAtomicDecompose>atomic_decompose= MODIFIERS.register("atomic_decompose", ModifierAtomicDecompose::new);
     public static final StaticModifier<AtomicRestructer>atomic_restructer= MODIFIERS.register("atomic_restructer", AtomicRestructer::new);
     public static final StaticModifier<ModifierQuarkDisassemble>quark_disassemble= MODIFIERS.register("quark_disassemble", ModifierQuarkDisassemble::new);
+    public static final StaticModifier<heavenlyGaleModifier>heavenly_gale= MODIFIERS.register("heavenly_gale", heavenlyGaleModifier::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

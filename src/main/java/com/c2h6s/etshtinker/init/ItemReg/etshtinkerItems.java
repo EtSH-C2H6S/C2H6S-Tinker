@@ -51,7 +51,7 @@ public class etshtinkerItems {
 
     //弹射物
     public static final RegistryObject<Item> novasickle = ITEMS.register("novasickle", ()->new ShurikenItem(THROWABLE_PROPS, novasickleEntity::new));
-    public static final RegistryObject<Item> exoslash = ITEMS.register("exoslash", ()->new ShurikenItem(THROWABLE_PROPS, exoSlashEntity::new));
+    public static final RegistryObject<Item> exoslash = ITEMS.register("exoslash", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> lightningarrow = ITEMS.register("lightningarrow", ()->new lightningarrowitem(new Item.Properties()));
     public static final RegistryObject<Item> shadowaxe = ITEMS.register("shadowaxe", ()->new ShurikenItem(THROWABLE_PROPS, shadowaxeEntity::new));
     public static final RegistryObject<Item> plasmawaveslash = ITEMS.register("plasmawaveslash", ()->new Item(THROWABLE_PROPS));

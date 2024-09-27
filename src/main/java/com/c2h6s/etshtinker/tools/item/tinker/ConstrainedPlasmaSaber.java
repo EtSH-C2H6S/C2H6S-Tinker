@@ -1,6 +1,8 @@
 package com.c2h6s.etshtinker.tools.item.tinker;
 
 import com.c2h6s.etshtinker.Entities.PlasmaSlashEntity;
+import com.c2h6s.etshtinker.hooks.PlasmaSlashCreateModifierHook;
+import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
@@ -117,6 +119,9 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         double y =player.getLookAngle().y;
         double z =player.getLookAngle().z;
         slash.setPos(player.getX()+x*1.5,player.getY()+0.6*player.getBbHeight()+y*1.5,player.getZ()+z*1.5);
+        for (ModifierEntry modifier : tool.getModifierList()) {
+            slash = modifier.getHook(etshtinkerHook.SLASH_CREATE).plasmaSlashCreate(tool, fluidStack, player, slash);
+        }
         level.addFreshEntity(slash);
         fluidStack.shrink(consumption);
         TANK_HELPER.setFluid(tool,fluidStack);

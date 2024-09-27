@@ -35,6 +35,7 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
         tool.getPersistentData().remove(warpdur);
     }
     protected void registerHooks(ModuleHookMap.Builder builder){
+        super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
     }
     public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {

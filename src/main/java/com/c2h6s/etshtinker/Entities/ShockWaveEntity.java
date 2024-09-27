@@ -33,7 +33,7 @@ public class ShockWaveEntity extends ItemProjectile{
         Vec3 vec3 =this.getDeltaMovement();
         this.time++;
         this.damage /=this.time;
-        this.setDeltaMovement(vec3.scale(1.5));
+        this.setDeltaMovement(vec3.scale(1.25));
         double mold =getMold(vec3);
         AABB aabb =new AABB(this.getX()-mold,this.getY()-1,this.getZ()-mold,this.getX()+mold,this.getY()+1,this.getZ()+mold);
         List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,aabb);
@@ -44,7 +44,7 @@ public class ShockWaveEntity extends ItemProjectile{
                 hitlist.add(living);
             }
         }
-        if (this.time>=4){
+        if (this.time>=8){
             this.discard();
         }
     }

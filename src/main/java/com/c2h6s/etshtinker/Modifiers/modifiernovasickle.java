@@ -32,6 +32,7 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 public class modifiernovasickle extends etshmodifieriii implements RequirementsModifierHook ,GeneralInteractionModifierHook{
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.REQUIREMENTS,ModifierHooks.GENERAL_INTERACT);
     }
 

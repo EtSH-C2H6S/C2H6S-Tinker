@@ -1,5 +1,7 @@
 package com.c2h6s.etshtinker.Entities;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
+import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
@@ -7,6 +9,7 @@ import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -14,11 +17,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -28,12 +33,13 @@ import slimeknights.tconstruct.gadgets.entity.shuriken.ShurikenEntityBase;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 
+import java.util.List;
+
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
-public class exoSlashEntity extends ShurikenEntityBase {
+public class exoSlashEntity extends ItemProjectile {
     public float baseDamage;
     public int time =0;
-    public boolean homing=false;
 
     public float setDamage(float damage){
         baseDamage =damage;
@@ -42,14 +48,8 @@ public class exoSlashEntity extends ShurikenEntityBase {
     public exoSlashEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(etshtinkerEntity.exoslash.get(), world);
     }
-    public exoSlashEntity(EntityType<? extends ShurikenEntityBase> type, double x, double y, double z, Level worldIn){
-        super(type, x, y, z, worldIn);
-    }
     public exoSlashEntity(EntityType<? extends exoSlashEntity> type, Level world) {
         super(type, world);
-    }
-    public exoSlashEntity(Level worldIn, LivingEntity throwerIn) {
-        super(etshtinkerEntity.exoslash.get(), throwerIn, worldIn);
     }
 
     @Override
@@ -63,74 +63,57 @@ public class exoSlashEntity extends ShurikenEntityBase {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public ItemStack getItem() {
         return new ItemStack(etshtinkerItems.exoslash.get());
     }
 
-    @Override
-    public float getDamage() {
-        return baseDamage;
-    }
 
-    @Override
-    public float getKnockback() {
-        return 5;
-    }
     public void tick() {
         time++;
-        LivingEntity entity =null;
-        Level world1 =this.getLevel();
-        if (time>=2&&!homing) {
-            world1.addParticle(ParticleTypes.ELECTRIC_SPARK,  this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+        Level world1 = this.getLevel();
+        if (time >= 5 && world1 instanceof ServerLevel serverLevel) {
+            Vec3 initVec = this.getDeltaMovement();
+            initVec = initVec.scale(Math.max(0,1-0.025*time));
+            Vec3 vec3 = Entity1ToEntity2(this, getNearestLiEnt(32f, this, this.level));
+            double trackVelo;
+            if (getMold(vec3) != 0) {
+                if (getMold(vec3)<=2){
+                    initVec = initVec.scale(0.1);
+                }
+                trackVelo = Math.min(getMold(vec3), 8 / getMold(vec3));
+                trackVelo = Math.min(trackVelo, 2);
+            } else trackVelo = 0;
+            vec3 = getUnitizedVec3(vec3).scale(trackVelo);
+            vec3 = initVec.add(vec3);
+            if (getMold(vec3)>=2.5){
+                vec3.scale(2.5/getMold(vec3));
+            }
+            if (getMold(vec3)>=0.1){
+                serverLevel.sendParticles(etshtinkerParticleType.exo.get(), this.getX(), this.getY()+0.5*this.getBbHeight(), this.getZ(), 5, 0.05, 0.05, 0.05, 0.0125);
+            }
+            this.setDeltaMovement(vec3);
         }
-        if (time>100){
+        if (time > 100) {
             this.remove(RemovalReason.KILLED);
         }
-        if (time>=8){
-            if (!homing&&getNearestLiEnt(32f, this, this.level)!=null) {
-                entity = getNearestLiEnt(32f, this, this.level);
-                homing=true;
-            }
-            if (entity!=null) {
-                if (entity.isDeadOrDying()) {
-                    homing = false;
-                }
-                if (homing) {
-                    world1.addParticle((SimpleParticleType) etshtinkerParticleType.nova.get(),  this.getX(), this.getY(), this.getZ(), 0, 0, 0);
-                    Vec3 vec3 = getUnitizedVec3(Entity1ToEntity2(this, entity));
-                    if (vec3 != null) {
-                        this.lerpMotion(vec3.x, vec3.y, vec3.z);
+        this.setPos(this.getX() + this.getDeltaMovement().x, this.getY() + this.getDeltaMovement().y, this.getZ() + this.getDeltaMovement().z);
+        List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,this.getBoundingBox().expandTowards(this.getDeltaMovement()));
+        if (!ls.isEmpty()){
+            for (LivingEntity living:ls){
+                if (living!=null&&living!=this.getOwner()){
+                    if (this.getOwner() instanceof Player player){
+                        living.invulnerableTime=0;
+                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage),this.baseDamage);
+                        living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+30);
+                    }else {
+                        living.invulnerableTime=0;
+                        living.hurt(throughSources.quark(this.baseDamage),this.baseDamage);
+                        living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+30);
                     }
                 }
             }
-            if (entity==null){
-                homing =false;
-            }
+            this.discard();
         }
         super.tick();
-    }
-    @Override
-    protected void onHitBlock(BlockHitResult result) {
-        super.onHitBlock(result);
-    }
-    @Override
-    protected void onHitEntity(EntityHitResult result) {
-        Entity entity = result.getEntity();
-        Level world =entity.level;
-        world.addAlwaysVisibleParticle(TinkerTools.axeAttackParticle.get(),true,entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ(),0,0,0);
-        if (entity!=this.getOwner()&&entity instanceof LivingEntity&&this.getOwner() instanceof Player player){
-            entity.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor().bypassInvul(), this.getDamage()*10);
-            entity.invulnerableTime=0;
-            if (((LivingEntity) entity).hasEffect(etshtinkerEffects.novaradiation.get())) {
-                ((LivingEntity) entity).removeEffect(etshtinkerEffects.novaradiation.get());
-            }
-            ((LivingEntity) entity).forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(), 100, 10, false, false), player);
-            this.playSound(SoundEvents.PLAYER_HURT_SWEET_BERRY_BUSH,1,1.75f);
-            if (!level.isClientSide() && entity instanceof LivingEntity) {
-                Vec3 motion = this.getDeltaMovement().normalize();
-                ((LivingEntity) entity).knockback(this.getKnockback(), -motion.x, -motion.z);
-            }
-        }
     }
 }

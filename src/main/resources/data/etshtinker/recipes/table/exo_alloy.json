@@ -1,0 +1,39 @@
+{
+  "conditions": [
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "modid": "ad_astra",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABC",
+    "DED",
+    "CBA"
+  ],
+  "key": {
+    "A": {
+      "item": "etshtinker:exotic_matter"
+    },
+    "B": {
+      "item": "etshtinker:evil_orb"
+    },
+    "C": {
+      "item": "etshtinker:marcoatom"
+    },
+    "D": {
+      "item": "etshtinker:perfect_generic_item"
+    },
+    "E": {
+      "item": "etshtinker:alloy_fracture"
+    }
+  },
+  "result": {
+    "item": "etshtinker:exo_alloy",
+    "count": 1
+  }
+}

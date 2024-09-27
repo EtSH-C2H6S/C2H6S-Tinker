@@ -23,7 +23,7 @@ public class vecCalc {
             double z = entity2.getZ()-entity1.getZ();
             return new Vec3(x,y,z);
         }
-        return null;
+        return new Vec3(0,0,0);
     }
     public static Vec3 Entity1ToEntity2Eye(Entity entity1,Entity entity2){
         if(entity1!=null&&entity2!=null){
@@ -32,7 +32,7 @@ public class vecCalc {
             double z = entity2.getZ()-entity1.getZ();
             return new Vec3(x,y,z);
         }
-        return null;
+        return new Vec3(0,0,0);
     }
     public static Vec3 EntityToPos(Entity entity1,double x,double y,double z){
         if(entity1!=null){
@@ -41,7 +41,7 @@ public class vecCalc {
             double vz = z-entity1.getZ();
             return new Vec3(vx,vy,vz);
         }
-        return null;
+        return new Vec3(0,0,0);
     }
     public static double getMold(Vec3 vec3){
         if(vec3!=null){
@@ -54,7 +54,7 @@ public class vecCalc {
             double i = vecCalc.getMold(vec3);
             return new Vec3(vec3.x/i, vec3.y/i, vec3.z/i);
         }
-        return null;
+        return new Vec3(0,0,0);
     }
     public static double vec3Multiplyvec3(Vec3 vec1,Vec3 vec2){
         if (vec1!=null&&vec2!=null){

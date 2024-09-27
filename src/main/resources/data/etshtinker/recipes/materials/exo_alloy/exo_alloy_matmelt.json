@@ -1,16 +1,17 @@
 {
   "conditions": [
     {
-      "type": "forge:not",
-      "value": {
-        "type": "forge:tag_empty",
-        "tag": "forge:ingots/exo_alloy"
-      }
+      "modid": "ae2",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
     }
   ],
   "type":"tconstruct:material_melting",
   "input": "etshtinker:exo_alloy",
-  "temperature": 9550,
+  "temperature": 16000,
   "result":{
     "fluid": "etshtinker:molten_exo_alloy",
     "amount": 90

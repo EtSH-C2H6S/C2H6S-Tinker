@@ -27,6 +27,6 @@ public class etshtinkerMekansimMaterial {
     public static final RegistryObject<Item> os_induced_netherstarshard = ITEMS.register("os_induced_netherstarshard",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
     public static final RegistryObject<Item> gs_indused_netherite_dust = ITEMS.register("gs_indused_netherite_dust",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
     public static final RegistryObject<Item> activated_neutronium_dust = ITEMS.register("activated_neutronium_dust",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
-
+    public static final RegistryObject<Item> alloy_fracture = ITEMS.register("alloy_fracture",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
 
 }

@@ -40,6 +40,7 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
     }
 
