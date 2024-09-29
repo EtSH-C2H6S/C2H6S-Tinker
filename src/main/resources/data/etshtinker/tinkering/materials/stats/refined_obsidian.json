@@ -1,0 +1,38 @@
+{
+  "condition": {
+    "modid": "mekanism",
+    "type": "forge:mod_loaded"
+  },
+  "stats": {
+    "tconstruct:maille": {},
+    "tconstruct:plating_helmet": {
+      "armor": 5.0,
+      "durability": 1209,
+      "knockback_resistance": 0.05,
+      "toughness": 4
+    },
+    "tconstruct:plating_chestplate": {
+      "armor": 8.0,
+      "durability": 2007,
+      "knockback_resistance": 0.05,
+      "toughness": 4
+    },
+    "tconstruct:plating_leggings": {
+      "armor": 7.0,
+      "durability": 1645,
+      "knockback_resistance": 0.05,
+      "toughness": 4
+    },
+    "tconstruct:plating_boots": {
+      "armor": 4.0,
+      "durability": 890,
+      "knockback_resistance": 0.05,
+      "toughness": 4
+    },
+    "tconstruct:plating_shield": {
+      "durability": 1345,
+      "knockback_resistance": 0.05,
+      "toughness": 4
+    }
+  }
+}

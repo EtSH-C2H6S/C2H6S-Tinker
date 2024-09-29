@@ -13,7 +13,7 @@
   "inputs": [
     {
       "item": "etshtinker:exo_alloy",
-      "amount_needed": 32
+      "amount_needed": 2
     },
     {
       "item": "etshtinker:anti_neutronium",

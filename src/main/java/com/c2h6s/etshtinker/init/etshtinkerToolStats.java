@@ -12,7 +12,7 @@ public class etshtinkerToolStats {
     public static final FloatToolStat MULTIPLASMA = (FloatToolStat) ToolStats.register(new FloatToolStat(name("multishotplasma"), -3135232, 0.0F, 0.0F, 10));
     public static final FloatToolStat COOLDOWN = (FloatToolStat) ToolStats.register(new FloatToolStat(name("cooldown"), -3135232, 0.0F, 0.0F, 2048));
     public static final FloatToolStat PLASMARANGE = (FloatToolStat) ToolStats.register(new FloatToolStat(name("plasmarange"), -3135232, 1.0F, 0.0F, 256));
-    public static final FloatToolStat DAMAGEMULTIPLIER = (FloatToolStat) ToolStats.register(new FloatToolStat(name("damagemultiplier"), -3135232, 0.0F, 0.0F, Integer.MAX_VALUE));
+    public static final FloatToolStat DAMAGEMULTIPLIER = (FloatToolStat) ToolStats.register(new FloatToolStat(name("damagemultiplier"), -3135232, 0.0F, -100.0F, Integer.MAX_VALUE));
     public static final FloatToolStat FLUIDMULTIPLIER = (FloatToolStat) ToolStats.register(new FloatToolStat(name("fluidmultiplier"), -3135232, 1.0F, 0.0F, Integer.MAX_VALUE));
     public static final FloatToolStat SCALE = (FloatToolStat) ToolStats.register(new FloatToolStat(name("scale"), -3135232, 1.0F, 0.0F, Integer.MAX_VALUE));
     public static final FloatToolStat FLUID_EFFICIENCY = (FloatToolStat) ToolStats.register(new FloatToolStat(name("fluid_efficiency"), -3135232, 1.0F, 0.0F, 100));

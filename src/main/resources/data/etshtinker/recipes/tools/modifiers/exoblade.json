@@ -10,15 +10,14 @@
     }
   ],
   "type": "tconstruct:modifier",
-  "check_trait_level": true,
   "inputs": [
     {
       "item": "etshtinker:exo_alloy",
-      "amount_needed": 32
+      "amount_needed": 2
     },
     {
-      "item": "etshtinker:earth_crystal",
-      "amount_needed": 16
+      "item": "etshtinker:perfect_generic_item",
+      "amount_needed": 8
     },
     {
       "item": "etshtinker:activated_chroma_plate",

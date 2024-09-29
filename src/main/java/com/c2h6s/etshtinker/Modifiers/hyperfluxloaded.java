@@ -33,9 +33,9 @@ public class hyperfluxloaded extends fluxloaded{
     public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
         if (!(itemStack.getItem() instanceof ArrowItem)&&etshmodifierfluxed.getEnergyStored(tool)>10000){
             etshmodifierfluxed.removeEnergy(tool,10000,false,false);
-            return new ItemStack(Items.ARROW);
+            return new ItemStack(Items.ARROW,64);
         }
-        return itemStack;
+        return super.modifierFindAmmo(tool, modifiers, livingEntity, itemStack, predicate);
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (etshmodifierfluxed.getEnergyStored(tool)>0&&modifiers.getLevel()>0){

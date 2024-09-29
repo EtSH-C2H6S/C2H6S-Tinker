@@ -1,9 +1,9 @@
 package com.c2h6s.etshtinker.Modifiers;
 
+import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.util.ParticleChainUtil;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -31,7 +31,6 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.List;
 import java.util.Objects;
 
-import static com.c2h6s.etshtinker.Modifiers.godlymetal.enabled2;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
@@ -58,8 +57,8 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
             if (entity1 != null) {
                 player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 2);
                 entity1.invulnerableTime = 0;
-                entity1.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic(), getMainLevel(player,this) * tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*6.4F);
-                entity1.invulnerableTime = 0;
+                entity1.hurt(throughSources.quark(tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*modifier.getLevel()),tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*modifier.getLevel());
+                entity1.getPersistentData().putInt("quark_disassemble",entity1.getPersistentData().getInt("quark_disassemble")+30);
                 Level level1 = entity1.level;
                 if (level1 instanceof ServerLevel serverLevel) {
                     ParticleChainUtil.summonELECSPARKFromTo(serverLevel, player.getId(), entity1.getId());
@@ -71,9 +70,10 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
                 double z = entity1.getZ();
                 List<Mob> mobabcd = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 8 * getMainLevel(player,this), y + 8 * getMainLevel(player,this), z + 8 * getMainLevel(player,this), x - (8 * getMainLevel(player,this)), y - (8 * getMainLevel(player,this)), z - (8 * getMainLevel(player,this))));
                 for (Mob targets : mobabcd) {
-                    if (enabled2 && targets != null) {
+                    if ( targets != null) {
                         targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic(), getMainLevel(player,this) * tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*3.2F);
+                        targets.hurt(throughSources.quark(tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*modifier.getLevel()),tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*modifier.getLevel());
+                        targets.getPersistentData().putInt("quark_disassemble",targets.getPersistentData().getInt("quark_disassemble")+30);
                     }
                 }
             }

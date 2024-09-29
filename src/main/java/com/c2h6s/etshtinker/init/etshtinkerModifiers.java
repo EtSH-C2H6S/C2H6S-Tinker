@@ -1,6 +1,9 @@
 package com.c2h6s.etshtinker.init;
 
 import com.c2h6s.etshtinker.Modifiers.*;
+import com.c2h6s.etshtinker.Modifiers.Armor.*;
+import com.c2h6s.etshtinker.Modifiers.PlasmaSaber.AnnihilatingSlash;
+import com.c2h6s.etshtinker.Modifiers.PlasmaSaber.MagicDamage;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -92,8 +95,8 @@ public class etshtinkerModifiers {
     public static final StaticModifier<hyperfluxloaded>hyperfluxloaded_STATIC_MODIFIER= MODIFIERS.register("hyperfluxloaded", hyperfluxloaded::new);
     public static final StaticModifier<nightsenhance>nightsenhance_STATIC_MODIFIER= MODIFIERS.register("nightsenhance", nightsenhance::new);
     public static final StaticModifier<electricArmor>electricArmor= MODIFIERS.register("electricarmor", electricArmor::new);
-    public static final StaticModifier<MagicDamage>MagicDamage= MODIFIERS.register("magic_damage", MagicDamage::new);
-    public static final StaticModifier<AnnihilatingSlash>AnnihilatingSlash= MODIFIERS.register("annihilating_slash", AnnihilatingSlash::new);
+    public static final StaticModifier<com.c2h6s.etshtinker.Modifiers.PlasmaSaber.MagicDamage>MagicDamage= MODIFIERS.register("magic_damage", MagicDamage::new);
+    public static final StaticModifier<com.c2h6s.etshtinker.Modifiers.PlasmaSaber.AnnihilatingSlash>AnnihilatingSlash= MODIFIERS.register("annihilating_slash", AnnihilatingSlash::new);
     public static final StaticModifier<perfectism>perfectism= MODIFIERS.register("perfectism", perfectism::new);
     public static final StaticModifier<ResonanceEffect>resonance_effect= MODIFIERS.register("resonance_effect", ResonanceEffect::new);
     public static final StaticModifier<AmplitudeCharacteristic>amplitude_characteristic= MODIFIERS.register("amplitude_characteristic", AmplitudeCharacteristic::new);
@@ -104,6 +107,8 @@ public class etshtinkerModifiers {
     public static final StaticModifier<AtomicRestructer>atomic_restructer= MODIFIERS.register("atomic_restructer", AtomicRestructer::new);
     public static final StaticModifier<ModifierQuarkDisassemble>quark_disassemble= MODIFIERS.register("quark_disassemble", ModifierQuarkDisassemble::new);
     public static final StaticModifier<heavenlyGaleModifier>heavenly_gale= MODIFIERS.register("heavenly_gale", heavenlyGaleModifier::new);
+    public static final StaticModifier<armorMoveAccel>armor_momentoaccel= MODIFIERS.register("armor_momentoaccel", armorMoveAccel::new);
+    public static final StaticModifier<foolishGold>foolish_gold= MODIFIERS.register("foolish_gold", foolishGold::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

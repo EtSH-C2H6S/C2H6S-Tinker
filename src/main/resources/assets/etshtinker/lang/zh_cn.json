@@ -135,11 +135,11 @@
 
   "modifier.etshtinker.modifiernovasickle": "超新星飞镰",
   "modifier.etshtinker.modifiernovasickle.flavor": "超新星爆发",
-  "modifier.etshtinker.modifiernovasickle.description":"右键扔出一把超新星飞镰，飞行一段时间后会自动传送到最近敌人附近。命中时发生爆炸，对大范围敌人施加新星辐射减益，投掷间隔越大爆炸威力越大",
+  "modifier.etshtinker.modifiernovasickle.description":"右键扔出一把超新星飞镰，飞行一段时间后会自动传送到最近敌人附近。命中时发生爆炸，对大范围敌人施加可堆叠的夸克解离，投掷间隔越大爆炸威力越大",
 
   "modifier.etshtinker.exoblademodifier": "星流之刃",
   "modifier.etshtinker.exoblademodifier.flavor": "泰拉之刃ProMaxUltra",
-  "modifier.etshtinker.exoblademodifier.description":"挥舞武器时射出多个星流能量球，飞行一段时间后追踪敌人，造成新星辐射减益",
+  "modifier.etshtinker.exoblademodifier.description":"挥舞武器时射出多个星流能量球并释放一道近距离等离子弧光，能量球飞行一段时间后追踪敌人，造成可堆叠的夸克解离效果",
 
   "modifier.etshtinker.lightningarrowmodifier": "涌流箭矢",
   "modifier.etshtinker.lightningarrowmodifier.flavor": "“指的是电流而不是水流（）”",
@@ -183,7 +183,7 @@
 
   "modifier.etshtinker.iluminate": "外发光",
   "modifier.etshtinker.iluminate.flavor": "不再畏惧黑暗！",
-  "modifier.etshtinker.iluminate.description":"手持时获得夜视效果，攻击敌人施加发光效果。",
+  "modifier.etshtinker.iluminate.description":"使自己获得夜视效果，手持时攻击敌人施加发光效果，穿着时对攻击者施加发光效果。",
 
   "modifier.etshtinker.sidechannelattack": "侧信道攻击",
   "modifier.etshtinker.sidechannelattack.flavor": "众所周知，生物电也是电信号",
@@ -417,6 +417,19 @@
   "modifier.etshtinker.atomic_restructer.flavor": "一即全，全即一",
   "modifier.etshtinker.atomic_restructer.description":"暴击时清除自己和目标身上的全部状态并根据状态数造成爆炸。能逆转湮灭反应损毁工具的效果。",
 
+  "modifier.etshtinker.heavenly_gale": "天堂之风",
+  "modifier.etshtinker.heavenly_gale.flavor": "并非天堂",
+  "modifier.etshtinker.heavenly_gale.description":"蓄力时充能，充能足够高后将箭矢替换为多个星流能量球，能量球的数量和伤害取决于充能量。蓄力时间超过4秒后，能量球击中目标时会释放星流能量束，对目标施加可堆叠的夸克解离效果",
+
+  "modifier.etshtinker.armor_momentoaccel": "惯性加速",
+  "modifier.etshtinker.armor_momentoaccel.flavor": "十分趁手！",
+  "modifier.etshtinker.armor_momentoaccel.description":"攻击时获得可堆叠的急迫效果，急迫的最大等级为护甲总属性等级*4。",
+
+  "modifier.etshtinker.foolish_gold": "愚人金",
+  "modifier.etshtinker.foolish_gold.flavor": "富含二硫化亚铁",
+  "modifier.etshtinker.foolish_gold.description":"穿戴总属性等级大于等于2时，猪灵不会攻击你",
+
+
 
 
   "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -435,9 +448,10 @@
   "item.etshtinker.overchargedneutronium_bucket": "超充能流体中子桶",
 
   "item.etshtinker.os_induced_netherstarshard": "黑曜石掺杂下界之星碎片",
-  "item.etshtinker.gs_indused_netherite_dust": "萤石掺杂下界合金粉",
+  "item.etshtinker.gs_indused_netherite_dust": "荧石掺杂下界合金粉",
   "item.etshtinker.activated_matter_dust": "活化物质粉",
   "item.etshtinker.activated_neutronium_dust": "活化中子粉",
+  "item.etshtinker.alloy_fracture": "分形合金",
 
   "item.etshtinker.etshtinker_guide": "乙硫醇指导书",
 
@@ -564,7 +578,6 @@
   "material.etshtinker.blizz_enderium.flavor": "来自高空",
   "material.etshtinker.blizz_enderium.encyclopedia": "这种金属极端的寒冷，仿佛能冻结空气",
 
-  "item.etshtinker.tungsten_ingot": "钨锭",
 
   "fluid_type.etshtinker.molten_bismuth": "熔融铋",
   "item.etshtinker.molten_bismuth_bucket": "熔融铋桶",
@@ -623,6 +636,15 @@
   "material.etshtinker.atomic_alloy": "原子合金",
   "material.etshtinker.atomic_alloy.flavor": "原子级工艺",
   "material.etshtinker.atomic_alloy.encyclopedia": "现代科技的结晶，其内部的精密结构使它能够用于操作原子。",
+
+  "material.etshtinker.refined_obsidian": "强化黑曜石",
+  "material.etshtinker.refined_obsidian.flavor": "致密又坚硬",
+  "material.etshtinker.refined_obsidian.encyclopedia": "",
+
+  "material.etshtinker.refined_glowstone": "强化荧石",
+  "material.etshtinker.refined_glowstone.flavor": "亮闪闪",
+  "material.etshtinker.refined_glowstone.encyclopedia": "",
+
 
 
 
@@ -775,6 +797,7 @@
   "recipe.etshtinker.modifier.modifiershadowaxe": "你没有足够的知识去制作这个，逐影™科技飞斧需要神金质作为前置",
   "recipe.etshtinker.modifier.warpattackex": "强化折跃攻击需要神金质作为前置",
   "recipe.etshtinker.modifier.warpingenhance": "曲率突击需要曲率引擎作为前置",
+  "recipe.etshtinker.modifier.heavenly_gale": "天堂之风需要神金质作为前置",
 
 
 
@@ -859,6 +882,7 @@
 
   "infuse_type.etshtinker.ultra_dense":"超致密",
   "infuse_type.etshtinker.refined_glowstone":"强化荧石",
+  "infuse_type.etshtinker.anti_neutronium":"反中子",
 
 
   "etshtinker.message.death_prevent": "你复活了!",

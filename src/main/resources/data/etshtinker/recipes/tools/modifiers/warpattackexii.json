@@ -13,11 +13,11 @@
   "inputs": [
     {
       "item": "etshtinker:exotic_matter",
-      "amount_needed": 8
+      "amount_needed": 4
     },
     {
       "item": "etshtinker:exo_alloy",
-      "amount_needed": 8
+      "amount_needed": 1
     }
   ],
   "tools": {

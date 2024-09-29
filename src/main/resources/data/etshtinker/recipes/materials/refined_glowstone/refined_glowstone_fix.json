@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "etshtinker:refined_glowstone"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:refined_glowstone"
+}

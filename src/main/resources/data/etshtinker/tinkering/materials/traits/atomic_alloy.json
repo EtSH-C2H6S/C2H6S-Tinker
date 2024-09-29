@@ -5,11 +5,11 @@
   },
   "default": [
     {
-      "name": "etshtinker:atomic_decompose",
+      "name": "tconstruct:dense",
       "level": 1
     },
     {
-      "name": "etshtinker:atomic_restructer",
+      "name": "etshtinker:atomic_decompose",
       "level": 1
     }
   ]

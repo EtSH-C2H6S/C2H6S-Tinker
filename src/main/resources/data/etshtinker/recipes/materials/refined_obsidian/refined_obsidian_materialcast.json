@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+    "type": "tconstruct:material_fluid", 
+        "fluid": {
+        "name": "tconstruct:molten_refined_obsidian",
+         "amount":90
+        },
+         "temperature":50,
+         "output":"etshtinker:refined_obsidian"
+}

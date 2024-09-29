@@ -49,9 +49,9 @@ public class AtomicRestructer extends etshmodifieriii {
                 MobEffect harm = effect.getEffect();
                 attacker.removeEffect(harm);
             }
-            if (x>0) {
+            if (x>2) {
                 ShockWaveEntity shockWave = new ShockWaveEntity(etshtinkerEntity.shock_wave.get(), attacker.level);
-                shockWave.damage = Math.min(80,x*2.5F);
+                shockWave.damage = Math.min(80,x*5F);
                 shockWave.setOwner(attacker);
                 shockWave.setDeltaMovement(new Vec3(1, 0, 0).scale(Math.min(8, x)));
                 shockWave.setPos(target.getX(), target.getY() + 0.5 * target.getBbHeight(), target.getZ());

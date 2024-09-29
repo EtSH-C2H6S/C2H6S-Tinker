@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.Entities;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
@@ -77,8 +78,6 @@ public class shadowaxeEntity extends ShurikenEntityBase {
 
     @Override
     public void tick() {
-        this.noPhysics=true;
-        this.noCulling=true;
         super.tick();
         List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,new AABB(this.getX()+16,this.getY()+16,this.getZ()+16,this.getX()-16,this.getY()-16,this.getZ()-16));
         if (!this.isNoGravity()){
@@ -97,12 +96,8 @@ public class shadowaxeEntity extends ShurikenEntityBase {
                 SecureRandom RANDOM =EtSHrnd();
                 if (entity != null && !(entity instanceof Player)&&i<4&&RANDOM.nextInt(5)==0&&this.getOwner() instanceof Player player) {
                     entity.invulnerableTime=0;
-                    entity.hurt(DamageSource.playerAttack(player),this.getDamage());
-                    entity.invulnerableTime=0;
-                    if (entity.hasEffect(etshtinkerEffects.novaradiation.get())){
-                        entity.removeEffect(etshtinkerEffects.novaradiation.get());
-                    }
-                    entity.forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(),100,10,false,false),player);
+                    entity.hurt(playerThroughSource.PlayerQuark(player,this.getDamage()*0.1f*this.baseDamage), this.getDamage());
+                    entity.getPersistentData().putInt("quark_disassemble",entity.getPersistentData().getInt("quark_disassemble")+5);
                     Level level1 =this.level;
                     if (level instanceof ServerLevel serverLevel){
                         summonLaserFromTo(serverLevel,this.getId(),entity.getId());

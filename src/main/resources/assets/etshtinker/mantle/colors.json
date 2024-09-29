@@ -35,7 +35,7 @@
     "extraweight": "#FF0094",
     "modifiernovasickle": "#4D2AB8",
     "exoblademodifier": "#4D2AB8",
-    "lightningarrowmodifier": "#4D2AB8",
+    "heavenly_gale": "#4D2AB8",
     "warpattackex": "#4D2AB8",
     "modifiershadowaxe": "#4D2AB8",
     "warpengineex": "#AAFFBB",
@@ -103,7 +103,9 @@
     "resonance_effect": "#00FFD0",
     "perfect_armor": "#90FF90",
     "atomic_decompose": "#DEC9FF",
-    "atomic_restructer": "#DEC9FF"
+    "atomic_restructer": "#DEC9FF",
+    "armor_momentoaccel": "#675D70",
+    "foolish_gold": "#FFE56F"
   },
   "material.etshtinker":
   {

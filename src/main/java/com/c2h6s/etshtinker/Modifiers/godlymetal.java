@@ -20,8 +20,10 @@ import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -128,6 +130,12 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
         } else {
             return InteractionResult.PASS;
         }
+    }
+
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this, ModifierHooks.TOOL_DAMAGE);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.Entities;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
@@ -140,13 +141,10 @@ public class novasickleEntity extends ShurikenEntityBase {
             novaExplode(this.level,this.power,this.getDamage(),x,y+1.5,z,player);
             List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class, new AABB(x + this.power, y + this.power, z + this.power, x - this.power, y - this.power, z - this.power));
             for (LivingEntity entities : ls) {
-                if (entities != null && !(entities instanceof Player)) {
+                if (entities != null && entities!=player) {
                     entities.invulnerableTime = 0;
-                    entities.hurt(DamageSource.thrown(this, this.getOwner()), this.getDamage()*0.1f*this.power);
-                    if (entities.hasEffect(etshtinkerEffects.novaradiation.get())){
-                        entities.removeEffect(etshtinkerEffects.novaradiation.get());
-                    }
-                    entities.forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(), 100, (int) (power*0.1), false, false), player);
+                    entities.hurt(playerThroughSource.PlayerQuark(player,this.getDamage()*0.1f*this.power), this.getDamage()*0.1f*this.power);
+                    entities.getPersistentData().putInt("quark_disassemble",entities.getPersistentData().getInt("quark_disassemble")+this.power*5);
                 }
             }
         }
@@ -175,11 +173,8 @@ public class novasickleEntity extends ShurikenEntityBase {
                 for (LivingEntity entities : ls) {
                     if (entities != null && !(entities instanceof Player)) {
                         entities.invulnerableTime = 0;
-                        entities.hurt(DamageSource.thrown(this, this.getOwner()), this.getDamage()*0.1f*this.power);
-                        if (entities.hasEffect(etshtinkerEffects.novaradiation.get())){
-                            entities.removeEffect(etshtinkerEffects.novaradiation.get());
-                        }
-                        entities.forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(), 100, (int) (power*0.1), false, false), player);
+                        entities.hurt(playerThroughSource.PlayerQuark(player,this.getDamage()*0.1f*this.power), this.getDamage()*0.1f*this.power);
+                        entities.getPersistentData().putInt("quark_disassemble",entities.getPersistentData().getInt("quark_disassemble")+this.power*5);
                     }
                 }
             }

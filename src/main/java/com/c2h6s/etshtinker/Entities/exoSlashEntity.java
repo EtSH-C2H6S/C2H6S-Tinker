@@ -85,8 +85,8 @@ public class exoSlashEntity extends ItemProjectile {
             } else trackVelo = 0;
             vec3 = getUnitizedVec3(vec3).scale(trackVelo);
             vec3 = initVec.add(vec3);
-            if (getMold(vec3)>=2.5){
-                vec3.scale(2.5/getMold(vec3));
+            if (getMold(vec3)>=1.5){
+                vec3.scale(1.5/getMold(vec3));
             }
             if (getMold(vec3)>=0.1){
                 serverLevel.sendParticles(etshtinkerParticleType.exo.get(), this.getX(), this.getY()+0.5*this.getBbHeight(), this.getZ(), 5, 0.05, 0.05, 0.05, 0.0125);
@@ -109,6 +109,9 @@ public class exoSlashEntity extends ItemProjectile {
                         living.invulnerableTime=0;
                         living.hurt(throughSources.quark(this.baseDamage),this.baseDamage);
                         living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+30);
+                    }
+                    if (living.level instanceof ServerLevel serverLevel ){
+                        serverLevel.sendParticles(etshtinkerParticleType.slash.get(), living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ(),1,0,0,0,0);
                     }
                 }
             }

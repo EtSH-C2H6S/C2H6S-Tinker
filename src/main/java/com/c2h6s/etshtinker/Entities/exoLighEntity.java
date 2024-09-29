@@ -33,9 +33,15 @@ public class exoLighEntity extends ItemProjectile{
             double y =this.getY()+10;
             double x =this.getX();
             double z =this.getZ();
-            while (y>this.getY()-10){
+            while (y>=this.getY()-10){
                 if (this.level instanceof ServerLevel serverLevel){
                     serverLevel.sendParticles(etshtinkerParticleType.exo_ligh.get(),x,y,z,1,0,0,0,0);
+                    if (y==this.getY()+10){
+                        serverLevel.sendParticles(etshtinkerParticleType.exo_light_end.get(),x,y+1,z,1,0,0,0,0);
+                    }
+                    if (y==this.getY()-10){
+                        serverLevel.sendParticles(etshtinkerParticleType.exo_light_end.get(),x,y-1,z,1,0,0,0,0);
+                    }
                 }
                 y--;
             }
@@ -46,11 +52,11 @@ public class exoLighEntity extends ItemProjectile{
                 if (this.getOwner() instanceof Player player){
                     living.invulnerableTime=0;
                     living.hurt(playerThroughSource.PlayerQuark(player,this.damage),this.damage);
-                    living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+5);
+                    living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+3);
                 }else {
                     living.invulnerableTime=0;
                     living.hurt(throughSources.quark(this.damage),this.damage);
-                    living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+5);
+                    living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+3);
                 }
             }
         }

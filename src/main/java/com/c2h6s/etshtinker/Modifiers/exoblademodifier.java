@@ -113,9 +113,9 @@ public class exoblademodifier extends etshmodifieriii implements RequirementsMod
         Level level =player.getLevel();
         EntityType<PlasmaSlashEntity> entityType = etshtinkerEntity.plasma_slash_lime.get();
         PlasmaSlashEntity slash =new PlasmaSlashEntity(entityType,level,new ItemStack(etshtinkerItems.plasma_slash_lime.get()));
-        slash.damage=damage/20;
+        slash.damage=damage/12.5F;
         slash.setOwner(player);
-        slash.setDeltaMovement(player.getLookAngle().scale(1.5));
+        slash.setDeltaMovement(player.getLookAngle().scale(1.25));
         slash.setToolstack(tool);
         slash.CriticalRate=256;
         double x =player.getLookAngle().x;
@@ -128,7 +128,7 @@ public class exoblademodifier extends etshmodifieriii implements RequirementsMod
         int a = random.nextInt(3) + 1;
         while (a > 0) {
             a--;
-            createExoSlash(player, damage*10, getScatteredVec3(player.getLookAngle().scale(1.5), 1.732));
+            createExoSlash(player, damage*7.5F, getScatteredVec3(player.getLookAngle().scale(1.5), 1.732));
         }
     }
 }

@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -22,18 +23,20 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.RequirementsModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.ranged.BowAmmoModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
-public class heavenlyGaleModifier extends etshmodifieriii implements RequirementsModifierHook {
+public class heavenlyGaleModifier extends etshmodifieriii implements RequirementsModifierHook , BowAmmoModifierHook {
 
     private final ResourceLocation bow_charge = new ResourceLocation(MOD_ID, "bow_charge");
     public void onModifierRemoved(IToolStackView tool) {
@@ -52,10 +55,15 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
     private void RightClick(PlayerInteractEvent.RightClickEmpty event) {
     }
 
+    @Override
+    public int getPriority() {
+        return 0;
+    }
+
     @Nullable
     @Override
     public Component requirementsError(ModifierEntry entry) {
-        return Component.translatable("recipe.etshtinker.modifier.exoblade");
+        return Component.translatable("recipe.etshtinker.modifier.heavenly_gale");
     }
 
     @Override
@@ -66,15 +74,22 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this,ModifierHooks.REQUIREMENTS);
+        builder.addHook(this,ModifierHooks.REQUIREMENTS,ModifierHooks.BOW_AMMO);
+    }
+
+    @Override
+    public ItemStack findAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
+        return new ItemStack(Items.ARROW,64);
     }
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isCorrectSlot) {
             if (tool.getPersistentData().getInt(GeneralInteractionModifierHook.KEY_DRAWTIME) != 0) {
-                tool.getPersistentData().putInt(bow_charge, tool.getPersistentData().getInt(bow_charge) + 1);
-                if (tool.getPersistentData().getInt(bow_charge) % 10 == 0 && tool.getPersistentData().getInt(bow_charge) <= 80) {
+                if (tool.getPersistentData().getInt(bow_charge) <= 80) {
+                    tool.getPersistentData().putInt(bow_charge, tool.getPersistentData().getInt(bow_charge) + 1);
+                }
+                if (tool.getPersistentData().getInt(bow_charge) % 10 == 0 && tool.getPersistentData().getInt(bow_charge) <= 80&& tool.getPersistentData().getInt(bow_charge)>0) {
                     livingEntity.playSound(SoundEvents.NOTE_BLOCK_HAT, 1, 1);
                 }
                 if (tool.getPersistentData().getInt(bow_charge) == 80) {
@@ -93,27 +108,25 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
     @Override
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity livingEntity, Projectile projectile, @org.jetbrains.annotations.Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (projectile instanceof AbstractArrow arrow&&livingEntity instanceof Player player) {
-            for (ModifierEntry entry : tool.getModifierList()) {
-                if (entry.getModifier()!=this) {
-                    entry.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, entry, player, arrow, arrow, tool.getPersistentData(), true);
-                }
-            }
+
             int charge = tool.getPersistentData().getInt(bow_charge);
-            int amount = Math.min(9, (charge / 10) + 1);
-            for (int i = 0; i < amount; i++) {
-                exoOrb exoOrb = new exoOrb(etshtinkerEntity.exo_orb.get(), player.level);
-                exoOrb.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) * 0.5 * amount);
-                exoOrb.tool = tool;
-                exoOrb.setDeltaMovement(getScatteredVec3(player.getLookAngle(), 0.6).scale(2));
-                exoOrb.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
-                exoOrb.setOwner(player);
+            int amount = Math.min(8, charge / 10)+1;
+            int count = (amount/2)+1;
+            for (int i = 0; i < count; i++) {
+                exoOrb exoorb = new exoOrb(etshtinkerEntity.exo_orb.get(), player.level);
+                exoorb.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) * amount*2);
+                exoorb.tool = tool;
+                exoorb.setDeltaMovement(getScatteredVec3(player.getLookAngle(), 0.6).scale(2));
+                exoorb.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
+                exoorb.setOwner(player);
                 if (amount >= 7) {
-                    exoOrb.summonLIGH = true;
+                    exoorb.summonLIGH = true;
                 }
-                player.level.addFreshEntity(exoOrb);
+                player.level.addFreshEntity(exoorb);
             }
+
             arrow.discard();
-            tool.getPersistentData().putInt(bow_charge,0);
+            tool.getPersistentData().putInt(bow_charge, 0);
         }
     }
 

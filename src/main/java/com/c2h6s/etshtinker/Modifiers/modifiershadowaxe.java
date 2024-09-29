@@ -76,13 +76,13 @@ public class modifiershadowaxe extends etshmodifieriii implements RequirementsMo
             double vx =player.getLookAngle().x;
             double vy =player.getLookAngle().y;
             double vz =player.getLookAngle().z;
-            entity1.setDamage((float) (tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*Math.pow(0.04*toolData.getInt(stealth),1.5)));
+            entity1.setDamage((float) (tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*Math.pow(0.04*toolData.getInt(stealth),1.5)*0.25));
             entity1.noPhysics=true;
             entity1.setOwner(player);
             entity1.setDeltaMovement(vx,vy,vz);
             player.level.addFreshEntity(entity1);
             toolData.putInt(stealth,0);
-            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(),20);
+            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(),4);
         }
     }
     public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier)  {

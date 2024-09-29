@@ -11,6 +11,7 @@ public class etshtinkerChemicals {
 
     public static final InfuseTypeRegistryObject<InfuseType> ULTRADENSE;
     public static final InfuseTypeRegistryObject<InfuseType> REFINED_GLOWSTONE;
+    public static final InfuseTypeRegistryObject<InfuseType> ANTI_NEUTRONIUM;
 
     private etshtinkerChemicals() {
     }
@@ -18,5 +19,6 @@ public class etshtinkerChemicals {
     static {
         ULTRADENSE =INFUSE_TYPES.register("ultra_dense",0xAE7AFF);
         REFINED_GLOWSTONE =INFUSE_TYPES.register("refined_glowstone",0xFFF200);
+        ANTI_NEUTRONIUM =INFUSE_TYPES.register("anti_neutronium",0xFF0000);
     }
 }

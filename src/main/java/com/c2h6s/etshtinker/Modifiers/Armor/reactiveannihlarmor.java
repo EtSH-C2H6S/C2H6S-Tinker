@@ -1,9 +1,8 @@
-package com.c2h6s.etshtinker.Modifiers;
+package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Entities.annihilateexplosionentity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;

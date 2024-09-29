@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "mekanism:infusion_conversion",
+  "input": {
+    "ingredient": {
+      "item": "etshtinker:anti_neutronium"
+    }
+  },
+  "output": {
+    "amount": 40,
+    "infuse_type": "etshtinker:anti_neutronium"
+  }
+}

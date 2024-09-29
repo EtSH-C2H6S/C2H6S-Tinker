@@ -39,7 +39,7 @@ public class PhaseCharacteristic extends etshmodifieriii {
         if (livingEntity instanceof ServerPlayer player){
             if (player.totalExperience>5){
                 player.giveExperiencePoints(-5);
-                return new ItemStack(Items.ARROW);
+                return new ItemStack(Items.ARROW,64);
             }
         }
         return super.modifierFindAmmo(tool, modifiers, livingEntity, itemStack, predicate);

@@ -72,6 +72,8 @@ public class etshtinkerItems {
     public static final RegistryObject<Item> plasma_slash_yellow = ITEMS.register("plasma_slash_yellow", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> plasma_slash_dark = ITEMS.register("plasma_slash_dark", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> shock_wave = ITEMS.register("shock_wave", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> exo_spin = ITEMS.register("exo_spin", ()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> celetus = ITEMS.register("celetus", ()->new Item(new Item.Properties()));
 
 
 

@@ -32,5 +32,6 @@ public class etshtinkerParticle {
         event.register(etshtinkerParticleType.quark_disassemble.get(), QuarkDisassembleParticle::provider);
         event.register(etshtinkerParticleType.exo.get(), exoParticle::provider);
         event.register(etshtinkerParticleType.exo_ligh.get(), exoLighParticle::provider);
+        event.register(etshtinkerParticleType.exo_light_end.get(), exoLightEndParticle::provider);
     }
 }

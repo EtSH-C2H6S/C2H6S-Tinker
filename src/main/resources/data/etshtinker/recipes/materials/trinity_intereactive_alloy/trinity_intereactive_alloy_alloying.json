@@ -13,16 +13,16 @@
     },
     {
       "fluid": "etshtinker:molten_protonium",
-      "amount": 200
+      "amount": 180
     },
     {
       "fluid": "etshtinker:molten_electronium",
-      "amount": 200
+      "amount": 180
     }
   ],
   "result": {
     "fluid": "etshtinker:molten_trinity_intereactive_alloy",
     "amount": 90
   },
-  "temperature": 10240
+  "temperature": 8973
 }

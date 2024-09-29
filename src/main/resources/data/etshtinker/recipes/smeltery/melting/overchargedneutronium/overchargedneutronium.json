@@ -8,7 +8,7 @@
   "type": "tconstruct:ore_melting",
   "byproducts": [
     {
-      "amount": 300,
+      "amount": 90,
       "fluid": "etshtinker:molten_protonium"
     }
   ],

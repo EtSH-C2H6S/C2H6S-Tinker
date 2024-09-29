@@ -19,7 +19,7 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.19.2-2.0.0-alpha-08c'
+version = '1.19.2-2.0.0-alpha-08cfix'
 group = 'com.c2h6s.etshtinker'
 
 base {

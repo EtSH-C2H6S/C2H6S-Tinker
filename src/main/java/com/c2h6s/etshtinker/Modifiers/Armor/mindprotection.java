@@ -1,4 +1,4 @@
-package com.c2h6s.etshtinker.Modifiers;
+package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;

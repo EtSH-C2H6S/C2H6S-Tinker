@@ -53,6 +53,8 @@ public class exoLightEndParticle extends TextureSheetParticle {
         if (this.age>this.lifetime){
             this.remove();
         }
+        this.roll+=0.25f;
+        this.oRoll =this.roll;
         super.tick();
     }
 }

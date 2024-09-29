@@ -1,4 +1,4 @@
-package com.c2h6s.etshtinker.Modifiers;
+package com.c2h6s.etshtinker.Modifiers.PlasmaSaber;
 
 import com.c2h6s.etshtinker.Entities.PlasmaSlashEntity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
