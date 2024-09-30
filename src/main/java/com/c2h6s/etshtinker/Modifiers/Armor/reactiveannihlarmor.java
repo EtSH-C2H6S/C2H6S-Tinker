@@ -61,14 +61,6 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
                     ModDataNBT toolData =tool.getPersistentData();
                     if (toolData.getFloat(antineutron)>event.getAmount()){
                         toolData.putFloat(antineutron,toolData.getFloat(antineutron)-event.getAmount());
-                        annihilateexplosionentity explode =new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(),player.getLevel());
-                        if (entity instanceof LivingEntity attacker){
-                            explode.target =attacker;
-                        }
-                        explode.setPos(player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ());
-                        explode.damage=1024*lvl;
-                        explode.setOwner(player);
-                        player.level.addFreshEntity(explode);
                         event.setCanceled(true);
                         break;
                     }else {

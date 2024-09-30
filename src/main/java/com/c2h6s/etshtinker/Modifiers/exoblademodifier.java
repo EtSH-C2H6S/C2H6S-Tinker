@@ -21,6 +21,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.display.RequirementsModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -28,6 +29,7 @@ import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -109,6 +111,7 @@ public class exoblademodifier extends etshmodifieriii implements RequirementsMod
             return;
         }
         tool =ToolStack.from(player.getMainHandItem());
+        int count =tool.getModifierLevel(new ModifierId("tconstruct","sharpness"));
         float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
         Level level =player.getLevel();
         EntityType<PlasmaSlashEntity> entityType = etshtinkerEntity.plasma_slash_lime.get();
@@ -128,7 +131,8 @@ public class exoblademodifier extends etshmodifieriii implements RequirementsMod
         int a = random.nextInt(3) + 1;
         while (a > 0) {
             a--;
-            createExoSlash(player, damage*7.5F, getScatteredVec3(player.getLookAngle().scale(1.5), 1.732));
+            createExoSlash(player, damage*7.5F, getScatteredVec3(player.getLookAngle().scale(1.5), 1.732),count);
         }
+        createExoSlash(player, damage*7.5F, player.getLookAngle().scale(1.5),count);
     }
 }

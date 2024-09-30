@@ -27,6 +27,24 @@
     }
   ],
   "perStat" : {
+    "etshtinker:ionizer": [
+      {
+        "name": "etshtinker:godlymetal",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:worldforceex",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:beconcerted",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:beconcerted",
+        "level": 1
+      }
+    ],
     "tconstruct:armor": [
       {
         "name": "etshtinker:mindprotection",

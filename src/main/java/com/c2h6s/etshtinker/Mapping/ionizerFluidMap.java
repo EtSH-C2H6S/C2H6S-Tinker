@@ -5,6 +5,7 @@ import net.minecraft.world.level.material.Fluid;
 
 
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidAE.*;
+import static com.c2h6s.etshtinker.init.etshtinkerFluids.moltenExoAlloy.*;
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidAdastra.*;
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidMekanism.*;
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidThermal.*;
@@ -39,8 +40,8 @@ public class ionizerFluidMap {
         fluidParts.put(molten_ultra_dense.get(),plasmaexplosionpurple.get());
         fluidDmg.put(molten_ultra_dense.get(),6f);
         fluidParts.put(molten_exo_alloy.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(molten_exo_alloy.get(),128f);
-        fluidSpecial.put(molten_exo_alloy.get(),"nova_radiation");
+        fluidDmg.put(molten_exo_alloy.get(),64f);
+        fluidSpecial.put(molten_exo_alloy.get(),"quark");
         fluidParts.put(molten_meteoralloy.get(),plasmaexplosionorange.get());
         fluidDmg.put(molten_meteoralloy.get(),3f);
         fluidSpecial.put(molten_meteoralloy.get(),"explosion");
@@ -50,6 +51,9 @@ public class ionizerFluidMap {
         fluidParts.put(unstable_exotic_matter.get(),plasmaexplosiongreen.get());
         fluidDmg.put(unstable_exotic_matter.get(),2.25f);
         fluidSpecial.put(unstable_exotic_matter.get(),"tracking");
+        fluidParts.put(stablized_exotic_matter.get(),plasmaexplosiongreen.get());
+        fluidDmg.put(stablized_exotic_matter.get(),22.25f);
+        fluidSpecial.put(stablized_exotic_matter.get(),"tracking");
 
         fluidParts.put(moltenCopper.get(),plasmaexplosiongreen.get());
         fluidDmg.put(moltenCopper.get(),1.5f);
@@ -109,15 +113,9 @@ public class ionizerFluidMap {
         else return 2;
     }
     public static SimpleParticleType getFluidparticle(Fluid fluid){
-        if (fluidParts.containsKey(fluid)) {
-            return fluidParts.get(fluid);
-        }
-        else return null;
+        return fluidParts.getOrDefault(fluid, null);
     }
     public static String getFluidSpecial(Fluid fluid){
-        if (fluidSpecial.containsKey(fluid)) {
-            return fluidSpecial.get(fluid);
-        }
-        else return null;
+        return fluidSpecial.getOrDefault(fluid, null);
     }
 }

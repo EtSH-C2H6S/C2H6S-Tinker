@@ -402,8 +402,8 @@
   "modifier.etshtinker.phase_characteristic.description":"射击时消耗20点经验值凭空产生箭矢，箭矢击中后造成音爆并返还10点经验。",
 
   "modifier.etshtinker.amplitude_characteristic": "Amplitude Characteristic",
-  "modifier.etshtinker.amplitude_characteristic.flavor": "灵魂共振！",
-  "modifier.etshtinker.amplitude_characteristic.description":"右键长按时消耗经验给武器充能。蓄力2秒后松手释放所有充能造成一次声波打击并返还75%经验，根据充能量造成伤害。等级越高最大充能越大",
+  "modifier.etshtinker.amplitude_characteristic.flavor": "Soul resonate.",
+  "modifier.etshtinker.amplitude_characteristic.description":"Hold right click to charge,release it after 2 seconds will result in strong sonic boom.Needs to consume experience.",
 
   "modifier.etshtinker.resonance_effect": "Resonance Effect",
   "modifier.etshtinker.resonance_effect.flavor": "Keep silent...",
@@ -428,6 +428,10 @@
   "modifier.etshtinker.foolish_gold": "Foolish Gold",
   "modifier.etshtinker.foolish_gold.flavor": "Rich in ferrous disulfide",
   "modifier.etshtinker.foolish_gold.description":"When level in sum is over 2 ,piglins won't attack you.",
+
+  "modifier.etshtinker.miracle_catalyst": "奇迹催化剂",
+  "modifier.etshtinker.miracle_catalyst.flavor": "星流之力",
+  "modifier.etshtinker.miracle_catalyst.description":"流体消耗量-90%，当流体为熔融奇迹物质时一次性至多消耗5mB。",
 
 
 

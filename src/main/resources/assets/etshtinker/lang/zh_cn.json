@@ -429,6 +429,10 @@
   "modifier.etshtinker.foolish_gold.flavor": "富含二硫化亚铁",
   "modifier.etshtinker.foolish_gold.description":"穿戴总属性等级大于等于2时，猪灵不会攻击你",
 
+  "modifier.etshtinker.miracle_catalyst": "奇迹催化剂",
+  "modifier.etshtinker.miracle_catalyst.flavor": "星流之力",
+  "modifier.etshtinker.miracle_catalyst.description":"流体消耗量-90%，当流体为熔融奇迹物质时一次性至多消耗5mB。",
+
 
 
 

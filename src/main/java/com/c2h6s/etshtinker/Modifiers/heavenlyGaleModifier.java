@@ -27,6 +27,7 @@ import slimeknights.tconstruct.library.modifiers.hook.ranged.BowAmmoModifierHook
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -107,12 +108,22 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
 
     @Override
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity livingEntity, Projectile projectile, @org.jetbrains.annotations.Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (projectile instanceof AbstractArrow arrow&&livingEntity instanceof Player player) {
-
+        if (projectile instanceof AbstractArrow arrow&&livingEntity instanceof Player player&&primary) {
+            int lvlMulti = tool.getModifierLevel(TinkerModifiers.multishot.get())+1;
             int charge = tool.getPersistentData().getInt(bow_charge);
             int amount = Math.min(8, charge / 10)+1;
-            int count = (amount/2)+1;
-            for (int i = 0; i < count; i++) {
+            int count = (amount/2);
+            exoOrb exoorb1 = new exoOrb(etshtinkerEntity.exo_orb.get(), player.level);
+            exoorb1.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) * amount*2);
+            exoorb1.tool = tool;
+            exoorb1.setDeltaMovement(player.getLookAngle().scale(2));
+            exoorb1.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
+            exoorb1.setOwner(player);
+            if (amount >= 7) {
+                exoorb1.summonLIGH = true;
+            }
+            player.level.addFreshEntity(exoorb1);
+            for (int i = 0; i < count*lvlMulti; i++) {
                 exoOrb exoorb = new exoOrb(etshtinkerEntity.exo_orb.get(), player.level);
                 exoorb.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) * amount*2);
                 exoorb.tool = tool;
@@ -124,9 +135,10 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
                 }
                 player.level.addFreshEntity(exoorb);
             }
-
-            arrow.discard();
             tool.getPersistentData().putInt(bow_charge, 0);
+        }
+        if (abstractArrow != null) {
+            abstractArrow.discard();
         }
     }
 

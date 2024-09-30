@@ -58,9 +58,11 @@ public class phantomswordentity extends ItemProjectile{
                 this.target.invulnerableTime=0;
                 this.target.hurt(DamageSource.playerAttack((Player) this.getOwner()),this.damage);
                 this.target.invulnerableTime=0;
-                if (level1!=null) {
-                    level1.addAlwaysVisibleParticle(TinkerTools.axeAttackParticle.get(), this.target.getX(), this.target.getY()+0.5*this.target.getBbHeight(), this.target.getZ(), 0, 0, 0);
-                }
+                slashentity slash =new slashentity(etshtinkerEntity.slashentity.get(),this.level);
+                slash.count=2;
+                slash.damage=this.damage/2;
+                slash.target=this.target;
+                slash.setOwner(this.getOwner());
                 this.playSound(SoundEvents.PLAYER_HURT_SWEET_BERRY_BUSH,1.25f,1.25f);
                 if (this.count>0){
                     phantomswordentity entity =new phantomswordentity(etshtinkerEntity.phantomswordentity.get(),this.level);
@@ -71,17 +73,15 @@ public class phantomswordentity extends ItemProjectile{
                     SecureRandom random1 =EtSHrnd();
                     entity.setYRot(random1.nextFloat()*360);
                     entity.setPos(this.target.getX(),this.target.getY()+0.5*this.target.getBbHeight()+3.5,this.target.getZ());
-                    if (level1!=null){
-                        int i =0;
-                        while (i<3){
-                            if(level1.isClientSide) {
-                                level1.addParticle(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02);
-                            }
-                            else {
-                                ((ServerLevel)level1).sendParticles(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), 1,0,0,0, random1.nextDouble() * 0.04 - 0.02);
-                            }
-                            i++;
+                    int i = 0;
+                    while (i<3){
+                        if(level1.isClientSide) {
+                            level1.addParticle(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02);
                         }
+                        else {
+                            ((ServerLevel)level1).sendParticles(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), 1,0,0,0, random1.nextDouble() * 0.04 - 0.02);
+                        }
+                        i++;
                     }
                     this.level.addFreshEntity(entity);
                 }

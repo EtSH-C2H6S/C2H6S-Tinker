@@ -20,6 +20,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -53,18 +54,20 @@ public class mentalism extends etshmodifieriii {
                 if (entity instanceof Player player ) {
                     List<ItemStack> equipments = player.getInventory().armor;
                     for (ItemStack equipment : equipments) {
-                        ToolStack tool = ToolStack.from(equipment);
-                        if (tool.getPersistentData().getInt(dpreventcd) == 0) {
-                            ModDataNBT toolData = tool.getPersistentData();
-                            if (toolData.getInt(dpreventcd) == 0&&tool.getModifierLevel(this)>0) {
-                                toolData.putInt(dpreventcd, 3200);
-                                event.setCanceled(true);
-                                player.deathTime = -2;
-                                player.fallDistance = 0;
-                                player.setHealth(player.getMaxHealth() * 0.25f);
-                                player.invulnerableTime = 40;
-                                entity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
-                                break;
+                        if (equipment.getItem() instanceof ModifiableArmorItem) {
+                            ToolStack tool = ToolStack.from(equipment);
+                            if (tool.getPersistentData().getInt(dpreventcd) == 0) {
+                                ModDataNBT toolData = tool.getPersistentData();
+                                if (toolData.getInt(dpreventcd) == 0 && tool.getModifierLevel(this) > 0) {
+                                    toolData.putInt(dpreventcd, 3200);
+                                    event.setCanceled(true);
+                                    player.deathTime = -2;
+                                    player.fallDistance = 0;
+                                    player.setHealth(player.getMaxHealth() * 0.25f);
+                                    player.invulnerableTime = 40;
+                                    entity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
+                                    break;
+                                }
                             }
                         }
                     }
@@ -81,14 +84,16 @@ public class mentalism extends etshmodifieriii {
                 if (entity instanceof Player player ) {
                     List<ItemStack> equipments = player.getInventory().armor;
                     for (ItemStack equipment : equipments) {
-                        ToolStack tool =ToolStack.from(equipment);
-                        if (tool.getModifierLevel(this)>0&&!player.getCooldowns().isOnCooldown(equipment.getItem())) {
-                            event.setCanceled(true);
-                            player.getCooldowns().addCooldown(equipment.getItem(),600);
-                            if (event.getSource().getEntity() !=null){
-                                event.getSource().getEntity().invulnerableTime=20;
+                        if (equipment.getItem() instanceof ModifiableArmorItem) {
+                            ToolStack tool = ToolStack.from(equipment);
+                            if (tool.getModifierLevel(this) > 0 && !player.getCooldowns().isOnCooldown(equipment.getItem())) {
+                                event.setCanceled(true);
+                                player.getCooldowns().addCooldown(equipment.getItem(), 600);
+                                if (event.getSource().getEntity() != null) {
+                                    event.getSource().getEntity().invulnerableTime = 20;
+                                }
+                                break;
                             }
-                            break;
                         }
                     }
                 }

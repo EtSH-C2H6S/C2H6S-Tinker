@@ -90,6 +90,7 @@ public class etshtinker {
         }
         if (Mekenabled&&AE2loaded) {
             etshtinkerItems.configuredMaterial.ITEMSC.register(eventBus);
+            etshtinkerFluids.moltenExoAlloy.FLUIDSa.register(eventBus);
         }
 
 

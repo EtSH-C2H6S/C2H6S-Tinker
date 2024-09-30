@@ -54,7 +54,9 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
                     target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.5F * damage);
                     target.invulnerableTime = 0;
                 }
-                target.setNoGravity(true);
+                if (!(target instanceof Player)) {
+                    target.setNoGravity(true);
+                }
             }
         }
         return baseKnockback;
@@ -103,7 +105,9 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
                 target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.3F * damageDealt);
                 target.invulnerableTime = 0;
             }
-            target.setNoGravity(true);
+            if (!(target instanceof Player)) {
+                target.setNoGravity(true);
+            }
             if (target.getHealth()>=1) {
                 target.setHealth(Math.max(1, target.getHealth() - damageDealt));
             }

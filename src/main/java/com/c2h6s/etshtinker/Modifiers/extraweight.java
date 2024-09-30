@@ -20,7 +20,7 @@ public class extraweight extends etshmodifieriii {
         return true;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if(holder instanceof Player player&&isCorrectSlot&&player.getDeltaMovement().y<-0.1){
+        if(holder instanceof Player player&&isCorrectSlot&&player.getDeltaMovement().y<-0.1&&!holder.isNoGravity()){
             double xx = player.getX();
             double yy = player.getY();
             double zz = player.getZ();
@@ -29,10 +29,8 @@ public class extraweight extends etshmodifieriii {
             for (Mob mob:ls0000){
                 if (mob!=null){
                     Vec3 base = getUnitizedVec3(Entity1ToEntity2(player,mob));
-                    if (base != null) {
-                        Vec3 vec3=new Vec3(-base.x*player.getDeltaMovement().y*3,-player.getDeltaMovement().y*1,-base.z*player.getDeltaMovement().y*3);
-                        mob.setDeltaMovement(vec3);
-                    }
+                    Vec3 vec3 = new Vec3(-base.x * player.getDeltaMovement().y * 3, -player.getDeltaMovement().y * 1, -base.z * player.getDeltaMovement().y * 3);
+                    mob.setDeltaMovement(vec3);
                 }
             }
         }

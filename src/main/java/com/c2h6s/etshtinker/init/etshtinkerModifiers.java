@@ -2,8 +2,8 @@ package com.c2h6s.etshtinker.init;
 
 import com.c2h6s.etshtinker.Modifiers.*;
 import com.c2h6s.etshtinker.Modifiers.Armor.*;
-import com.c2h6s.etshtinker.Modifiers.PlasmaSaber.AnnihilatingSlash;
-import com.c2h6s.etshtinker.Modifiers.PlasmaSaber.MagicDamage;
+import com.c2h6s.etshtinker.Modifiers.IonizedCannon.*;
+import com.c2h6s.etshtinker.Modifiers.PlasmaSaber.*;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -109,6 +109,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<heavenlyGaleModifier>heavenly_gale= MODIFIERS.register("heavenly_gale", heavenlyGaleModifier::new);
     public static final StaticModifier<armorMoveAccel>armor_momentoaccel= MODIFIERS.register("armor_momentoaccel", armorMoveAccel::new);
     public static final StaticModifier<foolishGold>foolish_gold= MODIFIERS.register("foolish_gold", foolishGold::new);
+    public static final StaticModifier<MiracleCatalyst>miracle_catalyst= MODIFIERS.register("miracle_catalyst", MiracleCatalyst::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

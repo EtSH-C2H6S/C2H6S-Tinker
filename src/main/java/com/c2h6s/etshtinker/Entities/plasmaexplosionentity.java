@@ -115,7 +115,7 @@ public class plasmaexplosionentity extends ItemProjectile{
 
                     while (i < range) {
                         i += 1;
-                        if (special != null && (special.equals("elemental") || special.equals("nova_radiation"))) {
+                        if (special != null && (special.equals("elemental") || special.equals("nova_radiation")||special.equals("quark"))) {
                             this.particle = lsp.get(random.nextInt(8));
                         }
                         double x = pos.x + i * vec3.x;
@@ -132,10 +132,6 @@ public class plasmaexplosionentity extends ItemProjectile{
                         aabbList.add(aabb);
                         if (special != null && (special.equals("random_scatter") || special.equals("entropic"))) {
                             vec3 = getScatteredVec3(vec3, 0.25);
-                        }
-                        if (special != null && special.equals("sculk_scatter")) {
-                            vec3 = getScatteredVec3(vec3, 0.25);
-                            vec3 = getScatteredVec3(vec3, 0.5);
                         }
                     }
                 }
@@ -177,91 +173,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                             }
                         }
                     }
-                    String special =this.special;
-                    if (!ls1.isEmpty() && special != null) {
-                        if (ls1.get(0) != null) {
-                            LivingEntity entity = ls1.get(0);
-                            ls1.clear();
-                            if (special.equals("antimatter_explosion")) {
-                                this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 16f, Explosion.BlockInteraction.NONE);
-                            }
-                            if (special.equals("explosion")) {
-                                this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 2f, Explosion.BlockInteraction.NONE);
-                            }
-                            if (special.equals("annihilate")) {
-                                annihilateexplosionentity explosion = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), level);
-                                explosion.damage = 1024;
-                                explosion.radius = 20;
-                                explosion.proceedRecipe = true;
-                                explosion.proceedamount = 8;
-                                explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
-                                level.addFreshEntity(explosion);
-                            }
-                            if (tool != null) {
-                                for (ModifierEntry modifier : tool.getModifierList()) {
-                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,entity,this,special);
-                                }
-                            }
-                        }
-                        if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion") && !special.equals("annihilate")) {
-                            for (LivingEntity targets : ls1) {
-                                if (targets != null) {
-                                    if (special.equals("ionize")) {
-                                        targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 100, 9, false, false), this.getOwner());
-                                    } else if (special.equals("burn")) {
-                                        targets.setSecondsOnFire(200);
-                                    } else if (special.equals("magic_damage")) {
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.75f);
-                                    } else if (special.equals("nova_radiation")) {
-                                        targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(), 100, 9, false, false), this.getOwner());
-                                    } else if (special.equals("radiation") && Mekenabled) {
-                                        MekanismAPI.getRadiationManager().radiate(targets, 50);
-                                    } else if (special.equals("poison")) {
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 300, 9), this.getOwner());
-                                    } else if (special.equals("corrosive")) {
-                                        if (targets.getAttributes().getInstance(Attributes.ARMOR) != null && targets.getArmorValue() > 0) {
-                                            targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(0);
-                                            targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(-targets.getArmorValue());
-                                        }
-                                        if (targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS) != null && targets.getArmorValue() > 0) {
-                                            targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS).setBaseValue(-1024);
-                                        }
-                                        if (targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE) != null) {
-                                            targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(-10);
-                                        }
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 100, 4), this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4), this.getOwner());
-                                    } else if (special.equals("elemental") || special.equals("entropic")) {
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 4, false, false), this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 4, false, false), this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
-                                        if (Cofhloaded) {
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 50, 4, false, false), this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(), 50, 4, false, false), this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(), 50, 4, false, false), this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
-                                        }
-                                    }
-                                    if (tool != null) {
-                                        for (ModifierEntry modifier : tool.getModifierList()) {
-                                            modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,targets,this,special);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    conductSpecial(ls1);
                 }
                 if (time == 9 && !aabbList.isEmpty()) {
                     for (AABB aabb : aabbList) {
@@ -282,88 +194,94 @@ public class plasmaexplosionentity extends ItemProjectile{
                             }
                         }
                     }
-                    String special =this.special;
-                    if (!ls1.isEmpty() && special != null) {
-                        if (ls1.get(0) != null) {
-                            LivingEntity entity = ls1.get(0);
-                            ls1.clear();
-                            if (special.equals("antimatter_explosion")) {
-                                this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 16f, Explosion.BlockInteraction.NONE);
+                    conductSpecial(ls1);
+                }
+            }
+        }
+    }
+
+    public void conductSpecial(List<LivingEntity> ls1){
+        String special =this.special;
+        if (!ls1.isEmpty() && special != null) {
+            if (ls1.get(0) != null) {
+                LivingEntity entity = ls1.get(0);
+                ls1.clear();
+                if (special.equals("antimatter_explosion")) {
+                    this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 16f, Explosion.BlockInteraction.NONE);
+                }
+                if (special.equals("explosion")) {
+                    this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 2f, Explosion.BlockInteraction.NONE);
+                }
+                if (special.equals("annihilate")) {
+                    annihilateexplosionentity explosion = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), level);
+                    explosion.damage = 1024;
+                    explosion.radius = 20;
+                    explosion.proceedRecipe = true;
+                    explosion.proceedamount = 8;
+                    explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
+                    level.addFreshEntity(explosion);
+                }
+                if (tool != null) {
+                    for (ModifierEntry modifier : tool.getModifierList()) {
+                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,entity,this,special);
+                    }
+                }
+            }
+            if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion") && !special.equals("annihilate")) {
+                for (LivingEntity targets : ls1) {
+                    if (targets != null) {
+                        if (special.equals("ionize")) {
+                            targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 100, 9, false, false), this.getOwner());
+                        } else if (special.equals("burn")) {
+                            targets.setSecondsOnFire(200);
+                        } else if (special.equals("magic_damage")) {
+                            targets.invulnerableTime = 0;
+                            targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.75f);
+                        } else if (special.equals("nova_radiation")) {
+                            targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(), 100, 9, false, false), this.getOwner());
+                        } else if (special.equals("radiation") && Mekenabled) {
+                            MekanismAPI.getRadiationManager().radiate(targets, 50);
+                        } else if (special.equals("poison")) {
+                            targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 300, 9), this.getOwner());
+                        } else if (special.equals("quark")) {
+                            targets.getPersistentData().putInt("quark_disassemble",targets.getPersistentData().getInt("quark_disassemble")+100);
+                        } else if (special.equals("corrosive")) {
+                            if (targets.getAttributes().getInstance(Attributes.ARMOR) != null && targets.getArmorValue() > 0) {
+                                targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(0);
+                                targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(-targets.getArmorValue());
                             }
-                            if (special.equals("explosion")) {
-                                this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 2f, Explosion.BlockInteraction.NONE);
+                            if (targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS) != null && targets.getArmorValue() > 0) {
+                                targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS).setBaseValue(-1024);
                             }
-                            if (special.equals("annihilate")) {
-                                annihilateexplosionentity explosion = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), level);
-                                explosion.damage = 1024;
-                                explosion.radius = 20;
-                                explosion.proceedRecipe = true;
-                                explosion.proceedamount = 8;
-                                explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
-                                level.addFreshEntity(explosion);
+                            if (targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE) != null) {
+                                targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(-10);
                             }
-                            if (tool != null) {
-                                for (ModifierEntry modifier : tool.getModifierList()) {
-                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,entity,this,special);
-                                }
+                            targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 100, 4), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4), this.getOwner());
+                        } else if (special.equals("elemental") || special.equals("entropic")) {
+                            targets.invulnerableTime = 0;
+                            targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
+                            targets.invulnerableTime = 0;
+                            targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
+                            targets.invulnerableTime = 0;
+                            targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
+                            targets.invulnerableTime = 0;
+                            targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
+                            targets.invulnerableTime = 0;
+                            targets.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
+                            targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
+                            if (Cofhloaded) {
+                                targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 50, 4, false, false), this.getOwner());
+                                targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(), 50, 4, false, false), this.getOwner());
+                                targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(), 50, 4, false, false), this.getOwner());
+                                targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
                             }
                         }
-                        if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion") && !special.equals("annihilate")) {
-                            for (LivingEntity targets : ls1) {
-                                if (targets != null) {
-                                    if (special.equals("ionize")) {
-                                        targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 100, 9, false, false), this.getOwner());
-                                    } else if (special.equals("burn")) {
-                                        targets.setSecondsOnFire(200);
-                                    } else if (special.equals("magic_damage")) {
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.75f);
-                                    } else if (special.equals("nova_radiation")) {
-                                        targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.novaradiation.get(), 100, 9, false, false), this.getOwner());
-                                    } else if (special.equals("radiation") && Mekenabled) {
-                                        MekanismAPI.getRadiationManager().radiate(targets, 50);
-                                    } else if (special.equals("poison")) {
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 300, 9), this.getOwner());
-                                    } else if (special.equals("corrosive")) {
-                                        if (targets.getAttributes().getInstance(Attributes.ARMOR) != null && targets.getArmorValue() > 0) {
-                                            targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(0);
-                                            targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(-targets.getArmorValue());
-                                        }
-                                        if (targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS) != null && targets.getArmorValue() > 0) {
-                                            targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS).setBaseValue(-1024);
-                                        }
-                                        if (targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE) != null) {
-                                            targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(-10);
-                                        }
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 100, 4), this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4), this.getOwner());
-                                    } else if (special.equals("elemental") || special.equals("entropic")) {
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.invulnerableTime = 0;
-                                        targets.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 4, false, false), this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 4, false, false), this.getOwner());
-                                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
-                                        if (Cofhloaded) {
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 50, 4, false, false), this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(), 50, 4, false, false), this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(), 50, 4, false, false), this.getOwner());
-                                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
-                                        }
-                                    }
-                                    if (tool != null) {
-                                        for (ModifierEntry modifier : tool.getModifierList()) {
-                                            modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,targets,this,special);
-                                        }
-                                    }
-                                }
+                        if (tool != null) {
+                            for (ModifierEntry modifier : tool.getModifierList()) {
+                                modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,targets,this,special);
                             }
                         }
                     }

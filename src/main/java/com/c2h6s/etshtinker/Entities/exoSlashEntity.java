@@ -33,6 +33,7 @@ import slimeknights.tconstruct.gadgets.entity.shuriken.ShurikenEntityBase;
 import slimeknights.tconstruct.tools.TinkerTools;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
@@ -40,6 +41,7 @@ import static com.c2h6s.etshtinker.util.vecCalc.*;
 public class exoSlashEntity extends ItemProjectile {
     public float baseDamage;
     public int time =0;
+    public int count =0;
 
     public float setDamage(float damage){
         baseDamage =damage;
@@ -105,13 +107,18 @@ public class exoSlashEntity extends ItemProjectile {
                         living.invulnerableTime=0;
                         living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage),this.baseDamage);
                         living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+30);
+                        slashentity slash = new slashentity(etshtinkerEntity.slashentity.get(),this.level);
+                        slash.setOwner(this.getOwner());
+                        slash.exo=true;
+                        slash.target=living;
+                        slash.damage=this.baseDamage/2;
+                        slash.count=this.count;
+                        slash.setPos( living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ());
+                        this.level.addFreshEntity(slash);
                     }else {
                         living.invulnerableTime=0;
                         living.hurt(throughSources.quark(this.baseDamage),this.baseDamage);
                         living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+30);
-                    }
-                    if (living.level instanceof ServerLevel serverLevel ){
-                        serverLevel.sendParticles(etshtinkerParticleType.slash.get(), living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ(),1,0,0,0,0);
                     }
                 }
             }

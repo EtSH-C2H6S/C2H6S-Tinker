@@ -29,6 +29,7 @@ import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelMod
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -68,7 +69,7 @@ public class mindprotection extends etshmodifieriii {
                 if (entity instanceof Player player ) {
                     List<ItemStack> equipments = player.getInventory().armor;
                     for (ItemStack equipment : equipments) {
-                        if (equipment.getItem() instanceof ModifiableItem) {
+                        if (equipment.getItem() instanceof ModifiableArmorItem) {
                             ToolStack tool = ToolStack.from(equipment);
                             if (tool.getModifierLevel(this) > 0 && tool.getPersistentData().getInt(dpreventcd2) == 0) {
                                 ModDataNBT toolData = tool.getPersistentData();

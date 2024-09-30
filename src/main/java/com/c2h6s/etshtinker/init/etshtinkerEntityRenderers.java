@@ -26,7 +26,7 @@ public class etshtinkerEntityRenderers {
         event.registerEntityRenderer(etshtinkerEntity.plasmawaveslashEntity.get(), renderSlash::new);
         event.registerEntityRenderer(etshtinkerEntity.plasmarrowEntity.get(), renderplasmarrow::new);
         event.registerEntityRenderer(etshtinkerEntity.plasmaexplosionentity.get(), NoopRenderer::new);
-        event.registerEntityRenderer(etshtinkerEntity.slashentity.get(), renderSlash::new);
+        event.registerEntityRenderer(etshtinkerEntity.slashentity.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.phantomswordentity.get(), rendersword::new);
         event.registerEntityRenderer(etshtinkerEntity.annihilateexplosionentity.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.enchantedswordentity.get(), renderenchantsword::new);

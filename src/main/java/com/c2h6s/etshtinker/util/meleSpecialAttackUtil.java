@@ -60,7 +60,7 @@ public class meleSpecialAttackUtil {
             attacker.getCooldowns().addCooldown(tool.getItem(), 10);
         }
     }
-    public static void createExoSlash(@NotNull Player player, Float damage, Vec3 deltamovement){
+    public static void createExoSlash(@NotNull Player player, Float damage, Vec3 deltamovement,int Slashcount){
         Level world =player.getLevel();
         exoSlashEntity entity =new exoSlashEntity(etshtinkerEntity.exoslash.get(), world);
         entity.setPos(player.getX(),player.getEyeY(),player.getZ());
@@ -68,6 +68,7 @@ public class meleSpecialAttackUtil {
         entity.setDamage(damage);
         entity.setOwner(player);
         entity.setNoGravity(true);
+        entity.count=Slashcount;
         world.addFreshEntity(entity);
     }
 

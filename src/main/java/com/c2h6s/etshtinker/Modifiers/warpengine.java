@@ -89,8 +89,10 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
                 player.level.addParticle(ParticleTypes.HAPPY_VILLAGER, player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ(), 0, 0, 0);
                 if (!player.noPhysics){
                     player.noPhysics=true;
+                    player.getAbilities().mayfly=true;
                 }
                 if (!player.isNoGravity()){
+                    player.getAbilities().mayfly=true;
                     player.setNoGravity(true);
                 }
             }
@@ -110,8 +112,14 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
         if (tool.getPersistentData().getFloat(warpdur)<1&&holder instanceof Player player&&isCorrectSlot){
             if (player.noPhysics){
                 player.noPhysics=false;
+                if (!player.getAbilities().flying) {
+                    player.getAbilities().mayfly = false;
+                }
             }
             if (player.isNoGravity()){
+                if (!player.getAbilities().flying) {
+                    player.getAbilities().mayfly = false;
+                }
                 player.setNoGravity(false);
             }
         }
@@ -123,9 +131,15 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
             if (context.getEntity() instanceof Player player) {
                 if (player.noPhysics) {
                     player.noPhysics = false;
+                    if (!player.getAbilities().flying) {
+                        player.getAbilities().mayfly = false;
+                    }
                 }
                 if (player.isNoGravity()) {
                     player.setNoGravity(false);
+                    if (!player.getAbilities().flying) {
+                        player.getAbilities().mayfly = false;
+                    }
                 }
             }
         }

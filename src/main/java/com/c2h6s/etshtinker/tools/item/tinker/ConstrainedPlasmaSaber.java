@@ -102,6 +102,9 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         FluidStack fluidStack = TANK_HELPER.getFluid(tool);
         MeltingFuel fuel = getFuel(fluidStack.getFluid());
         int consumption =getFuelCumsp(fuel, fluidStack.getFluid(), tool);
+        for (ModifierEntry modifier : tool.getModifierList()) {
+            consumption = modifier.getHook(etshtinkerHook.FLUID_CONSUMPTION).getFluidConsumption(tool, fluidStack, player, consumption, consumption);
+        }
         if (fluidStack.getAmount()< consumption){
             return;
         }

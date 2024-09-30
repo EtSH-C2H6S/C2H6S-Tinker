@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
@@ -15,8 +16,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class ItemProjectile extends Projectile implements ItemSupplier {
+    public @Nullable LivingEntity getLivingOwner(){
+        return this.getOwner() instanceof LivingEntity living ? living : null;
+    }
     static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK;
     public float Xdeg =0;
     protected ItemProjectile(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_) {

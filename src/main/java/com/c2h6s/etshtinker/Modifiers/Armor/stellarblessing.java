@@ -1,4 +1,4 @@
-package com.c2h6s.etshtinker.Modifiers;
+package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.tags.TagKey;
@@ -46,7 +46,9 @@ public class stellarblessing extends etshmodifieriii {
                     event.setAmount(event.getAmount()*0.9f);
                 }
                 if (entity instanceof LivingEntity attacker){
-                    attacker.setNoGravity(true);
+                    if (!(attacker instanceof Player)) {
+                        attacker.setNoGravity(true);
+                    }
                     attacker.setSecondsOnFire(200);
                 }
             }
