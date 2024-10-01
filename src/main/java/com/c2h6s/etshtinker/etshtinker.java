@@ -88,7 +88,7 @@ public class etshtinker {
         if (MBOTloaded){
             etshtinkerFluids.etshtinkerFluidMBOT.FLUIDS.register(eventBus);
         }
-        if (Mekenabled&&AE2loaded) {
+        if (Mekenabled&&AE2loaded&&Cofhloaded) {
             etshtinkerItems.configuredMaterial.ITEMSC.register(eventBus);
             etshtinkerFluids.moltenExoAlloy.FLUIDSa.register(eventBus);
         }

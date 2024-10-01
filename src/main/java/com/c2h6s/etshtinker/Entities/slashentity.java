@@ -52,9 +52,11 @@ public class slashentity extends ItemProjectile{
                 serverLevel.sendParticles(etshtinkerParticleType.slash.get(), this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
             }
             if (this.target!=null&&this.getOwner() instanceof Player player){
-                this.target.invulnerableTime=0;
-                this.target.hurt(DamageSource.MAGIC,this.damage);
-                this.target.invulnerableTime=0;
+                if (!this.exo) {
+                    this.target.invulnerableTime = 0;
+                    this.target.hurt(DamageSource.MAGIC, this.damage);
+                    this.target.invulnerableTime = 0;
+                }
                 this.playSound(SoundEvents.PLAYER_HURT_SWEET_BERRY_BUSH,1.25f,1.25f);
                 List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class,new AABB(this.blockPosition()).inflate(1));
                 for (LivingEntity targets:ls){

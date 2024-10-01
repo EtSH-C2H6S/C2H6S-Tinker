@@ -1,12 +1,11 @@
 {
   "conditions": [
     {
-      "modid": "ad_astra",
-      "type": "forge:mod_loaded"
-    },
-    {
-      "modid": "ad_astra",
-      "type": "forge:mod_loaded"
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ingots/exo_alloy"
+      }
     }
   ],
   "type": "minecraft:crafting_shaped",
@@ -17,7 +16,7 @@
   ],
   "key": {
     "A": {
-      "item": "etshtinker:exotic_matter"
+      "item": "etshtinker:nights_alloy"
     },
     "B": {
       "item": "etshtinker:evil_orb"
