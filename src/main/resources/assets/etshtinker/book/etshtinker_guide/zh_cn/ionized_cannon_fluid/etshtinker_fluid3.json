@@ -2,6 +2,14 @@
   "title": "C2H6S Tinker流体-3",
   "text": [
     {
+      "text": "熔融反中子 || 基础伤害 : 0 || 流体能力 : 湮灭爆炸",
+      "paragraph": true
+    },
+    {
+      "text": "熔融超致密 || 基础伤害 : 6 ",
+      "paragraph": true
+    },
+    {
       "text": "质子流体 || 基础伤害 : 20 ",
       "paragraph": true
     },

@@ -113,27 +113,35 @@ public class IonizedCannon extends ModifiableItem {
         Fluid fluid =fluidStack.getFluid();
         int times =tool.getStats().getInt(etshtinkerToolStats.MULTIPLASMA);
         int a =0;
+        int consumption = Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 20*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
         while (a<=times) {
-            if (timeLeft <= this.getUseDuration(stack) - (int) (40 / tool.getStats().get(ToolStats.ATTACK_SPEED)) && living instanceof Player player && TANK_HELPER.getFluid(tool).getAmount() > Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 20)) {
-                plasmaexplosionentity entity = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
-                if (tool.getStats().get(etshtinkerToolStats.SCATTER) > 0) {
-                    entity.rayVec3 = getScatteredVec3(living.getLookAngle().scale(tool.getStats().get(etshtinkerToolStats.PLASMARANGE)), Math.tan(tool.getStats().get(etshtinkerToolStats.SCATTER)));
-                } else entity.rayVec3 = living.getLookAngle().scale(tool.getStats().get(etshtinkerToolStats.PLASMARANGE));
-                entity.particle = getFluidparticle(fluid);
-                entity.scale =tool.getStats().get(etshtinkerToolStats.SCALE);
-                entity.damage = getFluidDamage(fluid) * (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)) * tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-                entity.tool = tool;
-                entity.special = getFluidSpecial(fluid);
-                entity.setPos(living.getEyePosition().x, living.getEyePosition().y - 0.5 * entity.getBbHeight(), living.getEyePosition().z);
-                entity.setOwner(living);
+            if (living instanceof Player player) {
                 for (ModifierEntry modifier : tool.getModifierList()) {
-                    entity = modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_CREATE).plasmaExplosionCreate(tool,fluidStack,player,entity);
+                    consumption = modifier.getHook(etshtinkerHook.FLUID_CONSUMPTION).getFluidConsumption(tool, fluidStack, player, consumption, consumption);
                 }
-                level.addFreshEntity(entity);
-                living.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);
-                player.getCooldowns().addCooldown(stack.getItem(), tool.getStats().getInt(etshtinkerToolStats.COOLDOWN));
-                FluidStack fluidStack2 = new FluidStack(TANK_HELPER.getFluid(tool), TANK_HELPER.getFluid(tool).getAmount() - Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 20));
-                TANK_HELPER.setFluid(tool, fluidStack2);
+                if (timeLeft <= this.getUseDuration(stack) - (int) (40 / tool.getStats().get(ToolStats.ATTACK_SPEED)) && TANK_HELPER.getFluid(tool).getAmount() > consumption) {
+
+                    plasmaexplosionentity entity = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
+                    if (tool.getStats().get(etshtinkerToolStats.SCATTER) > 0) {
+                        entity.rayVec3 = getScatteredVec3(living.getLookAngle().scale(tool.getStats().get(etshtinkerToolStats.PLASMARANGE)), Math.tan(tool.getStats().get(etshtinkerToolStats.SCATTER)));
+                    } else
+                        entity.rayVec3 = living.getLookAngle().scale(tool.getStats().get(etshtinkerToolStats.PLASMARANGE));
+                    entity.particle = getFluidparticle(fluid);
+                    entity.scale = tool.getStats().get(etshtinkerToolStats.SCALE);
+                    entity.damage = getFluidDamage(fluid) * (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)) * tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+                    entity.tool = tool;
+                    entity.special = getFluidSpecial(fluid);
+                    entity.setPos(living.getEyePosition().x, living.getEyePosition().y - 0.5 * entity.getBbHeight(), living.getEyePosition().z);
+                    entity.setOwner(living);
+                    for (ModifierEntry modifier : tool.getModifierList()) {
+                        entity = modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_CREATE).plasmaExplosionCreate(tool, fluidStack, player, entity);
+                    }
+                    level.addFreshEntity(entity);
+                    living.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);
+                    player.getCooldowns().addCooldown(stack.getItem(), tool.getStats().getInt(etshtinkerToolStats.COOLDOWN));
+                    FluidStack fluidStack2 = new FluidStack(TANK_HELPER.getFluid(tool), TANK_HELPER.getFluid(tool).getAmount() - consumption);
+                    TANK_HELPER.setFluid(tool, fluidStack2);
+                }
             }
             else break;
             a++;

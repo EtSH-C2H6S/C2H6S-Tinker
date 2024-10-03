@@ -110,6 +110,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<armorMoveAccel>armor_momentoaccel= MODIFIERS.register("armor_momentoaccel", armorMoveAccel::new);
     public static final StaticModifier<foolishGold>foolish_gold= MODIFIERS.register("foolish_gold", foolishGold::new);
     public static final StaticModifier<MiracleCatalyst>miracle_catalyst= MODIFIERS.register("miracle_catalyst", MiracleCatalyst::new);
+    public static final StaticModifier<FlexibleBlade>flexible_blade= MODIFIERS.register("flexible_blade", FlexibleBlade::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

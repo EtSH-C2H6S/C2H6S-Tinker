@@ -1,4 +1,13 @@
 {
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:gems/niter"
+      }
+    }
+  ],
   "type": "tconstruct:casting_table",
   "cast": {
     "tag": "forge:gems/niter"

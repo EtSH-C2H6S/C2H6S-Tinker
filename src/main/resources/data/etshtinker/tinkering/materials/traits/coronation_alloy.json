@@ -28,6 +28,16 @@
         "level": 1
       }
     ],
+    "etshtinker:plasma_generator": [
+      {
+        "name": "etshtinker:flexible_blade",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:plasmawaveslashmodifier",
+        "level": 1
+      }
+    ],
     "etshtinker:fluid_chamber": [
       {
         "name": "etshtinker:plasmaenhance",

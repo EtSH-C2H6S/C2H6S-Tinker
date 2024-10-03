@@ -60,9 +60,10 @@ public class phantomswordentity extends ItemProjectile{
                 this.target.invulnerableTime=0;
                 slashentity slash =new slashentity(etshtinkerEntity.slashentity.get(),this.level);
                 slash.count=2;
-                slash.damage=this.damage/2;
+                slash.damage=this.damage*0.5F;
                 slash.target=this.target;
                 slash.setOwner(this.getOwner());
+                this.level.addFreshEntity(slash);
                 this.playSound(SoundEvents.PLAYER_HURT_SWEET_BERRY_BUSH,1.25f,1.25f);
                 if (this.count>0){
                     phantomswordentity entity =new phantomswordentity(etshtinkerEntity.phantomswordentity.get(),this.level);

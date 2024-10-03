@@ -319,7 +319,7 @@
 
   "modifier.etshtinker.beconcerted": "齐心协力",
   "modifier.etshtinker.beconcerted.flavor": "-感谢支持-",
-  "modifier.etshtinker.beconcerted.description":"每装载一个模组，获得大部分属性6.2134%的加成。",
+  "modifier.etshtinker.beconcerted.description":"工具能力槽+3，升级槽+4;护甲能力槽+3，升级槽+2，防御槽+2。\n每装载一个模组，获得大部分属性6.2134%的加成。",
 
   "modifier.etshtinker.gracearrival": "恩赐降临",
   "modifier.etshtinker.gracearrival.flavor": "奇迹和魔法可不是免费的！",
@@ -433,6 +433,9 @@
   "modifier.etshtinker.miracle_catalyst.flavor": "星流之力",
   "modifier.etshtinker.miracle_catalyst.description":"流体消耗量-90%，当流体为熔融奇迹物质时一次性至多消耗5mB。",
 
+  "modifier.etshtinker.flexible_blade": "弹性离子锋",
+  "modifier.etshtinker.flexible_blade.flavor": "可伸缩光剑",
+  "modifier.etshtinker.flexible_blade.description":"等离子斩击初始范围减半，但每攻击到一个敌人会使斩击范围*1.2",
 
 
 
@@ -715,8 +718,8 @@
   "etshtinker.tool.tooltip.cooldown": "冷却时间",
   "etshtinker.modifier.tooltip.trinitycurse": "以你目前的技术，无法在这个物品上留下任何痕迹...",
 
-  "etshtinker.tool.tooltip.wrongfluid": "无效流体",
   "etshtinker.tool.tooltip.nofluid": "无流体",
+  "etshtinker.tool.tooltip.wrongfluid": "无效流体",
   "etshtinker.tool.tooltip.effectivefluid": "流体基础伤害",
 
   "item.etshtinker.ionized_cannon": "离子化射线炮",
@@ -737,6 +740,7 @@
   "etshtinker.tool.tooltip.fluidspecial.explosion": "爆炸",
   "etshtinker.tool.tooltip.fluidspecial.ionize": "电离",
   "etshtinker.tool.tooltip.fluidspecial.nova_radiation": "新星辐射",
+  "etshtinker.tool.tooltip.fluidspecial.quark": "夸克解离",
   "etshtinker.tool.tooltip.fluidspecial.tracking": "自瞄",
   "etshtinker.tool.tooltip.fluidspecial.magic_damage": "额外魔法伤害",
   "etshtinker.tool.tooltip.fluidspecial.random_scatter": "随机折射",
@@ -763,7 +767,6 @@
   "etshtinker.tool.tooltip.fluid_efficiency": "流体效率",
   "etshtinker.tool.tooltip.critical_rate": "暴击率",
   "etshtinker.tool.tooltip.offhand_hastool": "错误:副手有工具",
-  "etshtinker.tool.tooltip.nofluid": "没有流体",
 
   "etshtinker.tooltip.slashcolor_index": "斩击颜色",
   "etshtinker.tooltip.red": "红色",

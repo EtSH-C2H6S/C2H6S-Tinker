@@ -32,7 +32,7 @@ public class slashparticle extends TextureSheetParticle {
         super(world, x, y, z);
         this.spriteSet = spriteSet;
         this.setSize(0.2f, 0.2f);
-        this.quadSize =1f;
+        this.quadSize =1f+EtSHrnd().nextFloat()*0.5f;
         this.roll = (float)( EtSHrnd().nextFloat()*Math.PI*0.332-Math.PI*0.166);
         this.oRoll =this.roll;
         this.lifetime = 6;
