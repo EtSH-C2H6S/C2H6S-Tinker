@@ -12,6 +12,7 @@ import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.entityReg.etshtinkerBotEntity;
 import com.c2h6s.etshtinker.init.modifierReg.etshtinkerBotModifier;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
+import com.c2h6s.etshtinker.recipes.etshRecipeSerializer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -51,6 +52,7 @@ public class etshtinker {
         etshtinkerEntity.ENTITIES.register(eventBus);//实体
         etshtinkerParticleType.REGISTRY.register(eventBus);//粒子
         etshtinkerConfig.init();
+        etshRecipeSerializer.register(eventBus);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> etshtinkerBook::initBook);
         if (Mekenabled){
             etshtinkerMekansimMaterial.ITEMS.register(eventBus);
