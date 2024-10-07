@@ -53,7 +53,7 @@ public class etshtinker {
         etshtinkerEntity.ENTITIES.register(eventBus);//实体
         etshtinkerParticleType.REGISTRY.register(eventBus);//粒子
         etshtinkerConfig.init();
-        //etshRecipeSerializer.register(eventBus);
+        etshRecipeSerializer.register(eventBus);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> etshtinkerBook::initBook);
         if (Mekenabled){
             etshtinkerMekansimMaterial.ITEMS.register(eventBus);

@@ -1,8 +1,9 @@
 package com.c2h6s.etshtinker.recipes;
-/*
+
 import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.util.JsonUtil;
 import com.google.gson.JsonObject;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -14,19 +15,22 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.fluids.FluidStack;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IonizedCannonRecipe implements Recipe<SimpleContainer> {
+    public static List<IonizedCannonRecipe> RECIPES = new ArrayList<>();
+
     private final ResourceLocation id;
     private final Fluid fluid;
     private final float damage;
     private final String special;
-    private final String particle;
-    private final Ingredient ingredient =Ingredient.EMPTY;
+    private final SimpleParticleType particle;
 
-    public IonizedCannonRecipe(ResourceLocation id, Fluid fluid, float damage, String special, String particle){
+    public IonizedCannonRecipe(ResourceLocation id, Fluid fluid, float damage, String special, SimpleParticleType particle){
         this.id = id;
         this.fluid = fluid;
         this.damage = damage;
@@ -44,7 +48,7 @@ public class IonizedCannonRecipe implements Recipe<SimpleContainer> {
 
     public String getSpecial(){return special;}
 
-    public String getParticle(){return particle;}
+    public SimpleParticleType getParticle(){return particle;}
 
     public float getDamage(){return damage;}
 
@@ -67,7 +71,7 @@ public class IonizedCannonRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
 
@@ -94,31 +98,18 @@ public class IonizedCannonRecipe implements Recipe<SimpleContainer> {
         public IonizedCannonRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
             Fluid fluid = JsonUtil.readFluid(pSerializedRecipe,"fluid");
             String special = GsonHelper.getAsString(pSerializedRecipe,"special");
-            String particle = GsonHelper.getAsString(pSerializedRecipe,"simple_particle_type");
+            SimpleParticleType particle =JsonUtil.readParticle(pSerializedRecipe,"simple_particle_type");
             float damage =GsonHelper.getAsFloat(pSerializedRecipe,"damage");
             return new IonizedCannonRecipe(pRecipeId,fluid,damage,special,particle);
         }
 
         @Override
         public @Nullable IonizedCannonRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-            FluidStack stack = pBuffer.readFluidStack();
-            Fluid fluid1 = stack.getFluid();
-            String special = pBuffer.readUtf();
-            String particle = pBuffer.readUtf();
-            float damage = pBuffer.readFloat();
-            return new IonizedCannonRecipe(pRecipeId,fluid1,damage,special,particle);
+            return null;
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, IonizedCannonRecipe pRecipe) {
-            pBuffer.writeResourceLocation(pRecipe.id);
-            pBuffer.writeInt(pRecipe.getIngredients().size());
-            pRecipe.ingredient.toNetwork(pBuffer);
-            pBuffer.writeUtf(pRecipe.getSpecial());
-            pBuffer.writeUtf(pRecipe.particle);
-            pBuffer.writeFluidStack(new FluidStack(pRecipe.getFluid(),1));
-            pBuffer.writeFloat(pRecipe.damage);
         }
     }
 }
-*/

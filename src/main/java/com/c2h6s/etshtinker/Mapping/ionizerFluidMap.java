@@ -1,10 +1,12 @@
 package com.c2h6s.etshtinker.Mapping;
 
+import com.c2h6s.etshtinker.recipes.IonizedCannonRecipe;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.registries.ForgeRegistries;
 
 
-import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidAE.*;
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.moltenExoAlloy.*;
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidAdastra.*;
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidMekanism.*;
@@ -13,7 +15,9 @@ import static com.c2h6s.etshtinker.init.etshtinkerParticleType.*;
 import static slimeknights.tconstruct.fluids.TinkerFluids.*;
 import static net.minecraft.world.level.material.Fluids.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ionizerFluidMap {
@@ -105,6 +109,13 @@ public class ionizerFluidMap {
         fluidParts.put(LAVA,plasmaexplosionorange.get());
         fluidDmg.put(LAVA,1.15f);
         fluidSpecial.put(LAVA,"burn");
+    }
+    public static List<IonizedCannonRecipe> getIonizerRecipes(){
+        List<IonizedCannonRecipe> recipes=new ArrayList<>();
+        for(Fluid fluid:fluidParts.keySet()){
+            recipes.add(new IonizedCannonRecipe(new ResourceLocation("etshtinker", ForgeRegistries.FLUIDS.getKey(fluid).getPath()) ,fluid,getFluidDamage(fluid),getFluidSpecial(fluid),getFluidparticle(fluid)));
+        }
+        return recipes;
     }
     public static float getFluidDamage(Fluid fluid){
         if (fluidDmg.containsKey(fluid)) {

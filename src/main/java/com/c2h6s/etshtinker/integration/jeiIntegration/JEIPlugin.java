@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.integration.jeiIntegration;
-/*
+
+import com.c2h6s.etshtinker.Mapping.ionizerFluidMap;
 import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.recipes.IonizedCannonRecipe;
@@ -14,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,10 +35,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
-        List<IonizedCannonRecipe> recipesExtract = rm.getAllRecipesFor(IonizedCannonRecipe.Type.INSTANCE);
-
-        registration.addRecipes(IONIZED_CANNON, recipesExtract);
+        registration.addRecipes(IONIZED_CANNON, ionizerFluidMap.getIonizerRecipes());
     }
 
     @Override
@@ -44,4 +43,3 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(etshtinkerItems.IONIZED_CANNON.get()), IONIZED_CANNON);
     }
 }
-*/
