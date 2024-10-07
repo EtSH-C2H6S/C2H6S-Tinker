@@ -5,7 +5,6 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshDampenToolCap;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshRadiationShieldCap;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshVibrCap;
 import com.c2h6s.etshtinker.client.book.etshtinkerBook;
-//import com.c2h6s.etshtinker.client.gui.adrenaline.AdrenalineHUD;
 import com.c2h6s.etshtinker.config.etshtinkerConfig;
 import com.c2h6s.etshtinker.init.*;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
@@ -13,6 +12,8 @@ import com.c2h6s.etshtinker.init.entityReg.etshtinkerBotEntity;
 import com.c2h6s.etshtinker.init.modifierReg.etshtinkerBotModifier;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.recipes.etshRecipeSerializer;
+import com.c2h6s.etshtinker.screen.weaponHUD.FluidChamberHUD;
+import com.c2h6s.etshtinker.screen.weaponHUD.IonizedCannonHUD;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -42,7 +43,7 @@ public class etshtinker {
     public etshtinker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::commonSetup);
-        //eventBus.addListener(this::registerGuiOverlay);
+        eventBus.addListener(this::registerGuiOverlay);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         etshtinkerItems.ITEMS.register(eventBus);//物品
         etshtinkerModifiers.MODIFIERS.register(eventBus);//词条类
@@ -52,7 +53,7 @@ public class etshtinker {
         etshtinkerEntity.ENTITIES.register(eventBus);//实体
         etshtinkerParticleType.REGISTRY.register(eventBus);//粒子
         etshtinkerConfig.init();
-        etshRecipeSerializer.register(eventBus);
+        //etshRecipeSerializer.register(eventBus);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> etshtinkerBook::initBook);
         if (Mekenabled){
             etshtinkerMekansimMaterial.ITEMS.register(eventBus);
@@ -117,7 +118,8 @@ public class etshtinker {
     @SubscribeEvent
     public void registerGuiOverlay(RegisterGuiOverlaysEvent event){
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            //event.registerAboveAll("adrenalin", AdrenalineHUD.ADRENALINE_OVERLAY);
+            event.registerAboveAll("fluid_chamber_gui", FluidChamberHUD.FLUID_CHAMBER_OVERLAY);
+            event.registerAboveAll("ionized_cannon_gui", IonizedCannonHUD.IONIZED_CANNON_OVERLAY);
         }
     }
 }

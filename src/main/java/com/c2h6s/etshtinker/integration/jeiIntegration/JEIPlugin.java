@@ -1,5 +1,5 @@
 package com.c2h6s.etshtinker.integration.jeiIntegration;
-
+/*
 import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.recipes.IonizedCannonRecipe;
@@ -44,3 +44,4 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(etshtinkerItems.IONIZED_CANNON.get()), IONIZED_CANNON);
     }
 }
+*/

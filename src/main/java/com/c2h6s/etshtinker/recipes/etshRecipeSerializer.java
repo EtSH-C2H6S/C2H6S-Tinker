@@ -11,7 +11,7 @@ public class etshRecipeSerializer {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =
             DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, etshtinker.MOD_ID);
 
-    public static final RegistryObject<RecipeSerializer<IonizedCannonRecipe>> IONIZER_SERIALIZER = SERIALIZERS.register("ionized_cannon",() -> IonizedCannonRecipe.Serializer.INSTANCE);
+    //public static final RegistryObject<RecipeSerializer<IonizedCannonRecipe>> IONIZER_SERIALIZER = SERIALIZERS.register("ionized_cannon",()->IonizedCannonRecipe.Serializer.INSTANCE);
 
 
     public static void register(IEventBus eventBus){

@@ -2,7 +2,7 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
-import com.c2h6s.etshtinker.network.packet.adrenalineSyncPacket;
+import com.c2h6s.etshtinker.network.packet.FluidChamberSync;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,7 +20,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.Event;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -104,9 +103,6 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
         }
         if (toolData.getInt(adrenaline)<90&&toolData.getInt(sound1)==0){
             toolData.putInt(sound1, 1);
-        }
-        if (livingEntity instanceof ServerPlayer player) {
-            packetHandler.sendToPlayer(new adrenalineSyncPacket(toolData.getInt(adrenaline), isSelected),player);
         }
     }
 

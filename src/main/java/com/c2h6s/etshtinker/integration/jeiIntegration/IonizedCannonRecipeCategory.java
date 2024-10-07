@@ -1,5 +1,5 @@
 package com.c2h6s.etshtinker.integration.jeiIntegration;
-
+/*
 import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.recipes.IonizedCannonRecipe;
@@ -78,3 +78,4 @@ public class IonizedCannonRecipeCategory implements IRecipeCategory<IonizedCanno
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
     }
 }
+*/

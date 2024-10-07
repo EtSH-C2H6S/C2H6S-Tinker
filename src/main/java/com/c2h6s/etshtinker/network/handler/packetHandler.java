@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.network.handler;
 import com.c2h6s.etshtinker.network.packet.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -21,7 +22,9 @@ public class packetHandler {
         INSTANCE.registerMessage(id++, alfbeamPacket.class, alfbeamPacket::encode, alfbeamPacket::decode, alfbeamPacket::handle);
         INSTANCE.registerMessage(id++, nightslashPacket.class, nightslashPacket::encode, nightslashPacket::decode, nightslashPacket::handle);
         INSTANCE.registerMessage(id++, plasmaSlashPacket.class, plasmaSlashPacket::encode, plasmaSlashPacket::decode, plasmaSlashPacket::handle);
-        INSTANCE.registerMessage(id++, adrenalineSyncPacket.class, adrenalineSyncPacket::encode, adrenalineSyncPacket::decode, adrenalineSyncPacket::handle);
+        INSTANCE.registerMessage(id++, FluidChamberSync.class, FluidChamberSync::encode, FluidChamberSync::decode, FluidChamberSync::handle);
+        INSTANCE.messageBuilder(FluidChamberSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(FluidChamberSync::new).encoder(FluidChamberSync::encode).consumerMainThread(FluidChamberSync::handle).add();
+        INSTANCE.messageBuilder(IonizedCannonChargeSync.class,id++, NetworkDirection.PLAY_TO_CLIENT).decoder(IonizedCannonChargeSync::new).encoder(IonizedCannonChargeSync::encode).consumerMainThread(IonizedCannonChargeSync::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG msg){

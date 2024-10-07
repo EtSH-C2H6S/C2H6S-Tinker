@@ -6,8 +6,10 @@ import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
+import com.c2h6s.etshtinker.network.packet.FluidChamberSync;
 import com.c2h6s.etshtinker.network.packet.plasmaSlashPacket;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -54,7 +56,18 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
         MinecraftForge.EVENT_BUS.addListener(this::LeftClickBlock);
     }
-
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected) {
+        if (stack.getItem() instanceof ConstrainedPlasmaSaber&&isSelected&&entity instanceof ServerPlayer player){
+            ToolStack tool = ToolStack.from(stack);
+            FluidStack fluidStack  = TANK_HELPER.getFluid(tool);
+            int vol = TANK_HELPER.getCapacity(tool);
+            CompoundTag nbt = new CompoundTag();
+            nbt.putInt("amount",fluidStack.getAmount());
+            nbt.putInt("max",vol);
+            packetHandler.sendToPlayer(new FluidChamberSync(nbt),player);
+        }
+    }
 
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getPlasmaSaberStats(tool, player, tooltips, key, tooltipFlag);

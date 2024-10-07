@@ -1,7 +1,0 @@
-{
-  "type": "etshtinker:ionized_cannon",
-  "fluid": "etshtinker:stablized_exotic_matter",
-  "special": "tracking",
-  "simple_particle_type": "etshtinker:plasmaexplosiongreen",
-  "damage":22.25
-}

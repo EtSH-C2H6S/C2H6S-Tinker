@@ -1,17 +1,26 @@
 package com.c2h6s.etshtinker.tools.item.tinker;
 
+import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
+import com.c2h6s.etshtinker.network.handler.packetHandler;
+import com.c2h6s.etshtinker.network.packet.FluidChamberSync;
+import com.c2h6s.etshtinker.network.packet.IonizedCannonChargeSync;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -69,6 +78,20 @@ public class IonizedCannon extends ModifiableItem {
         int max =TANK_HELPER.getCapacity(tool);
         return amount>0 ? (int) (13* ((double)amount/(double) max)) : 0 ;
     }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected) {
+        if (stack.getItem() instanceof IonizedCannon&&isSelected&&entity instanceof ServerPlayer player){
+            ToolStack tool = ToolStack.from(stack);
+            FluidStack fluidStack  = TANK_HELPER.getFluid(tool);
+            int vol = TANK_HELPER.getCapacity(tool);
+            CompoundTag nbt = new CompoundTag();
+            nbt.putInt("amount",fluidStack.getAmount());
+            nbt.putInt("max",vol);
+            packetHandler.sendToPlayer(new FluidChamberSync(nbt),player);
+        }
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand hand) {
         ItemStack stack = playerIn.getItemInHand(hand);
@@ -108,6 +131,9 @@ public class IonizedCannon extends ModifiableItem {
     }
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
+        if (living instanceof ServerPlayer player){
+            packetHandler.sendToPlayer(new IonizedCannonChargeSync(0),player);
+        }
         ToolStack tool = ToolStack.from(stack);
         FluidStack fluidStack =TANK_HELPER.getFluid(tool);
         Fluid fluid =fluidStack.getFluid();
@@ -159,21 +185,26 @@ public class IonizedCannon extends ModifiableItem {
     public void onUseTick(Level level, LivingEntity living, ItemStack stack, int chargeRemaining) {
         ToolStack tool = ToolStack.from(stack);
         Level world =living.level;
-        if (world!=null) {
-            if (this.getUseDuration(stack) - chargeRemaining == (int) (40 / tool.getStats().get(ToolStats.ATTACK_SPEED))) {
-                living.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 1, 1);
-                Vec3 pos = living.getEyePosition();
-                Vec3 ang = living.getLookAngle();
-                double x = pos.x + ang.x;
-                double y = pos.y + ang.y;
-                double z = pos.z + ang.z;
-                world.addAlwaysVisibleParticle(ParticleTypes.ELECTRIC_SPARK, true, x, y, z, 0, 0, 0);
-            }
+        if (this.getUseDuration(stack) - chargeRemaining == (int) (40 / tool.getStats().get(ToolStats.ATTACK_SPEED))) {
+            living.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 1, 1);
+            Vec3 pos = living.getEyePosition();
+            Vec3 ang = living.getLookAngle();
+            double x = pos.x + ang.x;
+            double y = pos.y + ang.y;
+            double z = pos.z + ang.z;
+            world.addAlwaysVisibleParticle(ParticleTypes.ELECTRIC_SPARK, true, x, y, z, 0, 0, 0);
+        }
+        if (living instanceof ServerPlayer player){
+            float perc = Mth.clamp((float) (this.getUseDuration(stack) - chargeRemaining) / (40 / tool.getStats().get(ToolStats.ATTACK_SPEED)),0,1);
+            packetHandler.sendToPlayer(new IonizedCannonChargeSync(perc),player);
         }
     }
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
         ToolStack tool = ToolStack.from(stack);
+        if (living instanceof ServerPlayer player){
+            packetHandler.sendToPlayer(new IonizedCannonChargeSync(0),player);
+        }
         if (tool.getModifierLevel(etshtinkerModifiers.autoionizing_STATIC_MODIFIER.get())>0){
             Fluid fluid =TANK_HELPER.getFluid(tool).getFluid();
             FluidStack fluidStack =TANK_HELPER.getFluid(tool);
