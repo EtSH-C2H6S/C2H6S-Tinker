@@ -39,7 +39,9 @@ import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayM
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -63,21 +65,6 @@ public class IonizedCannon extends ModifiableItem {
         tooltips = this.getIonizedCannonStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
     }
-    @Override
-    public boolean isBarVisible(ItemStack stack) {
-        return true;
-    }
-    @Override
-    public int getBarColor(ItemStack pStack) {
-        return DurabilityDisplayModifierHook.getDurabilityRGB(pStack);
-    }
-    @Override
-    public int getBarWidth(ItemStack pStack) {
-        ToolStack tool =ToolStack.from(pStack);
-        int amount =TANK_HELPER.getFluid(tool).getAmount();
-        int max =TANK_HELPER.getCapacity(tool);
-        return amount>0 ? (int) (13* ((double)amount/(double) max)) : 0 ;
-    }
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected) {
@@ -92,10 +79,18 @@ public class IonizedCannon extends ModifiableItem {
         }
     }
 
+
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand hand) {
         ItemStack stack = playerIn.getItemInHand(hand);
+        if (!checkOffHand(playerIn)){
+            return InteractionResultHolder.fail(stack);
+        }
         ToolStack tool = ToolStack.from(stack);
+        if (tool.isBroken()){
+            return InteractionResultHolder.fail(stack);
+        }
         FluidStack fluid = TANK_HELPER.getFluid(tool);
         int fluiddrain = Math.round( tool.getStats().get(ToolStats.ATTACK_DAMAGE)*20);
         if (stack.getCount() > 1) {
@@ -167,6 +162,7 @@ public class IonizedCannon extends ModifiableItem {
                     player.getCooldowns().addCooldown(stack.getItem(), tool.getStats().getInt(etshtinkerToolStats.COOLDOWN));
                     FluidStack fluidStack2 = new FluidStack(TANK_HELPER.getFluid(tool), TANK_HELPER.getFluid(tool).getAmount() - consumption);
                     TANK_HELPER.setFluid(tool, fluidStack2);
+                    ToolDamageUtil.damageAnimated(tool,1,player,InteractionHand.MAIN_HAND);
                 }
             }
             else break;
@@ -239,6 +235,7 @@ public class IonizedCannon extends ModifiableItem {
 
                         FluidStack fluidStack1 = new FluidStack(TANK_HELPER.getFluid(tool), TANK_HELPER.getFluid(tool).getAmount() - consumption);
                         TANK_HELPER.setFluid(tool, fluidStack1);
+                        ToolDamageUtil.damageAnimated(tool,1,player,InteractionHand.MAIN_HAND);
                     }
                     else break;
                 }
@@ -249,9 +246,15 @@ public class IonizedCannon extends ModifiableItem {
         return stack;
     }
 
+    public static boolean checkOffHand(Player player){
+        return player!=null&& !(player.getOffhandItem().getItem() instanceof IModifiable);
+    }
+
     public List<Component> getIonizedCannonStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
-
+        if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
+            builder.add(ToolStats.DURABILITY);
+        }
         if (tool.hasTag(TinkerTags.Items.MELEE)) {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);
@@ -263,13 +266,15 @@ public class IonizedCannon extends ModifiableItem {
         builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.round( tool.getStats().get(ToolStats.ATTACK_DAMAGE)*20*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER)))).withStyle(ChatFormatting.YELLOW));
         builder.add(Component.translatable("etshtinker.tool.tooltip.scatter").append(":"+String.format("%.01f",tool.getStats().get(etshtinkerToolStats.SCATTER))).withStyle(ChatFormatting.GOLD));
         builder.addAllFreeSlots();
+        if (!checkOffHand(player)){
+            builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
+        }
         if (!wrongFluid(tool)){
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":"+String.format("%.001f",getFluidDamage(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.GREEN));
             if (getFluidSpecial(TANK_HELPER.getFluid(tool).getFluid())!=null){
                 builder.add(Component.translatable("etshtinker.tool.tooltip.fluidhasspecial").append(":").append(Component.translatable("etshtinker.tool.tooltip.fluidspecial."+getFluidSpecial(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.AQUA));
             }
-        }
-        else{
+        } else{
             if (noFluid(tool)){
                 builder.add(Component.translatable("etshtinker.tool.tooltip.nofluid").withStyle(ChatFormatting.RED));
             }

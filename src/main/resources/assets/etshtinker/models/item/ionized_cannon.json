@@ -2,6 +2,7 @@
   "loader": "tconstruct:tool",
   "parent": "forge:item/default-tool",
   "textures": {
+    "broken_ionizer": "etshtinker:item/tool/constrained_plasma_saber/blade",
     "limb": "etshtinker:item/tool/ionized_cannon/limb",
     "ionizer": "etshtinker:item/tool/ionized_cannon/ionizer",
     "liquid_chamber": "etshtinker:item/tool/ionized_cannon/liquid_chamber",
@@ -13,7 +14,8 @@
   "parts": [
     {
       "name": "limb",
-      "index": 2
+      "index": 2,
+      "broken": "broken_ionizer"
     },
     {
       "name": "ionizer",

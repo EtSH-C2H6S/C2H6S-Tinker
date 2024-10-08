@@ -62,7 +62,6 @@ public record PlasmaGeneratorMaterialStats(float damageMultiplier, float critica
         etshtinkerToolStats.FLUID_EFFICIENCY.update(builder,this.fluidEfficiency);
         etshtinkerToolStats.DAMAGEMULTIPLIER.update(builder,this.damageMultiplier);
         etshtinkerToolStats.SLASH_COLOR.update(builder,this.slashColor);
-        ToolStats.DURABILITY.update(builder,(float)Integer.MAX_VALUE);
     }
 
     public float damageMultiplier() {

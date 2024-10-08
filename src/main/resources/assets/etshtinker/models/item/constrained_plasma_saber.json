@@ -6,7 +6,8 @@
     "tough_handle_1": "etshtinker:item/tool/constrained_plasma_saber/tough_handle_1",
     "tough_handle_2": "etshtinker:item/tool/constrained_plasma_saber/tough_handle_2",
     "liquid_chamber": "etshtinker:item/tool/constrained_plasma_saber/fluid_chamber",
-    "plasma_generator": "etshtinker:item/tool/constrained_plasma_saber/plasma_generator/plasma_generator"
+    "plasma_generator": "etshtinker:item/tool/constrained_plasma_saber/plasma_generator/plasma_generator",
+    "broken_plasma_generator": "etshtinker:item/tool/constrained_plasma_saber/blade"
   },
   "modifier_roots": [
     "etshtinker:item/tool/ionized_cannon/modifiers/"
@@ -30,7 +31,8 @@
     },
     {
       "name": "plasma_generator",
-      "index": 4
+      "index": 4,
+      "broken": "broken_plasma_generator"
     }
   ]
 }

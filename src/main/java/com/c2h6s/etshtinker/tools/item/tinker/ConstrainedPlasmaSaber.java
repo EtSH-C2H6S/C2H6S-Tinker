@@ -1,9 +1,7 @@
 package com.c2h6s.etshtinker.tools.item.tinker;
 
 import com.c2h6s.etshtinker.Entities.PlasmaSlashEntity;
-import com.c2h6s.etshtinker.hooks.PlasmaSlashCreateModifierHook;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.FluidChamberSync;
@@ -12,6 +10,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -21,21 +20,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.recipe.fuel.MeltingFuel;
 import slimeknights.tconstruct.library.recipe.fuel.MeltingFuelLookup;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
-import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
@@ -73,27 +71,17 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         tooltips = this.getPlasmaSaberStats(tool, player, tooltips, key, tooltipFlag);
         return tooltips;
     }
-    @Override
-    public boolean isBarVisible(ItemStack stack) {
-        return true;
-    }
-    @Override
-    public int getBarColor(ItemStack pStack) {
-        return DurabilityDisplayModifierHook.getDurabilityRGB(pStack);
-    }
-    @Override
-    public int getBarWidth(ItemStack pStack) {
-        ToolStack tool =ToolStack.from(pStack);
-        int amount =TANK_HELPER.getFluid(tool).getAmount();
-        int max =TANK_HELPER.getCapacity(tool);
-        return amount>0 ? (int) (13* ((double)amount/(double) max)) : 0 ;
-    }
+
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
+        if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber) {
+            packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
+        }
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-        packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
+        if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber) {
+            packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
+        }
     }
 
     @Override
@@ -109,7 +97,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());
-        if (!checkFluid(tool)){
+        if (!checkFluid(tool)||tool.isBroken()){
             return;
         }
         FluidStack fluidStack = TANK_HELPER.getFluid(tool);
@@ -141,10 +129,11 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         level.addFreshEntity(slash);
         fluidStack.shrink(consumption);
         TANK_HELPER.setFluid(tool,fluidStack);
+        ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
 
     public static boolean checkOffHand(Player player){
-        return player!=null&& !(player.getOffhandItem().getItem() instanceof ModifiableItem);
+        return player!=null&& !(player.getOffhandItem().getItem() instanceof IModifiable);
     }
 
     public static boolean noFluid(IToolStackView tool){
@@ -172,7 +161,9 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
 
     public List<Component> getPlasmaSaberStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
-
+        if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
+            builder.add(ToolStats.DURABILITY);
+        }
         if (tool.hasTag(TinkerTags.Items.MELEE)) {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);

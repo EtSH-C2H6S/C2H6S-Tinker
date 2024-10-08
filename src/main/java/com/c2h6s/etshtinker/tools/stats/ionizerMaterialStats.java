@@ -56,7 +56,6 @@ public record ionizerMaterialStats(float cooldown, float baseRange, float damage
         etshtinkerToolStats.COOLDOWN.update(builder,this.cooldown);
         etshtinkerToolStats.PLASMARANGE.update(builder,this.baseRange);
         etshtinkerToolStats.DAMAGEMULTIPLIER.update(builder,this.damageMultiplier);
-        ToolStats.DURABILITY.update(builder,(float)Integer.MAX_VALUE);
     }
 
     public float baseRange() {

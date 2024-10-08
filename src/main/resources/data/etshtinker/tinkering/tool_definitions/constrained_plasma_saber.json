@@ -9,11 +9,11 @@
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.375
+          "scale": 0.4
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.375
+          "scale": 0.4
         },
         {
           "item": "etshtinker:fluid_chamber",
@@ -54,15 +54,16 @@
     {
       "type": "tconstruct:base_stats",
       "stats": {
-        "tconstruct:attack_damage": 1.6,
-        "tconstruct:attack_speed": 2.35
+        "tconstruct:attack_damage": 1.7,
+        "tconstruct:attack_speed": 2.35,
+        "tconstruct:durability": 5
       }
     },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 0.75,
-        "tconstruct:attack_speed": 1.4
+        "tconstruct:attack_damage": 0.85,
+        "tconstruct:durability": 1.75
       }
     },
     {
@@ -78,10 +79,6 @@
         {
           "level": 5,
           "name": "tconstruct:tank"
-        },
-        {
-          "level": 1,
-          "name": "etshtinker:solidex"
         }
       ]
     }
