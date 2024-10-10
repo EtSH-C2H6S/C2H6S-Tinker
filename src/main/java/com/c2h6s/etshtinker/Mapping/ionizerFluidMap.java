@@ -9,8 +9,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.moltenExoAlloy.*;
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidAdastra.*;
-import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidMekanism.*;
-import static com.c2h6s.etshtinker.init.etshtinkerFluids.etshtinkerFluidThermal.*;
 import static com.c2h6s.etshtinker.init.etshtinkerParticleType.*;
 import static slimeknights.tconstruct.fluids.TinkerFluids.*;
 import static net.minecraft.world.level.material.Fluids.*;
@@ -25,39 +23,6 @@ public class ionizerFluidMap {
     public static Map<Fluid, Float> fluidDmg =new HashMap<>();
     public static Map<Fluid, String> fluidSpecial =new HashMap<>();
     public static void extendMap(){
-        fluidParts.put(annihilating_plasma.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(annihilating_plasma.get(),15F);
-        fluidParts.put(antimatter_l.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(antimatter_l.get(),14f);
-        fluidSpecial.put(antimatter_l.get(),"antimatter_explosion");
-        fluidParts.put(molten_electronium.get(),plasmaexplosioncyan.get());
-        fluidDmg.put(molten_electronium.get(),33f);
-        fluidSpecial.put(molten_electronium.get(),"ionize");
-        fluidParts.put(molten_activated_chroma_steel.get(),plasmaexplosionred.get());
-        fluidDmg.put(molten_activated_chroma_steel.get(),6f);
-        fluidSpecial.put(molten_activated_chroma_steel.get(),"elemental");
-        fluidParts.put(molten_anti_neutronium.get(),plasmaexplosionred.get());
-        fluidDmg.put(molten_anti_neutronium.get(),0f);
-        fluidSpecial.put(molten_anti_neutronium.get(),"annihilate");
-        fluidParts.put(molten_protonium.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(molten_protonium.get(),20f);
-        fluidParts.put(molten_ultra_dense.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(molten_ultra_dense.get(),6f);
-        fluidParts.put(molten_exo_alloy.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(molten_exo_alloy.get(),64f);
-        fluidSpecial.put(molten_exo_alloy.get(),"quark");
-        fluidParts.put(molten_meteoralloy.get(),plasmaexplosionorange.get());
-        fluidDmg.put(molten_meteoralloy.get(),3f);
-        fluidSpecial.put(molten_meteoralloy.get(),"explosion");
-        fluidParts.put(molten_stellaralloy.get(),plasmaexplosionyellow.get());
-        fluidDmg.put(molten_stellaralloy.get(),4f);
-        fluidSpecial.put(molten_stellaralloy.get(),"explosion");
-        fluidParts.put(unstable_exotic_matter.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(unstable_exotic_matter.get(),2.25f);
-        fluidSpecial.put(unstable_exotic_matter.get(),"tracking");
-        fluidParts.put(stablized_exotic_matter.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(stablized_exotic_matter.get(),22.25f);
-        fluidSpecial.put(stablized_exotic_matter.get(),"tracking");
 
         fluidParts.put(moltenCopper.get(),plasmaexplosiongreen.get());
         fluidDmg.put(moltenCopper.get(),1.5f);
@@ -109,6 +74,19 @@ public class ionizerFluidMap {
         fluidParts.put(LAVA,plasmaexplosionorange.get());
         fluidDmg.put(LAVA,1.15f);
         fluidSpecial.put(LAVA,"burn");
+    }
+    public static void extendMapAdAstra(){
+        fluidParts.put(molten_meteoralloy.get(),plasmaexplosionorange.get());
+        fluidDmg.put(molten_meteoralloy.get(),3f);
+        fluidSpecial.put(molten_meteoralloy.get(),"explosion");
+        fluidParts.put(molten_stellaralloy.get(),plasmaexplosionyellow.get());
+        fluidDmg.put(molten_stellaralloy.get(),4f);
+        fluidSpecial.put(molten_stellaralloy.get(),"explosion");
+    }
+    public static void extendMapExoalloy(){
+        fluidParts.put(molten_exo_alloy.get(),plasmaexplosiongreen.get());
+        fluidDmg.put(molten_exo_alloy.get(),64f);
+        fluidSpecial.put(molten_exo_alloy.get(),"quark");
     }
     public static List<IonizedCannonRecipe> getIonizerRecipes(){
         List<IonizedCannonRecipe> recipes=new ArrayList<>();

@@ -105,15 +105,22 @@ public class etshtinker {
         ToolCapabilityProvider.register(etshmodifierfluxed::new);
         ToolCapabilityProvider.register(etshDampenToolCap::new);
         ToolCapabilityProvider.register(etshVibrCap::new);
-        if (Mekenabled){
-            ToolCapabilityProvider.register(etshRadiationShieldCap::new);
-        }
         event.enqueueWork(etshtinkerMaterialStats::setup);
         event.enqueueWork(ionizerFluidMap::extendMap);
-        packetHandler.init();
         if (Mekenabled){
+            ToolCapabilityProvider.register(etshRadiationShieldCap::new);
             event.enqueueWork(ionizerFluidMapMek::extendMap);
         }
+        if (Mekenabled&&AE2loaded&&Cofhloaded) {
+            event.enqueueWork(ionizerFluidMap::extendMapExoalloy);
+        }
+        if (Cofhloaded){
+            event.enqueueWork(ionizerFluidMapThermal::extendMap);
+        }
+        if (Adastraloaded){
+            event.enqueueWork(ionizerFluidMap::extendMapAdAstra);
+        }
+        packetHandler.init();
     }
     @SubscribeEvent
     public void registerGuiOverlay(RegisterGuiOverlaysEvent event){

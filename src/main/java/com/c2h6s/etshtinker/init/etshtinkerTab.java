@@ -9,7 +9,7 @@ public class etshtinkerTab {
     public static final CreativeModeTab MATERIALS = new CreativeModeTab("etshtinker.materials") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(etshtinkerItems.lightless_alloy.get());
+            return new ItemStack(etshtinkerItems.energized_sculk_alloy.get());
         };
     };
     public static final CreativeModeTab TOOLS = new CreativeModeTab("etshtinker.toolsandparts") {
