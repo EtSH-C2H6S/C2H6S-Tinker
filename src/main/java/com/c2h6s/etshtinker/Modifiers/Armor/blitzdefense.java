@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.Modifiers.Armor;
 import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -28,6 +29,9 @@ public class blitzdefense extends etshmodifieriii {
             LivingEntity entity =context.getEntity();
             entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,2,false,false));
             entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,60,2,false,false));
+            if (source instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
+                return amount;
+            }
             summonArc(entity.level,entity,new Vec3(entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ()),2+modifier.getLevel()*2,5+modifier.getLevel());
             return amount;
         }else return 0;

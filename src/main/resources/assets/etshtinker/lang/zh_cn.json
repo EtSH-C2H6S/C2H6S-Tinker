@@ -7,11 +7,11 @@
 
   "modifier.etshtinker.adrenaline": "肾上腺素",
   "modifier.etshtinker.adrenaline.flavor": "区区之事，无伤尔。",
-  "modifier.etshtinker.adrenaline.description": "手持时不受到伤害则持续积累肾上腺素值，受伤时肾上腺素归零。积累超过75%后获得50%减伤，满100%后下次攻击造成20倍的额外伤害(无视护甲)并使肾上腺素值归零。",
+  "modifier.etshtinker.adrenaline.description": "手持时不受到伤害则持续积累肾上腺素值，受伤时肾上腺素归零。积累超过75%后获得50%减伤，满100%后下次攻击造成20倍的额外伤害并使肾上腺素值归零。",
 
   "modifier.etshtinker.tightennerve": "神经紧绷",
   "modifier.etshtinker.tightennerve.flavor": "高风险，高回报!",
-  "modifier.etshtinker.tightennerve.description":"肾上腺素充能完毕后造成伤害时治疗自己5点生命，并获得急迫和力量效果。但是肾上腺素充能完毕后若5秒内不攻击，则扣除5点生命，失去一半的肾上腺素，失去5点生命，并获得挖掘疲劳和虚弱效果。",
+  "modifier.etshtinker.tightennerve.description":"肾上腺素充能完毕后造成伤害时治疗自己5点生命，并获得急迫和力量效果。但是肾上腺素充能完毕后若5秒内不攻击，则失去一半的肾上腺素，扣除5点生命，并获得挖掘疲劳和虚弱效果。",
 
   "modifier.etshtinker.sharpnessex": "究极锋利",
   "modifier.etshtinker.sharpnessex.flavor": "强互作用材料??!",
@@ -19,7 +19,7 @@
 
   "modifier.etshtinker.gravityaccelerate": "重力加速度",
   "modifier.etshtinker.gravityaccelerate.flavor": "g=G/m",
-  "modifier.etshtinker.gravityaccelerate.description":"根据竖直方向上的瞬时速率的平方增加伤害并把目标剧烈地击飞，下落时给予急迫效果。",
+  "modifier.etshtinker.gravityaccelerate.description":"根据竖直方向上的瞬时速率增加伤害并把目标剧烈地击飞，下落时给予急迫效果。",
 
   "modifier.etshtinker.overweightex": "究极沉重",
   "modifier.etshtinker.overweightex.flavor": "也就114514吨吧",
@@ -31,11 +31,11 @@
 
   "modifier.etshtinker.ragedangery": "怒气",
   "modifier.etshtinker.ragedangery.flavor": "气死我力气死我力气死我力",
-  "modifier.etshtinker.ragedangery.description":"手持时积攒怒气值，满100%后攻击敌人进入5秒愤怒状态。愤怒状态期间你的箭矢会对敌人造成额外伤害，并且自己获得伤害吸收V。但是愤怒状态期间如果你造成了超过10次伤害，你会立刻失去20%生命值",
+  "modifier.etshtinker.ragedangery.description":"手持时积攒怒气值，满100%后攻击敌人进入5秒愤怒状态。愤怒状态期间你的箭矢会对敌人造成额外伤害，并且自己获得伤害吸收。但是愤怒状态期间如果你造成了超过10次伤害，你会立刻失去20%生命值",
 
   "modifier.etshtinker.mentalism": "唯心主义",
   "modifier.etshtinker.mentalism.flavor": "什么叫精神胜利法（后仰）",
-  "modifier.etshtinker.mentalism.description":"手持时能抵挡一次攻击（冷却30秒）,但是触发免伤时会给敌人附加2秒无敌帧,受到致命伤害时免死一次，恢复25%最大生命值并获得2秒无敌帧（冷却160秒）。",
+  "modifier.etshtinker.mentalism.description":"手持时能抵挡一次攻击（冷却30秒），但是触发免伤时会给敌人附加2秒无敌帧，受到致命伤害时免死一次，恢复25%最大生命值并获得2秒无敌帧（冷却160秒）。",
 
   "modifier.etshtinker.thermalstrike": "热力冲击",
   "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
@@ -63,7 +63,7 @@
 
   "modifier.etshtinker.totalinsane": "癫疯",
   "modifier.etshtinker.totalinsane.flavor": "你疑似有点魔怔了",
-  "modifier.etshtinker.totalinsane.description":"受到任何伤害时立刻趋势，手持时积攒癫疯值，最大1000，工具使用时会优先消耗癫疯值而非耐久，癫疯值高于500时，攻击时造成高额真实+穿刺伤害并获得一次免死。",
+  "modifier.etshtinker.totalinsane.description":"受到任何伤害时立刻趋势，手持时积攒癫疯值，工具使用时会优先消耗癫疯值而非耐久，癫疯值高于500时，攻击时造成高额真实+穿刺伤害并获得一次免死。",
 
   "modifier.etshtinker.mindattack": "神经质",
   "modifier.etshtinker.mindattack.flavor": "神晶，害的我笑了一下",
@@ -87,7 +87,7 @@
 
   "modifier.etshtinker.worldforceex": "世界之力",
   "modifier.etshtinker.worldforceex.flavor": "大地的力量掌握在你手中",
-  "modifier.etshtinker.worldforceex.description":"攻击时对目标造成多段凋灵、火焰、魔法和辐射伤害，对目标施加大量debuff和2kSv的辐射，并移除目标的重力。手持时给予自身多种buff",
+  "modifier.etshtinker.worldforceex.description":"攻击时对目标造成多段凋灵、火焰、魔法和辐射伤害，对目标施加大量debuff和辐射，并移除目标的重力。手持时给予自身多种buff",
 
   "modifier.etshtinker.mindprotection": "知识护盾",
   "modifier.etshtinker.mindprotection.flavor": "我觉得你没打到我，你就是没打到我",
@@ -95,7 +95,7 @@
 
   "modifier.etshtinker.godlymetal": "神金质",
   "modifier.etshtinker.godlymetal.flavor": "来自天堂的地狱赠礼",
-  "modifier.etshtinker.godlymetal.description":"主手攻击时附带5%*属性等级*敌人当前生命值的真实伤害(造成的真实伤害会保留目标1点生命值)",
+  "modifier.etshtinker.godlymetal.description":"主手攻击时附带5%*属性等级*敌人当前生命值的真实伤害",
 
   "modifier.etshtinker.controllableannihl": "可控湮灭",
   "modifier.etshtinker.controllableannihl.flavor": "能量等于我的世界的平方！",
@@ -163,7 +163,7 @@
 
   "modifier.etshtinker.warpengine": "曲率引擎",
   "modifier.etshtinker.warpengine.flavor": "“曲率引擎启动”",
-  "modifier.etshtinker.warpengine.description":"手持时右键蓄力0.5秒后进入曲率航行模式，左键攻击即可退出曲率航行模式。曲率航行模式下你会无视重力和方块碰撞并逐渐加速至最大速度，等级越高速度越快。",
+  "modifier.etshtinker.warpengine.description":"手持时右键蓄力进入曲率航行模式，左键攻击即退出曲率航行模式。曲率航行模式下你会无视重力和方块碰撞并逐渐加速，等级越高速度越快。",
 
   "modifier.etshtinker.warpingenhance": "曲率突击",
   "modifier.etshtinker.warpingenhance.flavor": "折跃——进攻",
@@ -347,7 +347,7 @@
 
   "modifier.etshtinker.hyperfluxloaded": "高级通量装载",
   "modifier.etshtinker.hyperfluxloaded.flavor": "太棒了！",
-  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具10%的能量增加伤害，每100kFE增加一点伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
+  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具10%的能量增加伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
 
   "modifier.etshtinker.nightsenhance": "暗影附层",
   "modifier.etshtinker.nightsenhance.flavor": "尽管扭曲了，但是这种能量依然强大",
@@ -382,7 +382,7 @@
   "modifier.etshtinker.heavy_crit_ex.description":"增加750%的暴击率(乘算)，但是-85%的攻击速度",
 
   "modifier.etshtinker.annihilating_slash": "湮灭斩击",
-  "modifier.etshtinker.annihilating_slash.flavor": "Description: Null \njava.lang.NullPointerException: Cannot invoke \"slimeknights.tconstruct.library.tools.nbt.IToolStackView.isBroken()\" because \"tool\" is null\n",
+  "modifier.etshtinker.annihilating_slash.flavor": "Description: Null",
   "modifier.etshtinker.annihilating_slash.description":"斩击能攻击到的敌人减少，但是攻击敌人时造成湮灭爆炸",
 
   "modifier.etshtinker.perfectism": "完美主义",
@@ -407,7 +407,7 @@
 
   "modifier.etshtinker.resonance_effect": "稳态谐振",
   "modifier.etshtinker.resonance_effect.flavor": "别出声......",
-  "modifier.etshtinker.resonance_effect.description":"每5刻，工具会从环境接收震动，并每隔2秒根据2秒内接收到震动的频率总和给予使用者正面效果。",
+  "modifier.etshtinker.resonance_effect.description":"工具会从环境接收震动，并根据2秒内接收到震动的频率总和给予使用者正面效果。",
 
   "modifier.etshtinker.atomic_decompose": "原子分解",
   "modifier.etshtinker.atomic_decompose.flavor": "溃不成形！",

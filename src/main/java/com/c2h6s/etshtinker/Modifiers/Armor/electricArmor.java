@@ -6,6 +6,7 @@ import com.c2h6s.etshtinker.util.ParticleChainUtil;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -23,6 +24,9 @@ import java.util.List;
 
 public class electricArmor extends etshmodifieriii {
     public void modifierOnAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
+        if (source instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
+            return;
+        }
         if (tool.getModifierLevel(this)>0){
             Entity entity =source.getEntity();
             LivingEntity target =context.getEntity();
@@ -39,7 +43,7 @@ public class electricArmor extends etshmodifieriii {
                     for (Mob mob1 : ls001) {
                         if (mob1 != null) {
                             mob1.invulnerableTime = 0;
-                            mob1.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor(), mob1.getMaxHealth() * 0.01f * lvl000);
+                            mob1.hurt(DamageSource.thorns(player).bypassMagic().bypassArmor(), mob1.getMaxHealth() * 0.01f * lvl000);
                             mob1.invulnerableTime = 0;
                             mob1.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, Math.min(100 * lvl000, 200), 100, false, false), attacker);
                             attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);

@@ -2,6 +2,8 @@ package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -34,6 +36,9 @@ public class stellarblessing extends etshmodifieriii {
         builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
     }
     private void livinghurtevent(LivingHurtEvent event) {
+        if (event.getSource() instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
+            return;
+        }
         LivingEntity living = event.getEntity();
         Entity entity =event.getSource().getEntity();
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {

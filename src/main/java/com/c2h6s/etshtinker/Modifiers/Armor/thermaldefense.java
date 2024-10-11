@@ -4,6 +4,7 @@ import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -83,6 +84,9 @@ public class thermaldefense extends etshmodifieriii {
                 AttributeInstance attribute = attacker.getAttributes().getInstance(Attributes.ARMOR);
                 if (attribute!=null){
                     attribute.setBaseValue(attribute.getBaseValue()-0.5*attacker.getArmorValue());
+                }
+                if (source instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
+                    return;
                 }
                 summonElectricField(attacker.level, attacker, new Vec3(attacker.getX(), attacker.getY(), attacker.getZ()), 8, 120, modilvl);
             }

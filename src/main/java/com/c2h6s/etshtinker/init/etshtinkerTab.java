@@ -15,7 +15,7 @@ public class etshtinkerTab {
     public static final CreativeModeTab TOOLS = new CreativeModeTab("etshtinker.toolsandparts") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(etshtinkerItems.sculk_energycore.get());
+            return etshtinkerItems.constrained_plasma_saber.get().getRenderTool();
         };
     };
     public static final CreativeModeTab MIXC = new CreativeModeTab("etshtinker.mixc") {

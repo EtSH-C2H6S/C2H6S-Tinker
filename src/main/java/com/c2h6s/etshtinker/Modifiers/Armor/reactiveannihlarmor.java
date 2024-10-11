@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -51,6 +52,9 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
     private void livinghurtevent(LivingHurtEvent event) {
+        if (event.getSource() instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
+            return;
+        }
         LivingEntity living = event.getEntity();
         Entity entity =event.getSource().getEntity();
         if (living instanceof Player player){

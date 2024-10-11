@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +32,9 @@ public class ReactiveResonateArmor extends etshmodifieriii {
         builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
     }
     private void livinghurtevent(LivingHurtEvent event) {
+        if (event.getSource() instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
+            return;
+        }
         LivingEntity living = event.getEntity();
         float amount = event.getAmount();
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
