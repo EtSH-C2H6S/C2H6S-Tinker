@@ -39,6 +39,9 @@ public class stellarblessing extends etshmodifieriii {
         if (event.getSource() instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
             return;
         }
+        if (event.getEntity()==event.getSource().getEntity()){
+            return;
+        }
         LivingEntity living = event.getEntity();
         Entity entity =event.getSource().getEntity();
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {

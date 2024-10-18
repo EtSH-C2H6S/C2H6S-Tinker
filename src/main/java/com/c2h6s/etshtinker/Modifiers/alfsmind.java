@@ -38,9 +38,9 @@ public class alfsmind extends etshmodifieriii {
             if (random.nextBoolean()){
                 PixieEntity entity =new PixieEntity(target.level);
                 LivingEntity target2 =((source.getEntity() instanceof LivingEntity entity1&&entity1.isAlive())?entity1:getNearestLiEnt(32f,target,target.level));
-                entity.setProps(target2,target,0,amount);
+                entity.setProps(target2,target,0,8);
                 entity.setPos(target.getX(),target.getY()+target.getBbHeight()+0.25,target.getZ());
-                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(5)),100,4,false,false));
+                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(ls.size())),100,4,false,false));
                 target.level.addFreshEntity(entity);
             }
         }
@@ -51,8 +51,8 @@ public class alfsmind extends etshmodifieriii {
             if (random.nextBoolean()){
                 PixieEntity entity =new PixieEntity(target.level);
                 LivingEntity target2 =((target.isAlive())?target:getNearestLiEnt(32f,target,target.level));
-                entity.setProps(target2,attacker,0,16);
-                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(6)),100,4,false,false));
+                entity.setProps(target2,attacker,0,8);
+                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(ls.size())),100,4,false,false));
                 entity.setPos(target.getRandomX(4),target.getRandomY()+0.5*target.getBbHeight(),target.getRandomZ(4));
                 target.level.addFreshEntity(entity);
             }
@@ -67,8 +67,8 @@ public class alfsmind extends etshmodifieriii {
             if (random.nextBoolean()){
                 PixieEntity entity =new PixieEntity(target.level);
                 LivingEntity target2 =((target.isAlive())?target:getNearestLiEnt(32f,target,target.level));
-                entity.setProps(target2,attacker,0,16);
-                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(6)),100,4,false,false));
+                entity.setProps(target2,attacker,0,8);
+                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(ls.size())),100,4,false,false));
                 entity.setPos(target.getRandomX(4),target.getRandomY()+0.5*target.getBbHeight(),target.getRandomZ(4));
                 target.level.addFreshEntity(entity);
             }

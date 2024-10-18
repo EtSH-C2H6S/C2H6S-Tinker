@@ -6,4 +6,5 @@ import java.util.List;
 
 public class slotUtil {
     public static List<EquipmentSlot> ARMOR =List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET);
+    public static List<EquipmentSlot> ALL =List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND);
 }

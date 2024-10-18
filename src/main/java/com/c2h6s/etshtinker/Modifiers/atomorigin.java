@@ -46,9 +46,8 @@ public class atomorigin extends etshmodifieriii implements ToolStatsModifierHook
                 holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,20,2,false,false));
                 if (slotamount>25){
                     holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,20,4,false,false));
-                    holder.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,20,4,false,false));
-                    holder.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,20,49,false,false));
-                    holder.addEffect(new MobEffectInstance(MobEffects.REGENERATION,20,9,false,false));
+                    holder.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,20,4,false,false));
+                    holder.addEffect(new MobEffectInstance(MobEffects.REGENERATION,20,4,false,false));
                 }
             }
         }
@@ -62,21 +61,21 @@ public class atomorigin extends etshmodifieriii implements ToolStatsModifierHook
                 slotamount+=entry.getLevel();
             }
         }
-        ToolStats.DURABILITY.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.ATTACK_SPEED.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.ATTACK_DAMAGE.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.ACCURACY.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.DRAW_SPEED.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.MINING_SPEED.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.ARMOR.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.ARMOR_TOUGHNESS.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.PROJECTILE_DAMAGE.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.BLOCK_AMOUNT.multiply(builder, Math.pow(1.3, slotamount));
-        ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(1.3, slotamount));
-        etshtinkerToolStats.PLASMARANGE.multiply(builder, Math.pow(1.3, slotamount));
-        etshtinkerToolStats.ENERGY_STORE.multiply(builder, Math.pow(1.3, slotamount));
-        ToolTankHelper.CAPACITY_STAT.multiply(builder, Math.pow(1.3, slotamount));
+        ToolStats.DURABILITY.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.ATTACK_SPEED.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.ATTACK_DAMAGE.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.ACCURACY.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.DRAW_SPEED.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.MINING_SPEED.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.ARMOR.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.ARMOR_TOUGHNESS.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.PROJECTILE_DAMAGE.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.BLOCK_AMOUNT.multiply(builder, Math.pow(1.2, slotamount));
+        ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(1.2, slotamount));
+        etshtinkerToolStats.PLASMARANGE.multiply(builder, Math.pow(1.2, slotamount));
+        etshtinkerToolStats.ENERGY_STORE.multiply(builder, Math.pow(1.2, slotamount));
+        ToolTankHelper.CAPACITY_STAT.multiply(builder, Math.pow(1.2, slotamount));
     }
 
     @Override

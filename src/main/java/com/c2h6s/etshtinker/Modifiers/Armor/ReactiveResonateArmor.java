@@ -35,6 +35,9 @@ public class ReactiveResonateArmor extends etshmodifieriii {
         if (event.getSource() instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
             return;
         }
+        if (event.getEntity()==event.getSource().getEntity()){
+            return;
+        }
         LivingEntity living = event.getEntity();
         float amount = event.getAmount();
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
@@ -57,7 +60,7 @@ public class ReactiveResonateArmor extends etshmodifieriii {
                     entity1.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);
                     entity1.range = 8;
                 }
-                event.setAmount(event.getAmount()*0.75f);
+                event.setAmount(event.getAmount()*0.8f);
             }
         });
     }

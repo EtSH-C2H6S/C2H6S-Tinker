@@ -30,6 +30,9 @@ public class inorganiccr extends etshmodifieriii {
 
     public void modifierOnAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         Entity entity =source.getEntity();
+        if (entity ==context.getEntity()){
+            return;
+        }
         if (entity instanceof LivingEntity attacker){
             AttributeInstance instance =attacker.getAttribute(Attributes.ARMOR);
             if (instance!=null){

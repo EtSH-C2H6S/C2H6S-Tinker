@@ -123,7 +123,7 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
                 if (getMainLevel(player, this) > 0) {
                     DamageSource.playerAttack(player).bypassArmor().bypassMagic();
                     target.invulnerableTime = 0;
-                    target.hurt(PlayerPierce(player, damage * 25), damage * 25);
+                    target.hurt(PlayerPierce(player, damage * 10), damage * 10);
                 }
             }
             world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.TOTEM_USE, SoundSource.NEUTRAL, 0.7F, 1.0F);

@@ -4,6 +4,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -30,6 +31,7 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
+import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
 public class modifiershocking extends etshmodifieriii {
     private final ResourceLocation charge = new ResourceLocation(MOD_ID, "charge");
@@ -44,38 +46,39 @@ public class modifiershocking extends etshmodifieriii {
             player.playSound(SoundEvents.PUFFER_FISH_BLOW_UP,1.25f,1.25f);
             toolData.putInt(sound3, 1);
         }
+        if (toolData.getInt(charge)<=90&&holder instanceof ServerPlayer player&&getMold(player.getDeltaMovement())>0.1){
+            toolData.putInt(charge, toolData.getInt(charge)+10);
+        }
     }
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         ModDataNBT toolData = tool.getPersistentData();
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (target != null) {
-                if (toolData.getInt(charge) > 99 && attacker instanceof Player player) {
-                    target.invulnerableTime = 0;
-                    target.hurt(DamageSource.playerAttack(player), (1 + getMainLevel(player, this)) * damage);
-                    target.invulnerableTime = 0;
-                    toolData.putInt(charge, 0);
-                    toolData.putInt(sound3, 0);
-                    player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 100, 2));
-                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2));
-                    target.playSound(SoundEvents.FIREWORK_ROCKET_BLAST, 1f, 2f);
-                    int lvl000 = tool.getModifierLevel(this);
-                    double xx = target.getX();
-                    double yy = target.getY();
-                    double zz = target.getZ();
-                    List<Mob> ls001 = attacker.level.getEntitiesOfClass(Mob.class, new AABB(xx + 2 * lvl000, yy + lvl000, zz + 2 * lvl000, xx -2 * lvl000, yy - lvl000, zz - 2 * lvl000));
-                    for (Mob mob1 : ls001) {
-                        if (mob1 != null) {
-                            mob1.invulnerableTime = 0;
-                            mob1.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor(), tool.getStats().getInt(ToolStats.ATTACK_DAMAGE));
-                            mob1.invulnerableTime = 0;
-                        }
+            if (toolData.getInt(charge) > 99 && attacker instanceof ServerPlayer player) {
+                target.invulnerableTime = 0;
+                target.hurt(DamageSource.playerAttack(player), (1 + getMainLevel(player, this)) * damage);
+                target.invulnerableTime = 0;
+                toolData.putInt(charge, 0);
+                toolData.putInt(sound3, 0);
+                player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 100, 2));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2));
+                target.playSound(SoundEvents.FIREWORK_ROCKET_BLAST, 1f, 2f);
+                int lvl000 = tool.getModifierLevel(this);
+                double xx = target.getX();
+                double yy = target.getY();
+                double zz = target.getZ();
+                List<Mob> ls001 = attacker.level.getEntitiesOfClass(Mob.class, new AABB(xx + 2 * lvl000, yy + lvl000, zz + 2 * lvl000, xx - 2 * lvl000, yy - lvl000, zz - 2 * lvl000));
+                for (Mob mob1 : ls001) {
+                    if (mob1 != null) {
+                        mob1.invulnerableTime = 0;
+                        mob1.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor(), tool.getStats().getInt(ToolStats.ATTACK_DAMAGE));
+                        mob1.invulnerableTime = 0;
                     }
                 }
-                if (toolData.getInt(charge) < 100) {
-                    toolData.putInt(charge, toolData.getInt(charge) + 25);
-                }
+            }
+            if (toolData.getInt(charge) < 100) {
+                toolData.putInt(charge, toolData.getInt(charge) + 25);
             }
         }
         return baseKnockback;

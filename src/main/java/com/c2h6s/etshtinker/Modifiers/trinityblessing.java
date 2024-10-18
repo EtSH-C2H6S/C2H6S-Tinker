@@ -99,22 +99,22 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
             ToolTankHelper.CAPACITY_STAT.multiply(builder,Math.pow(1.33,modifier.getLevel()));
         }
         if (modifier.getLevel()==3){
-            ToolStats.DURABILITY.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.ATTACK_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.ACCURACY.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.DRAW_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
+            ToolStats.DURABILITY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.ATTACK_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.ACCURACY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.DRAW_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.VELOCITY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.MINING_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.ARMOR.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.ARMOR_TOUGHNESS.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.PROJECTILE_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.BLOCK_AMOUNT.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolStats.BLOCK_ANGLE.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
-            ToolTankHelper.CAPACITY_STAT.multiply(builder,Math.pow(1.67,modifier.getLevel())*Math.pow(1.33,modifier.getLevel()));
+            ToolStats.MINING_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.ARMOR.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.ARMOR_TOUGHNESS.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.PROJECTILE_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.BLOCK_AMOUNT.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.BLOCK_ANGLE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolTankHelper.CAPACITY_STAT.multiply(builder,Math.pow(1.67,modifier.getLevel()));
         }
     }
 

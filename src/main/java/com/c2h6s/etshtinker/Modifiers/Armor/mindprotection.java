@@ -95,6 +95,9 @@ public class mindprotection extends etshmodifieriii {
         Entity entity1 = event.getSource().getEntity();
         SecureRandom random = EtSHrnd();
         LivingEntity entity =event.getEntity();
+        if (entity==entity1){
+            return;
+        }
         entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
             int level = holder.get(key, 0);
             if (level > 0) {

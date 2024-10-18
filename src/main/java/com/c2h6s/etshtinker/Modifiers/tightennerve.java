@@ -43,7 +43,7 @@ public class tightennerve extends etshmodifieriii {
             if (toolData.getInt(adrenaline)<99&&toolData.getInt(nerv)>0) {
                 toolData.putFloat(nerv, toolData.getFloat(nerv) - 0.05f);
             }
-            if (toolData.getInt(nerv)>4){
+            if (toolData.getInt(nerv)>19){
                 toolData.putFloat(adrenaline,50);
                 toolData.putFloat(nerv,0);
                 holder.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 3));

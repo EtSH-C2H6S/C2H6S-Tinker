@@ -42,7 +42,7 @@ public class modifierenchantedsword extends etshmodifieriii {
             Player player = context.getPlayerAttacker();
             if (tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get()) > 0 && tool.getPersistentData().getInt(manacharge)>1) {
                 enchantedswordentity entity =new enchantedswordentity(etshtinkerEntity.enchantedswordentity.get(),player.level);
-                entity.damage = (tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) * tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get())*(float)(1+ Math.log10(tool.getPersistentData().getInt(manacharge))/2));
+                entity.damage = (tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) * tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get())*(float)(1+ Math.log10(tool.getPersistentData().getInt(manacharge))/4));
                 entity.setDeltaMovement(player.getLookAngle().scale(2.5));
                 entity.lerpMotion(player.getLookAngle().x * 2.5, player.getLookAngle().y * 2.5, player.getLookAngle().z * 2.5);
                 entity.setPos(player.getX(), player.getEyeY(), player.getZ());
@@ -57,7 +57,7 @@ public class modifierenchantedsword extends etshmodifieriii {
             ToolStack tool =ToolStack.from(player.getMainHandItem());
             if (tool.getPersistentData().getInt(manacharge)>1) {
                 if (tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get()) > 0) {
-                    entity.damage =(tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) * tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get())*(float)(1+ Math.log10(tool.getPersistentData().getInt(manacharge))/2));
+                    entity.damage =(tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) * tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get())*(float)(1+ Math.log10(tool.getPersistentData().getInt(manacharge))/4));
                     entity.setDeltaMovement(player.getLookAngle().scale(2.5));
                     entity.lerpMotion(player.getLookAngle().x * 2.5, player.getLookAngle().y * 2.5, player.getLookAngle().z * 2.5);
                     entity.setPos(player.getX(), player.getEyeY(), player.getZ());

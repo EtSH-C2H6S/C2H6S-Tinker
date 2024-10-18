@@ -1,7 +1,9 @@
 package com.c2h6s.etshtinker.Modifiers;
 
+import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.util.modloaded;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -55,8 +57,9 @@ public class nightsenhance extends etshmodifieriii {
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (modifier.getLevel()>0&&holder!=null){
+        if (modifier.getLevel()>1&&holder!=null){
             holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,0,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.MAGIC_RESISTANCE.get(),20,0,false,false));
         }
     }
 
@@ -65,14 +68,14 @@ public class nightsenhance extends etshmodifieriii {
         if (LightLevel >7){
             return damage *0.5f;
         }
-        return damage * modifier.getLevel();
+        return damage * 2;
     }
 
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         int LightLevel =context.getAttacker().level.getBrightness(LightLayer.BLOCK,context.getAttacker().blockPosition()) ;
         if (LightLevel >7&&context.getLivingTarget()!=null&&context.getPlayerAttacker()!=null){
             int i =0;
-            while (i<modifier.getLevel()*2 -1) {
+            while (i<4) {
                 context.getLivingTarget().invulnerableTime=0;
                 context.getLivingTarget().hurt(DamageSource.playerAttack(context.getPlayerAttacker()), damage);
                 i++;
@@ -102,7 +105,7 @@ public class nightsenhance extends etshmodifieriii {
                     arrow.setBaseDamage(arrow.getPersistentData().getDouble("basedmg")/2);
                     if (target!=null&&attacker instanceof Player player) {
                         int i = 0;
-                        while (i < modifier.getLevel() * 2 - 1) {
+                        while (i < 4) {
                             target.invulnerableTime = 0;
                             target.hurt(DamageSource.playerAttack(player), (float)(arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())));
                             i++;

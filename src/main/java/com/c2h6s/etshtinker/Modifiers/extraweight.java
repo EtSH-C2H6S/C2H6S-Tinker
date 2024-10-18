@@ -29,7 +29,7 @@ public class extraweight extends etshmodifieriii {
             for (Mob mob:ls0000){
                 if (mob!=null){
                     Vec3 base = getUnitizedVec3(Entity1ToEntity2(player,mob));
-                    Vec3 vec3 = new Vec3(-base.x * player.getDeltaMovement().y * 3, -player.getDeltaMovement().y * 1, -base.z * player.getDeltaMovement().y * 3);
+                    Vec3 vec3 = new Vec3(-base.x * player.getDeltaMovement().y , -player.getDeltaMovement().y * 0.3, -base.z * player.getDeltaMovement().y );
                     mob.setDeltaMovement(vec3);
                 }
             }

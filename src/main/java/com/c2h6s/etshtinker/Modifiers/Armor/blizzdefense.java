@@ -22,7 +22,7 @@ public class blizzdefense extends etshmodifieriii {
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         SecureRandom random =EtSHrnd();
         if (tool.getModifierLevel(this)>0&&random.nextInt(20)>modifier.getLevel()){
-            if (source.getEntity() instanceof LivingEntity attacker){
+            if (source.getEntity() instanceof LivingEntity attacker&&attacker!=context.getEntity()){
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,4));
             }
             return amount;
@@ -30,7 +30,7 @@ public class blizzdefense extends etshmodifieriii {
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),200,4,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),200,0,false,false));
         }
     }
 }

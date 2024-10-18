@@ -23,6 +23,9 @@ public class electromotiveforce extends etshmodifieriii {
         if (source instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
             return;
         }
+        if (source.getEntity()==context.getEntity()){
+            return;
+        }
         if (tool.getModifierLevel(this)>0){
             Entity entity =source.getEntity();
             LivingEntity target =context.getEntity();
@@ -34,9 +37,9 @@ public class electromotiveforce extends etshmodifieriii {
                     double zz = attacker.getZ();
                     int id0 =attacker.getId();
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR, 2f, 2f);
-                    List<Mob> ls001 = attacker.level.getEntitiesOfClass(Mob.class, new AABB(xx + 4 * lvl000, yy + 4 * lvl000, zz + 4 * lvl000, xx - 4 * lvl000, yy - 4 * lvl000, zz - 4 * lvl000));
-                    for (Mob mob1 : ls001) {
-                        if (mob1 != null) {
+                    List<LivingEntity> ls001 = attacker.level.getEntitiesOfClass(LivingEntity.class, new AABB(xx + 4 * lvl000, yy + 4 * lvl000, zz + 4 * lvl000, xx - 4 * lvl000, yy - 4 * lvl000, zz - 4 * lvl000));
+                    for (LivingEntity mob1 : ls001) {
+                        if (mob1 != null&&mob1!=player) {
                             mob1.invulnerableTime = 0;
                             mob1.hurt(DamageSource.thorns(player).bypassMagic().bypassArmor(), amount);
                             mob1.invulnerableTime = 0;

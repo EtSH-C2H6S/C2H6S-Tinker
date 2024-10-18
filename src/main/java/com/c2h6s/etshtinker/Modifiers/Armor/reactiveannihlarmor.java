@@ -55,6 +55,9 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
         if (event.getSource() instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
             return;
         }
+        if (event.getEntity()==event.getSource().getEntity()){
+            return;
+        }
         LivingEntity living = event.getEntity();
         Entity entity =event.getSource().getEntity();
         if (living instanceof Player player){

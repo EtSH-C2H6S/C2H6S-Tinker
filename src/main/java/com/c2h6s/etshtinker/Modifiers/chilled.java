@@ -18,20 +18,15 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 public class chilled extends etshmodifieriii {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
-    public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (modifier.getLevel()>0&&isSelected&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),200,4,false,false));
-        }
-    }
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getTarget();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target&&enabled){
-            target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,4));
+            target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,2));
         }
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (modifier.getLevel()>0&&target!=null&&enabled){
-            target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,4));
+            target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,2));
         }
         return false;
     }

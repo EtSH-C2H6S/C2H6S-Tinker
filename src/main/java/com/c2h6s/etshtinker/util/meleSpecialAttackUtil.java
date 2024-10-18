@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.util;
 
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
+import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -31,7 +32,6 @@ import static net.minecraft.world.entity.EquipmentSlot.Type.HAND;
 
 public class meleSpecialAttackUtil {
     public static void createWarp(@NotNull Player attacker, Float radius, Float damage, ToolStack tool, InteractionHand hand){
-        int lvl =(int)(radius/8);
         Level world =attacker.getLevel();
         LivingEntity entity =getNearestLiEnt(radius,attacker,world);
         if (entity!=null&&entity.isAlive()){
@@ -39,23 +39,11 @@ public class meleSpecialAttackUtil {
             attackUtil.attackEntity(tool,attacker,hand,entity,()->1,true, Util.getSlotType(hand),damage,true,true,true,true,0.5f);
             entity.invulnerableTime=0;
             if (world.isClientSide) {
-                world.addAlwaysVisibleParticle(ParticleTypes.SWEEP_ATTACK, true, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 0, 0, 0);
+                world.addAlwaysVisibleParticle(etshtinkerParticleType.slash.get(), true, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 0, 0, 0);
             }
             else {
-                ((ServerLevel)world).sendParticles(ParticleTypes.SWEEP_ATTACK, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 1,0,0, 0, 0);
-                ParticleChainUtil.summonELECSPARKFromTo((ServerLevel)world,attacker.getId(),entity.getId() );
-            }
-            world.playSound(attacker, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.NEUTRAL, 1, 1);
-            double x =entity.getX();
-            double y =entity.getY();
-            double z =entity.getZ();
-            List<LivingEntity> ls =world.getEntitiesOfClass(LivingEntity.class,new AABB(x-2-lvl,y-2-lvl,z-2-lvl,x+2+lvl,y+2+lvl,z+2+lvl));
-            for (LivingEntity target : ls){
-                if (target!=null&&target!=attacker){
-                    target.invulnerableTime=0;
-                    target.hurt(DamageSource.playerAttack(attacker),damage/2);
-                    target.invulnerableTime=0;
-                }
+                ((ServerLevel)world).sendParticles(etshtinkerParticleType.slash.get(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 1,0,0, 0, 0);
+                ParticleChainUtil.summonELECSPARKFromTo2((ServerLevel)world,attacker.getId(),entity.getId() );
             }
             attacker.getCooldowns().addCooldown(tool.getItem(), 10);
         }

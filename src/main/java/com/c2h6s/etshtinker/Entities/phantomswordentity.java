@@ -59,7 +59,7 @@ public class phantomswordentity extends ItemProjectile{
                 this.target.hurt(DamageSource.playerAttack((Player) this.getOwner()),this.damage);
                 this.target.invulnerableTime=0;
                 slashentity slash =new slashentity(etshtinkerEntity.slashentity.get(),this.level);
-                slash.count=2;
+                slash.count=0;
                 slash.damage=this.damage*0.5F;
                 slash.target=this.target;
                 slash.setOwner(this.getOwner());

@@ -3,11 +3,20 @@
     {
       "values": [
         {
-          "modid": "thermal",
-          "type": "forge:mod_loaded"
+          "values": [
+            {
+              "modid": "thermal",
+              "type": "forge:mod_loaded"
+            },
+            {
+              "modid": "ae2",
+              "type": "forge:mod_loaded"
+            }
+          ],
+          "type": "forge:and"
         },
         {
-          "modid": "ae2",
+          "modid": "mekanism",
           "type": "forge:mod_loaded"
         }
       ],
@@ -27,7 +36,7 @@
   ],
   "result": [
     {
-      "count":16,
+      "count": 16,
       "item": "ae2:flawless_budding_quartz"
     }
   ],

@@ -30,7 +30,6 @@ public class electricArmor extends etshmodifieriii {
         if (tool.getModifierLevel(this)>0){
             Entity entity =source.getEntity();
             LivingEntity target =context.getEntity();
-            Level level =target.level;
             if (entity instanceof LivingEntity attacker) {
                 if (target instanceof Player player && modifier.getLevel()>0) {
                     int lvl000 = tool.getModifierLevel(this);
@@ -38,21 +37,8 @@ public class electricArmor extends etshmodifieriii {
                     double yy = attacker.getY();
                     double zz = attacker.getZ();
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE, 1.2f, 1.2f);
+                    attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
                     attacker.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100, false, false), attacker);
-                    List<Mob> ls001 = attacker.level.getEntitiesOfClass(Mob.class, new AABB(xx + 5 * lvl000, yy + 5 * lvl000, zz + 5 * lvl000, xx - 5 * lvl000, yy - 5 * lvl000, zz - 5 * lvl000));
-                    for (Mob mob1 : ls001) {
-                        if (mob1 != null) {
-                            mob1.invulnerableTime = 0;
-                            mob1.hurt(DamageSource.thorns(player).bypassMagic().bypassArmor(), mob1.getMaxHealth() * 0.01f * lvl000);
-                            mob1.invulnerableTime = 0;
-                            mob1.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, Math.min(100 * lvl000, 200), 100, false, false), attacker);
-                            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
-                            mob1.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
-                            if (level instanceof ServerLevel serverLevel) {
-                                ParticleChainUtil.summonElectricFromTowithlimit(serverLevel,attacker.getId(),mob1.getId(),128);
-                            }
-                        }
-                    }
                 }
             }
         }

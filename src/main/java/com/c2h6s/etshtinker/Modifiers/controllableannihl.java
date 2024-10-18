@@ -9,12 +9,21 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 
-public class controllableannihl extends etshmodifieriii {
+public class controllableannihl extends etshmodifieriii implements ToolStatsModifierHook {
+    @Override
+    public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
+        super.addToolStats(context, modifier, builder);
+        ToolStats.DURABILITY.multiply(builder,0.1);
+    }
+
     public boolean isNoLevels() {
         return true;
     }
@@ -28,7 +37,7 @@ public class controllableannihl extends etshmodifieriii {
             if ( attacker instanceof Player player && modifier.getLevel()>0&&context.isFullyCharged()) {
                 if (tool.getDamage() < tool.getStats().getInt(ToolStats.DURABILITY) * 0.75) {
                     annihilateexplosionentity explode = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), target.getLevel());
-                    float d = tool.getCurrentDurability() * 0.25f;
+                    float d = tool.getCurrentDurability() * 0.05f;
                     tool.setDamage(tool.getDamage() + (int) d);
                     explode.damage = d * 4;
                     explode.target = target;

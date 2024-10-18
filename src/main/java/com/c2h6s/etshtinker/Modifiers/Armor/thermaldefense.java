@@ -56,19 +56,18 @@ public class thermaldefense extends etshmodifieriii {
             int level = holder.get(key, 0);
             if (level > 0) {
                 living.invulnerableTime += 5*level;
+                if (event.getSource().isExplosion()){
+                    event.setAmount(event.getAmount()*0.5f);
+                }
             }
         });
     }
-    @Override
-    public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.ARMOR.multiply(builder,1+0.2*modifier.getLevel());
-    }
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         SecureRandom random =EtSHrnd();
-        if (random.nextInt(20)>modifier.getLevel()){
+        if (random.nextInt(50)>modifier.getLevel()){
             LivingEntity entity =context.getEntity();
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,2,false,false));
-            return amount*(1-0.05f*modifier.getLevel());
+            return amount;
         }
         else return  0;
     }
@@ -97,8 +96,6 @@ public class thermaldefense extends etshmodifieriii {
             int modilvl2 = getMainLevel(holder,this);
             player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,300,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),300,modilvl2,false,false));
-            player.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),300,modilvl2,false,false));
-            player.addEffect(new MobEffectInstance(CoreMobEffects.MAGIC_RESISTANCE.get(),300,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,modilvl2,false,false));
         }
     }

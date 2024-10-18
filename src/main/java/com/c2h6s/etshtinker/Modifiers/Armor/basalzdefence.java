@@ -57,14 +57,14 @@ public class basalzdefence extends etshmodifieriii implements ToolStatsModifierH
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         if (tool.getModifierLevel(this)>0){
             LivingEntity entity =context.getEntity();
-            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,2,false,false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,1,false,false));
             return amount*(1-0.05f*modifier.getLevel());
         }
         return amount;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),200,4,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),200,0,false,false));
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker.init.modifierReg;
 
 import com.c2h6s.etshtinker.Modifiers.*;
+import com.c2h6s.etshtinker.Modifiers.Armor.threshold;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 

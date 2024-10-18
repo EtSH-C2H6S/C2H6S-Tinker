@@ -24,7 +24,7 @@ public class hyperfluxloaded extends fluxloaded{
     }
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
         if (etshmodifierfluxed.getEnergyStored(tool)>0){
-            float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /1000000;
+            float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
             damage += dmgup;
             etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
         }
@@ -40,7 +40,7 @@ public class hyperfluxloaded extends fluxloaded{
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (etshmodifierfluxed.getEnergyStored(tool)>0&&modifiers.getLevel()>0){
             if (etshmodifierfluxed.getEnergyStored(tool)>0){
-                float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
+                float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /10000000;
                 if (abstractArrow!=null) {
                     abstractArrow.setBaseDamage(dmgup + abstractArrow.getBaseDamage());
                     abstractArrow.setPierceLevel((byte)(int) (dmgup+(float) abstractArrow.getPierceLevel()));

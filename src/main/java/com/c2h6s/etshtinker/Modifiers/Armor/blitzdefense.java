@@ -27,9 +27,12 @@ public class blitzdefense extends etshmodifieriii {
         SecureRandom random =EtSHrnd();
         if (random.nextInt(20)>modifier.getLevel()){
             LivingEntity entity =context.getEntity();
-            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,2,false,false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,1,false,false));
             entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,60,2,false,false));
             if (source instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
+                return amount;
+            }
+            if (source.getEntity()!=context.getEntity() ){
                 return amount;
             }
             summonArc(entity.level,entity,new Vec3(entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ()),2+modifier.getLevel()*2,5+modifier.getLevel());
@@ -38,7 +41,7 @@ public class blitzdefense extends etshmodifieriii {
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),200,4,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),200,0,false,false));
             holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,0,false,false));
         }
     }

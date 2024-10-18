@@ -81,7 +81,7 @@ public class ResonanceEffect extends etshmodifieriii implements ToolStatsModifie
 
     @Override
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (isCorrectSlot&&holder instanceof ServerPlayer player&&player.level.getGameTime()%10==0){
+        if (isCorrectSlot&&holder instanceof ServerPlayer player&&player.level.getGameTime()%20==0){
             VibrationAcceptor acceptor = new VibrationAcceptor(etshtinkerEntity.vibration_acceptor.get(),player.level);
             acceptor.setOwner(player);
             acceptor.setPos(player.getX(),player.getEyeY(),player.getZ());

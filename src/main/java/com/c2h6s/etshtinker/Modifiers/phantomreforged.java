@@ -21,24 +21,22 @@ public class phantomreforged extends etshmodifieriii {
         if (modifier.getLevel()>0&&context.getAttacker() instanceof Player player&&context.getTarget() instanceof LivingEntity target&&context.isFullyCharged()){
             Level level1 = player.level;
             phantomswordentity entity =new phantomswordentity(etshtinkerEntity.phantomswordentity.get(),player.level);
-            entity.damage =0.5f*damageDealt;
+            entity.damage =0.25f*damageDealt;
             entity.count =modifier.getLevel()-1;
             entity.target=target;
             entity.setOwner(player);
             entity.setPos(target.getX(),target.getY()+0.5*target.getBbHeight()+3.5,target.getZ());
             player.level.addFreshEntity(entity);
-            if (level1!=null){
-                int i =0;
-                while (i<5){
-                    SecureRandom random1 =EtSHrnd();
-                    if(level1.isClientSide) {
-                        level1.addParticle(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02);
-                    }
-                    else {
-                        ((ServerLevel)level1).sendParticles(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), 1,0,0,0, random1.nextDouble() * 0.04 - 0.02);
-                    }
-                    i++;
+            int i = 0;
+            while (i<5){
+                SecureRandom random1 =EtSHrnd();
+                if(level1.isClientSide) {
+                    level1.addParticle(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02, random1.nextDouble() * 0.04 - 0.02);
                 }
+                else {
+                    ((ServerLevel)level1).sendParticles(ParticleTypes.SCULK_SOUL, target.getX(), target.getY() + 0.5 * target.getBbHeight() + 3.5, target.getZ(), 1,0,0,0, random1.nextDouble() * 0.04 - 0.02);
+                }
+                i++;
             }
         }
     }

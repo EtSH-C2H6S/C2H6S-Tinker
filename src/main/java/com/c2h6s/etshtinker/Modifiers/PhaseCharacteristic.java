@@ -37,8 +37,8 @@ public class PhaseCharacteristic extends etshmodifieriii {
     @Override
     public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
         if (livingEntity instanceof ServerPlayer player){
-            if (player.totalExperience>5){
-                player.giveExperiencePoints(-5);
+            if (player.totalExperience>10){
+                player.giveExperiencePoints(-10);
                 return new ItemStack(Items.ARROW,64);
             }
         }
@@ -49,8 +49,8 @@ public class PhaseCharacteristic extends etshmodifieriii {
     public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (abstractArrow!=null){
             if (livingEntity instanceof ServerPlayer player){
-                if (player.totalExperience>15){
-                    player.giveExperiencePoints(-15);
+                if (player.totalExperience>30){
+                    player.giveExperiencePoints(-30);
                 }
                 else return;
             }

@@ -28,7 +28,7 @@ public class foolishGold extends etshmodifieriii {
                     }
                 }
             }
-            if (modifierLv >=2){
+            if (modifierLv >=2&&event.getNewTarget()!=event.getEntity().getLastHurtByMob()){
                 event.setCanceled(true);
             }
         }

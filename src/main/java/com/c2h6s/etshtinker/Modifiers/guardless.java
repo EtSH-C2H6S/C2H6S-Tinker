@@ -22,7 +22,7 @@ public class guardless extends etshmodifieriii {
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity holder =event.getEntity();
         Entity entity=event.getSource().getEntity();
-        if (entity instanceof LivingEntity attacker&&holder instanceof Player player) {
+        if (entity instanceof LivingEntity attacker&&holder instanceof Player player&&attacker!=holder) {
             if (getMainLevel(holder, this) > 0) {
                 event.setAmount(event.getAmount() * 0.75f);
                 attacker.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);

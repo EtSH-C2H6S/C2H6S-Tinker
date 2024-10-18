@@ -44,6 +44,24 @@ public class ParticleChainUtil {
 
         }
     }
+    public static void summonELECSPARKFromTo2(ServerLevel level, int idStart, int idEnd) {
+        Entity entityStart = level.getEntity(idStart);
+        Entity entityEnd = level.getEntity(idEnd);
+        if (entityStart == null || entityEnd == null) {
+            return;
+        }
+        Vec3 dir = entityEnd.position().add(0,0.5*entityEnd.getBbHeight(),0).subtract(entityStart.position().add(0,entityStart.getBbHeight()*0.5,0)).normalize();
+        for (int i = 0; i < 1000; i++) {
+            double x = entityStart.getX() + (dir.x * i * 0.3d);
+            double y = entityStart.getY()+ entityStart.getBbHeight()*0.5+ (dir.y * i * 0.3d);
+            double z = entityStart.getZ() + (dir.z * i * 0.3d);
+            Vec3 pos = new Vec3(x, y, z);
+            if (pos.distanceToSqr(entityEnd.position()) <= 0.04d)
+                break;
+            level.sendParticles(ParticleTypes.ELECTRIC_SPARK, x, y, z,1,0, 0d, 0d, 0d);
+
+        }
+    }
     public static void summonElectricFromTowithlimit(ServerLevel level, int idStart, int idEnd, int limit) {
         Entity entityStart = level.getEntity(idStart);
         Entity entityEnd = level.getEntity(idEnd);

@@ -24,29 +24,26 @@ public class ionized extends etsheffect {
     public void applyEffectTick(LivingEntity living, int amplifier) {
         SecureRandom RANDOM =EtSHrnd();
         Level world =living.level;
-        if (world!=null) {
-            if (RANDOM.nextInt(2) == 1) {
-                if (world.isClientSide) {
-                    world.addParticle(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), RANDOM.nextDouble() * 0.7 - 0.35, RANDOM.nextDouble() * 0.3 - 0.15, RANDOM.nextDouble() * 0.7 - 0.35);
-                }
-                else {
-                    ((ServerLevel)world).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 1,1, 1, 1,RANDOM.nextDouble() * 0.7 - 0.35);
-                }
+        if (RANDOM.nextInt(2) == 1) {
+            if (world.isClientSide) {
+                world.addParticle(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), RANDOM.nextDouble() * 0.7 - 0.35, RANDOM.nextDouble() * 0.3 - 0.15, RANDOM.nextDouble() * 0.7 - 0.35);
+            } else {
+                ((ServerLevel) world).sendParticles(etshtinkerParticleType.electric.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 1, 1, 1, 1, RANDOM.nextDouble() * 0.7 - 0.35);
             }
-            if (RANDOM.nextInt(20) <= Math.min(4, amplifier + 1)) {
-                living.invulnerableTime = 0;
-                living.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor(), living.getHealth() * 0.01f * (amplifier + 1));
-                living.invulnerableTime = 0;
-            }
-            double x = living.getX();
-            double y =living.getY()+0.5*living.getBbHeight();
-            double z =living.getZ();
-            if (amplifier>0) {
-                List<Mob> ls = world.getEntitiesOfClass(Mob.class, new AABB(x - 1.5, y - 1.5, z - 1.5, x + 1.5, y + 1.5, z + 1.5));
-                for (Mob entity : ls) {
-                    if (entity != null) {
-                        entity.addEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),60,amplifier-1,false,false));
-                    }
+        }
+        if (RANDOM.nextInt(20) <= Math.min(4, amplifier + 1)) {
+            living.invulnerableTime = 0;
+            living.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor(), living.getHealth() * 0.01f * (amplifier + 1));
+            living.invulnerableTime = 0;
+        }
+        double x = living.getX();
+        double y =living.getY()+0.5*living.getBbHeight();
+        double z =living.getZ();
+        if (amplifier>0) {
+            List<Mob> ls = world.getEntitiesOfClass(Mob.class, new AABB(x - 1.5, y - 1.5, z - 1.5, x + 1.5, y + 1.5, z + 1.5));
+            for (Mob entity : ls) {
+                if (entity != null) {
+                    entity.addEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),60,amplifier-1,false,false));
                 }
             }
         }

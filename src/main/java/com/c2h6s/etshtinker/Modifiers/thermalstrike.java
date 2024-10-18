@@ -54,9 +54,11 @@ public class thermalstrike extends etshmodifieriii {
                         entity1.invulnerableTime =0;
                         if (getNearestLiEnt((float) 5 + modilvl, entity1, entity1.level) != null) {
                             entity1 = getNearestLiEntWithBL((float) 5 + modilvl, entity1, entity1.level, ls0);
-                            int id1=entity1.getId();
-                            if (target.level instanceof ServerLevel serverLevel) {
-                                ParticleChainUtil.summonSparkFromTo(serverLevel,id0,id1);
+                            if (entity1!=null) {
+                                int id1 = entity1.getId();
+                                if (target.level instanceof ServerLevel serverLevel) {
+                                    ParticleChainUtil.summonSparkFromTo(serverLevel, id0, id1);
+                                }
                             }
                         } else break;
                     }
@@ -87,9 +89,11 @@ public class thermalstrike extends etshmodifieriii {
                         entity.invulnerableTime = 0;
                         if (getNearestLiEnt((float) 5 + modilvl, entity, entity.level) != null) {
                             entity = getNearestLiEntWithBL((float) 5 + modilvl, entity, entity.level, ls0);
-                            int id1=entity.getId();
-                            if (entity.level instanceof ServerLevel serverLevel) {
-                                ParticleChainUtil.summonSparkFromTo(serverLevel,id0,id1);
+                            if (entity!=null) {
+                                int id1 = entity.getId();
+                                if (entity.level instanceof ServerLevel serverLevel) {
+                                    ParticleChainUtil.summonSparkFromTo(serverLevel, id0, id1);
+                                }
                             }
                         } else break;
                     }
