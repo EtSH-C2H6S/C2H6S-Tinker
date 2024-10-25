@@ -37,7 +37,7 @@ public class thermalstrike extends etshmodifieriii {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
             Level world = attacker.getLevel();
-            if (attacker instanceof Player player && getMainLevel(attacker, this) > 0 && context.isFullyCharged()&&etshmodifierfluxed.getEnergyStored(tool)>2000) {
+            if (attacker instanceof Player player && context.isFullyCharged()&&etshmodifierfluxed.getEnergyStored(tool)>2000) {
                 world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, NEUTRAL, 1, 1.7f);
                 int modilvl = getMainLevel(attacker, this);
                 List<LivingEntity> ls0 = new ArrayList<>(List.of());
@@ -70,14 +70,14 @@ public class thermalstrike extends etshmodifieriii {
         return baseKnockback;
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (attacker instanceof Player player && getMainLevel(attacker,this) > 0&&projectile instanceof AbstractArrow arrow) {
+        if (attacker instanceof Player player &&projectile instanceof AbstractArrow arrow&&target!=null) {
             InteractionHand hand = attacker.getUsedItemHand();
             if (attacker.getItemInHand(hand).getItem() instanceof ModifiableLauncherItem) {
                 IToolStackView tool = ToolStack.from(attacker.getItemInHand(hand));
-                int modilvl = getMainLevel(attacker, this);
+                int modilvl = modifier.getLevel();
                 int a = 0;
                 List<LivingEntity> ls0 = new ArrayList<>(List.of());
-                LivingEntity entity = getNearestLiEnt((float) 5 + modilvl, player, player.level);
+                LivingEntity entity = getNearestLiEnt((float) 5 + modilvl, target, target.level);
                 while (a < 11 + modilvl && etshmodifierfluxed.getEnergyStored(tool) > 2000) {
                     if (entity != null) {
                         int id0=entity.getId();

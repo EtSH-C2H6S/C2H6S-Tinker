@@ -4,33 +4,6 @@
     "type": "forge:mod_loaded"
   },
   "stats": {
-    "etshtinker:plasma_generator": {
-      "damagemultiplier": 0.55,
-      "criticalrate": 0.15,
-      "fluidefficiency": 1.7,
-      "slash_color": 5
-    },
-    "etshtinker:fluid_chamber": {
-      "fluid_capacity": 80000
-    },
-    "etshtinker:ionizer": {
-      "cooldown": 5,
-      "plasmarange": 10,
-      "damagemultiplier": -0.5
-    },
-    "tconstruct:binding": {},
-    "tconstruct:handle": {
-      "durability": 2.50,
-      "mining_speed": 8.64,
-      "melee_speed": 7.19,
-      "melee_damage": -0.15
-    },
-    "tconstruct:head": {
-      "durability": 3300,
-      "mining_speed": 25.0,
-      "mining_tier": "minecraft:netherite",
-      "melee_attack": 8
-    },
     "tconstruct:limb": {
       "durability": 2200,
       "draw_speed": 5,

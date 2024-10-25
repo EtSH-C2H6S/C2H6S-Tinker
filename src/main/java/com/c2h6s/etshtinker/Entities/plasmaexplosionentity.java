@@ -52,6 +52,7 @@ public class plasmaexplosionentity extends ItemProjectile{
     public float scale =1;
     public float criticalChance =0.0f;
     public boolean isCritical =Math.abs(EtSHrnd().nextFloat())<criticalChance;
+    public boolean forcedCrit =false;
     public InteractionHand HAND = InteractionHand.MAIN_HAND;
     private final SecureRandom random =EtSHrnd();
     public List<SimpleParticleType> lsp=List.of(
@@ -161,7 +162,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                                         modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
                                     }
                                     target.invulnerableTime = 0;
-                                    attackUtil.attackEntity(tool, player, HAND, target, ()->1, true, Util.getSlotType(HAND), this.damage * 0.75f, isCrit, true, true, true, 0);
+                                    attackUtil.attackEntity(tool, player, HAND, target, ()->1, true, Util.getSlotType(HAND), this.damage * 0.75f, isCrit||forcedCrit, true, true, true, 0);
                                     target.invulnerableTime = 0;
                                     for (ModifierEntry modifier : tool.getModifierList()) {
                                         modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,target,this,isCrit);
@@ -185,7 +186,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                                     modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
                                 }
                                 target.invulnerableTime = 0;
-                                attackUtil.attackEntity(tool, player, HAND, target, () -> 1, true, Util.getSlotType(HAND), this.damage, this.isCritical || (EtSHrnd().nextInt(100) < 45), true, true, true, 0);
+                                attackUtil.attackEntity(tool, player, HAND, target, () -> 1, true, Util.getSlotType(HAND), this.damage, this.isCritical || (EtSHrnd().nextInt(100) < 45)||forcedCrit, true, true, true, 0);
                                 target.invulnerableTime = 0;
                                 for (ModifierEntry modifier : tool.getModifierList()) {
                                     modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,target,this,isCrit);

@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.Entities.CustomSonicBoomEntity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
@@ -60,7 +61,10 @@ public class PhaseCharacteristic extends etshmodifieriii {
 
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (projectile instanceof AbstractArrow arrow&&attacker instanceof ServerPlayer serverPlayer){
+        if (projectile instanceof AbstractArrow arrow&&attacker instanceof ServerPlayer serverPlayer&&target!=null&&hit.getEntity() instanceof LivingEntity){
+            if (!arrow.isCritArrow()){
+                return false;
+            }
             if (arrow.getPersistentData().getInt(sonic)>0){
                 int amount = arrow.getPersistentData().getInt(sonic)*2;
                 for(int i=0;i<amount;i++){
@@ -69,7 +73,7 @@ public class PhaseCharacteristic extends etshmodifieriii {
                     entity.setOwner(serverPlayer);
                     entity.direction=getScatteredVec3( new Vec3(0,1,0),87);
                     entity.damage= (float) (0.5*arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
-                    entity.setPos(arrow.getX(),arrow.getY()-0.25,arrow.getZ());
+                    entity.setPos(target.getX(),target.getY()+0.5*target.getBbHeight(),target.getZ());
                     entity.range=4;
                     arrow.level.addFreshEntity(entity);
                     CustomSonicBoomEntity entity1 =new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(),arrow.level);
@@ -91,7 +95,11 @@ public class PhaseCharacteristic extends etshmodifieriii {
 
     @Override
     public boolean modifierOnProjectileHitBlock(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, BlockHitResult hit, @Nullable LivingEntity attacker) {
-        if (projectile instanceof AbstractArrow arrow&&attacker instanceof ServerPlayer serverPlayer){
+        BlockPos blockPos =hit.getBlockPos();
+        if (projectile instanceof AbstractArrow arrow && attacker instanceof ServerPlayer serverPlayer){
+            if (!arrow.isCritArrow()){
+                return false;
+            }
             if (arrow.getPersistentData().getInt(sonic)>0){
                 int amount = arrow.getPersistentData().getInt(sonic)*2;
                 for(int i=0;i<amount;i++){
@@ -100,7 +108,7 @@ public class PhaseCharacteristic extends etshmodifieriii {
                     entity.setOwner(serverPlayer);
                     entity.direction=getScatteredVec3( new Vec3(0,1,0),87);
                     entity.damage= (float) (0.5*arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
-                    entity.setPos(arrow.getX(),arrow.getY(),arrow.getZ());
+                    entity.setPos(blockPos.getX(),blockPos.getY()+0.5,blockPos.getZ());
                     entity.range=4;
                     arrow.level.addFreshEntity(entity);
                     CustomSonicBoomEntity entity1 =new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(),arrow.level);

@@ -33,7 +33,7 @@ public class fission extends etshmodifieriii {
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (enabled && attacker instanceof Player player && getMainLevel(attacker, this) > 0 && target != null && MekanismAPI.getRadiationManager().isRadiationEnabled() && getMainLevel(attacker, this) > 0) {
+            if (enabled && getMainLevel(attacker, this) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() && getMainLevel(attacker, this) > 0) {
                 target.invulnerableTime = 0;
             }
         }
@@ -45,12 +45,12 @@ public class fission extends etshmodifieriii {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
             if (enabled) {
-                if (attacker instanceof Player player && getMainLevel(attacker, this) > 0 && target != null && getMainOrOff.getMainLevel(player, etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get()) == 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() && getMainLevel(attacker, this) > 0) {
-                    MekanismAPI.getRadiationManager().radiate(player, 10);
+                if (getMainLevel(attacker, this) > 0 && tool.getModifierLevel(etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get()) == 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() ) {
+                    MekanismAPI.getRadiationManager().radiate(attacker, 10);
                     MekanismAPI.getRadiationManager().radiate(target, 10);
-                } else if (attacker instanceof Player player && getMainLevel(attacker, this) > 0 && target != null && getMainOrOff.getMainLevel(player, etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() && getMainOrOff.getMainLevel(player, etshtinkerModifiers.fusion_STATIC_MODIFIER.get()) == 0) {
+                } else if (getMainLevel(attacker, this) > 0 &&  tool.getModifierLevel( etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() &&  tool.getModifierLevel(etshtinkerModifiers.fusion_STATIC_MODIFIER.get()) == 0) {
                     MekanismAPI.getRadiationManager().radiate(target, 50);
-                } else if (attacker instanceof Player player && getMainLevel(attacker, this) > 0 && target != null && getMainOrOff.getMainLevel(player, etshtinkerModifiers.fusion_STATIC_MODIFIER.get()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled()) {
+                } else if (attacker instanceof Player player && tool.getModifierLevel(this) > 0 &&  tool.getModifierLevel( etshtinkerModifiers.fusion_STATIC_MODIFIER.get()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled()) {
                     double x = attacker.getX();
                     double y = attacker.getY();
                     double z = attacker.getZ();
@@ -69,14 +69,14 @@ public class fission extends etshmodifieriii {
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (enabled) {
-            if (attacker instanceof Player player && getMainLevel(attacker,this) > 0 && target != null && getMainOrOff.getMainLevel(player, etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get()) == 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() && getMainLevel(attacker,this) > 0) {
+            if (attacker instanceof Player player && modifier.getLevel() > 0 && target != null && modifiers.getLevel( etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get().getId()) == 0 && MekanismAPI.getRadiationManager().isRadiationEnabled()) {
                 target.invulnerableTime = 0;
                 MekanismAPI.getRadiationManager().radiate(player, 10);
                 MekanismAPI.getRadiationManager().radiate(target, 10);
-            } else if (attacker instanceof Player player && getMainLevel(attacker,this) > 0 && target != null && getMainOrOff.getMainLevel(player, etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() && getMainOrOff.getMainLevel(player, etshtinkerModifiers.fusion_STATIC_MODIFIER.get()) == 0) {
+            } else if (attacker instanceof Player player && modifier.getLevel() > 0 && target != null && modifiers.getLevel( etshtinkerModifiers.chainreaction_STATIC_MODIFIER.get().getId()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled() && getMainOrOff.getMainLevel(player, etshtinkerModifiers.fusion_STATIC_MODIFIER.get()) == 0) {
                 target.invulnerableTime = 0;
                 MekanismAPI.getRadiationManager().radiate(target, 50);
-            } else if (attacker instanceof Player player && getMainLevel(attacker,this) > 0 && target != null && getMainOrOff.getMainLevel(player, etshtinkerModifiers.fusion_STATIC_MODIFIER.get()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled()) {
+            } else if (attacker instanceof Player player && modifier.getLevel() > 0 && target != null && modifiers.getLevel( etshtinkerModifiers.fusion_STATIC_MODIFIER.get().getId()) > 0 && MekanismAPI.getRadiationManager().isRadiationEnabled()) {
                 target.invulnerableTime = 0;
                 double x = attacker.getX();
                 double y = attacker.getY();

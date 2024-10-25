@@ -437,6 +437,10 @@
   "modifier.etshtinker.flexible_blade.flavor": "Flexible light saber.",
   "modifier.etshtinker.flexible_blade.description":"Plasma slash gains attack range on hit.Reduce base range by 50%.",
 
+  "modifier.etshtinker.critical": "Critical",
+  "modifier.etshtinker.critical.flavor": "Contains 100% of critical rate.",
+  "modifier.etshtinker.critical.description":"Plasma explosion will deal critical damage.",
+
 
 
 
@@ -725,13 +729,13 @@
   "item.etshtinker.ionized_cannon": "Ionized Cannon",
   "item.etshtinker.ionized_cannon.description": "Large range Melee weapon.Needs to charge like a bow.Needs to draw fluid from fluid storage,only accepts certain fluids(listed inside EtSH Guide Book)",
   "tool_stat.etshtinker.plasmarange": "Range",
-  "tool_stat.etshtinker.plasmarange.description": "Attack range of plasma ray.",
+  "tool_stat.etshtinker.ionizer.plasmarange.description": "Attack range of plasma ray.",
   "tool_stat.etshtinker.cooldown": "Cooldown",
-  "tool_stat.etshtinker.cooldown.description": "Cooldown time (ticks)",
+  "tool_stat.etshtinker.ionizer.cooldown.description": "Cooldown time (ticks)",
   "tool_stat.etshtinker.damagemultiplier": "Damage Multiplier",
-  "tool_stat.etshtinker.damagemultiplier.description": "Final damage will multiplied by this factor.",
+  "tool_stat.etshtinker.ionizer.damagemultiplier.description": "Final damage will multiplied by this factor.",
   "tool_stat.etshtinker.fluid_capacity": "Fluid Capacity",
-  "tool_stat.etshtinker.fluid_capacity.description": "Extra fluid capacity",
+  "tool_stat.etshtinker.fluid_chamber.fluid_capacity.description": "Extra fluid capacity",
 
   "etshtinker.tool.tooltip.fluidhasspecial" : "Fluid Special",
   "etshtinker.tool.tooltip.fluidspecial.antimatter_explosion": "Large Explosion",
@@ -756,9 +760,9 @@
   "item.etshtinker.constrained_plasma_saber": "Constrained Plasma Saber",
   "item.etshtinker.constrained_plasma_saber.description": "Melee weapon with high attack speed.When swinging,generate plasma slash and deals damage to multiple targets.Needs to draw Melting Fuel form Fluid storage.",
   "tool_stat.etshtinker.criticalrate": "Critical Rate",
-  "tool_stat.etshtinker.criticalrate.description": "Chance of slash causing critical damage.Portion above 100% will be added into critical damage.",
+  "tool_stat.etshtinker.plasma_generator.criticalrate.description": "Chance of slash causing critical damage.Portion above 100% will be added into critical damage.",
   "tool_stat.etshtinker.fluidefficiency": "Fluid Efficiency",
-  "tool_stat.etshtinker.fluidefficiency.description": "Fluid consumption will be divided by this value.",
+  "tool_stat.etshtinker.plasma_generator.fluidefficiency.description": "Fluid consumption will be divided by this value.",
   "item.etshtinker.plasma_generator": "Plasma Generator",
   "stat.etshtinker.plasma_generator": "Plasma Generator",
 
@@ -798,7 +802,7 @@
   "recipe.etshtinker.modifier.warpingenhance": "Godly Metal Modifier is Needed",
   "recipe.etshtinker.modifier.heavenly_gale": "Godly Metal Modifier is Needed",
 
-
+  "pattern.etshtinker.fluid_chamber": "Fluid Chamber",
 
   "etshtinker.item.tooltip.meteoralloy_block1": "Repeatedly melting it will result into something precious.",
   "etshtinker.item.tooltip.meteoralloy_block2": "“Looks Delicious(?)”",
@@ -905,5 +909,10 @@
   "death.attack.etshtinker.atomic_dec": "%1$s was split into atoms.",
   "death.attack.etshtinker.atomic_dec.player": "%1$s was split into atoms by %2$s .",
   "death.attack.etshtinker.quark": "Micro particles in %1$s has been incorrectly replaced.",
-  "death.attack.etshtinker.quark.player": "Micro particles in %1$s has been incorrectly replaced."
+  "death.attack.etshtinker.quark.player": "Micro particles in %1$s has been incorrectly replaced.",
+
+  "etshtinker.jei.ionized_cannon": "Ionized Cannon Fluids",
+
+  "tool_stat.etshtinker.multiplasma": "Multi Plasma",
+  "tool_stat.etshtinker.multiplasma.description": "Count for additionally launched plasma explosions."
 }

@@ -107,8 +107,8 @@
     "armor_momentoaccel": "#675D70",
     "foolish_gold": "#FFE56F",
     "miracle_catalyst": "#DCADFF",
-    "flexible_blade": "#A500FF"
-
+    "flexible_blade": "#A500FF",
+    "critical": "#FF0094"
   },
   "material.etshtinker":
   {

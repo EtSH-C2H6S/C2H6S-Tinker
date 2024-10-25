@@ -103,7 +103,7 @@
 
   "modifier.etshtinker.modifiershocking": "震击",
   "modifier.etshtinker.modifiershocking.flavor": "滋滋滋！",
-  "modifier.etshtinker.modifiershocking.description":"[仅近战]攻击、挖掘方块时获得充能。充能完毕后攻击、挖掘时获得急迫和速度，并造成额外附加伤害和一定的范围伤害。",
+  "modifier.etshtinker.modifiershocking.description":"跑动、攻击、挖掘方块时获得充能。充能完毕后攻击、挖掘时获得急迫和速度，并造成额外附加伤害和一定的范围伤害。",
 
   "modifier.etshtinker.guardless": "毫无防备",
   "modifier.etshtinker.guardless.flavor": "你，为何不避",
@@ -113,13 +113,13 @@
   "modifier.etshtinker.invisiiiible.flavor": "看不到我看不到我看不到我",
   "modifier.etshtinker.invisiiiible.description":"手持时获得隐身效果",
 
-  "modifier.etshtinker.electrified": "电流附加",
-  "modifier.etshtinker.electrified.flavor": "雷电法王",
-  "modifier.etshtinker.electrified.description":"攻击敌人时对敌人施加电离和缓慢，电离效果会扩散并造成百分比伤害",
+  "modifier.etshtinker.electrified": "疾电矢",
+  "modifier.etshtinker.electrified.flavor": "如闪电般迅速...",
+  "modifier.etshtinker.electrified.description":"极大增加拉弓速度，箭矢速度翻倍但是伤害变为1/4。拉弓时急速射出不精确的伤害固定为0.1的箭矢，箭矢击中敌人时对敌人施加电离和缓慢效果。",
 
   "modifier.etshtinker.electricarmor": "电流附加",
   "modifier.etshtinker.electricarmor.flavor": "雷电法王",
-  "modifier.etshtinker.electricarmor.description":"受到攻击时给一定范围内敌人施加电离和缓慢，造成百分比伤害",
+  "modifier.etshtinker.electricarmor.description":"受到攻击时给敌人施加电离和缓慢，造成百分比伤害",
 
   "modifier.etshtinker.extralight": "究极轻盈",
   "modifier.etshtinker.extralight.flavor": "影流之主",
@@ -127,7 +127,7 @@
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"挥舞这种材料的工具使你的手直接开始抽搐，攻击间隔越长伤害越高，反之则越低。\n穿戴此材料制成的装甲时获得25%的减伤，对穿甲伤害则再次减免50%。",
+  "modifier.etshtinker.ultradenseex.description":"手持时右键充能，属性等级越高充能量越大。攻击时消耗全部充能使工具上所有攻击性词条额外生效多次。",
 
   "modifier.etshtinker.extraweight": "万吨沉重EX",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
@@ -437,6 +437,10 @@
   "modifier.etshtinker.flexible_blade.flavor": "可伸缩光剑",
   "modifier.etshtinker.flexible_blade.description":"等离子斩击初始范围减半，但每攻击到一个敌人会使斩击范围*1.2",
 
+  "modifier.etshtinker.critical": "暴击",
+  "modifier.etshtinker.critical.flavor": "满爆out",
+  "modifier.etshtinker.critical.description":"工具发射的等离子射线必定造成暴击",
+
 
 
   "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -723,15 +727,15 @@
   "etshtinker.tool.tooltip.effectivefluid": "流体基础伤害",
 
   "item.etshtinker.ionized_cannon": "离子化射线炮",
-  "item.etshtinker.ionized_cannon.description": "重型远距离近战武器，具有无限的耐久，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书)，对其路径上的敌人造成多段伤害。",
+  "item.etshtinker.ionized_cannon.description": "重型远距离近战武器，使用时副手不能有其它工具，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书和JEI)，对其路径上的敌人造成多段伤害。",
   "tool_stat.etshtinker.plasmarange": "射程",
-  "tool_stat.etshtinker.plasmarange.description": "射线的最大距离",
+  "tool_stat.etshtinker.ionizer.plasmarange.description": "射线的最大距离",
   "tool_stat.etshtinker.cooldown": "冷却时间",
-  "tool_stat.etshtinker.cooldown.description": "决定冷却的时间，单位为刻",
+  "tool_stat.etshtinker.ionizer.cooldown.description": "决定冷却的时间，单位为刻",
   "tool_stat.etshtinker.damagemultiplier": "伤害倍率",
-  "tool_stat.etshtinker.damagemultiplier.description": "伤害的倍率，最终能造成的伤害会乘以此值",
+  "tool_stat.etshtinker.ionizer.damagemultiplier.description": "伤害的倍率，最终能造成的伤害会乘以此值",
   "tool_stat.etshtinker.fluid_capacity": "流体容量",
-  "tool_stat.etshtinker.fluid_capacity.description": "额外增加的流体容量",
+  "tool_stat.etshtinker.fluid_chamber.fluid_capacity.description": "额外增加的流体容量",
   "tool_stat.etshtinker.multiplasma": "多重射击",
   "tool_stat.etshtinker.multiplasma.description": "额外发射的等离子体射线数量",
 
@@ -755,12 +759,14 @@
   "item.etshtinker.fluid_chamber": "储液器",
   "item.etshtinker.ionizer": "离子化腔",
 
+  "pattern.etshtinker.fluid_chamber": "储液器",
+
   "item.etshtinker.constrained_plasma_saber": "约束等离子阔剑",
-  "item.etshtinker.constrained_plasma_saber.description": "高攻速近战武器，具有无限的耐久，使用时副手不能有其它工具。挥舞时消耗工具存储的冶炼炉燃料释放等离子斩击，造成范围伤害，伤害受燃料的温度影响。",
+  "item.etshtinker.constrained_plasma_saber.description": "高攻速近战武器，使用时副手不能有其它工具。挥舞时消耗工具存储的冶炼炉燃料释放等离子斩击，造成范围伤害，伤害受燃料的温度影响。",
   "tool_stat.etshtinker.criticalrate": "暴击率",
-  "tool_stat.etshtinker.criticalrate.description": "攻击时发生暴击的概率，高于100%的部分会转换为额外暴击伤害",
+  "tool_stat.etshtinker.plasma_generator.criticalrate.description": "攻击时发生暴击的概率，高于100%的部分会转换为额外暴击伤害",
   "tool_stat.etshtinker.fluidefficiency": "流体效率",
-  "tool_stat.etshtinker.fluidefficiency.description": "流体的消耗量最终会除以此值",
+  "tool_stat.etshtinker.plasma_generator.fluidefficiency.description": "流体的消耗量最终会除以此值",
   "item.etshtinker.plasma_generator": "约束场发生器",
   "stat.etshtinker.plasma_generator": "约束场发生器",
 

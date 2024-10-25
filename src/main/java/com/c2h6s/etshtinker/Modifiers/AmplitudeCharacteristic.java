@@ -46,7 +46,7 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
 
     @Override
     public InteractionResult onToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
-        if (interactionHand == InteractionHand.MAIN_HAND){
+        if (interactionHand == InteractionHand.MAIN_HAND&&player instanceof ServerPlayer){
             GeneralInteractionModifierHook.startUsing(iToolStackView,modifierEntry.getId(),player,interactionHand);
             return InteractionResult.CONSUME;
         }

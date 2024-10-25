@@ -20,9 +20,6 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.init.ItemReg.etshtinkerMekansimMaterial.anti_neutronium;
 
 public class selfassemble extends etshmodifieriii {
-    public boolean isNoLevels() {
-        return true;
-    }
     private final ResourceLocation repair = new ResourceLocation(MOD_ID, "repair");
     public void onModifierRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(repair);

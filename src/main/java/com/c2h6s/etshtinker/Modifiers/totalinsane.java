@@ -60,7 +60,7 @@ public class totalinsane extends etshmodifieriii implements DurabilityDisplayMod
     private void livinghurtevent(LivingHurtEvent event) {
         LivingEntity target =event.getEntity();
         Entity entity1 =event.getSource().getEntity();
-        if (target instanceof Player&&entity1!=null){
+        if (target !=null&&entity1!=null){
             if (getMainLevel(target,this)>0){
                 target.setHealth(0);
             }
