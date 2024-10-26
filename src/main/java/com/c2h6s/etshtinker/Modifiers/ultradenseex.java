@@ -121,8 +121,8 @@ public class ultradenseex extends etshmodifieriii implements GeneralInteractionM
         if (entity instanceof Player player&&player.level instanceof ServerLevel serverLevel) {
             ModDataNBT toolData = tool.getPersistentData();
             toolData.putFloat(multiplier, toolData.getFloat(multiplier) + 0.2f * modifier.getLevel());
-            player.getCooldowns().addCooldown(tool.getItem(),10);
-            serverLevel.sendParticles(ParticleTypes.WITCH,player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ(),15,0.2,0.2,0.2,0.2);
+            player.getCooldowns().addCooldown(tool.getItem(),20);
+            serverLevel.sendParticles(ParticleTypes.WITCH,player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ(),20,0.2,0.2,0.2,0.4);
         }
     }
 

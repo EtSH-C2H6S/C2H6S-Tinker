@@ -41,6 +41,11 @@ public class gravitymanipulate extends etshmodifieriii {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity living){
             living.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
+            if ((living.isNoGravity()||!living.isOnGround())&&!(living instanceof Player)){
+                living.setNoGravity(false);
+                living.fallDistance+=10*modifier.getLevel();
+                living.setDeltaMovement(0,-5,0);
+            }
         }
         return knockback;
     }
@@ -51,6 +56,11 @@ public class gravitymanipulate extends etshmodifieriii {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target !=null){
             target.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
+            if ((target.isNoGravity()||!target.isOnGround())&&!(target instanceof Player)){
+                target.setNoGravity(false);
+                target.fallDistance+=10*modifier.getLevel();
+                target.setDeltaMovement(0,-5,0);
+            }
         }
         return false;
     }

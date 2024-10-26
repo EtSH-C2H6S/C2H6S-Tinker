@@ -64,12 +64,8 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                     }
                     ArrowItem arrowItem = ammo.getItem() instanceof ArrowItem arrow ? arrow : (ArrowItem)Items.ARROW;
                     float inaccuracy = ModifierUtil.getInaccuracy(tool, player)+1f;
-                    float startAngle = getAngleStart(ammo.getCount());
-                    int primaryIndex = ammo.getCount() / 2;
-                    for (int arrowIndex = 0; arrowIndex < ammo.getCount(); arrowIndex++) {
                         AbstractArrow arrow = arrowItem.createArrow(level, ammo, player);
-                        float angle = startAngle + (10 * arrowIndex);
-                        arrow.shootFromRotation(player, player.getXRot() + angle, player.getYRot(), 0, 3.0F * velocity, inaccuracy);
+                        arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 3.0F * velocity, inaccuracy);
                         float baseArrowDamage = (float)(arrow.getBaseDamage() - 2 + tool.getStats().get(ToolStats.PROJECTILE_DAMAGE));
                         arrow.setBaseDamage(ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.PROJECTILE_DAMAGE, baseArrowDamage));
                         ModifierNBT modifiers = tool.getModifiers();
@@ -79,13 +75,13 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                             arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                         }
                         for (ModifierEntry entry : modifiers.getModifiers()) {
-                            entry.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, entry, player, arrow, arrow, arrowData, arrowIndex == primaryIndex);
+                            entry.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, entry, player, arrow, arrow, arrowData, true);
                         }
                         arrow.setCritArrow(true);
                         arrow.setBaseDamage(0.1);
                         level.addFreshEntity(arrow);
-                        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F + (angle / 10f));
-                    }
+                        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+
                     ToolDamageUtil.damageAnimated(tool, ammo.getCount(), player, player.getUsedItemHand());
                 }
                 player.awardStat(Stats.ITEM_USED.get(bow));

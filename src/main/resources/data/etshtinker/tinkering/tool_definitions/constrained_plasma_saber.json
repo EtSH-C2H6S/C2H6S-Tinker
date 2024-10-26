@@ -5,19 +5,19 @@
       "parts": [
         {
           "item": "tconstruct:broad_blade",
-          "scale": 0.4
+          "scale": 0.3
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.4
+          "scale": 0.3
         },
         {
           "item": "tconstruct:tough_handle",
-          "scale": 0.4
+          "scale": 0.3
         },
         {
           "item": "etshtinker:fluid_chamber",
-          "scale": 0.7
+          "scale": 0.75
         },
         "etshtinker:plasma_generator"
       ]
@@ -54,7 +54,7 @@
     {
       "type": "tconstruct:base_stats",
       "stats": {
-        "tconstruct:attack_damage": 1.7,
+        "tconstruct:attack_damage": 1.5,
         "tconstruct:attack_speed": 2.35,
         "tconstruct:durability": 5
       }
@@ -62,7 +62,7 @@
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 0.85,
+        "tconstruct:attack_damage": 0.75,
         "tconstruct:durability": 1.75
       }
     },
