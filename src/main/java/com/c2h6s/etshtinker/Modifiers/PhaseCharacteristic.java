@@ -48,7 +48,7 @@ public class PhaseCharacteristic extends etshmodifieriii {
 
     @Override
     public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (abstractArrow!=null){
+        if (abstractArrow!=null&&abstractArrow.isCritArrow()){
             if (livingEntity instanceof ServerPlayer player){
                 if (player.totalExperience>30){
                     player.giveExperiencePoints(-30);

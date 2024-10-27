@@ -115,7 +115,7 @@
 
   "modifier.etshtinker.electrified": "疾电矢",
   "modifier.etshtinker.electrified.flavor": "如闪电般迅速...",
-  "modifier.etshtinker.electrified.description":"极大增加拉弓速度，箭矢速度翻倍但是伤害变为1/4。拉弓时急速射出不精确的伤害固定为0.1的箭矢，箭矢击中敌人时对敌人施加电离和缓慢效果。",
+  "modifier.etshtinker.electrified.description":"极大增加拉弓速度，箭矢速度翻倍但是伤害变为1/4。拉弓时急速射出不精确的伤害固定为0.025的箭矢，箭矢击中敌人时对敌人施加电离和缓慢效果。",
 
   "modifier.etshtinker.electricarmor": "电流附加",
   "modifier.etshtinker.electricarmor.flavor": "雷电法王",
@@ -255,7 +255,7 @@
 
   "modifier.etshtinker.solidified": "硬化",
   "modifier.etshtinker.solidified.flavor": "稳如老狗",
-  "modifier.etshtinker.solidified.description":"每级增加50%护甲值、盔甲韧性、耐久度和10%闪避率。",
+  "modifier.etshtinker.solidified.description":"每级增加25%护甲值、盔甲韧性、50%耐久度和5%伤害减免。",
 
   "modifier.etshtinker.phantomreforged": "灵质之锻",
   "modifier.etshtinker.phantomreforged.flavor": "万物皆有灵",

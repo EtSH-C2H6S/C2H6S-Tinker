@@ -21,13 +21,13 @@ public class solidified extends etshmodifieriii implements ToolStatsModifierHook
     }
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.ARMOR.multiply(builder,1+0.5*modifier.getLevel());
-        ToolStats.ARMOR_TOUGHNESS.multiply(builder,1+0.5*modifier.getLevel());
+        ToolStats.ARMOR.multiply(builder,1+0.25*modifier.getLevel());
+        ToolStats.ARMOR_TOUGHNESS.multiply(builder,1+0.25*modifier.getLevel());
         ToolStats.DURABILITY.multiply(builder,1+0.5*modifier.getLevel());
     }
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         if (tool.getModifierLevel(this)>0){
-            return amount*(1-0.1f*modifier.getLevel());
+            return amount*(1-0.05f*modifier.getLevel());
         }
         return amount;
     }

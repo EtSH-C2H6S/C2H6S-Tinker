@@ -64,9 +64,9 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                         ammo = new ItemStack(Items.ARROW);
                     }
                     ArrowItem arrowItem = ammo.getItem() instanceof ArrowItem arrow ? arrow : (ArrowItem)Items.ARROW;
-                    float inaccuracy = ModifierUtil.getInaccuracy(tool, player)+1f;
+                    float inaccuracy = ModifierUtil.getInaccuracy(tool, player)+1.5f;
                         AbstractArrow arrow = arrowItem.createArrow(level, ammo, player);
-                        arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 20, inaccuracy);
+                        arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 3.0f*velocity, inaccuracy);
                         float baseArrowDamage = (float)(arrow.getBaseDamage() - 2 + tool.getStats().get(ToolStats.PROJECTILE_DAMAGE));
                         arrow.setBaseDamage(ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.PROJECTILE_DAMAGE, baseArrowDamage));
                         ModifierNBT modifiers = tool.getModifiers();
@@ -79,7 +79,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                             entry.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, entry, player, arrow, arrow, arrowData, true);
                         }
                         arrow.setCritArrow(true);
-                        arrow.setBaseDamage(0.1);
+                        arrow.setBaseDamage(0.025);
                         arrow.setDeltaMovement(getUnitizedVec3(arrow.getDeltaMovement()));
                         level.addFreshEntity(arrow);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);

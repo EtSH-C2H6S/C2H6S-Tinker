@@ -20,35 +20,32 @@ public class novaradiation extends etsheffect {
     public void applyEffectTick(LivingEntity living, int amplifier) {
         SecureRandom RANDOM =EtSHrnd();
         Level world =living.level;
-        if (world!=null) {
-            if (RANDOM.nextInt(2) == 1) {
-                if (world.isClientSide) {
-                    world.addParticle(etshtinkerParticleType.nova.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), RANDOM.nextDouble() * 0.6 - 0.3, RANDOM.nextDouble() * 0.2 - 0.1, RANDOM.nextDouble() * 0.6 - 0.3);
-                }
-                else {
-                    ((ServerLevel)world).sendParticles(etshtinkerParticleType.nova.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(),1,0, 0, 0, RANDOM.nextDouble() * 0.6 - 0.3);
-                }
+        if (RANDOM.nextInt(2) == 1) {
+            if (world.isClientSide) {
+                world.addParticle(etshtinkerParticleType.nova.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), RANDOM.nextDouble() * 0.6 - 0.3, RANDOM.nextDouble() * 0.2 - 0.1, RANDOM.nextDouble() * 0.6 - 0.3);
+            } else {
+                ((ServerLevel) world).sendParticles(etshtinkerParticleType.nova.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), 1, 0, 0, 0, RANDOM.nextDouble() * 0.6 - 0.3);
             }
-            if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
-                living.invulnerableTime = 0;
-                living.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor(), 64 * amplifier + 1);
-                living.invulnerableTime = 0;
-            }
-            if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
-                living.invulnerableTime = 0;
-                living.hurt(DamageSource.STALAGMITE.bypassMagic().bypassArmor(), 64 * amplifier);
-                living.invulnerableTime = 0;
-            }
-            if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
-                living.invulnerableTime = 0;
-                living.hurt(DamageSource.LAVA.bypassMagic().bypassArmor(), 64 * amplifier);
-                living.invulnerableTime = 0;
-            }
-            if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
-                living.invulnerableTime = 0;
-                living.hurt(DamageSource.WITHER.bypassMagic().bypassArmor(), 64 * amplifier);
-                living.invulnerableTime = 0;
-            }
+        }
+        if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
+            living.invulnerableTime = 0;
+            living.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor(), 32 * amplifier );
+            living.invulnerableTime = 0;
+        }
+        if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
+            living.invulnerableTime = 0;
+            living.hurt(DamageSource.STALAGMITE.bypassMagic().bypassArmor(), 32 * amplifier);
+            living.invulnerableTime = 0;
+        }
+        if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
+            living.invulnerableTime = 0;
+            living.hurt(DamageSource.LAVA.bypassMagic().bypassArmor(), 32 * amplifier);
+            living.invulnerableTime = 0;
+        }
+        if (RANDOM.nextInt(80) <= Math.min(4, amplifier)) {
+            living.invulnerableTime = 0;
+            living.hurt(DamageSource.WITHER.bypassMagic().bypassArmor(), 32 * amplifier);
+            living.invulnerableTime = 0;
         }
     }
 }

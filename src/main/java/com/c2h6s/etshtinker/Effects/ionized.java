@@ -33,7 +33,7 @@ public class ionized extends etsheffect {
         }
         if (RANDOM.nextInt(20) <= Math.min(4, amplifier + 1)) {
             living.invulnerableTime = 0;
-            living.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor(), living.getHealth() * 0.01f * (amplifier + 1));
+            living.hurt(DamageSource.MAGIC, living.getHealth() * 0.005f * (amplifier + 1));
             living.invulnerableTime = 0;
         }
         double x = living.getX();
