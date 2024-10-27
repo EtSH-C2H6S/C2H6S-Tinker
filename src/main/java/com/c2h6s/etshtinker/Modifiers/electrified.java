@@ -80,7 +80,6 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                         }
                         arrow.setCritArrow(true);
                         arrow.setBaseDamage(0.025);
-                        arrow.setDeltaMovement(getUnitizedVec3(arrow.getDeltaMovement()));
                         level.addFreshEntity(arrow);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
 
