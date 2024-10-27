@@ -33,6 +33,7 @@ import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
+import static com.c2h6s.etshtinker.util.vecCalc.getUnitizedVec3;
 import static slimeknights.tconstruct.library.tools.item.ranged.ModifiableLauncherItem.getAngleStart;
 
 
@@ -65,7 +66,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                     ArrowItem arrowItem = ammo.getItem() instanceof ArrowItem arrow ? arrow : (ArrowItem)Items.ARROW;
                     float inaccuracy = ModifierUtil.getInaccuracy(tool, player)+1f;
                         AbstractArrow arrow = arrowItem.createArrow(level, ammo, player);
-                        arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 3.0F * velocity, inaccuracy);
+                        arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 20, inaccuracy);
                         float baseArrowDamage = (float)(arrow.getBaseDamage() - 2 + tool.getStats().get(ToolStats.PROJECTILE_DAMAGE));
                         arrow.setBaseDamage(ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.PROJECTILE_DAMAGE, baseArrowDamage));
                         ModifierNBT modifiers = tool.getModifiers();
@@ -79,6 +80,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                         }
                         arrow.setCritArrow(true);
                         arrow.setBaseDamage(0.1);
+                        arrow.setDeltaMovement(getUnitizedVec3(arrow.getDeltaMovement()));
                         level.addFreshEntity(arrow);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
 
