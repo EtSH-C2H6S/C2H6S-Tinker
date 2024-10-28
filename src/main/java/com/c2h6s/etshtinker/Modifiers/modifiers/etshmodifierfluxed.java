@@ -19,7 +19,6 @@ public class etshmodifierfluxed implements IEnergyStorage, ToolCapabilityProvide
     public static final ResourceLocation MAX_ENERGY = new ResourceLocation(MOD_ID, "max_energy");
     public static final ResourceLocation STORED_ENERGY = new ResourceLocation(MOD_ID, "stored_energy");
     public static final ResourceLocation ENERGY_OWNER = new ResourceLocation(MOD_ID, "energy_owner");
-    public static final int MAX_TRANSFER_RATE = 100000000;
     public final Supplier<? extends IToolStackView> tool;
     public final LazyOptional<IEnergyStorage> capOptional;
 
@@ -79,7 +78,7 @@ public class etshmodifierfluxed implements IEnergyStorage, ToolCapabilityProvide
     }
 
     public int receiveEnergy(int maxReceive, boolean simulate) {
-        return receiveEnergy(this.tool.get(), getMaxEnergyStored(this.tool.get())/20, simulate);
+        return receiveEnergy(this.tool.get(), getMaxEnergyStored(this.tool.get())/5, simulate);
     }
 
     public int extractEnergy(int maxExtract, boolean simulate) {

@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.integration.jeiIntegration;
 import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.recipes.IonizedCannonRecipe;
+import com.c2h6s.etshtinker.tools.item.tinker.IonizedCannon;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
@@ -70,11 +71,13 @@ public class IonizedCannonRecipeCategory implements IRecipeCategory<IonizedCanno
     @Override
     public void draw(IonizedCannonRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
         Component damage =Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(": ").append(String.format("%.2f",recipe.getDamage())).withStyle(ChatFormatting.GOLD);
+        Component amount =Component.translatable("etshtinker.tool.tooltip.fluid_consumption").append(": ").append(String.valueOf(IonizedCannon.BaseFluidConsumption(recipe.getFluid()))+" mB").withStyle(ChatFormatting.GOLD);
         if (recipe.getSpecial()!=null) {
             Component special = Component.translatable("etshtinker.tool.tooltip.fluidhasspecial").append(": ").append(Component.translatable("etshtinker.tool.tooltip.fluidspecial." + recipe.getSpecial())).withStyle(ChatFormatting.LIGHT_PURPLE);
-            Minecraft.getInstance().font.draw(stack, special, 26, 14, 0);
+            Minecraft.getInstance().font.draw(stack, special, 26, 17, 0);
         }
-        Minecraft.getInstance().font.draw(stack, damage, 26, 4, 0);
+        Minecraft.getInstance().font.draw(stack, damage, 26, 1, 0);
+        Minecraft.getInstance().font.draw(stack, amount, 26, 9, 0);
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
     }
 }

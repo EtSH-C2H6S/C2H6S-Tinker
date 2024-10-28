@@ -768,9 +768,12 @@
   "tool_stat.etshtinker.fluidefficiency": "流体效率",
   "tool_stat.etshtinker.plasma_generator.fluidefficiency.description": "流体的消耗量最终会除以此值",
   "tool_stat.etshtinker.plasma_generator.damagemultiplier.description": "伤害的倍率，最终能造成的伤害会乘以此值",
+  "tool_stat.etshtinker.slashcolor_index": "斩击颜色",
   "tool_stat.etshtinker.plasma_generator.slashcolor_index.description": "斩击的颜色，可能会受部分强化影响",
   "item.etshtinker.plasma_generator": "约束场发生器",
   "stat.etshtinker.plasma_generator": "约束场发生器",
+
+  "etshtinker.tool.tooltip.fluid_consumption": "流体基础消耗速率",
 
   "etshtinker.tool.tooltip.fluid_efficiency": "流体效率",
   "etshtinker.tool.tooltip.critical_rate": "暴击率",

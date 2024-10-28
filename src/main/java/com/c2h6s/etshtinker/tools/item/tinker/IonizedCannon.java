@@ -1,6 +1,5 @@
 package com.c2h6s.etshtinker.tools.item.tinker;
 
-import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
@@ -10,11 +9,10 @@ import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.FluidChamberSync;
 import com.c2h6s.etshtinker.network.packet.IonizedCannonChargeSync;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -32,10 +30,11 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
+import slimeknights.mantle.fluid.tooltip.FluidTooltipHandler;
 import slimeknights.tconstruct.common.TinkerTags;
+import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
@@ -124,8 +123,47 @@ public class IonizedCannon extends ModifiableItem {
         }
         return TANK_HELPER.getFluid(tool).getAmount() > tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) ? 72000 : 0;
     }
-    @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
+
+    public int getFluidBaseComsumption(FluidStack fluidStack){
+        int amount =100;
+        Fluid fluid = fluidStack.getFluid();
+        if (fluid!=null){
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SLIME_TOOLTIPS)){
+                amount=25;
+            }
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SMALL_GEM_TOOLTIPS)){
+                amount=10;
+            }
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.LARGE_GEM_TOOLTIPS)){
+                amount=10;
+            }
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.METAL_TOOLTIPS)){
+                amount=9;
+            }
+        }
+        return amount;
+    }
+
+    public static int BaseFluidConsumption(Fluid fluid){
+        int amount =100;
+        if (fluid!=null){
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SLIME_TOOLTIPS)){
+                amount=25;
+            }
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SMALL_GEM_TOOLTIPS)){
+                amount=10;
+            }
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.LARGE_GEM_TOOLTIPS)){
+                amount=10;
+            }
+            if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.METAL_TOOLTIPS)){
+                amount=9;
+            }
+        }
+        return amount;
+    }
+
+    public void createPlasmaExplosion(ItemStack stack, Level level, LivingEntity living, int timeLeft){
         if (living instanceof ServerPlayer player){
             packetHandler.sendToPlayer(new IonizedCannonChargeSync(0),player);
         }
@@ -134,7 +172,9 @@ public class IonizedCannon extends ModifiableItem {
         Fluid fluid =fluidStack.getFluid();
         int times =tool.getStats().getInt(etshtinkerToolStats.MULTIPLASMA);
         int a =0;
-        int consumption = Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 20*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
+        int consumption = getFluidBaseComsumption(fluidStack);
+        consumption = Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * consumption*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
+        consumption =Math.max(1,consumption);
         while (a<=times) {
             if (living instanceof Player player) {
                 for (ModifierEntry modifier : tool.getModifierList()) {
@@ -169,6 +209,11 @@ public class IonizedCannon extends ModifiableItem {
             a++;
         }
     }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
+        createPlasmaExplosion(stack,level,living,timeLeft);
+    }
     public boolean wrongFluid(IToolStackView tool){
         Fluid fluid =TANK_HELPER.getFluid(tool).getFluid();
         return getFluidparticle(fluid) == null;
@@ -202,46 +247,7 @@ public class IonizedCannon extends ModifiableItem {
             packetHandler.sendToPlayer(new IonizedCannonChargeSync(0),player);
         }
         if (tool.getModifierLevel(etshtinkerModifiers.autoionizing_STATIC_MODIFIER.get())>0){
-            Fluid fluid =TANK_HELPER.getFluid(tool).getFluid();
-            FluidStack fluidStack =TANK_HELPER.getFluid(tool);
-            int times =tool.getStats().getInt(etshtinkerToolStats.MULTIPLASMA);
-            int a =0;
-            int consumption = Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * 20*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
-
-            while (a<=times) {
-                if (living instanceof Player player) {
-                    for (ModifierEntry modifier : tool.getModifierList()) {
-                        consumption = modifier.getHook(etshtinkerHook.FLUID_CONSUMPTION).getFluidConsumption(tool, fluidStack, player, consumption, consumption);
-                    }
-                    if (TANK_HELPER.getFluid(tool).getAmount() > consumption) {
-                        plasmaexplosionentity entity = new plasmaexplosionentity(etshtinkerEntity.plasmaexplosionentity.get(), level);
-                        if (tool.getStats().get(etshtinkerToolStats.SCATTER) > 0) {
-                            entity.rayVec3 = getScatteredVec3(living.getLookAngle().scale(tool.getStats().get(etshtinkerToolStats.PLASMARANGE)), Math.tan(tool.getStats().get(etshtinkerToolStats.SCATTER)));
-                        } else
-                            entity.rayVec3 = living.getLookAngle().scale(tool.getStats().get(etshtinkerToolStats.PLASMARANGE));
-                        entity.scale = tool.getStats().get(etshtinkerToolStats.SCALE);
-                        entity.particle = getFluidparticle(fluid);
-                        entity.damage = getFluidDamage(fluid) * (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)) * tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-                        entity.tool = tool;
-                        entity.special = getFluidSpecial(fluid);
-                        entity.setPos(living.getEyePosition().x, living.getEyePosition().y - 0.5 * entity.getBbHeight(), living.getEyePosition().z);
-                        entity.setOwner(living);
-                        for (ModifierEntry modifier : tool.getModifierList()) {
-                            entity = modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_CREATE).plasmaExplosionCreate(tool, fluidStack, player, entity);
-                        }
-                        level.addFreshEntity(entity);
-                        living.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);
-                        player.getCooldowns().addCooldown(stack.getItem(), tool.getStats().getInt(etshtinkerToolStats.COOLDOWN));
-
-                        FluidStack fluidStack1 = new FluidStack(TANK_HELPER.getFluid(tool), TANK_HELPER.getFluid(tool).getAmount() - consumption);
-                        TANK_HELPER.setFluid(tool, fluidStack1);
-                        ToolDamageUtil.damageAnimated(tool,1,player,InteractionHand.MAIN_HAND);
-                    }
-                    else break;
-                }
-                else break;
-                a++;
-            }
+            createPlasmaExplosion(stack,level,living,0);
         }
         return stack;
     }
@@ -263,14 +269,15 @@ public class IonizedCannon extends ModifiableItem {
         builder.add(Component.translatable("etshtinker.tool.tooltip.damagemultiplier").append(":"+String.format("%.01f",(1+tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER))*tool.getStats().get(ToolStats.ATTACK_DAMAGE))));
         builder.add(Component.translatable("etshtinker.tool.tooltip.chargespeed").append(":"+String.valueOf((int) (40/tool.getStats().get(ToolStats.ATTACK_SPEED)))));
         builder.add(Component.translatable("etshtinker.tool.tooltip.cooldown").append(":"+String.valueOf(tool.getStats().get(etshtinkerToolStats.COOLDOWN))).withStyle(ChatFormatting.GOLD));
-        builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.round( tool.getStats().get(ToolStats.ATTACK_DAMAGE)*20*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER)))).withStyle(ChatFormatting.YELLOW));
         builder.add(Component.translatable("etshtinker.tool.tooltip.scatter").append(":"+String.format("%.01f",tool.getStats().get(etshtinkerToolStats.SCATTER))).withStyle(ChatFormatting.GOLD));
         builder.addAllFreeSlots();
         if (!checkOffHand(player)){
             builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
         if (!wrongFluid(tool)){
+            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.round( tool.getStats().get(ToolStats.ATTACK_DAMAGE)*getFluidBaseComsumption(TANK_HELPER.getFluid(tool))*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER)))).append(" mB").withStyle(ChatFormatting.GOLD));
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":"+String.format("%.001f",getFluidDamage(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.GREEN));
+            builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_consumption").append(":"+String.valueOf(getFluidBaseComsumption(TANK_HELPER.getFluid(tool)))).append(" mB").withStyle(ChatFormatting.YELLOW));
             if (getFluidSpecial(TANK_HELPER.getFluid(tool).getFluid())!=null){
                 builder.add(Component.translatable("etshtinker.tool.tooltip.fluidhasspecial").append(":").append(Component.translatable("etshtinker.tool.tooltip.fluidspecial."+getFluidSpecial(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.AQUA));
             }

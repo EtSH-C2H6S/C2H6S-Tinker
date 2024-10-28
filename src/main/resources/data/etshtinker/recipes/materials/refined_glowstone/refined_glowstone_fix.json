@@ -7,7 +7,7 @@
   ],
   "type": "tconstruct:material",
   "ingredient": {
-    "item": "etshtinker:refined_glowstone"
+    "item": "mekanism:refined_glowstone"
   },
   "value": 1,
   "needed": 1,

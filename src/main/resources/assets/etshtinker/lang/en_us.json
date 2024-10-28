@@ -719,7 +719,7 @@
   "etshtinker.tool.tooltip.plasmarange": "Range",
   "etshtinker.tool.tooltip.damagemultiplier": "Damage Multiplier",
   "etshtinker.tool.tooltip.chargespeed": "Charge Time",
-  "etshtinker.tool.tooltip.powerfactor": "Fluid Draw Factor",
+  "etshtinker.tool.tooltip.powerfactor": "Final Fluid Draw Factor",
   "etshtinker.tool.tooltip.cooldown": "Cooldown",
   "etshtinker.modifier.tooltip.trinitycurse": "You can't shape this tool currently...",
 
@@ -765,6 +765,8 @@
   "tool_stat.etshtinker.plasma_generator.fluidefficiency.description": "Fluid consumption will be divided by this value.",
   "item.etshtinker.plasma_generator": "Plasma Generator",
   "stat.etshtinker.plasma_generator": "Plasma Generator",
+  "etshtinker.tool.tooltip.fluid_consumption": "Fluid Consumption",
+
 
   "etshtinker.tool.tooltip.fluid_efficiency": "Fluid Efficiency",
   "etshtinker.tool.tooltip.critical_rate": "Critical Rate",

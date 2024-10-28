@@ -23,9 +23,11 @@ import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
@@ -38,15 +40,28 @@ public class nightsenhance extends etshmodifieriii {
 
     private void onapplyeffect(MobEffectEvent.Applicable event) {
         LivingEntity target =event.getEntity();
-        if (target!=null&&(getMainLevel(target, etshtinkerModifiers.nightsenhance_STATIC_MODIFIER.get())>0||getOffLevel(target,etshtinkerModifiers.nightsenhance_STATIC_MODIFIER.get())>0)&&(event.getEffectInstance().getEffect()== MobEffects.DARKNESS||event.getEffectInstance().getEffect()== MobEffects.BLINDNESS)){
-            event.setResult(Event.Result.DENY);
+        if (target != null &&target.getMainHandItem().getItem() instanceof IModifiable) {
+            ToolStack tool =ToolStack.from(target.getMainHandItem());
+            if (tool.getModifierLevel(this)>0&& (event.getEffectInstance().getEffect() == MobEffects.DARKNESS || event.getEffectInstance().getEffect() == MobEffects.BLINDNESS)) {
+                event.setResult(Event.Result.DENY);
+            }
+        }
+        if (target != null &&target.getOffhandItem().getItem() instanceof IModifiable) {
+            ToolStack tool =ToolStack.from(target.getOffhandItem());
+            if (tool.getModifierLevel(this)>0&& (event.getEffectInstance().getEffect() == MobEffects.DARKNESS || event.getEffectInstance().getEffect() == MobEffects.BLINDNESS)) {
+                event.setResult(Event.Result.DENY);
+            }
         }
     }
 
     private void onmobfindtarget(LivingChangeTargetEvent event) {
         LivingEntity target =event.getNewTarget();
         LivingEntity entity =event.getEntity();
-        if (target!=null&&(getMainLevel(target, etshtinkerModifiers.nightsenhance_STATIC_MODIFIER.get())>0||getOffLevel(target,etshtinkerModifiers.nightsenhance_STATIC_MODIFIER.get())>0)){
+        if (target != null &&target.getMainHandItem().getItem() instanceof IModifiable) {
+            ToolStack tool =ToolStack.from(target.getMainHandItem());
+            if (tool.getModifierLevel(this)<=0){
+                return;
+            }
             if (entity!=null&&entity.getMaxHealth()<=200) {
                 event.setCanceled(true);
             }
