@@ -127,7 +127,7 @@
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"手持时右键充能，属性等级越高充能量越大。攻击时消耗全部充能使工具上所有攻击性词条额外生效多次。",
+  "modifier.etshtinker.ultradenseex.description":"手持时右键充能，属性等级越高充能量越大。攻击时消耗全部充能使工具上所有非增伤的攻击性词条额外生效多次。",
 
   "modifier.etshtinker.extraweight": "万吨沉重EX",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
@@ -441,6 +441,10 @@
   "modifier.etshtinker.critical.flavor": "满爆out",
   "modifier.etshtinker.critical.description":"工具发射的等离子射线必定造成暴击",
 
+  "modifier.etshtinker.ionizing_arrow": "等离子喷涂箭矢",
+  "modifier.etshtinker.ionizing_arrow.flavor": "纳米级涂层",
+  "modifier.etshtinker.ionizing_arrow.description":"将工具内存储的熔融材料喷涂到箭矢上，使箭矢获得材料的工具属性。",
+
 
 
   "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -721,6 +725,7 @@
   "etshtinker.tool.tooltip.powerfactor": "流体消耗速率",
   "etshtinker.tool.tooltip.cooldown": "冷却时间",
   "etshtinker.modifier.tooltip.trinitycurse": "以你目前的技术，无法在这个物品上留下任何痕迹...",
+  "etshtinker.tool.tooltip.fluid_contains_modifier": "流体包含的材料",
 
   "etshtinker.tool.tooltip.nofluid": "无流体",
   "etshtinker.tool.tooltip.wrongfluid": "无效流体",

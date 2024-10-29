@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static net.minecraft.sounds.SoundSource.NEUTRAL;
 
 
@@ -39,7 +38,7 @@ public class thermalstrike extends etshmodifieriii {
             Level world = attacker.getLevel();
             if (attacker instanceof Player player && context.isFullyCharged()&&etshmodifierfluxed.getEnergyStored(tool)>2000) {
                 world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, NEUTRAL, 1, 1.7f);
-                int modilvl = getMainLevel(attacker, this);
+                int modilvl = modifier.getLevel();
                 List<LivingEntity> ls0 = new ArrayList<>(List.of());
                 int a = 0;
                 LivingEntity entity1 = getNearestLiEnt((float) 5 + modilvl, player, player.level);

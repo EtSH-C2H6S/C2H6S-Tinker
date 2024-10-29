@@ -34,7 +34,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.security.SecureRandom;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
-import static com.c2h6s.etshtinker.util.getMainOrOff.getMainLevel;
+
 import static com.c2h6s.etshtinker.util.thermalentityutil.summonElectricField;
 
 public class thermaldefense extends etshmodifieriii {
@@ -93,7 +93,7 @@ public class thermaldefense extends etshmodifieriii {
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if(enabled&&holder instanceof Player player&&isCorrectSlot){
-            int modilvl2 = getMainLevel(holder,this);
+            int modilvl2 = modifier.getLevel();
             player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,300,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),300,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,modilvl2,false,false));

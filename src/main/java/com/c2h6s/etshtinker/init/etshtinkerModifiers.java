@@ -112,6 +112,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<MiracleCatalyst>miracle_catalyst= MODIFIERS.register("miracle_catalyst", MiracleCatalyst::new);
     public static final StaticModifier<FlexibleBlade>flexible_blade= MODIFIERS.register("flexible_blade", FlexibleBlade::new);
     public static final StaticModifier<Critical>critical= MODIFIERS.register("critical", Critical::new);
+    public static final StaticModifier<PlasmaArrowModifier>ionizing_arrow= MODIFIERS.register("ionizing_arrow", PlasmaArrowModifier::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

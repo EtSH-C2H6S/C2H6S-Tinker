@@ -26,7 +26,6 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
 import java.util.List;
 
@@ -93,7 +92,7 @@ public class ragedangery extends etshmodifieriii implements DurabilityDisplayMod
                 toolData.putFloat(rageatttime, 1);
                 toolData.putFloat(ragedur, 200);
             }
-            if (toolData !=null&&toolData.getInt(ragedur) > 0 && getMainLevel(attacker, this) > 0 && target != null) {
+            if (toolData !=null&&toolData.getInt(ragedur) > 0 && modifiers.getLevel(this.getId()) > 0 && target != null) {
                 target.invulnerableTime = 0;
                 float arrowspeed = (float) Math.pow(Math.pow(arrow.getDeltaMovement().x, 2) + Math.pow(arrow.getDeltaMovement().y, 2) + Math.pow(arrow.getDeltaMovement().z, 2), 0.5);
                 target.invulnerableTime = 0;

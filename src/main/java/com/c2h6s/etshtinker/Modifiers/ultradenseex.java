@@ -92,21 +92,6 @@ public class ultradenseex extends etshmodifieriii implements GeneralInteractionM
         tool.getPersistentData().putFloat(multiplier,0);
     }
 
-    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
-        int z =0;
-        float damageini =baseDamage;
-        while (z<tool.getPersistentData().getFloat(multiplier)) {
-            for (ModifierEntry entry : tool.getModifierList()) {
-                if (entry != modifier) {
-                    damageini = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, damageini, damageini);
-                }
-            }
-            z++;
-        }
-        return damageini;
-
-    }
-
     @Override
     public InteractionResult onToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
         if (!player.level.isClientSide&&iToolStackView.getPersistentData().getFloat(multiplier)<=2*modifierEntry.getLevel()&!player.getCooldowns().isOnCooldown(iToolStackView.getItem())) {
@@ -121,7 +106,7 @@ public class ultradenseex extends etshmodifieriii implements GeneralInteractionM
         if (entity instanceof Player player&&player.level instanceof ServerLevel serverLevel) {
             ModDataNBT toolData = tool.getPersistentData();
             toolData.putFloat(multiplier, toolData.getFloat(multiplier) + 0.2f * modifier.getLevel());
-            player.getCooldowns().addCooldown(tool.getItem(),20);
+            player.getCooldowns().addCooldown(tool.getItem(),15);
             serverLevel.sendParticles(ParticleTypes.WITCH,player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ(),20,0.2,0.2,0.2,0.4);
         }
     }

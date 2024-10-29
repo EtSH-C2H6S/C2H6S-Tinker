@@ -14,7 +14,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
 public class sharpnessex extends etshmodifieriii {
@@ -26,7 +25,7 @@ public class sharpnessex extends etshmodifieriii {
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (getMainLevel(attacker, this) > 0 && attacker instanceof Player player && getMainLevel(player, this) > 0 && target != null) {
+            if (modifier.getLevel() > 0 && attacker instanceof Player player && modifier.getLevel() > 0) {
                 DamageSource.playerAttack(player).bypassArmor().bypassInvul().bypassMagic();
                 target.invulnerableTime = 0;
                 target.hurt(DamageSource.playerAttack(player), damage * 0.5F);
@@ -36,7 +35,7 @@ public class sharpnessex extends etshmodifieriii {
         return baseKnockback;
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (getMainLevel(attacker, this) > 0 && attacker instanceof Player player && getMainLevel(player, this) > 0 && target != null&&projectile instanceof AbstractArrow arrow) {
+        if (attacker instanceof Player player && target != null&&projectile instanceof AbstractArrow arrow) {
             DamageSource.playerAttack(player).bypassArmor().bypassInvul().bypassMagic();
             target.invulnerableTime = 0;
             target.hurt(DamageSource.playerAttack(player), (float) (arrow.getBaseDamage()* getMold(arrow.getDeltaMovement()) * 0.5F));

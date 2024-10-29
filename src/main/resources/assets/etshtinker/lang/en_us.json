@@ -401,6 +401,10 @@
   "modifier.etshtinker.phase_characteristic.flavor": "声形俱灭！",
   "modifier.etshtinker.phase_characteristic.description":"射击时消耗20点经验值凭空产生箭矢，箭矢击中后造成音爆并返还10点经验。",
 
+  "modifier.etshtinker.ionizing_arrow": "等离子喷涂箭矢",
+  "modifier.etshtinker.ionizing_arrow.flavor": "纳米级涂层",
+  "modifier.etshtinker.ionizing_arrow.description":"将工具内存储的熔融材料喷涂到箭矢上，使箭矢获得材料的工具属性。",
+
   "modifier.etshtinker.amplitude_characteristic": "Amplitude Characteristic",
   "modifier.etshtinker.amplitude_characteristic.flavor": "Soul resonate.",
   "modifier.etshtinker.amplitude_characteristic.description":"Hold right click to charge,release it after 2 seconds will result in strong sonic boom.Needs to consume experience.",
@@ -767,6 +771,7 @@
   "stat.etshtinker.plasma_generator": "Plasma Generator",
   "etshtinker.tool.tooltip.fluid_consumption": "Fluid Consumption",
 
+  "etshtinker.tool.tooltip.fluid_contains_modifier": "Material From the Fluid",
 
   "etshtinker.tool.tooltip.fluid_efficiency": "Fluid Efficiency",
   "etshtinker.tool.tooltip.critical_rate": "Critical Rate",
@@ -786,6 +791,9 @@
   "etshtinker.tooltip.dark": "Shadow",
   "etshtinker.tooltip.rainbow": "Chroma",
 
+  "tool_stat.etshtinker.plasma_generator.damagemultiplier.description": "Damage Multiplier,actual damage will be multiplied by this.",
+  "tool_stat.etshtinker.slashcolor_index": "Slash Color",
+  "tool_stat.etshtinker.plasma_generator.slashcolor_index.description": "Color of slash,might be affect by some of the modifiers.",
 
   "item.etshtinker.sculk_energycore": "Sculk Energy Core",
   "item.etshtinker.fluid_chamber_cast": "Fluid Chamber Cast",

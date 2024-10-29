@@ -24,7 +24,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.util.thermalentityutil.*;
 
 import cofh.core.init.CoreMobEffects;
@@ -35,8 +34,8 @@ public class thermalenhance extends etshmodifieriii {
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (enabled && attacker instanceof Player player && getMainLevel(attacker, this) > 0 && entity != null) {
-                int modilvl = getMainLevel(attacker, this);
+            if (enabled && attacker instanceof Player player) {
+                int modilvl = modifier.getLevel();
                 target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*2));
                 target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,230));
                 target.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 400, modilvl * 2, false, false));
@@ -55,7 +54,7 @@ public class thermalenhance extends etshmodifieriii {
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (attacker instanceof Player player && getMainLevel(attacker, this) > 0 && target != null) {
+            if (attacker instanceof Player player  && target != null) {
                 target.invulnerableTime = 0;
                 target.hurt(DamageSource.playerAttack(player), Math.min(40,(target.getMaxHealth()- target.getHealth())*0.1f*modifier.getLevel()));
                 target.invulnerableTime = 0;
@@ -64,8 +63,8 @@ public class thermalenhance extends etshmodifieriii {
         return baseKnockback;
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if(enabled&&attacker instanceof Player player&&getMainLevel(attacker,this)>0&&target!=null&&projectile instanceof AbstractArrow arrow){
-            int modilvl = getMainLevel(attacker,this);
+        if(enabled&&attacker instanceof Player player&&target!=null&&projectile instanceof AbstractArrow arrow){
+            int modilvl = modifiers.getLevel(this.getId());
             target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*2));
             target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,230));
             target.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(),400,modilvl*2));

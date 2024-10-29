@@ -43,21 +43,21 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (getMainLevel(attacker, this) > 0) {
+
+            target.invulnerableTime = 0;
+            target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
+            target.invulnerableTime = 0;
+            target.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
+            target.invulnerableTime = 0;
+            if (enabled) {
+                MekanismAPI.getRadiationManager().radiate(target, 2000);
+                target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.5F * damage);
                 target.invulnerableTime = 0;
-                target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
-                target.invulnerableTime = 0;
-                target.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
-                target.invulnerableTime = 0;
-                if (enabled) {
-                    MekanismAPI.getRadiationManager().radiate(target, 2000);
-                    target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.5F * damage);
-                    target.invulnerableTime = 0;
-                }
-                if (!(target instanceof Player)) {
-                    target.setNoGravity(true);
-                }
             }
+            if (!(target instanceof Player)) {
+                target.setNoGravity(true);
+            }
+
         }
         return baseKnockback;
     }
@@ -77,7 +77,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (holder instanceof Player player&&isCorrectSlot){
-            int modilvl2 = getMainLevel(player,this);
+            int modilvl2 = modifier.getLevel();
             if (enabled2) {
                 player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(), 100, modilvl2, false, false));
                 player.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(), 100, modilvl2, false, false));
@@ -93,7 +93,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (projectile instanceof AbstractArrow arrow&&target!=null&&attacker instanceof Player player&&getMainLevel(player, this)>0) {
+        if (projectile instanceof AbstractArrow arrow&&target!=null&&attacker instanceof Player player) {
             float damageDealt =(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
             target.invulnerableTime =0;
             target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(),0.3F*damageDealt);

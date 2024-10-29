@@ -14,17 +14,16 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import java.util.Objects;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
 public class gravityaccelerate extends etshmodifieriii {
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
-            if (attacker instanceof Player player && getMainLevel(player, this) > 0 && player.getDeltaMovement().y < 0) {
+            if (attacker instanceof Player player &&  player.getDeltaMovement().y < 0) {
                 float vy = (float) Math.abs(Math.pow(player.getDeltaMovement().y, 2));
                 if (damage<1000) {
-                    damage =Math.min( damage * (1 + vy * getMainLevel(player, this)),1000);
+                    damage =Math.min( damage * (1 + vy * modifier.getLevel()),1000);
                 }
                 Vec3 horizonal = Objects.requireNonNull(getUnitizedVec3(new Vec3(player.getLookAngle().x, 0, player.getLookAngle().z)));
                 target.setDeltaMovement(-5 * player.getDeltaMovement().y * horizonal.x, -1 * player.getDeltaMovement().y, -5 * player.getDeltaMovement().y * horizonal.z);

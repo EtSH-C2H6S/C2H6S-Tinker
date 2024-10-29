@@ -32,7 +32,6 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
 public class warpattackex extends etshmodifieriii implements RequirementsModifierHook {
     @Override
@@ -52,8 +51,8 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
         return List.of(new ModifierEntry(etshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (holder instanceof Player player&&getMainLevel(player,this)>0&&player.swingTime==-1&&!player.isShiftKeyDown()&&!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())) {
-            Entity entity1 = getNearestLiEnt(getMainLevel(player,this)* 16f, player, player.level);
+        if (holder instanceof Player player&&modifier.getLevel()>0&&player.swingTime==-1&&!player.isShiftKeyDown()&&!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())) {
+            Entity entity1 = getNearestLiEnt(modifier.getLevel()* 16f, player, player.level);
             if (entity1 != null) {
                 player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 2);
                 entity1.invulnerableTime = 0;
@@ -68,7 +67,7 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
                 double x = entity1.getX();
                 double y = entity1.getY();
                 double z = entity1.getZ();
-                List<Mob> mobabcd = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 8 * getMainLevel(player,this), y + 8 * getMainLevel(player,this), z + 8 * getMainLevel(player,this), x - (8 * getMainLevel(player,this)), y - (8 * getMainLevel(player,this)), z - (8 * getMainLevel(player,this))));
+                List<Mob> mobabcd = player.level.getEntitiesOfClass(Mob.class, new AABB(x + 8 * modifier.getLevel(), y + 8 *modifier.getLevel(), z + 8 * modifier.getLevel(), x - (8 * modifier.getLevel()), y - (8 * modifier.getLevel()), z - (8 * modifier.getLevel())));
                 for (Mob targets : mobabcd) {
                     if ( targets != null) {
                         targets.invulnerableTime = 0;
@@ -80,15 +79,15 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
         }
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (livingEntity instanceof Player player&&getMainLevel(player,this)>0&!player.isShiftKeyDown()){
-            Entity entity = getNearestMobWithinAngle(getMainLevel(player,this)*32f,player,player.level,player.getLookAngle(),0.88);
+        if (livingEntity instanceof Player player&&!player.isShiftKeyDown()){
+            Entity entity = getNearestMobWithinAngle(modifiers.getLevel()*32f,player,player.level,player.getLookAngle(),0.88);
             if (entity instanceof Mob&&abstractArrow !=null){
                 abstractArrow.setPierceLevel((byte) 0);
                 double vx = Objects.requireNonNull(getUnitizedVec3(abstractArrow.getDeltaMovement())).x;
                 double vy = Objects.requireNonNull(getUnitizedVec3(abstractArrow.getDeltaMovement())).y;
                 double vz = Objects.requireNonNull(getUnitizedVec3(abstractArrow.getDeltaMovement())).z;
                 abstractArrow.setPos(entity.getX()-1.5*vx,0.5*(entity.getY()+entity.getEyeY())-1.5*vy,entity.getZ()-1.5*vz);
-                abstractArrow.setDeltaMovement(abstractArrow.getDeltaMovement().scale(10*getMainLevel(player,this)));
+                abstractArrow.setDeltaMovement(abstractArrow.getDeltaMovement().scale(10*modifiers.getLevel()));
             }
         }
     }

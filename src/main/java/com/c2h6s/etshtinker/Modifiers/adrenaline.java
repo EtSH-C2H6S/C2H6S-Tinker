@@ -34,7 +34,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource.PlayerPierce;
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
+
 
 import java.util.List;
 
@@ -120,11 +120,9 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
             attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120, 4));
             attacker.heal(5);
             if (target instanceof LivingEntity) {
-                if (getMainLevel(player, this) > 0) {
-                    DamageSource.playerAttack(player).bypassArmor().bypassMagic();
-                    target.invulnerableTime = 0;
-                    target.hurt(PlayerPierce(player, damage * 10), damage * 10);
-                }
+                DamageSource.playerAttack(player).bypassArmor().bypassMagic();
+                target.invulnerableTime = 0;
+                target.hurt(PlayerPierce(player, damage * 10), damage * 10);
             }
             world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.TOTEM_USE, SoundSource.NEUTRAL, 0.7F, 1.0F);
             toolData.putFloat(adrenaline, 0.0f);
@@ -136,7 +134,7 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         LivingEntity entity = context.getEntity();
         ModDataNBT toolData = tool.getPersistentData();
-        if (entity instanceof Player player && getMainLevel(player, this) > 0) {
+        if (entity instanceof Player player && modifier.getLevel() > 0) {
             if (toolData.getInt(adrenaline) > 85) {
                 Level world = entity.getLevel();
                 world.playSound((Player) null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BEACON_DEACTIVATE, SoundSource.NEUTRAL, 1.0F, 1.0F);

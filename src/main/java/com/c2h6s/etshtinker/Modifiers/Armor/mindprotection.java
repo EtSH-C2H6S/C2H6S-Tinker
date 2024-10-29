@@ -39,7 +39,7 @@ import java.util.List;
 import java.security.SecureRandom;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
-import static com.c2h6s.etshtinker.util.getMainOrOff.getMainLevel;
+
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 public class mindprotection extends etshmodifieriii {
@@ -133,7 +133,7 @@ public class mindprotection extends etshmodifieriii {
             toolData.putInt(dpreventcd2,toolData.getInt(dpreventcd2)-1);
         }
         if (holder instanceof Player player&&isCorrectSlot){
-            int modilvl2 = getMainLevel(player,this);
+            int modilvl2 = modifier.getLevel();
             if (enabled2) {
                 player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(), 100, modilvl2, false, false));
                 player.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(), 100, modilvl2, false, false));

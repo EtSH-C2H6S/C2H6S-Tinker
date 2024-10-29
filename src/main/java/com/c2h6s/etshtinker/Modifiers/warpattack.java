@@ -59,8 +59,8 @@ public class warpattack extends etshmodifieriii {
         }
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (livingEntity instanceof Player player&&getMainLevel(player,this)>0&!player.isShiftKeyDown()){
-            Entity entity = getNearestMobWithinAngle(getMainLevel(player,this)*16f,player,player.level,player.getLookAngle(),0.88);
+        if (livingEntity instanceof Player player&&!player.isShiftKeyDown()){
+            Entity entity = getNearestMobWithinAngle(modifiers.getLevel()*16f,player,player.level,player.getLookAngle(),0.88);
             if (entity instanceof Mob&&abstractArrow !=null){
                 abstractArrow.setPierceLevel((byte) 0);
                 double vx = Objects.requireNonNull(getUnitizedVec3(abstractArrow.getDeltaMovement())).x;
@@ -71,7 +71,7 @@ public class warpattack extends etshmodifieriii {
         }
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (projectile instanceof AbstractArrow&&target!=null&&attacker instanceof Player player&&getMainLevel(player,this)>0) {
+        if (projectile instanceof AbstractArrow&&target!=null) {
             target.invulnerableTime =0;
         }
         return false;
