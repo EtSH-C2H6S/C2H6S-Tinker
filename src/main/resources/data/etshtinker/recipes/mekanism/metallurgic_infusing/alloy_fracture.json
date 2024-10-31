@@ -7,7 +7,7 @@
   ],
   "type": "mekanism:metallurgic_infusing",
   "chemicalInput": {
-    "amount": 20,
+    "amount": 80,
     "infuse_type": "etshtinker:anti_neutronium"
   },
   "itemInput": {

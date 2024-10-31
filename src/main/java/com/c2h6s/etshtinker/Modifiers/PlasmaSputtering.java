@@ -18,13 +18,15 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.build.ModifierTraitHook;
+import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileLaunchModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.recipe.casting.material.MaterialCastingLookup;
 import slimeknights.tconstruct.library.recipe.casting.material.MaterialFluidRecipe;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.*;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.ToolDefinitions;
 
@@ -33,7 +35,7 @@ import java.util.List;
 
 import static slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper.TANK_HELPER;
 
-public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchModifierHook, TooltipModifierHook , ModifierTraitHook {
+public class PlasmaSputtering extends Modifier implements MeleeHitModifierHook , TooltipModifierHook,ModifierTraitHook {
 
     @Override
     public int getPriority() {
@@ -43,15 +45,14 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this,ModifierHooks.PROJECTILE_LAUNCH,ModifierHooks.TOOLTIP,ModifierHooks.MODIFIER_TRAITS);
+        builder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.TOOLTIP,ModifierHooks.MODIFIER_TRAITS);
     }
 
-
     @Override
-    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (ValidateFluid((ToolStack) tool,modifiers.getLevel())) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        if (ValidateFluid((ToolStack) tool, modifier.getLevel())) {
             FluidStack fluidStack = TANK_HELPER.getFluid(tool);
-            fluidStack.shrink(10 * modifiers.getLevel());
+            fluidStack.shrink(5 * modifier.getLevel());
             TANK_HELPER.setFluid(tool, fluidStack);
         }
     }
@@ -68,7 +69,7 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
     public static MaterialFluidRecipe getFluidMaterial(Fluid fluid){
         return MaterialCastingLookup.getCastingFluid(fluid);
     }
-    public static List<ModifierEntry> getFluidModifiers(ToolStack toolStack,int level){
+    public static List<ModifierEntry> getFluidModifiers(ToolStack toolStack, int level){
         List<ModifierEntry> list = new ArrayList<>(List.of());
         if (!TANK_HELPER.getFluid(toolStack).isEmpty()) {
             MaterialFluidRecipe recipe = getFluidMaterial(TANK_HELPER.getFluid(toolStack).getFluid());
@@ -76,7 +77,7 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
             if (!variant.isUnknown()&&!variant.isEmpty()) {
                 FluidStack fluidStack = TANK_HELPER.getFluid(toolStack);
                 if (fluidStack.getAmount() >= 20) {
-                    ToolStack tool = ToolStack.createTool(TinkerTools.longbow.get(), ToolDefinitions.LONGBOW, new MaterialNBT(List.of(variant, variant, variant)));
+                    ToolStack tool = ToolStack.createTool(TinkerTools.sword.get(), ToolDefinitions.SWORD, new MaterialNBT(List.of(variant, variant, variant)));
                     ToolStack slotValidate = toolStack.copy();
                     for (ModifierEntry entry1 : tool.getModifierList()) {
                         slotValidate.addModifier(entry1.getId(),entry1.getLevel());
@@ -87,7 +88,7 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
                         }
                     }
                     for (ModifierEntry entry1 : tool.getModifierList()) {
-                        if (entry1.getModifier()!= etshtinkerModifiers.godlymetal_STATIC_MODIFIER.get()) {
+                        if (entry1.getModifier()!= etshtinkerModifiers.godlymetal_STATIC_MODIFIER.get()&&entry1.getModifier()!= TinkerModifiers.silkyShears.get()) {
                             entry1 = new ModifierEntry(entry1.getId(), level);
                             list.add(entry1);
                         }
@@ -117,13 +118,13 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
                 if (!variant.isEmpty()&&!variant.isUnknown()){
                     tooltip.add(Component.translatable("etshtinker.tool.tooltip.material_unsupport").withStyle(ChatFormatting.RED).append(" : ").append(Component.translatable("material."+variant.getId().toLanguageKey())));
                 }
-                else tooltip.add(Component.translatable("etshtinker.tool.tooltip.fluid_not_modifier").withStyle(ChatFormatting.GOLD));
+                else tooltip.add(Component.translatable("etshtinker.tool.tooltip.fluid_not_modifier_melee").withStyle(ChatFormatting.GOLD));
             }
         }
     }
 
     @Override
-    public void addTraits(IToolContext iToolContext, ModifierEntry modifierEntry, TraitBuilder traitBuilder, boolean b) {
+    public void addTraits(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierTraitHook.TraitBuilder traitBuilder, boolean b) {
         traitBuilder.add(new ModifierEntry(new ModifierId("tconstruct:tank"),modifierEntry.getLevel()*10));
     }
 }

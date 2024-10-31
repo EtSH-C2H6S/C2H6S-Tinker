@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "etshtinker:constrained_plasma_saber"
+    "etshtinker:constrained_plasma_saber",
+    "etshtinker:ionized_cannon"
   ]
 }

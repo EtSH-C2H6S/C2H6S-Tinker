@@ -405,6 +405,10 @@
   "modifier.etshtinker.ionizing_arrow.flavor": "纳米级涂层",
   "modifier.etshtinker.ionizing_arrow.description":"将工具内存储的熔融材料喷涂到箭矢上，使箭矢获得材料的工具属性。",
 
+  "modifier.etshtinker.plasma_sputtering": "离子溅射镀膜",
+  "modifier.etshtinker.plasma_sputtering.flavor": "纳米级涂层",
+  "modifier.etshtinker.plasma_sputtering.description":"将工具内存储的熔融材料喷涂到工具上，使工具获得该材料的近战属性，每次攻击时都会消耗存储的流体。需要至少20mB的流体以运作。",
+
   "modifier.etshtinker.amplitude_characteristic": "Amplitude Characteristic",
   "modifier.etshtinker.amplitude_characteristic.flavor": "Soul resonate.",
   "modifier.etshtinker.amplitude_characteristic.description":"Hold right click to charge,release it after 2 seconds will result in strong sonic boom.Needs to consume experience.",
@@ -772,6 +776,9 @@
   "etshtinker.tool.tooltip.fluid_consumption": "Fluid Consumption",
 
   "etshtinker.tool.tooltip.fluid_contains_modifier": "Material From the Fluid",
+  "etshtinker.tool.tooltip.fluid_not_modifier": "This Fluid can't be cast into Ranged parts",
+  "etshtinker.tool.tooltip.fluid_not_modifier_melee": "This Fluid can't be cast into Melee Harvest parts",
+  "etshtinker.tool.tooltip.material_unsupport": "Unsupported Material",
 
   "etshtinker.tool.tooltip.fluid_efficiency": "Fluid Efficiency",
   "etshtinker.tool.tooltip.critical_rate": "Critical Rate",

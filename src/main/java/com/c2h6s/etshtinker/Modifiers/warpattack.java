@@ -34,11 +34,7 @@ public class warpattack extends etshmodifieriii {
         MinecraftForge.EVENT_BUS.addListener(this::leftClick);
     }
     private void leftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        ToolStack tool =ToolStack.from( event.getEntity().getMainHandItem());
-        int lvl = tool.getModifierLevel(etshtinkerModifiers.warpattack_STATIC_MODIFIER.get());
-        if (lvl>0) {
-            packetHandler.INSTANCE.sendToServer(new warpattackPacket());
-        }
+        packetHandler.INSTANCE.sendToServer(new warpattackPacket());
     }
 
     public static void tryWarp(Player player, ToolStack tool, InteractionHand hand){

@@ -38,7 +38,7 @@
     "error": "recipe.etshtinker.modifier.exoblade"
   },
   "slots": {
-    "abilities": 1
+    "abilities": 5
   },
   "allow_crystal": true,
   "result": "etshtinker:exoblademodifier",

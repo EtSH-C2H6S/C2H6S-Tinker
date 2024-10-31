@@ -25,6 +25,6 @@
   "allow_crystal": true,
   "result": "tconstruct:reach",
   "level": {
-    "max": 10
+    "max": 5
   }
 }

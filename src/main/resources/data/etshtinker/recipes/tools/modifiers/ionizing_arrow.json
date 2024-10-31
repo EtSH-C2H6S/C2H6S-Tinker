@@ -14,12 +14,7 @@
     "tag": "tconstruct:modifiable/ranged/bows"
   },
   "slots": {
-    "abilities": 1
-  },
-  "requirements": {
-    "name": "tconstruct:tank",
-    "level": 1,
-    "error": "recipe.etshtinker.modifier.ionizing_arrow"
+    "abilities": 2
   },
   "allow_crystal": true,
   "result": "etshtinker:ionizing_arrow",

@@ -56,7 +56,7 @@ public class ParticleChainUtil {
             double y = entityStart.getY()+ entityStart.getBbHeight()*0.5+ (dir.y * i * 0.3d);
             double z = entityStart.getZ() + (dir.z * i * 0.3d);
             Vec3 pos = new Vec3(x, y, z);
-            if (pos.distanceToSqr(entityEnd.position()) <= 0.04d)
+            if (pos.distanceToSqr(new Vec3(entityEnd.getX(),entityEnd.getY()+entityEnd.getBbHeight()*0.5,entityEnd.getZ())) <= 0.04d)
                 break;
             level.sendParticles(ParticleTypes.ELECTRIC_SPARK, x, y, z,1,0, 0d, 0d, 0d);
 

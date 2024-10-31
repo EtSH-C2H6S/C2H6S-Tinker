@@ -2,15 +2,11 @@
   "type": "tconstruct:modifier",
   "inputs": [
     {
-      "item": "etshtinker:exotic_matter",
-      "amount_needed": 8
+      "item": "etshtinker:plasma_generator",
+      "amount_needed": 1
     },
     {
-      "item": "etshtinker:stable_plasma",
-      "amount_needed": 4
-    },
-    {
-      "item": "minecraft:end_rod",
+      "item": "etshtinker:fluid_chamber",
       "amount_needed": 1
     }
   ],
@@ -21,8 +17,8 @@
     "abilities": 2
   },
   "allow_crystal": true,
-  "result": "etshtinker:warpengineex",
+  "result": "etshtinker:plasma_sputtering",
   "level": {
-    "max": 4
+    "max": 2
   }
 }
