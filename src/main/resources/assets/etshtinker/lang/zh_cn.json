@@ -443,11 +443,11 @@
 
   "modifier.etshtinker.ionizing_arrow": "等离子喷涂箭矢",
   "modifier.etshtinker.ionizing_arrow.flavor": "纳米级涂层",
-  "modifier.etshtinker.ionizing_arrow.description":"将工具内存储的熔融材料喷涂到箭矢上，使箭矢获得该材料的远程属性，每次射击时都会相应的消耗存储的流体。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
+  "modifier.etshtinker.ionizing_arrow.description":"将工具内存储的熔融材料喷涂到箭矢上，使箭矢获得该材料的部分远程属性，每次射击时都会相应的消耗存储的流体。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
 
   "modifier.etshtinker.plasma_sputtering": "离子溅射镀膜",
   "modifier.etshtinker.plasma_sputtering.flavor": "纳米级涂层",
-  "modifier.etshtinker.plasma_sputtering.description":"将工具内存储的熔融材料喷涂到工具上，使工具获得该材料的近战属性，每次攻击时都会消耗存储的流体。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
+  "modifier.etshtinker.plasma_sputtering.description":"将工具内存储的熔融材料喷涂到工具上，使工具获得该材料的部分近战属性，每次攻击时都会消耗存储的流体。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
 
 
 
