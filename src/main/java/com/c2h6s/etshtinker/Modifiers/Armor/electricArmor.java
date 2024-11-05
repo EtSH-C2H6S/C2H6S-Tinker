@@ -30,12 +30,9 @@ public class electricArmor extends etshmodifieriii {
         if (tool.getModifierLevel(this)>0){
             Entity entity =source.getEntity();
             LivingEntity target =context.getEntity();
-            if (entity instanceof LivingEntity attacker) {
+            if (entity instanceof LivingEntity attacker&& !(entity instanceof Player)) {
                 if (target instanceof Player player && modifier.getLevel()>0) {
                     int lvl000 = tool.getModifierLevel(this);
-                    double xx = attacker.getX();
-                    double yy = attacker.getY();
-                    double zz = attacker.getZ();
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE, 1.2f, 1.2f);
                     attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
                     attacker.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100, false, false), attacker);

@@ -101,7 +101,23 @@ public class vecCalc {
         List<LivingEntity> mobbb = level.getEntitiesOfClass(LivingEntity.class, new AABB(x + radius, y + radius, z + radius, x - radius, y - radius, z - radius));
         double i =radius;
         for (LivingEntity targets : mobbb){
-            if (targets!=null&&targets!=centerEnt&&getMold(Entity1ToEntity2(centerEnt,targets))<i&&!EntBlacklist.contains(targets)&&!(targets instanceof Player)&&!targets.isDeadOrDying()){
+            if (targets!=null&&targets!=centerEnt&&getMold(Entity1ToEntity2(centerEnt,targets))<i&&(EntBlacklist != null&&EntBlacklist.contains(targets))&&!(targets instanceof Player)&&!targets.isDeadOrDying()){
+                i =getMold(Entity1ToEntity2(centerEnt,targets));
+                entity =targets;
+            }
+        }
+        return entity;
+    }
+
+    public static LivingEntity getNearestLiEntWithEntBL(Float radius, Entity centerEnt, Level level, List<Entity> EntBlacklist){
+        double x =centerEnt.getX();
+        double y =centerEnt.getY();
+        double z =centerEnt.getZ();
+        LivingEntity entity =null;
+        List<LivingEntity> mobbb = level.getEntitiesOfClass(LivingEntity.class, new AABB(x + radius, y + radius, z + radius, x - radius, y - radius, z - radius));
+        double i =radius;
+        for (LivingEntity targets : mobbb){
+            if (targets!=null&&targets!=centerEnt&&getMold(Entity1ToEntity2(centerEnt,targets))<i&&!(EntBlacklist != null&&EntBlacklist.contains(targets))&&!(targets instanceof Player)&&!targets.isDeadOrDying()){
                 i =getMold(Entity1ToEntity2(centerEnt,targets));
                 entity =targets;
             }

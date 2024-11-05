@@ -26,7 +26,7 @@ public class sharpnessex extends etshmodifieriii {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
             if (modifier.getLevel() > 0 && attacker instanceof Player player && modifier.getLevel() > 0) {
-                DamageSource.playerAttack(player).bypassArmor().bypassInvul().bypassMagic();
+                DamageSource.playerAttack(player).bypassArmor().bypassMagic();
                 target.invulnerableTime = 0;
                 target.hurt(DamageSource.playerAttack(player), damage * 0.5F);
                 target.invulnerableTime = 0;
@@ -36,9 +36,8 @@ public class sharpnessex extends etshmodifieriii {
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (attacker instanceof Player player && target != null&&projectile instanceof AbstractArrow arrow) {
-            DamageSource.playerAttack(player).bypassArmor().bypassInvul().bypassMagic();
             target.invulnerableTime = 0;
-            target.hurt(DamageSource.playerAttack(player), (float) (arrow.getBaseDamage()* getMold(arrow.getDeltaMovement()) * 0.5F));
+            target.hurt(DamageSource.playerAttack(player).bypassArmor().bypassMagic(), (float) (arrow.getBaseDamage()* getMold(arrow.getDeltaMovement()) * 0.5F));
             target.invulnerableTime = 0;
         }
         return false;

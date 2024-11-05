@@ -7,6 +7,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
@@ -31,7 +32,7 @@ public class crunchyshattered extends etshmodifieriii implements ToolDamageModif
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target&&!tool.isBroken()&&entity1 instanceof LivingEntity attacker){
             AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);
             target.forceAddEffect(new MobEffectInstance(MobEffects.WITHER,100,modifier.getLevel()),attacker);
-            if (attribute!=null&&target.getArmorValue()>0){
+            if (attribute!=null&&target.getArmorValue()>0&&!(target instanceof Player)){
                 attribute.setBaseValue(attribute.getBaseValue()-2*modifier.getLevel());
             }
         }
@@ -40,7 +41,7 @@ public class crunchyshattered extends etshmodifieriii implements ToolDamageModif
         if (modifier.getLevel()>0&&target!=null&&attacker!=null){
             target.forceAddEffect(new MobEffectInstance(MobEffects.WITHER,100,1),attacker);
             AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);
-            if (attribute!=null){
+            if (attribute!=null&&!(target instanceof Player)){
                 attribute.setBaseValue(attribute.getBaseValue()-2*modifier.getLevel());
             }
         }

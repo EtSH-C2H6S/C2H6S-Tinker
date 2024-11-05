@@ -114,6 +114,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<Critical>critical= MODIFIERS.register("critical", Critical::new);
     public static final StaticModifier<PlasmaArrowModifier>ionizing_arrow= MODIFIERS.register("ionizing_arrow", PlasmaArrowModifier::new);
     public static final StaticModifier<PlasmaSputtering>plasma_sputtering= MODIFIERS.register("plasma_sputtering", PlasmaSputtering::new);
+    public static final StaticModifier<UltradenseExArmor>ultradenseex_armor= MODIFIERS.register("ultradenseex_armor", UltradenseExArmor::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

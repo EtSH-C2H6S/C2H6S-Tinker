@@ -2,6 +2,7 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -13,7 +14,7 @@ public class organiccr extends etshmodifieriii {
     }
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         LivingEntity target =context.getLivingTarget();
-        if (target!=null){
+        if (target!=null&&!(target instanceof Player)){
             if (target.getPersistentData().contains("legacyhealth")&&target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
                 target.getPersistentData().putFloat("legacyhealth",target.getPersistentData().getFloat("legacyhealth")-Math.abs(damageDealt));
             }
@@ -25,7 +26,7 @@ public class organiccr extends etshmodifieriii {
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         LivingEntity target =context.getLivingTarget();
         LivingEntity attacker =context.getAttacker();
-        if (target!=null&&modifier.getLevel()>0){
+        if (target!=null&&modifier.getLevel()>0&&!(target instanceof Player)){
             if (target.getPersistentData().contains("legacyhealth")){
                 if (target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
                     attacker.heal(Math.min( 10,target.getHealth()-target.getPersistentData().getFloat("legacyhealth")));

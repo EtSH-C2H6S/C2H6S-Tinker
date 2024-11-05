@@ -75,7 +75,9 @@ public class atomorigin extends etshmodifieriii implements ToolStatsModifierHook
         ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(1.2, slotamount));
         etshtinkerToolStats.PLASMARANGE.multiply(builder, Math.pow(1.2, slotamount));
         etshtinkerToolStats.ENERGY_STORE.multiply(builder, Math.pow(1.2, slotamount));
+        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder, Math.pow(1.2, slotamount));
         ToolTankHelper.CAPACITY_STAT.multiply(builder, Math.pow(1.2, slotamount));
+
     }
 
     @Override

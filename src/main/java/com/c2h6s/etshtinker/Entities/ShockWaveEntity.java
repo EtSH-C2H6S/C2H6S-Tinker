@@ -4,6 +4,7 @@ import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -38,7 +39,7 @@ public class ShockWaveEntity extends ItemProjectile{
         AABB aabb =new AABB(this.getX()-mold,this.getY()-1,this.getZ()-mold,this.getX()+mold,this.getY()+1,this.getZ()+mold);
         List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,aabb);
         for (LivingEntity living : ls) {
-            if (living != null && !hitlist.contains(living) && this.getOwner() instanceof LivingEntity attacker&&living!=attacker) {
+            if (living != null && !hitlist.contains(living) && this.getOwner() instanceof LivingEntity attacker&&living!=attacker&& !(living instanceof Player)) {
                 living.invulnerableTime = 0;
                 living.hurt(DamageSource.explosion(attacker), damage);
                 hitlist.add(living);

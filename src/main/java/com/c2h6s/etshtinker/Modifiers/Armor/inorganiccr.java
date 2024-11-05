@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -33,9 +34,9 @@ public class inorganiccr extends etshmodifieriii {
         if (entity ==context.getEntity()){
             return;
         }
-        if (entity instanceof LivingEntity attacker){
+        if (entity instanceof LivingEntity attacker&& !(attacker instanceof Player)){
             AttributeInstance instance =attacker.getAttribute(Attributes.ARMOR);
-            if (instance!=null){
+            if (instance != null){
                 instance.setBaseValue(instance.getBaseValue()-amount);
             }
             CompoundTag tag =attacker.getPersistentData();

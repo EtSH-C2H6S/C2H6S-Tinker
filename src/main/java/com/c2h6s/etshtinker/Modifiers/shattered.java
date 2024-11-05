@@ -8,6 +8,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -30,7 +31,7 @@ public class shattered extends etshmodifieriii {
         Entity entity = context.getTarget();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target){
             AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);
-            if (attribute!=null&&target.getArmorValue()>0){
+            if (attribute!=null&&target.getArmorValue()>0&&!(target instanceof Player)){
                 attribute.setBaseValue(attribute.getBaseValue()-0.5*target.getArmorValue());
             }
         }
@@ -38,7 +39,7 @@ public class shattered extends etshmodifieriii {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (modifier.getLevel()>0&&target!=null){
             AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);
-            if (attribute!=null){
+            if (attribute!=null&&!(target instanceof Player)){
                 attribute.setBaseValue(attribute.getBaseValue()-0.5*target.getArmorValue());
             }
         }

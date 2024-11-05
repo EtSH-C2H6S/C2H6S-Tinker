@@ -54,7 +54,7 @@ public class NightSlashEntityB extends ItemProjectile{
         List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class,aabb);
         if (!ls.isEmpty()){
             for (LivingEntity targets:ls){
-                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)) {
+                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)&&!(targets instanceof Player)) {
                     targets.invulnerableTime = 0;
                     targets.hurt(DamageSource.playerAttack(player), this.damage);
                     AttributeInstance instance = targets.getAttributes().getInstance(Attributes.ARMOR);
@@ -66,7 +66,9 @@ public class NightSlashEntityB extends ItemProjectile{
                         instance.setBaseValue(instance.getBaseValue() - 1);
                     }
                     targets.invulnerableTime = 0;
-                    targets.hurt(DamageSource.playerAttack(player).bypassMagic().bypassArmor(), this.damage * 0.25F);
+                    targets.hurt(DamageSource.playerAttack(player).bypassArmor(), this.damage * 0.25F);
+                    targets.invulnerableTime = 0;
+                    targets.hurt(DamageSource.explosion(player), this.damage * 0.25F);
                     hittimes++;
                     hitent.add(targets);
                 }

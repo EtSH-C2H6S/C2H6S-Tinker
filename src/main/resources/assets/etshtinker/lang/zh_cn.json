@@ -83,7 +83,7 @@
 
   "modifier.etshtinker.warpattack": "折跃攻击",
   "modifier.etshtinker.warpattack.flavor": "扭曲空间",
-  "modifier.etshtinker.warpattack.description":"你的攻击会被折跃到最近生物上并根据属性等级造成额外伤害。",
+  "modifier.etshtinker.warpattack.description":"你的攻击会被折跃到最近生物上并根据属性等级造成额外伤害。应用于箭矢时会受箭矢的穿透次数影响。",
 
   "modifier.etshtinker.worldforceex": "世界之力",
   "modifier.etshtinker.worldforceex.flavor": "大地的力量掌握在你手中",
@@ -127,7 +127,7 @@
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"手持时右键充能，属性等级越高充能量越大。攻击时消耗全部充能使工具上所有非增伤的攻击性词条额外生效多次。",
+  "modifier.etshtinker.ultradenseex.description":"手持时右键充能，属性等级越高充能量越大。攻击时消耗全部充能使工具上所有非增伤的攻击性词条额外生效多次，充能大于6时则额外生效一次增伤词条。",
 
   "modifier.etshtinker.extraweight": "万吨沉重EX",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
@@ -448,6 +448,10 @@
   "modifier.etshtinker.plasma_sputtering": "离子溅射镀膜",
   "modifier.etshtinker.plasma_sputtering.flavor": "纳米级涂层",
   "modifier.etshtinker.plasma_sputtering.description":"将工具内存储的熔融材料喷涂到工具上，使工具获得该材料的部分近战属性，每次攻击时都会消耗存储的流体。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
+
+  "modifier.etshtinker.ultradenseex_armor": "究极致密",
+  "modifier.etshtinker.ultradenseex_armor.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
+  "modifier.etshtinker.ultradenseex_armor.description":"获得25%伤害减免，对于穿甲伤害则再进行一次50%的伤害减免",
 
 
 
@@ -843,7 +847,7 @@
   "etshtinker.item.tooltip.marcoatom": "我们的世界，或许与这块金属大同小异...",
   "etshtinker.item.tooltip.special": "-特殊材料-",
   "etshtinker.item.tooltip.special2": "也许你会好奇这个材料怎么获取...别急，或许你在其它材料上能找到线索!",
-  "etshtinker.item.tooltip.underbedrock": "这种生于基岩之下的矿物通常不能被正常挖到",
+  "etshtinker.item.tooltip.underbedrock": "这种藏在虚空中的矿物不会在你的世界中生成，你需要一个强力的矿物开采设备来获得它。",
   "etshtinker.item.tooltip.nights_alloy": "通常认为，光与暗两元素相遇时，",
   "etshtinker.item.tooltip.nights_alloy2": "会在剧烈的爆炸中释放出地、火、电等大量其它元素。",
   "etshtinker.item.tooltip.nights_alloy3": "这种材料的存在则揭示了一个截然相反的过程。",

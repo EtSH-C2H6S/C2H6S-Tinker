@@ -7,6 +7,8 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.event.ForgeEventFactory;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
@@ -30,25 +32,24 @@ public class warpprotection extends etshmodifieriii {
                             double xx =entity2.getX();
                             double yy =entity2.getY()+entity2.getBbHeight()*0.5;
                             double zz =entity2.getZ();
-                            double vx =projectile.getDeltaMovement().x;
-                            double vy =projectile.getDeltaMovement().y;
-                            double vz =projectile.getDeltaMovement().z;
-                            projectile.setPos(xx-1.5*vx,yy-1.5*vy,zz-1.5*vz);
+                            projectile.setPos(xx,yy,zz);
                             projectile.setOwner(holder);
+                            EntityHitResult entityHitResult =new EntityHitResult(entity2);
+                            ForgeEventFactory.onProjectileImpact(projectile, entityHitResult);
+                            projectile.onHit(entityHitResult);
                         }
-                    }
-                    if (!(entity instanceof Projectile)){
-                        LivingEntity entity1 =getNearestLiEnt(32f,holder,level);
-                        if (entity1 !=null) {
-                            double xx =entity1.getX();
-                            double yy =entity1.getY()+entity1.getBbHeight()*0.5;
-                            double zz =entity1.getZ();
-                            double vx =entity.getDeltaMovement().x;
-                            double vy =entity.getDeltaMovement().y;
-                            double vz =entity.getDeltaMovement().z;
-                            entity.setPos(xx-1.5*vx,yy-1.5*vy,zz-1.5*vz);
+                        else {
+                            LivingEntity entity2 =getNearestLiEnt(32f,holder,level);
+                            if (entity2 !=null) {
+                                double xx = entity2.getX();
+                                double yy = entity2.getY()+ entity2.getBbHeight()*0.5;
+                                double zz = entity2.getZ();
+                                entity.setPos(xx,yy,zz);
+                                EntityHitResult entityHitResult =new EntityHitResult(entity2);
+                                ForgeEventFactory.onProjectileImpact(projectile, entityHitResult);
+                                projectile.onHit(entityHitResult);
+                            }
                         }
-                        else entity.discard();
                     }
                 }
             }

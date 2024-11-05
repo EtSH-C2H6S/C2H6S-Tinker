@@ -12,10 +12,7 @@
   ],
   "tools":[
     {
-      "item": "etshtinker:ionized_cannon"
-    },
-    {
-      "item": "etshtinker:constrained_plasma_saber"
+      "tag": "etshtinker:fluid_weapons"
     }
   ],
   "slots": {

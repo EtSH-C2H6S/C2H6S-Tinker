@@ -86,7 +86,7 @@ public class PlasmaSlashEntity extends ItemProjectile {
             float overCrit =Math.max( CriticalRate -1,0);
             this.hitRemain=16;
             for (LivingEntity targets : ls0) {
-                if (targets != null && targets.isAlive() && targets != this.getOwner() && !hitList.contains(targets)) {
+                if (targets != null && targets.isAlive() && targets != this.getOwner() && !hitList.contains(targets)&&!(targets instanceof Player)) {
                     boolean isCrit =EtSHrnd().nextFloat(0, 1) <= this.CriticalRate;
                     for (ModifierEntry modifier : this.tool.getModifierList()) {
                         modifier.getHook(etshtinkerHook.BEFORE_SLASH_HIT).beforePlasmaSlashHit(this.tool, targets, this, isCrit);

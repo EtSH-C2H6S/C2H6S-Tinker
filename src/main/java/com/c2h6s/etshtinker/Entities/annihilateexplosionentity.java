@@ -51,7 +51,7 @@ public class annihilateexplosionentity extends ItemProjectile{
             this.discard();
         }
         if (this.getOwner() instanceof Player player&&this.target!=null){
-            if (this.time ==3) {
+            if (this.time ==3||this.time==5) {
                 this.target.invulnerableTime = 0;
                 this.target.hurt(DamageSource.playerAttack(player), this.damage);
                 this.target.invulnerableTime = 0;
@@ -62,10 +62,10 @@ public class annihilateexplosionentity extends ItemProjectile{
                 this.target.hurt(DamageSource.WITHER, this.damage);
                 this.target.invulnerableTime = 0;
             }
-            if (this.time==6||this.time==9){
+            if (this.time>=6){
                 List<LivingEntity> livingEntities =this.level.getEntitiesOfClass(LivingEntity.class,new AABB(this.getX()-this.radius,this.getY()-this.radius,this.getZ()-this.radius,this.getX()+this.radius,this.getY()+this.radius,this.getZ()+this.radius));
                 for (LivingEntity targets:livingEntities){
-                    if (targets!=this.getOwner()){
+                    if (targets!=this.getOwner()&&!(targets instanceof Player)){
                         targets.invulnerableTime=0;
                         targets.hurt(playerThroughSource.PlayerAnnihilate(player,this.damage).bypassArmor(),this.damage);
                     }

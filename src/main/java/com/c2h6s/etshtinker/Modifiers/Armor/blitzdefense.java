@@ -35,7 +35,6 @@ public class blitzdefense extends etshmodifieriii {
             if (source.getEntity()!=context.getEntity() ){
                 return amount;
             }
-            summonArc(entity.level,entity,new Vec3(entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ()),2+modifier.getLevel()*2,5+modifier.getLevel());
             return amount;
         }else return 0;
     }

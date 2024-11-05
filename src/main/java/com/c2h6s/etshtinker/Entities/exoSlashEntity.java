@@ -102,7 +102,7 @@ public class exoSlashEntity extends ItemProjectile {
         List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,this.getBoundingBox().expandTowards(this.getDeltaMovement()));
         if (!ls.isEmpty()){
             for (LivingEntity living:ls){
-                if (living!=null&&living!=this.getOwner()){
+                if (living!=null&&living!=this.getOwner()&&!(living instanceof Player)){
                     if (this.getOwner() instanceof Player player){
                         living.invulnerableTime=0;
                         living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage),this.baseDamage);

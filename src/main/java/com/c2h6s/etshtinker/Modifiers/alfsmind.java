@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -38,6 +39,9 @@ public class alfsmind extends etshmodifieriii {
             if (random.nextBoolean()){
                 PixieEntity entity =new PixieEntity(target.level);
                 LivingEntity target2 =((source.getEntity() instanceof LivingEntity entity1&&entity1.isAlive())?entity1:getNearestLiEnt(32f,target,target.level));
+                if (target2 instanceof Player){
+                    return;
+                }
                 entity.setProps(target2,target,0,8);
                 entity.setPos(target.getX(),target.getY()+target.getBbHeight()+0.25,target.getZ());
                 entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(ls.size())),100,4,false,false));

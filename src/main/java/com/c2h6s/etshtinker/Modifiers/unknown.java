@@ -88,6 +88,7 @@ public class unknown extends etshmodifieriii implements ToolStatsModifierHook {
         ToolStats.BLOCK_ANGLE.multiply(builder, 0.005);
         etshtinkerToolStats.COOLDOWN.multiply(builder,5);
         etshtinkerToolStats.PLASMARANGE.multiply(builder, 0.005);
+        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder, 0.005);
         etshtinkerToolStats.ENERGY_STORE.multiply(builder, 0.005);
         ToolTankHelper.CAPACITY_STAT.multiply(builder, 0.005);
     }

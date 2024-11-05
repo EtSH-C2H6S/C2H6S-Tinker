@@ -83,7 +83,7 @@ public class nightsenhance extends etshmodifieriii {
         if (LightLevel >7){
             return damage *0.5f;
         }
-        return damage * 2;
+        return damage +baseDamage;
     }
 
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){

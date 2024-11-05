@@ -1,10 +1,15 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Explosion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -12,6 +17,8 @@ import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+
+import java.util.List;
 
 public class reactiveexplosivearmor extends etshmodifieriii {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("reactiveexplosivearmor");
@@ -38,7 +45,20 @@ public class reactiveexplosivearmor extends etshmodifieriii {
                 if (event.getSource().isExplosion()){
                     event.setCanceled(true);
                 }
-                living.level.explode(living,living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ(),event.getAmount()*0.25f, Explosion.BlockInteraction.NONE);
+                if (event.isCanceled()||event.getAmount()<1){
+                    return;
+                }
+                List<Mob> list = living.level.getEntitiesOfClass(Mob.class,living.getBoundingBox().inflate(8));
+                for (Mob mob:list){
+                    if (mob!=null){
+                        mob.invulnerableTime=0;
+                        mob.hurt(DamageSource.explosion(living),event.getAmount());
+                    }
+                }
+                living.playSound(SoundEvents.GENERIC_EXPLODE,1,1);
+                if (living.level instanceof ServerLevel serverLevel){
+                    serverLevel.sendParticles(ParticleTypes.EXPLOSION,living.getX(),living.getY()+0.5*living.getBbHeight(),living.getZ(),1,0,0,0,0);
+                }
                 event.setAmount(event.getAmount()*0.75f);
             }
         });

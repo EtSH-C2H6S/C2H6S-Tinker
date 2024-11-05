@@ -23,9 +23,9 @@ public class gravityaccelerate extends etshmodifieriii {
             if (attacker instanceof Player player &&  player.getDeltaMovement().y < 0) {
                 float vy = (float) Math.abs(Math.pow(player.getDeltaMovement().y, 2));
                 if (damage<1000) {
-                    damage =Math.min( damage * (1 + vy * modifier.getLevel()),1000);
+                    damage =Math.min( damage+baseDamage * vy * modifier.getLevel(),1000);
                 }
-                Vec3 horizonal = Objects.requireNonNull(getUnitizedVec3(new Vec3(player.getLookAngle().x, 0, player.getLookAngle().z)));
+                Vec3 horizonal = getUnitizedVec3(new Vec3(player.getLookAngle().x, 0, player.getLookAngle().z));
                 target.setDeltaMovement(-5 * player.getDeltaMovement().y * horizonal.x, -1 * player.getDeltaMovement().y, -5 * player.getDeltaMovement().y * horizonal.z);
             }
         }

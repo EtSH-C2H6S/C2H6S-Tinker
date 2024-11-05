@@ -29,7 +29,7 @@ public class electromotiveforce extends etshmodifieriii {
         if (tool.getModifierLevel(this)>0){
             Entity entity =source.getEntity();
             LivingEntity target =context.getEntity();
-            if (entity instanceof LivingEntity attacker) {
+            if (entity instanceof LivingEntity attacker&& !(entity instanceof Player)) {
                 if (target instanceof Player player && modifier.getLevel()>0) {
                     int lvl000 = tool.getModifierLevel(this);
                     double xx = attacker.getX();

@@ -75,19 +75,15 @@ public class thermaldefense extends etshmodifieriii {
         if (tool.getModifierLevel(this) > 0&&slotType.getType() ==EquipmentSlot.Type.ARMOR&&enabled) {
             Entity entity =source.getEntity();
             int modilvl =modifier.getLevel();
-            if (entity instanceof LivingEntity attacker){
+            if (entity instanceof LivingEntity attacker&&!(attacker instanceof Player)){
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*2));
                 attacker.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,230));
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 400, modilvl * 2, false, false));
                 attacker.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0, false, false));
                 AttributeInstance attribute = attacker.getAttributes().getInstance(Attributes.ARMOR);
-                if (attribute!=null){
+                if (attribute != null){
                     attribute.setBaseValue(attribute.getBaseValue()-0.5*attacker.getArmorValue());
                 }
-                if (source instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
-                    return;
-                }
-                summonElectricField(attacker.level, attacker, new Vec3(attacker.getX(), attacker.getY(), attacker.getZ()), 8, 120, modilvl);
             }
         }
     }
@@ -96,6 +92,7 @@ public class thermaldefense extends etshmodifieriii {
             int modilvl2 = modifier.getLevel();
             player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,300,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),300,modilvl2,false,false));
+            player.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),300,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,modilvl2,false,false));
         }
     }

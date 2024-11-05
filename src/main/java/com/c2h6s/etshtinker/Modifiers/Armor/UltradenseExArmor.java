@@ -24,12 +24,12 @@ public class UltradenseExArmor extends etshmodifieriii {
     }
 
     private void livinghurtevent(LivingHurtEvent event) {
-        event.setAmount(event.getAmount()*0.75f);
         LivingEntity living = event.getEntity();
         Entity entity =event.getSource().getEntity();
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
             int level = holder.get(key, 0);
             if (level > 0) {
+                event.setAmount(event.getAmount()*0.75f);
                 if (event.getSource().isBypassArmor()||event.getSource().isBypassEnchantments()||event.getSource().isBypassInvul()||event.getSource().isBypassMagic()||event.getSource().isMagic()||event.getSource().isProjectile()||event.getSource().isExplosion()||event.getSource().isFall()||event.getSource().isFire()||event.getSource()== DamageSource.OUT_OF_WORLD||event.getSource().isDamageHelmet()){
                     event.setAmount(event.getAmount()/2);
                 }

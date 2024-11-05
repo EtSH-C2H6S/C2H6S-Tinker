@@ -62,7 +62,7 @@ public class plasmarrowentity extends AbstractArrow {
         this.setPierceLevel((byte)(1+ this.getPierceLevel()));
         Entity e =result.getEntity();
         if (e instanceof LivingEntity entity) {
-            if (this.getOwner() instanceof Player player) {
+            if (this.getOwner() instanceof Player player&&!(entity instanceof Player)) {
                 entity.invulnerableTime = 0;
                 entity.hurt(DamageSource.playerAttack(player), (float) (4 * getMold(this.getDeltaMovement())));
                 entity.setSecondsOnFire(65535);

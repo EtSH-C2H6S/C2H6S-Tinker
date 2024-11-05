@@ -8,8 +8,8 @@
       "fluid_capacity": 131070
     },
     "etshtinker:plasma_generator": {
-      "damagemultiplier": 1.79,
-      "criticalrate": 2.75,
+      "damagemultiplier": 8.192,
+      "criticalrate": 3.75,
       "fluidefficiency": 0.03,
       "slash_color": 8
     },

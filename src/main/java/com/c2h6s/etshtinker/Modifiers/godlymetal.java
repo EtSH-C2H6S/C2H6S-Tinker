@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import cofh.core.init.CoreMobEffects;
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import mekanism.api.MekanismAPI;
 import net.minecraft.world.InteractionHand;
@@ -42,7 +43,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
-        if (entity instanceof LivingEntity target) {
+        if (entity instanceof LivingEntity target&&!(target instanceof Player)) {
 
             target.invulnerableTime = 0;
             target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
@@ -54,9 +55,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
                 target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.5F * damage);
                 target.invulnerableTime = 0;
             }
-            if (!(target instanceof Player)) {
-                target.setNoGravity(true);
-            }
+            target.setNoGravity(true);
 
         }
         return baseKnockback;
@@ -66,9 +65,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
             if ( attacker instanceof Player player && tool.getModifierLevel( this) > 0) {
-                DamageSource dmg00 = DamageSource.playerAttack(player);
-                dmg00.bypassArmor().bypassMagic().bypassInvul();
-                target.hurt(dmg00, 10);
+                target.hurt(playerThroughSource.PlayerQuark(player,10), 10);
                 if (target.getHealth()>=1) {
                     target.setHealth(Math.max(1, target.getHealth() - target.getHealth()*0.05f*modifier.getLevel()));
                 }
@@ -93,7 +90,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (projectile instanceof AbstractArrow arrow&&target!=null&&attacker instanceof Player player) {
+        if (projectile instanceof AbstractArrow arrow&&target!=null&&attacker instanceof Player player&&!(target instanceof Player)) {
             float damageDealt =(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
             target.invulnerableTime =0;
             target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(),0.3F*damageDealt);
@@ -105,35 +102,12 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
                 target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.3F * damageDealt);
                 target.invulnerableTime = 0;
             }
-            if (!(target instanceof Player)) {
-                target.setNoGravity(true);
-            }
+            target.setNoGravity(true);
             if (target.getHealth()>=1) {
                 target.setHealth(Math.max(1, target.getHealth() - damageDealt));
             }
         }
         return false;
-    }
-    protected boolean canAttack(IToolStackView tool, Player player, InteractionHand hand) {
-        return !tool.isBroken() && hand == InteractionHand.OFF_HAND && OffhandCooldownTracker.isAttackReady(player);
-    }
-    public InteractionResult beforeEntityUse(IToolStackView tool, ModifierEntry modifier, Player player, Entity target, InteractionHand hand, InteractionSource source) {
-        if (this.canAttack(tool, player, hand)) {
-            if (!player.level.isClientSide()) {
-                ToolAttackUtil.attackEntity(tool, player, InteractionHand.OFF_HAND, target, ToolAttackUtil.getCooldownFunction(player, InteractionHand.OFF_HAND), false, source.getSlot(hand));
-                float damage =(float)tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
-                target.invulnerableTime = 0;
-                target.hurt(DamageSource.explosion(player).bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
-                target.invulnerableTime = 0;
-                target.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
-                target.invulnerableTime = 0;
-            }
-            OffhandCooldownTracker.applyCooldown(player, source == InteractionSource.ARMOR ? 4.0F : (Float)tool.getStats().get(ToolStats.ATTACK_SPEED), 20);
-            OffhandCooldownTracker.swingHand(player, InteractionHand.OFF_HAND, false);
-            return InteractionResult.CONSUME;
-        } else {
-            return InteractionResult.PASS;
-        }
     }
 
     @Override

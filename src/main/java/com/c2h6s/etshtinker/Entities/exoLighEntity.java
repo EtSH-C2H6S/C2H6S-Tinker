@@ -49,11 +49,11 @@ public class exoLighEntity extends ItemProjectile{
         List<LivingEntity> ls = this.level.getEntitiesOfClass(LivingEntity.class,aabb);
         for (LivingEntity living :ls){
             if (living !=this.getOwner()){
-                if (this.getOwner() instanceof Player player){
+                if (this.getOwner() instanceof Player player&&!(living instanceof Player)){
                     living.invulnerableTime=0;
                     living.hurt(playerThroughSource.PlayerQuark(player,this.damage),this.damage);
                     living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+3);
-                }else {
+                }else if (!(living instanceof Player)){
                     living.invulnerableTime=0;
                     living.hurt(throughSources.quark(this.damage),this.damage);
                     living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+3);

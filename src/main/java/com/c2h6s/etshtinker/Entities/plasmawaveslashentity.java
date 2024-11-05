@@ -51,7 +51,7 @@ public class plasmawaveslashentity extends ItemProjectile {
         super.tick();
         List<LivingEntity> ls =this.level.getEntitiesOfClass(LivingEntity.class,this.getBoundingBox().expandTowards(movement));
         for (LivingEntity entity :ls){
-            if (entity!=null&&entity!=this.getOwner()&&this.getOwner() instanceof Player player){
+            if (entity!=null&&entity!=this.getOwner()&&this.getOwner() instanceof Player player&&!(entity instanceof Player)){
                 if (tool!=null) {
                     entity.invulnerableTime = 0;
                     ToolAttackUtil.attackEntity(tool,player,InteractionHand.MAIN_HAND,entity,getCooldownFunction(player, InteractionHand.MAIN_HAND),true);

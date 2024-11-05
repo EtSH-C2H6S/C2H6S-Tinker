@@ -91,7 +91,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (attacker instanceof Player player&&modifiers.getLevel(this.getId())>0&&target!=null) {
+        if (attacker instanceof Player player&&modifiers.getLevel(this.getId())>0&&target!=null&&!(target instanceof Player)) {
             int lvl000 = modifiers.getLevel(this.getId());
             target.invulnerableTime=0;
             target.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE,1.2f,1.2f);

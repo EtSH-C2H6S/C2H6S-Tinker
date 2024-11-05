@@ -79,6 +79,31 @@ public class ultradenseex extends etshmodifieriii implements GeneralInteractionM
     }
 
     @Override
+    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
+        if (tool.getPersistentData().getFloat(multiplier)>=6){
+            for (ModifierEntry entry : tool.getModifierList()) {
+                if (entry != modifier) {
+                    damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, baseDamage, damage);
+                }
+            }
+        }
+        return super.onGetMeleeDamage(tool, modifier, context, baseDamage, damage);
+    }
+
+    @Override
+    public void modifierDamageDealt(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, LivingEntity entity, DamageSource damageSource, float amount, boolean isDirectDamage) {
+        int z =0;
+        while (z<tool.getPersistentData().getFloat(multiplier)) {
+            for (ModifierEntry entry : tool.getModifierList()) {
+                if (entry != modifier) {
+                    entry.getHook(ModifierHooks.DAMAGE_DEALT).onDamageDealt(tool, modifier, context,slotType,entity,damageSource,amount,isDirectDamage);
+                }
+            }
+            z++;
+        }
+    }
+
+    @Override
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         int z =0;
         while (z<tool.getPersistentData().getFloat(multiplier)) {

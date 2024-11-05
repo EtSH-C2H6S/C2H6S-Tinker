@@ -6,7 +6,9 @@ import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.EntityDamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -38,12 +40,13 @@ public class ReactiveResonateArmor extends etshmodifieriii {
         if (event.getEntity()==event.getSource().getEntity()){
             return;
         }
+        Entity entity =event.getSource().getEntity();
         LivingEntity living = event.getEntity();
         float amount = event.getAmount();
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
             int level = holder.get(key, 0);
             if (level > 0) {
-                if (living instanceof LivingEntity) {
+                if (living instanceof LivingEntity&&!(entity instanceof Player)) {
                     CustomSonicBoomEntity entity2 = new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(), living.level);
                     entity2.setOwner(living);
                     entity2.direction = getScatteredVec3(new Vec3(0, 1, 0), 87);

@@ -53,10 +53,8 @@ public class stellarblessing extends etshmodifieriii {
                 if (getMold(living.getDeltaMovement())>0.08){
                     event.setAmount(event.getAmount()*0.9f);
                 }
-                if (entity instanceof LivingEntity attacker){
-                    if (!(attacker instanceof Player)) {
-                        attacker.setNoGravity(true);
-                    }
+                if (entity instanceof LivingEntity attacker&&!(attacker instanceof Player)){
+                    attacker.setNoGravity(true);
                     attacker.setSecondsOnFire(200);
                 }
             }

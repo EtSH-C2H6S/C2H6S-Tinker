@@ -5,7 +5,7 @@
   },
   "stats": {
     "etshtinker:plasma_generator": {
-      "damagemultiplier": 7.25,
+      "damagemultiplier": 11.75,
       "criticalrate": 1,
       "fluidefficiency": 0.875,
       "slash_color": 7

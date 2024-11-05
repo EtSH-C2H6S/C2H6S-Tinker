@@ -156,7 +156,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                         }
                         if (!ls0.isEmpty()) {
                             for (LivingEntity target : ls0) {
-                                if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)) {
+                                if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)&&!(target instanceof Player)) {
                                     boolean isCrit =this.isCritical || EtSHrnd().nextInt(100) < 10;
                                     for (ModifierEntry modifier : tool.getModifierList()) {
                                         modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
@@ -180,7 +180,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                     for (AABB aabb : aabbList) {
                         List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb.inflate(1.5));
                         for (LivingEntity target : ls0) {
-                            if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)) {
+                            if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)&&!(target instanceof Player)) {
                                 boolean isCrit =this.isCritical || EtSHrnd().nextInt(100) < 45;
                                 for (ModifierEntry modifier : tool.getModifierList()) {
                                     modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
@@ -207,30 +207,32 @@ public class plasmaexplosionentity extends ItemProjectile{
             if (ls1.get(0) != null) {
                 LivingEntity entity = ls1.get(0);
                 ls1.clear();
-                if (special.equals("antimatter_explosion")) {
-                    this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 16f, Explosion.BlockInteraction.NONE);
-                }
-                if (special.equals("explosion")) {
-                    this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 2f, Explosion.BlockInteraction.NONE);
-                }
-                if (special.equals("annihilate")) {
-                    annihilateexplosionentity explosion = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), level);
-                    explosion.damage = 1024;
-                    explosion.radius = 20;
-                    explosion.proceedRecipe = true;
-                    explosion.proceedamount = 8;
-                    explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
-                    level.addFreshEntity(explosion);
-                }
-                if (tool != null) {
-                    for (ModifierEntry modifier : tool.getModifierList()) {
-                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,entity,this,special);
+                if (!(entity instanceof Player)) {
+                    if (special.equals("antimatter_explosion")) {
+                        this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 16f, Explosion.BlockInteraction.NONE);
+                    }
+                    if (special.equals("explosion")) {
+                        this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 2f, Explosion.BlockInteraction.NONE);
+                    }
+                    if (special.equals("annihilate")) {
+                        annihilateexplosionentity explosion = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), level);
+                        explosion.damage = 1024;
+                        explosion.radius = 20;
+                        explosion.proceedRecipe = true;
+                        explosion.proceedamount = 8;
+                        explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
+                        level.addFreshEntity(explosion);
+                    }
+                    if (tool != null) {
+                        for (ModifierEntry modifier : tool.getModifierList()) {
+                            modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool, entity, this, special);
+                        }
                     }
                 }
             }
             if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion") && !special.equals("annihilate")) {
                 for (LivingEntity targets : ls1) {
-                    if (targets != null) {
+                    if (targets != null&&!(targets instanceof Player)) {
                         if (special.equals("ionize")) {
                             targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 100, 9, false, false), this.getOwner());
                         } else if (special.equals("burn")) {
@@ -247,14 +249,14 @@ public class plasmaexplosionentity extends ItemProjectile{
                         } else if (special.equals("quark")) {
                             targets.getPersistentData().putInt("quark_disassemble",targets.getPersistentData().getInt("quark_disassemble")+100);
                         } else if (special.equals("corrosive")) {
-                            if (targets.getAttributes().getInstance(Attributes.ARMOR) != null && targets.getArmorValue() > 0) {
+                            if (targets.getAttributes().getInstance(Attributes.ARMOR) != null && targets.getArmorValue() > 0&&!(targets instanceof Player)) {
                                 targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(0);
                                 targets.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(-targets.getArmorValue());
                             }
-                            if (targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS) != null && targets.getArmorValue() > 0) {
+                            if (targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS) != null && targets.getArmorValue() > 0&&!(targets instanceof Player)) {
                                 targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS).setBaseValue(-1024);
                             }
-                            if (targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE) != null) {
+                            if (targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE) != null&&!(targets instanceof Player)) {
                                 targets.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(-10);
                             }
                             targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 100, 4), this.getOwner());

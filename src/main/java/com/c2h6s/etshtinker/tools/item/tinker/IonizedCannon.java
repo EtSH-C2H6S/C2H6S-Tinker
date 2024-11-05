@@ -67,6 +67,7 @@ public class IonizedCannon extends ModifiableItem {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected) {
+        super.inventoryTick(stack,level,entity,slot,isSelected);
         if (stack.getItem() instanceof IonizedCannon&&isSelected&&entity instanceof ServerPlayer player){
             ToolStack tool = ToolStack.from(stack);
             FluidStack fluidStack  = TANK_HELPER.getFluid(tool);
@@ -125,42 +126,50 @@ public class IonizedCannon extends ModifiableItem {
     }
 
     public int getFluidBaseComsumption(FluidStack fluidStack){
-        int amount =100;
+        int amount =20;
         Fluid fluid = fluidStack.getFluid();
         if (fluid!=null){
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SLIME_TOOLTIPS)){
-                amount=25;
+                amount=10;
             }
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SMALL_GEM_TOOLTIPS)){
-                amount=10;
+                amount=4;
             }
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.LARGE_GEM_TOOLTIPS)){
-                amount=10;
+                amount=4;
             }
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.METAL_TOOLTIPS)){
-                amount=9;
+                amount=3;
             }
         }
         return amount;
     }
 
     public static int BaseFluidConsumption(Fluid fluid){
-        int amount =100;
+        int amount =20;
         if (fluid!=null){
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SLIME_TOOLTIPS)){
-                amount=25;
+                amount=10;
             }
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.SMALL_GEM_TOOLTIPS)){
-                amount=10;
+                amount=4;
             }
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.LARGE_GEM_TOOLTIPS)){
-                amount=10;
+                amount=4;
             }
             if (fluid.builtInRegistryHolder().containsTag(TinkerTags.Fluids.METAL_TOOLTIPS)){
-                amount=9;
+                amount=3;
             }
         }
         return amount;
+    }
+
+    public static float getDamageMultiplier(ToolStack tool){
+        return (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)) *getToolFluidMultiplier(tool);
+    }
+
+    public static float getToolFluidMultiplier(ToolStack tool){
+        return Math.min(1+tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.20f,4.5f);
     }
 
     public void createPlasmaExplosion(ItemStack stack, Level level, LivingEntity living, int timeLeft){
@@ -173,7 +182,7 @@ public class IonizedCannon extends ModifiableItem {
         int times =tool.getStats().getInt(etshtinkerToolStats.MULTIPLASMA);
         int a =0;
         int consumption = getFluidBaseComsumption(fluidStack);
-        consumption = Math.round(tool.getStats().get(ToolStats.ATTACK_DAMAGE) * consumption*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
+        consumption = Math.round(getToolFluidMultiplier(tool) * consumption*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
         consumption =Math.max(1,consumption);
         while (a<=times) {
             if (living instanceof Player player) {
@@ -189,7 +198,7 @@ public class IonizedCannon extends ModifiableItem {
                         entity.rayVec3 = living.getLookAngle().scale(tool.getStats().get(etshtinkerToolStats.PLASMARANGE));
                     entity.particle = getFluidparticle(fluid);
                     entity.scale = tool.getStats().get(etshtinkerToolStats.SCALE);
-                    entity.damage = getFluidDamage(fluid) * (1 + tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER)) * tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+                    entity.damage = getFluidDamage(fluid) * getDamageMultiplier(tool);
                     entity.tool = tool;
                     entity.special = getFluidSpecial(fluid);
                     entity.setPos(living.getEyePosition().x, living.getEyePosition().y - 0.5 * entity.getBbHeight(), living.getEyePosition().z);
@@ -266,7 +275,7 @@ public class IonizedCannon extends ModifiableItem {
             builder.add(ToolStats.ATTACK_SPEED);
         }
         builder.add(Component.translatable("etshtinker.tool.tooltip.plasmarange").append(":"+String.format("%.01f",tool.getStats().get(etshtinkerToolStats.PLASMARANGE))));
-        builder.add(Component.translatable("etshtinker.tool.tooltip.damagemultiplier").append(":"+String.format("%.01f",(1+tool.getStats().get(etshtinkerToolStats.DAMAGEMULTIPLIER))*tool.getStats().get(ToolStats.ATTACK_DAMAGE))));
+        builder.add(Component.translatable("etshtinker.tool.tooltip.damagemultiplier").append(":"+String.format("%.01f",getDamageMultiplier((ToolStack) tool))));
         builder.add(Component.translatable("etshtinker.tool.tooltip.chargespeed").append(":"+String.valueOf((int) (40/tool.getStats().get(ToolStats.ATTACK_SPEED)))));
         builder.add(Component.translatable("etshtinker.tool.tooltip.cooldown").append(":"+String.valueOf(tool.getStats().get(etshtinkerToolStats.COOLDOWN))).withStyle(ChatFormatting.GOLD));
         builder.add(Component.translatable("etshtinker.tool.tooltip.scatter").append(":"+String.format("%.01f",tool.getStats().get(etshtinkerToolStats.SCATTER))).withStyle(ChatFormatting.GOLD));
@@ -275,7 +284,7 @@ public class IonizedCannon extends ModifiableItem {
             builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
         if (!wrongFluid(tool)){
-            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.round( tool.getStats().get(ToolStats.ATTACK_DAMAGE)*getFluidBaseComsumption(TANK_HELPER.getFluid(tool))*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER)))).append(" mB").withStyle(ChatFormatting.GOLD));
+            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.round( Math.round(getToolFluidMultiplier((ToolStack) tool) *tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER))))).append(" mB").withStyle(ChatFormatting.GOLD));
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":"+String.format("%.001f",getFluidDamage(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.GREEN));
             builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_consumption").append(":"+String.valueOf(getFluidBaseComsumption(TANK_HELPER.getFluid(tool)))).append(" mB").withStyle(ChatFormatting.YELLOW));
             if (getFluidSpecial(TANK_HELPER.getFluid(tool).getFluid())!=null){

@@ -20,16 +20,11 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 public class masseffect extends etshmodifieriii {
     AttributeModifier attributeModifier1 = new AttributeModifier("etsh.gravity",10, AttributeModifier.Operation.MULTIPLY_TOTAL);
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+
+    @Override
+    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker =context.getAttacker();
-        Entity entity =context.getTarget();
-        if (entity instanceof LivingEntity target) {
-            if (attacker instanceof Player player && modifier.getLevel() > 0) {
-                target.invulnerableTime = 0;
-                target.hurt(DamageSource.playerAttack(player), damage * Math.max(1, modifier.getLevel() * (float) getMold(attacker.getDeltaMovement())));
-            }
-        }
-        return knockback;
+        return damage+baseDamage * modifier.getLevel() * (float) getMold(attacker.getDeltaMovement());
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (projectile instanceof AbstractArrow arrow) {

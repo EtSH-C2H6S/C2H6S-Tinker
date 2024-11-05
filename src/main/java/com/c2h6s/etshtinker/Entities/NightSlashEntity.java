@@ -53,10 +53,12 @@ public class NightSlashEntity extends ItemProjectile{
         List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class,aabb);
         if (!ls.isEmpty()){
             for (LivingEntity targets:ls){
-                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)){
+                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)&&!(targets instanceof Player)){
                     targets.invulnerableTime =0;
-                    targets.hurt(DamageSource.playerAttack(player),this.damage);
-                    targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.cursefire.get(),100,0,false,false),this.getOwner());
+                    targets.hurt(DamageSource.playerAttack(player).bypassMagic(),this.damage*0.5f);
+                    targets.invulnerableTime =0;
+                    targets.hurt(DamageSource.indirectMagic(player,player).bypassMagic(),this.damage*0.5f);
+                    targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.cursefire.get(),100,9,false,false),this.getOwner());
                     hittimes++;
                     hitent.add(targets);
                 }

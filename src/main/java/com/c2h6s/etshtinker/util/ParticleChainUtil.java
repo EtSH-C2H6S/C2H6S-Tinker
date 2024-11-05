@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker.util;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -62,6 +63,19 @@ public class ParticleChainUtil {
 
         }
     }
+
+    public static void SummonParticleChain(ServerLevel level, Vec3 pos1, Vec3 pos2, SimpleParticleType simpleParticleType) {
+        Vec3 dir = pos2.subtract(pos1).normalize();
+        for (int i = 0; i < 1000; i++) {
+            double x = pos1.x + (dir.x * i * 0.3d);
+            double y = pos1.y + (dir.y * i * 0.3d);
+            double z = pos1.z + (dir.z * i * 0.3d);
+            Vec3 pos = new Vec3(x, y, z);
+            if (pos.distanceToSqr(new Vec3(pos2.x,pos2.y,pos2.z)) <= 0.04d) break;
+            level.sendParticles(simpleParticleType, x, y, z,1,0, 0d, 0d, 0d);
+        }
+    }
+
     public static void summonElectricFromTowithlimit(ServerLevel level, int idStart, int idEnd, int limit) {
         Entity entityStart = level.getEntity(idStart);
         Entity entityEnd = level.getEntity(idEnd);

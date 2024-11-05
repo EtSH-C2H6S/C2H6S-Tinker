@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -63,7 +64,7 @@ public class CustomSonicBoomEntity extends ItemProjectile{
                             List<LivingEntity> list = serverLevel.getEntitiesOfClass(LivingEntity.class,aabb);
                             if (!list.isEmpty()) {
                                 for (LivingEntity target : list) {
-                                    if (target != null&&this.getOwner()!=null&&!hitList.contains(target)&&target!=this.getOwner()){
+                                    if (target != null&&this.getOwner()!=null&&!hitList.contains(target)&&target!=this.getOwner()&&!(target instanceof Player)){
                                         target.invulnerableTime=0;
                                         target.hurt(DamageSource.sonicBoom(this.getOwner()),this.damage/2);
                                         hitList.add(target);
@@ -82,7 +83,7 @@ public class CustomSonicBoomEntity extends ItemProjectile{
                             List<LivingEntity> list = serverLevel.getEntitiesOfClass(LivingEntity.class,aabb.inflate(1.5));
                             if (!list.isEmpty()) {
                                 for (LivingEntity target : list) {
-                                    if (target != null&&this.getOwner()!=null&&!hitList.contains(target)&&target!=this.getOwner()){
+                                    if (target != null&&this.getOwner()!=null&&!hitList.contains(target)&&target!=this.getOwner()&&!(target instanceof Player)){
                                         target.invulnerableTime=0;
                                         target.hurt(DamageSource.sonicBoom(this.getOwner()),this.damage);
                                         hitList.add(target);

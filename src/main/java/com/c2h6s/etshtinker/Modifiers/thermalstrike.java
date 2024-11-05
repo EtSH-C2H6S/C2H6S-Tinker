@@ -99,6 +99,7 @@ public class thermalstrike extends etshmodifieriii {
                     a++;
                 }
             }
+            target.invulnerableTime=0;
         }
         return false;
     }
