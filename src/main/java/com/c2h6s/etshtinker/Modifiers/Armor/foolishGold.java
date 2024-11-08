@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.c2h6s.etshtinker.util.slotUtil;
+import com.c2h6s.etshtinker.util.SlotUtil;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
@@ -19,7 +19,7 @@ public class foolishGold extends etshmodifieriii {
         if (event.getNewTarget() !=null&&event.getEntity() instanceof AbstractPiglin){
             LivingEntity holder = event.getNewTarget();
             int modifierLv =0;
-            for(EquipmentSlot slot: slotUtil.ARMOR){
+            for(EquipmentSlot slot: SlotUtil.ARMOR){
                 ItemStack stack = holder.getItemBySlot(slot);
                 if (stack.getItem() instanceof IModifiable){
                     ToolStack tool =ToolStack.from(stack);

@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.util.SlotUtil;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -17,6 +18,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.security.SecureRandom;
@@ -40,35 +42,19 @@ public class extralight extends etshmodifieriii {
         LivingEntity entity =event.getEntity();
         Entity entity1 =event.getSource().getEntity();
         if (entity!=null){
-            entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-                int level = holder.get(key, 0);
-                if (level > 0) {
-                    SecureRandom random =EtSHrnd();
-                    if (random.nextInt(3)==1){
-                        entity.invulnerableTime+=2;
-                        event.setCanceled(true);
-                    }
-                }
-            });
-            if (entity1 instanceof Player player&&entity!=player){
-                player.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-                    int level = holder.get(key, 0);
-                    if (level > 0) {
-                        SecureRandom random =EtSHrnd();
-                        if (random.nextInt(7)==1){
-                            entity.invulnerableTime+=2;
-                            event.setCanceled(true);
-                        }
-                    }
-                });
+            if (SlotUtil.getAllTotalLevel(entity,this.getId())>0&&EtSHrnd().nextInt(4)==1){
+                event.setCanceled(true);
             }
-
+            if (entity1!=entity&&entity1 instanceof LivingEntity living&&SlotUtil.getAllTotalLevel(living,this.getId())>0&&EtSHrnd().nextInt(19)==1&&entity1.invulnerableTime==0){
+                entity1.invulnerableTime=2;
+            }
         }
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if(isCorrectSlot&&!tool.isBroken()){
-            holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,20,tool.getModifierLevel(this)+1,false,false));
-            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,20,tool.getModifierLevel(this)*2,false,false));
+        if(isCorrectSlot&&!tool.isBroken()&&holder!=null){
+            int lvl = SlotUtil.getAllTotalLevel(holder,this.getId());
+            holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,20,lvl+1,false,false));
+            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,20,lvl*3,false,false));
         }
     }
 }

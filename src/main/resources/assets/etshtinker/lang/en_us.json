@@ -118,14 +118,14 @@
   "modifier.etshtinker.electricarmor.description":"Ionizes your enemy on hurt.",
 
   "modifier.etshtinker.extralight": "Extra Light",
-  "modifier.etshtinker.extralight.flavor": "影流之主",
-  "modifier.etshtinker.extralight.description":"你的工具把你也变轻了，手持获得速度、急迫和每级8%（最大24%）的闪避率。\n穿着此材料制成的护甲时，被攻击时20%概率闪避。",
+  "modifier.etshtinker.extralight.flavor": "Dance with shadow",
+  "modifier.etshtinker.extralight.description":"When equipped,gains haste and movement speed and 20% avoidance rate.",
 
-  "modifier.etshtinker.ultradenseex": "究极致密",
-  "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"挥舞这种材料的工具使你的手直接开始抽搐，攻击间隔越长伤害越高，反之则越低。\n穿戴此材料制成的装甲时获得25%的减伤，对穿甲伤害则再次减免50%。",
+  "modifier.etshtinker.ultradenseex": "Ultradense EX",
+  "modifier.etshtinker.ultradenseex.flavor": "Not even a gap between particles inside it.",
+  "modifier.etshtinker.ultradenseex.description":"Right click to charge.Consume all the charge to increase other modifier's power when attacking.\nGains 25% DR when wearing as an armor.",
 
-  "modifier.etshtinker.extraweight": "万吨沉重EX",
+  "modifier.etshtinker.extraweight": "Extra Weight",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
   "modifier.etshtinker.extraweight.description":"增加下落速度，并在下落时把周围生物震飞",
 

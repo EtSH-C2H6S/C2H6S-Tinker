@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.c2h6s.etshtinker.util.slotUtil;
+import com.c2h6s.etshtinker.util.SlotUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -22,7 +22,7 @@ public class armorMoveAccel extends etshmodifieriii {
         Entity entity =event.getSource().getEntity();
         if (entity instanceof LivingEntity holder){
             int modifierLv =0;
-            for(EquipmentSlot slot: slotUtil.ARMOR){
+            for(EquipmentSlot slot: SlotUtil.ARMOR){
                 ItemStack stack = holder.getItemBySlot(slot);
                 if (stack.getItem() instanceof IModifiable){
                     ToolStack tool =ToolStack.from(stack);
