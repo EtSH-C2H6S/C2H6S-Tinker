@@ -44,10 +44,9 @@ public class controllableannihl extends etshmodifieriii implements ToolStatsModi
                     explode.setPos(target.getX(), target.getY() + 0.5 * target.getBbHeight(), target.getZ());
                     explode.setOwner(player);
                     target.level.addFreshEntity(explode);
-                    return 0;
                 }
             }
         }
-        return 0;
+        return damage/16;
     }
 }
