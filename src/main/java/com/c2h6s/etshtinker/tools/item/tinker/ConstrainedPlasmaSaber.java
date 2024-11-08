@@ -187,7 +187,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         }
         else if (checkFluid(tool)){
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":" +String.format("%.2f",getFuelDamage(getFuel(TANK_HELPER.getFluid(tool).getFluid())))).withStyle(ChatFormatting.GOLD));
-            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":" +String.valueOf(getToolFluidMultiplier((ToolStack) tool)*getFuelCumsp(getFuel(TANK_HELPER.getFluid(tool).getFluid()),TANK_HELPER.getFluid(tool).getFluid(),tool))).append(" mB").withStyle(ChatFormatting.YELLOW));
+            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":" +String.valueOf(getFuelCumsp(getFuel(TANK_HELPER.getFluid(tool).getFluid()),TANK_HELPER.getFluid(tool).getFluid(),tool))).append(" mB").withStyle(ChatFormatting.YELLOW));
         }else{
             if (noFluid(tool)){
                 builder.add(Component.translatable("etshtinker.tool.tooltip.nofluid").withStyle(ChatFormatting.RED));

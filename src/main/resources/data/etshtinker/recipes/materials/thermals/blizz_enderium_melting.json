@@ -3,7 +3,7 @@
     "ingredient":{
     	"item": "etshtinker:blizz_enderium"
     },
-    "temperature": 600,
+    "temperature": 1150,
     "time": 10,
     "result":{
       "fluid": "etshtinker:molten_blizz_enderium",

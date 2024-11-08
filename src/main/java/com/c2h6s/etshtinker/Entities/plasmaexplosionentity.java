@@ -261,7 +261,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                             }
                             targets.forceAddEffect(new MobEffectInstance(MobEffects.POISON, 100, 4), this.getOwner());
                             targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 4), this.getOwner());
-                        } else if (special.equals("elemental") || special.equals("entropic")) {
+                        } else if (special.equals("elemental") ) {
                             targets.invulnerableTime = 0;
                             targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
                             targets.invulnerableTime = 0;
@@ -286,6 +286,27 @@ public class plasmaexplosionentity extends ItemProjectile{
                             for (ModifierEntry modifier : tool.getModifierList()) {
                                 modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,targets,this,special);
                             }
+                        }
+                    }
+                    else if (targets!=null&& special.equals("entropic")){
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 2, false, false), this.getOwner());
+                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 2, false, false), this.getOwner());
+                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
+                        if (Cofhloaded) {
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(), 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(), 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
                         }
                     }
                 }

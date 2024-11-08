@@ -33,7 +33,7 @@ import java.util.List;
 
 import static slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper.TANK_HELPER;
 
-public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchModifierHook, TooltipModifierHook , ModifierTraitHook {
+public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchModifierHook, TooltipModifierHook  {
 
     @Override
     public int getPriority() {
@@ -43,7 +43,7 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this,ModifierHooks.PROJECTILE_LAUNCH,ModifierHooks.TOOLTIP,ModifierHooks.MODIFIER_TRAITS);
+        builder.addHook(this,ModifierHooks.PROJECTILE_LAUNCH,ModifierHooks.TOOLTIP);
     }
 
 
@@ -122,8 +122,4 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
         }
     }
 
-    @Override
-    public void addTraits(IToolContext iToolContext, ModifierEntry modifierEntry, TraitBuilder traitBuilder, boolean b) {
-        traitBuilder.add(new ModifierEntry(new ModifierId("tconstruct:tank"),modifierEntry.getLevel()*10));
-    }
 }

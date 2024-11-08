@@ -1,7 +1,7 @@
 {
     "type":"tconstruct:material_melting", 
     "input": "etshtinker:lightless_alloy",
-    "temperature": 1750,
+    "temperature": 1250,
     "result":{
       "fluid": "etshtinker:molten_lightless_alloy",
       "amount": 90

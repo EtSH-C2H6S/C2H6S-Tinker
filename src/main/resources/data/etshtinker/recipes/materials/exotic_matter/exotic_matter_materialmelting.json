@@ -7,7 +7,7 @@
   ],
     "type":"tconstruct:material_melting", 
     "input": "etshtinker:exotic_matter",
-    "temperature": 600,
+    "temperature": 1250,
     "result":{
       "fluid": "etshtinker:stablized_exotic_matter",
       "amount": 1000

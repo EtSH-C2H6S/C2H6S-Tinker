@@ -3,7 +3,7 @@
     "ingredient":{
     	"item": "etshtinker:lightless_alloy"
     },
-    "temperature": 1750,
+    "temperature": 1250,
     "time": 20,
     "result":{
       "fluid": "etshtinker:molten_lightless_alloy",

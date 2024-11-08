@@ -181,8 +181,7 @@ public class IonizedCannon extends ModifiableItem {
         Fluid fluid =fluidStack.getFluid();
         int times =tool.getStats().getInt(etshtinkerToolStats.MULTIPLASMA);
         int a =0;
-        int consumption = getFluidBaseComsumption(fluidStack);
-        consumption = Math.round(getToolFluidMultiplier(tool) * consumption*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
+        int consumption = Math.round(getToolFluidMultiplier(tool) * getFluidBaseComsumption(fluidStack)*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
         consumption =Math.max(1,consumption);
         while (a<=times) {
             if (living instanceof Player player) {
@@ -284,7 +283,7 @@ public class IonizedCannon extends ModifiableItem {
             builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
         if (!wrongFluid(tool)){
-            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.round( Math.round(getToolFluidMultiplier((ToolStack) tool) *tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER))))).append(" mB").withStyle(ChatFormatting.GOLD));
+            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.max(1, Math.round(getToolFluidMultiplier((ToolStack) tool) * getFluidBaseComsumption(TANK_HELPER.getFluid(tool))*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER))))).append(" mB").withStyle(ChatFormatting.GOLD));
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":"+String.format("%.001f",getFluidDamage(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.GREEN));
             builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_consumption").append(":"+String.valueOf(getFluidBaseComsumption(TANK_HELPER.getFluid(tool)))).append(" mB").withStyle(ChatFormatting.YELLOW));
             if (getFluidSpecial(TANK_HELPER.getFluid(tool).getFluid())!=null){

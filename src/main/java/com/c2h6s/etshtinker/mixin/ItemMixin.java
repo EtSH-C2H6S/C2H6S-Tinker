@@ -1,0 +1,25 @@
+package com.c2h6s.etshtinker.mixin;
+
+import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+
+@Mixin(ItemStack.class)
+public class ItemMixin {
+    @Inject(at = @At(value = "RETURN"),method = "isCorrectToolForDrops",cancellable = true)
+    public void AllowDropForAtomD(BlockState p_41450_, CallbackInfoReturnable<Boolean> cir){
+        ItemStack stack =(ItemStack) (Object)this;
+        if (stack.getItem() instanceof IModifiable&&!cir.getReturnValueZ()){
+            ToolStack toolStack =ToolStack.from(stack);
+            if (toolStack.getModifierLevel(etshtinkerModifiers.atomic_decompose.getId())>0){
+                cir.setReturnValue(true);
+            }
+        }
+    }
+}

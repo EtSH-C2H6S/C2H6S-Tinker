@@ -9,7 +9,7 @@
     "ingredient":{
     	"item": "etshtinker:activated_chroma_plate"
     },
-    "temperature": 600,
+    "temperature": 1300,
     "time": 10,
     "result":{
       "fluid": "etshtinker:molten_activated_chroma_steel",

@@ -411,7 +411,7 @@
 
   "modifier.etshtinker.atomic_decompose": "原子分解",
   "modifier.etshtinker.atomic_decompose.flavor": "溃不成形！",
-  "modifier.etshtinker.atomic_decompose.description":"攻击时对目标施加可叠加的原子分解效果，造成百分比伤害，等级越高叠加越快。会加速湮灭效果的作用。",
+  "modifier.etshtinker.atomic_decompose.description":"攻击时对目标施加可叠加的原子分解效果，造成百分比伤害。你的工具会像原子分解机一样无视方块的挖掘等级",
 
   "modifier.etshtinker.atomic_restructer": "原子再构",
   "modifier.etshtinker.atomic_restructer.flavor": "一即全，全即一",

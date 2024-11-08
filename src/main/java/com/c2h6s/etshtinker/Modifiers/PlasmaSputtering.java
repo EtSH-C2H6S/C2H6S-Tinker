@@ -3,6 +3,8 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -10,6 +12,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
@@ -35,7 +38,7 @@ import java.util.List;
 
 import static slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper.TANK_HELPER;
 
-public class PlasmaSputtering extends Modifier implements MeleeHitModifierHook , TooltipModifierHook,ModifierTraitHook {
+public class PlasmaSputtering extends Modifier implements MeleeHitModifierHook , TooltipModifierHook {
 
     @Override
     public int getPriority() {
@@ -45,7 +48,7 @@ public class PlasmaSputtering extends Modifier implements MeleeHitModifierHook ,
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.TOOLTIP,ModifierHooks.MODIFIER_TRAITS);
+        builder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.TOOLTIP);
     }
 
     @Override
@@ -123,8 +126,4 @@ public class PlasmaSputtering extends Modifier implements MeleeHitModifierHook ,
         }
     }
 
-    @Override
-    public void addTraits(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierTraitHook.TraitBuilder traitBuilder, boolean b) {
-        traitBuilder.add(new ModifierEntry(new ModifierId("tconstruct:tank"),modifierEntry.getLevel()*10));
-    }
 }

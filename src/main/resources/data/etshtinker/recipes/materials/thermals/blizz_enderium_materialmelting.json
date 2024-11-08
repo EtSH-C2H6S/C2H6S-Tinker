@@ -1,7 +1,7 @@
 {
     "type":"tconstruct:material_melting", 
     "input": "etshtinker:blizz_enderium",
-    "temperature": 600,
+    "temperature": 1150,
     "result":{
       "fluid": "etshtinker:molten_blizz_enderium",
       "amount": 90

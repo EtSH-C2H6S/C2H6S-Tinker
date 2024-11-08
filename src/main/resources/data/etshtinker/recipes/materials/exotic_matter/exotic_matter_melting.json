@@ -9,7 +9,7 @@
     "ingredient":{
     	"item": "etshtinker:exotic_matter"
     },
-    "temperature": 600,
+    "temperature": 100,
     "time": 10,
     "result":{
       "fluid": "etshtinker:stablized_exotic_matter",

@@ -1,7 +1,7 @@
 {
     "type":"tconstruct:material_melting", 
     "input": "etshtinker:gemobsidian",
-    "temperature": 1500,
+    "temperature": 950,
     "result":{
       "fluid": "etshtinker:molten_semicrystaline_obsidian",
       "amount": 100

@@ -64,7 +64,7 @@ public class plasmarrowentity extends AbstractArrow {
         if (e instanceof LivingEntity entity) {
             if (this.getOwner() instanceof Player player&&!(entity instanceof Player)) {
                 entity.invulnerableTime = 0;
-                entity.hurt(DamageSource.playerAttack(player), (float) (4 * getMold(this.getDeltaMovement())));
+                entity.hurt(DamageSource.thrown(this,player), (float) (getMold(this.getDeltaMovement())*this.getBaseDamage()));
                 entity.setSecondsOnFire(65535);
                 entity.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),1000,1,false,false),player);
                 entity.invulnerableTime = 0;
@@ -73,10 +73,6 @@ public class plasmarrowentity extends AbstractArrow {
         super.onHitEntity(result);
     }
     protected void onHitBlock(BlockHitResult result) {
-        Level world =this.getLevel();
-        Vec3 vec3 = this.getDeltaMovement();
-        world.createFireworks(this.getX(), this.getY(), this.getZ(), vec3.x, vec3.y, vec3.z,null);
-        this.discard();
         super.onHitBlock(result);
     }
 
