@@ -39,11 +39,11 @@
 
   "modifier.etshtinker.thermalstrike": "热力冲击",
   "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
-  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会产生一片电弧云，并释放一道自动弧向最近生物的脉冲，对攻击到的敌人施加震荡效果",
+  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会释放一道自动弧向最近生物的脉冲，对攻击到的敌人施加震荡效果",
 
   "modifier.etshtinker.thermalenhance": "热力附层",
   "modifier.etshtinker.thermalenhance.flavor": "热力元素全收集，达成！",
-  "modifier.etshtinker.thermalenhance.description":"攻击敌人对敌人施加大量减益，在敌人上方召唤闪电球，减少敌人25%防御，并附加相当于敌人已损生命10%的额外伤害（最大40）",
+  "modifier.etshtinker.thermalenhance.description":"攻击敌人对敌人施加大量减益，对敌人施加一到电弧，减少敌人25%防御，并附加相当于敌人已损生命10%（最大40）的额外伤害",
 
   "modifier.etshtinker.fission": "裂变反应",
   "modifier.etshtinker.fission.flavor": "MD跟你爆了",
@@ -76,10 +76,6 @@
   "modifier.etshtinker.masseffect": "质速效应",
   "modifier.etshtinker.masseffect.flavor": "当你跑得越快，你就越重",
   "modifier.etshtinker.masseffect.description":"根据当前瞬时速率造成额外伤害",
-
-  "modifier.etshtinker.meteorblessing": "异域祝福",
-  "modifier.etshtinker.meteorblessing.flavor": "交替施加霜冻和着火",
-  "modifier.etshtinker.meteorblessing.description":"",
 
   "modifier.etshtinker.warpattack": "折跃攻击",
   "modifier.etshtinker.warpattack.flavor": "扭曲空间",

@@ -2,6 +2,7 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -19,6 +20,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
+import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -64,9 +66,6 @@ public class totalinsane extends etshmodifieriii implements DurabilityDisplayMod
             if (getMainLevel(target,this)>0){
                 target.setHealth(0);
             }
-            else if (getOffLevel(target,this)>0){
-                target.setHealth(0);
-            }
         }
         if (entity1 instanceof Player attacker&& target !=null){
             if (event.getSource() instanceof playerThroughSource){
@@ -75,13 +74,19 @@ public class totalinsane extends etshmodifieriii implements DurabilityDisplayMod
             InteractionHand hand =attacker.getUsedItemHand();
             ToolStack tool =ToolStack.from(attacker.getItemInHand(hand));
             if (tool.getModifierLevel(this)>0&&!tool.isBroken()){
+                float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+                for (ModifierEntry entry:tool.getModifierList()){
+                    if (entry.getModifier()!= etshtinkerModifiers.totalinsane_STATIC_MODIFIER.get()) {
+                        damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, entry, new ToolAttackContext(attacker, attacker, InteractionHand.MAIN_HAND, target, target, false, 1, false), tool.getStats().get(ToolStats.ATTACK_DAMAGE), damage);
+                    }
+                }
                 ModDataNBT toolData = tool.getPersistentData();
                 if (toolData.getInt(insanity)>=500){
                     target.setLastHurtByPlayer(attacker);
-                    target.setHealth(Math.max(1, target.getHealth()-(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F));
                     target.invulnerableTime=0;
-                    target.hurt(playerThroughSource.PlayerPierce(attacker,(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F),(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F);
+                    target.hurt(playerThroughSource.PlayerPierce(attacker,(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*damage*0.05F),(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F);
                     toolData.putInt(insanity,0);
+                    target.setHealth(Math.max(1, target.getHealth()-(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*damage*0.05F));
                     toolData.putInt(fullcharged,0);
                     event.setCanceled(true);
                     attacker.getPersistentData().putInt("etshtinker.death_prevent",attacker.getPersistentData().getInt("etshtinker.death_prevent")<=0?1:attacker.getPersistentData().getInt("etshtinker.death_prevent"));
@@ -97,10 +102,10 @@ public class totalinsane extends etshmodifieriii implements DurabilityDisplayMod
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         ModDataNBT toolData =tool.getPersistentData();
         if (!tool.isBroken()) {
-            if (toolData.getInt(fullcharged) == 0 && isCorrectSlot) {
+            if (toolData.getInt(fullcharged) == 0 && isSelected) {
                 toolData.putInt(insanity, toolData.getInt(insanity) + 5);
             }
-            if (toolData.getInt(insanity) > 0 && !isCorrectSlot) {
+            if (toolData.getInt(insanity) > 0 && !isSelected) {
                 toolData.putInt(insanity, toolData.getInt(insanity) - 2);
             }
             if (toolData.getInt(insanity) > 605 && tool.getDamage() > 0) {

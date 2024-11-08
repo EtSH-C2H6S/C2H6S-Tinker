@@ -32,12 +32,10 @@ import java.util.List;
 public class ragedangery extends etshmodifieriii implements DurabilityDisplayModifierHook {
     private final ResourceLocation ragedur = new ResourceLocation(MOD_ID, "ragedur");
     private final ResourceLocation ragevalue = new ResourceLocation(MOD_ID, "ragevalue");
-    private final ResourceLocation rageatttime = new ResourceLocation(MOD_ID, "rageatttime");
     private final ResourceLocation sound2 = new ResourceLocation(MOD_ID, "sound2");
     public void onRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(ragedur);
         tool.getPersistentData().remove(ragevalue);
-        tool.getPersistentData().remove(rageatttime);
         tool.getPersistentData().remove(sound2);
     }
 
@@ -72,10 +70,6 @@ public class ragedangery extends etshmodifieriii implements DurabilityDisplayMod
                 toolData.putInt(ragevalue,toolData.getInt(ragevalue)-2);
             }
         }
-        if(toolData.getInt(rageatttime)>9&&holder!=null){
-            holder.setHealth(holder.getHealth()*0.8f);
-            toolData.putInt(rageatttime,toolData.getInt(rageatttime)-3);
-        }
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         Level world = null;
@@ -89,16 +83,14 @@ public class ragedangery extends etshmodifieriii implements DurabilityDisplayMod
                 attacker.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120, 5));
                 player.playSound( SoundEvents.ENDER_DRAGON_SHOOT, 0.7F, 1.0F);
                 toolData.putFloat(ragevalue, 0);
-                toolData.putFloat(rageatttime, 1);
                 toolData.putFloat(ragedur, 200);
             }
             if (toolData !=null&&toolData.getInt(ragedur) > 0 && modifiers.getLevel(this.getId()) > 0 && target != null) {
                 target.invulnerableTime = 0;
-                float arrowspeed = (float) Math.pow(Math.pow(arrow.getDeltaMovement().x, 2) + Math.pow(arrow.getDeltaMovement().y, 2) + Math.pow(arrow.getDeltaMovement().z, 2), 0.5);
+                float arrowspeed = (float) arrow.getDeltaMovement().length();
                 target.invulnerableTime = 0;
-                target.hurt(DamageSource.arrow(arrow, attacker), (float) ((Math.pow(arrowspeed, 2) * arrow.getBaseDamage())));
+                target.hurt(DamageSource.arrow(arrow, attacker), (float) (arrowspeed*arrow.getBaseDamage()*0.5));
                 target.invulnerableTime = 0;
-                toolData.putInt(rageatttime, toolData.getInt(rageatttime) + 1);
             }
         }
         return false;
