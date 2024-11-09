@@ -72,7 +72,7 @@ public class modifiershadowaxe extends etshmodifieriii implements RequirementsMo
     public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity){
         ModDataNBT toolData =tool.getPersistentData();
         if (!tool.isBroken() && entity instanceof Player player&&tool.getModifierLevel(this.getId())>0) {
-            shadowaxeEntity entity1 = new shadowaxeEntity(etshtinkerEntity.shadowaxeentity.get(), player.getX(),player.getEyeY(),player.getZ(),player.level);
+            shadowaxeEntity entity1 = new shadowaxeEntity(etshtinkerEntity.shadowaxeentity.get(),player.level);
             double vx =player.getLookAngle().x;
             double vy =player.getLookAngle().y;
             double vz =player.getLookAngle().z;

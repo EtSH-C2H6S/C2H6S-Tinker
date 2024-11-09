@@ -29,7 +29,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.ParticleChainUtil.*;
 
 
-public class shadowaxeEntity extends ShurikenEntityBase {
+public class shadowaxeEntity extends ItemProjectile {
     public float baseDamage;
     public int time =0;
 
@@ -40,14 +40,8 @@ public class shadowaxeEntity extends ShurikenEntityBase {
     public shadowaxeEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(etshtinkerEntity.shadowaxeentity.get(), world);
     }
-    public shadowaxeEntity(EntityType<? extends ShurikenEntityBase> type, double x, double y, double z, Level worldIn){
-        super(type, x, y, z, worldIn);
-    }
-    public shadowaxeEntity(EntityType<? extends shadowaxeEntity> type, Level world) {
+    public shadowaxeEntity(EntityType<? extends ItemProjectile> type, Level world) {
         super(type, world);
-    }
-    public shadowaxeEntity(Level worldIn, LivingEntity throwerIn) {
-        super(etshtinkerEntity.shadowaxeentity.get(), throwerIn, worldIn);
     }
 
     @Override
@@ -66,12 +60,10 @@ public class shadowaxeEntity extends ShurikenEntityBase {
         return new ItemStack(etshtinkerItems.shadowaxe.get());
     }
 
-    @Override
     public float getDamage() {
         return baseDamage;
     }
 
-    @Override
     public float getKnockback() {
         return 5;
     }
@@ -107,5 +99,6 @@ public class shadowaxeEntity extends ShurikenEntityBase {
                 }
             }
         }
+        this.setPos(this.position().add(this.getDeltaMovement()));
     }
 }

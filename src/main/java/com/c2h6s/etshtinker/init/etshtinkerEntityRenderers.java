@@ -21,7 +21,7 @@ public class etshtinkerEntityRenderers {
     static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(etshtinkerEntity.novascikle.get(), renderScikle::new);
         event.registerEntityRenderer(etshtinkerEntity.exoslash.get(), GlowingThrownRenderer::new);
-        event.registerEntityRenderer(etshtinkerEntity.shadowaxeentity.get(), renderScikle::new);
+        event.registerEntityRenderer(etshtinkerEntity.shadowaxeentity.get(), renderNightSlash::new);
         event.registerEntityRenderer(etshtinkerEntity.lightningarrow.get(), lightningarrowRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.plasmawaveslashEntity.get(), renderSlash::new);
         event.registerEntityRenderer(etshtinkerEntity.plasmarrowEntity.get(), renderplasmarrow::new);

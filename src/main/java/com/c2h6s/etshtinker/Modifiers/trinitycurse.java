@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.c2h6s.etshtinker.util.SlotUtil;
+import com.c2h6s.etshtinker.util.slotUtil;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +33,7 @@ public class trinitycurse extends etshmodifieriii implements VolatileDataModifie
     private void LivingHurt(LivingHurtEvent event) {
         LivingEntity entity =event.getEntity();
         if (entity!=null) {
-            for (EquipmentSlot slot : SlotUtil.ALL) {
+            for (EquipmentSlot slot : slotUtil.ALL) {
                 ItemStack stack = entity.getItemBySlot(slot);
                 if (stack.getItem() instanceof IModifiable){
                     ToolStack tool =ToolStack.from(stack);

@@ -169,6 +169,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                                     }
                                     ls1.add(target);
                                 } else if (special != null && special.equals("entropic") && target != null) {
+                                    target.hurt(DamageSource.mobAttack(target),this.damage * 0.5f);
                                     ls1.add(target);
                                 }
                             }
@@ -191,6 +192,10 @@ public class plasmaexplosionentity extends ItemProjectile{
                                 for (ModifierEntry modifier : tool.getModifierList()) {
                                     modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,target,this,isCrit);
                                 }
+                                ls1.add(target);
+                            }
+                            else if (special != null && special.equals("entropic") && target != null) {
+                                target.hurt(DamageSource.mobAttack(target),this.damage);
                                 ls1.add(target);
                             }
                         }
@@ -232,6 +237,27 @@ public class plasmaexplosionentity extends ItemProjectile{
             }
             if (!special.equals("tracking") && !special.equals("antimatter_explosion") && !special.equals("explosion") && !special.equals("annihilate")) {
                 for (LivingEntity targets : ls1) {
+                    if (targets!=null&& special.equals("entropic")){
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.OUT_OF_WORLD, damage * 0.25f);
+                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 2, false, false), this.getOwner());
+                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 2, false, false), this.getOwner());
+                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
+                        if (Cofhloaded) {
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(), 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(), 50, 4, false, false), this.getOwner());
+                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
+                        }
+                    }
                     if (targets != null&&!(targets instanceof Player)) {
                         if (special.equals("ionize")) {
                             targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(), 100, 9, false, false), this.getOwner());
@@ -286,27 +312,6 @@ public class plasmaexplosionentity extends ItemProjectile{
                             for (ModifierEntry modifier : tool.getModifierList()) {
                                 modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterSpecialAttack(tool,targets,this,special);
                             }
-                        }
-                    }
-                    else if (targets!=null&& special.equals("entropic")){
-                        targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
-                        targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
-                        targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
-                        targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
-                        targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
-                        targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 2, false, false), this.getOwner());
-                        targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 2, false, false), this.getOwner());
-                        targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
-                        if (Cofhloaded) {
-                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 50, 4, false, false), this.getOwner());
-                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SUNDERED.get(), 50, 4, false, false), this.getOwner());
-                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(), 50, 4, false, false), this.getOwner());
-                            targets.forceAddEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(), 50, 4, false, false), this.getOwner());
                         }
                     }
                 }

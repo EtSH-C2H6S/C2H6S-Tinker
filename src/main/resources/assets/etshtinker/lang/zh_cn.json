@@ -378,7 +378,7 @@
   "modifier.etshtinker.heavy_crit_ex.description":"增加750%的暴击率(乘算)，但是-85%的攻击速度",
 
   "modifier.etshtinker.annihilating_slash": "湮灭斩击",
-  "modifier.etshtinker.annihilating_slash.flavor": "Description: Null",
+  "modifier.etshtinker.annihilating_slash.flavor": "NullPointerException",
   "modifier.etshtinker.annihilating_slash.description":"斩击能攻击到的敌人减少，但是攻击敌人时造成湮灭爆炸",
 
   "modifier.etshtinker.perfectism": "完美主义",

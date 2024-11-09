@@ -49,19 +49,16 @@ public class warpattack extends etshmodifieriii {
 
     public static void tryWarp(Player player, ToolStack tool, InteractionHand hand){
         int lvl = tool.getModifierLevel(etshtinkerModifiers.warpattack_STATIC_MODIFIER.get());
-        if (hand == InteractionHand.MAIN_HAND&&!player.getCooldowns().isOnCooldown(player.getMainHandItem().getItem())&&lvl>0) {
+        if (hand == InteractionHand.MAIN_HAND&&lvl>0&&player.getAttackStrengthScale(0)>0.8) {
             meleSpecialAttackUtil.createWarp(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
-            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
         }
-        else if (hand == InteractionHand.OFF_HAND&&!player.getCooldowns().isOnCooldown(player.getOffhandItem().getItem())&&lvl>0) {
+        else if (hand == InteractionHand.OFF_HAND&&lvl>0&&player.getAttackStrengthScale(0)>0.8) {
             meleSpecialAttackUtil.createWarp(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
-            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
         }
     }
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
-        if (context.getPlayerAttacker()!=null&&!context.getPlayerAttacker().getCooldowns().isOnCooldown(tool.getItem())&&!context.isExtraAttack()) {
+        if (context.getPlayerAttacker()!=null&&!context.isExtraAttack()&&context.isFullyCharged()) {
             warpattack.tryWarp(context.getPlayerAttacker(), (ToolStack) tool,context.getPlayerAttacker().getUsedItemHand());
-            context.getPlayerAttacker().getCooldowns().addCooldown(tool.getItem(), 10);
         }
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {

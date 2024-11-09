@@ -8,7 +8,7 @@ import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
 import java.util.List;
 
-public class SlotUtil {
+public class slotUtil {
     public static List<EquipmentSlot> ARMOR =List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET);
     public static List<EquipmentSlot> ALL =List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND);
     public static List<EquipmentSlot> HAND =List.of(EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND);
