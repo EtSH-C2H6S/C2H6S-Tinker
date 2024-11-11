@@ -13,6 +13,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -61,24 +62,18 @@ public class EntityMixin {
     @Inject(at = @At(value = "HEAD"),method = "tick")
     public void tick(CallbackInfo ci){
         Entity entity0 =(Entity) (Object)this;
-        if(entity0 instanceof AbstractArrow arrow&&arrow.getTags().contains("warping")){
+        if(entity0 instanceof AbstractArrow arrow&&arrow.getTags().contains("warping")&&arrow.piercedAndKilledEntities != null&&arrow.piercedAndKilledEntities.size()<arrow.getPierceLevel()+1){
             arrow.removeTag("warping");
             LivingEntity entity =getNearestLiEntWithEntBL(16f,arrow,arrow.level,arrow.piercedAndKilledEntities);
             if (entity!=null) {
                 if (arrow.level instanceof ServerLevel serverLevel) {
-                    ParticleChainUtil.SummonParticleChain(serverLevel,arrow.position(),entity.position().add(0,entity.getBbHeight()*0.5,0), ParticleTypes.ELECTRIC_SPARK);
+                    ParticleChainUtil.SummonParticleChain(serverLevel, arrow.position(), entity.position().add(0, entity.getBbHeight() * 0.5, 0), ParticleTypes.ELECTRIC_SPARK);
                 }
                 arrow.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
                 EntityHitResult entityHitResult = new EntityHitResult(entity);
                 ForgeEventFactory.onProjectileImpact(arrow, entityHitResult);
                 arrow.onHit(entityHitResult);
-                if (arrow.piercedAndKilledEntities != null) {
-                    arrow.piercedAndKilledEntities.add(entity);
-                    if (arrow.piercedAndKilledEntities.size() >= arrow.getPierceLevel() + 1) {
-                        arrow.discard();
-                    }
-                }
-
+                arrow.piercedAndKilledEntities.add(entity);
             }
         }
     }

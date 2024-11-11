@@ -62,19 +62,11 @@ public class warpattack extends etshmodifieriii {
         }
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (livingEntity instanceof Player player&&!player.isShiftKeyDown()){
+        if (livingEntity instanceof Player player&&!player.isShiftKeyDown()&&abstractArrow !=null){
+            abstractArrow.piercedAndKilledEntities = Lists.newArrayListWithCapacity(5);
             Entity entity = getNearestMobWithinAngle(modifiers.getLevel()*16f,player,player.level,player.getLookAngle(),0.88);
-            if (entity instanceof Mob&&abstractArrow !=null){
-                abstractArrow.setPos(entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ());
-                abstractArrow.setPierceLevel((byte) (abstractArrow.getPierceLevel()+ modifiers.getLevel()*2));
-                if (abstractArrow.level instanceof ServerLevel serverLevel) {
-                    ParticleChainUtil.SummonParticleChain(serverLevel,player.position().add(0,player.getEyeHeight(),0),abstractArrow.position(), ParticleTypes.ELECTRIC_SPARK);
-                }
-                EntityHitResult entityHitResult =new EntityHitResult(entity);
-                ForgeEventFactory.onProjectileImpact(abstractArrow, entityHitResult);
-                abstractArrow.onHit(entityHitResult);
-                abstractArrow.piercedAndKilledEntities = Lists.newArrayListWithCapacity(5);
-                abstractArrow.piercedAndKilledEntities.add(entity);
+            if (entity instanceof Mob){
+                abstractArrow.addTag("warping");
                 entity.invulnerableTime =0;
             }
         }

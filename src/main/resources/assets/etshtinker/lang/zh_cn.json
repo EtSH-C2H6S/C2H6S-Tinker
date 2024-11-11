@@ -79,7 +79,7 @@
 
   "modifier.etshtinker.warpattack": "折跃攻击",
   "modifier.etshtinker.warpattack.flavor": "扭曲空间",
-  "modifier.etshtinker.warpattack.description":"你的攻击会被折跃到最近生物上并根据属性等级造成额外伤害。应用于箭矢时会受箭矢的穿透次数影响。",
+  "modifier.etshtinker.warpattack.description":"你的攻击会被折跃到最近生物上。应用于箭矢时按住shift不生效。",
 
   "modifier.etshtinker.worldforceex": "世界之力",
   "modifier.etshtinker.worldforceex.flavor": "大地的力量掌握在你手中",

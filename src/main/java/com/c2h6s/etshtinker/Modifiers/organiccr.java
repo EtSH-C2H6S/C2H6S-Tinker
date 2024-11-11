@@ -16,7 +16,7 @@ public class organiccr extends etshmodifieriii {
         LivingEntity target =context.getLivingTarget();
         if (target!=null&&!(target instanceof Player)){
             if (target.getPersistentData().contains("legacyhealth")&&target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
-                target.getPersistentData().putFloat("legacyhealth",target.getPersistentData().getFloat("legacyhealth")-Math.abs(damageDealt));
+                target.getPersistentData().putFloat("legacyhealth",target.getPersistentData().getFloat("legacyhealth"));
             }
             else {
                 target.getPersistentData().putFloat("legacyhealth",target.getHealth());
@@ -30,7 +30,7 @@ public class organiccr extends etshmodifieriii {
             if (target.getPersistentData().contains("legacyhealth")){
                 if (target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
                     attacker.heal(Math.min( 10,target.getHealth()-target.getPersistentData().getFloat("legacyhealth")));
-                    target.setHealth(target.getPersistentData().getFloat("legacyhealth")-damage);
+                    target.setHealth(target.getPersistentData().getFloat("legacyhealth"));
                     target.getPersistentData().putFloat("legacyhealth",target.getHealth());
                 }
             }

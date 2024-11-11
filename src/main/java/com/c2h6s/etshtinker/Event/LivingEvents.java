@@ -36,7 +36,7 @@ public class LivingEvents {
 
     private void onWardenDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof Warden warden){
-            if (!warden.getTags().contains("not_drop_special")&&warden.getLevel() instanceof ServerLevel level){
+            if (!warden.getTags().contains("not_drop_special")&&warden.getTags().contains("hurt")&&warden.getLevel() instanceof ServerLevel level){
                 ItemEntity alloy =new ItemEntity(EntityType.ITEM,level);
                 alloy.setItem(new ItemStack(etshtinkerItems.energized_sculk_alloy.get(),EtSHrnd().nextInt(5)+4));
                 alloy.setPos(warden.getX(),warden.getY(),warden.getZ());
@@ -55,6 +55,7 @@ public class LivingEvents {
 
     private void onWardenHurt(LivingHurtEvent event) {
         if (event.getEntity() instanceof Warden warden){
+            warden.addTag("hurt");
             if (!event.getSource().getMsgId().equals("sonic_boom")) {
                 warden.addTag("not_drop_special");
             }
