@@ -3,7 +3,7 @@
   "item": "etshtinker:annihilating_plasma_bucket",
   "text": [
     {
-      "text": "不稳定奇异物质||基础伤害:2.25||流体能力:自瞄",
+      "text": "不稳定奇异物质||基础伤害:4.25||流体能力:自瞄",
       "paragraph": true
     },
     {
@@ -15,7 +15,7 @@
       "paragraph": true
     },
     {
-      "text": "电子流体 || 基础伤害 : 33 || 流体能力 : 电离",
+      "text": "电子流体 || 基础伤害 : 16 || 流体能力 : 电离",
       "paragraph": true
     }
   ]

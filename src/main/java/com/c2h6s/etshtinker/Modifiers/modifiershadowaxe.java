@@ -80,6 +80,7 @@ public class modifiershadowaxe extends etshmodifieriii implements RequirementsMo
             entity1.noPhysics=true;
             entity1.setOwner(player);
             entity1.setDeltaMovement(vx,vy,vz);
+            entity1.setPos(player.position());
             player.level.addFreshEntity(entity1);
             toolData.putInt(stealth,0);
             player.getCooldowns().addCooldown(player.getMainHandItem().getItem(),4);

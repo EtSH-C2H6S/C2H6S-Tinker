@@ -85,7 +85,7 @@ public class ionizerFluidMap {
     }
     public static void extendMapExoalloy(){
         fluidParts.put(molten_exo_alloy.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(molten_exo_alloy.get(),64f);
+        fluidDmg.put(molten_exo_alloy.get(),32f);
         fluidSpecial.put(molten_exo_alloy.get(),"quark");
     }
     public static List<IonizedCannonRecipe> getIonizerRecipes(){

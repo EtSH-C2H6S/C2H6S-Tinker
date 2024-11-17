@@ -221,10 +221,10 @@ public class plasmaexplosionentity extends ItemProjectile{
                     }
                     if (special.equals("annihilate")) {
                         annihilateexplosionentity explosion = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), level);
-                        explosion.damage = 1024;
-                        explosion.radius = 20;
+                        explosion.damage = 2048;
+                        explosion.radius = 16;
                         explosion.proceedRecipe = true;
-                        explosion.proceedamount = 8;
+                        explosion.proceedamount = 0;
                         explosion.setPos(entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ());
                         level.addFreshEntity(explosion);
                     }

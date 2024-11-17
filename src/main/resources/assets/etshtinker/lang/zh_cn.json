@@ -137,10 +137,6 @@
   "modifier.etshtinker.exoblademodifier.flavor": "泰拉之刃ProMaxUltra",
   "modifier.etshtinker.exoblademodifier.description":"挥舞武器时射出多个星流能量球并释放一道近距离等离子弧光，能量球飞行一段时间后追踪敌人，造成可堆叠的夸克解离效果",
 
-  "modifier.etshtinker.lightningarrowmodifier": "涌流箭矢",
-  "modifier.etshtinker.lightningarrowmodifier.flavor": "“指的是电流而不是水流（）”",
-  "modifier.etshtinker.lightningarrowmodifier.description":"射出涌流箭矢，会追踪、穿透敌人并施加电击和新星辐射减益，不消耗箭矢",
-
   "modifier.etshtinker.warpattackex": "强化折跃攻击",
   "modifier.etshtinker.warpattackex.flavor": "击碎时空",
   "modifier.etshtinker.warpattackex.description":"更大范围，更短冷却，更高伤害的折跃攻击。（同样按住shift时不生效）",
@@ -439,11 +435,11 @@
 
   "modifier.etshtinker.ionizing_arrow": "等离子喷涂箭矢",
   "modifier.etshtinker.ionizing_arrow.flavor": "纳米级涂层",
-  "modifier.etshtinker.ionizing_arrow.description":"将工具内存储的熔融材料喷涂到箭矢上，使箭矢获得该材料的部分远程属性，每次射击时都会相应的消耗存储的流体。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
+  "modifier.etshtinker.ionizing_arrow.description":"将工具内存储的熔融材料喷涂到箭矢上，使箭矢获得该材料的部分远程属性，每次射击时都会相应的消耗存储的流体（需要储液强化等让工具具备流体容量的手段）。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
 
   "modifier.etshtinker.plasma_sputtering": "离子溅射镀膜",
   "modifier.etshtinker.plasma_sputtering.flavor": "纳米级涂层",
-  "modifier.etshtinker.plasma_sputtering.description":"将工具内存储的熔融材料喷涂到工具上，使工具获得该材料的部分近战属性，每次攻击时都会消耗存储的流体。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
+  "modifier.etshtinker.plasma_sputtering.description":"将工具内存储的熔融材料喷涂到工具上，使工具获得该材料的部分近战属性，每次攻击时都会消耗存储的流体（需要储液强化等让工具具备流体容量的手段）。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
 
   "modifier.etshtinker.ultradenseex_armor": "究极致密",
   "modifier.etshtinker.ultradenseex_armor.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",

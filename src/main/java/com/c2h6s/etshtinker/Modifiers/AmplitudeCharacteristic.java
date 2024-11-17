@@ -46,7 +46,7 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
 
     @Override
     public InteractionResult onToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
-        if (interactionHand == InteractionHand.MAIN_HAND&&player instanceof ServerPlayer){
+        if (interactionHand == InteractionHand.MAIN_HAND&&player.totalExperience>10){
             GeneralInteractionModifierHook.startUsing(iToolStackView,modifierEntry.getId(),player,interactionHand);
             return InteractionResult.CONSUME;
         }
@@ -104,7 +104,6 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
             swordEntity.damage = (float) tool.getPersistentData().getInt(charge) *0.375f;
             serverLevel.addFreshEntity(swordEntity);
             tool.getPersistentData().putInt(charge,0);
-            OffhandCooldownTracker.swingHand(player,InteractionHand.MAIN_HAND,false);
         }
     }
 
