@@ -18,5 +18,5 @@ public class etshtinkerEffects {
     public static final RegistryObject<MobEffect> atomic_dec = EFFECT.register("atomic_dec", AtomicDecompose::new);
     public static final RegistryObject<MobEffect> quark_disassemble = EFFECT.register("quark_disassemble", QuarkDisassembleEffect::new);
     public static final RegistryObject<MobEffect> hi_gravity = EFFECT.register("hi_gravity", hiGravity::new);
-    public static final RegistryObject<MobEffect> lo_gravity = EFFECT.register("lo_gravity", loGravity::new);
+    public static final RegistryObject<MobEffect> strong_poison = EFFECT.register("strong_poison", AcidicPoison::new);
 }

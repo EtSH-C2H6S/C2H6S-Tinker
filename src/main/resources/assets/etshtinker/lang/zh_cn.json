@@ -103,7 +103,7 @@
 
   "modifier.etshtinker.guardless": "毫无防备",
   "modifier.etshtinker.guardless.flavor": "你，为何不避",
-  "modifier.etshtinker.guardless.description":"敌人看不到你手上的武器，所以当你被生物攻击时使攻击者被缴械且伤害、防御减少。",
+  "modifier.etshtinker.guardless.description":"敌人看不到你手上的武器，手持时获得25%减伤，被生物攻击时使攻击者被缴械且伤害、防御减少。",
 
   "modifier.etshtinker.invisiiiible": "隐身",
   "modifier.etshtinker.invisiiiible.flavor": "看不到我看不到我看不到我",
@@ -445,6 +445,14 @@
   "modifier.etshtinker.ultradenseex_armor.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
   "modifier.etshtinker.ultradenseex_armor.description":"获得25%伤害减免，对于穿甲伤害则再进行一次50%的伤害减免",
 
+  "modifier.etshtinker.recycable": "可再生",
+  "modifier.etshtinker.recycable.flavor": "十分有活性",
+  "modifier.etshtinker.recycable.description":"工具有概率自动恢复耐久",
+
+  "modifier.etshtinker.acidic_poison": "酸性毒液",
+  "modifier.etshtinker.acidic_poison.flavor": "猛毒！",
+  "modifier.etshtinker.acidic_poison.description":"全力打击时生成毒云，施加酸性毒液减益。",
+
 
 
   "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -660,6 +668,12 @@
   "material.etshtinker.refined_glowstone.flavor": "亮闪闪",
   "material.etshtinker.refined_glowstone.encyclopedia": "",
 
+  "item.etshtinker.telson": "毒刺毒刺",
+  "item.etshtinker.lush_mixture": "苍翠混合物",
+  "material.etshtinker.lush_mixture": "苍翠",
+  "material.etshtinker.lush_mixture.flavor": "来自丛林",
+  "material.etshtinker.lush_mixture.encyclopedia": "一坨毒性很强的生物质，属于有害垃圾",
+
 
 
 
@@ -668,6 +682,7 @@
   "effect.etshtinker.cursefire": "咒火",
   "effect.etshtinker.annihilating": "湮灭",
   "effect.etshtinker.atomic_dec": "原子分解",
+  "effect.etshtinker.strong_poison": "酸性毒液",
 
 
 
@@ -847,6 +862,7 @@
   "etshtinker.item.tooltip.activated_chroma_plate3": "或许你会好奇进一步引入元素能量会发生什么...",
   "etshtinker.item.tooltip.activated_chroma_plate2": "离子化的活化彩钢也许是个很好的切入点。",
   "etshtinker.item.tooltip.shift": "按下shift，聆听材料的故事...",
+  "etshtinker.item.tooltip.telson": "被蜜蜂蛰时掉落。",
 
 
 

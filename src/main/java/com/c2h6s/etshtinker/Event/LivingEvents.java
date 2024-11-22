@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
@@ -32,6 +33,14 @@ public class LivingEvents {
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onDeathPrevent);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onWardenHurt);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST,this::onWardenDeath);
+        MinecraftForge.EVENT_BUS.addListener(this::onBeeAttack);
+    }
+
+    private void onBeeAttack(LivingHurtEvent event) {
+        if (event.getSource().getEntity() instanceof Bee bee){
+            ItemEntity entity = new ItemEntity(bee.level,bee.getX(),bee.getY(),bee.getZ(),new ItemStack(etshtinkerItems.telson.get(),EtSHrnd().nextInt(2)+1));
+            bee.level.addFreshEntity(entity);
+        }
     }
 
     private void onWardenDeath(LivingDeathEvent event) {

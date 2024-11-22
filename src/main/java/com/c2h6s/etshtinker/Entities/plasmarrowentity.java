@@ -43,9 +43,6 @@ public class plasmarrowentity extends AbstractArrow {
     @Override
     public void tick() {
         time++;
-        if (this.isCritArrow()) {
-            this.setCritArrow(false);
-        }
         if (time>=1200){
             this.remove(RemovalReason.DISCARDED);
         }

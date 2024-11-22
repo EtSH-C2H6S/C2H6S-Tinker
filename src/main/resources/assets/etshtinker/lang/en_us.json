@@ -123,7 +123,7 @@
 
   "modifier.etshtinker.ultradenseex": "Ultradense EX",
   "modifier.etshtinker.ultradenseex.flavor": "Not even a gap between particles inside it.",
-  "modifier.etshtinker.ultradenseex.description":"Right click to charge.Consume all the charge to increase other modifier's power when attacking.",
+  "modifier.etshtinker.ultradenseex.description":"Increase other modifiers' power when attacking.",
 
   "modifier.etshtinker.extraweight": "Extra Weight",
   "modifier.etshtinker.extraweight.flavor": "Mass strike.",
@@ -445,6 +445,14 @@
   "modifier.etshtinker.critical.flavor": "Contains 100% of critical rate.",
   "modifier.etshtinker.critical.description":"Plasma explosion will deal critical damage.",
 
+  "modifier.etshtinker.recycable": "Regenerating",
+  "modifier.etshtinker.recycable.flavor": "Bio-active",
+  "modifier.etshtinker.recycable.description":"Your tool sometimes repair itself.",
+
+  "modifier.etshtinker.acidic_poison": "Acidic Poison",
+  "modifier.etshtinker.acidic_poison.flavor": "Strong poison!",
+  "modifier.etshtinker.acidic_poison.description":"Inflicts Acidic poison on hit.",
+
 
 
 
@@ -661,6 +669,12 @@
   "material.etshtinker.refined_glowstone.flavor": "Shiny!",
   "material.etshtinker.refined_glowstone.encyclopedia": "",
 
+  "item.etshtinker.telson": "Telson",
+  "item.etshtinker.lush_mixture": "Lush Mixture",
+  "material.etshtinker.lush_mixture": "Lush",
+  "material.etshtinker.lush_mixture.flavor": "From the forests",
+  "material.etshtinker.lush_mixture.encyclopedia": "Bio-Hazard waste.",
+
 
 
 
@@ -669,6 +683,7 @@
   "effect.etshtinker.cursefire": "Curse Fire",
   "effect.etshtinker.annihilating": "Annihilating",
   "effect.etshtinker.atomic_dec": "Atomic Shatter",
+  "effect.etshtinker.strong_poison": "Acidic Poison",
 
 
 
@@ -836,6 +851,7 @@
   "etshtinker.item.tooltip.activated_chroma_plate3": "Maybe you are curios about injecting overloaded elemental energy into it...",
   "etshtinker.item.tooltip.activated_chroma_plate2": "It's a good mind to start with ionized activated chroma steel.",
   "etshtinker.item.tooltip.shift": "Press shift for more information ",
+  "etshtinker.item.tooltip.telson": "Drops when hurt by bees.",
 
   "item.etshtinker.ionized_cannon_prototype": "Ionized Cannon -Prototype-",
   "etshtinker.item.tooltip.ionized_cannon_prototype": "It's excellent without damage :)",

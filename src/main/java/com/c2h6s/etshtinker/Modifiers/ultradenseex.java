@@ -44,113 +44,49 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class ultradenseex extends etshmodifieriii implements GeneralInteractionModifierHook {
-    private final ResourceLocation multiplier = new ResourceLocation(MOD_ID, "multiplier");
-    public void onRemoved(IToolStackView tool) {
-        tool.getPersistentData().remove(multiplier);
-    }
+public class ultradenseex extends etshmodifieriii {
 
     @Override
-    protected void registerHooks(ModuleHookMap.Builder builder) {
-        super.registerHooks(builder);
-        builder.addHook(this,ModifierHooks.GENERAL_INTERACT);
-    }
-
-    public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        ModDataNBT toolData =tool.getPersistentData();
-        if (!isCorrectSlot&&toolData.getFloat(multiplier)!=0f){
-            toolData.putFloat(multiplier,0f);
-        }
+    public boolean isNoLevels() {
+        return true;
     }
 
     @Override
     public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        int z =0;
-        float knockback0 =baseKnockback;
-        while (z<tool.getPersistentData().getFloat(multiplier)) {
-            for (ModifierEntry entry : tool.getModifierList()) {
-                if (entry != modifier) {
-                    knockback0 = entry.getHook(ModifierHooks.MELEE_HIT).beforeMeleeHit(tool, modifier, context, damage, knockback0,knockback0);
-                }
+        for (ModifierEntry entry : tool.getModifierList()) {
+            if (entry != modifier) {
+                knockback = entry.getHook(ModifierHooks.MELEE_HIT).beforeMeleeHit(tool, modifier, context, damage, baseKnockback,knockback);
             }
-            z++;
         }
-        return knockback0;
+        return knockback;
     }
 
     @Override
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
-        if (tool.getPersistentData().getFloat(multiplier)>=6){
-            for (ModifierEntry entry : tool.getModifierList()) {
-                if (entry != modifier) {
-                    damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, baseDamage, damage);
-                }
+        for (ModifierEntry entry : tool.getModifierList()) {
+            if (entry != modifier) {
+                damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, baseDamage, damage);
             }
         }
-        return super.onGetMeleeDamage(tool, modifier, context, baseDamage, damage);
+        return damage;
     }
 
     @Override
     public void modifierDamageDealt(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, LivingEntity entity, DamageSource damageSource, float amount, boolean isDirectDamage) {
-        int z =0;
-        while (z<tool.getPersistentData().getFloat(multiplier)) {
-            for (ModifierEntry entry : tool.getModifierList()) {
-                if (entry != modifier) {
-                    entry.getHook(ModifierHooks.DAMAGE_DEALT).onDamageDealt(tool, modifier, context,slotType,entity,damageSource,amount,isDirectDamage);
-                }
+        for (ModifierEntry entry : tool.getModifierList()) {
+            if (entry != modifier) {
+                entry.getHook(ModifierHooks.DAMAGE_DEALT).onDamageDealt(tool, modifier, context,slotType,entity,damageSource,amount,isDirectDamage);
             }
-            z++;
         }
     }
 
     @Override
     public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        int z =0;
-        while (z<tool.getPersistentData().getFloat(multiplier)) {
-            for (ModifierEntry entry : tool.getModifierList()) {
-                if (entry != modifier) {
-                    entry.getHook(ModifierHooks.MELEE_HIT).afterMeleeHit(tool, modifier, context, damageDealt);
-                }
+        for (ModifierEntry entry : tool.getModifierList()) {
+            if (entry != modifier) {
+                entry.getHook(ModifierHooks.MELEE_HIT).afterMeleeHit(tool, modifier, context, damageDealt);
             }
-            z++;
-        }
-        tool.getPersistentData().putFloat(multiplier,0);
-    }
-
-    @Override
-    public InteractionResult onToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
-        if (!player.level.isClientSide&&iToolStackView.getPersistentData().getFloat(multiplier)<=2*modifierEntry.getLevel()&!player.getCooldowns().isOnCooldown(iToolStackView.getItem())) {
-            GeneralInteractionModifierHook.startUsing(iToolStackView, modifierEntry.getId(), player, interactionHand);
-            return InteractionResult.CONSUME;
-        }
-        return InteractionResult.PASS;
-    }
-
-    @Override
-    public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
-        if (entity instanceof Player player&&player.level instanceof ServerLevel serverLevel) {
-            ModDataNBT toolData = tool.getPersistentData();
-            toolData.putFloat(multiplier, toolData.getFloat(multiplier) + 0.2f * modifier.getLevel());
-            player.getCooldowns().addCooldown(tool.getItem(),15);
-            serverLevel.sendParticles(ParticleTypes.WITCH,player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ(),20,0.2,0.2,0.2,0.4);
         }
     }
 
-    @Override
-    public int getUseDuration(IToolStackView tool, ModifierEntry modifier) {
-        return 1;
-    }
-
-    @Override
-    public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
-        return UseAnim.SPEAR;
-    }
-
-    public void addTooltip(IToolStackView tool, ModifierEntry modifier, @org.jetbrains.annotations.Nullable Player player, List<Component> list, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        if (player != null) {
-            ModDataNBT toolData = tool.getPersistentData();
-            list.add(applyStyle(Component.translatable("etshtinker.modifier.tooltip.charge").append(String.valueOf(toolData.getInt(multiplier)))));
-        }
-        super.addTooltip(tool, modifier, player, list, tooltipKey, tooltipFlag);
-    }
 }

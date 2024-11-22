@@ -8,6 +8,8 @@ import com.c2h6s.etshtinker.tools.item.tinker.IonizedCannon;
 import com.c2h6s.etshtinker.tools.stats.PlasmaGeneratorMaterialStats;
 import com.c2h6s.etshtinker.tools.stats.fluidChamberMaterialStats;
 import com.c2h6s.etshtinker.tools.stats.ionizerMaterialStats;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -19,6 +21,8 @@ import slimeknights.tconstruct.gadgets.item.ShurikenItem;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import com.c2h6s.etshtinker.tools.definition.toolDefinitions;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
+
+import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.init.etshtinkerTab.TOOLS;
@@ -35,6 +39,7 @@ public class etshtinkerItems {
     //材料
     public static final RegistryObject<Item> lightless_alloy = ITEMS.register("lightless_alloy",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
     public static final RegistryObject<Item> energized_sculk_alloy = ITEMS.register("energized_sculk_alloy",( ) -> new EnergizedSculkAlloyItem(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
+    public static final RegistryObject<Item> lush_mixture = ITEMS.register("lush_mixture",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MATERIALS)));
 
 
     //方块
@@ -46,6 +51,7 @@ public class etshtinkerItems {
     public static final RegistryObject<Item> etshtinker_guide = ITEMS.register("etshtinker_guide", () -> new etshbookitem(new Item.Properties().stacksTo(1).tab(etshtinkerTab.MIXC)));
     public static final RegistryObject<Item> ionized_cannon_prototype = ITEMS.register("ionized_cannon_prototype", ()->new IonizedCannonPrototype(new Item.Properties().stacksTo(1).tab(etshtinkerTab.MIXC)));
     public static final RegistryObject<Item> knsu = ITEMS.register("knsu",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
+    public static final RegistryObject<Item> telson = ITEMS.register("telson",( ) -> new ToolTipedItem(new Item.Properties().tab(etshtinkerTab.MIXC), List.of(Component.translatable("etshtinker.item.tooltip.telson").withStyle(ChatFormatting.YELLOW))));
 
 
 

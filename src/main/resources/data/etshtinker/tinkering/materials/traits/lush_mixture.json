@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "etshtinker:acidic_poison",
+      "level": 1
+    },
+    {
+      "name": "etshtinker:recycable",
+      "level": 1
+    }
+  ]
+}

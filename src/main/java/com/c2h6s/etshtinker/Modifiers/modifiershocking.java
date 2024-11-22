@@ -1,7 +1,9 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.hooks.FoilModifierHook;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
+import com.c2h6s.etshtinker.init.etshtinkerHook;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -26,6 +28,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -40,9 +43,16 @@ import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
-public class modifiershocking extends etshmodifieriii {
+public class modifiershocking extends etshmodifieriii implements FoilModifierHook {
     private final ResourceLocation charge = new ResourceLocation(MOD_ID, "charge");
     private final ResourceLocation sound3 = new ResourceLocation(MOD_ID, "sound3");
+
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this, etshtinkerHook.FOIL);
+    }
+
     public void onRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(charge);
         tool.getPersistentData().remove(sound3);
@@ -166,4 +176,8 @@ public class modifiershocking extends etshmodifieriii {
         }
     }
 
+    @Override
+    public boolean isFoil(IToolStackView tool, Boolean isFoil) {
+        return isFoil||tool.getPersistentData().getInt(charge) > 99;
+    }
 }

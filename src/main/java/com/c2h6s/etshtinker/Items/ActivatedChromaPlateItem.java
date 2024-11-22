@@ -47,7 +47,7 @@ public class ActivatedChromaPlateItem extends Item {
                 ((ServerLevel) entity.level).sendParticles(etshtinkerParticleType.nova.get(),entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ(),2,0,0,0,0.2);
                 entity.getPersistentData().putInt("progress",entity.getPersistentData().getInt("progress")-1);
             }
-            if (entity.getPersistentData().getInt("progress")>1000){
+            if (entity.getPersistentData().getInt("progress")>2000){
                 ((ServerLevel) entity.level).sendParticles(etshtinkerParticleType.nova.get(),entity.getX(),entity.getY()+0.5,entity.getZ(),32,0,0,0,0.5);
                 List<LivingEntity> ls =entity.level.getEntitiesOfClass(LivingEntity.class,new AABB(entity.getX()-6,entity.getY()-6,entity.getZ()-6,entity.getX()+6,entity.getY()+6,entity.getZ()+6));
                 for (LivingEntity target:ls){
@@ -56,7 +56,7 @@ public class ActivatedChromaPlateItem extends Item {
                     }
                 }
                 entity.getItem().setCount(entity.getItem().getCount()-1);
-                entity.getPersistentData().putInt("progress",entity.getPersistentData().getInt("progress")-1000);
+                entity.getPersistentData().putInt("progress",entity.getPersistentData().getInt("progress")-2000);
                 ItemEntity alloy =new ItemEntity(EntityType.ITEM,entity.level);
                 alloy.setItem(new ItemStack(nights_alloy.get(),1));
                 alloy.setPos(entity.getX(),entity.getY(),entity.getZ());

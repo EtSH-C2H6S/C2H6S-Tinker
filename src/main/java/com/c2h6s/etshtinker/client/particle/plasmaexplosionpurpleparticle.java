@@ -4,6 +4,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 
+import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
+
 public class plasmaexplosionpurpleparticle extends TextureSheetParticle {
     public static PlasmaexplosionpurpleParticleProvider provider(SpriteSet spriteSet) {
         return new PlasmaexplosionpurpleParticleProvider(spriteSet);
@@ -34,6 +36,8 @@ public class plasmaexplosionpurpleparticle extends TextureSheetParticle {
         this.xd = vx * 0;
         this.yd = vy * 0;
         this.zd = vz * 0;
+        this.roll = (float)( EtSHrnd().nextInt(4)*(Math.PI/2f));
+        this.oRoll =this.roll;
         this.setSpriteFromAge(spriteSet);
     }
     public int getLightColor(float p_234080_) {

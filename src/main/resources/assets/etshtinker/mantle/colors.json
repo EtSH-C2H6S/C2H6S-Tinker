@@ -111,7 +111,9 @@
     "critical": "#FF0094",
     "ionizing_arrow": "#A19DFF",
     "plasma_sputtering":"#A19DFF",
-    "ultradenseex_armor": "#FF0094"
+    "ultradenseex_armor": "#FF0094",
+    "recycable":"#34C469",
+    "acidic_poison": "#4AC435"
   },
   "material.etshtinker":
   {
@@ -144,6 +146,7 @@
     "nights_alloy": "#800002",
     "perfect_generic_item": "#90FF90",
     "energized_sculk_alloy": "#00FFD0",
-    "atomic_alloy": "#5D288C"
+    "atomic_alloy": "#5D288C",
+    "lush_mixture": "#4CFF8E"
   }
 }

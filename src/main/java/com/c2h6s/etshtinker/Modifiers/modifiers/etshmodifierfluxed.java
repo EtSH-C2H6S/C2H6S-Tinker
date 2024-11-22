@@ -78,7 +78,7 @@ public class etshmodifierfluxed implements IEnergyStorage, ToolCapabilityProvide
     }
 
     public int receiveEnergy(int maxReceive, boolean simulate) {
-        return receiveEnergy(this.tool.get(), getMaxEnergyStored(this.tool.get())/5, simulate);
+        return receiveEnergy(this.tool.get(), maxReceive, simulate);
     }
 
     public int extractEnergy(int maxExtract, boolean simulate) {

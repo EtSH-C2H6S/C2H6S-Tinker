@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "etshtinker:lush_mixture"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "etshtinker:lush_mixture"
+}

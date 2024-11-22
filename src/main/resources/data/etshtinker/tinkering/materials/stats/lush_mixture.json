@@ -1,0 +1,32 @@
+{
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 4000
+    },
+    "tconstruct:binding": {},
+    "tconstruct:bowstring": {},
+    "tconstruct:handle": {
+      "durability": -0.1,
+      "mining_speed": -0.1,
+      "melee_speed": 0.5,
+      "melee_damage": -0.2
+    },
+    "tconstruct:head": {
+      "durability": 120,
+      "mining_speed": 1,
+      "mining_tier": "minecraft:wood",
+      "melee_attack": 2.2
+    },
+    "tconstruct:limb": {
+      "durability": 120,
+      "draw_speed": 0.4,
+      "velocity": -0.2,
+      "accuracy": -0.05
+    },
+    "tconstruct:grip": {
+      "durability": 0.1,
+      "accuracy": -0.05,
+      "melee_damage": 2.0
+    }
+  }
+}

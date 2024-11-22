@@ -79,7 +79,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                             entry.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, entry, player, arrow, arrow, arrowData, true);
                         }
                         arrow.setCritArrow(true);
-                        arrow.setBaseDamage(0.025);
+                        arrow.setBaseDamage(arrow.getBaseDamage()/10);
                         level.addFreshEntity(arrow);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
 

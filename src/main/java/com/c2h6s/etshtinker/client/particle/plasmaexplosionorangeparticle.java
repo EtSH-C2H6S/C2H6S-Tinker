@@ -5,6 +5,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 
+import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
+
 public class plasmaexplosionorangeparticle extends TextureSheetParticle {
     public static plasmaexplosionorangeparticle.PlasmaexplosionorangeParticleProvider provider(SpriteSet spriteSet) {
         return new plasmaexplosionorangeparticle.PlasmaexplosionorangeParticleProvider(spriteSet);
@@ -18,7 +20,7 @@ public class plasmaexplosionorangeparticle extends TextureSheetParticle {
         }
 
         public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new plasmaexplosionpurpleparticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
+            return new plasmaexplosionorangeparticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
         }
     }
 
@@ -35,6 +37,8 @@ public class plasmaexplosionorangeparticle extends TextureSheetParticle {
         this.xd = vx * 0;
         this.yd = vy * 0;
         this.zd = vz * 0;
+        this.roll = (float)( EtSHrnd().nextInt(4)*(Math.PI/2f));
+        this.oRoll =this.roll;
         this.setSpriteFromAge(spriteSet);
     }
 
