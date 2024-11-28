@@ -9,6 +9,12 @@
     },
     {
       "item": "minecraft:spore_blossom"
+    },
+    {
+      "item": "minecraft:moss_block"
+    },
+    {
+      "item": "minecraft:jungle_leaves"
     }
   ],
   "result": {

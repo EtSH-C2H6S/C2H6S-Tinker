@@ -13,33 +13,35 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.RepairFactorModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.*;
 import com.c2h6s.etshtinker.Modifiers.modifiers.*;
-import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 
 
-public class annilate extends etshmodifieriii implements RepairFactorModifierHook {
+public class annilate extends etshmodifieriii  {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this,ModifierHooks.REPAIR_FACTOR);
+        builder.addHook(this);
     }
 
 
@@ -50,7 +52,10 @@ public class annilate extends etshmodifieriii implements RepairFactorModifierHoo
     public void onRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(des);
     }
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+        if (context.getAttacker() instanceof FakePlayer){
+            return knockback;
+        }
         LivingEntity attacker =context.getAttacker();
         Entity target =context.getTarget();
         if (target instanceof LivingEntity living&&tool.getModifierLevel(this)>0){
@@ -70,9 +75,8 @@ public class annilate extends etshmodifieriii implements RepairFactorModifierHoo
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (livingEntity!=null&&isCorrectSlot&&!tool.isBroken()&&modifier.getLevel()>0&&tool.getPersistentData().getInt(des)>0){
-            tool.isBroken();
-            tool.setDamage(2147483647);
-            livingEntity.playSound(SoundEvents.ITEM_BREAK,1,1);
+
+            destroyTool((ToolStack) tool);
         }
     }
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @org.jetbrains.annotations.Nullable Player player, List<Component> list, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
@@ -82,11 +86,16 @@ public class annilate extends etshmodifieriii implements RepairFactorModifierHoo
         };
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (tool.getModifierLevel(this)>0) {
-            tool.getPersistentData().putInt(des, 114514);
+        if (livingEntity instanceof FakePlayer){
+            return;
         }
+        tool.getPersistentData().putInt(des, 114514);
+
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+        if (attacker instanceof FakePlayer){
+            return false;
+        }
         if (target !=null&&attacker!=null){
             target.getPersistentData().putInt("annih_countdown",60);
             attacker.getPersistentData().putInt("annih_countdown",60);
@@ -98,9 +107,15 @@ public class annilate extends etshmodifieriii implements RepairFactorModifierHoo
         }
         return true;
     }
-
-    @Override
-    public float getRepairFactor(IToolStackView iToolStackView, ModifierEntry modifierEntry, float v) {
-        return 0.01f;
+    public void destroyTool(ToolStack tool){
+        int length = tool.getMaterials().size();
+        List<MaterialVariant> list=new ArrayList<>(List.of());
+        for (int i=0;i<length;i++){
+            list.add((MaterialVariant) MaterialVariant.of(MaterialVariantId.create(new MaterialId("etshtinker:annihilate_ember"),"default")));
+        }
+        MaterialNBT nbt = new MaterialNBT(list);
+        tool.setMaterials(nbt);
+        tool.rebuildStats();
     }
+
 }

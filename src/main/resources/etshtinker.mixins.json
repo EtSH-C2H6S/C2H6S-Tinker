@@ -6,6 +6,7 @@
   "refmap": "etshtinker.refmap.json",
   "mixins": [
     "EntityMixin",
+    "EventMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
     "tconstructMixin.ToolStackMixin"

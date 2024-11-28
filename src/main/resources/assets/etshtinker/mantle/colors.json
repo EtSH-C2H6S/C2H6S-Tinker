@@ -113,7 +113,10 @@
     "plasma_sputtering":"#A19DFF",
     "ultradenseex_armor": "#FF0094",
     "recycable":"#34C469",
-    "acidic_poison": "#4AC435"
+    "acidic_poison": "#4AC435",
+    "extradense_armor":"#7885E0",
+    "quark_disassemble": "#A1FFB4",
+    "heat_dead":"#FF3B3E"
   },
   "material.etshtinker":
   {

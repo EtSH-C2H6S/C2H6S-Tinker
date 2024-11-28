@@ -26,7 +26,7 @@ public class crunchyshattered extends etshmodifieriii implements ToolDamageModif
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.TOOL_DAMAGE);
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getTarget();
         Entity entity1 =context.getAttacker();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target&&!tool.isBroken()&&entity1 instanceof LivingEntity attacker){

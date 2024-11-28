@@ -89,20 +89,21 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
     @Override
     public void onStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
         int useTime =this.getUseDuration(tool,modifier)-timeLeft;
-        if (useTime>=40&&entity instanceof ServerPlayer player){
+        if (useTime>=40&&entity instanceof Player player){
             float angle = Mth.lerp(1, player.yRotO, player.getYRot());
             double angleSin =  Math.sin((angle-90)*Math.PI/180);
             double angleCos =  Math.cos((angle-90)*Math.PI/180);
             Vec3 offset = new Vec3(angleCos,0,angleSin).cross(new Vec3(0,-1,0)).scale(0.25);
             Vec3 entDirect = new Vec3(angleCos,0.4,angleSin).scale(1.5);
-            ServerLevel serverLevel =player.getLevel();
-            SculkSwordEntity swordEntity =new SculkSwordEntity(etshtinkerEntity.sculk_sword.get(),serverLevel);
+            Level level =player.getLevel();
+            SculkSwordEntity swordEntity =new SculkSwordEntity(etshtinkerEntity.sculk_sword.get(),level);
+            swordEntity.setPos(player.position());
             swordEntity.charge=tool.getPersistentData().getInt(charge);
             swordEntity.offset =offset;
             swordEntity.Rawdirection =entDirect;
             swordEntity.setOwner(player);
             swordEntity.damage = (float) tool.getPersistentData().getInt(charge) *0.375f;
-            serverLevel.addFreshEntity(swordEntity);
+            level.addFreshEntity(swordEntity);
             tool.getPersistentData().putInt(charge,0);
         }
     }

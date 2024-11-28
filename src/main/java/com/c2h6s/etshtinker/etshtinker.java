@@ -36,6 +36,9 @@ import static com.c2h6s.etshtinker.util.modloaded.*;
 
 public class etshtinker {
     public static final String MOD_ID = "etshtinker";
+    public static String makeDescriptionId(String type, String name) {
+        return type + ".etshtinker." + name;
+    }
     public static ResourceLocation getResourceLoc(String id) {
         return new ResourceLocation(MOD_ID,id);
     }
@@ -44,12 +47,13 @@ public class etshtinker {
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::registerGuiOverlay);
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
-        etshtinkerItems.ITEMS.register(eventBus);//物品
-        etshtinkerModifiers.MODIFIERS.register(eventBus);//词条类
-        etshtinkerFluids.FLUIDS.register(eventBus);//流体类
-        etshtinkerBlocks.BLOCKS.register(eventBus);//方块
-        etshtinkerEffects.EFFECT.register(eventBus);//状态
-        etshtinkerEntity.ENTITIES.register(eventBus);//实体
+        etshtinkerItems.ITEMS.register(eventBus);
+        etshtinkerItems.CAST.register(eventBus);
+        etshtinkerModifiers.MODIFIERS.register(eventBus);
+        etshtinkerFluids.FLUIDS.register(eventBus);
+        etshtinkerBlocks.BLOCKS.register(eventBus);
+        etshtinkerEffects.EFFECT.register(eventBus);
+        etshtinkerEntity.ENTITIES.register(eventBus);
         etshtinkerParticleType.REGISTRY.register(eventBus);//粒子
         etshtinkerConfig.init();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> etshtinkerBook::initBook);

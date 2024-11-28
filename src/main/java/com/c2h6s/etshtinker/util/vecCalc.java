@@ -71,7 +71,7 @@ public class vecCalc {
         List<LivingEntity> mobbb = level.getEntitiesOfClass(LivingEntity.class, new AABB(x + radius, y + radius, z + radius, x - radius, y - radius, z - radius));
         double i =radius;
         for (LivingEntity targets : mobbb){
-            if (targets!=null&&targets!=centerEnt&&getMold(Entity1ToEntity2(centerEnt,targets))<i&&!(targets instanceof Player)&&!targets.isDeadOrDying()){
+            if (!(targets instanceof Player)&&targets!=null&&targets!=centerEnt&&Entity1ToEntity2(centerEnt,targets).length()<i&&!targets.isDeadOrDying()){
                 i =getMold(Entity1ToEntity2(centerEnt,targets));
                 entity =targets;
             }

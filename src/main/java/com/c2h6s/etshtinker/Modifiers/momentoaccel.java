@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class momentoaccel extends etshmodifieriii {
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getAttacker();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity attacker&&!tool.isBroken()){
             if (attacker.getEffect(MobEffects.DIG_SPEED)!=null&&attacker.getEffect(MobEffects.DIG_SPEED).getAmplifier()<8*modifier.getLevel()){

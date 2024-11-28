@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "etshtinker:anti_neutronium"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "etshtinker:molten_entropic",
+    "amount": 1000
+  },
+  "result": "etshtinker:entropic_ingot",
+  "cooling_time": 1
+}

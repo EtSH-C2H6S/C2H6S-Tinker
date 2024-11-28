@@ -86,7 +86,7 @@ public class nightsenhance extends etshmodifieriii {
         return damage +baseDamage;
     }
 
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         int LightLevel =context.getAttacker().level.getBrightness(LightLayer.BLOCK,context.getAttacker().blockPosition()) ;
         if (LightLevel >7&&context.getLivingTarget()!=null&&context.getPlayerAttacker()!=null){
             int i =0;
@@ -123,6 +123,7 @@ public class nightsenhance extends etshmodifieriii {
                         while (i < 4) {
                             target.invulnerableTime = 0;
                             target.hurt(DamageSource.playerAttack(player), (float)(arrow.getBaseDamage()*getMold(arrow.getDeltaMovement())));
+                            target.invulnerableTime = 0;
                             i++;
                         }
                     }

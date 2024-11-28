@@ -6,6 +6,7 @@ import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
@@ -34,7 +35,11 @@ public class LivingEntityTick {
                 entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassArmor(),Float.MAX_VALUE);
                 entity.invulnerableTime=0;
                 entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassInvul(),Float.MAX_VALUE);
-                entity.setHealth(0);
+                if (!entity.isDeadOrDying()){
+                    entity.die(throughSources.annihilate(Float.MAX_VALUE));
+                    entity.setHealth(0);
+                    entity.remove(Entity.RemovalReason.KILLED);
+                }
                 entity.getPersistentData().remove("annih_countdown");
                 level.sendParticles(etshtinkerParticleType.annihl_scatter.get(),entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ(),64,0.1,0.1,0.1,1);
                 return;

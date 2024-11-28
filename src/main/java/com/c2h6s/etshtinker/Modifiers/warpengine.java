@@ -40,9 +40,7 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
     }
     public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
         if (interactionSource==InteractionSource.RIGHT_CLICK){
-            if (player!=null) {
-                GeneralInteractionModifierHook.startUsing(tool,modifier.getId(),player,interactionHand);
-            }
+            GeneralInteractionModifierHook.startUsing(tool, modifier.getId(), player, interactionHand);
             return InteractionResult.CONSUME;
         }
         else return InteractionResult.PASS;

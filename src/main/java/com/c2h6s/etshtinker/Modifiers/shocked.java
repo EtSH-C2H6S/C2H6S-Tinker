@@ -26,7 +26,7 @@ public class shocked extends etshmodifieriii {
             holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),200,4,false,false));
         }
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getTarget();
         LivingEntity attacker =context.getAttacker();
         int lvl =modifier.getLevel();

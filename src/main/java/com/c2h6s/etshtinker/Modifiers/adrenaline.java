@@ -109,7 +109,8 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
         }
     }
 
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         ModDataNBT toolData = tool.getPersistentData();
         LivingEntity attacker = context.getAttacker();
         Entity target = context.getTarget();

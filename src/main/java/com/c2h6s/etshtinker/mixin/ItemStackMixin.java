@@ -30,7 +30,7 @@ public class ItemStackMixin {
         ItemStack stack =(ItemStack) (Object)this;
         if (stack.getItem() instanceof IModifiable&&!cir.getReturnValueZ()){
             ToolStack toolStack =ToolStack.from(stack);
-            if (toolStack.getModifierLevel(etshtinkerModifiers.atomic_decompose.getId())>0){
+            if (toolStack.getModifierLevel(etshtinkerModifiers.atomic_decompose.getId())>0||toolStack.getModifierLevel(etshtinkerModifiers.quark_disassemble.getId())>0){
                 cir.setReturnValue(true);
             }
         }

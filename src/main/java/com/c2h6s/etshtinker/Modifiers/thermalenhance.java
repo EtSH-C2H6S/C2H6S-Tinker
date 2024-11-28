@@ -34,7 +34,7 @@ import cofh.core.init.CoreMobEffects;
 
 public class thermalenhance extends etshmodifieriii {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target&&!(target instanceof Player)) {
@@ -48,7 +48,7 @@ public class thermalenhance extends etshmodifieriii {
                 if (attribute != null){
                     attribute.setBaseValue(attribute.getBaseValue()-0.25*target.getArmorValue());
                 }
-                if (context.isFullyCharged()) {
+                if (context.isFullyCharged()&&!context.isExtraAttack()) {
                     target.hurt(DamageSource.LIGHTNING_BOLT,5*modilvl);
                     if (target.level instanceof ServerLevel serverLevel){
                         Vec3 vec3 = getScatteredVec3(new Vec3(0,-3,0),8);
@@ -56,22 +56,14 @@ public class thermalenhance extends etshmodifieriii {
                         Vec3 end = target.position().add(new Vec3(0,target.getBbHeight()*0.5,0)).add(vec3);
                         serverLevel.sendParticles(new BiColorParticleOptions(CoreParticles.STRAIGHT_ARC.get(),0.5f,5f,0f,-1, -240988),start.x,start.y,start.z,0,end.x,end.y,end.z,1);
                     }
+                    target.invulnerableTime = 0;
+                    target.hurt(DamageSource.playerAttack(player), Math.min(40,(target.getMaxHealth()- target.getHealth())*0.1f*modifier.getLevel()));
+                    target.invulnerableTime = 0;
                 }
             }
         }
     }
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
-        LivingEntity attacker =context.getAttacker();
-        Entity entity =context.getTarget();
-        if (entity instanceof LivingEntity target) {
-            if (attacker instanceof Player player  && target != null) {
-                target.invulnerableTime = 0;
-                target.hurt(DamageSource.playerAttack(player), Math.min(40,(target.getMaxHealth()- target.getHealth())*0.1f*modifier.getLevel()));
-                target.invulnerableTime = 0;
-            }
-        }
-        return baseKnockback;
-    }
+
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if(enabled&&attacker instanceof Player player&&target!=null&&projectile instanceof AbstractArrow arrow&&!(target instanceof Player)){
             int modilvl = modifiers.getLevel(this.getId());

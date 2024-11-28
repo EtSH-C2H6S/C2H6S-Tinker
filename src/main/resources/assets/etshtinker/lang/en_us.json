@@ -5,6 +5,10 @@
   "itemGroup.etshtinker.blocks": "C2H6S Tinker Blocks",
 
 
+  "modifier.etshtinker.extradense_armor": "Densium Armor",
+  "modifier.etshtinker.extradense_armor.flavor": "No more armor piercing",
+  "modifier.etshtinker.extradense_armor.description":"Gains 25%DR, and 75% for armor-piercing damages.",
+
   "modifier.etshtinker.adrenaline": "Adrenaline",
   "modifier.etshtinker.adrenaline.flavor": "Take it easy.",
   "modifier.etshtinker.adrenaline.description": "Gain adrenaline charge when not being hurt.When charge is over 100%,your next attack gains 10x damage and resets charge.Also resets charge on hurt.",
@@ -403,7 +407,7 @@
 
   "modifier.etshtinker.ultradenseex_armor": "Ultradense EX",
   "modifier.etshtinker.ultradenseex_armor.flavor": "Not even a gap between particles inside it.",
-  "modifier.etshtinker.ultradenseex_armor.description":"Gains 25% DR,and another 50% DR on bypass armor damage sources.",
+  "modifier.etshtinker.ultradenseex_armor.description":"Damage reduction will be calculated by twice on hurt.",
 
   "modifier.etshtinker.amplitude_characteristic": "Amplitude Characteristic",
   "modifier.etshtinker.amplitude_characteristic.flavor": "Soul resonate.",
@@ -453,13 +457,25 @@
   "modifier.etshtinker.acidic_poison.flavor": "Strong poison!",
   "modifier.etshtinker.acidic_poison.description":"Inflicts Acidic poison on hit.",
 
+  "material.etshtinker.annihilate_ember": "Annihilate Ember",
+  "material.etshtinker.annihilate_ember.flavor": "Trace of matter that used to be here.",
+  "material.etshtinker.annihilate_ember.encyclopedia": "What's left behind when antimatter annihilate your tool...",
+
+  "modifier.etshtinker.heat_dead": "Heat Dead",
+  "modifier.etshtinker.heat_dead.flavor": "Destined to die.",
+  "modifier.etshtinker.heat_dead.description":"Reduces max health of target on attack.",
+
+  "modifier.etshtinker.quark_disassemble": "Hyperdislocation",
+  "modifier.etshtinker.quark_disassemble.flavor": "Tear down anything by atoms.",
+  "modifier.etshtinker.quark_disassemble.description":"Inflicts atom decomposition and quark disassemble on attack.Enhances fortune level.",
+
+  "item.etshtinker.entropic_ingot": "Entropic Ingot",
 
 
-
-  "fluid_type.etshtinker.annihilating_plasma": "Annihilating Plasma",
+  "fluid.etshtinker.annihilating_plasma": "Annihilating Plasma",
   "item.etshtinker.annihilating_plasma_bucket": "Annihilating Plasma Bucket",
 
-  "fluid_type.etshtinker.antimatter_l": "Molten Antimatter",
+  "fluid.etshtinker.antimatter_l": "Molten Antimatter",
   "item.etshtinker.antimatter_l_bucket": "Molten Antimatter Bucket",
 
   "item.etshtinker.stable_plasma": "Stable Plasma",
@@ -468,7 +484,7 @@
 
   "item.etshtinker.triostatealloy": "Trio-state Alloy",
 
-  "fluid_type.etshtinker.overchargedneutronium": "Overcharged Neutronium",
+  "fluid.etshtinker.overchargedneutronium": "Overcharged Neutronium",
   "item.etshtinker.overchargedneutronium_bucket": "Overcharged Neutronium Bucket",
 
   "item.etshtinker.os_induced_netherstarshard": "Obsidian Included Nether Shard",
@@ -488,7 +504,7 @@
   "material.etshtinker.ultra_dense": "Ultra Dense",
   "material.etshtinker.ultra_dense.flavor": "High density,extreme durable.",
   "material.etshtinker.ultra_dense.encyclopedia": "Made of degenerate state matter.",
-  "fluid_type.etshtinker.molten_ultra_dense": "Molten Ultra Dense",
+  "fluid.etshtinker.molten_ultra_dense": "Molten Ultra Dense",
   "item.etshtinker.molten_ultra_dense_bucket": "Molten Ultra Dense Bucket",
 
   "item.etshtinker.blood_certus": "Blood Certus",
@@ -510,7 +526,7 @@
   "material.etshtinker.exo_alloy": "Exo Alloy",
   "material.etshtinker.exo_alloy.flavor": "Infinite Potential.",
   "material.etshtinker.exo_alloy.encyclopedia": "\"ZENITH\"",
-  "fluid_type.etshtinker.molten_exo_alloy": "Molten Exo Alloy",
+  "fluid.etshtinker.molten_exo_alloy": "Molten Exo Alloy",
   "item.etshtinker.molten_exo_alloy_bucket": "Molten Exo Alloy Bucket",
 
   "item.etshtinker.evil_orb": "Evil Orb",
@@ -532,17 +548,17 @@
   "material.etshtinker.activated_chroma_plate.flavor": "Smashed rainbow-ish sandwich.",
   "material.etshtinker.activated_chroma_plate.encyclopedia": "Dense metal plate made by 3 kinds of energetic alloy.",
 
-  "fluid_type.etshtinker.molten_meteoralloy": "Molten Meteorium",
+  "fluid.etshtinker.molten_meteoralloy": "Molten Meteorium",
   "item.etshtinker.molten_meteoralloy_bucket": "Molten Meteorium",
 
-  "fluid_type.etshtinker.molten_stellaralloy": "Molten Stellar Alloy",
+  "fluid.etshtinker.molten_stellaralloy": "Molten Stellar Alloy",
   "item.etshtinker.molten_stellaralloy_bucket": "Molten Stellar Alloy Bucket",
   "item.etshtinker.stellaralloy": "Stellar Alloy",
   "material.etshtinker.stellaralloy": "Stellar Alloy",
   "material.etshtinker.stellaralloy.flavor": "Extraterrestrial Alloy.",
   "material.etshtinker.stellaralloy.encyclopedia": "Holds unique physical property.",
 
-  "fluid_type.etshtinker.unstable_exotic_matter": "Unstable Exotic Matter",
+  "fluid.etshtinker.unstable_exotic_matter": "Unstable Exotic Matter",
   "item.etshtinker.unstable_exotic_matter_bucket": "Unstable Exotic Matter Bucket",
   "item.etshtinker.exotic_matter": "Exotic Matter",
   "material.etshtinker.exotic_matter": "Exotic Matter",
@@ -563,28 +579,28 @@
   "material.etshtinker.lightless_alloy": "Lightless Alloy",
   "material.etshtinker.lightless_alloy.flavor": "Invisiiiiiible",
   "material.etshtinker.lightless_alloy.encyclopedia": "",
-  "fluid_type.etshtinker.molten_lightless_alloy": "Molten Lightless Alloy",
+  "fluid.etshtinker.molten_lightless_alloy": "Molten Lightless Alloy",
   "item.etshtinker.molten_lightless_alloy_bucket": "Molten Lightless Alloy Bucket",
 
   "item.etshtinker.electronium": "Electronium Ingot",
   "material.etshtinker.electronium": "Electronium",
   "material.etshtinker.electronium.flavor": "Blizzzzz",
   "material.etshtinker.electronium.encyclopedia": "A piece of metal with incredibly low density.",
-  "fluid_type.etshtinker.molten_electronium": "Molten Electronium",
+  "fluid.etshtinker.molten_electronium": "Molten Electronium",
   "item.etshtinker.molten_electronium_bucket": "Molten Electronium Bucket",
 
   "item.etshtinker.protonium": "Protonium Ingot",
   "material.etshtinker.protonium": "Protonium",
   "material.etshtinker.protonium.flavor": "Super heavy.",
   "material.etshtinker.protonium.encyclopedia": "A piece of metal with incredibly high density.",
-  "fluid_type.etshtinker.molten_protonium": "Molten Protonium",
+  "fluid.etshtinker.molten_protonium": "Molten Protonium",
   "item.etshtinker.molten_protonium_bucket": "Molten Protonium Bucket",
 
   "item.etshtinker.coronation_alloy": "Coronation Alloy",
   "material.etshtinker.coronation_alloy": "Coronation Alloy",
   "material.etshtinker.coronation_alloy.flavor": "Extremely hot.",
   "material.etshtinker.coronation_alloy.encyclopedia": "Constantly radiating shiny plasma.",
-  "fluid_type.etshtinker.molten_coronation": "Molten Coronation",
+  "fluid.etshtinker.molten_coronation": "Molten Coronation",
   "item.etshtinker.molten_coronation_bucket": "Molten Coronation Bucket",
 
   "item.etshtinker.basalz_signalum": "Basalz Signalum",
@@ -603,7 +619,7 @@
   "material.etshtinker.blizz_enderium.encyclopedia": "Extremely cold metal.",
 
 
-  "fluid_type.etshtinker.molten_bismuth": "Molten bismuth",
+  "fluid.etshtinker.molten_bismuth": "Molten bismuth",
   "item.etshtinker.molten_bismuth_bucket": "Molten bismuth bucket",
   "item.etshtinker.bismuth_ingot": "Bismuth Ingot",
   "material.etshtinker.bismuth": "Bismuth",
@@ -674,6 +690,10 @@
   "material.etshtinker.lush_mixture": "Lush",
   "material.etshtinker.lush_mixture.flavor": "From the forests",
   "material.etshtinker.lush_mixture.encyclopedia": "Bio-Hazard waste.",
+
+  "material.etshtinker.entropic_alloy": "Entropic Alloy",
+  "material.etshtinker.entropic_alloy.flavor": "Entropic Alloy",
+  "material.etshtinker.entropic_alloy.encyclopedia": "Shimmering out the end of universe.",
 
 
 
@@ -852,6 +872,12 @@
   "etshtinker.item.tooltip.activated_chroma_plate2": "It's a good mind to start with ionized activated chroma steel.",
   "etshtinker.item.tooltip.shift": "Press shift for more information ",
   "etshtinker.item.tooltip.telson": "Drops when hurt by bees.",
+  "etshtinker.item.tooltip.entropic_ingot1": "According to the principle of entropy increase,",
+  "etshtinker.item.tooltip.entropic_ingot2": "our universe is destined to end in a plain silence.",
+  "etshtinker.item.tooltip.entropic_ingot3": "When the last star dims and the last black hole annihilates,",
+  "etshtinker.item.tooltip.entropic_ingot4": "the world comes to an end...",
+  "etshtinker.item.tooltip.entropic_ingot5": "",
+  "etshtinker.item.tooltip.entropic_ingot6": "This material forms after annihilation,you would die multiple times obtaining it.",
 
   "item.etshtinker.ionized_cannon_prototype": "Ionized Cannon -Prototype-",
   "etshtinker.item.tooltip.ionized_cannon_prototype": "It's excellent without damage :)",
@@ -877,47 +903,50 @@
 
 
 
-  "fluid_type.etshtinker.stablized_exotic_matter": "Stabled Exotic Matter",
+  "fluid.etshtinker.stablized_exotic_matter": "Stabled Exotic Matter",
   "item.etshtinker.stablized_exotic_matter_bucket": "Stabled Exotic Matter Bucket",
 
-  "fluid_type.etshtinker.molten_activated_chroma_steel": "Molten Activated Chroma Steel",
+  "fluid.etshtinker.molten_activated_chroma_steel": "Molten Activated Chroma Steel",
   "item.etshtinker.molten_activated_chroma_steel_bucket": "Molten Activated Chroma Steel Bucket",
 
-  "fluid_type.etshtinker.molten_anti_neutronium": "Molten Anti Neutronium",
+  "fluid.etshtinker.molten_anti_neutronium": "Molten Anti Neutronium",
   "item.etshtinker.molten_anti_neutronium_bucket": "Molten Anti Neutronium Bucket",
 
-  "fluid_type.etshtinker.molten_basalz_signalum": "Molten Basalz Signalum",
+  "fluid.etshtinker.molten_basalz_signalum": "Molten Basalz Signalum",
   "item.etshtinker.molten_basalz_signalum_bucket": "Molten Basalz Signalum Bucket",
 
-  "fluid_type.etshtinker.molten_biltz_lumium": "Molten Biltz Lumium",
+  "fluid.etshtinker.molten_biltz_lumium": "Molten Biltz Lumium",
   "item.etshtinker.molten_biltz_lumium_bucket": "Molten Biltz Lumium Bucket",
 
-  "fluid_type.etshtinker.molten_blizz_enderium": "Molten Blizz Enderium",
+  "fluid.etshtinker.molten_blizz_enderium": "Molten Blizz Enderium",
   "item.etshtinker.molten_blizz_enderium_bucket": "Molten Blizz Enderium Bucket",
 
-  "fluid_type.etshtinker.molten_hardlead": "Molten Hardlead",
+  "fluid.etshtinker.molten_hardlead": "Molten Hardlead",
   "item.etshtinker.molten_hardlead_bucket": "Molten Hardlead Bucket",
 
-  "fluid_type.etshtinker.molten_trinity_intereactive_alloy": "Molten Trinity-Interactive Alloy",
+  "fluid.etshtinker.molten_trinity_intereactive_alloy": "Molten Trinity-Interactive Alloy",
   "item.etshtinker.molten_trinity_intereactive_alloy_bucket": "Molten Trinity-Interactive Alloy Bucket",
 
-  "fluid_type.etshtinker.molten_marcoatom": "Molten Marcoatom",
+  "fluid.etshtinker.molten_marcoatom": "Molten Marcoatom",
   "item.etshtinker.molten_marcoatom_bucket": "Molten Marcoatom Bucket",
 
-  "fluid_type.etshtinker.molten_semicrystaline_obsidian": "Molten Semi-Crystalline Obsidian",
+  "fluid.etshtinker.molten_semicrystaline_obsidian": "Molten Semi-Crystalline Obsidian",
   "item.etshtinker.molten_semicrystaline_obsidian_bucket": "Molten Semi-Crystalline Obsidian Bucket",
 
-  "fluid_type.etshtinker.molten_alfsteel": "Molten Alfsteel",
+  "fluid.etshtinker.molten_alfsteel": "Molten Alfsteel",
   "item.etshtinker.molten_alfsteel_bucket": "Molten Alfsteel Bucket",
 
-  "fluid_type.etshtinker.molten_energy_sculk": "Molten Energized Sculk",
+  "fluid.etshtinker.molten_energy_sculk": "Molten Energized Sculk",
   "item.etshtinker.molten_energy_sculk_bucket": "Molten Energized Sculk Bucket",
 
-  "fluid_type.etshtinker.molten_knsu": "Molten KNSU",
+  "fluid.etshtinker.molten_knsu": "Molten KNSU",
   "item.etshtinker.molten_knsu_bucket": "Molten KNSU Bucket",
 
-  "fluid_type.etshtinker.molten_perfect": "Molten Perfect",
+  "fluid.etshtinker.molten_perfect": "Molten Perfect",
   "item.etshtinker.molten_perfect_bucket": "Molten Perfect Bucket",
+
+  "fluid.etshtinker.molten_entropic": "Molten Entropy",
+  "item.etshtinker.molten_entropic_bucket": "Molten Entropy Bucket",
 
 
 

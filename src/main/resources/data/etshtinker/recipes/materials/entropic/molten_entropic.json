@@ -1,0 +1,9 @@
+{
+  "type":"tconstruct:material_melting",
+  "input": "etshtinker:annihilate_ember",
+  "temperature": 16383,
+  "result":{
+    "fluid": "etshtinker:molten_entropic",
+    "amount": 100
+  }
+}

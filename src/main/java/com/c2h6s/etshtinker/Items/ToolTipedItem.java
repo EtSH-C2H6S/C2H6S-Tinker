@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.Items;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ToolTipedItem extends Item {
     public final List<Component> ls;
     public ToolTipedItem(Properties p_41383_,List<Component> list) {
-        super(p_41383_);
+        super(p_41383_.rarity(Rarity.EPIC));
         this.ls=list;
     }
 

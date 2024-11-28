@@ -9,15 +9,15 @@
   "inputs": [
     {
       "name": "etshtinker:molten_stellaralloy",
-      "amount": 810
+      "amount": 180
     },
     {
       "name": "ad_astra:cryo_fuel",
-      "amount": 27000
+      "amount": 1000
     },
     {
       "name": "ad_astra:fuel",
-      "amount": 54000
+      "amount": 2000
     }
   ],
   "result": {

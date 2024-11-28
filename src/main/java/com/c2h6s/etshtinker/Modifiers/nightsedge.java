@@ -34,7 +34,7 @@ public class nightsedge extends etshmodifieriii {
         packetHandler.INSTANCE.sendToServer(new nightslashPacket());
     }
 
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         if (context.getPlayerAttacker()!=null&&context.isFullyCharged()&&!context.isExtraAttack()) {
             createNightSlash(context.getPlayerAttacker());
         }

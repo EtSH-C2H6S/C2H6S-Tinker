@@ -27,7 +27,7 @@ public class shattered extends etshmodifieriii {
             holder.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),200,4,false,false));
         }
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getTarget();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target){
             AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);

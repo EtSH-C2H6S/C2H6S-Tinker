@@ -40,7 +40,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
     public static boolean enabled = ModList.get().isLoaded("mekanism");
     public static boolean enabled2 = ModList.get().isLoaded("cofh_core");
 
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target&&!(target instanceof Player)) {
@@ -60,7 +60,7 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
         }
         return baseKnockback;
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {

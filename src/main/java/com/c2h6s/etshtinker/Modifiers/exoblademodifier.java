@@ -93,7 +93,7 @@ public class exoblademodifier extends etshmodifieriii implements RequirementsMod
             }
         }
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         if (context.getPlayerAttacker()!=null&&!context.isExtraAttack()) {
             exoblademodifier.summonScattererExoslash(context.getPlayerAttacker());
             if (context.getTarget() instanceof LivingEntity living&&context.getAttacker() instanceof Player player){

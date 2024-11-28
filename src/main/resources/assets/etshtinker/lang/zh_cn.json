@@ -39,7 +39,7 @@
 
   "modifier.etshtinker.thermalstrike": "热力冲击",
   "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
-  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会释放一道自动弧向最近生物的脉冲，对攻击到的敌人施加震荡效果",
+  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会释放一道自动弧向附近近生物的脉冲，造成一半的伤害",
 
   "modifier.etshtinker.thermalenhance": "热力附层",
   "modifier.etshtinker.thermalenhance.flavor": "热力元素全收集，达成！",
@@ -111,7 +111,7 @@
 
   "modifier.etshtinker.electrified": "疾电矢",
   "modifier.etshtinker.electrified.flavor": "如闪电般迅速...",
-  "modifier.etshtinker.electrified.description":"极大增加拉弓速度，箭矢速度翻倍但是伤害变为1/4。拉弓时急速射出不精确的伤害固定为0.025的箭矢，箭矢击中敌人时对敌人施加电离和缓慢效果。",
+  "modifier.etshtinker.electrified.description":"极大增加拉弓速度，箭矢速度翻倍但是伤害变为1/4。拉弓时急速射出不精确的低伤害箭矢，箭矢击中敌人时对敌人施加电离和缓慢效果。",
 
   "modifier.etshtinker.electricarmor": "电流附加",
   "modifier.etshtinker.electricarmor.flavor": "雷电法王",
@@ -123,7 +123,7 @@
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"手持时右键充能，属性等级越高充能量越大。攻击时消耗全部充能使工具上所有非增伤的攻击性词条额外生效多次，充能大于6时则额外生效一次增伤词条。",
+  "modifier.etshtinker.ultradenseex.description":"攻击时使工具上所有攻击性词条额外生效一次。",
 
   "modifier.etshtinker.extraweight": "万吨沉重EX",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
@@ -441,9 +441,9 @@
   "modifier.etshtinker.plasma_sputtering.flavor": "纳米级涂层",
   "modifier.etshtinker.plasma_sputtering.description":"将工具内存储的熔融材料喷涂到工具上，使工具获得该材料的部分近战属性，每次攻击时都会消耗存储的流体（需要储液强化等让工具具备流体容量的手段）。不支持会添加/减少强化槽的材料。需要至少20mB的流体以运作。",
 
-  "modifier.etshtinker.ultradenseex_armor": "究极致密",
+  "modifier.etshtinker.ultradenseex_armor": "究极致密EX",
   "modifier.etshtinker.ultradenseex_armor.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex_armor.description":"获得25%伤害减免，对于穿甲伤害则再进行一次50%的伤害减免",
+  "modifier.etshtinker.ultradenseex_armor.description":"你所受的伤害会额外经历一次减伤计算。",
 
   "modifier.etshtinker.recycable": "可再生",
   "modifier.etshtinker.recycable.flavor": "十分有活性",
@@ -453,12 +453,24 @@
   "modifier.etshtinker.acidic_poison.flavor": "猛毒！",
   "modifier.etshtinker.acidic_poison.description":"全力打击时生成毒云，施加酸性毒液减益。",
 
+  "modifier.etshtinker.extradense_armor": "致密装甲",
+  "modifier.etshtinker.extradense_armor.flavor": "[材料科技]不许穿甲机",
+  "modifier.etshtinker.extradense_armor.description":"获得25%伤害减免，对于穿甲伤害则再次进行一次75%的伤害减免",
+
+  "modifier.etshtinker.heat_dead": "热寂",
+  "modifier.etshtinker.heat_dead.flavor": "注定的死亡",
+  "modifier.etshtinker.heat_dead.description":"你的攻击会削减目标的最大生命值。",
+
+  "modifier.etshtinker.quark_disassemble": "超位崩解",
+  "modifier.etshtinker.quark_disassemble.flavor": "拆散敌人的粒子！",
+  "modifier.etshtinker.quark_disassemble.description":"攻击时施加原子分解和夸克解离，挖掘时无视挖掘等级。",
 
 
-  "fluid_type.etshtinker.annihilating_plasma": "湮灭等离子体",
+
+  "fluid.etshtinker.annihilating_plasma": "湮灭等离子体",
   "item.etshtinker.annihilating_plasma_bucket": "桶装湮灭等离子体",
 
-  "fluid_type.etshtinker.antimatter_l": "液态反物质",
+  "fluid.etshtinker.antimatter_l": "液态反物质",
   "item.etshtinker.antimatter_l_bucket": "反物质(l)",
 
   "item.etshtinker.stable_plasma": "稳态等离子",
@@ -467,7 +479,7 @@
 
   "item.etshtinker.triostatealloy": "三态合金",
 
-  "fluid_type.etshtinker.overchargedneutronium": "超充能流体中子",
+  "fluid.etshtinker.overchargedneutronium": "超充能流体中子",
   "item.etshtinker.overchargedneutronium_bucket": "超充能流体中子桶",
 
   "item.etshtinker.os_induced_netherstarshard": "黑曜石掺杂下界之星碎片",
@@ -487,7 +499,7 @@
   "material.etshtinker.ultra_dense": "超致密",
   "material.etshtinker.ultra_dense.flavor": "一种致密的金属，由密度最高的金属熔合而成。",
   "material.etshtinker.ultra_dense.encyclopedia": "有研究表明组成它的物质处于简并态，所以你是怎么在焦黑炉里熔化它的?",
-  "fluid_type.etshtinker.molten_ultra_dense": "致密超流体",
+  "fluid.etshtinker.molten_ultra_dense": "致密超流体",
   "item.etshtinker.molten_ultra_dense_bucket": "致密超流体桶",
 
   "item.etshtinker.blood_certus": "赛特斯神晶",
@@ -509,7 +521,7 @@
   "material.etshtinker.exo_alloy": "奇迹物质",
   "material.etshtinker.exo_alloy.flavor": "无所定型，但潜力无穷",
   "material.etshtinker.exo_alloy.encyclopedia": "你的所有理论研究的成果，铭刻在这个0.11立方米的炫彩金属块上",
-  "fluid_type.etshtinker.molten_exo_alloy": "熔融奇迹物质",
+  "fluid.etshtinker.molten_exo_alloy": "熔融奇迹物质",
   "item.etshtinker.molten_exo_alloy_bucket": "熔融奇迹物质桶",
 
   "item.etshtinker.evil_orb": "邪理魔球",
@@ -531,17 +543,17 @@
   "material.etshtinker.activated_chroma_plate.flavor": "被压扁了的炫彩三明治（确信）",
   "material.etshtinker.activated_chroma_plate.encyclopedia": "由三种蕴含特殊能量的金属压制而成的致密金属板，是你热力之旅的终点",
 
-  "fluid_type.etshtinker.molten_meteoralloy": "熔融星陨合金",
+  "fluid.etshtinker.molten_meteoralloy": "熔融星陨合金",
   "item.etshtinker.molten_meteoralloy_bucket": "熔融星陨合金桶",
 
-  "fluid_type.etshtinker.molten_stellaralloy": "炽热星钢流体",
+  "fluid.etshtinker.molten_stellaralloy": "炽热星钢流体",
   "item.etshtinker.molten_stellaralloy_bucket": "液态星钢桶",
   "item.etshtinker.stellaralloy": "星钢锭",
   "material.etshtinker.stellaralloy": "星钢",
   "material.etshtinker.stellaralloy.flavor": "来自外星",
   "material.etshtinker.stellaralloy.encyclopedia": "来自外星的金属，有独特的力学特性",
 
-  "fluid_type.etshtinker.unstable_exotic_matter": "不稳定奇异物质",
+  "fluid.etshtinker.unstable_exotic_matter": "不稳定奇异物质",
   "item.etshtinker.unstable_exotic_matter_bucket": "不稳定奇异物质桶",
   "item.etshtinker.exotic_matter": "奇异物质",
   "material.etshtinker.exotic_matter": "奇异物质",
@@ -562,28 +574,28 @@
   "material.etshtinker.lightless_alloy": "本影合金",
   "material.etshtinker.lightless_alloy.flavor": "“可以在无光星球挖到”",
   "material.etshtinker.lightless_alloy.encyclopedia": "“这种金属晶体几乎看不见，可能是由于其中所含的大量铑导致。”",
-  "fluid_type.etshtinker.molten_lightless_alloy": "熔融本影合金",
+  "fluid.etshtinker.molten_lightless_alloy": "熔融本影合金",
   "item.etshtinker.molten_lightless_alloy_bucket": "熔融本影合金桶",
 
   "item.etshtinker.electronium": "电子锭",
   "material.etshtinker.electronium": "电子",
   "material.etshtinker.electronium.flavor": "无时无刻不在释放闪电",
   "material.etshtinker.electronium.encyclopedia": "一坨游离的却又坚固的电子，密度比水还小",
-  "fluid_type.etshtinker.molten_electronium": "电子流体",
+  "fluid.etshtinker.molten_electronium": "电子流体",
   "item.etshtinker.molten_electronium_bucket": "电子流体桶",
 
   "item.etshtinker.protonium": "质子锭",
   "material.etshtinker.protonium": "质子",
   "material.etshtinker.protonium.flavor": "超级重",
   "material.etshtinker.protonium.encyclopedia": "一坨密度超大的凝聚态质子，超级重！",
-  "fluid_type.etshtinker.molten_protonium": "质子流体",
+  "fluid.etshtinker.molten_protonium": "质子流体",
   "item.etshtinker.molten_protonium_bucket": "质子流体桶",
 
   "item.etshtinker.coronation_alloy": "星冕合金锭",
   "material.etshtinker.coronation_alloy": "星冕合金",
   "material.etshtinker.coronation_alloy.flavor": "热死了",
   "material.etshtinker.coronation_alloy.encyclopedia": "无时无刻不在迸发着炽热的等离子体，可以安全地储存在8个木板制成的箱子中",
-  "fluid_type.etshtinker.molten_coronation": "熔融星冕",
+  "fluid.etshtinker.molten_coronation": "熔融星冕",
   "item.etshtinker.molten_coronation_bucket": "熔融星冕桶",
 
   "item.etshtinker.basalz_signalum": "地岩信素锭",
@@ -602,7 +614,7 @@
   "material.etshtinker.blizz_enderium.encyclopedia": "这种金属极端的寒冷，仿佛能冻结空气",
 
 
-  "fluid_type.etshtinker.molten_bismuth": "熔融铋",
+  "fluid.etshtinker.molten_bismuth": "熔融铋",
   "item.etshtinker.molten_bismuth_bucket": "熔融铋桶",
   "item.etshtinker.bismuth_ingot": "铋锭",
   "material.etshtinker.bismuth": "铋",
@@ -673,6 +685,15 @@
   "material.etshtinker.lush_mixture": "苍翠",
   "material.etshtinker.lush_mixture.flavor": "来自丛林",
   "material.etshtinker.lush_mixture.encyclopedia": "一坨毒性很强的生物质，属于有害垃圾",
+
+  "material.etshtinker.annihilate_ember": "湮灭余烬",
+  "material.etshtinker.annihilate_ember.flavor": "物质曾经存在过的证明",
+  "material.etshtinker.annihilate_ember.encyclopedia": "反物质把你的工具湮灭了，留下了这些...",
+
+  "item.etshtinker.entropic_ingot": "寂灭锭",
+  "material.etshtinker.entropic_alloy": "寂灭合金",
+  "material.etshtinker.entropic_alloy.flavor": "万物归于熵",
+  "material.etshtinker.entropic_alloy.encyclopedia": "闪烁的微光投射出宇宙毁灭的终局...",
 
 
 
@@ -863,6 +884,11 @@
   "etshtinker.item.tooltip.activated_chroma_plate2": "离子化的活化彩钢也许是个很好的切入点。",
   "etshtinker.item.tooltip.shift": "按下shift，聆听材料的故事...",
   "etshtinker.item.tooltip.telson": "被蜜蜂蛰时掉落。",
+  "etshtinker.item.tooltip.entropic_ingot1": "有人说，热力学是一门悲观的学科，因为熵增定律意味着宇宙必定会在一片寂虚中终结。",
+  "etshtinker.item.tooltip.entropic_ingot2": "待最后一颗中子星熄灭之时，最后一个黑洞蒸发之刻，不再有任何变化发生，一切归于绝对零度，万物势能归零...",
+  "etshtinker.item.tooltip.entropic_ingot3": "在宇宙有限的生命周期里，我们竟能相遇，真是有趣...",
+  "etshtinker.item.tooltip.entropic_ingot4": "或许宇宙中发生的一切都是不断循环的，我们的相遇也是必然。",
+  "etshtinker.item.tooltip.entropic_ingot6": "此材料诞生于激烈湮灭反应之中，你必定会为此献出生命...",
 
 
 
@@ -879,47 +905,50 @@
 
 
 
-  "fluid_type.etshtinker.stablized_exotic_matter": "稳定态奇异物质",
+  "fluid.etshtinker.stablized_exotic_matter": "稳定态奇异物质",
   "item.etshtinker.stablized_exotic_matter_bucket": "稳定态奇异物质桶",
 
-  "fluid_type.etshtinker.molten_activated_chroma_steel": "熔融活化彩钢",
+  "fluid.etshtinker.molten_activated_chroma_steel": "熔融活化彩钢",
   "item.etshtinker.molten_activated_chroma_steel_bucket": "熔融活化彩钢桶",
 
-  "fluid_type.etshtinker.molten_anti_neutronium": "熔融反中子",
+  "fluid.etshtinker.molten_anti_neutronium": "熔融反中子",
   "item.etshtinker.molten_anti_neutronium_bucket": "熔融反中子桶",
 
-  "fluid_type.etshtinker.molten_basalz_signalum": "熔融地岩信素",
+  "fluid.etshtinker.molten_basalz_signalum": "熔融地岩信素",
   "item.etshtinker.molten_basalz_signalum_bucket": "熔融地岩信素桶",
 
-  "fluid_type.etshtinker.molten_biltz_lumium": "熔融震荡流明",
+  "fluid.etshtinker.molten_biltz_lumium": "熔融震荡流明",
   "item.etshtinker.molten_biltz_lumium_bucket": "熔融震荡流明桶",
 
-  "fluid_type.etshtinker.molten_blizz_enderium": "熔融霜覆末影",
+  "fluid.etshtinker.molten_blizz_enderium": "熔融霜覆末影",
   "item.etshtinker.molten_blizz_enderium_bucket": "熔融霜覆末影桶",
 
-  "fluid_type.etshtinker.molten_hardlead": "熔融硬铅",
+  "fluid.etshtinker.molten_hardlead": "熔融硬铅",
   "item.etshtinker.molten_hardlead_bucket": "熔融硬铅桶",
 
-  "fluid_type.etshtinker.molten_trinity_intereactive_alloy": "熔融三位一体强互作用合金",
+  "fluid.etshtinker.molten_trinity_intereactive_alloy": "熔融三位一体强互作用合金",
   "item.etshtinker.molten_trinity_intereactive_alloy_bucket": "熔融三位一体强互作用合金桶",
 
-  "fluid_type.etshtinker.molten_marcoatom": "熔融宏原子",
+  "fluid.etshtinker.molten_marcoatom": "熔融宏原子",
   "item.etshtinker.molten_marcoatom_bucket": "熔融宏原子桶",
 
-  "fluid_type.etshtinker.molten_semicrystaline_obsidian": "熔融准晶态黑曜石",
+  "fluid.etshtinker.molten_semicrystaline_obsidian": "熔融准晶态黑曜石",
   "item.etshtinker.molten_semicrystaline_obsidian_bucket": "熔融准晶态黑曜石桶",
 
-  "fluid_type.etshtinker.molten_alfsteel": "熔融精灵钢",
+  "fluid.etshtinker.molten_alfsteel": "熔融精灵钢",
   "item.etshtinker.molten_alfsteel_bucket": "熔融精灵钢桶",
 
-  "fluid_type.etshtinker.molten_energy_sculk": "熔融谐振幽匿",
+  "fluid.etshtinker.molten_energy_sculk": "熔融谐振幽匿",
   "item.etshtinker.molten_energy_sculk_bucket": "熔融谐振幽匿桶",
 
-  "fluid_type.etshtinker.molten_knsu": "熔融KNSU燃料",
+  "fluid.etshtinker.molten_knsu": "熔融KNSU燃料",
   "item.etshtinker.molten_knsu_bucket": "熔融KNSU燃料桶",
 
-  "fluid_type.etshtinker.molten_perfect": "熔融完美通用物品",
+  "fluid.etshtinker.molten_perfect": "熔融完美通用物品",
   "item.etshtinker.molten_perfect_bucket": "熔融完美通用物品桶",
+
+  "fluid.etshtinker.molten_entropic": "具象化流体熵变",
+  "item.etshtinker.molten_entropic_bucket": "具象化流体熵变桶",
 
 
 

@@ -71,30 +71,23 @@ public class ragedangery extends etshmodifieriii implements DurabilityDisplayMod
             }
         }
     }
-    public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        Level world = null;
-        ModDataNBT toolData = null;
-        if (attacker != null) {
-            world = attacker.level;
-            toolData = ToolStack.from(attacker.getMainHandItem()).getPersistentData();
-        }
+
+    @Override
+    public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
+         ModDataNBT toolData = tool.getPersistentData();
         if (projectile instanceof AbstractArrow arrow) {
-            if (toolData !=null&&toolData.getInt(ragevalue) > 99 && target != null && attacker instanceof Player player&&world!=null) {
-                attacker.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120, 5));
+            if (toolData.getInt(ragevalue) > 99 &&livingEntity instanceof Player player) {
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120, 5));
                 player.playSound( SoundEvents.ENDER_DRAGON_SHOOT, 0.7F, 1.0F);
                 toolData.putFloat(ragevalue, 0);
                 toolData.putFloat(ragedur, 200);
             }
-            if (toolData !=null&&toolData.getInt(ragedur) > 0 && modifiers.getLevel(this.getId()) > 0 && target != null) {
-                target.invulnerableTime = 0;
-                float arrowspeed = (float) arrow.getDeltaMovement().length();
-                target.invulnerableTime = 0;
-                target.hurt(DamageSource.arrow(arrow, attacker), (float) (arrowspeed*arrow.getBaseDamage()*0.5));
-                target.invulnerableTime = 0;
+            if (toolData.getInt(ragedur) > 0) {
+                arrow.setDeltaMovement(arrow.getDeltaMovement().scale(2));
             }
         }
-        return false;
     }
+
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @org.jetbrains.annotations.Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player != null) {
             ModDataNBT toolData = tool.getPersistentData();

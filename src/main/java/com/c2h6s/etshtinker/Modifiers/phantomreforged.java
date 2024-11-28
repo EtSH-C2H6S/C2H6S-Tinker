@@ -17,7 +17,7 @@ import java.security.SecureRandom;
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 public class phantomreforged extends etshmodifieriii {
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         if (modifier.getLevel()>0&&context.getAttacker() instanceof Player player&&context.getTarget() instanceof LivingEntity target&&context.isFullyCharged()){
             Level level1 = player.level;
             phantomswordentity entity =new phantomswordentity(etshtinkerEntity.phantomswordentity.get(),player.level);

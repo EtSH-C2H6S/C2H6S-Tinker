@@ -17,7 +17,7 @@
     },
     {
       "item": "etshtinker:protonium",
-      "chance": 1
+      "count": 1
     }
   ],
   "energy": 16000

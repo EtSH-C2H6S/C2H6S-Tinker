@@ -19,12 +19,12 @@ import javax.swing.text.html.parser.Entity;
 
 public class AcidicPoisonModifier extends etshmodifieriii {
     @Override
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if (context.isFullyCharged()&&context.getTarget() instanceof Mob mob){
             PoisonCloud cloud =new PoisonCloud(etshtinkerEntity.poison_cloud.get(),mob.level);
             cloud.setOwner(context.getAttacker());
             cloud.lvl = modifier.getLevel();
-            cloud.damage =1.5F* modifier.getLevel();
+            cloud.damage =0.5F* modifier.getLevel();
             cloud.setPos(mob.position().add(0,mob.getBbHeight()/2,0));
             mob.level.addFreshEntity(cloud);
         }

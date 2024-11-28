@@ -116,7 +116,7 @@ public class ResonanceEffect extends etshmodifieriii implements ToolStatsModifie
     }
 
     @Override
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         LivingEntity entity =context.getLivingTarget();
         LivingEntity entity1 =context.getAttacker();
         if (entity != null){
@@ -131,7 +131,9 @@ public class ResonanceEffect extends etshmodifieriii implements ToolStatsModifie
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target!=null&&attacker!=null&&projectile instanceof AbstractArrow arrow){
+            target.invulnerableTime=0;
             target.hurt(DamageSource.sonicBoom(attacker),0.5f*(float) arrow.getBaseDamage()*(float)getMold(arrow.getDeltaMovement()));
+            target.invulnerableTime=0;
             if (target.level instanceof ServerLevel level){
                 level.sendParticles(ParticleTypes.SONIC_BOOM,target.getX(),target.getY()+0.5*target.getBbHeight(),target.getZ(),1,0,0,0,0);
             }

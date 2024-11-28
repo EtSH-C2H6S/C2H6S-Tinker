@@ -117,6 +117,8 @@ public class etshtinkerModifiers {
     public static final StaticModifier<UltradenseExArmor>ultradenseex_armor= MODIFIERS.register("ultradenseex_armor", UltradenseExArmor::new);
     public static final StaticModifier<AcidicPoisonModifier>acidic_poison= MODIFIERS.register("acidic_poison", AcidicPoisonModifier::new);
     public static final StaticModifier<Recycable>recycable= MODIFIERS.register("recycable", Recycable::new);
+    public static final StaticModifier<ExtraDenseArmor>extradense_armor= MODIFIERS.register("extradense_armor", ExtraDenseArmor::new);
+    public static final StaticModifier<HeatDead>heat_dead= MODIFIERS.register("heat_dead", HeatDead::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

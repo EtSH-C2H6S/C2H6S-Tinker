@@ -37,7 +37,7 @@ public class modifierenchantedsword extends etshmodifieriii {
             packetHandler.INSTANCE.sendToServer(new enchantedswordPacket());
         }
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if (context.getPlayerAttacker() != null && modifier.getLevel() > 0&&BOTloaded) {
             Player player = context.getPlayerAttacker();
             if (tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get()) > 0 && tool.getPersistentData().getInt(manacharge)>1) {

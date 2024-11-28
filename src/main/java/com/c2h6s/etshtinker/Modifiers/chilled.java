@@ -18,7 +18,7 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 public class chilled extends etshmodifieriii {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getTarget();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target&&enabled){
             target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,2));

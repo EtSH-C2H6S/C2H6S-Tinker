@@ -1,13 +1,18 @@
 package com.c2h6s.etshtinker.init.ItemReg;
 
+import com.c2h6s.etshtinker.Items.StoriedMaterial;
 import com.c2h6s.etshtinker.Items.antineutroniumItem;
 import com.c2h6s.etshtinker.Items.marcoatomItem;
 import com.c2h6s.etshtinker.Items.trinityalloyitem;
 import com.c2h6s.etshtinker.init.etshtinkerTab;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
@@ -28,5 +33,14 @@ public class etshtinkerMekansimMaterial {
     public static final RegistryObject<Item> gs_indused_netherite_dust = ITEMS.register("gs_indused_netherite_dust",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
     public static final RegistryObject<Item> activated_neutronium_dust = ITEMS.register("activated_neutronium_dust",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
     public static final RegistryObject<Item> alloy_fracture = ITEMS.register("alloy_fracture",( ) -> new Item(new Item.Properties().tab(etshtinkerTab.MIXC)));
+    public static final RegistryObject<Item> entropic_ingot = ITEMS.register("entropic_ingot",( ) -> new StoriedMaterial(new Item.Properties().tab(etshtinkerTab.MATERIALS), List.of(
+            Component.translatable("etshtinker.item.tooltip.entropic_ingot1").withStyle(ChatFormatting.YELLOW),
+            Component.translatable("etshtinker.item.tooltip.entropic_ingot2").withStyle(ChatFormatting.GOLD),
+            Component.translatable("etshtinker.item.tooltip.entropic_ingot3").withStyle(ChatFormatting.AQUA),
+            Component.translatable("etshtinker.item.tooltip.entropic_ingot4").withStyle(ChatFormatting.DARK_AQUA),
+            Component.translatable("etshtinker.item.tooltip.entropic_ingot6").withStyle(ChatFormatting.RED),
+            Component.translatable("etshtinker.item.tooltip.special").withStyle(ChatFormatting.LIGHT_PURPLE),
+            Component.translatable("etshtinker.item.tooltip.special2").withStyle(ChatFormatting.LIGHT_PURPLE)
+            )));
 
 }

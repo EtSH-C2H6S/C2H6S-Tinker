@@ -1,0 +1,44 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "stats": {
+    "etshtinker:fluid_chamber": {
+      "fluid_capacity": 65536
+    },
+    "etshtinker:plasma_generator": {
+      "damagemultiplier": 10.24,
+      "criticalrate": 2.048,
+      "fluidefficiency": 0.01,
+      "slash_color": 9
+    },
+    "tconstruct:head": {
+      "durability": 131072,
+      "mining_speed": 1,
+      "mining_tier": "minecraft:stone",
+      "melee_attack": 1
+    },
+    "tconstruct:limb": {
+      "durability": 32768,
+      "draw_speed": 1,
+      "velocity": 1,
+      "accuracy": 1
+    },
+    "tconstruct:binding": {},
+    "tconstruct:bowstring": {},
+    "tconstruct:handle": {
+      "durability": 163.84,
+      "mining_speed": 0,
+      "melee_speed": 0,
+      "melee_damage": 0
+    },
+    "tconstruct:grip": {
+      "durability": 10.24,
+      "accuracy": 0,
+      "melee_damage": 0
+    }
+  }
+}

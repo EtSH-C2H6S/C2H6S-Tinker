@@ -16,6 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import com.c2h6s.etshtinker.Items.*;
+import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.gadgets.item.ShurikenItem;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
@@ -25,12 +26,13 @@ import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
+import static com.c2h6s.etshtinker.etshtinker.getResourceLoc;
 import static com.c2h6s.etshtinker.init.etshtinkerTab.TOOLS;
 
 
 public class etshtinkerItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create( ForgeRegistries.ITEMS, MOD_ID);
-    public static final ItemDeferredRegisterExtension EXTRA_ITEMS = new ItemDeferredRegisterExtension(MOD_ID);;
+    public static final ItemDeferredRegisterExtension CAST = new ItemDeferredRegisterExtension(MOD_ID);
     private static final Item.Properties THROWABLE_PROPS = new Item.Properties().stacksTo(16);
     private static final Item.Properties TOOL =(new Item.Properties().tab(TOOLS).stacksTo(1));
     private static final Item.Properties CASTS =(new Item.Properties().tab(TOOLS));
@@ -99,9 +101,10 @@ public class etshtinkerItems {
 
 
     //铸膜
-    public static final RegistryObject<Item> fluid_chamber_cast = ITEMS.register("fluid_chamber_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
-    public static final RegistryObject<Item> fluid_chamber_sand_cast = ITEMS.register("fluid_chamber_sand_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
-    public static final RegistryObject<Item> fluid_chamber_red_sand_cast = ITEMS.register("fluid_chamber_red_sand_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
+    //public static final RegistryObject<Item> fluid_chamber_gold_cast = ITEMS.register("fluid_chamber_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
+    //public static final RegistryObject<Item> fluid_chamber_sand_cast = ITEMS.register("fluid_chamber_sand_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
+    //public static final RegistryObject<Item> fluid_chamber_red_sand_cast = ITEMS.register("fluid_chamber_red_sand_cast", ()->new Item(new Item.Properties().stacksTo(64).tab(TOOLS)));
+    public static final CastItemObject fluid_chamber_cast = CAST.registerCast("fluid_chamber",new Item.Properties().tab(TOOLS));
 
     public class configuredMaterial{
         public static final DeferredRegister<Item> ITEMSC = DeferredRegister.create( ForgeRegistries.ITEMS, MOD_ID);

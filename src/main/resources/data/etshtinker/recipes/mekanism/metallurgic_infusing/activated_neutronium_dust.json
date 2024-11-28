@@ -7,7 +7,7 @@
   ],
   "type": "mekanism:metallurgic_infusing",
   "chemicalInput": {
-    "amount": 160,
+    "amount": 640,
     "infuse_type": "etshtinker:ultra_dense"
   },
   "itemInput": {

@@ -29,7 +29,7 @@ public class AtomicRestructer extends etshmodifieriii {
     }
 
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity attacker =context.getAttacker();
         LivingEntity target =context.getLivingTarget();
         int x =0;

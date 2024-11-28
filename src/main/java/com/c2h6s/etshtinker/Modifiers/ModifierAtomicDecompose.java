@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 public class ModifierAtomicDecompose extends etshmodifieriii {
     @Override
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         LivingEntity target =context.getLivingTarget();
         if (target!=null&&context.isFullyCharged()&&target.getPersistentData().getInt("atomic_dec")<=160&&!(target instanceof Player)){
             target.getPersistentData().putInt("atomic_dec",target.getPersistentData().getInt("atomic_dec")+20*modifier.getLevel());

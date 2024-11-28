@@ -34,7 +34,7 @@ public class warpengineex extends etshmodifieriii implements GeneralInteractionM
             Vec3 vec3 =new Vec3(player.getLookAngle().x,0,player.getLookAngle().z);
             getUnitizedVec3(vec3);
             vec3 = getUnitizedVec3(vec3);
-            player.setPos(player.getX()+vec3.x*2500*tool.getModifierLevel(this),player.getY(),player.getZ()+vec3.z*2500*tool.getModifierLevel(this));
+            player.teleportTo(player.getX()+vec3.x*2500*tool.getModifierLevel(this),player.getY(),player.getZ()+vec3.z*2500*tool.getModifierLevel(this));
             player.sendSystemMessage(Component.translatable("etshtinker.modifier.tooltip.tpto").append(String.valueOf(entity.position())));
             player.getCooldowns().addCooldown(player.getMainHandItem().getItem(),200);
         }

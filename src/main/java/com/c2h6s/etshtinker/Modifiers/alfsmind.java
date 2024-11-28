@@ -63,7 +63,7 @@ public class alfsmind extends etshmodifieriii {
         }
         return false;
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         LivingEntity target =context.getLivingTarget();
         LivingEntity attacker =context.getAttacker();
         if (target!=null&&modifier.getLevel()>0){

@@ -18,6 +18,12 @@
     }
   ],
   "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "etshtinker:extradense_armor",
+        "level": 1
+      }
+    ],
     "tconstruct:binding": [
       {
         "name": "etshtinker:overweightex",

@@ -57,6 +57,7 @@ public class NightSlashEntityB extends ItemProjectile{
                 if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)&&!(targets instanceof Player)) {
                     targets.invulnerableTime = 0;
                     targets.hurt(DamageSource.playerAttack(player), this.damage);
+                    targets.invulnerableTime = 0;
                     AttributeInstance instance = targets.getAttributes().getInstance(Attributes.ARMOR);
                     AttributeInstance instance1 = targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS);
                     if (instance1 != null) {

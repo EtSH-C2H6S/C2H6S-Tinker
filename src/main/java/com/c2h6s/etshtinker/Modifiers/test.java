@@ -37,8 +37,7 @@ public class test extends etshmodifieriii {
         return knockback;
     }
 
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
-
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         if (context.isCritical()){
             context.getAttacker().sendSystemMessage(Component.literal("1"));
         }

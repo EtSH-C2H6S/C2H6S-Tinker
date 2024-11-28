@@ -32,7 +32,7 @@ public class iluminate extends etshmodifieriii {
         }
     }
 
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getTarget();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target){
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING,300,0));

@@ -21,7 +21,8 @@ public class sharpnessex extends etshmodifieriii {
         return true;
     }
 
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+    @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target) {
@@ -33,6 +34,7 @@ public class sharpnessex extends etshmodifieriii {
         }
         return baseKnockback;
     }
+
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (attacker instanceof Player player && target != null&&projectile instanceof AbstractArrow arrow) {
             target.invulnerableTime = 0;

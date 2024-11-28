@@ -15,7 +15,9 @@ import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
@@ -33,6 +35,7 @@ import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
+import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.getUnitizedVec3;
 import static slimeknights.tconstruct.library.tools.item.ranged.ModifiableLauncherItem.getAngleStart;
 
@@ -42,6 +45,11 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.TOOL_STATS);
+    }
+
+    @Override
+    public int getPriority() {
+        return -100;
     }
 
     @Override
@@ -69,6 +77,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                         arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 3.0f*velocity, inaccuracy);
                         float baseArrowDamage = (float)(arrow.getBaseDamage() - 2 + tool.getStats().get(ToolStats.PROJECTILE_DAMAGE));
                         arrow.setBaseDamage(ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.PROJECTILE_DAMAGE, baseArrowDamage));
+                        arrow.addTag("electric_extra");
                         ModifierNBT modifiers = tool.getModifiers();
                         arrow.getCapability(EntityModifierCapability.CAPABILITY).ifPresent(cap -> cap.setModifiers(modifiers));
                         NamespacedNBT arrowData = PersistentDataCapability.getOrWarn(arrow);
@@ -79,15 +88,22 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                             entry.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, entry, player, arrow, arrow, arrowData, true);
                         }
                         arrow.setCritArrow(true);
-                        arrow.setBaseDamage(arrow.getBaseDamage()/10);
                         level.addFreshEntity(arrow);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-
+                        arrow.setDeltaMovement(arrow.getDeltaMovement().scale(EtSHrnd().nextDouble()));
                     ToolDamageUtil.damageAnimated(tool, ammo.getCount(), player, player.getUsedItemHand());
                 }
                 player.awardStat(Stats.ITEM_USED.get(bow));
             }
         }
+    }
+
+    @Override
+    public boolean onProjectileHitBlock(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, BlockHitResult hit, @Nullable LivingEntity attacker) {
+        if (projectile instanceof AbstractArrow arrow&&arrow.getTags().contains("electric_extra")){
+            arrow.discard();
+        }
+        return true;
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
@@ -97,6 +113,9 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
             target.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE,1.2f,1.2f);
             target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
             target.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 3*lvl000, false, false), attacker);
+        }
+        if (projectile instanceof AbstractArrow arrow&&arrow.getTags().contains("electric_extra")){
+            arrow.setBaseDamage(arrow.getBaseDamage()/10);
         }
         return false;
     }

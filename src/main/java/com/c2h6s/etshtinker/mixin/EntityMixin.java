@@ -1,5 +1,7 @@
 package com.c2h6s.etshtinker.mixin;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
+import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
 import com.c2h6s.etshtinker.capability.IDampenCapability;
 import com.c2h6s.etshtinker.capability.etshCap;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
@@ -51,10 +53,13 @@ public class EntityMixin {
     }
 
     @Inject(at = @At(value = "HEAD"), method = "isInvulnerableTo",cancellable = true)
-    public void rejectInvulerable(DamageSource p_20122_, CallbackInfoReturnable<Boolean> cir) {
+    public void rejectInvulerable(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         Entity entity = (Entity) (Object) this;
-        if (entity instanceof LivingEntity living && !(entity instanceof Player player && player.getAbilities().instabuild)) {
+        if (entity instanceof LivingEntity living && !(entity instanceof Player player)) {
             if (living.hasEffect(etshtinkerEffects.ionized.get()) || living.hasEffect(etshtinkerEffects.novaradiation.get())) {
+                cir.setReturnValue(false);
+            }
+            if(source instanceof playerThroughSource||source instanceof throughSources){
                 cir.setReturnValue(false);
             }
         }

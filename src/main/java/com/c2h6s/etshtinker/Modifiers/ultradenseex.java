@@ -52,7 +52,7 @@ public class ultradenseex extends etshmodifieriii {
     }
 
     @Override
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         for (ModifierEntry entry : tool.getModifierList()) {
             if (entry != modifier) {
                 knockback = entry.getHook(ModifierHooks.MELEE_HIT).beforeMeleeHit(tool, modifier, context, damage, baseKnockback,knockback);
@@ -81,7 +81,7 @@ public class ultradenseex extends etshmodifieriii {
     }
 
     @Override
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         for (ModifierEntry entry : tool.getModifierList()) {
             if (entry != modifier) {
                 entry.getHook(ModifierHooks.MELEE_HIT).afterMeleeHit(tool, modifier, context, damageDealt);

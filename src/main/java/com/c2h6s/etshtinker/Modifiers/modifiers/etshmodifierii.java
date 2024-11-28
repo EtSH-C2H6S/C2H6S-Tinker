@@ -32,11 +32,6 @@ public class etshmodifierii extends etshmodifieri implements BowAmmoModifierHook
     }
 
     @Override
-    public void shrinkAmmo(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, ItemStack ammo, int needed) {
-        this.modifierShrinkAmmo(tool,modifier,shooter,ammo,needed);
-    }
-
-    @Override
     public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         this.modifierOnProjectileLaunch(tool,modifiers,livingEntity,projectile,abstractArrow,namespacedNBT,primary);
     }
@@ -60,8 +55,5 @@ public class etshmodifierii extends etshmodifieri implements BowAmmoModifierHook
     }
     public boolean modifierOnProjectileHitBlock(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, BlockHitResult hit, @javax.annotation.Nullable LivingEntity attacker) {
         return false;
-    }
-    public void modifierShrinkAmmo(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, ItemStack ammo, int needed) {
-
     }
 }

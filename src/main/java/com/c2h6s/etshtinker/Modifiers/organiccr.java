@@ -12,7 +12,7 @@ public class organiccr extends etshmodifieriii {
     public boolean isNoLevels() {
         return true;
     }
-    public void modifierAfterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         LivingEntity target =context.getLivingTarget();
         if (target!=null&&!(target instanceof Player)){
             if (target.getPersistentData().contains("legacyhealth")&&target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
@@ -23,7 +23,7 @@ public class organiccr extends etshmodifieriii {
             }
         }
     }
-    public float modifierBeforeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         LivingEntity target =context.getLivingTarget();
         LivingEntity attacker =context.getAttacker();
         if (target!=null&&modifier.getLevel()>0&&!(target instanceof Player)){
