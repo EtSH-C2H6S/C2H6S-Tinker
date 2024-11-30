@@ -76,12 +76,12 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
         if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber) {
-            packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
+            packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket(event.getEntity().getId()));
         }
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber) {
-            packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket());
+            packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket(event.getEntity().getId()));
         }
     }
 

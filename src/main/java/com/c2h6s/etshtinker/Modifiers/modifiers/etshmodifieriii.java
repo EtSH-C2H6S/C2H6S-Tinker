@@ -47,7 +47,7 @@ public class etshmodifieriii extends etshmodifierii implements EquipmentChangeMo
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.EQUIPMENT_CHANGE ,ModifierHooks.INVENTORY_TICK,ModifierHooks.ON_ATTACKED);
-        builder.addHook(this,ModifierHooks.TOOLTIP,ModifierHooks.REMOVE);
+        builder.addHook(this,ModifierHooks.TOOLTIP,ModifierHooks.REMOVE,ModifierHooks.MODIFY_DAMAGE);
         builder.addHook(this,ModifierHooks.BLOCK_BREAK,ModifierHooks.ENTITY_INTERACT,ModifierHooks.TOOL_STATS);
     }
 

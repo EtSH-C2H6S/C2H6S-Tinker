@@ -83,9 +83,6 @@ public class godlymetal extends etshmodifieriii implements ToolDamageModifierHoo
             player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 100, 0, false, false));
             player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,400,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,100,9*modilvl2,false,false));
-            if (player.hasEffect(MobEffects.SLOW_FALLING)){
-                player.removeEffect(MobEffects.SLOW_FALLING);
-            }
         }
     }
 

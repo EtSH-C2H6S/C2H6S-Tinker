@@ -32,10 +32,9 @@ public class perfectArmor extends etshmodifieriii {
                 int level = holder.get(key, 0);
                 if (level > 0) {
                     float b =amount/level;
-                    if (b<=4){
+                    if (b<10){
                         event.setAmount(0);
                     }
-                    else event.setAmount(10);
                 }
             });
         }

@@ -8,27 +8,27 @@ import static mekanism.common.registries.MekanismFluids.*;
 public class ionizerFluidMapMek {
     public static void extendMap(){
         fluidParts.put(LITHIUM.getFluid(),plasmaexplosionred.get());
-        fluidDmg.put(LITHIUM.getFluid(),3F);
+        fluidDmg.put(LITHIUM.getFluid(),3.5F);
         fluidParts.put(URANIUM_HEXAFLUORIDE.getFluid(),plasmaexplosionlime.get());
-        fluidDmg.put(URANIUM_HEXAFLUORIDE.getFluid(),4F);
+        fluidDmg.put(URANIUM_HEXAFLUORIDE.getFluid(),4.5F);
         fluidSpecial.put(URANIUM_HEXAFLUORIDE.getFluid(),"radiation");
         fluidParts.put(SUPERHEATED_SODIUM.getFluid(),plasmaexplosionyellow.get());
-        fluidDmg.put(SUPERHEATED_SODIUM.getFluid(),9F);
+        fluidDmg.put(SUPERHEATED_SODIUM.getFluid(),9.5F);
         fluidSpecial.put(SUPERHEATED_SODIUM.getFluid(),"explosion");
         fluidParts.put(CHLORINE.getFluid(),plasmaexplosionlime.get());
         fluidDmg.put(CHLORINE.getFluid(),1.5F);
         fluidSpecial.put(CHLORINE.getFluid(),"poison");
         fluidParts.put(SULFUR_DIOXIDE.getFluid(),plasmaexplosionyellow.get());
-        fluidDmg.put(SULFUR_DIOXIDE.getFluid(),2F);
+        fluidDmg.put(SULFUR_DIOXIDE.getFluid(),2.5F);
         fluidSpecial.put(SULFUR_DIOXIDE.getFluid(),"poison");
         fluidParts.put(SULFUR_TRIOXIDE.getFluid(),plasmaexplosionorange.get());
-        fluidDmg.put(SULFUR_TRIOXIDE.getFluid(),2F);
+        fluidDmg.put(SULFUR_TRIOXIDE.getFluid(),2.5F);
         fluidSpecial.put(SULFUR_TRIOXIDE.getFluid(),"corrosive");
         fluidParts.put(HYDROFLUORIC_ACID.getFluid(),plasmaexplosionlime.get());
-        fluidDmg.put(HYDROFLUORIC_ACID.getFluid(),3F);
+        fluidDmg.put(HYDROFLUORIC_ACID.getFluid(),3.5F);
         fluidSpecial.put(HYDROFLUORIC_ACID.getFluid(),"corrosive");
         fluidParts.put(HYDROGEN_CHLORIDE.getFluid(),plasmaexplosiongreen.get());
-        fluidDmg.put(HYDROGEN_CHLORIDE.getFluid(),1F);
+        fluidDmg.put(HYDROGEN_CHLORIDE.getFluid(),1.5F);
         fluidSpecial.put(HYDROGEN_CHLORIDE.getFluid(),"corrosive");
 
         fluidDmg.put(antimatter_l.get(),20f);
@@ -42,9 +42,9 @@ public class ionizerFluidMapMek {
         fluidParts.put(molten_protonium.get(),plasmaexplosionpurple.get());
         fluidDmg.put(molten_protonium.get(),10f);
         fluidParts.put(molten_ultra_dense.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(molten_ultra_dense.get(),6f);
+        fluidDmg.put(molten_ultra_dense.get(),7.7f);
         fluidParts.put(unstable_exotic_matter.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(unstable_exotic_matter.get(),4.25f);
+        fluidDmg.put(unstable_exotic_matter.get(),5.25f);
         fluidSpecial.put(unstable_exotic_matter.get(),"tracking");
         fluidParts.put(stablized_exotic_matter.get(),plasmaexplosiongreen.get());
         fluidDmg.put(stablized_exotic_matter.get(),14.25f);

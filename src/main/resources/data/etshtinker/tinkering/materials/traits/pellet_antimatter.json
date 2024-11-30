@@ -8,6 +8,14 @@
       "name": "etshtinker:annilate",
       "level": 1
     }
-  ]
+  ],
+  "perStat" : {
+    "tconstruct:armor": [
+      {
+        "name": "etshtinker:annihilate_armor",
+        "level": 1
+      }
+    ]
+  }
 
 }

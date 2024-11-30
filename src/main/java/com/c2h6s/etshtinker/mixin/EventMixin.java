@@ -17,25 +17,26 @@ public class EventMixin {
     @Inject(at = @At(value = "HEAD"), method = "setCanceled", cancellable = true)
     private void rejectCancel(boolean cancel, CallbackInfo ci) {
         Event event1 = (Event) (Object) this;
-        if (event1 instanceof LivingDeathEvent event&&cancel){
+        if (event1 instanceof LivingDeathEvent event){
             if (event.getSource() instanceof playerThroughSource||event.getSource() instanceof throughSources){
                 ci.cancel();
             }
         }
-        if (event1 instanceof LivingAttackEvent event&&cancel){
+        if (event1 instanceof LivingAttackEvent event){
             if (event.getSource() instanceof playerThroughSource||event.getSource() instanceof throughSources){
                 ci.cancel();
             }
         }
-        if (event1 instanceof LivingHurtEvent event&&cancel){
+        if (event1 instanceof LivingHurtEvent event){
             if (event.getSource() instanceof playerThroughSource||event.getSource() instanceof throughSources){
                 ci.cancel();
             }
         }
-        if (event1 instanceof LivingDamageEvent event&&cancel){
+        if (event1 instanceof LivingDamageEvent event){
             if (event.getSource() instanceof playerThroughSource||event.getSource() instanceof throughSources){
                 ci.cancel();
             }
         }
     }
+
 }

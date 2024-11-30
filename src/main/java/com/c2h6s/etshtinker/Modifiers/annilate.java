@@ -3,8 +3,10 @@ import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -24,6 +26,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.RepairFactorModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
+import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.*;
 import com.c2h6s.etshtinker.Modifiers.modifiers.*;
@@ -38,11 +41,6 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 
 public class annilate extends etshmodifieriii  {
-    @Override
-    protected void registerHooks(ModuleHookMap.Builder builder) {
-        super.registerHooks(builder);
-        builder.addHook(this);
-    }
 
 
     public boolean isNoLevels() {
@@ -52,6 +50,24 @@ public class annilate extends etshmodifieriii  {
     public void onRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(des);
     }
+
+    @Override
+    public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
+        if (context.getEntity() instanceof FakePlayer){
+            return amount;
+        }
+        Entity attacker =source.getEntity();
+        LivingEntity target =context.getEntity();
+        if (target instanceof Player&&attacker instanceof LivingEntity living&&tool.getModifierLevel(this)>0){
+            tool.getPersistentData().putInt(des, 114514);
+            living.getPersistentData().putInt("annih_countdown",60);
+            target.getPersistentData().putInt("annih_countdown",60);
+            living.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
+            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
+        }
+        return 0;
+    }
+
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         if (context.getAttacker() instanceof FakePlayer){
             return knockback;
@@ -75,15 +91,8 @@ public class annilate extends etshmodifieriii  {
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (livingEntity!=null&&isCorrectSlot&&!tool.isBroken()&&modifier.getLevel()>0&&tool.getPersistentData().getInt(des)>0){
-
             destroyTool((ToolStack) tool);
         }
-    }
-    public void addTooltip(IToolStackView tool, ModifierEntry modifier, @org.jetbrains.annotations.Nullable Player player, List<Component> list, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        super.addTooltip(tool,modifier,player,list,TooltipKey.NORMAL,tooltipFlag);
-        if (player != null&&tool.getPersistentData().getInt(des)>0) {
-            list.add(applyStyle(Component.translatable("etshtinker.modifier.tooltip.cantfix")));
-        };
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (livingEntity instanceof FakePlayer){
@@ -111,7 +120,7 @@ public class annilate extends etshmodifieriii  {
         int length = tool.getMaterials().size();
         List<MaterialVariant> list=new ArrayList<>(List.of());
         for (int i=0;i<length;i++){
-            list.add((MaterialVariant) MaterialVariant.of(MaterialVariantId.create(new MaterialId("etshtinker:annihilate_ember"),"default")));
+            list.add(MaterialVariant.of(MaterialVariantId.create(new MaterialId("etshtinker:annihilate_ember"),"default")));
         }
         MaterialNBT nbt = new MaterialNBT(list);
         tool.setMaterials(nbt);

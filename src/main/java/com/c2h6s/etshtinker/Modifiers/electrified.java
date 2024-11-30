@@ -55,7 +55,6 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         ToolStats.DRAW_SPEED.add(builder,ToolStats.DRAW_SPEED.getMaxValue());
-        ToolStats.PROJECTILE_DAMAGE.multiply(builder,0.25);
         ToolStats.VELOCITY.multiply(builder,2);
     }
 
@@ -90,7 +89,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                         arrow.setCritArrow(true);
                         level.addFreshEntity(arrow);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-                        arrow.setDeltaMovement(arrow.getDeltaMovement().scale(EtSHrnd().nextDouble()));
+                        arrow.setDeltaMovement(arrow.getDeltaMovement().scale(EtSHrnd().nextDouble()*0.5));
                     ToolDamageUtil.damageAnimated(tool, ammo.getCount(), player, player.getUsedItemHand());
                 }
                 player.awardStat(Stats.ITEM_USED.get(bow));
@@ -107,7 +106,8 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (attacker instanceof Player player&&modifiers.getLevel(this.getId())>0&&target!=null&&!(target instanceof Player)) {
+        if (attacker instanceof Player player&&modifiers.getLevel(this.getId())>0&&target!=null&&!(target instanceof Player)&&projectile instanceof AbstractArrow arrow) {
+            arrow.setBaseDamage(arrow.getBaseDamage()*0.25);
             int lvl000 = modifiers.getLevel(this.getId());
             target.invulnerableTime=0;
             target.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE,1.2f,1.2f);
@@ -115,7 +115,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
             target.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 3*lvl000, false, false), attacker);
         }
         if (projectile instanceof AbstractArrow arrow&&arrow.getTags().contains("electric_extra")){
-            arrow.setBaseDamage(arrow.getBaseDamage()/10);
+            arrow.setBaseDamage(arrow.getBaseDamage()/5);
         }
         return false;
     }

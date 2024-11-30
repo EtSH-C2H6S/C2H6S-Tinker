@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -22,14 +23,18 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import java.util.UUID;
 
 public class ModifierQuarkDisassemble extends etshmodifieriii {
-
     @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity target =context.getLivingTarget();
         if (target!=null&&!(target instanceof Player)&&context.isFullyCharged()){
+            target.invulnerableTime=0;
+            if (context.getAttacker() instanceof Player player) {
+                target.hurt(playerThroughSource.PlayerQuark(player,damage),damage);
+            }
             target.getPersistentData().putInt("quark_disassemble",target.getPersistentData().getInt("quark_disassemble")+30*modifier.getLevel()+80);
             target.getPersistentData().putInt("atomic_dec",target.getPersistentData().getInt("atomic_dec")+80*modifier.getLevel());
         }
+        return knockback;
     }
 
     @Override

@@ -209,9 +209,9 @@ public class plasmaexplosionentity extends ItemProjectile{
     public void conductSpecial(List<LivingEntity> ls1){
         String special =this.special;
         if (!ls1.isEmpty() && special != null) {
-            if (ls1.get(0) != null) {
+            if (ls1.get(0) != null&&!this.getTags().contains("do_second_special")) {
                 LivingEntity entity = ls1.get(0);
-                ls1.clear();
+                this.addTag("do_second_special");
                 if (!(entity instanceof Player)) {
                     if (special.equals("antimatter_explosion")) {
                         this.level.explode(this.getOwner(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 16f, Explosion.BlockInteraction.NONE);

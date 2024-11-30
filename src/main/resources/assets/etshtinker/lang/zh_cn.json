@@ -383,7 +383,7 @@
 
   "modifier.etshtinker.perfect_armor": "完美护甲",
   "modifier.etshtinker.perfect_armor.flavor": "追求完美也不总是坏事",
-  "modifier.etshtinker.perfect_armor.description":"先将所受伤害除以属性等级，若小于5则免疫，若大于等于5，则设置为10",
+  "modifier.etshtinker.perfect_armor.description":"将所受伤害除以属性等级，若小于10则免疫",
 
   "modifier.etshtinker.reactive_resonate_armor": "谐振反应装甲",
   "modifier.etshtinker.reactive_resonate_armor.flavor": "力释音",
@@ -443,7 +443,7 @@
 
   "modifier.etshtinker.ultradenseex_armor": "究极致密EX",
   "modifier.etshtinker.ultradenseex_armor.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex_armor.description":"你所受的伤害会额外经历一次减伤计算。",
+  "modifier.etshtinker.ultradenseex_armor.description":"你所受的伤害会额外经历一次减伤计算。只生效一次",
 
   "modifier.etshtinker.recycable": "可再生",
   "modifier.etshtinker.recycable.flavor": "十分有活性",
@@ -455,7 +455,7 @@
 
   "modifier.etshtinker.extradense_armor": "致密装甲",
   "modifier.etshtinker.extradense_armor.flavor": "[材料科技]不许穿甲机",
-  "modifier.etshtinker.extradense_armor.description":"获得25%伤害减免，对于穿甲伤害则再次进行一次75%的伤害减免",
+  "modifier.etshtinker.extradense_armor.description":"获得25%伤害减免，对于穿甲伤害则再次进行一次75%的伤害减免。只生效一次",
 
   "modifier.etshtinker.heat_dead": "热寂",
   "modifier.etshtinker.heat_dead.flavor": "注定的死亡",
@@ -464,6 +464,10 @@
   "modifier.etshtinker.quark_disassemble": "超位崩解",
   "modifier.etshtinker.quark_disassemble.flavor": "拆散敌人的粒子！",
   "modifier.etshtinker.quark_disassemble.description":"攻击时施加原子分解和夸克解离，挖掘时无视挖掘等级。",
+
+  "modifier.etshtinker.annihilate_armor": "不可控湮灭反应护甲",
+  "modifier.etshtinker.annihilate_armor.flavor": "把核弹穿身上当爆反？？！",
+  "modifier.etshtinker.annihilate_armor.description":"免除所受伤害，但是受到攻击时立刻*永久*损坏并且将你和你的敌人一并湮灭。",
 
 
 
@@ -971,5 +975,6 @@
   "death.attack.etshtinker.quark": "%1$s 体内的粒子被错误地重新排列了",
   "death.attack.etshtinker.quark.player": "%1$s 体内的粒子被错误地重新排列了，凶手是 %2$s",
 
-  "etshtinker.jei.ionized_cannon": "离子化射线炮流体"
+  "etshtinker.jei.ionized_cannon": "离子化射线炮流体",
+  "etshtinker.item.tooltip.entropic_ingot5": ""
 }

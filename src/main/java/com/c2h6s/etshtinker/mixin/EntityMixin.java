@@ -52,14 +52,23 @@ public class EntityMixin {
         callbackinfo.setReturnValue(dampen>=1);
     }
 
-    @Inject(at = @At(value = "HEAD"), method = "isInvulnerableTo",cancellable = true)
+    @Inject(at = @At(value = "RETURN"), method = "isInvulnerableTo",cancellable = true)
     public void rejectInvulerable(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         Entity entity = (Entity) (Object) this;
         if (entity instanceof LivingEntity living && !(entity instanceof Player player)) {
-            if (living.hasEffect(etshtinkerEffects.ionized.get()) || living.hasEffect(etshtinkerEffects.novaradiation.get())) {
+            if (living.hasEffect(etshtinkerEffects.ionized.get()) || living.hasEffect(etshtinkerEffects.novaradiation.get())||living.getPersistentData().contains("quark_disassemble")) {
                 cir.setReturnValue(false);
             }
             if(source instanceof playerThroughSource||source instanceof throughSources){
+                cir.setReturnValue(false);
+            }
+        }
+    }
+    @Inject(at = @At(value = "RETURN"), method = "isInvulnerable",cancellable = true)
+    public void removeInvulerable(CallbackInfoReturnable<Boolean> cir) {
+        Entity entity = (Entity) (Object) this;
+        if (entity instanceof LivingEntity living && !(entity instanceof Player player)) {
+            if ( living.hasEffect(etshtinkerEffects.novaradiation.get())||living.getPersistentData().contains("quark_disassemble")) {
                 cir.setReturnValue(false);
             }
         }

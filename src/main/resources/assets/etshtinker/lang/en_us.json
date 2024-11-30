@@ -469,8 +469,12 @@
   "modifier.etshtinker.quark_disassemble.flavor": "Tear down anything by atoms.",
   "modifier.etshtinker.quark_disassemble.description":"Inflicts atom decomposition and quark disassemble on attack.Enhances fortune level.",
 
-  "item.etshtinker.entropic_ingot": "Entropic Ingot",
+  "modifier.etshtinker.annihilate_armor": "Annihilating Armor(Not controllable)",
+  "modifier.etshtinker.annihilate_armor.flavor": "You've just wear a nuke??!",
+  "modifier.etshtinker.annihilate_armor.description":"Cancel the damage you taken.But completely annihilates your tool,your enemy and yourself.",
 
+
+  "item.etshtinker.entropic_ingot": "Entropic Ingot",
 
   "fluid.etshtinker.annihilating_plasma": "Annihilating Plasma",
   "item.etshtinker.annihilating_plasma_bucket": "Annihilating Plasma Bucket",

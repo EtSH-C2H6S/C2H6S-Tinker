@@ -44,13 +44,13 @@ public class etshtinkerFluids {
         public static FluidObject<ForgeFlowingFluid> molten_ultra_dense = register("molten_ultra_dense", 5000);//致密超流体
         public static FluidObject<ForgeFlowingFluid> antimatter_l = register("antimatter_l", -65536);//液态反物质
         public static FluidObject<ForgeFlowingFluid> annihilating_plasma = register("annihilating_plasma", 16384);//湮灭等离子体
-        public static FluidObject<ForgeFlowingFluid> unstable_exotic_matter = register("unstable_exotic_matter", -131072);//不稳定奇异物质
+        public static FluidObject<ForgeFlowingFluid> unstable_exotic_matter = register("unstable_exotic_matter", -346);//不稳定奇异物质
         public static FluidObject<ForgeFlowingFluid> overchargedneutronium = register("overchargedneutronium", 9273);//超充能中子流体
-        public static FluidObject<ForgeFlowingFluid> molten_electronium = register("molten_electronium", 8888);//电子流体
-        public static FluidObject<ForgeFlowingFluid> molten_protonium = register("molten_protonium", 7777);//质子流体
+        public static FluidObject<ForgeFlowingFluid> molten_electronium = register("molten_electronium", 5467);//电子流体
+        public static FluidObject<ForgeFlowingFluid> molten_protonium = register("molten_protonium", 4656);//质子流体
         public static FluidObject<ForgeFlowingFluid> molten_trinity_intereactive_alloy = register("molten_trinity_intereactive_alloy", 16384);
-        public static FluidObject<ForgeFlowingFluid> molten_marcoatom = register("molten_marcoatom", 80934);
-        public static FluidObject<ForgeFlowingFluid> stablized_exotic_matter = register("stablized_exotic_matter", -9120348);//稳态奇异物质
+        public static FluidObject<ForgeFlowingFluid> molten_marcoatom = register("molten_marcoatom", 16384);
+        public static FluidObject<ForgeFlowingFluid> stablized_exotic_matter = register("stablized_exotic_matter", -890);//稳态奇异物质
         public static FluidObject<ForgeFlowingFluid> molten_anti_neutronium = register("molten_anti_neutronium", Integer.MAX_VALUE);
         public static FluidObject<ForgeFlowingFluid> molten_entropic = register("molten_entropic", Integer.MIN_VALUE);
     }
@@ -81,7 +81,7 @@ public class etshtinkerFluids {
         }
         public static FluidObject<ForgeFlowingFluid> molten_meteoralloy = register("molten_meteoralloy", 5578);//熔融星陨合金
         public static FluidObject<ForgeFlowingFluid> molten_stellaralloy = register("molten_stellaralloy", 6750);//熔融星钢
-        public static FluidObject<ForgeFlowingFluid> molten_coronation = register("molten_coronation", 999999);//熔融星冕
+        public static FluidObject<ForgeFlowingFluid> molten_coronation = register("molten_coronation", 8900);//熔融星冕
     }
     public class etshtinkerFluidIE {
         public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(MOD_ID);

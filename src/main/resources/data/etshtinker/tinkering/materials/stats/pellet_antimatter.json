@@ -15,11 +15,35 @@
       "mining_tier": "minecraft:stone",
       "melee_attack": 0
     },
-    "tconstruct:limb": {
-      "durability": 32767,
-      "draw_speed": 1,
-      "velocity": 14,
-      "accuracy": 5
+    "tconstruct:maille": {},
+    "tconstruct:plating_helmet": {
+      "armor": 30,
+      "durability": 65536,
+      "knockback_resistance": 1,
+      "toughness": 30
+    },
+    "tconstruct:plating_chestplate": {
+      "armor": 30,
+      "durability": 65536,
+      "knockback_resistance": 1,
+      "toughness": 30
+    },
+    "tconstruct:plating_leggings": {
+      "armor": 30,
+      "durability": 65536,
+      "knockback_resistance": 1,
+      "toughness": 30
+    },
+    "tconstruct:plating_boots": {
+      "armor": 30,
+      "durability": 65536,
+      "knockback_resistance": 1,
+      "toughness": 30
+    },
+    "tconstruct:plating_shield": {
+      "durability": 65536,
+      "knockback_resistance": 1,
+      "toughness": 30
     }
   }
 }

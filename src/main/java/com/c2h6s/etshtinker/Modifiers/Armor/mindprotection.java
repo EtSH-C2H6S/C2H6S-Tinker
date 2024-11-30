@@ -117,7 +117,6 @@ public class mindprotection extends etshmodifieriii {
                                 attacker.invulnerableTime = 0;
                             }
                             if (i > 75 && entity1 instanceof LivingEntity attacker&& !(attacker instanceof Player)) {
-                                attacker.invulnerableTime = 0;
                                 attacker.hurt(DamageSource.thorns(player), event.getAmount() * 20);
                                 attacker.invulnerableTime = 0;
                             }

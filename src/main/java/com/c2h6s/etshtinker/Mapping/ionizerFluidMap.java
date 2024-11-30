@@ -33,39 +33,39 @@ public class ionizerFluidMap {
         fluidParts.put(moltenBrass.get(),plasmaexplosiongreen.get());
         fluidDmg.put(moltenBrass.get(),1.66f);
         fluidParts.put(moltenIron.get(),plasmaexplosionred.get());
-        fluidDmg.put(moltenIron.get(),1.75f);
+        fluidDmg.put(moltenIron.get(),2.25f);
         fluidParts.put(moltenInvar.get(),plasmaexplosionred.get());
-        fluidDmg.put(moltenInvar.get(),2.08f);
+        fluidDmg.put(moltenInvar.get(),2.58f);
         fluidParts.put(moltenSteel.get(),plasmaexplosionred.get());
-        fluidDmg.put(moltenSteel.get(),1.9f);
+        fluidDmg.put(moltenSteel.get(),2.9f);
         fluidParts.put(moltenGold.get(),plasmaexplosionyellow.get());
-        fluidDmg.put(moltenGold.get(),2.18f);
+        fluidDmg.put(moltenGold.get(),2.78f);
         fluidParts.put(moltenElectrum.get(),plasmaexplosionyellow.get());
-        fluidDmg.put(moltenElectrum.get(),2.21f);
+        fluidDmg.put(moltenElectrum.get(),3.11f);
         fluidParts.put(moltenCobalt.get(),plasmaexplosionblue.get());
-        fluidDmg.put(moltenCobalt.get(),2.45f);
+        fluidDmg.put(moltenCobalt.get(),3.05f);
         fluidParts.put(moltenNetherite.get(),plasmaexplosionorange.get());
-        fluidDmg.put(moltenNetherite.get(),2.9f);
+        fluidDmg.put(moltenNetherite.get(),3.7f);
         fluidParts.put(moltenAmethystBronze.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(moltenAmethystBronze.get(),1.5f);
+        fluidDmg.put(moltenAmethystBronze.get(),2.5f);
         fluidSpecial.put(moltenAmethystBronze.get(),"magic_damage");
         fluidParts.put(moltenDiamond.get(),plasmaexplosioncyan.get());
-        fluidDmg.put(moltenDiamond.get(),2f);
+        fluidDmg.put(moltenDiamond.get(),2.7f);
         fluidParts.put(moltenEmerald.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(moltenEmerald.get(),2F);
+        fluidDmg.put(moltenEmerald.get(),2.7F);
         fluidParts.put(moltenEnder.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(moltenEnder.get(),3.65f);
+        fluidDmg.put(moltenEnder.get(),4.05f);
         fluidSpecial.put(moltenEnder.get(),"random_scatter");
         fluidParts.put(scorchedStone.get(),plasmaexplosionorange.get());
-        fluidDmg.put(scorchedStone.get(),1.3f);
+        fluidDmg.put(scorchedStone.get(),1.7f);
         fluidSpecial.put(scorchedStone.get(),"burn");
         fluidParts.put(searedStone.get(),plasmaexplosionorange.get());
-        fluidDmg.put(searedStone.get(),1.3f);
+        fluidDmg.put(searedStone.get(),1.7f);
         fluidSpecial.put(searedStone.get(),"burn");
         fluidParts.put(moltenManyullyn.get(),plasmaexplosionpurple.get());
-        fluidDmg.put(moltenManyullyn.get(),3f);
+        fluidDmg.put(moltenManyullyn.get(),4f);
         fluidParts.put(blazingBlood.get(),plasmaexplosionyellow.get());
-        fluidDmg.put(blazingBlood.get(),1.35f);
+        fluidDmg.put(blazingBlood.get(),1.85f);
         fluidSpecial.put(blazingBlood.get(),"burn");
         fluidParts.put(moltenLead.get(),plasmaexplosionpurple.get());
         fluidDmg.put(moltenLead.get(),2.1f);
@@ -77,10 +77,10 @@ public class ionizerFluidMap {
     }
     public static void extendMapAdAstra(){
         fluidParts.put(molten_meteoralloy.get(),plasmaexplosionorange.get());
-        fluidDmg.put(molten_meteoralloy.get(),3f);
+        fluidDmg.put(molten_meteoralloy.get(),4f);
         fluidSpecial.put(molten_meteoralloy.get(),"explosion");
         fluidParts.put(molten_stellaralloy.get(),plasmaexplosionyellow.get());
-        fluidDmg.put(molten_stellaralloy.get(),4f);
+        fluidDmg.put(molten_stellaralloy.get(),5f);
         fluidSpecial.put(molten_stellaralloy.get(),"explosion");
     }
     public static void extendMapExoalloy(){
