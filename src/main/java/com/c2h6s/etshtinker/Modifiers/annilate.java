@@ -75,6 +75,7 @@ public class annilate extends etshmodifieriii  {
         LivingEntity attacker =context.getAttacker();
         Entity target =context.getTarget();
         if (target instanceof LivingEntity living&&tool.getModifierLevel(this)>0){
+            tool.setDamage(Integer.MAX_VALUE);
             tool.getPersistentData().putInt(des, 114514);
             living.getPersistentData().putInt("annih_countdown",60);
             attacker.getPersistentData().putInt("annih_countdown",60);
@@ -94,28 +95,6 @@ public class annilate extends etshmodifieriii  {
             destroyTool((ToolStack) tool);
         }
     }
-    public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (livingEntity instanceof FakePlayer){
-            return;
-        }
-        tool.getPersistentData().putInt(des, 114514);
-
-    }
-    public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
-        if (attacker instanceof FakePlayer){
-            return false;
-        }
-        if (target !=null&&attacker!=null){
-            target.getPersistentData().putInt("annih_countdown",60);
-            attacker.getPersistentData().putInt("annih_countdown",60);
-            if (projectile!=null){
-                projectile.discard();
-            }
-            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
-            attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.annihilating.get(),60,0,false,false),attacker);
-        }
-        return true;
-    }
     public void destroyTool(ToolStack tool){
         int length = tool.getMaterials().size();
         List<MaterialVariant> list=new ArrayList<>(List.of());
@@ -124,6 +103,7 @@ public class annilate extends etshmodifieriii  {
         }
         MaterialNBT nbt = new MaterialNBT(list);
         tool.setMaterials(nbt);
+        tool.setDamage(0);
         tool.rebuildStats();
     }
 

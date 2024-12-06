@@ -66,11 +66,8 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
             if (hasAmmo){
                 float velocity = ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.VELOCITY);
                 if (!level.isClientSide){
-                    ItemStack ammo = BowAmmoModifierHook.findAmmo(tool, ((ToolStack)tool).createStack(), player,bow.getSupportedHeldProjectiles());
-                    if (ammo.isEmpty()) {
-                        ammo = new ItemStack(Items.ARROW);
-                    }
-                    ArrowItem arrowItem = ammo.getItem() instanceof ArrowItem arrow ? arrow : (ArrowItem)Items.ARROW;
+                    ItemStack ammo = new ItemStack(Items.ARROW,3);
+                    ArrowItem arrowItem =(ArrowItem)Items.ARROW;
                     float inaccuracy = ModifierUtil.getInaccuracy(tool, player)+1.5f;
                         AbstractArrow arrow = arrowItem.createArrow(level, ammo, player);
                         arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 3.0f*velocity, inaccuracy);
@@ -89,7 +86,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
                         arrow.setCritArrow(true);
                         level.addFreshEntity(arrow);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-                        arrow.setDeltaMovement(arrow.getDeltaMovement().scale(EtSHrnd().nextDouble()*0.5));
+                        arrow.setDeltaMovement(arrow.getDeltaMovement().scale(EtSHrnd().nextDouble()+0.5));
                     ToolDamageUtil.damageAnimated(tool, ammo.getCount(), player, player.getUsedItemHand());
                 }
                 player.awardStat(Stats.ITEM_USED.get(bow));
@@ -115,7 +112,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
             target.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 3*lvl000, false, false), attacker);
         }
         if (projectile instanceof AbstractArrow arrow&&arrow.getTags().contains("electric_extra")){
-            arrow.setBaseDamage(arrow.getBaseDamage()/5);
+            arrow.setBaseDamage(arrow.getBaseDamage()/10);
         }
         return false;
     }

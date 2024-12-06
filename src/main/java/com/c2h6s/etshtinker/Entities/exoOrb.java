@@ -8,14 +8,21 @@ import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.network.NetworkHooks;
+import slimeknights.tconstruct.library.tools.capability.EntityModifierCapability;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.List;
@@ -85,7 +92,17 @@ public class exoOrb extends ItemProjectile{
                 if (living!=null&&living!=this.getOwner()&&!(living instanceof Player)){
                     if (this.getOwner() instanceof Player player){
                         living.invulnerableTime=0;
-                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage),this.baseDamage);
+                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage/5),this.baseDamage/5);
+                        living.invulnerableTime=0;
+                        if (this.getCapability(EntityModifierCapability.CAPABILITY).isPresent()&&this.getLivingOwner()!=null){
+                            AbstractArrow arrow =new Arrow(this.level,this.getLivingOwner());
+                            arrow.getCapability(EntityModifierCapability.CAPABILITY).ifPresent(cap -> cap.setModifiers(this.getCapability(EntityModifierCapability.CAPABILITY).orElse(null).getModifiers()));
+                            arrow.setBaseDamage(this.baseDamage);
+                            ProjectileImpactEvent event = new ProjectileImpactEvent(arrow,new EntityHitResult(living));
+                            MinecraftForge.EVENT_BUS.post(event);
+                            living.hurt(DamageSource.thrown(this,this.getOwner()),(float)( arrow.getBaseDamage()*arrow.getDeltaMovement().length()));
+                            arrow.discard();
+                        }
                         living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+10);
                         if (this.summonLIGH) {
                             exoLighEntity entity = new exoLighEntity(etshtinkerEntity.exo_ligh.get(), this.level);

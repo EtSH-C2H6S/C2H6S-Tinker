@@ -54,7 +54,7 @@ public class ultradenseex extends etshmodifieriii {
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         for (ModifierEntry entry : tool.getModifierList()) {
-            if (entry != modifier) {
+            if (entry.getModifier() != modifier.getModifier()) {
                 knockback = entry.getHook(ModifierHooks.MELEE_HIT).beforeMeleeHit(tool, modifier, context, damage, baseKnockback,knockback);
             }
         }
@@ -64,7 +64,7 @@ public class ultradenseex extends etshmodifieriii {
     @Override
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         for (ModifierEntry entry : tool.getModifierList()) {
-            if (entry != modifier) {
+            if (entry.getModifier() != modifier.getModifier()) {
                 damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, baseDamage, damage);
             }
         }
@@ -74,7 +74,7 @@ public class ultradenseex extends etshmodifieriii {
     @Override
     public void modifierDamageDealt(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, LivingEntity entity, DamageSource damageSource, float amount, boolean isDirectDamage) {
         for (ModifierEntry entry : tool.getModifierList()) {
-            if (entry != modifier) {
+            if (entry.getModifier() != modifier.getModifier()) {
                 entry.getHook(ModifierHooks.DAMAGE_DEALT).onDamageDealt(tool, modifier, context,slotType,entity,damageSource,amount,isDirectDamage);
             }
         }
@@ -83,7 +83,7 @@ public class ultradenseex extends etshmodifieriii {
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         for (ModifierEntry entry : tool.getModifierList()) {
-            if (entry != modifier) {
+            if (entry.getModifier() != modifier.getModifier()) {
                 entry.getHook(ModifierHooks.MELEE_HIT).afterMeleeHit(tool, modifier, context, damageDealt);
             }
         }

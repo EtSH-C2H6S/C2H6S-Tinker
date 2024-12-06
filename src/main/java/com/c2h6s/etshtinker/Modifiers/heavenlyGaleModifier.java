@@ -25,7 +25,10 @@ import slimeknights.tconstruct.library.modifiers.hook.display.RequirementsModifi
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.ranged.BowAmmoModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
+import slimeknights.tconstruct.library.tools.capability.EntityModifierCapability;
+import slimeknights.tconstruct.library.tools.capability.PersistentDataCapability;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
@@ -117,6 +120,8 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
             exoorb1.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) * amount*2);
             exoorb1.tool = tool;
             exoorb1.setDeltaMovement(player.getLookAngle().scale(2));
+            ModifierNBT modifiers = tool.getModifiers();
+            exoorb1.getCapability(EntityModifierCapability.CAPABILITY).ifPresent(cap -> cap.setModifiers(modifiers));
             exoorb1.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
             exoorb1.setOwner(player);
             if (amount >= 7) {
@@ -127,6 +132,7 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
                 exoOrb exoorb = new exoOrb(etshtinkerEntity.exo_orb.get(), player.level);
                 exoorb.baseDamage = (float) (arrow.getBaseDamage() * getMold(arrow.getDeltaMovement()) * amount*2);
                 exoorb.tool = tool;
+                exoorb.getCapability(EntityModifierCapability.CAPABILITY).ifPresent(cap -> cap.setModifiers(modifiers));
                 exoorb.setDeltaMovement(getScatteredVec3(player.getLookAngle(), 0.6).scale(2));
                 exoorb.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
                 exoorb.setOwner(player);

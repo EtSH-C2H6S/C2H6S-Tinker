@@ -35,7 +35,7 @@ public class PlasmaSlashEntity extends ItemProjectile {
     public float damage=0;
     public ToolStack tool;
     public float CriticalRate;
-    public List<LivingEntity> hitList = new ArrayList<>(List.of());
+    public List<Entity> hitList = new ArrayList<>(List.of());
     public double SCALE =Math.max(1, getMold(this.getDeltaMovement()));
     public int hitRemain =16;
 
@@ -82,26 +82,30 @@ public class PlasmaSlashEntity extends ItemProjectile {
             double dz = vec3.z * SCALE+offset.z;
             this.setPos(x + dx, y + dy, z + dz);
             AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(2)).expandTowards(vec3.scale(-1)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
-            List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
+            List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb);
             float overCrit =Math.max( CriticalRate -1,0);
             this.hitRemain=16;
-            for (LivingEntity targets : ls0) {
-                if (targets != null && targets.isAlive() && targets != this.getOwner() && !hitList.contains(targets)&&!(targets instanceof Player)) {
+            for (Entity targets : ls0) {
+                if (targets instanceof LivingEntity living&& targets.isAlive() && targets != this.getOwner() && !hitList.contains(targets) && !(targets instanceof Player)) {
                     boolean isCrit =EtSHrnd().nextFloat(0, 1) <= this.CriticalRate;
                     for (ModifierEntry modifier : this.tool.getModifierList()) {
-                        modifier.getHook(etshtinkerHook.BEFORE_SLASH_HIT).beforePlasmaSlashHit(this.tool, targets, this, isCrit);
+                        modifier.getHook(etshtinkerHook.BEFORE_SLASH_HIT).beforePlasmaSlashHit(this.tool, living, this, isCrit);
                     }
                     targets.invulnerableTime = 0;
                     attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, isCrit, true, true, true,overCrit);
                     targets.invulnerableTime=0;
                     for (ModifierEntry modifier : this.tool.getModifierList()) {
-                        modifier.getHook(etshtinkerHook.AFTER_SLASH_HIT).afterPlasmaSlashHit(this.tool, targets, this, isCrit, this.damage);
+                        modifier.getHook(etshtinkerHook.AFTER_SLASH_HIT).afterPlasmaSlashHit(this.tool, living, this, isCrit, this.damage);
                     }
                     hitList.add(targets);
                     this.hitRemain--;
                     if (this.hitRemain <= 0) {
                         break;
                     }
+                }else if (targets!=null&& !hitList.contains(targets) && !(targets instanceof Player)){
+                    targets.invulnerableTime = 0;
+                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true,overCrit);
+                    targets.invulnerableTime=0;
                 }
             }
         }

@@ -16,6 +16,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -28,7 +29,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.Util;
 
@@ -40,7 +40,6 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.modloaded.Cofhloaded;
 import static com.c2h6s.etshtinker.util.modloaded.Mekenabled;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
-import static slimeknights.tconstruct.library.tools.helper.ToolAttackUtil.getCooldownFunction;
 
 public class plasmaexplosionentity extends ItemProjectile{
     public Vec3 rayVec3 =new Vec3(0,0,0);
@@ -66,13 +65,6 @@ public class plasmaexplosionentity extends ItemProjectile{
             etshtinkerParticleType.plasmaexplosionpurple.get()
             );
     public List<AABB> aabbList =new ArrayList<>(List.of());
-
-    public void getRayVec3(Vec3 vec3){
-        this.rayVec3 =vec3;
-    }
-    public void getExplosionParticle(SimpleParticleType particleType){
-        this.particle =particleType;
-    }
     public void getBaseDamage(Float damage){
         this.damage =damage;
     }
@@ -141,7 +133,7 @@ public class plasmaexplosionentity extends ItemProjectile{
             if (!aabbList.isEmpty()) {
                 if (this.time == 1) {
                     for (AABB aabb : aabbList) {
-                        List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
+                        List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb);
                         List<ItemEntity> ls2;
                         if (special != null && special.equals("elemental") && Cofhloaded) {
                             ls2 = this.level.getEntitiesOfClass(ItemEntity.class, aabb);
@@ -155,22 +147,26 @@ public class plasmaexplosionentity extends ItemProjectile{
                             }
                         }
                         if (!ls0.isEmpty()) {
-                            for (LivingEntity target : ls0) {
-                                if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)&&!(target instanceof Player)) {
+                            for (Entity target : ls0) {
+                                if (target instanceof LivingEntity living && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target) && !(target instanceof Player)) {
                                     boolean isCrit =this.isCritical || EtSHrnd().nextInt(100) < 10;
                                     for (ModifierEntry modifier : tool.getModifierList()) {
-                                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
+                                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,living,this,isCrit);
                                     }
                                     target.invulnerableTime = 0;
                                     attackUtil.attackEntity(tool, player, HAND, target, ()->1, true, Util.getSlotType(HAND), this.damage * 0.75f, isCrit||forcedCrit, true, true, true, 0);
                                     target.invulnerableTime = 0;
                                     for (ModifierEntry modifier : tool.getModifierList()) {
-                                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,target,this,isCrit);
+                                        modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,living,this,isCrit);
                                     }
-                                    ls1.add(target);
-                                } else if (special != null && special.equals("entropic") && target != null) {
-                                    target.hurt(DamageSource.mobAttack(target),this.damage * 0.5f);
-                                    ls1.add(target);
+                                    ls1.add(living);
+                                } else if (special != null && special.equals("entropic") && target instanceof LivingEntity living) {
+                                    target.hurt(DamageSource.mobAttack(living),this.damage * 0.5f);
+                                    ls1.add(living);
+                                }else if (target!=null && !(target instanceof Player)&&this.getOwner() instanceof Player player){
+                                    target.invulnerableTime = 0;
+                                    attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, target, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true,0);
+                                    target.invulnerableTime=0;
                                 }
                             }
                         }
@@ -179,24 +175,28 @@ public class plasmaexplosionentity extends ItemProjectile{
                 }
                 if (time == 9 && !aabbList.isEmpty()) {
                     for (AABB aabb : aabbList) {
-                        List<LivingEntity> ls0 = this.level.getEntitiesOfClass(LivingEntity.class, aabb.inflate(1.5));
-                        for (LivingEntity target : ls0) {
-                            if (target != null && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target)&&!(target instanceof Player)) {
+                        List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb.inflate(1.5));
+                        for (Entity target : ls0) {
+                            if (target instanceof LivingEntity living && target != this.getOwner() && this.getOwner() instanceof Player player && tool != null && !ls1.contains(target) && !(target instanceof Player)) {
                                 boolean isCrit =this.isCritical || EtSHrnd().nextInt(100) < 45;
                                 for (ModifierEntry modifier : tool.getModifierList()) {
-                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,target,this,isCrit);
+                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,living,this,isCrit);
                                 }
                                 target.invulnerableTime = 0;
                                 attackUtil.attackEntity(tool, player, HAND, target, () -> 1, true, Util.getSlotType(HAND), this.damage, this.isCritical || (EtSHrnd().nextInt(100) < 45)||forcedCrit, true, true, true, 0);
                                 target.invulnerableTime = 0;
                                 for (ModifierEntry modifier : tool.getModifierList()) {
-                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,target,this,isCrit);
+                                    modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).afterPlasmaExplosionHit(tool,living,this,isCrit);
                                 }
-                                ls1.add(target);
+                                ls1.add(living);
                             }
-                            else if (special != null && special.equals("entropic") && target != null) {
-                                target.hurt(DamageSource.mobAttack(target),this.damage);
-                                ls1.add(target);
+                            else if (special != null && special.equals("entropic") && target instanceof LivingEntity living) {
+                                target.hurt(DamageSource.mobAttack(living),this.damage);
+                                ls1.add(living);
+                            }else if (target!=null && !(target instanceof Player)&&this.getOwner() instanceof Player player){
+                                target.invulnerableTime = 0;
+                                attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, target, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, false, true, true, true,0);
+                                target.invulnerableTime=0;
                             }
                         }
                     }
@@ -239,15 +239,12 @@ public class plasmaexplosionentity extends ItemProjectile{
                 for (LivingEntity targets : ls1) {
                     if (targets!=null&& special.equals("entropic")){
                         targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.MAGIC.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.hurt(DamageSource.MAGIC.bypassArmor(), damage * 0.25f);
                         targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.hurt(DamageSource.explosion((LivingEntity) this.getOwner()).bypassArmor(), damage * 0.25f);
                         targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.LAVA.bypassArmor().bypassMagic(), damage * 0.25f);
+                        targets.hurt(DamageSource.LAVA.bypassArmor(), damage * 0.25f);
                         targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.WITHER.bypassArmor().bypassMagic(), damage * 0.25f);
-                        targets.invulnerableTime = 0;
-                        targets.hurt(DamageSource.OUT_OF_WORLD, damage * 0.25f);
                         targets.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 2, false, false), this.getOwner());
                         targets.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 2, false, false), this.getOwner());
                         targets.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
