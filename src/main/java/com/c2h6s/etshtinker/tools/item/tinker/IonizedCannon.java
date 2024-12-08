@@ -183,6 +183,7 @@ public class IonizedCannon extends ModifiableItem {
         int a =0;
         int consumption = Math.round(getToolFluidMultiplier(tool) * getFluidBaseComsumption(fluidStack)*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
         consumption =Math.max(1,consumption);
+        consumption/=tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY);
         while (a<=times) {
             if (living instanceof Player player) {
                 for (ModifierEntry modifier : tool.getModifierList()) {
@@ -283,7 +284,7 @@ public class IonizedCannon extends ModifiableItem {
             builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
         }
         if (!wrongFluid(tool)){
-            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.max(1, Math.round(getToolFluidMultiplier((ToolStack) tool) * getFluidBaseComsumption(TANK_HELPER.getFluid(tool))*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER))))).append(" mB").withStyle(ChatFormatting.GOLD));
+            builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.max(1, Math.round(getToolFluidMultiplier((ToolStack) tool) * getFluidBaseComsumption(TANK_HELPER.getFluid(tool))*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER)/tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY))))).append(" mB").withStyle(ChatFormatting.GOLD));
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":"+String.format("%.001f",getFluidDamage(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.GREEN));
             builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_consumption").append(":"+String.valueOf(getFluidBaseComsumption(TANK_HELPER.getFluid(tool)))).append(" mB").withStyle(ChatFormatting.YELLOW));
             if (getFluidSpecial(TANK_HELPER.getFluid(tool).getFluid())!=null){

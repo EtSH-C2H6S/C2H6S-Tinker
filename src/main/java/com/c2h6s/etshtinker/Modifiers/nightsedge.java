@@ -49,10 +49,10 @@ public class nightsedge extends etshmodifieriii {
                 NightSlashEntityB entity = new NightSlashEntityB(etshtinkerEntity.nights_slash_entity_b.get(), player.level);
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
                 entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
-                if (etshmodifierfluxed.getEnergyStored(tool)>0){
+                if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/4){
                     float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
                     entity.damage += dmgup;
-                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
+                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
                 }
                 entity.setOwner(player);
                 entity.setPos(player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ());
@@ -62,10 +62,10 @@ public class nightsedge extends etshmodifieriii {
                 NightSlashEntity entity = new NightSlashEntity(etshtinkerEntity.nights_slash_entity.get(), player.level);
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
                 entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
-                if (etshmodifierfluxed.getEnergyStored(tool)>0){
+                if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/4){
                     float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
                     entity.damage += dmgup;
-                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
+                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
                 }
                 entity.setOwner(player);
                 entity.setPos(player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ());

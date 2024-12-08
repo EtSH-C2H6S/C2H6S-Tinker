@@ -23,7 +23,7 @@ public class hyperfluxloaded extends fluxloaded{
         return 256;
     }
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
-        if (etshmodifierfluxed.getEnergyStored(tool)>0){
+        if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/2){
             float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
             damage += dmgup;
             etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
@@ -31,15 +31,15 @@ public class hyperfluxloaded extends fluxloaded{
         return damage;
     }
     public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
-        if (!(itemStack.getItem() instanceof ArrowItem)&&etshmodifierfluxed.getEnergyStored(tool)>10000){
-            etshmodifierfluxed.removeEnergy(tool,10000,false,false);
+        if (!(itemStack.getItem() instanceof ArrowItem)&&etshmodifierfluxed.getEnergyStored(tool)>5000){
+            etshmodifierfluxed.removeEnergy(tool,5000,false,false);
             return new ItemStack(Items.ARROW,64);
         }
         return super.modifierFindAmmo(tool, modifiers, livingEntity, itemStack, predicate);
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (etshmodifierfluxed.getEnergyStored(tool)>0&&modifiers.getLevel()>0){
-            if (etshmodifierfluxed.getEnergyStored(tool)>0){
+        if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/2&&modifiers.getLevel()>0){
+            if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/2){
                 float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /10000000;
                 if (abstractArrow!=null) {
                     abstractArrow.setBaseDamage(dmgup + abstractArrow.getBaseDamage());
