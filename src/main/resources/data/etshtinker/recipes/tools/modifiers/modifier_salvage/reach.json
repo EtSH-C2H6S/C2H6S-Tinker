@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools":[
+    {
+      "item": "etshtinker:constrained_plasma_saber"
+    }
+  ],
+  "slots": {
+    "abilities": 1
+  },
+  "result": "tconstruct:reach"
+}

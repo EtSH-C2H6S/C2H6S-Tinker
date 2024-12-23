@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
@@ -45,6 +46,9 @@ public class LivingEntityTick {
                 return;
             }
         }
+        if (entity.getPersistentData().contains("max_health")&&entity.getHealth()>entity.getPersistentData().getFloat("max_health")&&!(entity instanceof Player)){
+            entity.setHealth(entity.getPersistentData().getFloat("max_health"));
+        }
         if (entity.getPersistentData().contains("atomic_dec")&&entity.isAlive()){
             int dura = entity.getPersistentData().getInt("atomic_dec");
             int amplifier =dura/20;
@@ -55,7 +59,7 @@ public class LivingEntityTick {
             if ((entity.level.getGameTime()%5)<=amplifier) {
                 float b = Math.max(1,(float) amplifier/5);
                 entity.invulnerableTime=0;
-                entity.hurt(throughSources.atomic(entity.getMaxHealth() * 0.0005f*b), entity.getMaxHealth() * 0.0005f*b);
+                entity.hurt(throughSources.atomic(entity.getMaxHealth() * 0.00025f*b), entity.getMaxHealth() * 0.00025f*b);
             }
             entity.getPersistentData().putInt("atomic_dec",dura-1);
             if (entity.getPersistentData().getInt("atomic_dec")<=0){

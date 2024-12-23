@@ -8,8 +8,8 @@
   "type": "tconstruct:melting_fuel",
   "fluid": {
     "name": "mekanism:hydrogen",
-    "amount": 1280
+    "amount": 2560
   },
-  "duration": 1,
+  "duration": 10,
   "temperature": 1850
 }

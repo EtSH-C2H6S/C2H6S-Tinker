@@ -20,21 +20,6 @@ public class gravitymanipulate extends etshmodifieriii {
     public boolean isNoLevels() {
         return true;
     }
-    public void modifierOnEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        LivingEntity entity = context.getEntity();
-        if (entity instanceof Player player&&!player.isCreative()) {
-            player.getAbilities().flying = true;
-            player.getAbilities().mayfly = true;
-        }
-    }
-
-    public void modifierOnUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        LivingEntity entity = context.getEntity();
-        if (entity instanceof Player player&&!player.isCreative()) {
-            player.getAbilities().flying = false;
-            player.getAbilities().mayfly = false;
-        }
-    }
 
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {

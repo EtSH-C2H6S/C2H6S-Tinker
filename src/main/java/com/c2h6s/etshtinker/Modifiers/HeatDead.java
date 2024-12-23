@@ -38,6 +38,7 @@ public class HeatDead extends etshmodifieriii {
                     instance.removeModifier(hdUUID);
                 }
                 instance.addTransientModifier(new AttributeModifier(hdUUID,Attributes.MAX_HEALTH.getDescriptionId(),d-damageDealt, AttributeModifier.Operation.ADDITION));
+                target.getPersistentData().putFloat("max_health",target.getHealth());
             }
         }
     }
@@ -54,6 +55,7 @@ public class HeatDead extends etshmodifieriii {
                 }
                 double damage = arrow.getBaseDamage()*arrow.getDeltaMovement().length();
                 instance.addTransientModifier(new AttributeModifier(hdUUID,Attributes.MAX_HEALTH.getDescriptionId(),d-damage, AttributeModifier.Operation.ADDITION));
+                target.getPersistentData().putFloat("max_health",target.getHealth());
             }
         }
         return false;

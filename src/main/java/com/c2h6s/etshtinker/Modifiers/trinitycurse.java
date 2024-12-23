@@ -21,11 +21,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class trinitycurse extends etshmodifieriii implements VolatileDataModifierHook {
-    protected void registerHooks(ModuleHookMap.Builder builder) {
-        super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.VOLATILE_DATA);
-    }
+public class trinitycurse extends etshmodifieriii  {
     public trinitycurse(){
         MinecraftForge.EVENT_BUS.addListener(this::LivingHurt);
     }
@@ -58,16 +54,6 @@ public class trinitycurse extends etshmodifieriii implements VolatileDataModifie
                     holder.invulnerableTime = 0;
                 }
             }
-        }
-    }
-
-    @Override
-    public void addVolatileData(IToolContext context, ModifierEntry modifier, ModDataNBT volatileData) {
-        volatileData.addSlots(SlotType.ABILITY,-1);
-        volatileData.addSlots(SlotType.UPGRADE,-1);
-        volatileData.addSlots(SlotType.SOUL,-1);
-        if (context.hasTag(TinkerTags.Items.ARMOR)) {
-            volatileData.addSlots(SlotType.DEFENSE, -1);
         }
     }
 

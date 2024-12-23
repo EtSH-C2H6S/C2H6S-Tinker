@@ -44,15 +44,12 @@ public class warpattack extends etshmodifieriii {
         MinecraftForge.EVENT_BUS.addListener(this::leftClick);
     }
     private void leftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        packetHandler.INSTANCE.sendToServer(new warpattackPacket());
+        packetHandler.INSTANCE.sendToServer(new warpattackPacket(false));
     }
 
     public static void tryWarp(Player player, ToolStack tool, InteractionHand hand){
         int lvl = tool.getModifierLevel(etshtinkerModifiers.warpattack_STATIC_MODIFIER.get());
         if (hand == InteractionHand.MAIN_HAND&&lvl>0&&player.getAttackStrengthScale(0)>0.8) {
-            meleSpecialAttackUtil.createWarp(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
-        }
-        else if (hand == InteractionHand.OFF_HAND&&lvl>0&&player.getAttackStrengthScale(0)>0.8) {
             meleSpecialAttackUtil.createWarp(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
         }
     }

@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools":[
+    {
+      "tag": "etshtinker:fluid_weapons"
+    }
+  ],
+  "slots": {
+    "upgrades": 1
+  },
+  "modifier": "etshtinker:light_equipped"
+}

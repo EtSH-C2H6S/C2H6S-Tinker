@@ -55,14 +55,14 @@ public class UltradenseExArmor extends etshmodifieriii {
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
             int level = holder.get(key, 0);
             if (level > 0&&living instanceof Player&&event.getSource()!=DamageSource.OUT_OF_WORLD) {
-                float am = event.getAmount();
+                float am = event.getAmount()*0.75F;
                 am = ForgeHooks.onLivingHurt(living,event.getSource(), am);
                 am = CombatRules.getDamageAfterAbsorb(am, (float) living.getArmorValue(), (float) living.getAttributeValue(Attributes.ARMOR_TOUGHNESS));
                 if (event.getSource().isBypassArmor()){
                     am = CombatRules.getDamageAfterAbsorb(am, (float) living.getArmorValue(), (float) living.getAttributeValue(Attributes.ARMOR_TOUGHNESS));
                 }
                 am = getMagicDR(am,event.getSource(),living);
-                event.setAmount(am);
+                event.setAmount(event.getAmount()*0.25f+am);
             }
         });
     }

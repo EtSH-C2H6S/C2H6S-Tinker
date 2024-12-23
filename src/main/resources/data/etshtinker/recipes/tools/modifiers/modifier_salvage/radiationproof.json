@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:modifier_salvage",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/worn"
+  },
+  "modifier":"etshtinker:radiationproof"
+}

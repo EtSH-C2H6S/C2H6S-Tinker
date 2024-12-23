@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker.network.packet;
 
 import com.c2h6s.etshtinker.Modifiers.warpattack;
+import com.c2h6s.etshtinker.Modifiers.warpattackex;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
@@ -9,14 +10,17 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import java.util.function.Supplier;
 
 public class warpattackPacket {
-    public warpattackPacket() {;
+    public final boolean Ex;
+    public warpattackPacket(boolean Ex) {
+        this.Ex =Ex;
     }
 
     public static void encode(warpattackPacket packet, FriendlyByteBuf buf) {
+        buf.writeBoolean(packet.Ex);
     }
 
     public static warpattackPacket decode(FriendlyByteBuf buf) {
-        return new warpattackPacket();
+        return new warpattackPacket(buf.readBoolean());
     }
 
     public static void handle(warpattackPacket packet, Supplier<NetworkEvent.Context> supplier) {
@@ -24,6 +28,9 @@ public class warpattackPacket {
             supplier.get().enqueueWork(() -> {
                 Player player =supplier.get().getSender();
                 if (player != null) {
+                    if (packet.Ex){
+                        warpattackex.tryWarp(player,ToolStack.from(player.getMainHandItem()),player.getUsedItemHand());
+                    }
                     warpattack.tryWarp(player,ToolStack.from(player.getMainHandItem()),player.getUsedItemHand());
                 }
             });

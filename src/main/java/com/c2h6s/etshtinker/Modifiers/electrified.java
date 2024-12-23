@@ -60,7 +60,7 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
 
     @Override
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (holder instanceof Player player&&tool.getItem() instanceof ModifiableLauncherItem bow &&tool.getPersistentData().getInt(GeneralInteractionModifierHook.KEY_DRAWTIME) != 0) {
+        if (holder instanceof Player player&&tool.getItem() instanceof ModifiableLauncherItem bow &&tool.getPersistentData().getInt(GeneralInteractionModifierHook.KEY_DRAWTIME) != 0&&isCorrectSlot) {
             boolean creative = player.getAbilities().instabuild;
             boolean hasAmmo = creative || BowAmmoModifierHook.hasAmmo(tool, ((ToolStack)tool).createStack(), player,bow.getSupportedHeldProjectiles());
             if (hasAmmo){

@@ -1,0 +1,22 @@
+{
+  "conditions": [
+    {
+      "modid": "ae2",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "tconstruct:modifier_salvage",
+  "tools": [
+    {
+      "item": "tinkers_ingenuity:bigsickle"
+    }
+  ],
+  "slots": {
+    "abilities": 5
+  },
+  "modifier": "etshtinker:modifiernovasickle"
+}

@@ -287,7 +287,7 @@
 
   "modifier.etshtinker.trinitycurse": "三重诅咒",
   "modifier.etshtinker.trinitycurse.flavor": "以你的技术，无法操作这种坚硬无比的材料，它生气地对你降下诅咒",
-  "modifier.etshtinker.trinitycurse.description":"工具全槽位-1，槽位小于0时你的工具无法被修改;\n使你向上移动变得更艰难，被攻击时所受伤害翻3倍，无敌帧缩短，属性等级为3时移除自身无敌帧",
+  "modifier.etshtinker.trinitycurse.description":"工具攻速减少33%，你向上移动变得更艰难。被攻击时所受伤害翻3倍，无敌帧缩短，属性等级为3时移除自身无敌帧",
 
   "modifier.etshtinker.unknown": "-未知-",
   "modifier.etshtinker.unknown.flavor": "",
@@ -339,7 +339,7 @@
 
   "modifier.etshtinker.hyperfluxloaded": "高级通量装载",
   "modifier.etshtinker.hyperfluxloaded.flavor": "太棒了！",
-  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具10%的能量增加伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
+  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具5%的能量增加伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
 
   "modifier.etshtinker.nightsenhance": "暗影附层",
   "modifier.etshtinker.nightsenhance.flavor": "尽管扭曲了，但是这种能量依然强大",
@@ -443,7 +443,7 @@
 
   "modifier.etshtinker.ultradenseex_armor": "究极致密EX",
   "modifier.etshtinker.ultradenseex_armor.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex_armor.description":"你所受的伤害会额外经历一次减伤计算。只生效一次",
+  "modifier.etshtinker.ultradenseex_armor.description":"你所受的最终伤害的75%会额外经历一次护甲减伤计算。",
 
   "modifier.etshtinker.recycable": "可再生",
   "modifier.etshtinker.recycable.flavor": "十分有活性",
@@ -954,6 +954,8 @@
   "fluid.etshtinker.molten_entropic": "具象化流体熵变",
   "item.etshtinker.molten_entropic_bucket": "具象化流体熵变桶",
 
+  "fluid.etshtinker.molten_entropic_alloy": "熔融寂灭合金",
+  "item.etshtinker.molten_entropic_alloy_bucket": "熔融寂灭合金桶",
 
 
   "infuse_type.etshtinker.ultra_dense":"超致密",

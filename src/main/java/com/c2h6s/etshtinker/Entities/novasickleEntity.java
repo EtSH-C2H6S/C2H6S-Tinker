@@ -4,14 +4,17 @@ import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
+import com.c2h6s.etshtinker.util.attackUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ItemSupplier;
@@ -25,6 +28,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import slimeknights.tconstruct.gadgets.entity.shuriken.ShurikenEntityBase;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +43,7 @@ public class novasickleEntity extends ShurikenEntityBase {
     public int time =0;
     public boolean back =false;
     public int power =0;
+    public ToolStack tool;
 
     public int getpowah(int power){
         this.power =power;
@@ -102,9 +107,9 @@ public class novasickleEntity extends ShurikenEntityBase {
                 if (world instanceof ServerLevel serverLevel) {
                     if (this.getOwner() instanceof Player player) {
                         summonELECSPARKFromTo(serverLevel, this.getId(), entity.getId());
-                        double vx = Objects.requireNonNull(getUnitizedVec3(vec3)).x;
-                        double vy = Objects.requireNonNull(getUnitizedVec3(vec3)).y;
-                        double vz = Objects.requireNonNull(getUnitizedVec3(vec3)).z;
+                        double vx = getUnitizedVec3(vec3).x;
+                        double vy = getUnitizedVec3(vec3).y;
+                        double vz = getUnitizedVec3(vec3).z;
                         double x = entity.getX();
                         double y = entity.getY();
                         double z = entity.getZ();
@@ -112,6 +117,9 @@ public class novasickleEntity extends ShurikenEntityBase {
                         this.setDeltaMovement(vec3);
                         this.noPhysics = false;
                         novaExplode(this.level,this.power, this.getDamage(), x, y + 0.5 * entity.getBbHeight(), z, player);
+                        if (this.tool!=null) {
+                            attackUtil.attackEntity(this.tool,player, InteractionHand.MAIN_HAND,entity,()->1,true, EquipmentSlot.MAINHAND,this.baseDamage,false,true,true,true,0);
+                        }
                     }
                 }
             }

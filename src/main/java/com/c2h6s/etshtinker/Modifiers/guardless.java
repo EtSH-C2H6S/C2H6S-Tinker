@@ -4,6 +4,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,16 +24,26 @@ public class guardless extends etshmodifieriii {
         LivingEntity holder =event.getEntity();
         Entity entity=event.getSource().getEntity();
         if (entity instanceof LivingEntity attacker&&holder instanceof Player player&&!(attacker instanceof Player)) {
+            AttributeInstance instance1 =attacker.getAttribute(ARMOR);
+            AttributeInstance instance2 =attacker.getAttribute(ATTACK_DAMAGE);
             if (getMainLevel(holder, this) > 0) {
                 event.setAmount(event.getAmount() * 0.75f);
                 attacker.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-                Objects.requireNonNull(attacker.getAttribute(ARMOR)).setBaseValue(Objects.requireNonNull(attacker.getAttribute(ARMOR)).getValue() * Math.max(0.25, 1 - getMainLevel(player, this) * 0.3));
-                Objects.requireNonNull(attacker.getAttribute(ATTACK_DAMAGE)).setBaseValue(Math.max(0.5, Objects.requireNonNull(attacker.getAttribute(ATTACK_DAMAGE)).getValue() * Math.max(0.5, 1 - getMainLevel(player, this) * 0.2)));
+                if (instance1!=null) {
+                    instance1.setBaseValue(instance1.getValue() * Math.max(0.25, 1 - getMainLevel(player, this) * 0.3));
+                }
+                if (instance2!=null) {
+                    instance2.setBaseValue(Math.max(0.5, instance2.getValue() * Math.max(0.5, 1 - getMainLevel(player, this) * 0.2)));
+                }
             } else if (getOffLevel(holder, this) > 0) {
                 event.setAmount(event.getAmount() * 0.75f);
                 attacker.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-                Objects.requireNonNull(attacker.getAttribute(ARMOR)).setBaseValue(Objects.requireNonNull(attacker.getAttribute(ARMOR)).getValue() * Math.max(0.25, 1 - getMainLevel(player, this) * 0.3));
-                Objects.requireNonNull(attacker.getAttribute(ATTACK_DAMAGE)).setBaseValue(Math.max(0.5, Objects.requireNonNull(attacker.getAttribute(ATTACK_DAMAGE)).getValue() * Math.max(0.5, 1 - getMainLevel(player, this) * 0.2)));
+                if (instance1!=null) {
+                    instance1.setBaseValue(instance1.getValue() * Math.max(0.25, 1 - getMainLevel(player, this) * 0.3));
+                }
+                if (instance2!=null) {
+                    instance2.setBaseValue(Math.max(0.5, instance2.getValue() * Math.max(0.5, 1 - getMainLevel(player, this) * 0.2)));
+                }
             }
         }
     }

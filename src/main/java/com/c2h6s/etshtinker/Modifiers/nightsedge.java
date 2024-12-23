@@ -50,7 +50,7 @@ public class nightsedge extends etshmodifieriii {
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
                 entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
                 if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/4){
-                    float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
+                    float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /2500000;
                     entity.damage += dmgup;
                     etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
                 }
@@ -63,7 +63,7 @@ public class nightsedge extends etshmodifieriii {
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
                 entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
                 if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/4){
-                    float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
+                    float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /2500000;
                     entity.damage += dmgup;
                     etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
                 }

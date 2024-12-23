@@ -1,9 +1,11 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -54,7 +56,7 @@ public class stellarblessing extends etshmodifieriii {
                     event.setAmount(event.getAmount()*0.9f);
                 }
                 if (entity instanceof LivingEntity attacker&&!(attacker instanceof Player)){
-                    attacker.setNoGravity(true);
+                    attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),100,5),living);
                     attacker.setSecondsOnFire(200);
                 }
             }

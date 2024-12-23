@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -45,7 +46,22 @@ public class meleSpecialAttackUtil {
                 ((ServerLevel)world).sendParticles(etshtinkerParticleType.slash.get(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 1,0,0, 0, 0);
                 ParticleChainUtil.summonELECSPARKFromTo2((ServerLevel)world,attacker.getId(),entity.getId() );
             }
-            attacker.getCooldowns().addCooldown(tool.getItem(), 10);
+        }
+    }
+    public static void createWarpEx(@NotNull Player attacker, Float radius, Float damage, ToolStack tool, InteractionHand hand){
+        Level world =attacker.getLevel();
+        LivingEntity entity =getNearestLiEnt(radius,attacker,world);
+        if (entity!=null){
+            if (!world.isClientSide) {
+                ((ServerLevel) world).sendParticles(ParticleTypes.SWEEP_ATTACK, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 1, 0, 0, 0, 0);
+                ParticleChainUtil.summonELECSPARKFromTo2((ServerLevel) world, attacker.getId(), entity.getId());
+            }
+            List<Mob> list = attacker.getLevel().getEntitiesOfClass(Mob.class,new AABB(entity.getX()-6,entity.getY()-3,entity.getZ()-6,entity.getX()+6,entity.getY()+3,entity.getZ()+6));
+            for (Mob mob:list) {
+                mob.invulnerableTime = 0;
+                attackUtil.attackEntity(tool, attacker, hand, mob, () -> 1, true, Util.getSlotType(hand), damage, true, true, true, true, 0);
+                mob.invulnerableTime = 0;
+            }
         }
     }
     public static void createExoSlash(@NotNull Player player, Float damage, Vec3 deltamovement,int Slashcount){

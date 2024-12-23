@@ -28,19 +28,9 @@
         "level": 1
       }
     ],
-    "etshtinker:plasma_generator": [
+    "tconstruct:handle": [
       {
-        "name": "etshtinker:heavy_crit_ex",
-        "level": 1
-      },
-      {
-        "name": "etshtinker:solidex",
-        "level": 1
-      }
-    ],
-    "etshtinker:ionizer": [
-      {
-        "name": "etshtinker:critical",
+        "name": "etshtinker:ultradenseex",
         "level": 1
       },
       {

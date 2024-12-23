@@ -53,6 +53,7 @@ public class etshtinkerFluids {
         public static FluidObject<ForgeFlowingFluid> stablized_exotic_matter = register("stablized_exotic_matter", -890);//稳态奇异物质
         public static FluidObject<ForgeFlowingFluid> molten_anti_neutronium = register("molten_anti_neutronium", Integer.MAX_VALUE);
         public static FluidObject<ForgeFlowingFluid> molten_entropic = register("molten_entropic", Integer.MIN_VALUE);
+        public static FluidObject<ForgeFlowingFluid> molten_entropic_alloy = register("molten_entropic_alloy", 0);
     }
     public class etshtinkerFluidThermal {
         public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(MOD_ID);

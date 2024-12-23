@@ -91,7 +91,7 @@ public class annilate extends etshmodifieriii  {
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (livingEntity!=null&&isCorrectSlot&&!tool.isBroken()&&modifier.getLevel()>0&&tool.getPersistentData().getInt(des)>0){
+        if (tool.getPersistentData().getInt(des)>0){
             destroyTool((ToolStack) tool);
         }
     }

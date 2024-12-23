@@ -39,25 +39,6 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
     }
     public trinityblessing(){
         MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-    }
-
-    private void livinghurtevent(LivingHurtEvent event) {
-        LivingEntity attacker =event.getEntity();
-        if (attacker!=null){
-            attacker.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-                int level = holder.get(key, 0);
-                if (level > 0&&event.getSource().isBypassArmor()) {
-                    event.setCanceled(true);
-                }
-            });
-            if (getMainLevel(attacker,this)>0&&event.getSource().isBypassArmor()){
-                event.setCanceled(true);
-            }
-            else if (getOffLevel(attacker,this)>0&&event.getSource().isBypassArmor()){
-                event.setCanceled(true);
-            }
-        }
     }
 
     private void livingattackevent(LivingAttackEvent event) {
@@ -82,7 +63,6 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         if (modifier.getLevel()!=3){
             ToolStats.DURABILITY.multiply(builder,Math.pow(1.33,modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolStats.ATTACK_DAMAGE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolStats.ACCURACY.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolStats.DRAW_SPEED.multiply(builder,Math.pow(1.33,modifier.getLevel()));
@@ -94,6 +74,7 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
             ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolStats.BLOCK_AMOUNT.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolStats.BLOCK_ANGLE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
+            ToolStats.ATTACK_SPEED.multiply(builder,0.67);
             etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder,Math.pow(1.33,modifier.getLevel()));
@@ -101,13 +82,13 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
         }
         if (modifier.getLevel()==3){
             ToolStats.DURABILITY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.ATTACK_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.ACCURACY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.DRAW_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.VELOCITY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.MINING_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.ARMOR.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            ToolStats.ATTACK_SPEED.multiply(builder,0.67);
             ToolStats.ARMOR_TOUGHNESS.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.PROJECTILE_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(1.67,modifier.getLevel()));

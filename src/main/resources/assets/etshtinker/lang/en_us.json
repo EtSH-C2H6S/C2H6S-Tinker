@@ -952,6 +952,9 @@
   "fluid.etshtinker.molten_entropic": "Molten Entropy",
   "item.etshtinker.molten_entropic_bucket": "Molten Entropy Bucket",
 
+  "fluid.etshtinker.molten_entropic_alloy": "Molten Entropic Alloy",
+  "item.etshtinker.molten_entropic_alloy_bucket": "Molten Entropic Alloy Bucket",
+
 
 
   "infuse_type.etshtinker.ultra_dense":"Ultra Dense",

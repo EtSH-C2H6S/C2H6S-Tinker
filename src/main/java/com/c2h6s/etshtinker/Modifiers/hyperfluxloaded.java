@@ -24,9 +24,9 @@ public class hyperfluxloaded extends fluxloaded{
     }
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
         if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/2){
-            float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /5000000;
+            float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /1000000;
             damage += dmgup;
-            etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
+            etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/20,false,false);
         }
         return damage;
     }
@@ -38,15 +38,15 @@ public class hyperfluxloaded extends fluxloaded{
         return super.modifierFindAmmo(tool, modifiers, livingEntity, itemStack, predicate);
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
-        if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/2&&modifiers.getLevel()>0){
+        if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/2){
             if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/2){
-                float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /10000000;
+                float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /1000000;
                 if (abstractArrow!=null) {
                     abstractArrow.setBaseDamage(dmgup + abstractArrow.getBaseDamage());
                     abstractArrow.setPierceLevel((byte)(int) (dmgup+(float) abstractArrow.getPierceLevel()));
                     abstractArrow.addTag("noinvltime");
                 }
-                etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/10,false,false);
+                etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/20,false,false);
             }
         }
     }

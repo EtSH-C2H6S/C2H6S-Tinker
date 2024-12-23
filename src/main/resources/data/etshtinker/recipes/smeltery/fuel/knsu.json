@@ -2,8 +2,8 @@
   "type": "tconstruct:melting_fuel",
   "fluid": {
     "name": "etshtinker:molten_knsu",
-    "amount": 25
+    "amount": 200
   },
-  "duration": 8,
+  "duration": 20,
   "temperature": 3000
 }

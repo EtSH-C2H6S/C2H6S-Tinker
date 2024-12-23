@@ -39,7 +39,7 @@ public class electromotiveforce extends etshmodifieriii {
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR, 2f, 2f);
                     List<LivingEntity> ls001 = attacker.level.getEntitiesOfClass(LivingEntity.class, new AABB(xx + 4 * lvl000, yy + 4 * lvl000, zz + 4 * lvl000, xx - 4 * lvl000, yy - 4 * lvl000, zz - 4 * lvl000));
                     for (LivingEntity mob1 : ls001) {
-                        if (mob1 != null&&mob1!=player) {
+                        if (mob1 != null&&mob1!=player&&!(mob1 instanceof Player)) {
                             mob1.invulnerableTime = 0;
                             mob1.hurt(DamageSource.thorns(player).bypassMagic().bypassArmor(), amount);
                             mob1.invulnerableTime = 0;
