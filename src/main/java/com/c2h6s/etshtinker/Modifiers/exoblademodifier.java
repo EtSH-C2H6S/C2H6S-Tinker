@@ -10,6 +10,7 @@ import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.exoslashPacket;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.LogicalSide;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -74,7 +76,7 @@ public class exoblademodifier extends etshmodifieriii implements RequirementsMod
 
     private void leftclickblock(PlayerInteractEvent.LeftClickBlock event) {
         InteractionHand hand =event.getHand();
-        if (event.getEntity().getItemInHand(hand).getItem() instanceof ModifiableItem) {
+        if (event.getEntity().getItemInHand(hand).getItem() instanceof ModifiableItem&&event.getSide()== LogicalSide.CLIENT) {
             ToolStack tool = ToolStack.from(event.getEntity().getMainHandItem());
             int lvl = tool.getModifierLevel(etshtinkerModifiers.exobladeModifier_STATIC_MODIFIER.get());
             if (lvl > 0) {
@@ -94,8 +96,8 @@ public class exoblademodifier extends etshmodifieriii implements RequirementsMod
         }
     }
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
-        if (context.getPlayerAttacker()!=null&&!context.isExtraAttack()) {
-            exoblademodifier.summonScattererExoslash(context.getPlayerAttacker());
+        if (context.getPlayerAttacker() instanceof ServerPlayer serverPlayer &&!context.isExtraAttack()) {
+            exoblademodifier.summonScattererExoslash(serverPlayer);
             if (context.getTarget() instanceof LivingEntity living&&context.getAttacker() instanceof Player player){
                 living.invulnerableTime=0;
                 living.hurt(playerThroughSource.PlayerQuark(player,damageDealt/2),damageDealt/2);

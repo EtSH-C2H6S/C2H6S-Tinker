@@ -21,6 +21,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.LogicalSide;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -80,7 +81,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         }
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-        if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber) {
+        if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber&&event.getSide()== LogicalSide.CLIENT) {
             packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket(event.getEntity().getId()));
         }
     }

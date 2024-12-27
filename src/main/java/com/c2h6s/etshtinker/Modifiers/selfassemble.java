@@ -2,6 +2,7 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
+import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,7 +35,11 @@ public class selfassemble extends etshmodifieriii {
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         ModDataNBT toolData =tool.getPersistentData();
         if (tool.getDamage()>0){
-            int damaged =Math.min(4096*modifier.getLevel(),tool.getDamage());
+            int maxRepair =4096*modifier.getLevel();
+            if (tool.getModifierLevel(etshtinkerModifiers.atomorigin_STATIC_MODIFIER.get())>0){
+                maxRepair = 1073741823;
+            }
+            int damaged =Math.min(maxRepair,tool.getDamage());
             if (toolData.getInt(repair)>damaged){
                 toolData.putInt(repair,toolData.getInt(repair)-damaged);
                 tool.setDamage(tool.getDamage()-damaged);
@@ -44,7 +49,7 @@ public class selfassemble extends etshmodifieriii {
                     ItemStack stack = player.getInventory().getItem(j);
                     if (stack.getItem() == anti_neutronium.get() && stack.getCount() > 0) {
                         stack.setCount(stack.getCount()-1);
-                        toolData.putInt(repair,toolData.getInt(repair)+8192*modifier.getLevel()-damaged);
+                        toolData.putInt(repair,toolData.getInt(repair)-damaged+maxRepair*2);
                         tool.setDamage(tool.getDamage()-damaged);
                     }
                 }

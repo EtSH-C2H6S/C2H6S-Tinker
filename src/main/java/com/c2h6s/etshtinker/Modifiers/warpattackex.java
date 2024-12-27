@@ -29,6 +29,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.util.OffhandCooldownTracker;
@@ -38,6 +39,7 @@ import slimeknights.tconstruct.library.modifiers.hook.display.RequirementsModifi
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.EntityModifierCapability;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
@@ -70,19 +72,23 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
     public warpattackex(){
         MinecraftForge.EVENT_BUS.addListener(this::leftClick);
     }
+
     private void leftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        packetHandler.INSTANCE.sendToServer(new warpattackPacket(true));
+        ItemStack stack =event.getEntity().getMainHandItem();
+        if (stack.getItem() instanceof IModifiable&&ToolStack.from(stack).getModifierLevel(this)>0){
+            packetHandler.INSTANCE.sendToServer(new warpattackPacket(true));
+        }
     }
 
     public static void tryWarp(Player player, ToolStack tool, InteractionHand hand){
-        int lvl = tool.getModifierLevel(etshtinkerModifiers.warpattack_STATIC_MODIFIER.get());
+        int lvl = tool.getModifierLevel(etshtinkerModifiers.warpattackEX_STATIC_MODIFIER.get());
         if (hand == InteractionHand.MAIN_HAND&&lvl>0&&player.getAttackStrengthScale(0)>0.8) {
             meleSpecialAttackUtil.createWarpEx(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
         }
     }
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         if (context.getPlayerAttacker()!=null&&!context.isExtraAttack()&&context.isFullyCharged()) {
-            warpattack.tryWarp(context.getPlayerAttacker(), (ToolStack) tool,context.getPlayerAttacker().getUsedItemHand());
+            warpattackex.tryWarp(context.getPlayerAttacker(), (ToolStack) tool,context.getPlayerAttacker().getUsedItemHand());
         }
     }
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {

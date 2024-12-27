@@ -25,7 +25,7 @@ public class blizzdefense extends etshmodifieriii {
             if (source.getEntity() instanceof LivingEntity attacker&&attacker!=context.getEntity()){
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,4));
             }
-            return amount;
+            return amount*(1-0.1f*modifier.getLevel());
         }else return 0;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {

@@ -11,6 +11,22 @@
     {
       "name": "etshtinker:atomorigin",
       "level": 1
+    },
+    {
+      "name": "etshtinker:selfassemble",
+      "level": 1
     }
-  ]
+  ],
+  "perStat" : {
+    "tconstruct:armor": [
+      {
+        "name": "etshtinker:unknown",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:atomorigin",
+        "level": 1
+      }
+    ]
+  }
 }

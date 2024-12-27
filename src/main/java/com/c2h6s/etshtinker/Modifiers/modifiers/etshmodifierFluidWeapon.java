@@ -53,7 +53,7 @@ public class etshmodifierFluidWeapon extends etshmodifieriii implements FluidCon
     }
 
     @Override
-    public plasmaexplosionentity plasmaExplosionCreate(IToolStackView tool, FluidStack fluidStack, Player player, plasmaexplosionentity explosion) {
+    public plasmaexplosionentity plasmaExplosionCreate(IToolStackView tool, FluidStack fluidStack, Player player, plasmaexplosionentity explosion,boolean primary) {
         return this.onPlasmaExplosionCreate(tool,fluidStack,player,explosion);
     }
 

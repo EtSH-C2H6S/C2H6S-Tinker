@@ -8,12 +8,12 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import java.util.Collection;
 
 public interface PlasmaExplosionCreateModifierHook {
-    plasmaexplosionentity plasmaExplosionCreate(IToolStackView tool, FluidStack fluidStack, Player player, plasmaexplosionentity explosion);
+    plasmaexplosionentity plasmaExplosionCreate(IToolStackView tool, FluidStack fluidStack, Player player, plasmaexplosionentity explosion,boolean primary);
     record AllMerger(Collection<PlasmaExplosionCreateModifierHook> modules) implements PlasmaExplosionCreateModifierHook {
         @Override
-        public plasmaexplosionentity plasmaExplosionCreate(IToolStackView tool, FluidStack fluidStack, Player player, plasmaexplosionentity explosion) {
+        public plasmaexplosionentity plasmaExplosionCreate(IToolStackView tool, FluidStack fluidStack, Player player, plasmaexplosionentity explosion,boolean primary) {
             for (PlasmaExplosionCreateModifierHook module:this.modules){
-                explosion=module.plasmaExplosionCreate(tool,fluidStack,player,explosion);
+                explosion=module.plasmaExplosionCreate(tool,fluidStack,player,explosion,primary);
             }
             return explosion;
         }

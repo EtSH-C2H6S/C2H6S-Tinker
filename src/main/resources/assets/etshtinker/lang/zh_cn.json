@@ -279,7 +279,7 @@
 
   "modifier.etshtinker.thermaldefense": "热力之护",
   "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",
-  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性，额外附带减少攻击者50%护甲。",
+  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性（稍弱一点），额外附带减少攻击者50%护甲，对魔法伤害提供50%减免。",
 
   "modifier.etshtinker.trinityblessing": "三重祝福",
   "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
@@ -291,11 +291,11 @@
 
   "modifier.etshtinker.unknown": "-未知-",
   "modifier.etshtinker.unknown.flavor": "",
-  "modifier.etshtinker.unknown.description":"工具的大部分属性乘以0.005倍\n手持/穿着时免疫部分穿甲伤害，获得20%闪避率",
+  "modifier.etshtinker.unknown.description":"工具的大部分属性乘以0.005倍，每次使用工具时强制消耗5%最大耐久。\n手持/穿着时免疫部分穿甲伤害，获得20%闪避率",
 
   "modifier.etshtinker.atomorigin": "核子起源",
   "modifier.etshtinker.atomorigin.flavor": "“一个特异点”",
-  "modifier.etshtinker.atomorigin.description":"工具大部分属性乘以1.2^所有词条等级总和，在槽位数到达一定值后给你施加特殊效果。",
+  "modifier.etshtinker.atomorigin.description":"工具大部分属性乘以1.2^所有词条等级总和，在槽位数到达一定值后给你施加特殊效果。极大增强分形自组装强化的修复能力。",
 
   "modifier.etshtinker.semicrystaline": "准晶",
   "modifier.etshtinker.semicrystaline.flavor": "富有弹性的坚硬材料，当前研究的热点之一",
@@ -303,15 +303,15 @@
 
   "modifier.etshtinker.organiccr": "有机晶体",
   "modifier.etshtinker.organiccr.flavor": "远古生物的遗骸堆砌而成",
-  "modifier.etshtinker.organiccr.description":"[仅近战]在你第二次攻击之时，敌人的回血手段全部化为虚无。",
+  "modifier.etshtinker.organiccr.description":"[仅近战]在你第二次攻击的时候重置敌人恢复的血量并治疗自己。",
 
   "modifier.etshtinker.inorganiccr": "无机晶体",
   "modifier.etshtinker.inorganiccr.flavor": "地心的精华结晶而成",
-  "modifier.etshtinker.inorganiccr.description":"受攻击时，给予敌人重创！",
+  "modifier.etshtinker.inorganiccr.description":"受攻击时给敌人施加易伤",
 
   "modifier.etshtinker.beconcerted": "齐心协力",
   "modifier.etshtinker.beconcerted.flavor": "-感谢支持-",
-  "modifier.etshtinker.beconcerted.description":"工具能力槽+3，升级槽+4;护甲能力槽+3，升级槽+2，防御槽+2。\n每装载一个模组，获得大部分属性6.2134%的加成。",
+  "modifier.etshtinker.beconcerted.description":"工具能力槽+3，升级槽+4（护甲为2升级2防御）。\n每装载一个模组，获得大部分属性6.2134%的加成。",
 
   "modifier.etshtinker.gracearrival": "恩赐降临",
   "modifier.etshtinker.gracearrival.flavor": "奇迹和魔法可不是免费的！",

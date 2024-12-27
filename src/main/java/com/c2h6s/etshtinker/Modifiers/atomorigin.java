@@ -31,11 +31,11 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class atomorigin extends etshmodifieriii implements ToolStatsModifierHook, VolatileDataModifierHook, ToolDamageModifierHook {
+public class atomorigin extends etshmodifieriii implements ToolStatsModifierHook, VolatileDataModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.VOLATILE_DATA,ModifierHooks.TOOL_DAMAGE);
+        builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.VOLATILE_DATA);
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null) {
@@ -75,7 +75,8 @@ public class atomorigin extends etshmodifieriii implements ToolStatsModifierHook
         ToolStats.BLOCK_ANGLE.multiply(builder, Math.pow(1.2, slotamount));
         etshtinkerToolStats.PLASMARANGE.multiply(builder, Math.pow(1.2, slotamount));
         etshtinkerToolStats.ENERGY_STORE.multiply(builder, Math.pow(1.2, slotamount));
-        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder, Math.pow(1.2, slotamount));
+        etshtinkerToolStats.FLUID_EFFICIENCY.multiply(builder, Math.pow(1.2, slotamount));
+        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder, Math.pow(1.1, slotamount));
         ToolTankHelper.CAPACITY_STAT.multiply(builder, Math.pow(1.2, slotamount));
 
     }
@@ -95,16 +96,7 @@ public class atomorigin extends etshmodifieriii implements ToolStatsModifierHook
     public int getPriority() {
         return 512;
     }
-    @Override
-    public int onDamageTool(IToolStackView tool, ModifierEntry modifier, int i, @Nullable LivingEntity livingEntity) {
-        if (modifier.getLevel()>0){
-            int slotamount =tool.getVolatileData().getSlots(SlotType.ABILITY)+tool.getVolatileData().getSlots(SlotType.UPGRADE)+tool.getVolatileData().getSlots(SlotType.DEFENSE)+tool.getVolatileData().getSlots(SlotType.SOUL);
-            if (slotamount>10) {
-                return 0;
-            }
-        }
-        return i;
-    }
+
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         if (player!=null){

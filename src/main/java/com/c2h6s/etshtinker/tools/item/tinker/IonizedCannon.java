@@ -204,7 +204,7 @@ public class IonizedCannon extends ModifiableItem {
                     entity.setPos(living.getEyePosition().x, living.getEyePosition().y - 0.5 * entity.getBbHeight(), living.getEyePosition().z);
                     entity.setOwner(living);
                     for (ModifierEntry modifier : tool.getModifierList()) {
-                        entity = modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_CREATE).plasmaExplosionCreate(tool, fluidStack, player, entity);
+                        entity = modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_CREATE).plasmaExplosionCreate(tool, fluidStack, player, entity,a==0);
                     }
                     level.addFreshEntity(entity);
                     living.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);

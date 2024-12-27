@@ -77,7 +77,8 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
             ToolStats.ATTACK_SPEED.multiply(builder,0.67);
             etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
-            etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder,Math.pow(1.33,modifier.getLevel()));
+            etshtinkerToolStats.FLUID_EFFICIENCY.multiply(builder,Math.pow(1.33,modifier.getLevel()));
+            etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder,Math.pow(1.17,modifier.getLevel()));
             ToolTankHelper.CAPACITY_STAT.multiply(builder,Math.pow(1.33,modifier.getLevel()));
         }
         if (modifier.getLevel()==3){
@@ -96,7 +97,8 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
             ToolStats.BLOCK_ANGLE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            etshtinkerToolStats.FLUID_EFFICIENCY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
+            etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolTankHelper.CAPACITY_STAT.multiply(builder,Math.pow(1.67,modifier.getLevel()));
         }
     }

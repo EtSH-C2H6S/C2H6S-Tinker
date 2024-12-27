@@ -6,15 +6,20 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.behavior.RepairFactorModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
@@ -24,7 +29,12 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.getMainOrOff.getMainLevel;
 import static com.c2h6s.etshtinker.util.getMainOrOff.getOffLevel;
 
-public class unknown extends etshmodifieriii implements ToolStatsModifierHook {
+public class unknown extends etshmodifieriii implements ToolStatsModifierHook , ToolDamageModifierHook, RepairFactorModifierHook {
+    @Override
+    public int getPriority() {
+        return 131072;
+    }
+
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("unknown");
     public boolean isNoLevels() {
         return true;
@@ -32,7 +42,7 @@ public class unknown extends etshmodifieriii implements ToolStatsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.TOOL_STATS);
+        builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.TOOL_DAMAGE,ModifierHooks.REPAIR_FACTOR);
         builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
     }
     public unknown(){
@@ -91,5 +101,18 @@ public class unknown extends etshmodifieriii implements ToolStatsModifierHook {
         etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder, 0.005);
         etshtinkerToolStats.ENERGY_STORE.multiply(builder, 0.005);
         ToolTankHelper.CAPACITY_STAT.multiply(builder, 0.005);
+    }
+
+    @Override
+    public int onDamageTool(IToolStackView tool, ModifierEntry modifierEntry, int i, @Nullable LivingEntity livingEntity) {
+        if (!tool.hasTag(TinkerTags.Items.ARMOR)) {
+            tool.setDamage((int) (tool.getDamage() + 0.05 * tool.getStats().getInt(ToolStats.DURABILITY)));
+        }
+        return 0;
+    }
+
+    @Override
+    public float getRepairFactor(IToolStackView iToolStackView, ModifierEntry modifierEntry, float v) {
+        return 0;
     }
 }

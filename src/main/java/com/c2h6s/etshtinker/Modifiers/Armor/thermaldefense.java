@@ -56,7 +56,7 @@ public class thermaldefense extends etshmodifieriii {
             int level = holder.get(key, 0);
             if (level > 0) {
                 living.invulnerableTime += 5*level;
-                if (event.getSource().isExplosion()){
+                if (event.getSource().isExplosion()||event.getSource().isMagic()){
                     event.setAmount(event.getAmount()*0.5f);
                 }
             }
@@ -67,6 +67,7 @@ public class thermaldefense extends etshmodifieriii {
         if (random.nextInt(50)>modifier.getLevel()){
             LivingEntity entity =context.getEntity();
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,2,false,false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,2,false,false));
             return amount;
         }
         else return  0;
