@@ -50,7 +50,7 @@ public class reactiveexplosivearmor extends etshmodifieriii {
                 }
                 List<Mob> list = living.level.getEntitiesOfClass(Mob.class,living.getBoundingBox().inflate(8));
                 for (Mob mob:list){
-                    if (mob!=null){
+                    if (mob!=null&&!mob.getType().getCategory().isFriendly()){
                         mob.invulnerableTime=0;
                         mob.hurt(DamageSource.explosion(living),event.getAmount());
                     }
