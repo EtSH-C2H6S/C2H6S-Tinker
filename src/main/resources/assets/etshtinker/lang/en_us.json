@@ -255,39 +255,39 @@
 
   "modifier.etshtinker.phantomreforged": "Phantom Reforged",
   "modifier.etshtinker.phantomreforged.flavor": "Phantoms are everywhere.",
-  "modifier.etshtinker.phantomreforged.description":"全力攻击目标后在目标头顶召唤向下坠落的幻灵剑，对目标造成一半的伤害，等级越高攻击一次召唤的幻灵剑就越多",
+  "modifier.etshtinker.phantomreforged.description":"Summon falling phantom swords upon target's head",
 
   "modifier.etshtinker.selfassemble": "Self Assemble",
   "modifier.etshtinker.selfassemble.flavor": "It's self-duplicating...",
-  "modifier.etshtinker.selfassemble.description":"工具受损时会消耗背包中的反中子充能，工具有充能时会急速修复自身，每个反中子提供8192*属性等级点充能",
+  "modifier.etshtinker.selfassemble.description":"Consume anti-neutronium to recover durability.8192 durability for each anti-neutronium",
 
   "modifier.etshtinker.stellarblessing": "Stellar Blessing",
   "modifier.etshtinker.stellarblessing.flavor": "Heavenly sent gift.",
-  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，获得创造模式飞行能力，受到攻击时使攻击者失重并点燃攻击者，移动时获得10%的伤害减免。",
+  "modifier.etshtinker.stellarblessing.description":"Immune to fire and allow you to fly.Gain 10% damage reduction when moving.",
 
   "modifier.etshtinker.reactiveexplosivearmor": "Reactive Explosive Armor",
   "modifier.etshtinker.reactiveexplosivearmor.flavor": "Explosive shielding",
-  "modifier.etshtinker.reactiveexplosivearmor.description":"穿着时免疫爆炸伤害，受到攻击时将25%的伤害以爆炸的形式反射。",
+  "modifier.etshtinker.reactiveexplosivearmor.description":"Immune to explosion.Reflect 25% damage in the form of explosion.",
 
   "modifier.etshtinker.reactiveannihlarmor": "Reactive Annihilating Armor",
   "modifier.etshtinker.reactiveannihlarmor.flavor": "Fierce shielding",
-  "modifier.etshtinker.reactiveannihlarmor.description":"受到攻击时消耗背包内的反中子锭充能，护甲有充能时消耗充能并抵挡这次伤害，多件护甲效果不叠加。",
+  "modifier.etshtinker.reactiveannihlarmor.description":"Consume anti-neutronium to cancel hurting.Each anti-neutronium cancels 1024 damage.",
 
   "modifier.etshtinker.modifierenchantedsword": "Enchanted sword",
-  "modifier.etshtinker.modifierenchantedsword.flavor": "我没能拿到真空之刃",
-  "modifier.etshtinker.modifierenchantedsword.description":"工具有魔力充能时，空挥时发射一个附魔剑剑气。",
+  "modifier.etshtinker.modifierenchantedsword.flavor": "Not enchanted.",
+  "modifier.etshtinker.modifierenchantedsword.description":"Shoots a projectile when swinging.",
 
   "modifier.etshtinker.manaoverload": "Mana Overload",
-  "modifier.etshtinker.manaoverload.flavor": "希望你有足够的魔力使用这个强化",
-  "modifier.etshtinker.manaoverload.description":"身上持有能存储mana的物品时工具获得充能\n每10点mana提供1点充能(不消耗mana)，工具会缓缓消耗魔力恢复耐久\n充能点数超过1000000时攻击时依据当前的充能点数增加伤害并相应的消耗魔力。",
+  "modifier.etshtinker.manaoverload.flavor": "Hope you have enough mana to utilize this.",
+  "modifier.etshtinker.manaoverload.description":"Your tool will slowly recovers durability consuming mana.\nWhen having more than 10M mana,consume massive amount of mana to boost damage.",
 
   "modifier.etshtinker.thermaldefense": "Thermal Defense",
-  "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",
-  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性，额外附带减少攻击者50%护甲。",
+  "modifier.etshtinker.thermaldefense.flavor": "The power of thermal elements.",
+  "modifier.etshtinker.thermaldefense.description":"All features of it's compounds.With additionally decreasing 50% attacker's armor.",
 
   "modifier.etshtinker.trinityblessing": "Triple Blessing",
-  "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
-  "modifier.etshtinker.trinityblessing.description":"第一祝福:你的所有攻击穿甲，自己免疫穿甲攻击\n第二祝福:你的工具正常使用不再消耗耐久\n第三祝福:每级使你的工具获得叠乘的33%大部分属性加成;当属性等级为3时，每级使你工具获得叠乘的67%大部分属性加成。",
+  "modifier.etshtinker.trinityblessing.flavor": "3 types of nuclear compound fused into one piece.",
+  "modifier.etshtinker.trinityblessing.description":"Boost most of tool's stats.When level is 3,reach the maximum bonus.",
 
   "modifier.etshtinker.trinitycurse": "Triple Curse",
   "modifier.etshtinker.trinitycurse.flavor": "You don't have sufficient knowledge to process this metal.",
@@ -383,7 +383,7 @@
 
   "modifier.etshtinker.perfectism": "Perfect-ism",
   "modifier.etshtinker.perfectism.flavor": "Pursuing perfect is not always good.",
-  "modifier.etshtinker.perfectism.description":"Your damage will be multiplied by modifier level and then take round.",
+  "modifier.etshtinker.perfectism.description":"Your damage will be multiplied by modifier level and then take round according to the first bit with maximum 100x bonus.",
 
   "modifier.etshtinker.perfect_armor": "Perfect Armor",
   "modifier.etshtinker.perfect_armor.flavor": "Pursuing perfect is not always bad.",

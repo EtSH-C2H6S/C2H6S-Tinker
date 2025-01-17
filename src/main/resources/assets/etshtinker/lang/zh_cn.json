@@ -379,7 +379,7 @@
 
   "modifier.etshtinker.perfectism": "完美主义",
   "modifier.etshtinker.perfectism.flavor": "追求完美不总是好事",
-  "modifier.etshtinker.perfectism.description":"你造成的伤害会乘以属性等级，然后根据伤害的最高位数取整:<=4时退位>4时进位，>=8时额外乘以10。",
+  "modifier.etshtinker.perfectism.description":"你造成的伤害会根据伤害的最高位数取整：\n<=4时退位>4时进位，>=9时额外乘以10",
 
   "modifier.etshtinker.perfect_armor": "完美护甲",
   "modifier.etshtinker.perfect_armor.flavor": "追求完美也不总是坏事",

@@ -27,7 +27,7 @@ public class perfectism extends etshmodifieriii {
                 ToolStack tool = ToolStack.from(player.getItemInHand(hand));
                 if (tool.getModifierLevel(this)>0&&target!=null){
                     CompoundTag nbt =target.getPersistentData();
-                    nbt.putFloat("etsh.perfect_damage",event.getAmount()*tool.getModifierLevel(this));
+                    nbt.putFloat("etsh.perfect_damage",event.getAmount());
                 }
             }
         }
@@ -47,7 +47,7 @@ public class perfectism extends etshmodifieriii {
                     event.setAmount((float) Math.pow(10,dmgBit));
                 }else {
                     event.setAmount((float) Math.pow(10,dmgBit+1));
-                    if (a>=8){
+                    if (a>=9){
                         event.setAmount((float) Math.pow(10,dmgBit+2));
                     }
                 }

@@ -23,6 +23,11 @@ public class ultradenseex extends etshmodifieriii {
     }
 
     @Override
+    public int getPriority() {
+        return Integer.MAX_VALUE;
+    }
+
+    @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         for (ModifierEntry entry : tool.getModifierList()) {
             if (entry.getModifier() != modifier.getModifier()) {

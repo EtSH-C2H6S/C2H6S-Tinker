@@ -112,7 +112,7 @@ public class manaoverload extends etshmodifieriii implements DurabilityDisplayMo
                     }
                 }
                 toolData.putInt(manacharge, (int) (mana / 10));
-                return damage+baseDamage * Math.max(multiplier, 1);
+                return damage* (1+multiplier*0.25f)+baseDamage * (1+multiplier*0.75f);
             }
             toolData.putInt(manacharge, (int) (mana / 10));
         }

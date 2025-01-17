@@ -18,7 +18,7 @@ public class hiGravity extends etsheffect {
     public void applyEffectTick(LivingEntity living, int amplifier) {
         super.applyEffectTick(living, amplifier);
         if (living.getDeltaMovement().length()>0){
-            living.setDeltaMovement(living.getDeltaMovement().scale(0.75));
+            living.setDeltaMovement(living.getDeltaMovement().scale(1d/(1+0.5*amplifier)));
         }
     }
 }
