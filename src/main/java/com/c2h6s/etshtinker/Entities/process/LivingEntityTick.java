@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -58,6 +59,12 @@ public class LivingEntityTick {
             }
             if ((entity.level.getGameTime()%5)<=amplifier) {
                 float b = Math.max(1,(float) amplifier/5);
+                DamageSource damageSource = switch (EtSHrnd().nextInt(4)){
+                    case 1-> DamageSource.WITHER;
+                    case 2-> DamageSource.MAGIC;
+                    case 3-> DamageSource.FREEZE;
+                    default -> throughSources.atomic(entity.getMaxHealth() * 0.00025f*b);
+                };
                 entity.invulnerableTime=0;
                 entity.hurt(throughSources.atomic(entity.getMaxHealth() * 0.00025f*b), entity.getMaxHealth() * 0.00025f*b);
             }

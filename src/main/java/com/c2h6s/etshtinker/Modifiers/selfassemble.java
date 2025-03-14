@@ -35,7 +35,8 @@ public class selfassemble extends etshmodifieriii {
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         ModDataNBT toolData =tool.getPersistentData();
         if (tool.getDamage()>0){
-            int maxRepair =4096*modifier.getLevel();
+            int multiplier = (int) Math.pow(modifier.getLevel(),2);
+            int maxRepair =4096*multiplier;
             if (tool.getModifierLevel(etshtinkerModifiers.atomorigin_STATIC_MODIFIER.get())>0){
                 maxRepair = 1073741823;
             }

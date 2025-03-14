@@ -32,6 +32,7 @@ public class renderNightSlash extends EntityRenderer<ItemProjectile> {
             super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         }
     }
+
     protected int getSkyLightLevel(ItemProjectile p_114509_, BlockPos p_114510_) {
         return 15;
     }

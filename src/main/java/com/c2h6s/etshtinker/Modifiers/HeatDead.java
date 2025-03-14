@@ -1,5 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
+import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -27,9 +28,22 @@ public class HeatDead extends etshmodifieriii {
     }
 
     @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        if (context.getTarget() instanceof LivingEntity living&&context.getAttacker() instanceof Player player){
+            living.invulnerableTime=0;
+            living.hurt(playerThroughSource.PlayerAnnihilate(player,damage),damage);
+            living.invulnerableTime=0;
+        }
+        return knockback;
+    }
+
+    @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         LivingEntity target =context.getLivingTarget();
-        if (target!=null&&!(target instanceof Player)&&context.isFullyCharged()){
+        if (target!=null&&!(target instanceof Player)&&context.isFullyCharged()&&context.getAttacker() instanceof Player player){
+            if (target.getPersistentData().contains("max_health")&&target.getHealth()>target.getPersistentData().getFloat("max_health")){
+                target.hurt(playerThroughSource.PlayerAnnihilate(player,target.getHealth()-target.getPersistentData().getFloat("max_health")),target.getHealth()-target.getPersistentData().getFloat("max_health"));
+            }
             AttributeInstance instance = target.getAttribute(Attributes.MAX_HEALTH);
             double d =0;
             if (instance!=null) {
@@ -45,7 +59,10 @@ public class HeatDead extends etshmodifieriii {
 
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        if (target!=null&&!(target instanceof Player)&&projectile instanceof AbstractArrow arrow&&arrow.isCritArrow()){
+        if (target!=null&&!(target instanceof Player)&&projectile instanceof AbstractArrow arrow&&arrow.isCritArrow()&&attacker instanceof Player player){
+            if (target.getPersistentData().contains("max_health")&&target.getHealth()>target.getPersistentData().getFloat("max_health")){
+                target.hurt(playerThroughSource.PlayerAnnihilate(player,target.getHealth()-target.getPersistentData().getFloat("max_health")),target.getHealth()-target.getPersistentData().getFloat("max_health"));
+            }
             AttributeInstance instance = target.getAttribute(Attributes.MAX_HEALTH);
             double d =0;
             if (instance!=null) {

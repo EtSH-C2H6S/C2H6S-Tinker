@@ -20,6 +20,7 @@ import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
 public class plasmarrowentity extends AbstractArrow {
     public int time =0;
+    public Vec3 movement = null;
     protected plasmarrowentity(EntityType<? extends AbstractArrow> p_36717_, LivingEntity p_36718_, Level p_36719_) {
         super(p_36717_, p_36718_, p_36719_);
     }
@@ -48,6 +49,7 @@ public class plasmarrowentity extends AbstractArrow {
         }
         if (getMold(this.getDeltaMovement())<5) {
             this.setDeltaMovement(this.getDeltaMovement().scale(1.05));
+            movement = this.getDeltaMovement();
         }
         if (this.inGround){
             this.discard();
@@ -68,6 +70,9 @@ public class plasmarrowentity extends AbstractArrow {
             }
         }
         super.onHitEntity(result);
+        if (movement!=null) {
+            this.setDeltaMovement(movement);
+        }
     }
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);

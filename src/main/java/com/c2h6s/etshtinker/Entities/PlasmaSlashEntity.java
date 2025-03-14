@@ -64,8 +64,11 @@ public class PlasmaSlashEntity extends ItemProjectile {
         }
         Vec3 rayVec3 =this.getDeltaMovement();
         super.tick();
-        if (this.tickCount>=5){
+        if (this.tickCount>5){
             this.discard();
+            return;
+        }
+        if (this.tickCount<=1){
             return;
         }
         Entity entity =this.getOwner();

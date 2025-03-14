@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -53,7 +54,7 @@ public class mindprotection extends etshmodifieriii {
     public boolean isNoLevels() {
         return true;
     }
-    private final ResourceLocation dpreventcd2 = new ResourceLocation(MOD_ID, "dpreventcd2");
+    private final ResourceLocation dpreventcd2 = new ResourceLocation(MOD_ID, "dpreventcd");
     public void onRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(dpreventcd2);
     }
@@ -129,7 +130,7 @@ public class mindprotection extends etshmodifieriii {
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         ModDataNBT toolData = tool.getPersistentData();
-        if(holder instanceof Player player && toolData.getInt(dpreventcd2) > 0){
+        if(holder instanceof ServerPlayer player && toolData.getInt(dpreventcd2) > 0){
             toolData.putInt(dpreventcd2,toolData.getInt(dpreventcd2)-1);
         }
         if (holder instanceof Player player&&isCorrectSlot){

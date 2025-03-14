@@ -1,6 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
@@ -96,7 +97,6 @@ public class unknown extends etshmodifieriii implements ToolStatsModifierHook , 
         ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 0.005);
         ToolStats.BLOCK_AMOUNT.multiply(builder, 0.005);
         ToolStats.BLOCK_ANGLE.multiply(builder, 0.005);
-        etshtinkerToolStats.COOLDOWN.multiply(builder,2);
         etshtinkerToolStats.PLASMARANGE.multiply(builder, 0.005);
         etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder, 0.005);
         etshtinkerToolStats.ENERGY_STORE.multiply(builder, 0.005);
@@ -105,8 +105,8 @@ public class unknown extends etshmodifieriii implements ToolStatsModifierHook , 
 
     @Override
     public int onDamageTool(IToolStackView tool, ModifierEntry modifierEntry, int i, @Nullable LivingEntity livingEntity) {
-        if (!tool.hasTag(TinkerTags.Items.ARMOR)) {
-            tool.setDamage((int) (tool.getDamage() + 0.05 * tool.getStats().getInt(ToolStats.DURABILITY)));
+        if (!tool.hasTag(TinkerTags.Items.ARMOR)&&tool.getModifierLevel(etshtinkerModifiers.controllableannihl_STATIC_MODIFIER.get())<=0) {
+            tool.setDamage((int) (tool.getDamage() + 0.01 * tool.getStats().getInt(ToolStats.DURABILITY)));
         }
         return 0;
     }

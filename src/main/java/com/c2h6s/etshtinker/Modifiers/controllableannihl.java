@@ -39,7 +39,7 @@ public class controllableannihl extends etshmodifieriii implements ToolStatsModi
                     annihilateexplosionentity explode = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), target.getLevel());
                     float d = tool.getCurrentDurability() * 0.05f;
                     tool.setDamage(tool.getDamage() + (int) d);
-                    explode.damage = d * 4;
+                    explode.damage = d * 4+damage*0.0625f;
                     explode.target = target;
                     explode.setPos(target.getX(), target.getY() + 0.5 * target.getBbHeight(), target.getZ());
                     explode.setOwner(player);

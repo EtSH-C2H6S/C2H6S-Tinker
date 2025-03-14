@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.Modifiers.Armor;
 import com.c2h6s.etshtinker.Entities.annihilateexplosionentity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
+import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.EntityDamageSource;
@@ -55,9 +56,6 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
         if (event.getSource() instanceof EntityDamageSource entityDamageSource&&entityDamageSource.isThorns()){
             return;
         }
-        if (event.getEntity()==event.getSource().getEntity()){
-            return;
-        }
         LivingEntity living = event.getEntity();
         Entity entity =event.getSource().getEntity();
         if (living instanceof Player player){
@@ -65,6 +63,8 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
                 IToolStackView tool =ToolStack.from( player.getInventory().armor.get(i));
                 if (tool.getModifierLevel(this)>0){
                     int lvl =tool.getModifierLevel(this);
+                    boolean b = tool.getModifierLevel(etshtinkerModifiers.controllableannihl_STATIC_MODIFIER.get())>0;
+                    int value = b?Integer.MAX_VALUE:1024*lvl;
                     ModDataNBT toolData =tool.getPersistentData();
                     if (toolData.getFloat(antineutron)>event.getAmount()){
                         toolData.putFloat(antineutron,toolData.getFloat(antineutron)-event.getAmount());
@@ -76,22 +76,25 @@ public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDi
                             if (stack.getItem() == anti_neutronium.get() && stack.getCount() > 0) {
                                 while (stack.getCount()>0&&event.getAmount()>0){
                                     stack.setCount(stack.getCount()-1);
-                                    if (event.getAmount()>1024*lvl){
-                                        event.setAmount(event.getAmount()-1024*lvl);
+                                    if (event.getAmount()>value){
+                                        event.setAmount(event.getAmount()-value);
                                     }else {
                                         event.setAmount(0);
-                                        toolData.putFloat(antineutron,toolData.getFloat(antineutron)-event.getAmount()+1024*lvl);
+                                        toolData.putFloat(antineutron,toolData.getFloat(antineutron)-event.getAmount()+value);
                                     }
                                     if (event.getAmount()<=0){
                                         event.setCanceled(true);
                                         break;
+                                    }
+                                    if (event.getEntity()==event.getSource().getEntity()){
+                                        return;
                                     }
                                     annihilateexplosionentity explode =new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(),player.getLevel());
                                     if (entity instanceof LivingEntity attacker){
                                         explode.target =attacker;
                                     }
                                     explode.setPos(player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ());
-                                    explode.damage=1024*lvl;
+                                    explode.damage=value;
                                     explode.setOwner(player);
                                     player.level.addFreshEntity(explode);
                                 }

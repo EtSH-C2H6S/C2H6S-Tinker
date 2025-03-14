@@ -50,15 +50,6 @@ public class etshmodifieriii extends etshmodifierii implements EquipmentChangeMo
         builder.addHook(this,ModifierHooks.TOOLTIP,ModifierHooks.REMOVE,ModifierHooks.MODIFY_DAMAGE);
         builder.addHook(this,ModifierHooks.BLOCK_BREAK,ModifierHooks.ENTITY_INTERACT,ModifierHooks.TOOL_STATS);
     }
-
-    @Override
-    public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        this.modifierOnEquip(tool,modifier,context);
-    }
-    @Override
-    public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        this.modifierOnUnequip(tool,modifier,context);
-    }
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         this.modifierOnInventoryTick(tool,modifier,level,livingEntity,itemSlot,isSelected,isCorrectSlot,itemStack);
@@ -95,12 +86,6 @@ public class etshmodifieriii extends etshmodifierii implements EquipmentChangeMo
         this.modifierAddToolStats(context,modifier,builder);
     }
 
-
-
-    public void modifierOnEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-    }
-    public void modifierOnUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-    }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
     }
 

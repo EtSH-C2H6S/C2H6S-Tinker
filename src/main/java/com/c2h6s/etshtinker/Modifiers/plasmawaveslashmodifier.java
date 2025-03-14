@@ -58,7 +58,6 @@ public class plasmawaveslashmodifier extends etshmodifieriii implements GeneralI
             plasmawaveslashentity slash =new plasmawaveslashentity(plasmawaveslashEntity.get(),world);
             world.noCollision(slash);
             slash.noCulling=true;
-            slash.baseDamage=damage;
             slash.setOwner(player);
             slash.setPos(player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ());
             slash.tool=tool;

@@ -31,13 +31,13 @@ import java.util.List;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 public class mentalism extends etshmodifieriii {
-    private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("mindprotection");
+    private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("mentalism");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
     }
-    private final ResourceLocation dpreventcd = new ResourceLocation(MOD_ID, "dpreventcd");
+    private final ResourceLocation dpreventcd = new ResourceLocation(MOD_ID, "death_preventcd");
     public void onRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(dpreventcd);
     }

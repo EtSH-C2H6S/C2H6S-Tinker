@@ -3,7 +3,6 @@ package com.c2h6s.etshtinker.Modifiers.Armor;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -62,16 +61,19 @@ public class stellarblessing extends etshmodifieriii {
             }
         });
     }
-    public void modifierOnEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        if (modifier.getLevel()>0&&context.getEntity() instanceof Player player){
+    @Override
+    public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
+        if((context.getEntity() instanceof Player player && !player.getAbilities().mayfly&&!player.getAbilities().flying)) {
             player.getAbilities().flying=true;
             player.getAbilities().mayfly=true;
         }
     }
-    public void modifierOnUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        if (modifier.getLevel()>0&&context.getEntity() instanceof Player player&&!player.isCreative()){
-            player.getAbilities().flying=false;
-            player.getAbilities().mayfly=false;
+
+    @Override
+    public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
+        if((context.getEntity() instanceof Player player && player.getAbilities().mayfly&&player.getAbilities().flying)) {
+            player.getAbilities().flying = false;
+            player.getAbilities().mayfly = false;
         }
     }
 }

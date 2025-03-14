@@ -26,6 +26,6 @@ public class MiracleCatalyst extends etshmodifieriii implements FluidConsumption
 
     @Override
     public int getFluidConsumption(IToolStackView tool, FluidStack fluidStack, Player player, int baseAmount, int amount) {
-        return fluidStack.getFluid()==molten_exo_alloy.get() ? Mth.clamp(amount/10,1,5) : Math.max(1,amount/10);
+        return fluidStack.getFluid().isSame( molten_exo_alloy.get()) ? Mth.clamp(amount/10,1,5) : Math.max(1,amount/10);
     }
 }

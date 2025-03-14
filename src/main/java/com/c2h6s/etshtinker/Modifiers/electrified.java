@@ -54,68 +54,24 @@ public class electrified extends etshmodifieriii implements ToolStatsModifierHoo
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.DRAW_SPEED.add(builder,ToolStats.DRAW_SPEED.getMaxValue());
+        ToolStats.DRAW_SPEED.add(builder,2);
         ToolStats.VELOCITY.multiply(builder,2);
     }
 
     @Override
-    public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (holder instanceof Player player&&tool.getItem() instanceof ModifiableLauncherItem bow &&tool.getPersistentData().getInt(GeneralInteractionModifierHook.KEY_DRAWTIME) != 0&&isCorrectSlot&&!level.isClientSide) {
-            boolean creative = player.getAbilities().instabuild;
-            boolean hasAmmo = creative || BowAmmoModifierHook.hasAmmo(tool, ((ToolStack)tool).createStack(), player,bow.getSupportedHeldProjectiles());
-            if (hasAmmo){
-                float velocity = ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.VELOCITY);
-                if (!level.isClientSide){
-                    ItemStack ammo = new ItemStack(Items.ARROW,3);
-                    ArrowItem arrowItem =(ArrowItem)Items.ARROW;
-                    float inaccuracy = ModifierUtil.getInaccuracy(tool, player)+1.5f;
-                        AbstractArrow arrow = arrowItem.createArrow(level, ammo, player);
-                        arrow.shootFromRotation(player, player.getXRot() , player.getYRot(), 0, 3.0f*velocity, inaccuracy);
-                        float baseArrowDamage = (float)(arrow.getBaseDamage() - 2 + tool.getStats().get(ToolStats.PROJECTILE_DAMAGE));
-                        arrow.setBaseDamage(ConditionalStatModifierHook.getModifiedStat(tool, player, ToolStats.PROJECTILE_DAMAGE, baseArrowDamage));
-                        arrow.addTag("electric_extra");
-                        ModifierNBT modifiers = tool.getModifiers();
-                        arrow.getCapability(EntityModifierCapability.CAPABILITY).ifPresent(cap -> cap.setModifiers(modifiers));
-                        NamespacedNBT arrowData = PersistentDataCapability.getOrWarn(arrow);
-                        if (creative) {
-                            arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-                        }
-                        for (ModifierEntry entry : modifiers.getModifiers()) {
-                            entry.getHook(ModifierHooks.PROJECTILE_LAUNCH).onProjectileLaunch(tool, entry, player, arrow, arrow, arrowData, true);
-                        }
-                        arrow.setCritArrow(true);
-                        level.addFreshEntity(arrow);
-                        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-                        arrow.setDeltaMovement(arrow.getDeltaMovement().scale(EtSHrnd().nextDouble()+0.5));
-                    ToolDamageUtil.damageAnimated(tool, ammo.getCount(), player, player.getUsedItemHand());
-                }
-                player.awardStat(Stats.ITEM_USED.get(bow));
-            }
+    public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
+        if (projectile instanceof AbstractArrow arrow){
+            arrow.setBaseDamage(arrow.getBaseDamage()*0.5);
         }
-        if (!isSelected&&tool.getPersistentData().getInt(GeneralInteractionModifierHook.KEY_DRAWTIME) != 0&&!level.isClientSide){
-            tool.getPersistentData().remove(GeneralInteractionModifierHook.KEY_DRAWTIME);
-        }
-    }
-
-    @Override
-    public boolean onProjectileHitBlock(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, BlockHitResult hit, @Nullable LivingEntity attacker) {
-        if (projectile instanceof AbstractArrow arrow&&arrow.getTags().contains("electric_extra")){
-            arrow.discard();
-        }
-        return true;
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (attacker instanceof Player player&&modifiers.getLevel(this.getId())>0&&target!=null&&!(target instanceof Player)&&projectile instanceof AbstractArrow arrow) {
-            arrow.setBaseDamage(arrow.getBaseDamage()*0.25);
             int lvl000 = modifiers.getLevel(this.getId());
             target.invulnerableTime=0;
             target.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE,1.2f,1.2f);
-            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
+            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,3*lvl000,false,false),attacker);
             target.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 3*lvl000, false, false), attacker);
-        }
-        if (projectile instanceof AbstractArrow arrow&&arrow.getTags().contains("electric_extra")){
-            arrow.setBaseDamage(arrow.getBaseDamage()/10);
         }
         return false;
     }

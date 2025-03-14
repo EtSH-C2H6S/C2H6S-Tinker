@@ -19,7 +19,6 @@ import java.util.List;
 import static slimeknights.tconstruct.library.tools.helper.ToolAttackUtil.getCooldownFunction;
 
 public class plasmawaveslashentity extends ItemProjectile {
-    public float baseDamage;
     public int time =0;
     public IToolStackView tool =null;
     public plasmawaveslashentity(EntityType<? extends ItemProjectile> entityType, Level level) {
@@ -54,7 +53,7 @@ public class plasmawaveslashentity extends ItemProjectile {
             if (entity!=null&&entity!=this.getOwner()&&this.getOwner() instanceof Player player&&!(entity instanceof Player)){
                 if (tool!=null) {
                     entity.invulnerableTime = 0;
-                    ToolAttackUtil.attackEntity(tool,player,InteractionHand.MAIN_HAND,entity,getCooldownFunction(player, InteractionHand.MAIN_HAND),true);
+                    ToolAttackUtil.attackEntity(tool,player,InteractionHand.MAIN_HAND,entity,()->1,true);
                 }
                 entity.setSecondsOnFire(65535);
                 entity.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),1000,3,false,false),player);

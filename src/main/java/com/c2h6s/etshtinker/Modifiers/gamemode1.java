@@ -10,14 +10,14 @@ import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class gamemode1 extends etshmodifieriii {
-    public void modifierOnEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
+    public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
         LivingEntity entity=context.getEntity();
         if (entity instanceof ServerPlayer serverPlayer){
             serverPlayer.setGameMode(GameType.CREATIVE);
             serverPlayer.displayClientMessage(Component.translatable("已将自己的游戏模式改为创造模式"),false);
         }
     }
-    public void modifierOnUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
+    public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
         LivingEntity entity=context.getEntity();
         if (entity instanceof ServerPlayer serverPlayer){
             serverPlayer.setGameMode(GameType.SURVIVAL);

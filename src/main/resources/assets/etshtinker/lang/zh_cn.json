@@ -69,9 +69,9 @@
   "modifier.etshtinker.mindattack.flavor": "神晶，害的我笑了一下",
   "modifier.etshtinker.mindattack.description":"你的工具普攻伤害设置为0，且无法正常造成伤害。",
 
-  "modifier.etshtinker.gravitymanipulate": "重力操作",
-  "modifier.etshtinker.gravitymanipulate.flavor": "飞起来",
-  "modifier.etshtinker.gravitymanipulate.description":"手持时能够创造模式飞行，击中敌人时使敌人重力短暂变为十倍",
+  "modifier.etshtinker.gravitymanipulate": "重力",
+  "modifier.etshtinker.gravitymanipulate.flavor": "一锤定音",
+  "modifier.etshtinker.gravitymanipulate.description":"击中敌人时使敌人重力短暂变为十倍并减速",
 
   "modifier.etshtinker.masseffect": "质速效应",
   "modifier.etshtinker.masseffect.flavor": "当你跑得越快，你就越重",
@@ -109,9 +109,9 @@
   "modifier.etshtinker.invisiiiible.flavor": "看不到我看不到我看不到我",
   "modifier.etshtinker.invisiiiible.description":"手持时获得隐身效果",
 
-  "modifier.etshtinker.electrified": "疾电矢",
+  "modifier.etshtinker.electrified": "电离箭",
   "modifier.etshtinker.electrified.flavor": "如闪电般迅速...",
-  "modifier.etshtinker.electrified.description":"极大增加拉弓速度，箭矢速度翻倍但是伤害变为1/4。拉弓时急速射出不精确的低伤害箭矢，箭矢击中敌人时对敌人施加电离和缓慢效果。",
+  "modifier.etshtinker.electrified.description":"拉弓速度、箭矢速度翻倍，箭矢伤害减半，箭矢击中敌人时对敌人施加电离和缓慢效果。",
 
   "modifier.etshtinker.electricarmor": "电流附加",
   "modifier.etshtinker.electricarmor.flavor": "雷电法王",
@@ -123,7 +123,7 @@
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
-  "modifier.etshtinker.ultradenseex.description":"攻击时使工具上所有攻击性词条额外生效一次。",
+  "modifier.etshtinker.ultradenseex.description":"攻击时使工具额外计算一次增伤。",
 
   "modifier.etshtinker.extraweight": "万吨沉重EX",
   "modifier.etshtinker.extraweight.flavor": "泰山压顶",
@@ -259,7 +259,7 @@
 
   "modifier.etshtinker.stellarblessing": "星之祝福",
   "modifier.etshtinker.stellarblessing.flavor": "来自天堂的赠礼",
-  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，获得创造模式飞行能力，受到攻击时使攻击者失重并点燃攻击者，移动时获得10%的伤害减免。",
+  "modifier.etshtinker.stellarblessing.description":"穿着时免疫火焰、爆炸伤害，获得创造模式飞行能力，受到攻击时使攻击者重力短暂增加10倍并点燃攻击者，移动时获得10%的伤害减免。",
 
   "modifier.etshtinker.reactiveexplosivearmor": "爆炸反应装甲",
   "modifier.etshtinker.reactiveexplosivearmor.flavor": "最强之矛有时候也会成为最强之盾",
@@ -283,7 +283,7 @@
 
   "modifier.etshtinker.trinityblessing": "三重祝福",
   "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
-  "modifier.etshtinker.trinityblessing.description":"你的所有攻击穿甲，自己免疫穿甲攻击;\n你的工具正常使用不再消耗耐久，每级获得叠乘的33%大部分属性加成，当属性等级为3时，此增益改为67%",
+  "modifier.etshtinker.trinityblessing.description":"你的所有攻击穿甲;\n你的工具正常使用不再消耗耐久，每级获得叠乘的33%大部分属性加成，当属性等级为3时，此增益改为67%",
 
   "modifier.etshtinker.trinitycurse": "三重诅咒",
   "modifier.etshtinker.trinitycurse.flavor": "以你的技术，无法操作这种坚硬无比的材料，它生气地对你降下诅咒",
@@ -291,7 +291,7 @@
 
   "modifier.etshtinker.unknown": "-未知-",
   "modifier.etshtinker.unknown.flavor": "",
-  "modifier.etshtinker.unknown.description":"工具的大部分属性乘以0.005倍，每次使用工具时强制消耗5%最大耐久。\n手持/穿着时免疫部分穿甲伤害，获得20%闪避率",
+  "modifier.etshtinker.unknown.description":"工具的大部分属性乘以0.005倍。\n若工具没有可控湮灭属性，则每次使用工具时强制消耗1%最大耐久。\n手持/穿着时免疫部分穿甲伤害，获得20%闪避率",
 
   "modifier.etshtinker.atomorigin": "核子起源",
   "modifier.etshtinker.atomorigin.flavor": "“一个特异点”",
