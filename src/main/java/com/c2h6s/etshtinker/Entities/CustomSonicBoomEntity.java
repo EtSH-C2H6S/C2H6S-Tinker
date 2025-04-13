@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.Entities;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -26,6 +27,7 @@ public class CustomSonicBoomEntity extends ItemProjectile{
     public Vec3 direction ;
     public int time =0;
     public boolean Scatter=true;
+    public boolean isThorn = false;
 
     public CustomSonicBoomEntity(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -37,25 +39,25 @@ public class CustomSonicBoomEntity extends ItemProjectile{
 
     @Override
     public void tick() {
-        if (this.level instanceof ServerLevel serverLevel) {
+        if (this.level instanceof ServerLevel serverLevel&&this.getOwner()!=null) {
+            EntityDamageSource source = (EntityDamageSource) DamageSource.sonicBoom(this.getOwner());
+            source = this.isThorn?source.setThorns():source;
             if (this.time==0) {
                 if (direction != null) {
                     Vec3 vec3 = getUnitizedVec3(direction);
-                    if (vec3 != null) {
-                        double x = this.getX();
-                        double y = this.getY() + 0.5;
-                        double z = this.getZ();
-                        for (int i = 0; i < range; i++) {
-                            AABB aabb = new AABB(x - 0.85, y - 0.85, z - 0.85, x + 0.85, y + 0.85, z + 0.85);
-                            aabbList.add(aabb);
-                            serverLevel.sendParticles(ParticleTypes.SONIC_BOOM,x,y-0.5,z,1,0,0,0,0);
-                            if (this.Scatter) {
-                                vec3 = getScatteredVec3(vec3, 2.5);
-                            }
-                            x+=vec3.x;
-                            y+=vec3.y;
-                            z+=vec3.z;
+                    double x = this.getX();
+                    double y = this.getY() + 0.5;
+                    double z = this.getZ();
+                    for (int i = 0; i < range; i++) {
+                        AABB aabb = new AABB(x - 0.85, y - 0.85, z - 0.85, x + 0.85, y + 0.85, z + 0.85);
+                        aabbList.add(aabb);
+                        serverLevel.sendParticles(ParticleTypes.SONIC_BOOM,x,y-0.5,z,1,0,0,0,0);
+                        if (this.Scatter) {
+                            vec3 = getScatteredVec3(vec3, 2.5);
                         }
+                        x+=vec3.x;
+                        y+=vec3.y;
+                        z+=vec3.z;
                     }
                 }
                 if (!aabbList.isEmpty()) {
@@ -64,9 +66,9 @@ public class CustomSonicBoomEntity extends ItemProjectile{
                             List<LivingEntity> list = serverLevel.getEntitiesOfClass(LivingEntity.class,aabb);
                             if (!list.isEmpty()) {
                                 for (LivingEntity target : list) {
-                                    if (target != null&&this.getOwner()!=null&&!hitList.contains(target)&&target!=this.getOwner()&&!(target instanceof Player)){
+                                    if (target != null&&!hitList.contains(target)&&target!=this.getOwner()&&!(target instanceof Player)){
                                         target.invulnerableTime=0;
-                                        target.hurt(DamageSource.sonicBoom(this.getOwner()),this.damage/2);
+                                        target.hurt(source,this.damage/2);
                                         hitList.add(target);
                                     }
                                 }
@@ -83,9 +85,9 @@ public class CustomSonicBoomEntity extends ItemProjectile{
                             List<LivingEntity> list = serverLevel.getEntitiesOfClass(LivingEntity.class,aabb.inflate(1.5));
                             if (!list.isEmpty()) {
                                 for (LivingEntity target : list) {
-                                    if (target != null&&this.getOwner()!=null&&!hitList.contains(target)&&target!=this.getOwner()&&!(target instanceof Player)){
+                                    if (target != null&&!hitList.contains(target)&&target!=this.getOwner()&&!(target instanceof Player)){
                                         target.invulnerableTime=0;
-                                        target.hurt(DamageSource.sonicBoom(this.getOwner()),this.damage);
+                                        target.hurt(source,this.damage);
                                         hitList.add(target);
                                     }
                                 }

@@ -3,7 +3,7 @@
     "modid": "mekanism",
     "type": "forge:mod_loaded"
   },
-  "craftable": true,
+  "craftable": false,
   "tier": 666,
   "sortOrder": 16383,
   "hidden": false

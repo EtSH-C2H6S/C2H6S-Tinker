@@ -54,6 +54,7 @@ public class ReactiveResonateArmor extends etshmodifieriii {
                     entity2.setPos(living.getX(), living.getY() +0.5* living.getBbHeight(), living.getZ());
                     entity2.range = 8;
                     entity2.level.addFreshEntity(entity2);
+                    entity2.isThorn = true;
                     CustomSonicBoomEntity entity1 = new CustomSonicBoomEntity(etshtinkerEntity.sonic_boom.get(), living.level);
                     entity1.setOwner(living);
                     entity1.direction = getScatteredVec3(new Vec3(0, -1, 0), 87);
@@ -62,6 +63,7 @@ public class ReactiveResonateArmor extends etshmodifieriii {
                     entity1.level.addFreshEntity(entity1);
                     entity1.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);
                     entity1.range = 8;
+                    entity1.isThorn = true;
                 }
                 event.setAmount(event.getAmount()*0.8f);
             }

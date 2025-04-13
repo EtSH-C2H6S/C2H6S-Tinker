@@ -1,0 +1,13 @@
+{
+
+    "type":"tconstruct:melting", 
+    "ingredient":{
+    	"item": "etshtinker:entropic_ingot"
+    },
+    "temperature": 16272,
+    "time": 720,
+    "result":{
+      "fluid": "etshtinker:molten_entropic_alloy",
+      "amount": 90
+    }
+}

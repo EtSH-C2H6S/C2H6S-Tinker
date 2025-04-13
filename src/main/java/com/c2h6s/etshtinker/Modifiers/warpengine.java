@@ -17,6 +17,7 @@ import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.armor.EquipmentChangeModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
@@ -28,7 +29,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class warpengine extends etshmodifieriii implements GeneralInteractionModifierHook {
+public class warpengine extends etshmodifieriii implements GeneralInteractionModifierHook , EquipmentChangeModifierHook {
     private final ResourceLocation warpdur = new ResourceLocation(MOD_ID, "warpdur");
     private static final ResourceLocation ACTIVE_MODIFIER = TConstruct.getResource("active_modifier");
     public void onRemoved(IToolStackView tool) {
@@ -36,7 +37,7 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
     }
     protected void registerHooks(ModuleHookMap.Builder builder){
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
+        builder.addHook(this, ModifierHooks.GENERAL_INTERACT,ModifierHooks.EQUIPMENT_CHANGE);
     }
     public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
         if (interactionSource==InteractionSource.RIGHT_CLICK){
@@ -123,7 +124,7 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
         }
     }
 
-    public void modifierOnUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
+    public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
         if (tool.getPersistentData().getFloat(warpdur)>0) {
             tool.getPersistentData().putInt(warpdur, 0);
             if (context.getEntity() instanceof Player player) {

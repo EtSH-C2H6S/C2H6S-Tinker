@@ -52,7 +52,7 @@ public class reactiveexplosivearmor extends etshmodifieriii {
                 for (Mob mob:list){
                     if (mob!=null&&!mob.getType().getCategory().isFriendly()){
                         mob.invulnerableTime=0;
-                        mob.hurt(DamageSource.explosion(living),event.getAmount());
+                        mob.hurt(((EntityDamageSource)DamageSource.explosion(living)).setThorns(),event.getAmount());
                     }
                 }
                 living.playSound(SoundEvents.GENERIC_EXPLODE,1,1);

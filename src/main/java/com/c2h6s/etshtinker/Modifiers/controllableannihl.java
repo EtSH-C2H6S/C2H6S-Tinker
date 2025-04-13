@@ -30,7 +30,7 @@ public class controllableannihl extends etshmodifieriii implements ToolStatsModi
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
-        if (!tool.hasTag(TinkerTags.Items.DURABILITY)){
+        if (!tool.hasTag(TinkerTags.Items.DURABILITY)||tool.isBroken()){
             return damage;
         }
         if (entity instanceof LivingEntity target) {

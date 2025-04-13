@@ -41,17 +41,17 @@ public class selfassemble extends etshmodifieriii {
                 maxRepair = 1073741823;
             }
             int damaged =Math.min(maxRepair,tool.getDamage());
-            if (toolData.getInt(repair)>damaged){
+            damaged = Math.min(damaged,toolData.getInt(repair));
+            if (damaged>0){
                 toolData.putInt(repair,toolData.getInt(repair)-damaged);
                 tool.setDamage(tool.getDamage()-damaged);
             }
-            else if (toolData.getInt(repair)<=damaged&&holder instanceof Player player){
+            if (tool.getDamage()>0&&holder instanceof Player player){
                 for (int j = 0; j < player.getInventory().items.size(); j++) {
                     ItemStack stack = player.getInventory().getItem(j);
                     if (stack.getItem() == anti_neutronium.get() && stack.getCount() > 0) {
                         stack.setCount(stack.getCount()-1);
-                        toolData.putInt(repair,toolData.getInt(repair)-damaged+maxRepair*2);
-                        tool.setDamage(tool.getDamage()-damaged);
+                        toolData.putInt(repair,toolData.getInt(repair)+maxRepair*2);
                     }
                 }
             }

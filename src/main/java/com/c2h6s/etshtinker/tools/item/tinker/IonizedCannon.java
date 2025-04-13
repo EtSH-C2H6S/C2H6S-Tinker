@@ -92,12 +92,14 @@ public class IonizedCannon extends ModifiableItem {
             return InteractionResultHolder.fail(stack);
         }
         FluidStack fluid = TANK_HELPER.getFluid(tool);
-        int fluiddrain = Math.round( tool.getStats().get(ToolStats.ATTACK_DAMAGE)*20);
+        int consumption = Math.round(getToolFluidMultiplier(tool) * getFluidBaseComsumption(fluid)*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
+        consumption =Math.max(1,consumption);
+        consumption/=tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY);
         if (stack.getCount() > 1) {
             return InteractionResultHolder.pass(stack);
         }
         if (!tool.isBroken()){
-            boolean enoughfluid =TANK_HELPER.getFluid(tool).getAmount()>fluiddrain;
+            boolean enoughfluid =TANK_HELPER.getFluid(tool).getAmount()>consumption;
             boolean iscreative =playerIn.isCreative();
             if (!worldIn.isClientSide){
                 if(!iscreative&&!enoughfluid){
@@ -181,7 +183,7 @@ public class IonizedCannon extends ModifiableItem {
         Fluid fluid =fluidStack.getFluid();
         int times =tool.getStats().getInt(etshtinkerToolStats.MULTIPLASMA);
         int a =0;
-        int consumption = Math.round(getToolFluidMultiplier(tool) * getFluidBaseComsumption(fluidStack)*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
+        int consumption = Math.round(getToolFluidMultiplier(tool) * getFluidBaseComsumption(fluidStack)/tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
         consumption =Math.max(1,consumption);
         consumption/=tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY);
         while (a<=times) {
