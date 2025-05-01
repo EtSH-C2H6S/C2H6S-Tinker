@@ -30,6 +30,7 @@ import slimeknights.tconstruct.library.tools.capability.PersistentDataCapability
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
 import javax.annotation.Nullable;
@@ -90,13 +91,14 @@ public class heavenlyGaleModifier extends etshmodifieriii implements Requirement
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isCorrectSlot) {
             if (tool.getPersistentData().getInt(GeneralInteractionModifierHook.KEY_DRAWTIME) != 0) {
-                if (tool.getPersistentData().getInt(bow_charge) <= 80) {
-                    tool.getPersistentData().putInt(bow_charge, tool.getPersistentData().getInt(bow_charge) + 1);
+                int charge = tool.getPersistentData().getInt(bow_charge) % 10;
+                if (tool.getPersistentData().getFloat(bow_charge) <= 80) {
+                    tool.getPersistentData().putFloat(bow_charge, tool.getPersistentData().getInt(bow_charge) + tool.getStats().get(ToolStats.DRAW_SPEED));
                 }
-                if (tool.getPersistentData().getInt(bow_charge) % 10 == 0 && tool.getPersistentData().getInt(bow_charge) <= 80&& tool.getPersistentData().getInt(bow_charge)>0) {
+                if (tool.getPersistentData().getInt(bow_charge)>0&&tool.getPersistentData().getInt(bow_charge) % 10 != charge && tool.getPersistentData().getInt(bow_charge) < 80) {
                     livingEntity.playSound(SoundEvents.NOTE_BLOCK_HAT, 1, 1);
                 }
-                if (tool.getPersistentData().getInt(bow_charge) == 80) {
+                if (tool.getPersistentData().getInt(bow_charge) >= 80) {
                     livingEntity.playSound(SoundEvents.NOTE_BLOCK_BIT, 1.25f, 1.25f);
                     if (livingEntity.level instanceof ServerLevel serverLevel) {
                         double dx = livingEntity.getLookAngle().x + livingEntity.getX();

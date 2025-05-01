@@ -59,6 +59,11 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
         builder.addHook(this, ModifierHooks.REQUIREMENTS);
     }
 
+    @Override
+    public int getPriority() {
+        return Integer.MAX_VALUE;
+    }
+
     @javax.annotation.Nullable
     @Override
     public Component requirementsError(ModifierEntry entry) {
@@ -86,11 +91,15 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
             meleSpecialAttackUtil.createWarpEx(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
         }
     }
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+
+    @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         if (context.getPlayerAttacker()!=null&&!context.isExtraAttack()&&context.isFullyCharged()) {
             warpattackex.tryWarp(context.getPlayerAttacker(), (ToolStack) tool,context.getPlayerAttacker().getUsedItemHand());
         }
+        return knockback;
     }
+
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (livingEntity instanceof Player player&&!player.isShiftKeyDown()&&abstractArrow !=null){
             abstractArrow.setDeltaMovement(abstractArrow.getDeltaMovement().scale(100));

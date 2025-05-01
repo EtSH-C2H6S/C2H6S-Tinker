@@ -74,7 +74,7 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
             ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolStats.BLOCK_AMOUNT.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             ToolStats.BLOCK_ANGLE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder,0.67);
+            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             etshtinkerToolStats.PLASMARANGE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             etshtinkerToolStats.ENERGY_STORE.multiply(builder,Math.pow(1.33,modifier.getLevel()));
             etshtinkerToolStats.FLUID_EFFICIENCY.multiply(builder,Math.pow(1.33,modifier.getLevel()));
@@ -89,7 +89,7 @@ public class trinityblessing extends etshmodifieriii implements ToolStatsModifie
             ToolStats.VELOCITY.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.MINING_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.ARMOR.multiply(builder,Math.pow(1.67,modifier.getLevel()));
-            ToolStats.ATTACK_SPEED.multiply(builder,0.67);
+            ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.ARMOR_TOUGHNESS.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.PROJECTILE_DAMAGE.multiply(builder,Math.pow(1.67,modifier.getLevel()));
             ToolStats.KNOCKBACK_RESISTANCE.multiply(builder,Math.pow(1.67,modifier.getLevel()));

@@ -287,7 +287,7 @@
 
   "modifier.etshtinker.trinitycurse": "三重诅咒",
   "modifier.etshtinker.trinitycurse.flavor": "以你的技术，无法操作这种坚硬无比的材料，它生气地对你降下诅咒",
-  "modifier.etshtinker.trinitycurse.description":"工具攻速减少33%，你向上移动变得更艰难。被攻击时所受伤害翻3倍，无敌帧缩短，属性等级为3时移除自身无敌帧",
+  "modifier.etshtinker.trinitycurse.description":"你向上移动变得更艰难。被攻击时所受伤害翻1.5倍，无敌帧缩短",
 
   "modifier.etshtinker.unknown": "-未知-",
   "modifier.etshtinker.unknown.flavor": "",
@@ -339,7 +339,7 @@
 
   "modifier.etshtinker.hyperfluxloaded": "高级通量装载",
   "modifier.etshtinker.hyperfluxloaded.flavor": "太棒了！",
-  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具5%的能量增加伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
+  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具的能量增加伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
 
   "modifier.etshtinker.nightsenhance": "暗影附层",
   "modifier.etshtinker.nightsenhance.flavor": "尽管扭曲了，但是这种能量依然强大",

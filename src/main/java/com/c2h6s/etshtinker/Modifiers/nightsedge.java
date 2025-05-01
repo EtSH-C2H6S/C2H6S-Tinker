@@ -49,9 +49,9 @@ public class nightsedge extends etshmodifieriii {
                 NightSlashEntityB entity = new NightSlashEntityB(etshtinkerEntity.nights_slash_entity_b.get(), player.level);
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
                 entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
-                if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/4){
-                    float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /2500000;
-                    entity.damage += dmgup;
+                if (etshmodifierfluxed.getEnergyStored(tool)>1000) {
+                    int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),10000);
+                    entity.damage += energyDraw/100f;
                     etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
                 }
                 entity.setOwner(player);

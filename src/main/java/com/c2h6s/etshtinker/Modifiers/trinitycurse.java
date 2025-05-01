@@ -34,7 +34,7 @@ public class trinitycurse extends etshmodifieriii  {
                 if (stack.getItem() instanceof IModifiable){
                     ToolStack tool =ToolStack.from(stack);
                     if (tool.getModifierLevel(this)>0){
-                        event.setAmount(event.getAmount()*3);
+                        event.setAmount(event.getAmount()*1.5F);
                         return;
                     }
                 }
@@ -49,10 +49,7 @@ public class trinitycurse extends etshmodifieriii  {
                 holder.setDeltaMovement(v.x,v.y*0.75,v.z);
             }
             if (holder.invulnerableTime > 0) {
-                holder.invulnerableTime-=1+modifier.getLevel()/2;
-                if (modifier.getLevel() == 3 && holder.invulnerableTime > 0) {
-                    holder.invulnerableTime = 0;
-                }
+                holder.invulnerableTime-=modifier.getLevel();
             }
         }
     }

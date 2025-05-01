@@ -41,6 +41,10 @@ public class VibrationAcceptor extends ItemProjectile implements VibrationListen
         this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, (VibrationListener.ReceivingEvent)null, 0.0F, 0));
     }
 
+    @Override
+    public boolean isInvisible() {
+        return true;
+    }
 
     @Override
     public void tick() {

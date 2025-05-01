@@ -58,15 +58,16 @@ public class LivingEntityTick {
                 serverLevel.sendParticles(etshtinkerParticleType.atomic_dec.get(),entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ(),2,entity.getBbWidth()/2,entity.getBbHeight()/4,entity.getBbWidth()/2,0);
             }
             if ((entity.level.getGameTime()%5)<=amplifier) {
-                float b = Math.max(1,(float) amplifier/5);
+                float multiplier = Math.max(1,(float) amplifier/5);
+                float life = Math.min(entity.getMaxHealth(),1000);
                 DamageSource damageSource = switch (EtSHrnd().nextInt(4)){
                     case 1-> DamageSource.WITHER;
                     case 2-> DamageSource.MAGIC;
                     case 3-> DamageSource.FREEZE;
-                    default -> throughSources.atomic(entity.getMaxHealth() * 0.00025f*b);
+                    default -> throughSources.atomic(life * 0.00025f* multiplier);
                 };
                 entity.invulnerableTime=0;
-                entity.hurt(throughSources.atomic(entity.getMaxHealth() * 0.00025f*b), entity.getMaxHealth() * 0.00025f*b);
+                entity.hurt(damageSource, life * 0.00025f* multiplier);
             }
             entity.getPersistentData().putInt("atomic_dec",dura-1);
             if (entity.getPersistentData().getInt("atomic_dec")<=0){

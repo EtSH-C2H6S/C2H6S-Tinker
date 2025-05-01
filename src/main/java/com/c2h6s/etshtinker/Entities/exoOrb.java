@@ -92,7 +92,7 @@ public class exoOrb extends ItemProjectile{
                 if (living!=null&&living!=this.getOwner()&&!(living instanceof Player)){
                     if (this.getOwner() instanceof Player player){
                         living.invulnerableTime=0;
-                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage/5),this.baseDamage/5);
+                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage),this.baseDamage);
                         living.invulnerableTime=0;
                         if (this.getCapability(EntityModifierCapability.CAPABILITY).isPresent()&&this.getLivingOwner()!=null){
                             AbstractArrow arrow =new Arrow(this.level,this.getLivingOwner());

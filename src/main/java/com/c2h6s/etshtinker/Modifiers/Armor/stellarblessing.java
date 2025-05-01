@@ -64,14 +64,13 @@ public class stellarblessing extends etshmodifieriii {
     @Override
     public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
         if((context.getEntity() instanceof Player player && !player.getAbilities().mayfly&&!player.getAbilities().flying)) {
-            player.getAbilities().flying=true;
             player.getAbilities().mayfly=true;
         }
     }
 
     @Override
     public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        if((context.getEntity() instanceof Player player && player.getAbilities().mayfly&&player.getAbilities().flying)) {
+        if((context.getEntity() instanceof Player player && player.getAbilities().mayfly)) {
             player.getAbilities().flying = false;
             player.getAbilities().mayfly = false;
         }

@@ -37,7 +37,7 @@ public class meleSpecialAttackUtil {
         LivingEntity entity =getNearestLiEnt(radius,attacker,world);
         if (entity!=null&&entity.isAlive()){
             entity.invulnerableTime=0;
-            attackUtil.attackEntity(tool,attacker,hand,entity,()->1,true, Util.getSlotType(hand),damage,true,true,true,true,0);
+            attackUtil.attackEntity(tool,attacker,hand,entity,()->1,true, Util.getSlotType(hand),damage,false,true,true,true,0);
             entity.invulnerableTime=0;
             if (world.isClientSide) {
                 world.addAlwaysVisibleParticle(etshtinkerParticleType.slash.get(), true, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 0, 0, 0);
