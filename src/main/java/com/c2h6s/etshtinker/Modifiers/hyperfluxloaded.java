@@ -19,14 +19,14 @@ import java.util.function.Predicate;
 
 public class hyperfluxloaded extends fluxloaded{
     public int getCapacity(IToolContext context, ModifierEntry modifier, ModDataNBT volatileData) {
-        return 10000000;
+        return 100000;
     }
     public int getPriority() {
         return 256;
     }
     public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
-        if (etshmodifierfluxed.getEnergyStored(tool)>1000) {
-            int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),modifier.getLevel()*10000);
+        if (etshmodifierfluxed.getEnergyStored(tool)>2000) {
+            int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),modifier.getLevel()*1000);
             damage += energyDraw/100f;
             etshmodifierfluxed.removeEnergy(tool,energyDraw,false,false);
         }
@@ -58,13 +58,13 @@ public class hyperfluxloaded extends fluxloaded{
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry entry, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (etshmodifierfluxed.getEnergyStored(tool)>1000) {
 
-            int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),entry.getLevel()*10000);
+            int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),entry.getLevel()*200);
             if (abstractArrow != null) {
                 abstractArrow.setBaseDamage(energyDraw/100f + abstractArrow.getBaseDamage());
                 abstractArrow.setPierceLevel((byte) (int) (energyDraw/1000f + (float) abstractArrow.getPierceLevel()));
                 abstractArrow.addTag("noinvltime");
             }
-            etshmodifierfluxed.removeEnergy(tool, etshmodifierfluxed.getEnergyStored(tool) / 20, false, false);
+            etshmodifierfluxed.removeEnergy(tool, energyDraw, false, false);
         }
 
     }

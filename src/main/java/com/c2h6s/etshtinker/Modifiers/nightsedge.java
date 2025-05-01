@@ -51,8 +51,8 @@ public class nightsedge extends etshmodifieriii {
                 entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
                 if (etshmodifierfluxed.getEnergyStored(tool)>1000) {
                     int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),10000);
-                    entity.damage += energyDraw/100f;
-                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
+                    entity.damage += energyDraw/50f;
+                    etshmodifierfluxed.removeEnergy(tool,energyDraw,false,false);
                 }
                 entity.setOwner(player);
                 entity.setPos(player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ());
@@ -62,10 +62,10 @@ public class nightsedge extends etshmodifieriii {
                 NightSlashEntity entity = new NightSlashEntity(etshtinkerEntity.nights_slash_entity.get(), player.level);
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
                 entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
-                if (etshmodifierfluxed.getEnergyStored(tool)>etshmodifierfluxed.getMaxEnergyStored(tool)/4){
-                    float dmgup = (float) etshmodifierfluxed.getEnergyStored(tool) /2500000;
-                    entity.damage += dmgup;
-                    etshmodifierfluxed.removeEnergy(tool,etshmodifierfluxed.getEnergyStored(tool)/50,false,false);
+                if (etshmodifierfluxed.getEnergyStored(tool)>1000) {
+                    int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),10000);
+                    entity.damage += energyDraw/50f;
+                    etshmodifierfluxed.removeEnergy(tool,energyDraw,false,false);
                 }
                 entity.setOwner(player);
                 entity.setPos(player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ());
