@@ -43,7 +43,7 @@ public class trinitycurse extends etshmodifieriii  {
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null) {
+        if (modifier.getLevel()>0&&holder!=null&&isCorrectSlot&&!tool.hasTag(TinkerTags.Items.ARMOR)) {
             Vec3 v =holder.getDeltaMovement();
             if (v.y>0){
                 holder.setDeltaMovement(v.x,v.y*0.75,v.z);
