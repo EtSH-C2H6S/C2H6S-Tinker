@@ -92,7 +92,7 @@ public class IonizedCannon extends ModifiableItem {
             return InteractionResultHolder.fail(stack);
         }
         FluidStack fluid = TANK_HELPER.getFluid(tool);
-        int consumption = Math.round(getToolFluidMultiplier(tool) * getFluidBaseComsumption(fluid)*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER));
+        int consumption = Math.round(getToolFluidMultiplier(tool) * getFluidBaseComsumption(fluid));
         consumption =Math.max(1,consumption);
         consumption/=tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY);
         if (stack.getCount() > 1) {
