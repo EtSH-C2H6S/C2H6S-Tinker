@@ -27,6 +27,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
@@ -84,6 +85,9 @@ public class IonizedCannon extends ModifiableItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand hand) {
         ItemStack stack = playerIn.getItemInHand(hand);
+        if (playerIn instanceof FakePlayer){
+            return InteractionResultHolder.fail(stack);
+        }
         if (!checkOffHand(playerIn)){
             return InteractionResultHolder.fail(stack);
         }

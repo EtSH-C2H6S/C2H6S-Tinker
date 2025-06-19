@@ -16,6 +16,8 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -49,7 +51,7 @@ public class warpattack extends etshmodifieriii {
 
     @Override
     public int getPriority() {
-        return Integer.MAX_VALUE;
+        return 0;
     }
 
     public static void tryWarp(Player player, ToolStack tool, InteractionHand hand){
@@ -60,12 +62,12 @@ public class warpattack extends etshmodifieriii {
     }
 
     @Override
-    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if (context.getPlayerAttacker()!=null&&!context.isExtraAttack()&&context.isFullyCharged()) {
             warpattack.tryWarp(context.getPlayerAttacker(), (ToolStack) tool,context.getPlayerAttacker().getUsedItemHand());
         }
-        return knockback;
     }
+
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (livingEntity instanceof Player player&&!player.isShiftKeyDown()&&abstractArrow !=null){
             abstractArrow.piercedAndKilledEntities = Lists.newArrayListWithCapacity(5);
@@ -93,4 +95,5 @@ public class warpattack extends etshmodifieriii {
         }
         return false;
     }
+
 }

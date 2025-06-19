@@ -64,11 +64,4 @@ public class AtomicRestructer extends etshmodifieriii {
         }
         return knockback;
     }
-
-    @Override
-    public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (tool.getPersistentData().getInt(des)>=0&&tool.isBroken()){
-            tool.getPersistentData().remove(des);
-        }
-    }
 }

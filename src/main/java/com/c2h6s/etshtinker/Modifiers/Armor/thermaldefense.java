@@ -39,35 +39,21 @@ import static com.c2h6s.etshtinker.util.thermalentityutil.summonElectricField;
 
 public class thermaldefense extends etshmodifieriii {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
-    private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("thermaldefense");
-    public thermaldefense(){
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-    }
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.TOOL_STATS);
-        builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
     }
 
-    private void livinghurtevent(LivingHurtEvent event) {
-        LivingEntity living = event.getEntity();
-        living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-            int level = holder.get(key, 0);
-            if (level > 0) {
-                living.invulnerableTime += 5*level;
-                if (event.getSource().isExplosion()||event.getSource().isMagic()){
-                    event.setAmount(event.getAmount()*0.5f);
-                }
-            }
-        });
-    }
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         SecureRandom random =EtSHrnd();
         if (random.nextInt(50)>modifier.getLevel()){
             LivingEntity entity =context.getEntity();
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,2,false,false));
             entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,2,false,false));
+            if(source.isExplosion()||source.isMagic()){
+                amount*=0.5f;
+            }
             return amount;
         }
         else return  0;

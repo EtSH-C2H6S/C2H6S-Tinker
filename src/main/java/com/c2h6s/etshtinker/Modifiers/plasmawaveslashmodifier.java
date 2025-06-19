@@ -62,10 +62,8 @@ public class plasmawaveslashmodifier extends etshmodifieriii implements GeneralI
             slash.setPos(player.getX(),player.getY()+0.5*player.getBbHeight(),player.getZ());
             slash.tool=tool;
             Vec3 vec3 =getUnitizedVec3(player.getLookAngle());
-            if (vec3!=null) {
-                slash.setDeltaMovement(vec3.scale(5));
-                slash.lerpMotion(vec3.x*5,vec3.y*5,vec3.z*5);
-            }
+            slash.setDeltaMovement(vec3.scale(5));
+            slash.lerpMotion(vec3.x*5,vec3.y*5,vec3.z*5);
             world.addFreshEntity(slash);
         }
     }

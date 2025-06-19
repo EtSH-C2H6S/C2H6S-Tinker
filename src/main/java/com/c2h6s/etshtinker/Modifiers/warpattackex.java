@@ -61,7 +61,7 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
 
     @Override
     public int getPriority() {
-        return Integer.MAX_VALUE;
+        return 0;
     }
 
     @javax.annotation.Nullable
@@ -93,12 +93,12 @@ public class warpattackex extends etshmodifieriii implements RequirementsModifie
     }
 
     @Override
-    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         if (context.getPlayerAttacker()!=null&&!context.isExtraAttack()&&context.isFullyCharged()) {
             warpattackex.tryWarp(context.getPlayerAttacker(), (ToolStack) tool,context.getPlayerAttacker().getUsedItemHand());
         }
-        return knockback;
     }
+
 
     public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (livingEntity instanceof Player player&&!player.isShiftKeyDown()&&abstractArrow !=null){

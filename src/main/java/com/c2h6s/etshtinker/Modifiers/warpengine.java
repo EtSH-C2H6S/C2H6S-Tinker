@@ -67,6 +67,7 @@ public class warpengine extends etshmodifieriii implements GeneralInteractionMod
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        if (level.isClientSide) return;
         if (holder instanceof Player player&&tool.getModifierLevel(this)>0&&isCorrectSlot){
             if (tool.getPersistentData().getFloat(warpdur)>0) {
                 if (tool.getPersistentData().getInt(warpdur) < tool.getModifierLevel(this) * 20 && !player.isShiftKeyDown()) {

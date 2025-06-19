@@ -92,7 +92,7 @@ public class exoOrb extends ItemProjectile{
                 if (living!=null&&living!=this.getOwner()&&!(living instanceof Player)){
                     if (this.getOwner() instanceof Player player){
                         living.invulnerableTime=0;
-                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage),this.baseDamage);
+                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage/8),this.baseDamage/8);
                         living.invulnerableTime=0;
                         if (this.getCapability(EntityModifierCapability.CAPABILITY).isPresent()&&this.getLivingOwner()!=null){
                             AbstractArrow arrow =new Arrow(this.level,this.getLivingOwner());
@@ -106,7 +106,7 @@ public class exoOrb extends ItemProjectile{
                         living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+10);
                         if (this.summonLIGH) {
                             exoLighEntity entity = new exoLighEntity(etshtinkerEntity.exo_ligh.get(), this.level);
-                            entity.damage = this.baseDamage;
+                            entity.damage = this.baseDamage/8;
                             entity.setOwner(player);
                             entity.setPos(living.getX() + EtSHrnd().nextDouble() - 0.5, living.getY() + EtSHrnd().nextDouble() - 0.5 + living.getBbHeight() / 2, living.getZ() + EtSHrnd().nextDouble() - 0.5);
                             this.level.addFreshEntity(entity);

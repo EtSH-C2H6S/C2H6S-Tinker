@@ -1,4 +1,5 @@
 package com.c2h6s.etshtinker;
+import com.c2h6s.etshtinker.Event.IonizedCannonFluidInitializedEvent;
 import com.c2h6s.etshtinker.Event.LivingEvents;
 import com.c2h6s.etshtinker.Mapping.*;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshDampenToolCap;
@@ -122,6 +123,7 @@ public class etshtinker {
         if (Adastraloaded){
             event.enqueueWork(ionizerFluidMap::extendMapAdAstra);
         }
+        MinecraftForge.EVENT_BUS.post(new IonizedCannonFluidInitializedEvent());
         packetHandler.init();
     }
     @SubscribeEvent

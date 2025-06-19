@@ -19,6 +19,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.LogicalSide;
@@ -76,11 +77,13 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
 
 
     private void LeftClick(PlayerInteractEvent.LeftClickEmpty event) {
+        if (event.getEntity() instanceof FakePlayer) return;
         if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber) {
             packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket(event.getEntity().getId()));
         }
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+        if (event.getEntity() instanceof FakePlayer) return;
         if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber&&event.getSide()== LogicalSide.CLIENT) {
             packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket(event.getEntity().getId()));
         }
@@ -96,6 +99,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
 
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
+        if (player instanceof FakePlayer) return false;
         if (player instanceof ServerPlayer serverPlayer){
             createSlash(serverPlayer);
         }

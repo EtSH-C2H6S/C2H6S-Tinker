@@ -39,7 +39,7 @@ public class blitzdefense extends etshmodifieriii {
         }else return 0;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null&&enabled){
+        if (isCorrectSlot&&holder!=null&&enabled){
             holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),200,0,false,false));
             holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,0,false,false));
         }

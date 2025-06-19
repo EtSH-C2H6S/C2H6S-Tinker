@@ -44,6 +44,7 @@ public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralI
         builder.addHook(this, ModifierHooks.GENERAL_INTERACT);
     }
 
+
     @Override
     public InteractionResult onToolUse(IToolStackView iToolStackView, ModifierEntry modifierEntry, Player player, InteractionHand interactionHand, InteractionSource interactionSource) {
         if (interactionHand == InteractionHand.MAIN_HAND&&player.totalExperience>10){

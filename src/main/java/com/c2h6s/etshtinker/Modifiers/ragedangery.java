@@ -48,6 +48,7 @@ public class ragedangery extends etshmodifieriii implements DurabilityDisplayMod
 
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        if (level.isClientSide) return;
         ModDataNBT toolData = tool.getPersistentData();
         if (isSelected){
             if (toolData.getInt(ragevalue)<100&&toolData.getInt(ragedur)==0) {

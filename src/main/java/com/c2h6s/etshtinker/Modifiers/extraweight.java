@@ -20,6 +20,7 @@ public class extraweight extends etshmodifieriii {
         return true;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        if (level.isClientSide) return;
         if(holder instanceof Player player&&isCorrectSlot&&player.getDeltaMovement().y<-0.1&&!holder.isNoGravity()){
             double xx = player.getX();
             double yy = player.getY();

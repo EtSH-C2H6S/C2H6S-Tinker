@@ -38,7 +38,6 @@ public class reactiveexplosivearmor extends etshmodifieriii {
             return;
         }
         LivingEntity living = event.getEntity();
-        Entity entity =event.getSource().getEntity();
         living.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
             int level = holder.get(key, 0);
             if (level > 0) {

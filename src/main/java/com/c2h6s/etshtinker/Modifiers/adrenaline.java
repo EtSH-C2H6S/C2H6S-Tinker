@@ -90,6 +90,7 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
     }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity livingEntity, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        if (level.isClientSide) return;
         ModDataNBT toolData = tool.getPersistentData();
         if (isSelected) {
             if (toolData.getInt(adrenaline) < 100) {
@@ -129,21 +130,6 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
             toolData.putFloat(adrenaline, 0.0f);
         }
         return knockback;
-    }
-
-
-    public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
-        LivingEntity entity = context.getEntity();
-        ModDataNBT toolData = tool.getPersistentData();
-        if (entity instanceof Player player && modifier.getLevel() > 0) {
-            if (toolData.getInt(adrenaline) > 85) {
-                Level world = entity.getLevel();
-                world.playSound((Player) null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BEACON_DEACTIVATE, SoundSource.NEUTRAL, 1.0F, 1.0F);
-                return 0.5f * amount;
-            }
-            toolData.putFloat(adrenaline, 0.0f);
-        }
-        return amount;
     }
 
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @org.jetbrains.annotations.Nullable Player player, List<Component> list, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
