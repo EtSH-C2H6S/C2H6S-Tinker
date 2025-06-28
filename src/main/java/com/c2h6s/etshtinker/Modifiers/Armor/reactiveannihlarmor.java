@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Entities.annihilateexplosionentity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
@@ -28,7 +28,7 @@ import java.util.List;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.init.ItemReg.etshtinkerMekansimMaterial.anti_neutronium;
 
-public class reactiveannihlarmor extends etshmodifieriii implements DurabilityDisplayModifierHook {
+public class reactiveannihlarmor extends EtshModifieriii implements DurabilityDisplayModifierHook {
     private final ResourceLocation antineutron = new ResourceLocation(MOD_ID, "antineutron");
     public void onModifierRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(antineutron);

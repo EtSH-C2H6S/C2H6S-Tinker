@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class momentoaccel extends etshmodifieriii {
+public class momentoaccel extends EtshModifieriii {
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getAttacker();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity attacker&&!tool.isBroken()){

@@ -1,9 +1,9 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 
 
-public class worldforceex extends etshmodifieriii {
+public class worldforceex extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }

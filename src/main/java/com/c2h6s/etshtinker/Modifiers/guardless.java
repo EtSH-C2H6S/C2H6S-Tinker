@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,12 +10,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-import java.util.Objects;
-
 import static net.minecraft.world.entity.ai.attributes.Attributes.*;
 import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
-public class guardless extends etshmodifieriii {
+public class guardless extends EtshModifieriii {
     public guardless(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }

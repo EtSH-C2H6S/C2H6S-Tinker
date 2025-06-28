@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.exoOrb;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
@@ -26,7 +26,6 @@ import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInterac
 import slimeknights.tconstruct.library.modifiers.hook.ranged.BowAmmoModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.EntityModifierCapability;
-import slimeknights.tconstruct.library.tools.capability.PersistentDataCapability;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
@@ -41,7 +40,7 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
-public class heavenlyGaleModifier extends etshmodifieriii implements RequirementsModifierHook , BowAmmoModifierHook {
+public class heavenlyGaleModifier extends EtshModifieriii implements RequirementsModifierHook , BowAmmoModifierHook {
 
     private final ResourceLocation bow_charge = new ResourceLocation(MOD_ID, "bow_charge");
     public void onModifierRemoved(IToolStackView tool) {

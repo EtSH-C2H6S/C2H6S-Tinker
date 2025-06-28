@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +17,7 @@ import vazkii.botania.api.mana.ManaItemHandler;
 
 import static com.c2h6s.etshtinker.util.modloaded.BOTloaded;
 
-public class threshold extends etshmodifieriii {
+public class threshold extends EtshModifieriii {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("threshold");
     public threshold(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);

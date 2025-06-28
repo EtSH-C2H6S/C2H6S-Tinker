@@ -1,13 +1,13 @@
 package com.c2h6s.etshtinker.Entities.process;
 
-import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
+import com.c2h6s.etshtinker.Entities.damageSources.IPierceThroughSource;
+import com.c2h6s.etshtinker.Entities.damageSources.ThroughSources;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
@@ -29,20 +29,8 @@ public class LivingEntityTick {
                 }
             }
             if (entity.getPersistentData().getInt("annih_countdown")<=0){
-                entity.invulnerableTime=0;
-                entity.hurt(throughSources.annihilate(Float.MAX_VALUE),Float.MAX_VALUE);
-                entity.invulnerableTime=0;
-                entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassMagic(),Float.MAX_VALUE);
-                entity.invulnerableTime=0;
-                entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassArmor(),Float.MAX_VALUE);
-                entity.invulnerableTime=0;
-                entity.hurt(throughSources.annihilate(Float.MAX_VALUE).bypassInvul(),Float.MAX_VALUE);
-                if (!entity.isDeadOrDying()){
-                    entity.die(throughSources.annihilate(Float.MAX_VALUE));
-                    entity.setHealth(0);
-                    entity.remove(Entity.RemovalReason.KILLED);
-                }
                 entity.getPersistentData().remove("annih_countdown");
+                ThroughSources.annihilate(Float.MAX_VALUE).hurtEntity(entity);
                 level.sendParticles(etshtinkerParticleType.annihl_scatter.get(),entity.getX(),entity.getY()+0.5*entity.getBbHeight(),entity.getZ(),64,0.1,0.1,0.1,1);
                 return;
             }
@@ -64,10 +52,13 @@ public class LivingEntityTick {
                     case 1-> DamageSource.WITHER;
                     case 2-> DamageSource.MAGIC;
                     case 3-> DamageSource.FREEZE;
-                    default -> throughSources.atomic(life * 0.00025f* multiplier);
+                    default -> ThroughSources.atomic(life * 0.00025f* multiplier);
                 };
-                entity.invulnerableTime=0;
-                entity.hurt(damageSource, life * 0.00025f* multiplier);
+                if (damageSource instanceof IPierceThroughSource sources) sources.hurtEntity(entity);
+                else {
+                    entity.invulnerableTime = 0;
+                    entity.hurt(damageSource, life * 0.00025f * multiplier);
+                }
             }
             entity.getPersistentData().putInt("atomic_dec",dura-1);
             if (entity.getPersistentData().getInt("atomic_dec")<=0){
@@ -84,7 +75,7 @@ public class LivingEntityTick {
             if ((entity.level.getGameTime()%5)<=amplifier) {
                 float b = Math.max(1,(float) amplifier/5);
                 entity.invulnerableTime=0;
-                entity.hurt(throughSources.quark(entity.getMaxHealth() * 0.005f*b), entity.getMaxHealth() * 0.005f*b);
+                ThroughSources.quark(entity.getMaxHealth() * 0.005f*b).hurtEntity(entity);
             }
             entity.getPersistentData().putInt("quark_disassemble",dura-1);
             if (entity.getPersistentData().getInt("quark_disassemble")<=0){

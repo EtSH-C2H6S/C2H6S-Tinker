@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.fml.ModList;
@@ -20,7 +20,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 
-public class beconcerted extends etshmodifieriii implements ToolStatsModifierHook , VolatileDataModifierHook {
+public class beconcerted extends EtshModifieriii implements ToolStatsModifierHook , VolatileDataModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);

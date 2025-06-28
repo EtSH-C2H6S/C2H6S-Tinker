@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -10,7 +10,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.function.Predicate;
 
-public class plasmarrow extends etshmodifieriii {
+public class plasmarrow extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }

@@ -18,21 +18,20 @@ import net.minecraft.world.phys.Vec3;
 
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
-public class plasmarrowentity extends AbstractArrow {
+public class PlasmaArrowEntity extends AbstractArrow {
     public int time =0;
-    public Vec3 movement = null;
-    protected plasmarrowentity(EntityType<? extends AbstractArrow> p_36717_, LivingEntity p_36718_, Level p_36719_) {
+    protected PlasmaArrowEntity(EntityType<? extends AbstractArrow> p_36717_, LivingEntity p_36718_, Level p_36719_) {
         super(p_36717_, p_36718_, p_36719_);
     }
 
-    protected plasmarrowentity(EntityType<? extends AbstractArrow> p_36711_, double p_36712_, double p_36713_, double p_36714_, Level p_36715_) {
+    protected PlasmaArrowEntity(EntityType<? extends AbstractArrow> p_36711_, double p_36712_, double p_36713_, double p_36714_, Level p_36715_) {
         super(p_36711_, p_36712_, p_36713_, p_36714_, p_36715_);
     }
 
-    public plasmarrowentity(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_) {
+    public PlasmaArrowEntity(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_) {
         super(p_36721_, p_36722_);
     }
-    public plasmarrowentity(Level world, LivingEntity livingEntity){
+    public PlasmaArrowEntity(Level world, LivingEntity livingEntity){
         super(etshtinkerEntity.plasmarrowEntity.get(),livingEntity,world);
 
     }
@@ -49,7 +48,6 @@ public class plasmarrowentity extends AbstractArrow {
         }
         if (getMold(this.getDeltaMovement())<5) {
             this.setDeltaMovement(this.getDeltaMovement().scale(1.05));
-            movement = this.getDeltaMovement();
         }
         if (this.inGround){
             this.discard();
@@ -60,6 +58,7 @@ public class plasmarrowentity extends AbstractArrow {
     public void onHitEntity(EntityHitResult result) {
         this.setPierceLevel((byte)(1+ this.getPierceLevel()));
         Entity e =result.getEntity();
+        Vec3 movement = this.getDeltaMovement();
         if (e instanceof LivingEntity entity) {
             if (this.getOwner() instanceof Player player&&!(entity instanceof Player)) {
                 entity.invulnerableTime = 0;
@@ -70,12 +69,10 @@ public class plasmarrowentity extends AbstractArrow {
             }
         }
         super.onHitEntity(result);
-        if (movement!=null) {
-            this.setDeltaMovement(movement);
-        }
+        this.setDeltaMovement(movement);
     }
     protected void onHitBlock(BlockHitResult result) {
-        super.onHitBlock(result);
+        this.discard();
     }
 
     @Override

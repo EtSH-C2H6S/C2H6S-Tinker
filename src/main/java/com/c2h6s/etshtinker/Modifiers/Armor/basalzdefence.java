@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import cofh.core.init.CoreMobEffects;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -26,7 +26,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class basalzdefence extends etshmodifieriii implements ToolStatsModifierHook {
+public class basalzdefence extends EtshModifieriii implements ToolStatsModifierHook {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("basalzdefence");
     public basalzdefence(){

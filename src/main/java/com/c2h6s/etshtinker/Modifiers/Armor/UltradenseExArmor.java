@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
@@ -25,7 +25,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class UltradenseExArmor extends etshmodifieriii {
+public class UltradenseExArmor extends EtshModifieriii {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("ultradenseex");
     public UltradenseExArmor(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);

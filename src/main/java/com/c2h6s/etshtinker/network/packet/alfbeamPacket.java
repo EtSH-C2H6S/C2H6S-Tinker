@@ -6,7 +6,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.c2h6s.etshtinker.Modifiers.alfrage.trySpawnAlfBurst;
+import static com.c2h6s.etshtinker.Modifiers.AlfRage.trySpawnAlfBurst;
 
 public class alfbeamPacket {
     public alfbeamPacket() {;

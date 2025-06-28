@@ -9,7 +9,7 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 public class etshtinkerBotModifier {
     public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
-    public static final StaticModifier<alfrage> alfrage_STATIC_MODIFIER= MODIFIERS.register("alfrage", alfrage::new);
-    public static final StaticModifier<alfsmind>alfsmind_STATIC_MODIFIER= MODIFIERS.register("alfsmind", alfsmind::new);
+    public static final StaticModifier<AlfRage> alfrage_STATIC_MODIFIER= MODIFIERS.register("alfrage", AlfRage::new);
+    public static final StaticModifier<AlfMind>alfsmind_STATIC_MODIFIER= MODIFIERS.register("alfsmind", AlfMind::new);
     public static final StaticModifier<threshold>threshold_STATIC_MODIFIER= MODIFIERS.register("threshold", threshold::new);
 }

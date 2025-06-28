@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Entities;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
-import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
+import com.c2h6s.etshtinker.Entities.damageSources.ThroughSources;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
@@ -92,7 +92,7 @@ public class exoOrb extends ItemProjectile{
                 if (living!=null&&living!=this.getOwner()&&!(living instanceof Player)){
                     if (this.getOwner() instanceof Player player){
                         living.invulnerableTime=0;
-                        living.hurt(playerThroughSource.PlayerQuark(player,this.baseDamage/8),this.baseDamage/8);
+                        playerThroughSource.PlayerQuark(player,this.baseDamage/8).hurtEntity(living);
                         living.invulnerableTime=0;
                         if (this.getCapability(EntityModifierCapability.CAPABILITY).isPresent()&&this.getLivingOwner()!=null){
                             AbstractArrow arrow =new Arrow(this.level,this.getLivingOwner());
@@ -113,7 +113,7 @@ public class exoOrb extends ItemProjectile{
                         }
                     }else {
                         living.invulnerableTime=0;
-                        living.hurt(throughSources.quark(this.baseDamage),this.baseDamage);
+                        ThroughSources.quark(this.baseDamage).hurtEntity(living);
                         living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+10);
                     }
                 }

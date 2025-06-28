@@ -77,15 +77,15 @@ public class ionizerFluidMap {
     }
     public static void extendMapAdAstra(){
         fluidParts.put(molten_meteoralloy.get(),plasmaexplosionorange.get());
-        fluidDmg.put(molten_meteoralloy.get(),4f);
+        fluidDmg.put(molten_meteoralloy.get(),3.5f);
         fluidSpecial.put(molten_meteoralloy.get(),"explosion");
         fluidParts.put(molten_stellaralloy.get(),plasmaexplosionyellow.get());
-        fluidDmg.put(molten_stellaralloy.get(),5f);
+        fluidDmg.put(molten_stellaralloy.get(),4.5f);
         fluidSpecial.put(molten_stellaralloy.get(),"explosion");
     }
     public static void extendMapExoalloy(){
         fluidParts.put(molten_exo_alloy.get(),plasmaexplosiongreen.get());
-        fluidDmg.put(molten_exo_alloy.get(),32f);
+        fluidDmg.put(molten_exo_alloy.get(),16f);
         fluidSpecial.put(molten_exo_alloy.get(),"quark");
     }
     public static List<IonizedCannonRecipe> getIonizerRecipes(){

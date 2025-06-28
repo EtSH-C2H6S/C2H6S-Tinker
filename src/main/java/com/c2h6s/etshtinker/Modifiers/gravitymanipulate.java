@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -10,13 +10,12 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
-public class gravitymanipulate extends etshmodifieriii {
+public class gravitymanipulate extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }
@@ -26,8 +25,7 @@ public class gravitymanipulate extends etshmodifieriii {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity living){
             living.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
-            if ((!living.isNoGravity()&&!living.isOnGround())&&!(living instanceof Player)){
-                living.setNoGravity(false);
+            if (!living.isNoGravity()&&!(living instanceof Player)){
                 living.fallDistance+=10*modifier.getLevel();
                 living.setDeltaMovement(0,-5,0);
             }
@@ -41,8 +39,7 @@ public class gravitymanipulate extends etshmodifieriii {
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target !=null){
             target.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
-            if ((!target.isNoGravity()&&!target.isOnGround())&&!(target instanceof Player)){
-                target.setNoGravity(false);
+            if (!target.isNoGravity()&&!(target instanceof Player)){
                 target.fallDistance+=10*modifier.getLevel();
                 target.setDeltaMovement(0,-5,0);
             }

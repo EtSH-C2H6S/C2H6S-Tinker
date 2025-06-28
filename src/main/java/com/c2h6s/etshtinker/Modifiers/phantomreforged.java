@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.phantomswordentity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -16,7 +16,7 @@ import java.security.SecureRandom;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class phantomreforged extends etshmodifieriii {
+public class phantomreforged extends EtshModifieriii {
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         if (modifier.getLevel()>0&&context.getAttacker() instanceof Player player&&context.getTarget() instanceof LivingEntity target&&context.isFullyCharged()){
             Level level1 = player.level;

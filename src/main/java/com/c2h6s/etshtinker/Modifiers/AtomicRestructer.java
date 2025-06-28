@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.ShockWaveEntity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
@@ -10,8 +10,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -21,7 +19,7 @@ import java.util.Collection;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class AtomicRestructer extends etshmodifieriii {
+public class AtomicRestructer extends EtshModifieriii {
     private final ResourceLocation des = new ResourceLocation(MOD_ID, "des");
     @Override
     public boolean isNoLevels() {

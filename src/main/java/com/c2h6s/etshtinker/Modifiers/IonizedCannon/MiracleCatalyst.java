@@ -1,7 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.IonizedCannon;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifierFluidWeapon;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.hooks.FluidConsumptionModifierHook;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import net.minecraft.util.Mth;
@@ -12,7 +11,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import static com.c2h6s.etshtinker.init.etshtinkerFluids.moltenExoAlloy.molten_exo_alloy;
 
-public class MiracleCatalyst extends etshmodifieriii implements FluidConsumptionModifierHook {
+public class MiracleCatalyst extends EtshModifieriii implements FluidConsumptionModifierHook {
     @Override
     public boolean isNoLevels() {
         return true;

@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Entities;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
-import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
+import com.c2h6s.etshtinker.Entities.damageSources.ThroughSources;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
@@ -50,17 +50,14 @@ public class exoLighEntity extends ItemProjectile{
         for (LivingEntity living :ls){
             if (living !=this.getOwner()){
                 if (this.getOwner() instanceof Player player&&!(living instanceof Player)){
-                    living.invulnerableTime=0;
-                    living.hurt(playerThroughSource.PlayerQuark(player,this.damage),this.damage);
+                    playerThroughSource.PlayerQuark(player,this.damage).hurtEntity(living);
                     living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+3);
                 }else if (!(living instanceof Player)){
-                    living.invulnerableTime=0;
-                    living.hurt(throughSources.quark(this.damage),this.damage);
+                    ThroughSources.quark(this.damage).hurtEntity(living);
                     living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+3);
                 }
             }
         }
-
         time++;
         if (this.time>=16){
             this.discard();

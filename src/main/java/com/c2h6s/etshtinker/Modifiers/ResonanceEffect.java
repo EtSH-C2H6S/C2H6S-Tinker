@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.VibrationAcceptor;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.capability.IDampenCapability;
 import com.c2h6s.etshtinker.capability.etshCap;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
@@ -45,7 +45,7 @@ import static com.c2h6s.etshtinker.util.getMainOrOff.getOffLevel;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
 
-public class ResonanceEffect extends etshmodifieriii implements ToolStatsModifierHook {
+public class ResonanceEffect extends EtshModifieriii implements ToolStatsModifierHook {
     @Override
     public boolean isNoLevels() {
         return true;

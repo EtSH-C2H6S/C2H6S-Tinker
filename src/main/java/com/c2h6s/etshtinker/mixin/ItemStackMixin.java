@@ -14,6 +14,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 @Mixin(ItemStack.class)
 public class ItemStackMixin {
+
     @Inject(at = @At(value = "RETURN"),method = "hasFoil",cancellable = true)
     public void makeFoil(CallbackInfoReturnable<Boolean> cir){
         ItemStack stack = (ItemStack) (Object) this;

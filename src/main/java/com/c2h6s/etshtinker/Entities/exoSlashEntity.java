@@ -1,39 +1,23 @@
 package com.c2h6s.etshtinker.Entities;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
-import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
+import com.c2h6s.etshtinker.Entities.damageSources.ThroughSources;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
-import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import slimeknights.tconstruct.gadgets.entity.shuriken.ShurikenEntityBase;
-import slimeknights.tconstruct.tools.TinkerTools;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
@@ -117,7 +101,7 @@ public class exoSlashEntity extends ItemProjectile {
                         this.level.addFreshEntity(slash);
                     }else {
                         living.invulnerableTime=0;
-                        living.hurt(throughSources.quark(this.baseDamage),this.baseDamage);
+                        ThroughSources.quark(this.baseDamage).hurtEntity(living);
                         living.getPersistentData().putInt("quark_disassemble",living.getPersistentData().getInt("quark_disassemble")+30);
                     }
                 }

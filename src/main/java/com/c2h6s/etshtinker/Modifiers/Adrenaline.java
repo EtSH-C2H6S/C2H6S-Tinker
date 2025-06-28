@@ -1,18 +1,14 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.c2h6s.etshtinker.network.handler.packetHandler;
-import com.c2h6s.etshtinker.network.packet.FluidChamberSync;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +21,6 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
-import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -40,7 +35,7 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class adrenaline extends etshmodifieriii implements DurabilityDisplayModifierHook {
+public class Adrenaline extends EtshModifieriii implements DurabilityDisplayModifierHook {
     public boolean isNoLevels() {
         return true;
     }
@@ -51,7 +46,7 @@ public class adrenaline extends etshmodifieriii implements DurabilityDisplayModi
         builder.addHook(this, ModifierHooks.DURABILITY_DISPLAY);
     }
 
-    public adrenaline() {
+    public Adrenaline() {
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 

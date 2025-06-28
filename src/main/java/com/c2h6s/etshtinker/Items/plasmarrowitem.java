@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Items;
 
-import com.c2h6s.etshtinker.Entities.plasmarrowentity;
+import com.c2h6s.etshtinker.Entities.PlasmaArrowEntity;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +18,7 @@ public class plasmarrowitem extends ArrowItem {
     }
     @Override
     public AbstractArrow createArrow(Level pLevel, ItemStack pStack, LivingEntity pShooter) {
-        return new plasmarrowentity(pLevel, pShooter);
+        return new PlasmaArrowEntity(pLevel, pShooter);
     }
 
     @Override

@@ -21,6 +21,7 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import java.util.function.Predicate;
 
 public class etshmodifierii extends etshmodifieri implements BowAmmoModifierHook, ProjectileHitModifierHook, ProjectileLaunchModifierHook {
+    public static final String TAG_CRITICAL_ARROW = "critical_arrow";
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
@@ -33,6 +34,7 @@ public class etshmodifierii extends etshmodifieri implements BowAmmoModifierHook
 
     @Override
     public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
+        if (abstractArrow!=null&&abstractArrow.isCritArrow()&&!abstractArrow.getTags().contains(TAG_CRITICAL_ARROW)) abstractArrow.addTag(TAG_CRITICAL_ARROW);
         this.modifierOnProjectileLaunch(tool,modifiers,livingEntity,projectile,abstractArrow,namespacedNBT,primary);
     }
     @Override

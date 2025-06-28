@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,7 +24,7 @@ import java.util.List;
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.getNearestLiEnt;
 
-public class alfsmind extends etshmodifieriii {
+public class AlfMind extends EtshModifieriii {
     public List<MobEffect> ls = List.of(
             MobEffects.WEAKNESS,
             MobEffects.WITHER,

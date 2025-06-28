@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +15,7 @@ import static com.c2h6s.etshtinker.util.vecCalc.*;
 
 import java.util.List;
 
-public class extraweight extends etshmodifieriii {
+public class extraweight extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }

@@ -2,10 +2,8 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import mekanism.api.MekanismAPI;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -19,24 +17,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
-import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
-import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
-public class godlymetal extends etshmodifieriii implements ToolDamageModifierHook {
+public class godlymetal extends EtshModifieriii implements ToolDamageModifierHook {
     public static boolean enabled = ModList.get().isLoaded("mekanism");
     public static boolean enabled2 = ModList.get().isLoaded("cofh_core");
 

@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class gamemode1 extends etshmodifieriii {
+public class gamemode1 extends EtshModifieriii {
     public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
         LivingEntity entity=context.getEntity();
         if (entity instanceof ServerPlayer serverPlayer){

@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,7 +16,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
-public class warpengineex extends etshmodifieriii implements GeneralInteractionModifierHook{
+public class warpengineex extends EtshModifieriii implements GeneralInteractionModifierHook{
     protected void registerHooks(ModuleHookMap.Builder builder){
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.GENERAL_INTERACT);

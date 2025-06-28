@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +15,7 @@ import vazkii.botania.api.mana.ManaItemHandler;
 
 import static com.c2h6s.etshtinker.util.modloaded.*;
 
-public class gracearrival extends etshmodifieriii {
+public class gracearrival extends EtshModifieriii {
     public gracearrival(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghealevent);
     }

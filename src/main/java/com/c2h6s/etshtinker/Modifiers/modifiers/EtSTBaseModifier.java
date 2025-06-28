@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
-public class EtSTBaseModifier extends etshmodifieriii{
+public class EtSTBaseModifier extends EtshModifieriii {
     public static String KEY_CRIT_ARROW = "etshtinker_crit";
     @Override
     public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {

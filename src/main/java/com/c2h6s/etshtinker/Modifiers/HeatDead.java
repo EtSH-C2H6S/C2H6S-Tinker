@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -19,7 +19,7 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import java.util.UUID;
 
-public class HeatDead extends etshmodifieriii {
+public class HeatDead extends EtshModifieriii {
     public static final UUID hdUUID = UUID.fromString("b43c5ccf-1763-f7ae-0086-0c25fc64249d");
 
     @Override
@@ -30,9 +30,7 @@ public class HeatDead extends etshmodifieriii {
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         if (context.getTarget() instanceof LivingEntity living&&context.getAttacker() instanceof Player player){
-            living.invulnerableTime=0;
-            living.hurt(playerThroughSource.PlayerAnnihilate(player,damage),damage);
-            living.invulnerableTime=0;
+            playerThroughSource.PlayerAnnihilate(player,damage).hurtEntity(living);
         }
         return knockback;
     }
@@ -42,7 +40,7 @@ public class HeatDead extends etshmodifieriii {
         LivingEntity target =context.getLivingTarget();
         if (target!=null&&!(target instanceof Player)&&context.isFullyCharged()&&context.getAttacker() instanceof Player player){
             if (target.getPersistentData().contains("max_health")&&target.getHealth()>target.getPersistentData().getFloat("max_health")){
-                target.hurt(playerThroughSource.PlayerAnnihilate(player,target.getHealth()-target.getPersistentData().getFloat("max_health")),target.getHealth()-target.getPersistentData().getFloat("max_health"));
+                playerThroughSource.PlayerAnnihilate(player,target.getHealth()-target.getPersistentData().getFloat("max_health")).hurtEntity(target);
             }
             AttributeInstance instance = target.getAttribute(Attributes.MAX_HEALTH);
             double d =0;
@@ -61,7 +59,7 @@ public class HeatDead extends etshmodifieriii {
     public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target!=null&&!(target instanceof Player)&&projectile instanceof AbstractArrow arrow&&arrow.isCritArrow()&&attacker instanceof Player player){
             if (target.getPersistentData().contains("max_health")&&target.getHealth()>target.getPersistentData().getFloat("max_health")){
-                target.hurt(playerThroughSource.PlayerAnnihilate(player,target.getHealth()-target.getPersistentData().getFloat("max_health")),target.getHealth()-target.getPersistentData().getFloat("max_health"));
+                playerThroughSource.PlayerAnnihilate(player,target.getHealth()-target.getPersistentData().getFloat("max_health")).hurtEntity(target);
             }
             AttributeInstance instance = target.getAttribute(Attributes.MAX_HEALTH);
             double d =0;

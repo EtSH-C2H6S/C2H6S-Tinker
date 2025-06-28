@@ -1,9 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import cofh.core.init.CoreMobEffects;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
-import com.c2h6s.etshtinker.util.modloaded;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -29,10 +27,9 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
-public class nightsenhance extends etshmodifieriii {
+public class nightsenhance extends EtshModifieriii {
     public nightsenhance(){
         MinecraftForge.EVENT_BUS.addListener(this::onmobfindtarget);
         MinecraftForge.EVENT_BUS.addListener(this::onapplyeffect);

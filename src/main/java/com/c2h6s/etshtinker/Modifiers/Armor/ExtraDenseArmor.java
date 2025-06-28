@@ -1,8 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,7 +11,7 @@ import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelMod
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
-public class ExtraDenseArmor extends etshmodifieriii {
+public class ExtraDenseArmor extends EtshModifieriii {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("extradense_armor");
     public ExtraDenseArmor(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);

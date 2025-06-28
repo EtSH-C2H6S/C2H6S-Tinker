@@ -1,8 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.hooks.FoilModifierHook;
-import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -39,11 +38,10 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
-public class modifiershocking extends etshmodifieriii implements FoilModifierHook {
+public class modifiershocking extends EtshModifieriii implements FoilModifierHook {
     private final ResourceLocation charge = new ResourceLocation(MOD_ID, "charge");
     private final ResourceLocation sound3 = new ResourceLocation(MOD_ID, "sound3");
 

@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class fusion extends etshmodifieriii implements RequirementsModifierHook {
+public class fusion extends EtshModifieriii implements RequirementsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);

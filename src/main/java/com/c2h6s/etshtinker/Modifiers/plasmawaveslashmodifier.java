@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.plasmawaveslashentity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,11 +19,10 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 
-import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 import static com.c2h6s.etshtinker.init.etshtinkerEntity.*;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
-public class plasmawaveslashmodifier extends etshmodifieriii implements GeneralInteractionModifierHook {
+public class plasmawaveslashmodifier extends EtshModifieriii implements GeneralInteractionModifierHook {
     public boolean isNoLevels() {
         return true;
     }

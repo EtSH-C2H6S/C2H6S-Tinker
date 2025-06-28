@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import com.c2h6s.etshtinker.Entities.CustomSonicBoomEntity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
@@ -19,7 +19,7 @@ import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
-public class ReactiveResonateArmor extends etshmodifieriii {
+public class ReactiveResonateArmor extends EtshModifieriii {
     @Override
     public boolean isNoLevels() {
         return true;

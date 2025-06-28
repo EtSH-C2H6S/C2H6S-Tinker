@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.etshtinker;
 import net.minecraft.resources.ResourceLocation;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 
-public class ultradenseex extends etshmodifieriii {
+public class ultradenseex extends EtshModifieriii {
     public static final ResourceLocation UDE_LOCATION = etshtinker.getResourceLoc("ultradenseex");
     @Override
     public boolean isNoLevels() {

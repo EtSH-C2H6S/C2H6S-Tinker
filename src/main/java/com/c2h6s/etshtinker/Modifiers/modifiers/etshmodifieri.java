@@ -37,6 +37,20 @@ public class etshmodifieri extends Modifier implements MeleeDamageModifierHook, 
     public void modifierDamageDealt(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, LivingEntity entity, DamageSource damageSource, float amount, boolean isDirectDamage){
     }
 
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        this.postMeleeHit(tool,modifier,context,damageDealt);
+    }
+
+    @Override
+    public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
+        this.postMeleeHit(tool,modifier,context,damageAttempted);
+    }
+
+    public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage){
+
+    }
+
 
     public boolean isNoLevels() {
         return false;

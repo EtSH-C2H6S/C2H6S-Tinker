@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -14,7 +14,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.TConstruct;
@@ -35,7 +34,7 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class mentalism extends etshmodifieriii implements DamageBlockModifierHook {
+public class mentalism extends EtshModifieriii implements DamageBlockModifierHook {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("mentalism");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {

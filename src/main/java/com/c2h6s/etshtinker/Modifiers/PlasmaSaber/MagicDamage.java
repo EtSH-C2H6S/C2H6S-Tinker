@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.PlasmaSaber;
 
 import com.c2h6s.etshtinker.Entities.PlasmaSlashEntity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.hooks.AfterPlasmaSlashHitModifierHook;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import net.minecraft.world.damagesource.DamageSource;
@@ -10,7 +10,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 
-public class MagicDamage extends etshmodifieriii implements AfterPlasmaSlashHitModifierHook {
+public class MagicDamage extends EtshModifieriii implements AfterPlasmaSlashHitModifierHook {
     @Override
     public boolean isNoLevels() {
         return true;

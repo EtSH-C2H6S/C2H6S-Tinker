@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import cofh.core.init.CoreMobEffects;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -29,7 +29,6 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
-import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
@@ -43,7 +42,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class mindprotection extends etshmodifieriii {
+public class mindprotection extends EtshModifieriii {
     public static boolean enabled2 = ModList.get().isLoaded("cofh_core");
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("mindprotection");
     @Override

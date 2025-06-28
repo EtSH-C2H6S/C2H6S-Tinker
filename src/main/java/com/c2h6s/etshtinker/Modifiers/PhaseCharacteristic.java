@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.CustomSonicBoomEntity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -27,7 +27,7 @@ import java.util.function.Predicate;
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 import static com.c2h6s.etshtinker.util.vecCalc.getScatteredVec3;
 
-public class PhaseCharacteristic extends etshmodifieriii {
+public class PhaseCharacteristic extends EtshModifieriii {
     private final String sonic ="etsh.sonic";
 
     @Override

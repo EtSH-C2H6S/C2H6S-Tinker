@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.util.slotUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -13,7 +13,7 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class armorMoveAccel extends etshmodifieriii {
+public class armorMoveAccel extends EtshModifieriii {
     public armorMoveAccel(){
         MinecraftForge.EVENT_BUS.addListener(this::livingAttackEvent);
     }

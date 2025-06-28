@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -29,7 +29,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class warpengine extends etshmodifieriii implements GeneralInteractionModifierHook , EquipmentChangeModifierHook {
+public class warpengine extends EtshModifieriii implements GeneralInteractionModifierHook , EquipmentChangeModifierHook {
     private final ResourceLocation warpdur = new ResourceLocation(MOD_ID, "warpdur");
     private static final ResourceLocation ACTIVE_MODIFIER = TConstruct.getResource("active_modifier");
     public void onRemoved(IToolStackView tool) {

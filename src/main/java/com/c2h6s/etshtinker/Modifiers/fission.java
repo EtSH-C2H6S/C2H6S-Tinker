@@ -1,14 +1,12 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
-import com.c2h6s.etshtinker.util.getMainOrOff;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import mekanism.api.MekanismAPI;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
@@ -23,7 +21,7 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import java.util.List;
 
 
-public class fission extends etshmodifieriii {
+public class fission extends EtshModifieriii {
     public static boolean enabled = ModList.get().isLoaded("mekanism");
     public boolean isNoLevels() {
         return true;

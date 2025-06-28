@@ -1,16 +1,14 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Explosion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import slimeknights.tconstruct.TConstruct;
@@ -20,7 +18,7 @@ import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 import java.util.List;
 
-public class reactiveexplosivearmor extends etshmodifieriii {
+public class reactiveexplosivearmor extends EtshModifieriii {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("reactiveexplosivearmor");
     public reactiveexplosivearmor(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);

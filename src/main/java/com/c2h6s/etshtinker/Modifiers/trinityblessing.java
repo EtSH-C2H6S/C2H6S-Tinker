@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.util.C;
 import net.minecraft.network.chat.Component;
@@ -9,7 +9,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -29,7 +28,7 @@ import slimeknights.tconstruct.library.utils.RomanNumeralHelper;
 
 import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
-public class trinityblessing extends etshmodifieriii implements ToolStatsModifierHook, ToolDamageModifierHook,DisplayNameModifierHook {
+public class trinityblessing extends EtshModifieriii implements ToolStatsModifierHook, ToolDamageModifierHook,DisplayNameModifierHook {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("trinityblessing");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {

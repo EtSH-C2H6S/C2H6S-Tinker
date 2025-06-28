@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.tools.item.ranged.ModifiableLauncherItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 
-public class perfectism extends etshmodifieriii {
+public class perfectism extends EtshModifieriii {
     public perfectism(){
         MinecraftForge.EVENT_BUS.addListener(this::AttackEvent);
         MinecraftForge.EVENT_BUS.addListener(this::DamageEvent);

@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.*;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
@@ -29,7 +29,7 @@ import java.util.List;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class modifiernovasickle extends etshmodifieriii implements RequirementsModifierHook ,GeneralInteractionModifierHook{
+public class modifiernovasickle extends EtshModifieriii implements RequirementsModifierHook ,GeneralInteractionModifierHook{
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);

@@ -7,7 +7,7 @@ import static com.c2h6s.etshtinker.init.etshtinkerParticleType.*;
 public class ionizerFluidMapThermal {
     public static void extendMap(){
         fluidParts.put(molten_activated_chroma_steel.get(),plasmaexplosionred.get());
-        fluidDmg.put(molten_activated_chroma_steel.get(),7f);
+        fluidDmg.put(molten_activated_chroma_steel.get(),3.5f);
         fluidSpecial.put(molten_activated_chroma_steel.get(),"elemental");
     }
 }

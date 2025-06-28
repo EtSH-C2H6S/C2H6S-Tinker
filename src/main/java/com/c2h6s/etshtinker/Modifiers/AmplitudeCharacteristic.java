@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.SculkSwordEntity;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,11 +13,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
@@ -30,7 +28,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class AmplitudeCharacteristic extends etshmodifieriii implements GeneralInteractionModifierHook {
+public class AmplitudeCharacteristic extends EtshModifieriii implements GeneralInteractionModifierHook {
     private final ResourceLocation charge = new ResourceLocation(MOD_ID, "charge");
 
     @Override

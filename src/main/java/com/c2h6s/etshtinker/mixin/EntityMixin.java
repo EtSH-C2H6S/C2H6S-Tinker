@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.mixin;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
-import com.c2h6s.etshtinker.Entities.damageSources.throughSources;
+import com.c2h6s.etshtinker.Entities.damageSources.ThroughSources;
 import com.c2h6s.etshtinker.capability.IDampenCapability;
 import com.c2h6s.etshtinker.capability.etshCap;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
@@ -15,11 +15,9 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.event.ForgeEventFactory;
-import org.checkerframework.checker.units.qual.A;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -29,7 +27,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 import java.util.Optional;
 
-import static com.c2h6s.etshtinker.util.vecCalc.getNearestLiEnt;
 import static com.c2h6s.etshtinker.util.vecCalc.getNearestLiEntWithEntBL;
 
 @Mixin({Entity.class})
@@ -59,7 +56,7 @@ public class EntityMixin {
             if (living.hasEffect(etshtinkerEffects.ionized.get()) || living.hasEffect(etshtinkerEffects.novaradiation.get())||living.getPersistentData().contains("quark_disassemble")) {
                 cir.setReturnValue(false);
             }
-            if(source instanceof playerThroughSource||source instanceof throughSources){
+            if(source instanceof playerThroughSource||source instanceof ThroughSources){
                 cir.setReturnValue(false);
             }
         }

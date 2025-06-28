@@ -1,11 +1,10 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.util.ParticleChainUtil;
 import com.c2h6s.etshtinker.util.attackUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -30,7 +29,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 
 
-public class thermalstrike extends etshmodifieriii {
+public class thermalstrike extends EtshModifieriii {
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();

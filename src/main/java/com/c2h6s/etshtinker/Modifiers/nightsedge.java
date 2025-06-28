@@ -3,12 +3,11 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.Entities.NightSlashEntity;
 import com.c2h6s.etshtinker.Entities.NightSlashEntityB;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifierfluxed;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.nightslashPacket;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -22,7 +21,7 @@ import java.security.SecureRandom;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class nightsedge extends etshmodifieriii {
+public class nightsedge extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }

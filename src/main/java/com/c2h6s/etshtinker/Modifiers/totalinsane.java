@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +32,7 @@ import java.util.List;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 import static com.c2h6s.etshtinker.util.getMainOrOff.*;
 
-public class totalinsane extends etshmodifieriii implements DurabilityDisplayModifierHook {
+public class totalinsane extends EtshModifieriii implements DurabilityDisplayModifierHook {
     private final ResourceLocation insanity = new ResourceLocation(MOD_ID, "insanity");
     private final ResourceLocation fullcharged = new ResourceLocation(MOD_ID, "fullcharged");
     public totalinsane(){
@@ -139,7 +139,7 @@ public class totalinsane extends etshmodifieriii implements DurabilityDisplayMod
         int max = tool.getStats().getInt(ToolStats.DURABILITY);
         int amount =tool.getCurrentDurability();
         if (toolData.getInt(insanity)>0) {
-            return (int) Math.max( 13 * toolData.getInt(insanity) / 1000,1);
+            return Math.max( 13 * toolData.getInt(insanity) / 1000,1);
         }
         else return amount >= max ? 13 : 1 + 13 * (amount - 1) / max;
     }

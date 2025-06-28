@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -10,7 +10,7 @@ import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 
 import java.util.function.Predicate;
 
-public class lightningarrowmodifier extends etshmodifieriii {
+public class lightningarrowmodifier extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }

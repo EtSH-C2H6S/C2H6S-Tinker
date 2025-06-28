@@ -15,7 +15,7 @@ import slimeknights.tconstruct.library.tools.nbt.*;
 import java.util.List;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 
-public class etshtinkertoolenergystorage extends etshmodifieriii implements VolatileDataModifierHook, ValidateModifierHook {
+public class etshtinkertoolenergystorage extends EtshModifieriii implements VolatileDataModifierHook, ValidateModifierHook {
     public etshtinkertoolenergystorage() {
     }
 

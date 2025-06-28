@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class etshmodifierFluidWeapon extends etshmodifieriii implements FluidConsumptionModifierHook, PlasmaExplosionHitModifierHook, PlasmaSlashCreateModifierHook, BeforePlasmaSlashHitModifierHook, AfterPlasmaSlashHitModifierHook ,PlasmaExplosionCreateModifierHook{
+public class etshmodifierFluidWeapon extends EtshModifieriii implements FluidConsumptionModifierHook, PlasmaExplosionHitModifierHook, PlasmaSlashCreateModifierHook, BeforePlasmaSlashHitModifierHook, AfterPlasmaSlashHitModifierHook ,PlasmaExplosionCreateModifierHook{
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);

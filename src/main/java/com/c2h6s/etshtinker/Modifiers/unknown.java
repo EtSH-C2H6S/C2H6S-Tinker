@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import net.minecraft.tags.TagKey;
@@ -30,7 +30,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.getMainOrOff.getMainLevel;
 import static com.c2h6s.etshtinker.util.getMainOrOff.getOffLevel;
 
-public class unknown extends etshmodifieriii implements ToolStatsModifierHook , ToolDamageModifierHook, RepairFactorModifierHook {
+public class unknown extends EtshModifieriii implements ToolStatsModifierHook , ToolDamageModifierHook, RepairFactorModifierHook {
     @Override
     public int getPriority() {
         return 131072;

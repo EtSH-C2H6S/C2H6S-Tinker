@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.Armor;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEffects;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.EntityDamageSource;
@@ -20,7 +20,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
-public class stellarblessing extends etshmodifieriii {
+public class stellarblessing extends EtshModifieriii {
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("stellarblessing");
     public stellarblessing(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);

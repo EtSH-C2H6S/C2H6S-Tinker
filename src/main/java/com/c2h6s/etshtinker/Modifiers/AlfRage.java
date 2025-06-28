@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.alfburst;
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.alfbeamPacket;
 import net.minecraft.sounds.SoundSource;
@@ -16,12 +16,12 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.handler.BotaniaSounds;
 
 
-public class alfrage extends etshmodifieriii {
+public class AlfRage extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }
     public static boolean MBOTenabled = ModList.get().isLoaded("mythicbotany");
-    public alfrage(){
+    public AlfRage(){
         MinecraftForge.EVENT_BUS.addListener(this::LeftClick);
     }
 

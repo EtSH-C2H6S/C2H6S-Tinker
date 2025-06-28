@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import mekanism.api.radiation.capability.IRadiationEntity;
 import mekanism.common.capabilities.Capabilities;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import static com.c2h6s.etshtinker.util.modloaded.*;
 
 
-public class radiationremoval extends etshmodifieriii{
+public class radiationremoval extends EtshModifieriii {
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isCorrectSlot&&holder!=null&&Mekenabled){
             LazyOptional<IRadiationEntity> radiationCap = holder.getCapability(Capabilities.RADIATION_ENTITY);

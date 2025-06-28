@@ -11,8 +11,8 @@ import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 public class etshtinkerModifiers {
     public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
-    public static final StaticModifier<adrenaline>adrenaline_STATIC_MODIFIER= MODIFIERS.register("adrenaline", adrenaline::new);
-    public static final StaticModifier<annilate>annilate_STATIC_MODIFIER= MODIFIERS.register("annilate", annilate::new);
+    public static final StaticModifier<Adrenaline>adrenaline_STATIC_MODIFIER= MODIFIERS.register("adrenaline", Adrenaline::new);
+    public static final StaticModifier<Annilate>annilate_STATIC_MODIFIER= MODIFIERS.register("annilate", Annilate::new);
     public static final StaticModifier<tightennerve>tightennerve_STATIC_MODIFIER= MODIFIERS.register("tightennerve", tightennerve::new);
     public static final StaticModifier<sharpnessex>sharpnessex_STATIC_MODIFIER= MODIFIERS.register("sharpnessex", sharpnessex::new);
     public static final StaticModifier<gravityaccelerate>gravityaccelerate_STATIC_MODIFIER= MODIFIERS.register("gravityaccelerate", gravityaccelerate::new);
@@ -62,7 +62,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<chilled>chilled_STATIC_MODIFIER= MODIFIERS.register("chilled", chilled::new);
     public static final StaticModifier<momentoaccel>momentoaccel_STATIC_MODIFIER= MODIFIERS.register("momentoaccel", momentoaccel::new);
     public static final StaticModifier<crunchyshattered>crunchyshattered_STATIC_MODIFIER= MODIFIERS.register("crunchyshattered", crunchyshattered::new);
-    public static final StaticModifier<autoionizing>autoionizing_STATIC_MODIFIER= MODIFIERS.register("autoionizing", autoionizing::new);
+    public static final StaticModifier<Autoionizing>autoionizing_STATIC_MODIFIER= MODIFIERS.register("autoionizing", Autoionizing::new);
     public static final StaticModifier<multishotplasma>multishotplasma_STATIC_MODIFIER= MODIFIERS.register("multishotplasma", multishotplasma::new);
     public static final StaticModifier<fastcooling>fastcooling_STATIC_MODIFIER= MODIFIERS.register("fastcooling", fastcooling::new);
     public static final StaticModifier<plasmaenhance>plasmaenhance_STATIC_MODIFIER= MODIFIERS.register("plasmaenhance", plasmaenhance::new);
@@ -83,7 +83,7 @@ public class etshtinkerModifiers {
     public static final StaticModifier<trinityblessing>trinityblessing_STATIC_MODIFIER= MODIFIERS.register("trinityblessing", trinityblessing::new);
     public static final StaticModifier<trinitycurse>trinitycurse_STATIC_MODIFIER= MODIFIERS.register("trinitycurse", trinitycurse::new);
     public static final StaticModifier<unknown>unknown_STATIC_MODIFIER= MODIFIERS.register("unknown", unknown::new);
-    public static final StaticModifier<atomorigin>atomorigin_STATIC_MODIFIER= MODIFIERS.register("atomorigin", atomorigin::new);
+    public static final StaticModifier<Atomorigin>atomorigin_STATIC_MODIFIER= MODIFIERS.register("atomorigin", Atomorigin::new);
     public static final StaticModifier<semicrystaline>semicrystaline_STATIC_MODIFIER= MODIFIERS.register("semicrystaline", semicrystaline::new);
     public static final StaticModifier<organiccr>organiccr_STATIC_MODIFIER= MODIFIERS.register("organiccr", organiccr::new);
     public static final StaticModifier<inorganiccr>inorganiccr_STATIC_MODIFIER= MODIFIERS.register("inorganiccr", inorganiccr::new);

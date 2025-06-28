@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,7 +16,7 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 
-public class sharpnessex extends etshmodifieriii {
+public class sharpnessex extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }

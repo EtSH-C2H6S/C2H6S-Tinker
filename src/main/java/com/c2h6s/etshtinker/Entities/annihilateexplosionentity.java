@@ -67,7 +67,7 @@ public class annihilateexplosionentity extends ItemProjectile{
                 for (LivingEntity targets:livingEntities){
                     if (targets!=this.getOwner()&&!(targets instanceof Player)){
                         targets.invulnerableTime=0;
-                        targets.hurt(playerThroughSource.PlayerAnnihilate(player,this.damage).bypassArmor(),this.damage);
+                        playerThroughSource.PlayerAnnihilate(player,this.damage).hurtEntity(targets);
                     }
                 }
             }

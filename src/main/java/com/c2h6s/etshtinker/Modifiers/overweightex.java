@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import java.lang.Math;
 
 
-public class overweightex extends etshmodifieriii {
+public class overweightex extends EtshModifieriii {
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         int vy2 = (int) Math.pow(holder.getDeltaMovement().y,2);
         if(holder instanceof Player player&&isCorrectSlot&&player.getDeltaMovement().y<-0.1&&!player.isNoGravity()){

@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifieriii;
+import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -26,7 +26,7 @@ import static com.c2h6s.etshtinker.etshtinker.*;
 import static com.c2h6s.etshtinker.util.modloaded.BOTloaded;
 
 
-public class manaoverload extends etshmodifieriii implements DurabilityDisplayModifierHook {
+public class manaoverload extends EtshModifieriii implements DurabilityDisplayModifierHook {
     private static final ResourceLocation manacharge = new ResourceLocation(MOD_ID, "manacharge");
     private static final ResourceLocation manaactivated = new ResourceLocation(MOD_ID, "manaactivated");
     public void onModifierRemoved(IToolStackView tool) {
