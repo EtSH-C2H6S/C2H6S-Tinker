@@ -15,7 +15,7 @@ public class plasmarrow extends EtshModifieriii {
         return true;
     }
     public int getPriority() {
-        return 900;
+        return 256;
     }
     public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity shooter, ItemStack itemStack, Predicate<ItemStack> predicate) {
         if ( !tool.isBroken() && shooter instanceof Player player) {

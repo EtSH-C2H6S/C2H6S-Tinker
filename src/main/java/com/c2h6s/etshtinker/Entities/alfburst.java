@@ -24,6 +24,11 @@ public class alfburst extends ManaBurstEntity {
         super(level, pos, rotX, rotY, fake);
     }
 
+    @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
     public alfburst(Player player) {
         super(player);
     }

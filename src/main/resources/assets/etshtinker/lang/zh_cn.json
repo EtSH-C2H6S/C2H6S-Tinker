@@ -7,7 +7,7 @@
 
   "modifier.etshtinker.adrenaline": "肾上腺素",
   "modifier.etshtinker.adrenaline.flavor": "区区之事，无伤尔。",
-  "modifier.etshtinker.adrenaline.description": "手持时不受到伤害则持续积累肾上腺素值，受伤时肾上腺素归零。积累超过85%后获得50%减伤，满100%后下次攻击额外造成10倍的穿刺伤害并使肾上腺素值归零。",
+  "modifier.etshtinker.adrenaline.description": "手持时不受到伤害则持续积累肾上腺素值，受伤时肾上腺素归零。积累超过85%后获得50%减伤，满100%后下次攻击额外造成10倍的极端伤害并使肾上腺素值归零。",
 
   "modifier.etshtinker.tightennerve": "神经紧绷",
   "modifier.etshtinker.tightennerve.flavor": "高风险，高回报!",
@@ -35,7 +35,7 @@
 
   "modifier.etshtinker.mentalism": "唯心主义",
   "modifier.etshtinker.mentalism.flavor": "什么叫精神胜利法（后仰）",
-  "modifier.etshtinker.mentalism.description":"手持时能抵挡一次攻击（冷却30秒），但是触发免伤时会给敌人附加2秒无敌帧，受到致命伤害时免死一次，恢复25%最大生命值并获得2秒无敌帧（冷却160秒）。",
+  "modifier.etshtinker.mentalism.description":"穿着时格挡一次攻击（冷却30秒）但是同时给敌人附加2秒无敌帧。",
 
   "modifier.etshtinker.thermalstrike": "热力冲击",
   "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
@@ -43,7 +43,7 @@
 
   "modifier.etshtinker.thermalenhance": "热力附层",
   "modifier.etshtinker.thermalenhance.flavor": "热力元素全收集，达成！",
-  "modifier.etshtinker.thermalenhance.description":"攻击敌人对敌人施加大量减益，对敌人施加一到电弧，减少敌人25%防御，并附加相当于敌人已损生命10%（最大40）的额外伤害",
+  "modifier.etshtinker.thermalenhance.description":"攻击敌人对敌人施加大量减益，对敌人施加一到电弧，减少敌人25%防御，依据敌人已损生命10%（最大200）增加伤害，每级增加2升级槽或防御槽和1能力槽",
 
   "modifier.etshtinker.fission": "裂变反应",
   "modifier.etshtinker.fission.flavor": "MD跟你爆了",
@@ -63,11 +63,11 @@
 
   "modifier.etshtinker.totalinsane": "癫疯",
   "modifier.etshtinker.totalinsane.flavor": "你疑似有点魔怔了",
-  "modifier.etshtinker.totalinsane.description":"受到任何伤害时立刻趋势，手持时积攒癫疯值，工具使用时会优先消耗癫疯值而非耐久，癫疯值高于500时，攻击时造成高额真实+穿刺伤害并获得一次免死。",
+  "modifier.etshtinker.totalinsane.description":"受到任何伤害时立刻趋势，手持时积攒癫疯值，工具使用时会优先消耗癫疯值而非耐久，癫疯值高于500时，攻击时造成高额极端伤害并获得一次免死。",
 
   "modifier.etshtinker.mindattack": "神经质",
   "modifier.etshtinker.mindattack.flavor": "神晶，害的我笑了一下",
-  "modifier.etshtinker.mindattack.description":"你的工具普攻伤害设置为0，且无法正常造成伤害。",
+  "modifier.etshtinker.mindattack.description":"癫疯值小于500时，你的工具无法造成伤害。",
 
   "modifier.etshtinker.gravitymanipulate": "重力",
   "modifier.etshtinker.gravitymanipulate.flavor": "一锤定音",
@@ -91,11 +91,11 @@
 
   "modifier.etshtinker.godlymetal": "神金质",
   "modifier.etshtinker.godlymetal.flavor": "来自天堂的地狱赠礼",
-  "modifier.etshtinker.godlymetal.description":"主手攻击时附带5%*属性等级*敌人当前生命值的真实伤害",
+  "modifier.etshtinker.godlymetal.description":"主手攻击时附带2%*敌人最大生命值的极端伤害",
 
   "modifier.etshtinker.controllableannihl": "可控湮灭",
   "modifier.etshtinker.controllableannihl.flavor": "能量等于我的世界的平方！",
-  "modifier.etshtinker.controllableannihl.description":"工具耐久-90%，工具的基础伤害被取消，全力攻击时消耗工具大量耐久造成一次湮灭爆炸，伤害与工具耐久成正比。\n[对远程攻击、无耐久武器无效]",
+  "modifier.etshtinker.controllableannihl.description":"工具耐久大于一半时全力攻击强制消耗工具耐久造成一次湮灭爆炸，每级每有100k耐久增加10%爆炸的伤害比例和10点耐久消耗。\n[对远程攻击、无耐久武器无效]",
 
   "modifier.etshtinker.modifiershocking": "震击",
   "modifier.etshtinker.modifiershocking.flavor": "滋滋滋！",
@@ -179,7 +179,7 @@
 
   "modifier.etshtinker.sidechannelattack": "侧信道攻击",
   "modifier.etshtinker.sidechannelattack.flavor": "众所周知，生物电也是电信号",
-  "modifier.etshtinker.sidechannelattack.description":"攻击无视无敌帧，并附带0.025*属性等级倍于目标已损生命值的额外伤害（最大20）。",
+  "modifier.etshtinker.sidechannelattack.description":"攻击无视无敌帧，并附带0.025*属性等级倍于目标已损生命值的额外伤害（最大40）。",
 
   "modifier.etshtinker.shattered": "碎裂",
   "modifier.etshtinker.shattered.flavor": "破甲！",
@@ -274,12 +274,12 @@
   "modifier.etshtinker.modifierenchantedsword.description":"工具有魔力充能时，空挥时发射一个附魔剑剑气。",
 
   "modifier.etshtinker.manaoverload": "魔力过载",
-  "modifier.etshtinker.manaoverload.flavor": "希望你有足够的魔力使用这个强化",
-  "modifier.etshtinker.manaoverload.description":"身上持有能存储mana的物品时工具获得充能\n每10点mana提供1点充能(不消耗mana)，工具会缓缓消耗魔力恢复耐久\n充能点数超过1000000时攻击时依据当前的充能点数增加伤害并相应的消耗魔力。",
+  "modifier.etshtinker.manaoverload.flavor": "希望你有足够的魔力来使用它",
+  "modifier.etshtinker.manaoverload.description":"身上带有魔力时消耗魔力增加伤害。每消耗50mana增加1伤害，最高每级增加200伤害。",
 
   "modifier.etshtinker.thermaldefense": "热力之护",
   "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",
-  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性（稍弱一点），额外附带减少攻击者50%护甲，对魔法伤害提供50%减免。",
+  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性（稍弱一点），额外附带减少攻击者50%护甲，对魔法伤害提供50%减免，每级增加1能量槽和2防御槽。",
 
   "modifier.etshtinker.trinityblessing": "三重祝福",
   "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
@@ -291,7 +291,7 @@
 
   "modifier.etshtinker.unknown": "-未知-",
   "modifier.etshtinker.unknown.flavor": "",
-  "modifier.etshtinker.unknown.description":"工具的大部分属性乘以0.005倍。\n若工具没有可控湮灭属性，则每次使用工具时强制消耗1%最大耐久。\n手持/穿着时免疫部分穿甲伤害，获得20%闪避率",
+  "modifier.etshtinker.unknown.description":"工具的大部分属性乘以0.005倍。但是手持/穿着时获得50%不叠加的闪避率",
 
   "modifier.etshtinker.atomorigin": "核子起源",
   "modifier.etshtinker.atomorigin.flavor": "“一个特异点”",
@@ -469,6 +469,14 @@
   "modifier.etshtinker.annihilate_armor.flavor": "把核弹穿身上当爆反？？！",
   "modifier.etshtinker.annihilate_armor.description":"免除所受伤害，但是受到攻击时立刻*永久*损坏并且将你和你的敌人一并湮灭。",
 
+  "modifier.etshtinker.mana_shot": "魔力射击",
+  "modifier.etshtinker.mana_shot.flavor": "以魔力为矢",
+  "modifier.etshtinker.mana_shot.description":"射击时消耗500mana以抵消箭矢消耗，需要背包中至少有一根箭矢才能工作。",
+
+  "modifier.etshtinker.tri_chroma": "三彩",
+  "modifier.etshtinker.tri_chroma.flavor": "有色金属",
+  "modifier.etshtinker.tri_chroma.description":"增加1升级槽和1能力槽，攻击时附带抑影、发光并根据目标已损生命的10%（最大100）增加伤害。",
+
 
 
   "fluid.etshtinker.annihilating_plasma": "湮灭等离子体",
@@ -633,7 +641,6 @@
   "item.etshtinker.manalyn_queen": "魔灵皇钢",
   "material.etshtinker.manalyn_queen": "魔灵皇钢",
   "material.etshtinker.manalyn_queen.flavor": "当工匠想向别人证明自己会使用魔力...",
-  "material.etshtinker.manalyn_queen.encyclopedia": "魔力大于10M时，工具伤害乘以(魔力总量的位数-5)^3。",
 
   "item.etshtinker.trinity_intereactive_alloy": "三位一体强互作用合金",
   "material.etshtinker.trinity_intereactive_alloy": "三位一体",
@@ -750,12 +757,14 @@
   "etshtinker.modifier.tooltip.activated": "激活",
   "etshtinker.modifier.tooltip.mananotenough": "你的工具不认可你，也许你身上的魔力气息不够强烈。",
   "etshtinker.modifier.tooltip.manaenough": "当前魔力充盈，是时候大显身手了",
-  "etshtinker.modifier.tooltip.multiplier": "获得的伤害乘幅:",
+  "etshtinker.modifier.tooltip.multiplier": "获得的伤害增加:",
   "etshtinker.modifier.tooltip.manadrain": "当前魔力消耗:",
   "etshtinker.modifier.tooltip.marconotenough": "工具对你很不满，它认为你没有重塑它的打算",
   "etshtinker.modifier.tooltip.marconenough": "你的工具现在十分佩服你，愿意为你做任何事",
   "etshtinker.modifier.tooltip.marcomulti": "当前属性乘幅",
   "etshtinker.modifier.tooltip.multi": "属性增幅",
+  "etshtinker.modifier.tooltip.dodge_cd": "闪避冷却: ",
+  "etshtinker.modifier.tooltip.dodge_ready": "闪避就绪 ",
 
   "etshtinker.tool.tooltip.cantfix": "此工具无法再次被使用",
   "etshtinker.tool.tooltip.scatter": "散射",
@@ -899,13 +908,13 @@
   "block.etshtinker.meteoralloy_block": "半熔融星陨合金块",
   "item.etshtinker.meteoralloy_block": "半熔融星陨合金块",
 
-  "block.etshtinker.bismuthinite_ore_deepslate": "深层辉铋矿",
-  "item.etshtinker.bismuthinite_ore_deepslate": "深层辉铋矿",
+  "block.etshtinker.bismuthinite_ore_deepslate": "辉铋矿矿",
+  "item.etshtinker.bismuthinite_ore_deepslate": "辉铋矿矿",
   "item.etshtinker.bismuthinite": "辉铋矿晶体",
 
   "item.etshtinker.knsu": "重结晶KNSU",
 
-  "desc.immersiveengineering.info.mineral.bismuthinite": "富辉铋矿床",
+  "desc.immersiveengineering.info.mineral.bismuthinite": "富辉铋矿矿床",
 
 
 

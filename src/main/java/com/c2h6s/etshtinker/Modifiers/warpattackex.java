@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.warpattackPacket;
 import com.c2h6s.etshtinker.util.meleSpecialAttackUtil;
@@ -57,7 +57,7 @@ public class warpattackex extends EtshModifieriii implements RequirementsModifie
 
     @Override
     public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(etshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
+        return List.of(new ModifierEntry(EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
     }
     public warpattackex(){
         MinecraftForge.EVENT_BUS.addListener(this::leftClick);
@@ -71,7 +71,7 @@ public class warpattackex extends EtshModifieriii implements RequirementsModifie
     }
 
     public static void tryWarp(Player player, ToolStack tool, InteractionHand hand){
-        int lvl = tool.getModifierLevel(etshtinkerModifiers.warpattackEX_STATIC_MODIFIER.get());
+        int lvl = tool.getModifierLevel(EtshtinkerModifiers.warpattackEX_STATIC_MODIFIER.get());
         if (hand == InteractionHand.MAIN_HAND&&lvl>0&&player.getAttackStrengthScale(0)>0.8) {
             meleSpecialAttackUtil.createWarpEx(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
         }

@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.tools.item.tinker;
 
 import com.c2h6s.etshtinker.init.etshtinkerHook;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.Entities.plasmaexplosionentity;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
@@ -12,7 +12,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -31,9 +30,7 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
-import slimeknights.mantle.fluid.tooltip.FluidTooltipHandler;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
@@ -125,7 +122,7 @@ public class IonizedCannon extends ModifiableItem {
     @Override
     public int getUseDuration(ItemStack stack) {
         ToolStack tool = ToolStack.from(stack);
-        if (tool.getModifierLevel(etshtinkerModifiers.autoionizing_STATIC_MODIFIER.get())>0){
+        if (tool.getModifierLevel(EtshtinkerModifiers.autoionizing_STATIC_MODIFIER.get())>0){
             return TANK_HELPER.getFluid(tool).getAmount() > tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) ?Math.max (1,(int) (40 / tool.getStats().get(ToolStats.ATTACK_SPEED))) : 0;
         }
         return TANK_HELPER.getFluid(tool).getAmount() > tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) ? 72000 : 0;
@@ -261,7 +258,7 @@ public class IonizedCannon extends ModifiableItem {
         if (living instanceof ServerPlayer player){
             packetHandler.sendToPlayer(new IonizedCannonChargeSync(0),player);
         }
-        if (tool.getModifierLevel(etshtinkerModifiers.autoionizing_STATIC_MODIFIER.get())>0){
+        if (tool.getModifierLevel(EtshtinkerModifiers.autoionizing_STATIC_MODIFIER.get())>0){
             createPlasmaExplosion(stack,level,living,0);
         }
         return stack;

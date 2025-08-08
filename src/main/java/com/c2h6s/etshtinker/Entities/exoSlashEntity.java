@@ -31,6 +31,12 @@ public class exoSlashEntity extends ItemProjectile {
         baseDamage =damage;
         return damage;
     }
+
+    @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
     public exoSlashEntity(PlayMessages.SpawnEntity packet, Level world) {
         super(etshtinkerEntity.exoslash.get(), world);
     }

@@ -3,7 +3,7 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.Entities.exoOrb;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -72,7 +72,7 @@ public class heavenlyGaleModifier extends EtshModifieriii implements Requirement
 
     @Override
     public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(etshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
+        return List.of(new ModifierEntry(EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
     }
 
     @Override

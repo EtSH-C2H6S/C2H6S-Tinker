@@ -5,7 +5,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.capability.IDampenCapability;
 import com.c2h6s.etshtinker.capability.etshCap;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerToolStats;
 import com.c2h6s.etshtinker.util.Cap;
 import net.minecraft.core.particles.ParticleTypes;
@@ -64,7 +64,7 @@ public class ResonanceEffect extends EtshModifieriii implements ToolStatsModifie
 
     private void onapplyeffect(MobEffectEvent.Applicable event) {
         LivingEntity target =event.getEntity();
-        if (target!=null&&(getMainLevel(target, etshtinkerModifiers.resonance_effect.get())>0||getOffLevel(target,etshtinkerModifiers.resonance_effect.get())>0)&&(event.getEffectInstance().getEffect()== MobEffects.DARKNESS||event.getEffectInstance().getEffect()== MobEffects.BLINDNESS)){
+        if (target!=null&&(getMainLevel(target, EtshtinkerModifiers.resonance_effect.get())>0||getOffLevel(target, EtshtinkerModifiers.resonance_effect.get())>0)&&(event.getEffectInstance().getEffect()== MobEffects.DARKNESS||event.getEffectInstance().getEffect()== MobEffects.BLINDNESS)){
             event.setResult(Event.Result.DENY);
         }
     }
@@ -72,7 +72,7 @@ public class ResonanceEffect extends EtshModifieriii implements ToolStatsModifie
     private void onmobfindtarget(LivingChangeTargetEvent event) {
         LivingEntity target =event.getNewTarget();
         LivingEntity entity =event.getEntity();
-        if (target!=null&&(getMainLevel(target, etshtinkerModifiers.resonance_effect.get())>0||getOffLevel(target,etshtinkerModifiers.resonance_effect.get())>0)){
+        if (target!=null&&(getMainLevel(target, EtshtinkerModifiers.resonance_effect.get())>0||getOffLevel(target, EtshtinkerModifiers.resonance_effect.get())>0)){
             if (entity instanceof Warden){
                 event.setCanceled(true);
             }

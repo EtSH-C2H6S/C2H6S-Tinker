@@ -2,7 +2,7 @@ package com.c2h6s.etshtinker.Modifiers;
 
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -26,7 +26,7 @@ public class chainreaction extends EtshModifieriii implements RequirementsModifi
     }
     @Override
     public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(etshtinkerModifiers.fission_STATIC_MODIFIER.getId(),1));
+        return List.of(new ModifierEntry(EtshtinkerModifiers.fission_STATIC_MODIFIER.getId(),1));
     }
     public boolean isNoLevels() {
         return true;

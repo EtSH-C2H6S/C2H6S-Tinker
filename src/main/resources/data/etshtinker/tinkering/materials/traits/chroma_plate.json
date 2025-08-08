@@ -5,16 +5,12 @@
   },
   "default": [
     {
-      "name": "tconstruct:enderference",
-      "level": 4
-    },
-    {
-      "name": "etshtinker:iluminate",
+      "name": "etshtinker:tri_chroma",
       "level": 1
     },
     {
-      "name": "etshtinker:sidechannelattack",
-      "level": 1
+      "name": "cti:industrial",
+      "level": 2
     }
   ]
 }

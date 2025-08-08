@@ -3,7 +3,7 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.Entities.shadowaxeEntity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
@@ -44,7 +44,7 @@ public class modifiershadowaxe extends EtshModifieriii implements RequirementsMo
 
     @Override
     public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(etshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
+        return List.of(new ModifierEntry(EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
     }
     public boolean isNoLevels() {
         return true;

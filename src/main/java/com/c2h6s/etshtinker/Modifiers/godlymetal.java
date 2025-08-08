@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.Modifiers;
 import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
+import com.hoshino.cti.util.DamageSourceUtil;
 import mekanism.api.MekanismAPI;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -33,35 +34,23 @@ public class godlymetal extends EtshModifieriii implements ToolDamageModifierHoo
     public static boolean enabled = ModList.get().isLoaded("mekanism");
     public static boolean enabled2 = ModList.get().isLoaded("cofh_core");
 
-    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
+    @Override
+    public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
         LivingEntity attacker =context.getAttacker();
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity target&&!(target instanceof Player)) {
-
             target.invulnerableTime = 0;
-            target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
+            target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(), 0.25f * damage);
             target.invulnerableTime = 0;
-            target.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor().bypassMagic(), 0.5f * damage);
+            target.hurt(DamageSourceUtil.sourced(DamageSource.MAGIC,attacker,attacker).bypassMagic().bypassArmor().bypassMagic(), 0.25f * damage);
             target.invulnerableTime = 0;
             if (enabled) {
                 MekanismAPI.getRadiationManager().radiate(target, 2000);
-                target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.5F * damage);
+                target.hurt(DamageSourceUtil.sourced(MekanismAPI.getRadiationManager().getRadiationDamageSource(),attacker,attacker).bypassArmor(), 0.25F * damage);
                 target.invulnerableTime = 0;
             }
-            target.setNoGravity(true);
-
-        }
-        return baseKnockback;
-    }
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
-        LivingEntity attacker =context.getAttacker();
-        Entity entity =context.getTarget();
-        if (entity instanceof LivingEntity target) {
             if ( attacker instanceof Player player && tool.getModifierLevel( this) > 0) {
-                target.hurt(playerThroughSource.PlayerQuark(player,10), 10);
-                if (target.getHealth()>=1) {
-                    target.setHealth(Math.max(1, target.getHealth() - target.getHealth()*0.05f*modifier.getLevel()));
-                }
+                playerThroughSource.PlayerQuark(player, target.getMaxHealth() * 0.02f).hurtEntity(target);
             }
         }
     }
@@ -83,19 +72,16 @@ public class godlymetal extends EtshModifieriii implements ToolDamageModifierHoo
         if (projectile instanceof AbstractArrow arrow&&target!=null&&attacker instanceof Player player&&!(target instanceof Player)) {
             float damageDealt =(float) (arrow.getBaseDamage()*getMold(arrow.getDeltaMovement()));
             target.invulnerableTime =0;
-            target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(),0.3F*damageDealt);
+            target.hurt(DamageSource.explosion(attacker).bypassMagic().bypassArmor().bypassMagic(),0.25F*damageDealt);
             target.invulnerableTime =0;
-            target.hurt(DamageSource.MAGIC.bypassMagic().bypassArmor().bypassMagic(),0.3F*damageDealt);
+            target.hurt(DamageSourceUtil.sourced(DamageSource.MAGIC,attacker,attacker).bypassMagic().bypassArmor().bypassMagic(),0.25F*damageDealt);
             target.invulnerableTime =0;
             if (enabled) {
                 MekanismAPI.getRadiationManager().radiate(target, 2000);
-                target.hurt(MekanismAPI.getRadiationManager().getRadiationDamageSource(), 0.3F * damageDealt);
+                target.hurt(DamageSourceUtil.sourced(MekanismAPI.getRadiationManager().getRadiationDamageSource(),attacker,attacker).bypassArmor(), 0.25F * damageDealt);
                 target.invulnerableTime = 0;
             }
-            target.setNoGravity(true);
-            if (target.getHealth()>=1) {
-                target.setHealth(Math.max(1, target.getHealth() - damageDealt));
-            }
+            playerThroughSource.PlayerQuark(player,target.getMaxHealth()*0.02f).hurtEntity(target);
         }
         return false;
     }

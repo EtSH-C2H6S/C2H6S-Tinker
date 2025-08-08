@@ -55,6 +55,11 @@ public class exoOrb extends ItemProjectile{
         return new ItemStack(etshtinkerItems.exoslash.get());
     }
 
+    @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
 
     public void tick() {
         time++;

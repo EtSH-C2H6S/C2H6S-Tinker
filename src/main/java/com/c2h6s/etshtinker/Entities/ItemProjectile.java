@@ -28,6 +28,11 @@ public abstract class ItemProjectile extends Projectile implements ItemSupplier 
         super(p_37248_, p_37249_);
     }
 
+    @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
     public void setItem(ItemStack p_37447_) {
         if (!p_37447_.is(this.getDefaultItem()) || p_37447_.hasTag()) {
             this.getEntityData().set(DATA_ITEM_STACK, (ItemStack)Util.make(p_37447_.copy(), (p_37451_) -> {

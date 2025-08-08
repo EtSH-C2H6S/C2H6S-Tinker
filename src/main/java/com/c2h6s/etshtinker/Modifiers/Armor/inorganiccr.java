@@ -41,10 +41,10 @@ public class inorganiccr extends EtshModifieriii {
             }
             CompoundTag tag =attacker.getPersistentData();
             if (!tag.contains("dmg_amplifier")){
-                tag.putFloat("dmg_amplifier",1.5f);
+                tag.putFloat("dmg_amplifier",1.25f);
             }
             else {
-                tag.putFloat("dmg_amplifier",Math.min(5, Math.max(1.5f,tag.getFloat("dmg_amplifier")+0.5f)));
+                tag.putFloat("dmg_amplifier",Math.min(2.5f, Math.max(1.25f,tag.getFloat("dmg_amplifier")+0.25f)));
             }
         }
     }

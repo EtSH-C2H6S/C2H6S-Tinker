@@ -117,7 +117,9 @@
     "acidic_poison": "#4AC435",
     "extradense_armor":"#7885E0",
     "quark_disassemble": "#A1FFB4",
-    "heat_dead":"#FF3B3E"
+    "heat_dead":"#FF3B3E",
+    "mana_shot":"#35A9FF",
+    "tri_chroma":"#8A85D9"
   },
   "material.etshtinker":
   {

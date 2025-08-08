@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,8 +16,6 @@ import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.ModifierId;
-import slimeknights.tconstruct.library.modifiers.hook.build.ModifierTraitHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileLaunchModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
@@ -87,7 +85,7 @@ public class PlasmaArrowModifier extends Modifier implements  ProjectileLaunchMo
                         }
                     }
                     for (ModifierEntry entry1 : tool.getModifierList()) {
-                        if (entry1.getModifier()!= etshtinkerModifiers.godlymetal_STATIC_MODIFIER.get()) {
+                        if (entry1.getModifier()!= EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.get()) {
                             entry1 = new ModifierEntry(entry1.getId(), level);
                             list.add(entry1);
                         }

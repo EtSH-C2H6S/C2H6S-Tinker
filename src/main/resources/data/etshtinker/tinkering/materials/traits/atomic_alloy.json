@@ -9,6 +9,10 @@
       "level": 1
     },
     {
+      "name": "cti:industrial",
+      "level": 2
+    },
+    {
       "name": "etshtinker:atomic_decompose",
       "level": 1
     }

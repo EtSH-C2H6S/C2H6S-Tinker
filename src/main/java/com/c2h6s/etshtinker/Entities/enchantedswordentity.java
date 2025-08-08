@@ -31,6 +31,11 @@ public class enchantedswordentity extends ItemProjectile {
     }
 
     @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
+    @Override
     public void tick() {
         Level world = this.level;
         time++;

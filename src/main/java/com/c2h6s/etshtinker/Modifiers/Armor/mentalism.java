@@ -35,73 +35,29 @@ import java.util.List;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 public class mentalism extends EtshModifieriii implements DamageBlockModifierHook {
-    private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("mentalism");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
         builder.addHook(this, ModifierHooks.DAMAGE_BLOCK);
     }
-    private final ResourceLocation dpreventcd = new ResourceLocation(MOD_ID, "death_preventcd");
     private final ResourceLocation KEY_HURT_CD = new ResourceLocation(MOD_ID, "hurt_cd_mentalism");
     public void onRemoved(IToolStackView tool) {
-        tool.getPersistentData().remove(dpreventcd);
+        tool.getPersistentData().remove(KEY_HURT_CD);
     }
-    public mentalism(){
-        MinecraftForge.EVENT_BUS.addListener(this::livingdeathevent);
-    }
-
-    private void livingdeathevent(LivingDeathEvent event) {
-        LivingEntity entity =event.getEntity();
-        entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-            int level = holder.get(key, 0);
-            if (level > 0) {
-                if (entity instanceof Player player ) {
-                    List<ItemStack> equipments = player.getInventory().armor;
-                    for (ItemStack equipment : equipments) {
-                        if (equipment.getItem() instanceof ModifiableArmorItem) {
-                            ToolStack tool = ToolStack.from(equipment);
-                            if (tool.getPersistentData().getInt(dpreventcd) == 0) {
-                                ModDataNBT toolData = tool.getPersistentData();
-                                if (toolData.getInt(dpreventcd) == 0 && tool.getModifierLevel(this) > 0) {
-                                    toolData.putInt(dpreventcd, 160);
-                                    event.setCanceled(true);
-                                    player.deathTime = -2;
-                                    player.fallDistance = 0;
-                                    player.setHealth(player.getMaxHealth() * 0.25f);
-                                    player.invulnerableTime = 40;
-                                    entity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    }
-
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         ModDataNBT toolData = tool.getPersistentData();
         if(!level.isClientSide&&level.getGameTime()%20==0){
-            if (toolData.getInt(dpreventcd)>0) toolData.putInt(dpreventcd,toolData.getInt(dpreventcd)-1);
             if (toolData.getInt(KEY_HURT_CD)>0) toolData.putInt(KEY_HURT_CD,toolData.getInt(KEY_HURT_CD)-1);
         }
     }
 
-    public void addTooltip(IToolStackView tool, ModifierEntry modifierEntry, @Nullable Player player, List<Component> list, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        if (player != null) {
-            ModDataNBT toolData = tool.getPersistentData();
-            list.add(applyStyle(Component.translatable("etshtinker.modifier.tooltip.deadpreventcd").append(String.valueOf(toolData.getInt(dpreventcd)+""))));
-        };
-    }
     public Component getDisplayName(IToolStackView tool, ModifierEntry entry) {
         ModDataNBT toolData =tool.getPersistentData();
-        if (toolData.getInt(dpreventcd)>0) {
-            return Component.translatable(this.getDisplayName().getString()).append( "  " ).append( Component.translatable("etshtinker.modifier.tooltip.deadpreventcd").append(String.valueOf(toolData.getInt(dpreventcd))).withStyle(this.getDisplayName().getStyle()));
+        if (toolData.getInt(KEY_HURT_CD)>0) {
+            return Component.translatable(this.getDisplayName().getString()).append( "  " ).append( Component.translatable("etshtinker.modifier.tooltip.dodge_cd").append(String.valueOf(toolData.getInt(KEY_HURT_CD))).withStyle(this.getDisplayName().getStyle()));
         }
-        else return Component.translatable(this.getDisplayName().getString() + "  " ).append(Component.translatable( "etshtinker.modifier.tooltip.deadpreventready" ).withStyle(this.getDisplayName().getStyle()));
+        else return Component.translatable(this.getDisplayName().getString() + "  " ).append(Component.translatable( "etshtinker.modifier.tooltip.dodge_ready" ).withStyle(this.getDisplayName().getStyle()));
     }
 
     @Override

@@ -37,6 +37,11 @@ public class lightningarrow extends AbstractArrow {
         super(etshtinkerEntity.lightningarrow.get(),livingEntity,world);
 
     }
+
+    @Override
+    public boolean isAttackable() {
+        return false;
+    }
     public @NotNull ItemStack getPickupItem() {
         return new ItemStack(Items.ARROW,1);
     }

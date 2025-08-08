@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.mixin;
 
 import com.c2h6s.etshtinker.init.etshtinkerHook;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -31,7 +31,7 @@ public class ItemStackMixin {
         ItemStack stack =(ItemStack) (Object)this;
         if (stack.getItem() instanceof IModifiable&&!cir.getReturnValueZ()){
             ToolStack toolStack =ToolStack.from(stack);
-            if (toolStack.getModifierLevel(etshtinkerModifiers.atomic_decompose.getId())>0||toolStack.getModifierLevel(etshtinkerModifiers.quark_disassemble.getId())>0){
+            if (toolStack.getModifierLevel(EtshtinkerModifiers.atomic_decompose.getId())>0||toolStack.getModifierLevel(EtshtinkerModifiers.quark_disassemble.getId())>0){
                 cir.setReturnValue(true);
             }
         }

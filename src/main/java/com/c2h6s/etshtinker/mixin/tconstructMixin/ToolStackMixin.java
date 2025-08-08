@@ -2,8 +2,7 @@ package com.c2h6s.etshtinker.mixin.tconstructMixin;
 
 import com.c2h6s.etshtinker.Modifiers.PlasmaArrowModifier;
 import com.c2h6s.etshtinker.Modifiers.PlasmaSputtering;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
-import net.minecraft.world.entity.Entity;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -20,8 +19,8 @@ public class ToolStackMixin {
     private void addFluidModifiers(CallbackInfoReturnable<ModifierNBT> cir){
         ToolStack toolStack =(ToolStack) (Object) this;
         ModifierNBT modifierNBT =cir.getReturnValue();
-        int level =modifierNBT.getLevel(etshtinkerModifiers.ionizing_arrow.getId());
-        int level2 =modifierNBT.getLevel(etshtinkerModifiers.plasma_sputtering.getId());
+        int level =modifierNBT.getLevel(EtshtinkerModifiers.ionizing_arrow.getId());
+        int level2 =modifierNBT.getLevel(EtshtinkerModifiers.plasma_sputtering.getId());
         if (level>0) {
             List<ModifierEntry> list = PlasmaArrowModifier.getFluidModifiers(toolStack, level);
             list.addAll(modifierNBT.getModifiers());

@@ -16,25 +16,29 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.build.VolatileDataModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
+import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
+import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 
 import java.security.SecureRandom;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class thermaldefense extends EtshModifieriii {
+public class thermaldefense extends EtshModifieriii implements VolatileDataModifierHook {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.TOOL_STATS);
+        builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.VOLATILE_DATA);
     }
 
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         SecureRandom random =EtSHrnd();
-        if (random.nextInt(50)>modifier.getLevel()){
+        if (random.nextInt(25)>modifier.getLevel()){
             LivingEntity entity =context.getEntity();
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,2,false,false));
             entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,2,false,false));
@@ -51,7 +55,7 @@ public class thermaldefense extends EtshModifieriii {
             int modilvl =modifier.getLevel();
             if (entity instanceof LivingEntity attacker&&!(attacker instanceof Player)){
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*2));
-                attacker.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,230));
+                attacker.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,4));
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 400, modilvl * 2, false, false));
                 attacker.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0, false, false));
                 AttributeInstance attribute = attacker.getAttributes().getInstance(Attributes.ARMOR);
@@ -69,5 +73,11 @@ public class thermaldefense extends EtshModifieriii {
             player.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),300,modilvl2,false,false));
             player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,modilvl2,false,false));
         }
+    }
+
+    @Override
+    public void addVolatileData(IToolContext iToolContext, ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
+        modDataNBT.addSlots(SlotType.ABILITY,modifierEntry.getLevel());
+        modDataNBT.addSlots(SlotType.DEFENSE,modifierEntry.getLevel()*2);
     }
 }

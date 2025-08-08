@@ -3,7 +3,7 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.Entities.*;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
@@ -44,7 +44,7 @@ public class modifiernovasickle extends EtshModifieriii implements RequirementsM
 
     @Override
     public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(etshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
+        return List.of(new ModifierEntry(EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
     }
     public boolean isNoLevels() {
         return true;
@@ -80,7 +80,7 @@ public class modifiernovasickle extends EtshModifieriii implements RequirementsM
             entity1.setNoGravity(true);
             entity1.noPhysics =true;
             entity1.setOwner(player);
-            if (tool.getModifierLevel(etshtinkerModifiers.creativenovasickle_STATIC_MODIFIER.get())>0){
+            if (tool.getModifierLevel(EtshtinkerModifiers.creativenovasickle_STATIC_MODIFIER.get())>0){
                 entity1.getpowah(72);
                 entity1.setDamage(106108);
             }

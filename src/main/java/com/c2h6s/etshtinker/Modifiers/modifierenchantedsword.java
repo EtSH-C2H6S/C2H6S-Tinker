@@ -3,61 +3,48 @@ package com.c2h6s.etshtinker.Modifiers;
 import com.c2h6s.etshtinker.Entities.enchantedswordentity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
-import com.c2h6s.etshtinker.network.handler.packetHandler;
-import com.c2h6s.etshtinker.network.packet.enchantedswordPacket;
-import net.minecraft.resources.ResourceLocation;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
+import com.hoshino.cti.library.modifier.CtiModifierHook;
+import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
-import static com.c2h6s.etshtinker.util.modloaded.*;
-
-public class modifierenchantedsword extends EtshModifieriii {
-    private static final ResourceLocation manacharge = new ResourceLocation(MOD_ID, "manacharge");
-    public modifierenchantedsword(){
-        MinecraftForge.EVENT_BUS.addListener(this::leftclick);
+public class modifierenchantedsword extends EtshModifieriii implements LeftClickModifierHook {
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this, CtiModifierHook.LEFT_CLICK);
     }
 
-    private void leftclick(PlayerInteractEvent.LeftClickEmpty event) {
-        if (BOTloaded) {
-            packetHandler.INSTANCE.sendToServer(new enchantedswordPacket());
+    @Override
+    public void onLeftClickEmpty(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot) {
+        if (!level.isClientSide && player.getAttackStrengthScale(0)>0.9){
+            createEnchantedSword(player);
         }
     }
+
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        if (context.getPlayerAttacker() != null && modifier.getLevel() > 0&&BOTloaded) {
+        if (context.getPlayerAttacker() != null && context.isFullyCharged() &&context.getHand()== InteractionHand.MAIN_HAND) {
             Player player = context.getPlayerAttacker();
-            if (tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get()) > 0 && tool.getPersistentData().getInt(manacharge)>1) {
-                enchantedswordentity entity =new enchantedswordentity(etshtinkerEntity.enchantedswordentity.get(),player.level);
-                entity.damage = (tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) * tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get())*(float)(1+ Math.log10(tool.getPersistentData().getInt(manacharge))/4));
-                entity.setDeltaMovement(player.getLookAngle().scale(2.5));
-                entity.lerpMotion(player.getLookAngle().x * 2.5, player.getLookAngle().y * 2.5, player.getLookAngle().z * 2.5);
-                entity.setPos(player.getX(), player.getEyeY(), player.getZ());
-                player.level.addFreshEntity(entity);
-            }
+            createEnchantedSword(player);
         }
     }
 
-    public static void createEnchantedSword(Player player){
-        enchantedswordentity entity =new enchantedswordentity(etshtinkerEntity.enchantedswordentity.get(),player.level);
-        if (player.getAttackStrengthScale(0)==1) {
-            ToolStack tool =ToolStack.from(player.getMainHandItem());
-            if (tool.getPersistentData().getInt(manacharge)>1) {
-                if (tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get()) > 0) {
-                    entity.damage =(tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) * tool.getModifierLevel(etshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get())*(float)(1+ Math.log10(tool.getPersistentData().getInt(manacharge))/4));
-                    entity.setDeltaMovement(player.getLookAngle().scale(2.5));
-                    entity.lerpMotion(player.getLookAngle().x * 2.5, player.getLookAngle().y * 2.5, player.getLookAngle().z * 2.5);
-                    entity.setPos(player.getX(), player.getEyeY(), player.getZ());
-                    entity.setOwner(player);
-                    player.level.addFreshEntity(entity);
-                }
-            }
-        }
+    public static void createEnchantedSword(Player player) {
+        enchantedswordentity entity = new enchantedswordentity(etshtinkerEntity.enchantedswordentity.get(), player.level);
+        ToolStack tool = ToolStack.from(player.getMainHandItem());
+        entity.damage = (tool.getStats().getInt(ToolStats.ATTACK_DAMAGE) * tool.getModifierLevel(EtshtinkerModifiers.modifierenchantedsword_STATIC_MODIFIER.get()));
+        entity.setDeltaMovement(player.getLookAngle().scale(2.5));
+        entity.setPos(player.getX(), player.getEyeY(), player.getZ());
+        entity.setOwner(player);
+        player.level.addFreshEntity(entity);
     }
 }

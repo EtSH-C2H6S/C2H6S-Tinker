@@ -6,7 +6,7 @@ import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.ItemReg.etshtinkerItems;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.exoslashPacket;
 import net.minecraft.network.chat.Component;
@@ -64,7 +64,7 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
 
     @Override
     public @NotNull List<ModifierEntry> displayModifiers(ModifierEntry entry) {
-        return List.of(new ModifierEntry(etshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
+        return List.of(new ModifierEntry(EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
     }
 
     public exoblademodifier(){
@@ -77,7 +77,7 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
         InteractionHand hand =event.getHand();
         if (event.getEntity().getItemInHand(hand).getItem() instanceof ModifiableItem&&event.getSide()== LogicalSide.CLIENT) {
             ToolStack tool = ToolStack.from(event.getEntity().getMainHandItem());
-            int lvl = tool.getModifierLevel(etshtinkerModifiers.exobladeModifier_STATIC_MODIFIER.get());
+            int lvl = tool.getModifierLevel(EtshtinkerModifiers.exobladeModifier_STATIC_MODIFIER.get());
             if (lvl > 0) {
                 packetHandler.INSTANCE.sendToServer(new exoslashPacket());
             }
@@ -88,7 +88,7 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
         InteractionHand hand =event.getHand();
         if (event.getEntity().getItemInHand(hand).getItem() instanceof ModifiableItem) {
             ToolStack tool = ToolStack.from(event.getEntity().getMainHandItem());
-            int lvl = tool.getModifierLevel(etshtinkerModifiers.exobladeModifier_STATIC_MODIFIER.get());
+            int lvl = tool.getModifierLevel(EtshtinkerModifiers.exobladeModifier_STATIC_MODIFIER.get());
             if (lvl > 0) {
                 packetHandler.INSTANCE.sendToServer(new exoslashPacket());
             }

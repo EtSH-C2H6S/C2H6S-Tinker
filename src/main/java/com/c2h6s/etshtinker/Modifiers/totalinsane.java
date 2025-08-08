@@ -2,11 +2,10 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.damageSources.playerThroughSource;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +22,6 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 
@@ -43,6 +41,13 @@ public class totalinsane extends EtshModifieriii implements DurabilityDisplayMod
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.DURABILITY_DISPLAY);
     }
+
+    @Override
+    public int getPriority() {
+        return Integer.MIN_VALUE;
+    }
+
+    public static float cachedDamage = 0;
 
     public void onRemoved(IToolStackView tool) {
         tool.getPersistentData().remove(fullcharged);
@@ -64,40 +69,33 @@ public class totalinsane extends EtshModifieriii implements DurabilityDisplayMod
         Entity entity1 =event.getSource().getEntity();
         if (target !=null&&entity1!=null){
             if (getMainLevel(target,this)>0){
-                target.setHealth(0);
-            }
-        }
-        if (entity1 instanceof Player attacker&& target !=null){
-            if (event.getSource() instanceof playerThroughSource){
-                return;
-            }
-            InteractionHand hand =attacker.getUsedItemHand();
-            ToolStack tool =ToolStack.from(attacker.getItemInHand(hand));
-            if (tool.getModifierLevel(this)>0&&!tool.isBroken()){
-                float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-                for (ModifierEntry entry:tool.getModifierList()){
-                    if (entry.getModifier()!= etshtinkerModifiers.totalinsane_STATIC_MODIFIER.get()) {
-                        damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, entry, new ToolAttackContext(attacker, attacker, InteractionHand.MAIN_HAND, target, target, false, 1, false), tool.getStats().get(ToolStats.ATTACK_DAMAGE), damage);
-                    }
-                }
-                ModDataNBT toolData = tool.getPersistentData();
-                if (toolData.getInt(insanity)>=500){
-                    target.setLastHurtByPlayer(attacker);
-                    target.invulnerableTime=0;
-                    target.hurt(playerThroughSource.PlayerPierce(attacker,(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*damage*0.05F),(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*0.5F);
-                    toolData.putInt(insanity,0);
-                    target.setHealth(Math.max(1, target.getHealth()-(float) Math.pow((toolData.getInt(insanity)*0.01f-4),4)*damage*0.05F));
-                    toolData.putInt(fullcharged,0);
-                    event.setCanceled(true);
-                    attacker.getPersistentData().putInt("etshtinker.death_prevent",attacker.getPersistentData().getInt("etshtinker.death_prevent")<=0?1:attacker.getPersistentData().getInt("etshtinker.death_prevent"));
-                }
-                if (toolData.getInt(insanity)<500){
-                    event.setCanceled(true);
-                }
+                target.die(DamageSource.OUT_OF_WORLD);
             }
         }
     }
 
+    @Override
+    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
+        cachedDamage=damage;
+        return tool.getPersistentData().getInt(insanity)<500?0:damage;
+    }
+
+    @Override
+    public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        if (cachedDamage>0&&context.getAttacker() instanceof Player attacker&&context.getTarget() instanceof LivingEntity target) {
+            if (tool.getModifierLevel(this) > 0 && !tool.isBroken()) {
+                ModDataNBT toolData = tool.getPersistentData();
+                if (toolData.getInt(insanity) >= 500) {
+                    target.invulnerableTime = 0;
+                    playerThroughSource.PlayerPierce(attacker, (float) Math.pow((toolData.getInt(insanity) * 0.01f), 3) * cachedDamage * 0.1F).hurtEntity(target);
+                    toolData.putInt(insanity, 0);
+                    toolData.putInt(fullcharged, 0);
+                    attacker.getPersistentData().putInt("etshtinker.death_prevent", attacker.getPersistentData().getInt("etshtinker.death_prevent") <= 0 ? 1 : attacker.getPersistentData().getInt("etshtinker.death_prevent"));
+                }
+            }
+        }
+        cachedDamage=0;
+    }
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         ModDataNBT toolData =tool.getPersistentData();

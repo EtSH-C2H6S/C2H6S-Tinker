@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.warpattackPacket;
 import com.c2h6s.etshtinker.util.meleSpecialAttackUtil;
@@ -42,7 +42,7 @@ public class warpattack extends EtshModifieriii {
     }
 
     public static void tryWarp(Player player, ToolStack tool, InteractionHand hand){
-        int lvl = tool.getModifierLevel(etshtinkerModifiers.warpattack_STATIC_MODIFIER.get());
+        int lvl = tool.getModifierLevel(EtshtinkerModifiers.warpattack_STATIC_MODIFIER.get());
         if (hand == InteractionHand.MAIN_HAND&&lvl>0&&player.getAttackStrengthScale(0)>0.8) {
             meleSpecialAttackUtil.createWarp(player, lvl * 8f, tool.getStats().get(ToolStats.ATTACK_DAMAGE) * lvl, tool,hand);
         }

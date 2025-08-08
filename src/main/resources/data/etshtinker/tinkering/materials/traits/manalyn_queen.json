@@ -12,5 +12,21 @@
       "name": "etshtinker:modifierenchantedsword",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:ranged": [
+      {
+        "name": "etshtinker:manaoverload",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:modifierenchantedsword",
+        "level": 1
+      },
+      {
+        "name": "etshtinker:mana_shot",
+        "level": 1
+      }
+    ]
+  }
 }

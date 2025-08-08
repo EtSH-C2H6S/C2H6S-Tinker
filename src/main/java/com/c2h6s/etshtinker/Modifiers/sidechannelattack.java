@@ -20,7 +20,7 @@ public class sidechannelattack extends EtshModifieriii {
         int lvl =tool.getModifierLevel(this);
         if (lvl>0&&entity instanceof LivingEntity target&&attacker instanceof Player player){
             target.invulnerableTime=0;
-            target.hurt(DamageSource.playerAttack(player),Math.min(20,0.025f*lvl*(target.getMaxHealth()-target.getHealth())));
+            target.hurt(DamageSource.playerAttack(player),Math.min(40,0.025f*lvl*(target.getMaxHealth()-target.getHealth())));
             target.invulnerableTime=0;
         }
     }
@@ -28,7 +28,7 @@ public class sidechannelattack extends EtshModifieriii {
         int lvl =modifiers.getLevel(this.getId());
         if (modifier.getLevel()>0&&target!=null&&attacker instanceof Player player){
             target.invulnerableTime=0;
-            target.hurt(DamageSource.playerAttack(player),Math.min(20,0.025f*lvl*(target.getMaxHealth()-target.getHealth())));
+            target.hurt(DamageSource.playerAttack(player),Math.min(40,0.025f*lvl*(target.getMaxHealth()-target.getHealth())));
             target.invulnerableTime=0;
         }
         return false;

@@ -27,6 +27,11 @@ public class exoLighEntity extends ItemProjectile{
     }
 
     @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
+    @Override
     public void tick() {
         AABB aabb =new AABB(this.getX()-0.75,this.getY()-10,this.getZ()-0.75,this.getX()+0.75,this.getY()+10,this.getZ()+0.75);
         if (this.time==0){

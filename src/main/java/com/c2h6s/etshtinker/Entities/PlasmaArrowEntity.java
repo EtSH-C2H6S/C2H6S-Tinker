@@ -20,20 +20,14 @@ import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
 public class PlasmaArrowEntity extends AbstractArrow {
     public int time =0;
-    protected PlasmaArrowEntity(EntityType<? extends AbstractArrow> p_36717_, LivingEntity p_36718_, Level p_36719_) {
-        super(p_36717_, p_36718_, p_36719_);
-    }
-
-    protected PlasmaArrowEntity(EntityType<? extends AbstractArrow> p_36711_, double p_36712_, double p_36713_, double p_36714_, Level p_36715_) {
-        super(p_36711_, p_36712_, p_36713_, p_36714_, p_36715_);
-    }
 
     public PlasmaArrowEntity(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_) {
         super(p_36721_, p_36722_);
+        this.setBaseDamage(4);
     }
     public PlasmaArrowEntity(Level world, LivingEntity livingEntity){
         super(etshtinkerEntity.plasmarrowEntity.get(),livingEntity,world);
-
+        this.setBaseDamage(4);
     }
     @Override
     public boolean isNoGravity() {

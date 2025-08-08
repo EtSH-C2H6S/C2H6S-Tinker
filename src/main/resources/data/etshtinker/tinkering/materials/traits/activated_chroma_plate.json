@@ -5,6 +5,10 @@
   },
   "default": [
     {
+      "name": "cti:industrial",
+      "level": 1
+    },
+    {
       "name": "etshtinker:thermalstrike",
       "level": 1
     },
@@ -19,6 +23,10 @@
   ],
   "perStat" : {
     "tconstruct:armor": [
+      {
+        "name": "cti:industrial_armor",
+        "level": 1
+      },
       {
         "name": "etshtinker:fluxloaded",
         "level": 1

@@ -38,6 +38,11 @@ public class annihilateexplosionentity extends ItemProjectile{
     }
 
     @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
+    @Override
     protected Item getDefaultItem() {
         return null;
     }
@@ -53,13 +58,13 @@ public class annihilateexplosionentity extends ItemProjectile{
         if (this.getOwner() instanceof Player player&&this.target!=null){
             if (this.time ==3||this.time==5) {
                 this.target.invulnerableTime = 0;
-                this.target.hurt(DamageSource.playerAttack(player), this.damage);
+                this.target.hurt(DamageSource.playerAttack(player), this.damage*0.25f);
                 this.target.invulnerableTime = 0;
-                this.target.hurt(DamageSource.MAGIC, this.damage);
+                this.target.hurt(DamageSource.MAGIC, this.damage*0.25f);
                 this.target.invulnerableTime = 0;
-                this.target.hurt(DamageSource.explosion(player), this.damage);
+                this.target.hurt(DamageSource.explosion(player), this.damage*0.25f);
                 this.target.invulnerableTime = 0;
-                this.target.hurt(DamageSource.WITHER, this.damage);
+                this.target.hurt(DamageSource.WITHER, this.damage*0.25f);
                 this.target.invulnerableTime = 0;
             }
             if (this.time>=6){

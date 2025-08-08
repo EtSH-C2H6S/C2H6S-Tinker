@@ -26,8 +26,7 @@ public class gravitymanipulate extends EtshModifieriii {
         if (entity instanceof LivingEntity living){
             living.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
             if (!living.isNoGravity()&&!(living instanceof Player)){
-                living.fallDistance+=10*modifier.getLevel();
-                living.setDeltaMovement(0,-5,0);
+                living.setDeltaMovement(0,-0.2,0);
             }
         }
         return knockback;
@@ -40,8 +39,7 @@ public class gravitymanipulate extends EtshModifieriii {
         if (target !=null){
             target.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
             if (!target.isNoGravity()&&!(target instanceof Player)){
-                target.fallDistance+=10*modifier.getLevel();
-                target.setDeltaMovement(0,-5,0);
+                target.setDeltaMovement(0,-0.2,0);
             }
         }
         return false;

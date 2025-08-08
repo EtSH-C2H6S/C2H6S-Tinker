@@ -1,26 +1,18 @@
 package com.c2h6s.etshtinker.Modifiers;
 
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.ModifierId;
-import slimeknights.tconstruct.library.modifiers.hook.build.ModifierTraitHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
@@ -91,7 +83,7 @@ public class PlasmaSputtering extends Modifier implements MeleeHitModifierHook ,
                         }
                     }
                     for (ModifierEntry entry1 : tool.getModifierList()) {
-                        if (entry1.getModifier()!= etshtinkerModifiers.godlymetal_STATIC_MODIFIER.get()&&entry1.getModifier()!= TinkerModifiers.silkyShears.get()) {
+                        if (entry1.getModifier()!= EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.get()&&entry1.getModifier()!= TinkerModifiers.silkyShears.get()) {
                             entry1 = new ModifierEntry(entry1.getId(), level);
                             list.add(entry1);
                         }

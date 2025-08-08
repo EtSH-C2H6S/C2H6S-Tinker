@@ -5,9 +5,10 @@ import com.c2h6s.etshtinker.Entities.NightSlashEntityB;
 import com.c2h6s.etshtinker.Modifiers.modifiers.etshmodifierfluxed;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.nightslashPacket;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -34,14 +35,14 @@ public class nightsedge extends EtshModifieriii {
     }
 
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
-        if (context.getPlayerAttacker()!=null&&context.isFullyCharged()&&!context.isExtraAttack()) {
+        if (context.getPlayerAttacker()!=null&&context.isFullyCharged()&&!context.isExtraAttack()&&context.getHand()== InteractionHand.MAIN_HAND) {
             createNightSlash(context.getPlayerAttacker());
         }
         return knockback;
     }
 
     public static void createNightSlash(Player player){
-        if (player.getAttackStrengthScale(0)==1&&ToolStack.from(player.getMainHandItem()).getModifierLevel(etshtinkerModifiers.nightsedge_STATIC_MODIFIER.get())>0) {
+        if (player.getAttackStrengthScale(0)==1&&ToolStack.from(player.getMainHandItem()).getModifierLevel(EtshtinkerModifiers.nightsedge_STATIC_MODIFIER.get())>0) {
             ToolStack tool =ToolStack.from(player.getMainHandItem());
             SecureRandom random = EtSHrnd();
             if (random.nextBoolean()){

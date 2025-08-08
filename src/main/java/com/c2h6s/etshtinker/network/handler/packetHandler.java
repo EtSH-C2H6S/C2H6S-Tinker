@@ -18,7 +18,6 @@ public class packetHandler {
     public static void init() {
         INSTANCE.registerMessage(id++, warpattackPacket.class, warpattackPacket::encode, warpattackPacket::decode, warpattackPacket::handle);
         INSTANCE.registerMessage(id++, exoslashPacket.class, exoslashPacket::encode, exoslashPacket::decode, exoslashPacket::handle);
-        INSTANCE.registerMessage(id++, enchantedswordPacket.class, enchantedswordPacket::encode, enchantedswordPacket::decode, enchantedswordPacket::handle);
         INSTANCE.registerMessage(id++, alfbeamPacket.class, alfbeamPacket::encode, alfbeamPacket::decode, alfbeamPacket::handle);
         INSTANCE.registerMessage(id++, nightslashPacket.class, nightslashPacket::encode, nightslashPacket::decode, nightslashPacket::handle);
         INSTANCE.registerMessage(id++, plasmaSlashPacket.class, plasmaSlashPacket::encode, plasmaSlashPacket::decode, plasmaSlashPacket::handle);

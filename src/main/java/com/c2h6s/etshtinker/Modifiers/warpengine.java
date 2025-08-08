@@ -23,7 +23,7 @@ import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSou
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.c2h6s.etshtinker.util.vecCalc.*;
@@ -98,7 +98,7 @@ public class warpengine extends EtshModifieriii implements GeneralInteractionMod
             }
         }
         if (holder instanceof Player player&&player.swingTime == -1 && tool.getPersistentData().getFloat(warpdur) > 0&&isCorrectSlot) {
-            if (tool.getModifierLevel(etshtinkerModifiers.warpingenhance_STATIC_MODIFIER.get())>0) {
+            if (tool.getModifierLevel(EtshtinkerModifiers.warpingenhance_STATIC_MODIFIER.get())>0) {
                 LivingEntity entity =getNearestLiEnt((float)player.getAttackRange(),player,player.level);
                 if (entity!=null){
                     entity.invulnerableTime=0;

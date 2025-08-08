@@ -50,7 +50,7 @@ public class etshtinker {
         MinecraftForge.EVENT_BUS.register(new LivingEvents());
         etshtinkerItems.ITEMS.register(eventBus);
         etshtinkerItems.CAST.register(eventBus);
-        etshtinkerModifiers.MODIFIERS.register(eventBus);
+        EtshtinkerModifiers.MODIFIERS.register(eventBus);
         etshtinkerFluids.FLUIDS.register(eventBus);
         etshtinkerBlocks.BLOCKS.register(eventBus);
         etshtinkerEffects.EFFECT.register(eventBus);
@@ -62,7 +62,7 @@ public class etshtinker {
             etshtinkerMekansimMaterial.ITEMS.register(eventBus);
             etshtinkerChemicals.INFUSE_TYPES.register(eventBus);
             etshtinkerFluids.etshtinkerFluidMekanism.FLUIDS.register(eventBus);
-            etshtinkerModifiers.etshMekModifier.MODIFIERS.register(eventBus);
+            EtshtinkerModifiers.etshMekModifier.MODIFIERS.register(eventBus);
         }
         if (Cofhloaded){
             etshtinkerThermalMaterial.ITEMS.register(eventBus);

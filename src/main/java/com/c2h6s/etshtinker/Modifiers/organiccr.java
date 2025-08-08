@@ -15,10 +15,7 @@ public class organiccr extends EtshModifieriii {
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         LivingEntity target =context.getLivingTarget();
         if (target!=null&&!(target instanceof Player)){
-            if (target.getPersistentData().contains("legacyhealth")&&target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
-                target.getPersistentData().putFloat("legacyhealth",target.getPersistentData().getFloat("legacyhealth"));
-            }
-            else {
+            if (target.getPersistentData().contains("legacyhealth")&&target.getHealth()<target.getPersistentData().getFloat("legacyhealth")){
                 target.getPersistentData().putFloat("legacyhealth",target.getHealth());
             }
         }
@@ -26,12 +23,12 @@ public class organiccr extends EtshModifieriii {
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){
         LivingEntity target =context.getLivingTarget();
         LivingEntity attacker =context.getAttacker();
-        if (target!=null&&modifier.getLevel()>0&&!(target instanceof Player)){
+        if (target!=null&&!(target instanceof Player)){
             if (target.getPersistentData().contains("legacyhealth")){
-                if (target.getHealth()>target.getPersistentData().getFloat("legacyhealth")){
+                float legacyHealth = target.getPersistentData().getFloat("legacyhealth");
+                if (target.getHealth()>legacyHealth&&legacyHealth>0){
                     attacker.heal(Math.min( 10,target.getHealth()-target.getPersistentData().getFloat("legacyhealth")));
-                    target.setHealth(target.getPersistentData().getFloat("legacyhealth"));
-                    target.getPersistentData().putFloat("legacyhealth",target.getHealth());
+                    target.setHealth(legacyHealth);
                 }
             }
         }

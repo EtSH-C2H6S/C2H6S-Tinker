@@ -3,7 +3,7 @@ package com.c2h6s.etshtinker.Modifiers.Armor;
 import com.c2h6s.etshtinker.Entities.annihilateexplosionentity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.EntityDamageSource;
@@ -63,8 +63,8 @@ public class reactiveannihlarmor extends EtshModifieriii implements DurabilityDi
                 IToolStackView tool =ToolStack.from( player.getInventory().armor.get(i));
                 if (tool.getModifierLevel(this)>0){
                     int lvl =tool.getModifierLevel(this);
-                    boolean b = tool.getModifierLevel(etshtinkerModifiers.controllableannihl_STATIC_MODIFIER.get())>0;
-                    int value = b?Integer.MAX_VALUE:1024*lvl;
+                    boolean b = tool.getModifierLevel(EtshtinkerModifiers.controllableannihl_STATIC_MODIFIER.get())>0;
+                    int value = b?262144*lvl:4096*lvl;
                     ModDataNBT toolData =tool.getPersistentData();
                     if (toolData.getFloat(antineutron)>event.getAmount()){
                         toolData.putFloat(antineutron,toolData.getFloat(antineutron)-event.getAmount());

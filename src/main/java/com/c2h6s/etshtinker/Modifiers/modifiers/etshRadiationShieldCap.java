@@ -1,6 +1,6 @@
 package com.c2h6s.etshtinker.Modifiers.modifiers;
 
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import mekanism.api.radiation.capability.IRadiationShielding;
 import mekanism.common.capabilities.Capabilities;
 import net.minecraft.world.item.ItemStack;
@@ -25,6 +25,6 @@ public class etshRadiationShieldCap implements IRadiationShielding , ToolCapabil
 
     @Override
     public <T> LazyOptional<T> getCapability(IToolStackView iToolStackView, Capability<T> capability) {
-        return  iToolStackView.getModifierLevel(etshtinkerModifiers.etshMekModifier.radiationproof_STATIC_MODIFIER.get())>0&& capability == Capabilities.RADIATION_SHIELDING ? Capabilities.RADIATION_SHIELDING.orEmpty(capability,this.capOptional):LazyOptional.empty();
+        return  iToolStackView.getModifierLevel(EtshtinkerModifiers.etshMekModifier.radiationproof_STATIC_MODIFIER.get())>0&& capability == Capabilities.RADIATION_SHIELDING ? Capabilities.RADIATION_SHIELDING.orEmpty(capability,this.capOptional):LazyOptional.empty();
     }
 }

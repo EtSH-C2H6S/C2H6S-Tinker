@@ -1,7 +1,7 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
-import com.c2h6s.etshtinker.init.etshtinkerModifiers;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,8 +36,8 @@ public class selfassemble extends EtshModifieriii {
         if (tool.getDamage()>0){
             int multiplier = (int) Math.pow(modifier.getLevel(),2);
             int maxRepair =4096*multiplier;
-            if (tool.getModifierLevel(etshtinkerModifiers.atomorigin_STATIC_MODIFIER.get())>0){
-                maxRepair = 1073741823;
+            if (tool.getModifierLevel(EtshtinkerModifiers.atomorigin_STATIC_MODIFIER.get())>0){
+                maxRepair = 65536*multiplier;
             }
             int damaged =Math.min(maxRepair,tool.getDamage());
             damaged = Math.min(damaged,toolData.getInt(repair));

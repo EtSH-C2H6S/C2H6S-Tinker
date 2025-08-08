@@ -16,36 +16,31 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 
-public class controllableannihl extends EtshModifieriii implements ToolStatsModifierHook {
+public class controllableannihl extends EtshModifieriii {
+
+    public static float cachedDamage = 0;
+
     @Override
-    public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        super.addToolStats(context, modifier, builder);
-        ToolStats.DURABILITY.multiply(builder,0.1);
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        cachedDamage = damage;
+        return knockback;
     }
 
-    public boolean isNoLevels() {
-        return true;
-    }
-    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage){
-        LivingEntity attacker =context.getAttacker();
-        Entity entity =context.getTarget();
-        if (!tool.hasTag(TinkerTags.Items.DURABILITY)||tool.isBroken()){
-            return damage;
-        }
-        if (entity instanceof LivingEntity target) {
-            if ( attacker instanceof Player player && modifier.getLevel()>0&&context.isFullyCharged()) {
-                if (tool.getDamage() < tool.getStats().getInt(ToolStats.DURABILITY) * 0.75) {
-                    annihilateexplosionentity explode = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), target.getLevel());
-                    float d = tool.getCurrentDurability() * 0.05f;
-                    tool.setDamage(tool.getDamage() + (int) d);
-                    explode.damage = d * 4+damage*0.0625f;
-                    explode.target = target;
-                    explode.setPos(target.getX(), target.getY() + 0.5 * target.getBbHeight(), target.getZ());
-                    explode.setOwner(player);
-                    target.level.addFreshEntity(explode);
-                }
+    @Override
+    public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
+        if (cachedDamage>0&&context.isFullyCharged()&&context.getTarget() instanceof LivingEntity target&&context.getAttacker() instanceof Player player){
+            int toolDamage = Math.min(modifier.getLevel()*10,modifier.getLevel()*((tool.getCurrentDurability()+tool.getDamage())/100000));
+            if (tool.getDamage()<=tool.getCurrentDurability()&&toolDamage>0&&tool.getCurrentDurability()>toolDamage*10) {
+                float percentage = toolDamage * 0.1f;
+                annihilateexplosionentity explode = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), target.getLevel());
+                tool.setDamage(tool.getDamage() + (toolDamage*10));
+                explode.damage = cachedDamage * percentage;
+                explode.target = target;
+                explode.setPos(target.getX(), target.getY() + 0.5 * target.getBbHeight(), target.getZ());
+                explode.setOwner(player);
+                target.level.addFreshEntity(explode);
             }
+            cachedDamage=0;
         }
-        return damage/16;
     }
 }

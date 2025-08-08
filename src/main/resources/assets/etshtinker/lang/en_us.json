@@ -750,7 +750,7 @@
   "etshtinker.modifier.tooltip.activated": "Activated",
   "etshtinker.modifier.tooltip.mananotenough": "Not enough mana.",
   "etshtinker.modifier.tooltip.manaenough": "Mana sufficient",
-  "etshtinker.modifier.tooltip.multiplier": "Current damage multiplier:",
+  "etshtinker.modifier.tooltip.multiplier": "Current damage bonus:",
   "etshtinker.modifier.tooltip.manadrain": "Current mana consumption:",
   "etshtinker.modifier.tooltip.marconotenough": "Your tool don't think you're a qualified tinker",
   "etshtinker.modifier.tooltip.marconenough": "Your tool is now ready to do everything for you.",

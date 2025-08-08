@@ -38,6 +38,11 @@ public class CustomSonicBoomEntity extends ItemProjectile{
     }
 
     @Override
+    public boolean isAttackable() {
+        return false;
+    }
+
+    @Override
     public void tick() {
         if (this.level instanceof ServerLevel serverLevel&&this.getOwner()!=null) {
             EntityDamageSource source = (EntityDamageSource) DamageSource.sonicBoom(this.getOwner());

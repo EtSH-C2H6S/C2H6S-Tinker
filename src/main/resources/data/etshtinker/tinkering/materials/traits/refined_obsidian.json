@@ -9,6 +9,10 @@
       "level": 1
     },
     {
+      "name": "cti:industrial_armor",
+      "level": 1
+    },
+    {
       "name": "etshtinker:armor_momentoaccel",
       "level": 1
     }

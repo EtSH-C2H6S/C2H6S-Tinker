@@ -9,27 +9,27 @@
       "fluid_capacity": 8000
     },
     "tconstruct:handle": {
-      "durability": 0.1,
-      "mining_speed": 0.4,
-      "melee_speed": 0.3,
-      "melee_damage": 0.25
+      "durability": 0.25,
+      "mining_speed": 0.25,
+      "melee_speed": 0.2,
+      "melee_damage": 0.2
     },
     "tconstruct:head": {
-      "durability": 720,
+      "durability": 1560,
       "mining_speed": 8.5,
       "mining_tier": "minecraft:netherite",
-      "melee_attack": 3.5
+      "melee_attack": 5
     },
     "tconstruct:limb": {
-      "durability": 755,
-      "draw_speed": 0.6,
-      "velocity": 0.02,
+      "durability": 1560,
+      "draw_speed": 0.4,
+      "velocity": 0.35,
       "accuracy": 0.2
     },
     "tconstruct:grip": {
-      "durability": 1.0,
-      "accuracy": 1.0,
-      "melee_damage": 4.0
+      "durability": 0.4,
+      "accuracy": 0.02,
+      "melee_damage": 5.0
     }
   }
 }

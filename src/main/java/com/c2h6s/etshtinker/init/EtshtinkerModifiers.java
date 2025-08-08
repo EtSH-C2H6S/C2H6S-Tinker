@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class etshtinkerModifiers {
+public class EtshtinkerModifiers {
     public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
     public static final StaticModifier<Adrenaline>adrenaline_STATIC_MODIFIER= MODIFIERS.register("adrenaline", Adrenaline::new);
     public static final StaticModifier<Annilate>annilate_STATIC_MODIFIER= MODIFIERS.register("annilate", Annilate::new);
@@ -120,6 +120,8 @@ public class etshtinkerModifiers {
     public static final StaticModifier<ExtraDenseArmor>extradense_armor= MODIFIERS.register("extradense_armor", ExtraDenseArmor::new);
     public static final StaticModifier<HeatDead>heat_dead= MODIFIERS.register("heat_dead", HeatDead::new);
     public static final StaticModifier<AnnihilateArmor>annihilate_armor= MODIFIERS.register("annihilate_armor", AnnihilateArmor::new);
+    public static final StaticModifier<ManaShot>MANA_SHOT= MODIFIERS.register("mana_shot", ManaShot::new);
+    public static final StaticModifier<TriChroma> TRI_CHROMA = MODIFIERS.register("tri_chroma", TriChroma::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);
