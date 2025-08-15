@@ -5,6 +5,10 @@
   },
   "default": [
     {
+      "name": "cti:refined",
+      "level": 3
+    },
+    {
       "name": "etshtinker:trinityblessing",
       "level": 1
     },

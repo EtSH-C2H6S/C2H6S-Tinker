@@ -16,7 +16,7 @@ public class EtshtinkerModifiers {
     public static final StaticModifier<tightennerve>tightennerve_STATIC_MODIFIER= MODIFIERS.register("tightennerve", tightennerve::new);
     public static final StaticModifier<sharpnessex>sharpnessex_STATIC_MODIFIER= MODIFIERS.register("sharpnessex", sharpnessex::new);
     public static final StaticModifier<gravityaccelerate>gravityaccelerate_STATIC_MODIFIER= MODIFIERS.register("gravityaccelerate", gravityaccelerate::new);
-    public static final StaticModifier<overweightex>overweightex_STATIC_MODIFIER= MODIFIERS.register("overweightex", overweightex::new);
+    public static final StaticModifier<OverWeightEx>overweightex_STATIC_MODIFIER= MODIFIERS.register("overweightex", OverWeightEx::new);
     public static final StaticModifier<ragedangery>ragedAngery_STATIC_MODIFIER= MODIFIERS.register("ragedangery", ragedangery::new);
     public static final StaticModifier<fission>fission_STATIC_MODIFIER= MODIFIERS.register("fission", fission::new);
     public static final StaticModifier<mentalism>mentalism_STATIC_MODIFIER= MODIFIERS.register("mentalism", mentalism::new);
@@ -41,7 +41,7 @@ public class EtshtinkerModifiers {
     public static final StaticModifier<electrified>electrified_STATIC_MODIFIER= MODIFIERS.register("electrified", electrified::new);
     public static final StaticModifier<extralight>extralight_STATIC_MODIFIER= MODIFIERS.register("extralight", extralight::new);
     public static final StaticModifier<ultradenseex>ultradenseex_STATIC_MODIFIER= MODIFIERS.register("ultradenseex", ultradenseex::new);
-    public static final StaticModifier<extraweight>extraweight_STATIC_MODIFIER= MODIFIERS.register("extraweight", extraweight::new);
+    public static final StaticModifier<ExtraWeight>extraweight_STATIC_MODIFIER= MODIFIERS.register("extraweight", ExtraWeight::new);
     public static final StaticModifier<modifiernovasickle>modifiernovasickle_STATIC_MODIFIER= MODIFIERS.register("modifiernovasickle", modifiernovasickle::new);
     public static final StaticModifier<exoblademodifier>exobladeModifier_STATIC_MODIFIER= MODIFIERS.register("exoblademodifier", exoblademodifier::new);
     public static final StaticModifier<lightningarrowmodifier>lightningarrowmodifier_STATIC_MODIFIER= MODIFIERS.register("lightningarrowmodifier", lightningarrowmodifier::new);

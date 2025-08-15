@@ -12,10 +12,11 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import java.lang.Math;
 
 
-public class overweightex extends EtshModifieriii {
+public class OverWeightEx extends EtshModifieriii {
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
+        if (level.isClientSide) return;
         int vy2 = (int) Math.pow(holder.getDeltaMovement().y,2);
-        if(holder instanceof Player player&&isCorrectSlot&&player.getDeltaMovement().y<-0.1&&!player.isNoGravity()){
+        if(holder instanceof Player player&&!player.getAbilities().flying&&isCorrectSlot&&player.getDeltaMovement().y<-0.1&&!player.isNoGravity()){
             int weilvl =modifier.getLevel();
             player.setDeltaMovement(player.getDeltaMovement().x,(player.getDeltaMovement().y)-0.35*weilvl,player.getDeltaMovement().z);
             player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,2,vy2,false,false));

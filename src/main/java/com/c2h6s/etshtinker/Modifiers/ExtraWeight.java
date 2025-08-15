@@ -15,13 +15,13 @@ import static com.c2h6s.etshtinker.util.vecCalc.*;
 
 import java.util.List;
 
-public class extraweight extends EtshModifieriii {
+public class ExtraWeight extends EtshModifieriii {
     public boolean isNoLevels() {
         return true;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (level.isClientSide) return;
-        if(holder instanceof Player player&&isCorrectSlot&&player.getDeltaMovement().y<-0.1&&!holder.isNoGravity()){
+        if(holder instanceof Player player&&!player.getAbilities().flying&&isCorrectSlot&&player.getDeltaMovement().y<-0.1&&!holder.isNoGravity()){
             double xx = player.getX();
             double yy = player.getY();
             double zz = player.getZ();

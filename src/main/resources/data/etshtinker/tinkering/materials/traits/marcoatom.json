@@ -9,6 +9,10 @@
       "level": 1
     },
     {
+      "name": "cti:refined",
+      "level": 2
+    },
+    {
       "name": "etshtinker:atomorigin",
       "level": 1
     }
@@ -18,6 +22,10 @@
       {
         "name": "etshtinker:unknown",
         "level": 1
+      },
+      {
+        "name": "cti:refined",
+        "level": 2
       },
       {
         "name": "etshtinker:atomorigin",

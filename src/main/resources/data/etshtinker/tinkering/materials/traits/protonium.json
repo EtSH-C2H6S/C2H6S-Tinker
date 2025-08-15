@@ -9,6 +9,10 @@
       "level": 1
     },
     {
+      "name": "cti:refined",
+      "level": 1
+    },
+    {
       "name": "etshtinker:ultradenseex",
       "level": 1
     },
@@ -24,6 +28,10 @@
         "level": 1
       },
       {
+        "name": "cti:refined",
+        "level": 1
+      },
+      {
         "name": "etshtinker:solidex",
         "level": 1
       }
@@ -32,6 +40,10 @@
       {
         "name": "etshtinker:ultradenseex",
         "level": 1
+      },
+      {
+        "name": "cti:refined",
+        "level": 2
       },
       {
         "name": "etshtinker:solidex",
