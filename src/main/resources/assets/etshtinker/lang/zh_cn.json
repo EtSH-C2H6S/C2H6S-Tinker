@@ -199,7 +199,7 @@
 
   "modifier.etshtinker.momentoaccel": "惯性加速",
   "modifier.etshtinker.momentoaccel.flavor": "十分趁手！",
-  "modifier.etshtinker.momentoaccel.description":"攻击、挖掘时获得可堆叠的急迫效果，急迫的最大等级为属性等级*8。",
+  "modifier.etshtinker.momentoaccel.description":"攻击、挖掘时获得可堆叠的急迫效果，急迫的最大等级为属性等级*2。",
 
   "modifier.etshtinker.crunchyshattered": "酥脆易碎",
   "modifier.etshtinker.crunchyshattered.flavor": "虽然不能吃，但是口感很不错...嗯？你在说亻",
@@ -415,7 +415,7 @@
 
   "modifier.etshtinker.armor_momentoaccel": "惯性加速",
   "modifier.etshtinker.armor_momentoaccel.flavor": "十分趁手！",
-  "modifier.etshtinker.armor_momentoaccel.description":"攻击时获得可堆叠的急迫效果，急迫的最大等级为护甲总属性等级*4。",
+  "modifier.etshtinker.armor_momentoaccel.description":"攻击时获得可堆叠的急迫效果，急迫的最大等级为护甲总属性等级。",
 
   "modifier.etshtinker.foolish_gold": "愚人金",
   "modifier.etshtinker.foolish_gold.flavor": "富含二硫化亚铁",

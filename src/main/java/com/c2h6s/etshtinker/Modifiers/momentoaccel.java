@@ -15,7 +15,7 @@ public class momentoaccel extends EtshModifieriii {
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getAttacker();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity attacker&&!tool.isBroken()){
-            if (attacker.getEffect(MobEffects.DIG_SPEED)!=null&&attacker.getEffect(MobEffects.DIG_SPEED).getAmplifier()<8*modifier.getLevel()){
+            if (attacker.getEffect(MobEffects.DIG_SPEED)!=null&&attacker.getEffect(MobEffects.DIG_SPEED).getAmplifier()<2*modifier.getLevel()){
                 attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,attacker.getEffect(MobEffects.DIG_SPEED).getAmplifier()+1,false,false));
             }
             else attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,0,false,false));
@@ -24,7 +24,7 @@ public class momentoaccel extends EtshModifieriii {
     public void modifierAfterBlockBreak(IToolStackView tool, ModifierEntry modifier, ToolHarvestContext context) {
         if (context.getPlayer()!=null) {
             Player player = context.getPlayer();
-            if (player.getEffect(MobEffects.DIG_SPEED)!=null&&player.getEffect(MobEffects.DIG_SPEED).getAmplifier()<8*modifier.getLevel()){
+            if (player.getEffect(MobEffects.DIG_SPEED)!=null&&player.getEffect(MobEffects.DIG_SPEED).getAmplifier()<2*modifier.getLevel()){
                 player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,player.getEffect(MobEffects.DIG_SPEED).getAmplifier()+1,false,false));
             }
             else player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,0,false,false));
