@@ -1,11 +1,11 @@
 package com.c2h6s.etshtinker.Modifiers;
 
+import com.google.common.collect.Lists;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.warpattackPacket;
 import com.c2h6s.etshtinker.util.meleSpecialAttackUtil;
-import com.google.common.collect.Lists;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -55,7 +55,7 @@ public class warpattack extends EtshModifieriii {
         }
     }
 
-    public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, @Nullable AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
+    public void modifierOnProjectileLaunch(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, Projectile projectile, AbstractArrow abstractArrow, NamespacedNBT namespacedNBT, boolean primary) {
         if (livingEntity instanceof Player player&&!player.isShiftKeyDown()&&abstractArrow !=null){
             abstractArrow.piercedAndKilledEntities = Lists.newArrayListWithCapacity(5);
             Entity entity = getNearestMobWithinAngle(modifiers.getLevel()*16f,player,player.level,player.getLookAngle(),0.88);

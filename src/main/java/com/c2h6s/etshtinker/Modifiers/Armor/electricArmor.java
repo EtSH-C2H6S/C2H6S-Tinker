@@ -28,7 +28,7 @@ public class electricArmor extends EtshModifieriii {
                     int lvl000 = tool.getModifierLevel(this);
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE, 1.2f, 1.2f);
                     attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,2*lvl000,false,false),attacker);
-                    attacker.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 5, false, false), attacker);
+                    attacker.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 2*lvl000, false, false), attacker);
                 }
             }
         }

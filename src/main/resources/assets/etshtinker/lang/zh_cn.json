@@ -275,7 +275,7 @@
 
   "modifier.etshtinker.manaoverload": "魔力过载",
   "modifier.etshtinker.manaoverload.flavor": "希望你有足够的魔力来使用它",
-  "modifier.etshtinker.manaoverload.description":"身上带有魔力时消耗魔力增加伤害。每消耗50mana增加1伤害，最高每级增加200伤害。",
+  "modifier.etshtinker.manaoverload.description":"身上带有魔力时消耗魔力增加伤害。每消耗25mana增加1伤害，最高每级增加400伤害。",
 
   "modifier.etshtinker.thermaldefense": "热力之护",
   "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",

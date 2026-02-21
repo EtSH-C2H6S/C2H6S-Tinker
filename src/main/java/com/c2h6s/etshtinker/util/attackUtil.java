@@ -20,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -54,8 +55,10 @@ public class attackUtil {
                 .map(e -> e.getAttribute(Attributes.KNOCKBACK_RESISTANCE))
                 .filter(attribute -> !attribute.hasModifier(ANTI_KNOCKBACK_MODIFIER));
     }
-
-    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,boolean SetCritical,boolean notDamageTool,boolean removeInvTime,boolean ignoreEnchant,float additionalCrit) {
+    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float setDamage,boolean setCritical,boolean notDamageTool,boolean removeInvTime,boolean ignoreEnchant,float additionalCrit) {
+        return attackEntity(tool,attackerLiving,hand,targetEntity,cooldownFunction,isExtraAttack,sourceSlot,setDamage,setCritical,notDamageTool,removeInvTime,ignoreEnchant,additionalCrit,false);
+    }
+    public static boolean attackEntity(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot,float SetDamage,boolean SetCritical,boolean notDamageTool,boolean removeInvTime,boolean ignoreEnchant,float additionalCrit,boolean avoidAttributeIssue) {
         if (tool.isBroken() || !tool.hasTag(TinkerTags.Items.MELEE)) {
             return false;
         }
@@ -128,7 +131,16 @@ public class attackUtil {
         }
 
         float baseKnockback = knockback;
-        for (ModifierEntry entry : modifiers) {
+        if (avoidAttributeIssue&&attackerLiving instanceof Player player&&player.level instanceof ServerLevel serverLevel){
+            var fakePlayer = new FakePlayer(serverLevel,player.getGameProfile());
+            fakePlayer.setItemInHand(hand,player.getItemInHand(hand));
+            var alterContext = new ToolAttackContext(attackerLiving, fakePlayer, hand, sourceSlot, targetEntity, targetLiving, isCritical, cooldown, isExtraAttack);
+            for (ModifierEntry entry : modifiers) {
+                knockback = entry.getHook(ModifierHooks.MELEE_HIT).beforeMeleeHit(tool, entry, alterContext, damage, baseKnockback, knockback);
+            }
+            fakePlayer.discard();
+        }
+        else for (ModifierEntry entry : modifiers) {
             knockback = entry.getHook(ModifierHooks.MELEE_HIT).beforeMeleeHit(tool, entry, context, damage, baseKnockback, knockback);
         }
 

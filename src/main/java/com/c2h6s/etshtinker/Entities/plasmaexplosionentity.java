@@ -261,7 +261,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                     entity.invulnerableTime = 0;
                     entity.hurt(DamageSource.DRAGON_BREATH.bypassArmor().bypassMagic(), damage * 0.25f);
                     entity.forceAddEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 4, false, false), this.getOwner());
-                    entity.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 4, false, false), this.getOwner());
+                    entity.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 8, false, false), this.getOwner());
                     entity.forceAddEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 50, 4, false, false), this.getOwner());
                     if (Cofhloaded) {
                         entity.forceAddEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 50, 4, false, false), this.getOwner());

@@ -47,7 +47,7 @@ public class manaoverload extends EtshModifieriii {
         int mana = getTotalMana(player);
         if (mana>5000&&modifierLevel>0){
             int usableMana = Math.min(getTotalMana(player),10000*modifierLevel);
-            return usableMana/50f;
+            return usableMana/25f;
         }
         return 0;
     }
@@ -57,7 +57,7 @@ public class manaoverload extends EtshModifieriii {
         if (context.getAttacker() instanceof Player player) {
             float boost = getDamageBoost(player,tool);
             if (boost>0){
-                return damage + ManaItemHandler.instance().requestManaForTool(player.getItemInHand(context.getHand()),player,(int) (boost*10),true)/10f;
+                return damage + ManaItemHandler.instance().requestManaForTool(player.getItemInHand(context.getHand()),player,(int) (boost*5),true)/5f;
             }
         }
         return damage;
@@ -68,7 +68,7 @@ public class manaoverload extends EtshModifieriii {
         if (livingEntity instanceof Player player&&abstractArrow!=null){
             float boost = getDamageBoost(player,tool);
             if (boost>0){
-                abstractArrow.setBaseDamage( abstractArrow.getBaseDamage() + ManaItemHandler.instance().requestManaForTool(player.getItemInHand(player.getUsedItemHand()),player,(int) (boost*10),true)/10f);
+                abstractArrow.setBaseDamage( abstractArrow.getBaseDamage() + ManaItemHandler.instance().requestManaForTool(player.getItemInHand(player.getUsedItemHand()),player,(int) (boost*5),true)/5f);
             }
         }
     }

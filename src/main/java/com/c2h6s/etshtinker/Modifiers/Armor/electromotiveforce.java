@@ -37,6 +37,7 @@ public class electromotiveforce extends EtshModifieriii {
                     int id0 =attacker.getId();
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR, 2f, 2f);
                     List<LivingEntity> ls001 = attacker.level.getEntitiesOfClass(LivingEntity.class, new AABB(xx + 4 * lvl000, yy + 4 * lvl000, zz + 4 * lvl000, xx - 4 * lvl000, yy - 4 * lvl000, zz - 4 * lvl000));
+                    int i =0;
                     for (LivingEntity mob1 : ls001) {
                         if (mob1 != null&&mob1!=player&&!(mob1 instanceof Player)&&!mob1.getType().getCategory().isFriendly()) {
                             mob1.invulnerableTime = 0;
@@ -47,6 +48,8 @@ public class electromotiveforce extends EtshModifieriii {
                                 ParticleChainUtil.summonSparkFromTo(serverLevel,id0,id1);
                             }
                         }
+                        i++;
+                        if (i>16) break;
                     }
                 }
             }

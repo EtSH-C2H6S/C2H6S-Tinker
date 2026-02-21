@@ -2,6 +2,7 @@ package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Entities.annihilateexplosionentity;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
+import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,6 +33,7 @@ public class controllableannihl extends EtshModifieriii {
             int toolDamage = Math.min(modifier.getLevel()*10,modifier.getLevel()*((tool.getCurrentDurability()+tool.getDamage())/100000));
             if (tool.getDamage()<=tool.getCurrentDurability()&&toolDamage>0&&tool.getCurrentDurability()>toolDamage*10) {
                 float percentage = toolDamage * 0.1f;
+                if (tool.getModifierLevel(EtshtinkerModifiers.atomorigin_STATIC_MODIFIER.getId())>0) percentage*=2f;
                 annihilateexplosionentity explode = new annihilateexplosionentity(etshtinkerEntity.annihilateexplosionentity.get(), target.getLevel());
                 tool.setDamage(tool.getDamage() + (toolDamage*10));
                 explode.damage = cachedDamage * percentage;

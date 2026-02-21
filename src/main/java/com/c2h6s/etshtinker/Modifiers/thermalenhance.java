@@ -40,7 +40,7 @@ public class thermalenhance extends EtshModifieriii implements VolatileDataModif
             if (enabled && attacker instanceof Player player) {
                 int modilvl = modifier.getLevel();
                 target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*2));
-                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,230));
+                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,modilvl*2));
                 target.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 400, modilvl * 2, false, false));
                 target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0, false, false));
                 AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);
@@ -72,7 +72,7 @@ public class thermalenhance extends EtshModifieriii implements VolatileDataModif
         if(enabled&&attacker instanceof Player player&&target!=null&&projectile instanceof AbstractArrow arrow&&!(target instanceof Player)){
             int modilvl = modifiers.getLevel(this.getId());
             target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*2));
-            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,230));
+            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,modilvl*2));
             target.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(),400,modilvl*2));
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING,400,1));
             AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);

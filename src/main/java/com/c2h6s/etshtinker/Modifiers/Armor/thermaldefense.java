@@ -55,7 +55,7 @@ public class thermaldefense extends EtshModifieriii implements VolatileDataModif
             int modilvl =modifier.getLevel();
             if (entity instanceof LivingEntity attacker&&!(attacker instanceof Player)){
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*2));
-                attacker.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,4));
+                attacker.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,modilvl*2));
                 attacker.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 400, modilvl * 2, false, false));
                 attacker.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0, false, false));
                 AttributeInstance attribute = attacker.getAttributes().getInstance(Attributes.ARMOR);
