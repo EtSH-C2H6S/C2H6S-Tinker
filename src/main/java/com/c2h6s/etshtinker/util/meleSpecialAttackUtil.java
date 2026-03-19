@@ -21,6 +21,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import com.c2h6s.etshtinker.Entities.*;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.Util;
 import slimeknights.tconstruct.tools.data.ModifierIds;
@@ -64,12 +65,12 @@ public class meleSpecialAttackUtil {
             }
         }
     }
-    public static void createExoSlash(@NotNull Player player, Float damage, Vec3 deltamovement,int Slashcount){
+    public static void createExoSlash(@NotNull Player player, ToolStack toolStack, Vec3 deltamovement,int Slashcount){
         Level world =player.getLevel();
-        exoSlashEntity entity =new exoSlashEntity(etshtinkerEntity.exoslash.get(), world);
+        ExoSlashProjectile entity =new ExoSlashProjectile( world);
         entity.setPos(player.getX(),player.getEyeY(),player.getZ());
         entity.setDeltaMovement(deltamovement);
-        entity.setDamage(damage);
+        entity.tool= toolStack;
         entity.setOwner(player);
         entity.setNoGravity(true);
         entity.count=Slashcount;

@@ -34,6 +34,7 @@ public class etshtinkerEntity {
     public static final RegistryObject<EntityType<exoLighEntity>> exo_ligh = ENTITIES.register("exo_ligh", () -> EntityType.Builder.<exoLighEntity>of(exoLighEntity::new, MobCategory.MISC).sized(0.05F, 0.05F).setTrackingRange(4).setUpdateInterval(10).setCustomClientFactory((spawnEntity, world) -> new exoLighEntity(etshtinkerEntity.exo_ligh.get(), world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<exoOrb>> exo_orb = ENTITIES.register("exo_orb", () -> EntityType.Builder.<exoOrb>of(exoOrb::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new exoOrb(etshtinkerEntity.exo_orb.get(), world)).setShouldReceiveVelocityUpdates(true));
     public static final RegistryObject<EntityType<PoisonCloud>> poison_cloud = ENTITIES.register("poison_cloud", () -> EntityType.Builder.of(PoisonCloud::new, MobCategory.MISC).sized(0.01F, 0.01F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new PoisonCloud(etshtinkerEntity.poison_cloud.get(), world)).setShouldReceiveVelocityUpdates(true));
+    public static final RegistryObject<EntityType<ExoSlashProjectile>> EXO_SLASH = ENTITIES.register("exo_slash", () -> EntityType.Builder.<ExoSlashProjectile>of(ExoSlashProjectile::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(1).setCustomClientFactory((spawnEntity, world) -> new ExoSlashProjectile(world)).setShouldReceiveVelocityUpdates(true));
 
 
 

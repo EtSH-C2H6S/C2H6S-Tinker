@@ -34,5 +34,6 @@ public class etshtinkerParticle {
         event.register(etshtinkerParticleType.exo_ligh.get(), exoLighParticle::provider);
         event.register(etshtinkerParticleType.exo_light_end.get(), exoLightEndParticle::provider);
         event.register(etshtinkerParticleType.strong_poison.get(), StrongPoisonParticle::provider);
+        event.register(etshtinkerParticleType.LIGHTNING_STRIKE.get(),new LightningStrikeParticle.Provider());
     }
 }

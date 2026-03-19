@@ -132,8 +132,8 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
         int a = random.nextInt(3) + 1;
         while (a > 0) {
             a--;
-            createExoSlash(player, damage*7.5F, getScatteredVec3(player.getLookAngle().scale(1.5), 1.732),count);
+            createExoSlash(player, tool, getScatteredVec3(player.getLookAngle().scale(1.5), 1.732),count);
         }
-        createExoSlash(player, damage*7.5F, player.getLookAngle().scale(1.5),count);
+        createExoSlash(player, tool, player.getLookAngle().scale(1.5),count);
     }
 }

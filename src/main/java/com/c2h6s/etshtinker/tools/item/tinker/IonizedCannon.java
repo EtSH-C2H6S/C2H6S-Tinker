@@ -172,7 +172,7 @@ public class IonizedCannon extends ModifiableItem {
     }
 
     public static float getToolFluidMultiplier(ToolStack tool){
-        return Math.min(1+tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.20f,4.5f);
+        return 1+tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.1f;
     }
 
     public void createPlasmaExplosion(ItemStack stack, Level level, LivingEntity living, int timeLeft){

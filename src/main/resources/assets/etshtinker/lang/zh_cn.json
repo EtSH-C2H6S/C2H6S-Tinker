@@ -39,11 +39,11 @@
 
   "modifier.etshtinker.thermalstrike": "热力冲击",
   "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
-  "modifier.etshtinker.thermalstrike.description":"满蓄力攻击敌人会释放一道自动弧向附近近生物的脉冲，造成一半的伤害",
+  "modifier.etshtinker.thermalstrike.description":"攻击时释放元素的能量，造成大范围伤害。",
 
   "modifier.etshtinker.thermalenhance": "热力附层",
   "modifier.etshtinker.thermalenhance.flavor": "热力元素全收集，达成！",
-  "modifier.etshtinker.thermalenhance.description":"攻击敌人对敌人施加大量减益，对敌人施加一到电弧，减少敌人25%防御，依据敌人已损生命10%（最大200）增加伤害，每级增加2升级槽或防御槽和1能力槽",
+  "modifier.etshtinker.thermalenhance.description":"攻击敌人对敌人施加大量减益，对敌人施加一到电弧，减少敌人25%防御，依据敌人已损生命10%（近战最大400，远程为40）增加伤害，每级增加2升级槽或防御槽和1能力槽",
 
   "modifier.etshtinker.fission": "裂变反应",
   "modifier.etshtinker.fission.flavor": "MD跟你爆了",

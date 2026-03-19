@@ -36,20 +36,19 @@ public class electromotiveforce extends EtshModifieriii {
                     double zz = attacker.getZ();
                     int id0 =attacker.getId();
                     attacker.playSound(SoundEvents.FIREWORK_ROCKET_BLAST_FAR, 2f, 2f);
-                    List<LivingEntity> ls001 = attacker.level.getEntitiesOfClass(LivingEntity.class, new AABB(xx + 4 * lvl000, yy + 4 * lvl000, zz + 4 * lvl000, xx - 4 * lvl000, yy - 4 * lvl000, zz - 4 * lvl000));
+                    List<LivingEntity> ls001 = attacker.level.getEntitiesOfClass(LivingEntity.class, new AABB(xx + 4 * lvl000, yy + 4 * lvl000, zz + 4 * lvl000, xx - 4 * lvl000, yy - 4 * lvl000, zz - 4 * lvl000),living ->
+                            living != null&&living!=player&&!(living instanceof Player)&&!living.getType().getCategory().isFriendly());
                     int i =0;
                     for (LivingEntity mob1 : ls001) {
-                        if (mob1 != null&&mob1!=player&&!(mob1 instanceof Player)&&!mob1.getType().getCategory().isFriendly()) {
-                            mob1.invulnerableTime = 0;
-                            mob1.hurt(DamageSource.thorns(player).bypassMagic().bypassArmor(), amount);
-                            mob1.invulnerableTime = 0;
-                            int id1=mob1.getId();
-                            if (mob1.level instanceof ServerLevel serverLevel){
-                                ParticleChainUtil.summonSparkFromTo(serverLevel,id0,id1);
-                            }
+                        mob1.invulnerableTime = 0;
+                        mob1.hurt(DamageSource.thorns(player).bypassMagic().bypassArmor(), amount);
+                        mob1.invulnerableTime = 0;
+                        int id1 = mob1.getId();
+                        if (mob1.level instanceof ServerLevel serverLevel) {
+                            ParticleChainUtil.summonSparkFromTo(serverLevel, id0, id1);
                         }
                         i++;
-                        if (i>16) break;
+                        if (i>4) break;
                     }
                 }
             }

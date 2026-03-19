@@ -50,6 +50,7 @@ public class etshtinkerEntityRenderers {
         event.registerEntityRenderer(etshtinkerEntity.exo_ligh.get(), NoopRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.exo_orb.get(), GlowingThrownRenderer::new);
         event.registerEntityRenderer(etshtinkerEntity.poison_cloud.get(), NoopRenderer::new);
+        event.registerEntityRenderer(etshtinkerEntity.EXO_SLASH.get(), ExoSlashRenderer::new);
         if (BOTloaded){
             event.registerEntityRenderer(etshtinkerBotEntity.ALFBURST.get(), NoopRenderer::new);
         }

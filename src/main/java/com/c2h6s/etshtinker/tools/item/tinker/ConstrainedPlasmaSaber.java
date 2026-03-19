@@ -94,7 +94,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     public static float getToolFluidMultiplier(ToolStack tool){
-        return Math.min(1+tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.1f,1.5f);
+        return Math.min(1+tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.1f,6f);
     }
 
     @Override

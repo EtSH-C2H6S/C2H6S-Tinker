@@ -33,4 +33,5 @@ public class etshtinkerParticleType {
     public static final RegistryObject<SimpleParticleType> exo_ligh = REGISTRY.register("exo_lightning", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> exo_light_end = REGISTRY.register("exo_light_end", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> strong_poison = REGISTRY.register("strong_poison", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> LIGHTNING_STRIKE = REGISTRY.register("lightning_strike", () -> new SimpleParticleType(false));
 }
