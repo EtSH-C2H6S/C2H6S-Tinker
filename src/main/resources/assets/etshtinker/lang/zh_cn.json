@@ -785,7 +785,7 @@
   "etshtinker.tool.tooltip.effectivefluid": "流体基础伤害",
 
   "item.etshtinker.ionized_cannon": "离子化射线炮",
-  "item.etshtinker.ionized_cannon.description": "重型远距离近战武器，使用时副手不能有其它工具，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书和JEI)，对其路径上的敌人造成多段伤害。",
+  "item.etshtinker.ionized_cannon.description": "重型远距离近战武器，只能在主手使用，蓄力后消耗武器内存储的流体发射出一束无限穿透的等离子爆炸波(只对部分流体有效，详见乙硫醇指导书和JEI)，对其路径上的敌人造成多段伤害。",
   "tool_stat.etshtinker.plasmarange": "射程",
   "tool_stat.etshtinker.ionizer.plasmarange.description": "射线的最大距离",
   "tool_stat.etshtinker.cooldown": "冷却时间",
@@ -820,7 +820,7 @@
   "pattern.etshtinker.fluid_chamber": "储液器",
 
   "item.etshtinker.constrained_plasma_saber": "约束等离子阔剑",
-  "item.etshtinker.constrained_plasma_saber.description": "高攻速近战武器，使用时副手不能有其它工具。挥舞时消耗工具存储的冶炼炉燃料释放等离子斩击，造成范围伤害，伤害受燃料的温度影响。",
+  "item.etshtinker.constrained_plasma_saber.description": "高攻速近战武器。在主手挥舞时消耗工具存储的冶炼炉燃料释放等离子斩击，造成范围伤害，伤害受燃料的温度影响。",
   "tool_stat.etshtinker.criticalrate": "暴击率",
   "tool_stat.etshtinker.plasma_generator.criticalrate.description": "攻击时发生暴击的概率，高于100%的部分会转换为额外暴击伤害",
   "tool_stat.etshtinker.fluidefficiency": "流体效率",
@@ -836,6 +836,8 @@
   "etshtinker.tool.tooltip.fluid_efficiency": "流体效率",
   "etshtinker.tool.tooltip.critical_rate": "暴击率",
   "etshtinker.tool.tooltip.offhand_hastool": "错误:副手有工具",
+
+  "etshtinker.tool.tooltip.material_with_no_stat": "此材料制成的这种部件不提供属性加成",
 
   "etshtinker.tooltip.slashcolor_index": "斩击颜色",
   "etshtinker.tooltip.red": "红色",

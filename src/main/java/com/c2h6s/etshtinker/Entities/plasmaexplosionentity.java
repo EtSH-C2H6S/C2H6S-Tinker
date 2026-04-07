@@ -161,7 +161,7 @@ public class plasmaexplosionentity extends ItemProjectile{
                     modifier.getHook(etshtinkerHook.PLASMA_EXPLOSION_HIT).beforePlasmaExplosionHit(tool,living,this,isCrit);
                 }
                 living.invulnerableTime = 0;
-                attackUtil.attackEntity(tool, attacker, HAND, living, ()->1, true, Util.getSlotType(HAND), damage, isCrit||forcedCrit, true, true, true, 0);
+                attackUtil.attackEntity(tool, attacker, HAND, living, ()->1, false, Util.getSlotType(HAND), damage, isCrit||forcedCrit, true, true, true, 0);
                 living.invulnerableTime = 0;
                 this.conductSpecial(living);
                 for (ModifierEntry modifier : tool.getModifierList()) {

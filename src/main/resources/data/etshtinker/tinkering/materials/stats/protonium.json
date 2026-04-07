@@ -5,7 +5,7 @@
   },
   "stats": {
     "etshtinker:plasma_generator": {
-      "damagemultiplier": 3.25,
+      "damagemultiplier": 3.5,
       "criticalrate": 1,
       "fluidefficiency": 0.875,
       "slash_color": 7
@@ -16,7 +16,7 @@
     "etshtinker:ionizer": {
       "cooldown": 180,
       "plasmarange": 100,
-      "damagemultiplier": 16
+      "damagemultiplier": 24
     },
     "tconstruct:binding": {},
     "tconstruct:handle": {

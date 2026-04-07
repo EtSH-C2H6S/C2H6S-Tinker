@@ -77,7 +77,7 @@
       "type": "tconstruct:traits",
       "traits": [
         {
-          "level": 5,
+          "level": 10,
           "name": "tconstruct:tank"
         }
       ]

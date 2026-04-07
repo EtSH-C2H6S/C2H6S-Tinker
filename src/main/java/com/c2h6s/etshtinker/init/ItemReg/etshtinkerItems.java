@@ -95,7 +95,7 @@ public class etshtinkerItems {
 
     //部件
     public static final RegistryObject<ToolPartItem> ionizer = ITEMS.register("ionizer", () -> new ToolPartItem(PARTS, ionizerMaterialStats.ID));
-    public static final RegistryObject<ToolPartItem> fluid_chamber = ITEMS.register("fluid_chamber", () -> new ToolPartItem(PARTS, fluidChamberMaterialStats.ID));
+    public static final RegistryObject<ToolPartItem> fluid_chamber = ITEMS.register("fluid_chamber", FluidChamberItem::new);
     public static final RegistryObject<ToolPartItem> plasma_generator = ITEMS.register("plasma_generator", () -> new ToolPartItem(PARTS, PlasmaGeneratorMaterialStats.ID));
 
 

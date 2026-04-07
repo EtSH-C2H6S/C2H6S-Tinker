@@ -85,9 +85,7 @@ public class IonizedCannon extends ModifiableItem {
         if (playerIn instanceof FakePlayer){
             return InteractionResultHolder.fail(stack);
         }
-        if (!checkOffHand(playerIn)){
-            return InteractionResultHolder.fail(stack);
-        }
+        if (hand==InteractionHand.OFF_HAND) return InteractionResultHolder.fail(stack);
         ToolStack tool = ToolStack.from(stack);
         if (tool.isBroken()){
             return InteractionResultHolder.fail(stack);
@@ -283,9 +281,6 @@ public class IonizedCannon extends ModifiableItem {
         builder.add(Component.translatable("etshtinker.tool.tooltip.cooldown").append(":"+String.valueOf(tool.getStats().get(etshtinkerToolStats.COOLDOWN))).withStyle(ChatFormatting.GOLD));
         builder.add(Component.translatable("etshtinker.tool.tooltip.scatter").append(":"+String.format("%.01f",tool.getStats().get(etshtinkerToolStats.SCATTER))).withStyle(ChatFormatting.GOLD));
         builder.addAllFreeSlots();
-        if (!checkOffHand(player)){
-            builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
-        }
         if (!wrongFluid(tool)){
             builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":"+String.valueOf(Math.max(1, Math.round(getToolFluidMultiplier((ToolStack) tool) * getFluidBaseComsumption(TANK_HELPER.getFluid(tool))*tool.getStats().getInt(etshtinkerToolStats.FLUIDMULTIPLIER)/tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY))))).append(" mB").withStyle(ChatFormatting.GOLD));
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":"+String.format("%.001f",getFluidDamage(TANK_HELPER.getFluid(tool).getFluid()))).withStyle(ChatFormatting.GREEN));

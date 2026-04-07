@@ -8,9 +8,9 @@
       "fluid_capacity": 5000
     },
     "etshtinker:ionizer": {
-      "cooldown": 75,
+      "cooldown": 50,
       "plasmarange": 30,
-      "damagemultiplier": 1.6
+      "damagemultiplier": 3.6
     },
     "tconstruct:binding": {},
     "tconstruct:handle": {

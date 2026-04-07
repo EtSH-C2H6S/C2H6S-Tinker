@@ -107,7 +107,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     public static void createSlash(ServerPlayer player){
-        if (!(player.getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber)||player.getAttackStrengthScale(0)!=1||!checkOffHand(player)){
+        if (!(player.getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber)||player.getAttackStrengthScale(0)!=1){
             return;
         }
         ToolStack tool = ToolStack.from(player.getMainHandItem());
@@ -146,9 +146,6 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         ToolDamageUtil.damageAnimated(tool,1,player, InteractionHand.MAIN_HAND);
     }
 
-    public static boolean checkOffHand(Player player){
-        return player!=null&& !(player.getOffhandItem().getItem() instanceof IModifiable);
-    }
 
     public static boolean noFluid(IToolStackView tool){
         FluidStack fluid =TANK_HELPER.getFluid(tool);
@@ -186,11 +183,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         builder.add(Component.translatable("etshtinker.tool.tooltip.critical_rate").append(":"+String.format("%.2f", tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE)*100)+"%").withStyle(ChatFormatting.AQUA));
         builder.add(Component.translatable("etshtinker.tool.tooltip.fluid_efficiency").append(":"+String.format("%.2f",tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY))).withStyle(ChatFormatting.DARK_AQUA));
         builder.addAllFreeSlots();
-
-        if (!checkOffHand(player)){
-            builder.add(Component.translatable("etshtinker.tool.tooltip.offhand_hastool").withStyle(ChatFormatting.RED));
-        }
-        else if (checkFluid(tool)){
+        if (checkFluid(tool)){
             builder.add(Component.translatable("etshtinker.tool.tooltip.effectivefluid").append(":" +String.format("%.2f",getFuelDamage(getFuel(TANK_HELPER.getFluid(tool).getFluid())))).withStyle(ChatFormatting.GOLD));
             builder.add(Component.translatable("etshtinker.tool.tooltip.powerfactor").append(":" +String.valueOf(getFuelCumsp(getFuel(TANK_HELPER.getFluid(tool).getFluid()),TANK_HELPER.getFluid(tool).getFluid(),tool))).append(" mB").withStyle(ChatFormatting.YELLOW));
         }else{
