@@ -211,7 +211,7 @@
 
   "modifier.etshtinker.multishotplasma": "多重电离",
   "modifier.etshtinker.multishotplasma.flavor": "功率过载",
-  "modifier.etshtinker.multishotplasma.description":"每级额外射出一束等离子射线，但是会增大散射角度和冷却时间。",
+  "modifier.etshtinker.multishotplasma.description":"每级额外射出一束等离子射线，但是会增大散射角度并降低流体效率、伤害倍率和攻击速度。",
 
   "modifier.etshtinker.extrachamber": "外置储液器",
   "modifier.etshtinker.extrachamber.flavor": "扩容弹夹",
@@ -476,6 +476,18 @@
   "modifier.etshtinker.tri_chroma": "三彩",
   "modifier.etshtinker.tri_chroma.flavor": "有色金属",
   "modifier.etshtinker.tri_chroma.description":"增加1升级槽和1能力槽，攻击时附带抑影、发光并根据目标已损生命的10%（最大100）增加伤害。",
+
+  "modifier.etshtinker.plasma_blade": "粒子波",
+  "modifier.etshtinker.plasma_blade.flavor": "聚能成刃！",
+  "modifier.etshtinker.plasma_blade.description":"令约束等离子阔剑生成的弧光能触发词条效果，但是流体消耗增加4倍。",
+
+  "modifier.etshtinker.echo_slash": "回响斩击",
+  "modifier.etshtinker.echo_slash.flavor": "一刀之后是下一刀",
+  "modifier.etshtinker.echo_slash.description":"约束等离子阔剑的斩击会额外造成一次伤害。这次伤害仅有25%的概率触发词条效果。",
+
+  "modifier.etshtinker.modular_modification": "模组改造",
+  "modifier.etshtinker.modular_modification.flavor": "模块化是好设计",
+  "modifier.etshtinker.modular_modification.description":"允许你在物品栏中使用离子化腔或储液器右键离子化射线炮来为其额外安装部件，获得部件所有词条和25%的部件属性增幅，但是攻击速度乘以0.75。使用工程师锤可以拆卸已安装的部件。",
 
 
 
@@ -989,5 +1001,7 @@
   "death.attack.etshtinker.quark.player": "%1$s 体内的粒子被错误地重新排列了，凶手是 %2$s",
 
   "etshtinker.jei.ionized_cannon": "离子化射线炮流体",
-  "etshtinker.item.tooltip.entropic_ingot5": ""
+  "etshtinker.item.tooltip.entropic_ingot5": "",
+
+  "etshtinker.item.tooltip.modular_modification": "已加装部件："
 }

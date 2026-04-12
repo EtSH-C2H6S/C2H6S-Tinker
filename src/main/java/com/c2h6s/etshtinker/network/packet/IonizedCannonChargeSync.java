@@ -5,7 +5,7 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-import static com.c2h6s.etshtinker.screen.weaponHUD.IonizedCannonDrawtime.*;
+import static com.c2h6s.etshtinker.client.weaponHUD.IonizedCannonDrawtime.setPercentage;
 
 public class IonizedCannonChargeSync {
     private float percentage;

@@ -8,6 +8,7 @@ import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHoo
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class multishotplasma extends EtshModifieriii implements ToolStatsModifierHook {
     @Override
@@ -18,10 +19,10 @@ public class multishotplasma extends EtshModifieriii implements ToolStatsModifie
 
     @Override
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        etshtinkerToolStats.SCATTER.add(builder,0.2*modifier.getLevel());
-        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder,Math.pow(0.8,modifier.getLevel()));
-        etshtinkerToolStats.FLUID_EFFICIENCY.multiply(builder,Math.pow(0.5,modifier.getLevel()));
+        etshtinkerToolStats.SCATTER.add(builder,0.15*modifier.getLevel());
+        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder,Math.pow(0.9,modifier.getLevel()));
+        etshtinkerToolStats.FLUID_EFFICIENCY.multiply(builder,Math.pow(0.8,modifier.getLevel()));
         etshtinkerToolStats.MULTIPLASMA.add(builder,modifier.getLevel());
-        etshtinkerToolStats.COOLDOWN.add(builder,5*modifier.getLevel());
+        ToolStats.ATTACK_SPEED.multiply(builder,Math.pow(0.9,modifier.getLevel()));
     }
 }

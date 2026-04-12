@@ -119,7 +119,10 @@
     "quark_disassemble": "#A1FFB4",
     "heat_dead":"#FF3B3E",
     "mana_shot":"#35A9FF",
-    "tri_chroma":"#8A85D9"
+    "tri_chroma":"#8A85D9",
+    "plasma_blade": "#EEAAFF",
+    "echo_slash": "#EEAAFF",
+    "modular_modification": "#EEAAFF"
   },
   "material.etshtinker":
   {

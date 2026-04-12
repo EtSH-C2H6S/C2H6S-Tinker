@@ -166,7 +166,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     public static int getFuelCumsp(MeltingFuel fuel,Fluid fluid,IToolStackView tool){
-        return (int) Math.max( fuel.getAmount(fluid)*getToolFluidMultiplier((ToolStack) tool)*20/(fuel.getDuration()*tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY)),1);
+        return (int) Math.max( fuel.getAmount(fluid)*getToolFluidMultiplier((ToolStack) tool)*10/(fuel.getDuration()*tool.getStats().get(etshtinkerToolStats.FLUID_EFFICIENCY)),1);
     }
 
 
@@ -195,11 +195,8 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
             }
         }
 
-        Iterator var7 = tool.getModifierList().iterator();
-
-        while(var7.hasNext()) {
-            ModifierEntry entry = (ModifierEntry)var7.next();
-            ((TooltipModifierHook)entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
+        for (ModifierEntry entry : tool.getModifierList()) {
+            ((TooltipModifierHook) entry.getHook(ModifierHooks.TOOLTIP)).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
 
         return tooltips;

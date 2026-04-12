@@ -1,4 +1,4 @@
-package com.c2h6s.etshtinker.screen.weaponHUD;
+package com.c2h6s.etshtinker.client.weaponHUD;
 
 import net.minecraft.nbt.CompoundTag;
 

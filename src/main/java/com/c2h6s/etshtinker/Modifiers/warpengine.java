@@ -85,7 +85,9 @@ public class warpengine extends EtshModifieriii implements GeneralInteractionMod
                 player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 5, 0));
                 player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300, 0));
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 5, 2));
-                player.setDeltaMovement(player.getLookAngle().scale((double) tool.getPersistentData().getFloat(warpdur) / 40));
+                var velocity = player.getLookAngle().scale((double) tool.getPersistentData().getFloat(warpdur) / 40);
+                player.setPos(player.position().add(velocity.scale(0.5)));
+                player.setDeltaMovement(velocity.scale(0.5));
                 player.level.addParticle(ParticleTypes.HAPPY_VILLAGER, player.getX(), player.getY() + 0.5 * player.getBbHeight(), player.getZ(), 0, 0, 0);
                 if (!player.noPhysics){
                     player.noPhysics=true;

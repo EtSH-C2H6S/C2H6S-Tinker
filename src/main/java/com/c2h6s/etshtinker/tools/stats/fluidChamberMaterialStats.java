@@ -49,7 +49,7 @@ public record fluidChamberMaterialStats(float fluidCapacity) implements IMateria
 
     public void apply(ModifierStatsBuilder builder, float v) {
         if (v==0||fluidCapacity==0) return;
-        ToolTankHelper.CAPACITY_STAT.update(builder,this.fluidCapacity);
+        ToolTankHelper.CAPACITY_STAT.update(builder,this.fluidCapacity*v);
     }
 
     public float fluidCapacity() {

@@ -122,6 +122,9 @@ public class EtshtinkerModifiers {
     public static final StaticModifier<AnnihilateArmor>annihilate_armor= MODIFIERS.register("annihilate_armor", AnnihilateArmor::new);
     public static final StaticModifier<ManaShot>MANA_SHOT= MODIFIERS.register("mana_shot", ManaShot::new);
     public static final StaticModifier<TriChroma> TRI_CHROMA = MODIFIERS.register("tri_chroma", TriChroma::new);
+    public static final StaticModifier<PlasmaBlade> PLASMA_BLADE_MODIFIER = MODIFIERS.register("plasma_blade", PlasmaBlade::new);
+    public static final StaticModifier<EchoSlash> ECHO_SLASH = MODIFIERS.register("echo_slash", EchoSlash::new);
+    public static final StaticModifier<ModularModification> MODULAR_MODIFICATION = MODIFIERS.register("modular_modification", ModularModification::new);
 
     public class etshMekModifier{
         public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MOD_ID);

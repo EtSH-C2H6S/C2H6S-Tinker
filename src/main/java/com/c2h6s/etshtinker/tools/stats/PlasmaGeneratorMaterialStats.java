@@ -58,9 +58,9 @@ public record PlasmaGeneratorMaterialStats(float damageMultiplier, float critica
 
 
     public void apply(ModifierStatsBuilder builder, float v) {
-        etshtinkerToolStats.CRITICAL_RATE.update(builder,this.criticalRate);
-        etshtinkerToolStats.FLUID_EFFICIENCY.update(builder,this.fluidEfficiency);
-        etshtinkerToolStats.DAMAGEMULTIPLIER.update(builder,this.damageMultiplier);
+        etshtinkerToolStats.CRITICAL_RATE.update(builder,this.criticalRate*v);
+        etshtinkerToolStats.FLUID_EFFICIENCY.update(builder,this.fluidEfficiency*v);
+        etshtinkerToolStats.DAMAGEMULTIPLIER.update(builder,this.damageMultiplier*v);
         etshtinkerToolStats.SLASH_COLOR.update(builder,this.slashColor);
     }
 
