@@ -20,7 +20,7 @@ public class PlasmaBlade extends NoLevelsModifier implements PlasmaSlashCreateMo
 
     @Override
     public PlasmaSlashEntity plasmaSlashCreate(IToolStackView tool, FluidStack fluidStack, ServerPlayer player, PlasmaSlashEntity slash) {
-        slash.causeModifier = true;
+        slash.echoTriggerChance +=0.25f;
         return slash;
     }
 

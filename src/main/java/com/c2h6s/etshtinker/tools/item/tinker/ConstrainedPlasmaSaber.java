@@ -84,8 +84,8 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
     private void LeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (event.getEntity() instanceof FakePlayer) return;
-        if (event.getEntity() !=null&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber&&event.getSide()== LogicalSide.CLIENT) {
-            packetHandler.INSTANCE.sendToServer(new plasmaSlashPacket(event.getEntity().getId()));
+        if (event.getEntity() instanceof ServerPlayer serverPlayer&&event.getEntity().getMainHandItem().getItem() instanceof ConstrainedPlasmaSaber) {
+            createSlash(serverPlayer);
         }
     }
 

@@ -46,7 +46,7 @@ public class ExoSlashProjectile extends BasicElementalOrbEntity implements ItemS
     @Override
     public void doAfterHitEffect(@NotNull Entity target, float damageDealt) {
         if (target instanceof LivingEntity living) {
-            var baseDamage = this.tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
+            float baseDamage = this.tool.getStats().get(ToolStats.ATTACK_DAMAGE);
             if (this.getOwner() instanceof Player player) {
                 living.invulnerableTime = 0;
                 AttackUtil.attackEntity(this.tool,player, InteractionHand.MAIN_HAND,living,()->1,true, EquipmentSlot.MAINHAND,false,0,1);

@@ -479,7 +479,7 @@
 
   "modifier.etshtinker.plasma_blade": "粒子波",
   "modifier.etshtinker.plasma_blade.flavor": "聚能成刃！",
-  "modifier.etshtinker.plasma_blade.description":"令约束等离子阔剑生成的弧光能触发词条效果，但是流体消耗增加4倍。",
+  "modifier.etshtinker.plasma_blade.description":"令回响斩击额外伤害触发词条的概率+25%，但是流体消耗增加400%。",
 
   "modifier.etshtinker.echo_slash": "回响斩击",
   "modifier.etshtinker.echo_slash.flavor": "一刀之后是下一刀",

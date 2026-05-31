@@ -33,23 +33,20 @@ import static com.c2h6s.etshtinker.util.vecCalc.*;
 import static net.minecraft.world.entity.EquipmentSlot.Type.HAND;
 
 public class meleSpecialAttackUtil {
-    public static void createWarp(@NotNull Player attacker, Float radius, Float damage, ToolStack tool, InteractionHand hand){
+    public static void createWarp(@NotNull Player attacker, float radius, float damage, ToolStack tool, InteractionHand hand){
         Level world =attacker.getLevel();
         LivingEntity entity =getNearestLiEnt(radius,attacker,world);
-        if (entity!=null&&entity.isAlive()){
+        if (entity!=null){
             entity.invulnerableTime=0;
             attackUtil.attackEntity(tool,attacker,hand,entity,()->1,true, Util.getSlotType(hand),damage,false,true,true,true,0);
             entity.invulnerableTime=0;
-            if (world.isClientSide) {
-                world.addAlwaysVisibleParticle(etshtinkerParticleType.slash.get(), true, entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 0, 0, 0);
-            }
-            else {
+            if (world instanceof ServerLevel)  {
                 ((ServerLevel)world).sendParticles(etshtinkerParticleType.slash.get(), entity.getX(), entity.getY() + 0.5 * entity.getBbHeight(), entity.getZ(), 1,0,0, 0, 0);
                 ParticleChainUtil.summonELECSPARKFromTo2((ServerLevel)world,attacker.getId(),entity.getId() );
             }
         }
     }
-    public static void createWarpEx(@NotNull Player attacker, Float radius, Float damage, ToolStack tool, InteractionHand hand){
+    public static void createWarpEx(@NotNull Player attacker, float radius, float damage, ToolStack tool, InteractionHand hand){
         Level world =attacker.getLevel();
         LivingEntity entity =getNearestLiEnt(radius,attacker,world);
         if (entity!=null){

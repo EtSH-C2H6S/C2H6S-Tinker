@@ -3,6 +3,7 @@ package com.c2h6s.etshtinker.network.packet;
 import com.c2h6s.etshtinker.Modifiers.warpattack;
 import com.c2h6s.etshtinker.Modifiers.warpattackex;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -29,9 +30,9 @@ public class warpattackPacket {
                 Player player =supplier.get().getSender();
                 if (player != null) {
                     if (packet.Ex){
-                        warpattackex.tryWarp(player,ToolStack.from(player.getMainHandItem()),player.getUsedItemHand());
+                        warpattackex.tryWarp(player,ToolStack.from(player.getMainHandItem()),InteractionHand.MAIN_HAND);
                     }
-                    warpattack.tryWarp(player,ToolStack.from(player.getMainHandItem()),player.getUsedItemHand());
+                    warpattack.tryWarp(player,ToolStack.from(player.getMainHandItem()), InteractionHand.MAIN_HAND);
                 }
             });
         }

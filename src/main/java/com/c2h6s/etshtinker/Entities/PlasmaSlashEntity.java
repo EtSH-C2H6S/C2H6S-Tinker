@@ -40,7 +40,8 @@ public class PlasmaSlashEntity extends ItemProjectile {
     public List<Entity> hitList = new ArrayList<>(List.of());
     public double SCALE =Math.max(1, getMold(this.getDeltaMovement()));
     public int hitRemain =16;
-    public boolean causeModifier = false;
+    public float echoTriggerChance = 0.25f;
+    public boolean isEcho = false;
     public static final EntityDataAccessor<Integer> KEY_ECHO = SynchedEntityData.defineId(PlasmaSlashEntity.class, EntityDataSerializers.INT);
 
     public PlasmaSlashEntity(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_, ItemStack slash) {
@@ -78,10 +79,10 @@ public class PlasmaSlashEntity extends ItemProjectile {
         super.tick();
         if (this.tickCount>5){
             if (getEcho()>0&&!level.isClientSide){
+                if (!isEcho) this.isEcho = true;
                 this.tickCount = 3;
                 this.hitList.clear();
                 this.setEcho(getEcho()-1);
-                this.causeModifier = EtSHrnd().nextFloat()<0.25f;
                 return;
             }
             this.discard();
@@ -114,7 +115,7 @@ public class PlasmaSlashEntity extends ItemProjectile {
                         modifier.getHook(etshtinkerHook.BEFORE_SLASH_HIT).beforePlasmaSlashHit(this.tool, living, this, isCrit);
                     }
                     targets.invulnerableTime = 0;
-                    if (causeModifier)
+                    if (!isEcho||EtSHrnd().nextFloat()<=echoTriggerChance)
                         attackUtil.attackEntity(this.tool, player, InteractionHand.MAIN_HAND, targets, ()->1, true, Util.getSlotType(InteractionHand.MAIN_HAND), this.damage, isCrit, true, true, true,overCrit);
                     else {
                         float criticalModifier = isCrit ? 1.5f+overCrit : 1.0f;
