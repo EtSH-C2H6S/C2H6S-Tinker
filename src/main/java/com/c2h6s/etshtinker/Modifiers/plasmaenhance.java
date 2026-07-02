@@ -19,6 +19,6 @@ public class plasmaenhance extends EtshModifieriii implements ToolStatsModifierH
     public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
         etshtinkerToolStats.FLUIDMULTIPLIER.add(builder,modifier.getLevel()*0.5);
         etshtinkerToolStats.SCALE.add(builder,modifier.getLevel());
-        etshtinkerToolStats.COOLDOWN.add(builder,2*modifier.getLevel());
+        etshtinkerToolStats.COOLDOWN.add(builder,0.25*modifier.getLevel());
     }
 }

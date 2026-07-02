@@ -355,7 +355,7 @@
 
   "modifier.etshtinker.deep_catalysis": "深度催化",
   "modifier.etshtinker.deep_catalysis.flavor": "环保无污染",
-  "modifier.etshtinker.deep_catalysis.description":"每级增加0.25流体效率和0.1伤害倍率",
+  "modifier.etshtinker.deep_catalysis.description":"每级增加0.25流体效率和10%伤害倍率",
 
   "modifier.etshtinker.heavy_crit": "沉重一击",
   "modifier.etshtinker.heavy_crit.flavor": "重力势能的力量",
@@ -363,7 +363,7 @@
 
   "modifier.etshtinker.power_enhance": "功率提升",
   "modifier.etshtinker.power_enhance.flavor": "堆量！",
-  "modifier.etshtinker.power_enhance.description":"每级增加0.1伤害倍率但减少15%流体容量",
+  "modifier.etshtinker.power_enhance.description":"每级增加15%伤害倍率但减少15%流体容量",
 
   "modifier.etshtinker.light_equipped": "极致轻量化",
   "modifier.etshtinker.light_equipped.flavor": "轻装上阵",
@@ -371,15 +371,15 @@
 
   "modifier.etshtinker.heavy_crit_ex": "沉重一击EX",
   "modifier.etshtinker.heavy_crit_ex.flavor": "小时候看这集时发明了重力",
-  "modifier.etshtinker.heavy_crit_ex.description":"增加750%的暴击率(乘算)，但是-85%的攻击速度",
+  "modifier.etshtinker.heavy_crit_ex.description":"暴击率增加7.5倍，但是-85%的攻击速度",
 
   "modifier.etshtinker.annihilating_slash": "湮灭斩击",
   "modifier.etshtinker.annihilating_slash.flavor": "NullPointerException",
-  "modifier.etshtinker.annihilating_slash.description":"斩击能攻击到的敌人减少，但是攻击敌人时造成湮灭爆炸",
+  "modifier.etshtinker.annihilating_slash.description":"斩击能攻击到的敌人减少，但是攻击敌人时造成小型湮灭爆炸",
 
   "modifier.etshtinker.perfectism": "完美主义",
   "modifier.etshtinker.perfectism.flavor": "追求完美不总是好事",
-  "modifier.etshtinker.perfectism.description":"你造成的伤害会根据伤害的最高位数取整：\n<=4时退位>4时进位，>=9时额外乘以10",
+  "modifier.etshtinker.perfectism.description":"你造成的伤害会根据伤害的最高位数取整：\n<=4时退位>4时进位，>=9时额外进一位",
 
   "modifier.etshtinker.perfect_armor": "完美护甲",
   "modifier.etshtinker.perfect_armor.flavor": "追求完美也不总是坏事",

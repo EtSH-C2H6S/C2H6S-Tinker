@@ -9,7 +9,7 @@
     {
       "type": "tconstruct:stat_boost",
       "each_level": 0.15,
-      "operation": "add",
+      "operation": "multiply_base",
       "stat": "etshtinker:damagemultiplier"
     },
     {
