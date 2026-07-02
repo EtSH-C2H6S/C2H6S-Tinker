@@ -66,8 +66,10 @@ public class LightningStrikeParticle extends Particle {
             float ticks = this.age + pPartialTicks;
             float percRadius =  ticks/this.lifetime;
             float alpha =Math.max(0, (this.lifetime-ticks)/this.lifetime);
-            float b = 0.5f + (0.5f*alpha);
-            float g = 0.75f+ (0.25f*alpha);
+            float col = Math.min(1,alpha*1.5f);
+            float b = 0.5f + 0.5f*col;
+            float g = 1f - 0.5f*col;
+            float r = 1f - 0.25f*col;
             percRadius*=0.25f;
             percRadius+=0.75f;
             float percOffset = ticks/this.lifetime;
@@ -83,7 +85,7 @@ public class LightningStrikeParticle extends Particle {
             if (percRadius > 0) {
                 var poseStack = new PoseStack();
                 poseStack.translate(pos.x,pos.y,pos.z);
-                RenderUtil.drawFoldedPipe(bufferSource.getBuffer(RenderUtil.brightProjectileRenderType(Cti.getResource("textures/particle/blank.png"))),poseStack, nodes , percRadius * this.radius, FastColor.ARGB32.color((int) (255*alpha),255, (int) (255*g), (int) (255*b)), 3);
+                RenderUtil.drawFoldedPipe(bufferSource.getBuffer(RenderUtil.brightProjectileRenderType(Cti.getResource("textures/particle/blank.png"))),poseStack, nodes , percRadius * this.radius, FastColor.ARGB32.color((int) (255*alpha),(int) (255*r), (int) (255*g), (int) (255*b)), 3);
                 RenderUtil.drawFoldedPipe(bufferSource.getBuffer(RenderUtil.brightProjectileRenderType(Cti.getResource("textures/particle/blank.png"))),poseStack, nodes , this.radius*alpha, 0xffffffff, 3);
                 bufferSource.endBatch();
             }

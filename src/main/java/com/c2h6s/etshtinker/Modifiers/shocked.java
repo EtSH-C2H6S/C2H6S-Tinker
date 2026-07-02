@@ -1,6 +1,11 @@
 package com.c2h6s.etshtinker.Modifiers;
 
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
+import com.c2h6s.etshtinker.init.etshtinkerParticleType;
+import com.hoshino.cti.util.ParticleContext;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,22 +31,26 @@ public class shocked extends EtshModifieriii {
             holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),200,4,false,false));
         }
     }
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
+
+    @Override
+    public void postMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage) {
         Entity entity = context.getTarget();
         LivingEntity attacker =context.getAttacker();
         int lvl =modifier.getLevel();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target&&enabled&&attacker instanceof Player player){
             target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),200,4));
             target.invulnerableTime =0;
-            if (context.isFullyCharged()) {
-                summonArc(target.level, target, target.getEyePosition(), 4, 5);
+            if (context.isFullyCharged()&&player.level instanceof ServerLevel serverLevel) {
+                ParticleContext.buildParticle(etshtinkerParticleType.LIGHTNING_STRIKE.get())
+                        .setPos(target.position().add(0,0.5f*target.getBbHeight(),0))
+                        .setVelocity(0+RANDOM.nextFloat()*4-2,16,0+RANDOM.nextFloat()*4-2).build().sendToClient(serverLevel);
+                target.hurt(new EntityDamageSource("lightning",attacker),damage*0.25f*lvl);
             }
         }
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (modifier.getLevel()>0&&target!=null&&enabled){
             target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),200,4));
-            summonArc(target.level, target, target.getEyePosition(), 4, 5);
         }
         return false;
     }

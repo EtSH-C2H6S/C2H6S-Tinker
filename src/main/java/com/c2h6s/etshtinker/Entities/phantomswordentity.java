@@ -6,6 +6,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -54,9 +55,10 @@ public class phantomswordentity extends ItemProjectile{
             this.setPos(this.getX(),this.getY()+speed,this.getZ());
         }
         if (this.time ==3){
-            if (this.target!=null&&target.isAlive()&&this.getOwner() instanceof Player){
+            if (this.target!=null&&target.isAlive()&&this.getOwner() instanceof Player player){
                 this.target.invulnerableTime=0;
-                this.target.hurt(DamageSource.playerAttack((Player) this.getOwner()),this.damage);
+                var source = new EntityDamageSource("phantom",player).bypassArmor();
+                this.target.hurt(source,this.damage);
                 this.target.invulnerableTime=0;
                 slashentity slash =new slashentity(etshtinkerEntity.slashentity.get(),this.level);
                 slash.count=0;

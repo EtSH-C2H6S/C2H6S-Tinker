@@ -115,8 +115,7 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
         int count =tool.getModifierLevel(new ModifierId("tconstruct","sharpness"));
         float damage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
         Level level =player.getLevel();
-        EntityType<PlasmaSlashEntity> entityType = etshtinkerEntity.plasma_slash_lime.get();
-        PlasmaSlashEntity slash =new PlasmaSlashEntity(entityType,level,new ItemStack(etshtinkerItems.plasma_slash_lime.get()));
+        PlasmaSlashEntity slash =new PlasmaSlashEntity(level,3);
         slash.damage=damage/12.5F;
         slash.setOwner(player);
         slash.setDeltaMovement(player.getLookAngle().scale(1.25));

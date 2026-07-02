@@ -7,7 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 public interface IPierceThroughSource {
     float getAmount();
     default void hurtEntity(LivingEntity living){
-        ((ILivingEntityMixin) living).cti$strictHurt(this.getSource(),this.getAmount());
+        ((ILivingEntityMixin) living).cti$strictHurt(this.getSource(),this.getAmount(),true);
     }
     DamageSource getSource();
 }

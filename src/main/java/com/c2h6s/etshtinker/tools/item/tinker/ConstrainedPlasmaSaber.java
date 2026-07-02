@@ -12,7 +12,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -22,20 +21,17 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.LogicalSide;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.display.DurabilityDisplayModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
 import slimeknights.tconstruct.library.recipe.fuel.MeltingFuel;
 import slimeknights.tconstruct.library.recipe.fuel.MeltingFuelLookup;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
-import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
@@ -46,7 +42,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.c2h6s.etshtinker.util.SlashColor.getSlash;
-import static com.c2h6s.etshtinker.util.SlashColor.getSlashType;
 import static slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper.TANK_HELPER;
 
 
@@ -94,7 +89,7 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
     }
 
     public static float getToolFluidMultiplier(ToolStack tool){
-        return Math.min(1+tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.1f,6f);
+        return 1+tool.getStats().get(ToolStats.ATTACK_DAMAGE)*0.1f;
     }
 
     @Override
@@ -124,13 +119,13 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
             return;
         }
         float damage = getFuelDamage(fuel)*getDamageMultiplier(tool);
-        ItemStack color = getSlash(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
+        int color = getSlash(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
         Level level =player.getLevel();
-        EntityType<PlasmaSlashEntity> entityType = getSlashType(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
-        PlasmaSlashEntity slash =new PlasmaSlashEntity(entityType,level,color);
+        PlasmaSlashEntity slash =new PlasmaSlashEntity(level,color);
+        var scale = tool.getModifierLevel(ModifierIds.reach)*0.5+1;
         slash.damage=damage;
         slash.setOwner(player);
-        slash.setDeltaMovement(player.getLookAngle().scale(tool.getModifierLevel(ModifierIds.reach)*0.5+1));
+        slash.setDeltaMovement(player.getLookAngle().scale(scale));
         slash.setToolstack(tool);
         slash.CriticalRate=tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE);
         double x =player.getLookAngle().x;

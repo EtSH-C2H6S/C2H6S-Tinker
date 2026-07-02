@@ -69,16 +69,6 @@ public class etshtinkerItems {
     public static final RegistryObject<Item> enchantedsword = ITEMS.register("enchantedsword", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> night_slash_a = ITEMS.register("night_slash_a", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> night_slash_b = ITEMS.register("night_slash_b", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_anti = ITEMS.register("plasma_slash_anti", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_blue = ITEMS.register("plasma_slash_blue", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_cyan = ITEMS.register("plasma_slash_cyan", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_green = ITEMS.register("plasma_slash_green", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_lime = ITEMS.register("plasma_slash_lime", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_orange = ITEMS.register("plasma_slash_orange", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_purple = ITEMS.register("plasma_slash_purple", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_red = ITEMS.register("plasma_slash_red", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_yellow = ITEMS.register("plasma_slash_yellow", ()->new Item(new Item.Properties()));
-    public static final RegistryObject<Item> plasma_slash_dark = ITEMS.register("plasma_slash_dark", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> shock_wave = ITEMS.register("shock_wave", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> exo_spin = ITEMS.register("exo_spin", ()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> celetus = ITEMS.register("celetus", ()->new Item(new Item.Properties()));

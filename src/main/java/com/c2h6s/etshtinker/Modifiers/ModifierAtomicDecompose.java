@@ -16,7 +16,7 @@ public class ModifierAtomicDecompose extends EtshModifieriii {
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         LivingEntity target =context.getLivingTarget();
-        if (target!=null&&context.isFullyCharged()&&target.getPersistentData().getInt("atomic_dec")<=160&&!(target instanceof Player)){
+        if (target!=null&&context.isFullyCharged()&&target.getPersistentData().getInt("atomic_dec")<=640&&!(target instanceof Player)){
             target.getPersistentData().putInt("atomic_dec",target.getPersistentData().getInt("atomic_dec")+20*modifier.getLevel());
         }
     }

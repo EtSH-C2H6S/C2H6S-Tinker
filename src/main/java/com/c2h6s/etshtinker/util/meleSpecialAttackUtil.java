@@ -28,7 +28,6 @@ import slimeknights.tconstruct.tools.data.ModifierIds;
 
 import java.util.List;
 
-import static com.c2h6s.etshtinker.util.SlashColor.getSlashType;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 import static net.minecraft.world.entity.EquipmentSlot.Type.HAND;
 
