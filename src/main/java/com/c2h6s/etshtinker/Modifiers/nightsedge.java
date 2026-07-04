@@ -8,11 +8,18 @@ import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.nightslashPacket;
+import com.hoshino.cti.library.modifier.CtiModifierHook;
+import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -22,16 +29,27 @@ import java.security.SecureRandom;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class nightsedge extends EtshModifieriii {
+public class nightsedge extends EtshModifieriii implements LeftClickModifierHook {
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder builder) {
+        super.registerHooks(builder);
+        builder.addHook(this, CtiModifierHook.LEFT_CLICK);
+    }
+
     public boolean isNoLevels() {
         return true;
     }
-    public nightsedge(){
-        MinecraftForge.EVENT_BUS.addListener(this::leftclick);
+
+    @Override
+    public void onLeftClickEmpty(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot) {
+        if (!level.isClientSide&&player.getAttackStrengthScale(0)>0.8)
+            createNightSlash(player);
     }
 
-    private void leftclick(PlayerInteractEvent.LeftClickEmpty event) {
-        packetHandler.INSTANCE.sendToServer(new nightslashPacket());
+    @Override
+    public void onLeftClickBlock(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot, BlockState state, BlockPos pos) {
+        if (!level.isClientSide&&player.getAttackStrengthScale(0)>0.8)
+            createNightSlash(player);
     }
 
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback){

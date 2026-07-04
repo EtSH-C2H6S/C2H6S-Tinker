@@ -9,14 +9,19 @@ import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.EtshtinkerModifiers;
 import com.c2h6s.etshtinker.network.handler.packetHandler;
 import com.c2h6s.etshtinker.network.packet.exoslashPacket;
+import com.hoshino.cti.library.modifier.CtiModifierHook;
+import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.LogicalSide;
@@ -40,7 +45,7 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.util.vecCalc.*;
 import static com.c2h6s.etshtinker.util.meleSpecialAttackUtil.*;
 
-public class exoblademodifier extends EtshModifieriii implements RequirementsModifierHook {
+public class exoblademodifier extends EtshModifieriii implements RequirementsModifierHook, LeftClickModifierHook {
     public boolean isNoLevels() {
         return true;
     }
@@ -53,7 +58,7 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.REQUIREMENTS);
+        builder.addHook(this, ModifierHooks.REQUIREMENTS, CtiModifierHook.LEFT_CLICK);
     }
 
     @Nullable
@@ -67,35 +72,22 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
         return List.of(new ModifierEntry(EtshtinkerModifiers.godlymetal_STATIC_MODIFIER.getId(),1));
     }
 
-    public exoblademodifier(){
-        MinecraftForge.EVENT_BUS.addListener(this::leftclick);
-        MinecraftForge.EVENT_BUS.addListener(this::leftclickblock);
-    }
 
-
-    private void leftclickblock(PlayerInteractEvent.LeftClickBlock event) {
-        InteractionHand hand =event.getHand();
-        if (event.getEntity().getItemInHand(hand).getItem() instanceof ModifiableItem&&event.getSide()== LogicalSide.CLIENT) {
-            ToolStack tool = ToolStack.from(event.getEntity().getMainHandItem());
-            int lvl = tool.getModifierLevel(EtshtinkerModifiers.exobladeModifier_STATIC_MODIFIER.get());
-            if (lvl > 0) {
-                packetHandler.INSTANCE.sendToServer(new exoslashPacket());
-            }
+    @Override
+    public void onLeftClickEmpty(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot) {
+        if (!level.isClientSide&&player.getAttackStrengthScale(0)>0.8){
+            summonScattererExoslash(player);
         }
     }
 
-    private void leftclick(PlayerInteractEvent.LeftClickEmpty event) {
-        InteractionHand hand =event.getHand();
-        if (event.getEntity().getItemInHand(hand).getItem() instanceof ModifiableItem) {
-            ToolStack tool = ToolStack.from(event.getEntity().getMainHandItem());
-            int lvl = tool.getModifierLevel(EtshtinkerModifiers.exobladeModifier_STATIC_MODIFIER.get());
-            if (lvl > 0) {
-                packetHandler.INSTANCE.sendToServer(new exoslashPacket());
-            }
+    @Override
+    public void onLeftClickBlock(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot, BlockState state, BlockPos pos) {
+        if (!level.isClientSide&&player.getAttackStrengthScale(0)>0.8){
+            summonScattererExoslash(player);
         }
     }
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
-        if (context.getPlayerAttacker() instanceof ServerPlayer serverPlayer &&!context.isExtraAttack()) {
+        if (context.getPlayerAttacker() instanceof ServerPlayer serverPlayer &&!context.isExtraAttack()&&context.isFullyCharged()) {
             exoblademodifier.summonScattererExoslash(serverPlayer);
             if (context.getTarget() instanceof LivingEntity living&&context.getAttacker() instanceof Player player){
                 living.invulnerableTime=0;
