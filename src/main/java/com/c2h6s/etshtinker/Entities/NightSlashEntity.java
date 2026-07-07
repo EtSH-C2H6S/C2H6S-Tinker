@@ -23,7 +23,6 @@ public class NightSlashEntity extends ItemProjectile{
     public int time =0;
     public float damage =0;
     public int hittimes =0;
-    public List<LivingEntity> hitent=new ArrayList<>(List.of());
 
     public NightSlashEntity(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -39,9 +38,6 @@ public class NightSlashEntity extends ItemProjectile{
         Level world = this.level;
         Player player =this.getOwner() instanceof Player e ? e:null;
         time++;
-        if (time%4==0){
-            hitent.clear();
-        }
         Vec3 movement =this.getDeltaMovement();
         this.setPos(movement.x+this.getX(),movement.y+this.getY(),movement.z+this.getZ());
         double angle =((this.tickCount * 100 % 360)*Math.PI)/180;
@@ -53,14 +49,13 @@ public class NightSlashEntity extends ItemProjectile{
         List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class,aabb);
         if (!ls.isEmpty()){
             for (LivingEntity targets:ls){
-                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)&&!(targets instanceof Player)){
+                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!(targets instanceof Player)){
                     targets.invulnerableTime =0;
                     targets.hurt(DamageSource.playerAttack(player).bypassMagic(),this.damage*0.5f);
                     targets.invulnerableTime =0;
                     targets.hurt(DamageSource.indirectMagic(player,player).bypassMagic(),this.damage*0.5f);
                     targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.cursefire.get(),100,9,false,false),this.getOwner());
                     hittimes++;
-                    hitent.add(targets);
                 }
             }
         }

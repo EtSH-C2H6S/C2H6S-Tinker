@@ -13,6 +13,7 @@ import com.hoshino.cti.library.modifier.hooks.LeftClickModifierHook;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -66,7 +67,7 @@ public class nightsedge extends EtshModifieriii implements LeftClickModifierHook
             if (random.nextBoolean()){
                 NightSlashEntityB entity = new NightSlashEntityB(etshtinkerEntity.nights_slash_entity_b.get(), player.level);
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
-                entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
+                entity.damage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
                 if (etshmodifierfluxed.getEnergyStored(tool)>1000) {
                     int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),10000);
                     entity.damage += energyDraw/50f;
@@ -79,7 +80,7 @@ public class nightsedge extends EtshModifieriii implements LeftClickModifierHook
             else{
                 NightSlashEntity entity = new NightSlashEntity(etshtinkerEntity.nights_slash_entity.get(), player.level);
                 entity.setDeltaMovement(player.getLookAngle().scale(0.35));
-                entity.damage = tool.getStats().getInt(ToolStats.ATTACK_DAMAGE);
+                entity.damage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
                 if (etshmodifierfluxed.getEnergyStored(tool)>1000) {
                     int energyDraw = Math.min(etshmodifierfluxed.getEnergyStored(tool),10000);
                     entity.damage += energyDraw/50f;

@@ -1,15 +1,13 @@
 package com.c2h6s.etshtinker.Entities;
 
-import com.c2h6s.etshtinker.etshtinker;
 import com.c2h6s.etshtinker.init.etshtinkerEntity;
 import com.c2h6s.etshtinker.init.etshtinkerHook;
 import com.c2h6s.etshtinker.util.attackUtil;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -17,9 +15,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -44,13 +39,13 @@ public class PlasmaSlashEntity extends Projectile {
     public float CriticalRate;
     public boolean isCritical = false;
     public List<Entity> hitList = new ArrayList<>(List.of());
-    public double SCALE ;
     public int hitRemain =16;
     public float echoTriggerChance = 0.25f;
     public boolean isEcho = false;
     public static final EntityDataAccessor<Integer> KEY_ECHO = SynchedEntityData.defineId(PlasmaSlashEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Boolean> KEY_IS_CRITICAL = SynchedEntityData.defineId(PlasmaSlashEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Integer> KEY_SLASH_TYPE = SynchedEntityData.defineId(PlasmaSlashEntity.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Float> KEY_SLASH_SCALE = SynchedEntityData.defineId(PlasmaSlashEntity.class, EntityDataSerializers.FLOAT);
 
     public PlasmaSlashEntity(EntityType<? extends Projectile> type,Level p_37249_) {
         super(type, p_37249_);
@@ -64,9 +59,11 @@ public class PlasmaSlashEntity extends Projectile {
         this.setSlashType(slash);
     }
 
-    public double getScale(){
-        this.SCALE = Math.max(1, getMold(this.getDeltaMovement()));
-        return this.SCALE;
+    public float getScale(){
+        return this.entityData.get(KEY_SLASH_SCALE);
+    }
+    public void setScale(float scale){
+        this.entityData.set(KEY_SLASH_SCALE,scale);
     }
     public int getSlashType(){
         return this.entityData.get(KEY_SLASH_TYPE);
@@ -96,12 +93,18 @@ public class PlasmaSlashEntity extends Projectile {
 
     @Override
     public void tick() {
+        Vec3 rayVec3 =this.getDeltaMovement();
         if (this.firstTick) {
+            double d0 = rayVec3.horizontalDistance();
+            this.setYRot((float)(Mth.atan2(rayVec3.x, rayVec3.z) * (double)(180F / (float)Math.PI)));
+            this.setXRot((float)(Mth.atan2(rayVec3.y, d0) * (double)(180F / (float)Math.PI)));
+
             this.isCritical = EtSHrnd().nextFloat(0, 1) <= this.CriticalRate;
             if (this.isCritical) {
                 this.entityData.set(KEY_IS_CRITICAL, true);
-                this.setDeltaMovement(this.getDeltaMovement().scale(1.5f));
+                this.setScale(this.getScale()*1.5f);
                 this.playSound(SoundEvents.PLAYER_ATTACK_SWEEP,1.25f,1.25f);
+                this.echoTriggerChance += 0.5f;
             }
             else this.playSound(SoundEvents.PLAYER_ATTACK_SWEEP,1,1);
         }
@@ -109,7 +112,6 @@ public class PlasmaSlashEntity extends Projectile {
         if (this.tool==null&&this.getOwner() instanceof Player player){
             this.tool=ToolStack.from( player.getMainHandItem());
         }
-        Vec3 rayVec3 =this.getDeltaMovement();
         super.tick();
         if (this.tickCount>=5){
             if (getEcho()>0){
@@ -143,7 +145,7 @@ public class PlasmaSlashEntity extends Projectile {
             double dy = vec3.y * getScale()+offset.y;
             double dz = vec3.z * getScale()+offset.z;
             this.setPos(x + dx, y + dy, z + dz);
-            AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(2)).expandTowards(vec3.scale(-1)).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
+            AABB aabb = this.getBoundingBox().expandTowards(vec3.scale(this.getScale())).expandTowards(vec3.scale(-this.getScale())).expandTowards(new Vec3(0,dy,0).cross(vec3)).expandTowards(new Vec3(0,-dy,0).cross(vec3));
             List<Entity> ls0 = this.level.getEntitiesOfClass(Entity.class, aabb,this::canHitEntity);
             float overCrit =Math.max( CriticalRate -1,0);
             this.hitRemain=16;
@@ -196,5 +198,6 @@ public class PlasmaSlashEntity extends Projectile {
         this.entityData.define(KEY_ECHO,0);
         this.entityData.define(KEY_IS_CRITICAL,false);
         this.entityData.define(KEY_SLASH_TYPE,0);
+        this.entityData.define(KEY_SLASH_SCALE,1f);
     }
 }

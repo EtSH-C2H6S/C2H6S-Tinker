@@ -24,7 +24,6 @@ public class NightSlashEntityB extends ItemProjectile{
     public int time =0;
     public float damage =0;
     public int hittimes=0;
-    public List<LivingEntity> hitent=new ArrayList<>(List.of());
 
     public NightSlashEntityB(EntityType<? extends ItemProjectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
@@ -40,9 +39,6 @@ public class NightSlashEntityB extends ItemProjectile{
         Level world = this.level;
         Player player =this.getOwner() instanceof Player e ? e:null;
         time++;
-        if (time%4==0){
-            hitent.clear();
-        }
         Vec3 movement =this.getDeltaMovement();
         this.setPos(movement.x+this.getX(),movement.y+this.getY(),movement.z+this.getZ());
         double angle =((this.tickCount * 100 % 360)*Math.PI)/180;
@@ -54,24 +50,23 @@ public class NightSlashEntityB extends ItemProjectile{
         List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class,aabb);
         if (!ls.isEmpty()){
             for (LivingEntity targets:ls){
-                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!hitent.contains(targets)&&!(targets instanceof Player)) {
+                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!(targets instanceof Player)) {
                     targets.invulnerableTime = 0;
                     targets.hurt(DamageSource.playerAttack(player), this.damage);
                     targets.invulnerableTime = 0;
                     AttributeInstance instance = targets.getAttributes().getInstance(Attributes.ARMOR);
                     AttributeInstance instance1 = targets.getAttributes().getInstance(Attributes.ARMOR_TOUGHNESS);
                     if (instance1 != null) {
-                        instance1.setBaseValue(instance1.getBaseValue() - 1);
+                        instance1.setBaseValue(instance1.getBaseValue() - 5);
                     }
                     if (instance != null) {
-                        instance.setBaseValue(instance.getBaseValue() - 1);
+                        instance.setBaseValue(instance.getBaseValue() - 5);
                     }
                     targets.invulnerableTime = 0;
                     targets.hurt(DamageSource.playerAttack(player).bypassArmor(), this.damage * 0.25F);
                     targets.invulnerableTime = 0;
                     targets.hurt(DamageSource.explosion(player), this.damage * 0.25F);
                     hittimes++;
-                    hitent.add(targets);
                 }
             }
         }

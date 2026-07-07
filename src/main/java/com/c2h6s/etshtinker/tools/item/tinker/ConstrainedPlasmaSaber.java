@@ -122,10 +122,11 @@ public class ConstrainedPlasmaSaber extends ModifiableSwordItem {
         int color = getSlash(tool.getStats().getInt(etshtinkerToolStats.SLASH_COLOR));
         Level level =player.getLevel();
         PlasmaSlashEntity slash =new PlasmaSlashEntity(level,color);
-        var scale = tool.getModifierLevel(ModifierIds.reach)*0.5+1;
+        float scale = tool.getModifierLevel(ModifierIds.reach)*0.5f+1;
         slash.damage=damage;
         slash.setOwner(player);
-        slash.setDeltaMovement(player.getLookAngle().scale(scale));
+        slash.setDeltaMovement(player.getLookAngle());
+        slash.setScale(scale);
         slash.setToolstack(tool);
         slash.CriticalRate=tool.getStats().get(etshtinkerToolStats.CRITICAL_RATE);
         double x =player.getLookAngle().x;

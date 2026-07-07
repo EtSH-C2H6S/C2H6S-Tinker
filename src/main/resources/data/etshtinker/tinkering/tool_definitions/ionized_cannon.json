@@ -52,14 +52,14 @@
       "multipliers": {
         "tconstruct:attack_damage": 1.45,
         "tconstruct:attack_speed": 0.8,
-        "tconstruct:durability": 1.55
+        "tconstruct:durability": 3
       }
     },
     {
       "type": "tconstruct:modifier_slots",
       "slots": {
-        "abilities": 4,
-        "upgrades": 6
+        "abilities": 8,
+        "upgrades": 8
       }
     },
     {

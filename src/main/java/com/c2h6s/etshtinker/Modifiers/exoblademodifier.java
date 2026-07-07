@@ -110,7 +110,8 @@ public class exoblademodifier extends EtshModifieriii implements RequirementsMod
         PlasmaSlashEntity slash =new PlasmaSlashEntity(level,3);
         slash.damage=damage/12.5F;
         slash.setOwner(player);
-        slash.setDeltaMovement(player.getLookAngle().scale(1.25));
+        slash.setDeltaMovement(player.getLookAngle());
+        slash.setScale(1.5f);
         slash.setToolstack(tool);
         slash.CriticalRate=256;
         double x =player.getLookAngle().x;

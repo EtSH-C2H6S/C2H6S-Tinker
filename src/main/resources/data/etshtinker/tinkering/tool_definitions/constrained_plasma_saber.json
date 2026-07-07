@@ -5,7 +5,7 @@
       "parts": [
         {
           "item": "tconstruct:broad_blade",
-          "scale": 0.5
+          "scale": 1
         },
         {
           "item": "tconstruct:tough_handle",
@@ -54,23 +54,24 @@
     {
       "type": "tconstruct:base_stats",
       "stats": {
-        "tconstruct:attack_damage": 2.05,
-        "tconstruct:attack_speed": 1.85,
+        "tconstruct:attack_damage": 1,
+        "tconstruct:attack_speed": 2,
         "tconstruct:durability": 5
       }
     },
     {
       "type": "tconstruct:multiply_stats",
       "multipliers": {
-        "tconstruct:attack_damage": 0.8,
-        "tconstruct:durability": 2.75
+        "tconstruct:attack_damage": 0.9,
+        "tconstruct:attack_speed": 1.25,
+        "tconstruct:durability": 2
       }
     },
     {
       "type": "tconstruct:modifier_slots",
       "slots": {
-        "abilities": 4,
-        "upgrades": 6
+        "abilities": 8,
+        "upgrades": 8
       }
     },
     {
