@@ -12,15 +12,9 @@ import static com.c2h6s.etshtinker.util.vecCalc.getMold;
 
 public class FlexibleBlade extends etshmodifierFluidWeapon {
     @Override
-    public PlasmaSlashEntity onPlasmaSlashCreate(IToolStackView tool, FluidStack fluidStack, ServerPlayer player, PlasmaSlashEntity slash) {
-        slash.setDeltaMovement(slash.getDeltaMovement().scale(0.5));
-        return slash;
-    }
-
-    @Override
     public void modifierAfterPlasmaSlashHit(ToolStack tool, LivingEntity target, PlasmaSlashEntity slash, boolean isCritical, float slashDamage) {
-        if (getMold(slash.getDeltaMovement())<=50) {
-            slash.setDeltaMovement(slash.getDeltaMovement().scale(1.2));
+        if (slash.getScale()<=50) {
+            slash.setScale(slash.getScale()*1.2f);
         }
     }
 }

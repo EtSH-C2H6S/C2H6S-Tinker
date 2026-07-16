@@ -63,8 +63,8 @@ public class basalzdefence extends EtshModifieriii implements ToolStatsModifierH
         return amount;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (level.getGameTime()%10==0&&isCorrectSlot&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),200,0,false,false));
+        if (level.getGameTime()%100==0&&isCorrectSlot&&holder!=null&&enabled){
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),200,modifier.getLevel()*5-1,false,false));
         }
     }
 }

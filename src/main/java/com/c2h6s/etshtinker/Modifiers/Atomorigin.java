@@ -50,6 +50,22 @@ public class Atomorigin extends EtshModifieriii implements ToolStatsModifierHook
     }
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
+        ToolStats.DURABILITY.multiply(builder, 0.005);
+        ToolStats.ATTACK_SPEED.multiply(builder, 0.005);
+        ToolStats.ATTACK_DAMAGE.multiply(builder, 0.005);
+        ToolStats.ACCURACY.multiply(builder, 0.005);
+        ToolStats.DRAW_SPEED.multiply(builder, 0.005);
+        ToolStats.MINING_SPEED.multiply(builder, 0.005);
+        ToolStats.ARMOR.multiply(builder, 0.005);
+        ToolStats.ARMOR_TOUGHNESS.multiply(builder, 0.005);
+        ToolStats.PROJECTILE_DAMAGE.multiply(builder, 0.005);
+        ToolStats.KNOCKBACK_RESISTANCE.multiply(builder, 0.005);
+        ToolStats.BLOCK_AMOUNT.multiply(builder, 0.005);
+        ToolStats.BLOCK_ANGLE.multiply(builder, 0.005);
+        etshtinkerToolStats.PLASMARANGE.multiply(builder, 0.005);
+        etshtinkerToolStats.DAMAGEMULTIPLIER.multiply(builder, 0.005);
+        etshtinkerToolStats.ENERGY_STORE.multiply(builder, 0.005);
+        ToolTankHelper.CAPACITY_STAT.multiply(builder, 0.005);
         List<ModifierEntry> ls =context.getModifierList();
         int slotamount =0;
         for (ModifierEntry entry :ls){

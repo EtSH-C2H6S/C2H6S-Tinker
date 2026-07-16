@@ -16,38 +16,39 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.armor.DamageBlockModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.build.VolatileDataModifierHook;
+import slimeknights.tconstruct.library.modifiers.modules.build.ModifierTraitModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 
 import java.security.SecureRandom;
 
 import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
-public class thermaldefense extends EtshModifieriii implements VolatileDataModifierHook {
+public class thermaldefense extends EtshModifieriii implements VolatileDataModifierHook , DamageBlockModifierHook {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
     @Override
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
-        builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.VOLATILE_DATA);
+        builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.VOLATILE_DATA,ModifierHooks.DAMAGE_BLOCK);
     }
 
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
-        SecureRandom random =EtSHrnd();
-        if (random.nextInt(25)>modifier.getLevel()){
-            LivingEntity entity =context.getEntity();
-            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60,2,false,false));
-            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,60,2,false,false));
-            if(source.isExplosion()||source.isMagic()){
-                amount*=0.5f;
-            }
-            return amount;
+        LivingEntity entity = context.getEntity();
+        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 2, false, false));
+        entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 60, 2, false, false));
+        if (source.isMagic()||source.isExplosion()) {
+            amount *= 0.5f;
         }
-        else return  0;
+        return amount;
     }
     public void modifierOnAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         if (tool.getModifierLevel(this) > 0&&slotType.getType() ==EquipmentSlot.Type.ARMOR&&enabled) {
@@ -79,5 +80,15 @@ public class thermaldefense extends EtshModifieriii implements VolatileDataModif
     public void addVolatileData(IToolContext iToolContext, ModifierEntry modifierEntry, ModDataNBT modDataNBT) {
         modDataNBT.addSlots(SlotType.ABILITY,modifierEntry.getLevel());
         modDataNBT.addSlots(SlotType.DEFENSE,modifierEntry.getLevel()*2);
+    }
+
+    @Override
+    public boolean isDamageBlocked(IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentContext context, EquipmentSlot equipmentSlot, DamageSource damageSource, float v) {
+        LivingEntity entity =context.getEntity();
+        entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,200,modifierEntry.getLevel()*2-1,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,200,2,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,200,1,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,200,2,false,false));
+        return EtSHrnd().nextFloat() < 0.15f;
     }
 }

@@ -2,6 +2,10 @@ package com.c2h6s.etshtinker.Modifiers.Armor;
 
 import cofh.core.init.CoreMobEffects;
 import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
+import com.hoshino.cti.content.entityTicker.EntityTickerInstance;
+import com.hoshino.cti.content.entityTicker.EntityTickerManager;
+import com.hoshino.cti.library.modifier.hooks.OnHoldingPreventDeathHook;
+import com.hoshino.cti.register.CtiEntityTickers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -13,15 +17,19 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.TConstruct;
@@ -29,6 +37,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.modules.technical.ArmorLevelModule;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
@@ -42,7 +51,8 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
-public class mindprotection extends EtshModifieriii {
+@Mod.EventBusSubscriber
+public class mindprotection extends EtshModifieriii implements OnHoldingPreventDeathHook {
     public static boolean enabled2 = ModList.get().isLoaded("cofh_core");
     private static final TinkerDataCapability.TinkerDataKey<Integer> key = TConstruct.createKey("mindprotection");
     @Override
@@ -59,36 +69,6 @@ public class mindprotection extends EtshModifieriii {
     }
     public mindprotection(){
         MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
-        MinecraftForge.EVENT_BUS.addListener(this::livingdeathevent);
-    }
-    private void livingdeathevent(LivingDeathEvent event) {
-        LivingEntity entity =event.getEntity();
-        entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
-            int level = holder.get(key, 0);
-            if (level > 0) {
-                if (entity instanceof Player player ) {
-                    List<ItemStack> equipments = player.getInventory().armor;
-                    for (ItemStack equipment : equipments) {
-                        if (equipment.getItem() instanceof ModifiableArmorItem) {
-                            ToolStack tool = ToolStack.from(equipment);
-                            if (tool.getModifierLevel(this) > 0 && tool.getPersistentData().getInt(dpreventcd2) == 0) {
-                                ModDataNBT toolData = tool.getPersistentData();
-                                if (toolData.getInt(dpreventcd2) == 0) {
-                                    toolData.putInt(dpreventcd2, 1800);
-                                    event.setCanceled(true);
-                                    player.deathTime = -2;
-                                    player.fallDistance = 0;
-                                    player.setHealth(player.getMaxHealth() * 0.5f);
-                                    player.invulnerableTime = 100;
-                                    entity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        });
     }
 
     private void livinghurtevent(LivingHurtEvent event) {
@@ -105,25 +85,22 @@ public class mindprotection extends EtshModifieriii {
                 if (event.getSource().isBypassArmor()){
                     event.setCanceled(true);
                 }
-                else {
-                    int i = random.nextInt(100);
+            }
+        });
+    }
+
+    @SubscribeEvent
+    public static void onLivingAttack(LivingAttackEvent event){
+        LivingEntity entity =event.getEntity();
+        var random =EtSHrnd();
+        entity.getCapability(TinkerDataCapability.CAPABILITY).ifPresent((holder) -> {
+            if (holder.get(key,0)>0)
                     if (entity instanceof Player player) {
-                        if ( i > 40) {
+                        if (random.nextInt(100) > 40) {
                             event.setCanceled(true);
-                            player.invulnerableTime = 40;
-                            if (i > 60 && entity1 instanceof LivingEntity attacker&& !(attacker instanceof Player)) {
-                                attacker.invulnerableTime = 0;
-                                attacker.hurt(DamageSource.thorns(player), event.getAmount() * 5);
-                                attacker.invulnerableTime = 0;
-                            }
-                            if (i > 75 && entity1 instanceof LivingEntity attacker&& !(attacker instanceof Player)) {
-                                attacker.hurt(DamageSource.thorns(player), event.getAmount() * 20);
-                                attacker.invulnerableTime = 0;
-                            }
+                            EntityTickerManager.getInstance(player).addTickerSimple(new EntityTickerInstance(CtiEntityTickers.INVULNERABLE.get(), 1, 40));
                         }
                     }
-                }
-            }
         });
     }
 
@@ -173,5 +150,17 @@ public class mindprotection extends EtshModifieriii {
             return Component.translatable(this.getDisplayName().getString() + "  " ).append(Component.translatable( "etshtinker.modifier.tooltip.deadpreventcd" ).append( String.valueOf(toolData.getInt(dpreventcd2))).withStyle(this.getDisplayName().getStyle()));
         }
         else return Component.translatable(this.getDisplayName().getString() + "  " ).append(Component.translatable( "etshtinker.modifier.tooltip.deadpreventready" ).withStyle(this.getDisplayName().getStyle()));
+    }
+
+    @Override
+    public float onHoldingPreventDeath(LivingEntity livingEntity, IToolStackView tool, ModifierEntry modifierEntry, EquipmentContext context, EquipmentSlot equipmentSlot, DamageSource damageSource) {
+        ModDataNBT toolData = tool.getPersistentData();
+        if (toolData.getInt(dpreventcd2) == 0) {
+            toolData.putInt(dpreventcd2, 1800);
+            EntityTickerManager.getInstance(livingEntity).addTickerSimple(new EntityTickerInstance(CtiEntityTickers.INVULNERABLE.get(), 1,400));
+            livingEntity.sendSystemMessage(Component.translatable("etshtinker.message.death_prevent").withStyle(ChatFormatting.AQUA));
+            return livingEntity.getMaxHealth()*0.5f;
+        }
+        return 0;
     }
 }

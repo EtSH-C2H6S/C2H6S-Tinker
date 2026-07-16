@@ -35,7 +35,7 @@
 
   "modifier.etshtinker.mentalism": "唯心主义",
   "modifier.etshtinker.mentalism.flavor": "什么叫精神胜利法（后仰）",
-  "modifier.etshtinker.mentalism.description":"穿着时格挡一次攻击（冷却30秒）但是同时给敌人附加2秒无敌帧。",
+  "modifier.etshtinker.mentalism.description":"穿着时获得15%独立闪避率，每15秒获得一次必定闪避的机会。",
 
   "modifier.etshtinker.thermalstrike": "热力冲击",
   "modifier.etshtinker.thermalstrike.flavor": "能量爆发",
@@ -85,9 +85,9 @@
   "modifier.etshtinker.worldforceex.flavor": "大地的力量掌握在你手中",
   "modifier.etshtinker.worldforceex.description":"攻击时对目标造成多段凋灵、火焰、魔法和辐射伤害，对目标施加大量debuff和辐射，并移除目标的重力。手持时给予自身多种buff",
 
-  "modifier.etshtinker.mindprotection": "知识护盾",
+  "modifier.etshtinker.mindprotection": "不偏差认知",
   "modifier.etshtinker.mindprotection.flavor": "我觉得你没打到我，你就是没打到我",
-  "modifier.etshtinker.mindprotection.description":"获得75%减伤，免疫部分穿甲伤害，移除自身debuff，被攻击时60%的概率闪避并有概率将大量伤害反弹给对方，获得2秒无敌帧。死亡时免死一次并恢复50%生命值，获得7秒无敌帧，冷却90秒。",
+  "modifier.etshtinker.mindprotection.description":"获得75%减伤，免疫部分穿甲伤害，免疫神谕和大部分负面效果。获得60%的独立闪避率（多件不叠加），该闪避触发时获得2秒无敌。死亡时免死一次并恢复50%生命值，获得20秒无敌，冷却90秒。",
 
   "modifier.etshtinker.godlymetal": "神金质",
   "modifier.etshtinker.godlymetal.flavor": "来自天堂的地狱赠礼",
@@ -119,7 +119,7 @@
 
   "modifier.etshtinker.extralight": "究极轻盈",
   "modifier.etshtinker.extralight.flavor": "影流之主",
-  "modifier.etshtinker.extralight.description":"你的工具把你也变轻了，装备时获得时运和速度和固定20%闪避率，攻击敌人时有概率使自己获得无敌帧",
+  "modifier.etshtinker.extralight.description":"装备时获得急迫和速度。获得25%独立闪避率，闪避失败时有75%的概率额外尝试进行一次闪避判定。",
 
   "modifier.etshtinker.ultradenseex": "究极致密",
   "modifier.etshtinker.ultradenseex.flavor": "组成它的粒子好像是被钉死了，一点缝隙都没有",
@@ -183,15 +183,15 @@
 
   "modifier.etshtinker.shattered": "碎裂",
   "modifier.etshtinker.shattered.flavor": "破甲！",
-  "modifier.etshtinker.shattered.description":"攻击时减少50%敌人当前护甲",
+  "modifier.etshtinker.shattered.description":"攻击时减少5%敌人护甲，最大减少40%",
 
   "modifier.etshtinker.shocked": "震荡",
   "modifier.etshtinker.shocked.flavor": "电疗！",
-  "modifier.etshtinker.shocked.description":"攻击时向敌人施加震荡效果",
+  "modifier.etshtinker.shocked.description":"攻击时向敌人施加震荡效果并电击敌人造成每级25%闪电伤害。",
 
   "modifier.etshtinker.chilled": "凛冰",
   "modifier.etshtinker.chilled.flavor": "激寒！",
-  "modifier.etshtinker.chilled.description":"攻击时向敌人施加冻僵效果",
+  "modifier.etshtinker.chilled.description":"攻击时向敌人施加冻僵效果，近战伤害每级增加目标护甲值*8点。",
 
   "modifier.etshtinker.fluxloaded": "通量装载",
   "modifier.etshtinker.fluxloaded.flavor": "简直完美！",
@@ -229,17 +229,17 @@
   "modifier.etshtinker.warpprotection.flavor": "空间护盾",
   "modifier.etshtinker.warpprotection.description":"将你周围一定范围内的来犯弹射物传送走，等级越高范围越大。",
 
-  "modifier.etshtinker.basalzdefence": "地岩之护",
+  "modifier.etshtinker.basalzdefence": "地岩坚盾",
   "modifier.etshtinker.basalzdefence.flavor": "地心的力量守护着你",
   "modifier.etshtinker.basalzdefence.description":"每级提供5%伤害减免并增加装备的10%防御力，穿着时获得爆裂抗性，延长自身受击无敌帧",
 
-  "modifier.etshtinker.blitzdefense": "震荡之护",
+  "modifier.etshtinker.blitzdefense": "震荡激化",
   "modifier.etshtinker.blitzdefense.flavor": "对流层的力量守护着你",
-  "modifier.etshtinker.blitzdefense.description":"每级提供5%闪避率，穿着时获得震荡抗性和夜视效果，受伤时获得速度和急迫效果",
+  "modifier.etshtinker.blitzdefense.description":"获得25%独立闪避率，穿着时获得震荡抗性和夜视效果，受伤时获得速度和急迫效果",
 
-  "modifier.etshtinker.blizzdefense": "极寒之护",
+  "modifier.etshtinker.blizzdefense": "凛冰超导",
   "modifier.etshtinker.blizzdefense.flavor": "极寒之境的力量守护着你",
-  "modifier.etshtinker.blizzdefense.description":"受击时给予攻击者冻僵效果，穿着时获得霜冻抗性效果",
+  "modifier.etshtinker.blizzdefense.description":"受到的伤害每级减少攻击者护甲值点，受击时给予攻击者冻僵效果，穿着时获得霜冻抗性效果",
 
   "modifier.etshtinker.electromotiveforce": "动生电动势",
   "modifier.etshtinker.electromotiveforce.flavor": "力释电！",
@@ -279,7 +279,7 @@
 
   "modifier.etshtinker.thermaldefense": "热力之护",
   "modifier.etshtinker.thermaldefense.flavor": "热力的力量包裹你全身",
-  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性（稍弱一点），额外附带减少攻击者50%护甲，对魔法伤害提供50%减免，每级增加1能量槽和2防御槽。",
+  "modifier.etshtinker.thermaldefense.description":"地岩之护、震荡之护、极寒之护的全部特性（稍弱一点），额外附带减少攻击者50%护甲，对魔法伤害提供50%减免，每级增加1能力槽和2防御槽。",
 
   "modifier.etshtinker.trinityblessing": "三重祝福",
   "modifier.etshtinker.trinityblessing.flavor": "三种简并态材料在你的帮助下成功地融合，它们为你的工具赐予了祝福。",
@@ -291,11 +291,11 @@
 
   "modifier.etshtinker.unknown": "-未知-",
   "modifier.etshtinker.unknown.flavor": "",
-  "modifier.etshtinker.unknown.description":"工具的大部分属性乘以0.005倍。但是手持/穿着时获得50%不叠加的闪避率",
+  "modifier.etshtinker.unknown.description":"获得50%闪避率（多件不叠加）。",
 
   "modifier.etshtinker.atomorigin": "核子起源",
   "modifier.etshtinker.atomorigin.flavor": "“一个特异点”",
-  "modifier.etshtinker.atomorigin.description":"工具大部分属性乘以1.2^所有词条等级总和，在槽位数到达一定值后给你施加特殊效果。极大增强分形自组装强化的修复能力。",
+  "modifier.etshtinker.atomorigin.description":"将工具的大部分属性乘以0.005倍，随后工具每有1级任意词条，将这些属性翻1.2倍。随强化槽数量给予你施加特殊效果。极大增强分形自组装和湮灭反应装甲的反中子利用效率。",
 
   "modifier.etshtinker.semicrystaline": "准晶",
   "modifier.etshtinker.semicrystaline.flavor": "富有弹性的坚硬材料，当前研究的热点之一",
@@ -427,7 +427,7 @@
 
   "modifier.etshtinker.flexible_blade": "弹性离子锋",
   "modifier.etshtinker.flexible_blade.flavor": "可伸缩光剑",
-  "modifier.etshtinker.flexible_blade.description":"等离子斩击初始范围减半，但每攻击到一个敌人会使斩击范围*1.2",
+  "modifier.etshtinker.flexible_blade.description":"等离子斩击每次命中会使斩击尺寸*1.2（最大50）",
 
   "modifier.etshtinker.critical": "暴击",
   "modifier.etshtinker.critical.flavor": "满爆out",

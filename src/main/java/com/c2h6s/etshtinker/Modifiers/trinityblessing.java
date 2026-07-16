@@ -11,6 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.ToolDamageModifierHook;
@@ -34,7 +35,7 @@ public class trinityblessing extends EtshModifieriii implements ToolStatsModifie
     protected void registerHooks(ModuleHookMap.Builder builder) {
         super.registerHooks(builder);
         builder.addHook(this, ModifierHooks.TOOL_STATS,ModifierHooks.TOOL_DAMAGE,ModifierHooks.DISPLAY_NAME);
-        builder.addModule(new ArmorLevelModule(key, false, (TagKey)null));
+        builder.addModule(new ArmorLevelModule(key, false, TinkerTags.Items.MODIFIABLE));
     }
     public trinityblessing(){
         MinecraftForge.EVENT_BUS.addListener(this::livingattackevent);
@@ -49,11 +50,6 @@ public class trinityblessing extends EtshModifieriii implements ToolStatsModifie
                     event.getSource().bypassArmor();
                 }
             });
-            if (getMainLevel(attacker, this) > 0) {
-                event.getSource().bypassArmor();
-            } else if (getOffLevel(attacker, this) > 0) {
-                event.getSource().bypassArmor();
-            }
         }
     }
 

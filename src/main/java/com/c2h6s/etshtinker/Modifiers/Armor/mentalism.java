@@ -32,6 +32,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.List;
 
+import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 import static com.c2h6s.etshtinker.etshtinker.MOD_ID;
 
 public class mentalism extends EtshModifieriii implements DamageBlockModifierHook {
@@ -63,11 +64,10 @@ public class mentalism extends EtshModifieriii implements DamageBlockModifierHoo
     @Override
     public boolean isDamageBlocked(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource source, float amount) {
         ModDataNBT nbt = tool.getPersistentData();
+        if (EtSHrnd().nextFloat()<0.15f) return true;
         if (nbt.getInt(KEY_HURT_CD)<=0){
-            if (source.getEntity() != null) {
-                source.getEntity().invulnerableTime = 50;
-            }
-            nbt.putInt(KEY_HURT_CD,60);
+            nbt.putInt(KEY_HURT_CD,30);
+            return true;
         }
         return false;
     }

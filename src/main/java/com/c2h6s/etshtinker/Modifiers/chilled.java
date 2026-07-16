@@ -22,6 +22,14 @@ public class chilled extends EtshModifieriii {
             target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,2));
         }
     }
+
+    @Override
+    public float onGetMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
+        if (context.getTarget() instanceof LivingEntity living&&living.getArmorValue()>0)
+            damage+=living.getArmorValue();
+        return damage;
+    }
+
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (modifier.getLevel()>0&&target!=null&&enabled){
             target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,2));

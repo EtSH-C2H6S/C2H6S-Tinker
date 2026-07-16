@@ -20,17 +20,15 @@ import static com.c2h6s.etshtinker.etshtinker.EtSHrnd;
 public class blizzdefense extends EtshModifieriii {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
     public float modifierDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
-        SecureRandom random =EtSHrnd();
-        if (tool.getModifierLevel(this)>0&&random.nextInt(20)>modifier.getLevel()){
-            if (source.getEntity() instanceof LivingEntity attacker&&attacker!=context.getEntity()){
-                attacker.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,4));
-            }
-            return amount*(1-0.1f*modifier.getLevel());
-        }else return 0;
+        if (source.getEntity() instanceof LivingEntity living){
+            if (living.getArmorValue()>0)
+                amount+=living.getArmorValue()*modifier.getLevel()*8;
+        }
+        return amount;
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
-        if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),200,0,false,false));
+        if (level.getGameTime()%100==0&&modifier.getLevel()>0&&isCorrectSlot&&holder!=null&&enabled){
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),200,modifier.getLevel()*5-1,false,false));
         }
     }
 }
