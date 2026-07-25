@@ -24,7 +24,7 @@ public class gravitymanipulate extends EtshModifieriii {
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         Entity entity =context.getTarget();
         if (entity instanceof LivingEntity living){
-            living.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
+            living.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),400,0,false,false));
             if (!living.isNoGravity()&&!(living instanceof Player)){
                 living.setDeltaMovement(0,-0.2,0);
             }
@@ -37,7 +37,7 @@ public class gravitymanipulate extends EtshModifieriii {
     @Override
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target !=null){
-            target.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),200,0,false,false));
+            target.addEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),400,0,false,false));
             if (!target.isNoGravity()&&!(target instanceof Player)){
                 target.setDeltaMovement(0,-0.2,0);
             }

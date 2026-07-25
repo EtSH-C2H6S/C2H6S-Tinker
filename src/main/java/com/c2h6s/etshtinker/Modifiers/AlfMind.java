@@ -44,7 +44,7 @@ public class AlfMind extends EtshModifieriii {
                 }
                 entity.setProps(target2,target,0,8);
                 entity.setPos(target.getX(),target.getY()+target.getBbHeight()+0.25,target.getZ());
-                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(ls.size())),100,4,false,false));
+                entity.setApplyPotionEffect(new MobEffectInstance(ls.get(random.nextInt(ls.size())),400,4,false,false));
                 target.level.addFreshEntity(entity);
             }
         }

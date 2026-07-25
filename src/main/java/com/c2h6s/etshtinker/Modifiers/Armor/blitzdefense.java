@@ -33,7 +33,7 @@ public class blitzdefense extends EtshModifieriii implements DamageBlockModifier
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isCorrectSlot&&holder!=null&&enabled){
             if (level.getGameTime()%100==0)
-                holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),200,modifier.getLevel()*5-1,false,false));
+                holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),400,modifier.getLevel()*5-1,false,false));
             holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,0,false,false));
         }
     }
@@ -41,8 +41,8 @@ public class blitzdefense extends EtshModifieriii implements DamageBlockModifier
     @Override
     public boolean isDamageBlocked(IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentContext context, EquipmentSlot equipmentSlot, DamageSource damageSource, float v) {
         LivingEntity entity =context.getEntity();
-        entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,200,modifierEntry.getLevel()*2-1,false,false));
-        entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,200,2,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,400,modifierEntry.getLevel()*2-1,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,400,2,false,false));
         return EtSHrnd().nextFloat() < 0.25f;
     }
 }

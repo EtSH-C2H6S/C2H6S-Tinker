@@ -41,7 +41,7 @@ public class armorMoveAccel extends EtshModifieriii {
                     lv+=instance.getAmplifier();
                 }
             }
-            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,100,Math.min( lv+1,modifierLv),false,false));
+            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,400,Math.min( lv+1,modifierLv),false,false));
         }
     }
 }

@@ -56,8 +56,8 @@ public class extralight extends EtshModifieriii implements DamageBlockModifierHo
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if(isCorrectSlot&&!tool.isBroken()&&holder!=null){
             int lvl = slotUtil.getAllTotalLevel(holder,this.getId());
-            holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,20,lvl+1,false,false));
-            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,20,lvl*3,false,false));
+            holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,400,lvl+1,false,false));
+            holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,400,lvl*3,false,false));
         }
     }
 

@@ -50,8 +50,8 @@ public class electrified extends EtshModifieriii implements ToolStatsModifierHoo
             int lvl000 = modifiers.getLevel(this.getId());
             target.invulnerableTime=0;
             target.playSound(SoundEvents.FIREWORK_ROCKET_TWINKLE,1.2f,1.2f);
-            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),100,3*lvl000,false,false),attacker);
-            target.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 5, false, false), attacker);
+            target.forceAddEffect(new MobEffectInstance(etshtinkerEffects.ionized.get(),400,3*lvl000,false,false),attacker);
+            target.forceAddEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 400, 20*lvl000, false, false), attacker);
         }
         return false;
     }

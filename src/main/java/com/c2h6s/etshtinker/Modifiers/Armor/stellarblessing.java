@@ -55,7 +55,7 @@ public class stellarblessing extends EtshModifieriii {
                     event.setAmount(event.getAmount()*0.9f);
                 }
                 if (entity instanceof LivingEntity attacker&&!(attacker instanceof Player)){
-                    attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),100,5),living);
+                    attacker.forceAddEffect(new MobEffectInstance(etshtinkerEffects.hi_gravity.get(),400,5),living);
                     attacker.setSecondsOnFire(200);
                 }
             }

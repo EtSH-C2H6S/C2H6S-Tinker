@@ -37,13 +37,13 @@ public class Atomorigin extends EtshModifieriii implements ToolStatsModifierHook
         if (modifier.getLevel()>0&&isCorrectSlot&&holder!=null) {
             int slotamount =tool.getVolatileData().getSlots(SlotType.ABILITY)+tool.getVolatileData().getSlots(SlotType.UPGRADE)+tool.getVolatileData().getSlots(SlotType.DEFENSE)+tool.getVolatileData().getSlots(SlotType.SOUL);
             if (slotamount>10){
-                holder.addEffect(new MobEffectInstance(MobEffects.SATURATION,20,4,false,false));
-                holder.addEffect(new MobEffectInstance(MobEffects.LUCK,20,10,false,false));
-                holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,20,2,false,false));
+                holder.addEffect(new MobEffectInstance(MobEffects.SATURATION,400,4,false,false));
+                holder.addEffect(new MobEffectInstance(MobEffects.LUCK,400,10,false,false));
+                holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,400,2,false,false));
                 if (slotamount>25){
-                    holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,20,4,false,false));
-                    holder.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,20,20,false,false));
-                    holder.addEffect(new MobEffectInstance(MobEffects.REGENERATION,20,10,false,false));
+                    holder.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,400,4,false,false));
+                    holder.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,400,20,false,false));
+                    holder.addEffect(new MobEffectInstance(MobEffects.REGENERATION,400,10,false,false));
                 }
             }
         }

@@ -113,8 +113,8 @@ public class Adrenaline extends EtshModifieriii implements DurabilityDisplayModi
         Level world = attacker.getLevel();
         if (toolData.getInt(adrenaline) > 99 && attacker instanceof Player player) {
             attacker.invulnerableTime = 5;
-            attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 120, 9));
-            attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120, 4));
+            attacker.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 400, 9));
+            attacker.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 4));
             attacker.heal(5);
             if (target instanceof LivingEntity) {
                 DamageSource.playerAttack(player).bypassArmor().bypassMagic();

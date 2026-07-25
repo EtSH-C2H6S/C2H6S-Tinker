@@ -69,10 +69,10 @@ public class thermaldefense extends EtshModifieriii implements VolatileDataModif
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if(enabled&&holder instanceof Player player&&isCorrectSlot){
             int modilvl2 = modifier.getLevel();
-            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,300,modilvl2,false,false));
-            player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),300,modilvl2,false,false));
-            player.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),300,modilvl2,false,false));
-            player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,modilvl2,false,false));
+            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,400,modilvl2,false,false));
+            player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),400,modilvl2,false,false));
+            player.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),400,modilvl2,false,false));
+            player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,400,modilvl2,false,false));
         }
     }
 
@@ -85,10 +85,10 @@ public class thermaldefense extends EtshModifieriii implements VolatileDataModif
     @Override
     public boolean isDamageBlocked(IToolStackView iToolStackView, ModifierEntry modifierEntry, EquipmentContext context, EquipmentSlot equipmentSlot, DamageSource damageSource, float v) {
         LivingEntity entity =context.getEntity();
-        entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,200,modifierEntry.getLevel()*2-1,false,false));
-        entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,200,2,false,false));
-        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,200,1,false,false));
-        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,200,2,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,400,modifierEntry.getLevel()*2-1,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,400,2,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,400,2,false,false));
+        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,400,2,false,false));
         return EtSHrnd().nextFloat() < 0.15f;
     }
 }

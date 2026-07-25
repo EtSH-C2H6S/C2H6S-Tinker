@@ -58,13 +58,13 @@ public class godlymetal extends EtshModifieriii implements ToolDamageModifierHoo
         if (holder instanceof Player player&&isCorrectSlot){
             int modilvl2 = modifier.getLevel();
             if (enabled2) {
-                player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(), 100, modilvl2, false, false));
-                player.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(), 100, modilvl2, false, false));
-                player.addEffect(new MobEffectInstance(CoreMobEffects.MAGIC_RESISTANCE.get(), 100, modilvl2, false, false));
+                player.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(), 400, modilvl2, false, false));
+                player.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(), 400, modilvl2, false, false));
+                player.addEffect(new MobEffectInstance(CoreMobEffects.MAGIC_RESISTANCE.get(), 400, modilvl2, false, false));
             }
-            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 100, 0, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400, 0, false, false));
             player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,400,modilvl2,false,false));
-            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,100,9*modilvl2,false,false));
+            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,400,9*modilvl2,false,false));
         }
     }
 

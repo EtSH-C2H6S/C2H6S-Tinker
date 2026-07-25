@@ -70,8 +70,8 @@ public class nightsenhance extends EtshModifieriii {
 
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel()>1&&holder!=null){
-            holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,0,false,false));
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.MAGIC_RESISTANCE.get(),20,0,false,false));
+            holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,400,0,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.MAGIC_RESISTANCE.get(),400,0,false,false));
         }
     }
 

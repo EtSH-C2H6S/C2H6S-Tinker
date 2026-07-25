@@ -54,7 +54,7 @@ public class NightSlashEntity extends ItemProjectile{
                     targets.hurt(DamageSource.playerAttack(player).bypassMagic(),this.damage*0.5f);
                     targets.invulnerableTime =0;
                     targets.hurt(DamageSource.indirectMagic(player,player).bypassMagic(),this.damage*0.5f);
-                    targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.cursefire.get(),100,9,false,false),this.getOwner());
+                    targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.cursefire.get(),400,9,false,false),this.getOwner());
                     hittimes++;
                 }
             }

@@ -28,7 +28,7 @@ public class blizzdefense extends EtshModifieriii {
     }
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (level.getGameTime()%100==0&&modifier.getLevel()>0&&isCorrectSlot&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),200,modifier.getLevel()*5-1,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.COLD_RESISTANCE.get(),400,modifier.getLevel()*5-1,false,false));
         }
     }
 }
