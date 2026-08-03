@@ -39,7 +39,7 @@ public class shattered extends EtshModifieriii implements VolatileDataModifierHo
     public static final ResourceLocation KEY_MAX_ARMOR_REDUCE = etshtinker.getResourceLoc("shattered");
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isSelected&&holder!=null&&level.getGameTime()%20==0&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),200,4,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.EXPLOSION_RESISTANCE.get(),1200,4,false,false));
         }
     }
 

@@ -33,8 +33,8 @@ public class blitzdefense extends EtshModifieriii implements DamageBlockModifier
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (isCorrectSlot&&holder!=null&&enabled){
             if (level.getGameTime()%100==0)
-                holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),400,modifier.getLevel()*5-1,false,false));
-            holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,300,0,false,false));
+                holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),1400,modifier.getLevel()*5-1,false,false));
+            holder.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,1300,0,false,false));
         }
     }
 

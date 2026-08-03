@@ -19,7 +19,7 @@ public class chilled extends EtshModifieriii {
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt){
         Entity entity = context.getTarget();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target&&enabled){
-            target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),200,2));
+            target.addEffect(new MobEffectInstance(CoreMobEffects.CHILLED.get(),1200,2));
         }
     }
 

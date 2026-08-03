@@ -15,12 +15,18 @@ public class cursefireEffect extends etsheffect{
     public cursefireEffect() {
         super(MobEffectCategory.NEUTRAL, 0x20FF00);
     }
+
+    @Override
+    public boolean isDurationEffectTick(int duration, int amplifier) {
+        return duration%2==0&&super.isDurationEffectTick(duration, amplifier);
+    }
+
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
         SecureRandom RANDOM =EtSHrnd();
         Level world =living.level;
         living.invulnerableTime =0;
-        living.hurt(DamageSource.DRAGON_BREATH,amplifier+1);
+        living.hurt(DamageSource.DRAGON_BREATH,2*amplifier+2);
         if (world.isClientSide) {
             world.addParticle(etshtinkerParticleType.curse.get(), living.getX(), living.getY() + 0.5 * living.getBbHeight(), living.getZ(), RANDOM.nextDouble() * 0.7 - 0.35, RANDOM.nextDouble() * 0.9, RANDOM.nextDouble() * 0.7 - 0.35);
         } else {

@@ -45,17 +45,19 @@ public class NightSlashEntity extends ItemProjectile{
         if (getMold(movement)<=2){
             this.setDeltaMovement(movement.scale(1.15));
         }
-        AABB aabb =new AABB(this.getX()+anglevec.x,this.getY(),this.getZ()+anglevec.z,this.getX(),this.getY(),this.getZ()).inflate(2.25);
-        List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class,aabb);
-        if (!ls.isEmpty()){
-            for (LivingEntity targets:ls){
-                if (targets!=null&&player!=null&&targets!=this.getOwner()&&!(targets instanceof Player)){
-                    targets.invulnerableTime =0;
-                    targets.hurt(DamageSource.playerAttack(player).bypassMagic(),this.damage*0.5f);
-                    targets.invulnerableTime =0;
-                    targets.hurt(DamageSource.indirectMagic(player,player).bypassMagic(),this.damage*0.5f);
-                    targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.cursefire.get(),400,9,false,false),this.getOwner());
-                    hittimes++;
+        if (this.tickCount%2==0) {
+            AABB aabb = new AABB(this.getX() + anglevec.x, this.getY(), this.getZ() + anglevec.z, this.getX(), this.getY(), this.getZ()).inflate(2.25);
+            List<LivingEntity> ls = world.getEntitiesOfClass(LivingEntity.class, aabb);
+            if (!ls.isEmpty()) {
+                for (LivingEntity targets : ls) {
+                    if (targets != null && player != null && targets != this.getOwner() && !(targets instanceof Player)) {
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.playerAttack(player).bypassMagic(), this.damage);
+                        targets.invulnerableTime = 0;
+                        targets.hurt(DamageSource.indirectMagic(player, player).bypassMagic(), this.damage * 0.5f);
+                        targets.forceAddEffect(new MobEffectInstance(etshtinkerEffects.cursefire.get(), 1400, 9, false, false), this.getOwner());
+                        hittimes++;
+                    }
                 }
             }
         }

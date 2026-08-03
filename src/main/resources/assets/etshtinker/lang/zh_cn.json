@@ -339,7 +339,7 @@
 
   "modifier.etshtinker.hyperfluxloaded": "高级通量装载",
   "modifier.etshtinker.hyperfluxloaded.flavor": "太棒了！",
-  "modifier.etshtinker.hyperfluxloaded.description":"每级获得10MFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具的能量增加伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
+  "modifier.etshtinker.hyperfluxloaded.description":"每级获得100kFE的能量存储，使用工具时优先消耗FE而非耐久，攻击时消耗工具的能量增加伤害。射击时消耗FE产生箭矢，增加箭矢伤害和穿透。",
 
   "modifier.etshtinker.nightsenhance": "暗影附层",
   "modifier.etshtinker.nightsenhance.flavor": "尽管扭曲了，但是这种能量依然强大",

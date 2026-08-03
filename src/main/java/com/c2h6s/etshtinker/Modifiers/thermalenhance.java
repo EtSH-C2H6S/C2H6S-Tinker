@@ -30,10 +30,10 @@ public class thermalenhance extends EtshModifieriii implements VolatileDataModif
         if (entity instanceof LivingEntity target&&!(target instanceof Player)) {
             if (enabled && attacker instanceof Player player) {
                 int modilvl = modifier.getLevel();
-                target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),400,modilvl*4));
-                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,400,modilvl*4));
-                target.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 400, modilvl * 4, false, false));
-                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0, false, false));
+                target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),1400,modilvl*4));
+                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,1400,modilvl*4));
+                target.addEffect(new MobEffectInstance(CoreMobEffects.ENDERFERENCE.get(), 1400, modilvl * 4, false, false));
+                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1400, 0, false, false));
                 AttributeInstance attribute = target.getAttributes().getInstance(Attributes.ARMOR);
                 if (attribute != null){
                     attribute.setBaseValue(attribute.getBaseValue()-0.25*target.getArmorValue());

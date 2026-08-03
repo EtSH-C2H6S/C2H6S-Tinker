@@ -28,7 +28,7 @@ public class shocked extends EtshModifieriii {
     public static boolean enabled = ModList.get().isLoaded("cofh_core");
     public void modifierOnInventoryTick(IToolStackView tool, ModifierEntry modifier, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack itemStack) {
         if (modifier.getLevel()>0&&isSelected&&holder!=null&&enabled){
-            holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),200,4,false,false));
+            holder.addEffect(new MobEffectInstance(CoreMobEffects.LIGHTNING_RESISTANCE.get(),1200,4,false,false));
         }
     }
 
@@ -38,7 +38,7 @@ public class shocked extends EtshModifieriii {
         LivingEntity attacker =context.getAttacker();
         int lvl =modifier.getLevel();
         if (modifier.getLevel()>0&&entity instanceof LivingEntity target&&enabled&&attacker instanceof Player player){
-            target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),200,4));
+            target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),1200,4));
             target.invulnerableTime =0;
             if (context.isFullyCharged()&&player.level instanceof ServerLevel serverLevel) {
                 ParticleContext.buildParticle(etshtinkerParticleType.LIGHTNING_STRIKE.get())
@@ -50,7 +50,7 @@ public class shocked extends EtshModifieriii {
     }
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
         if (modifier.getLevel()>0&&target!=null&&enabled){
-            target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),200,4));
+            target.addEffect(new MobEffectInstance(CoreMobEffects.SHOCKED.get(),1200,4));
         }
         return false;
     }

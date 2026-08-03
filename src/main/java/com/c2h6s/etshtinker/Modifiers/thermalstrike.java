@@ -80,8 +80,8 @@ public class thermalstrike extends EtshModifieriii {
         ParticleContext.buildParticle(options)
                 .setPos(target.position().add(0,0.5f*target.getBbHeight(),0))
                 .setVelocity(0,0,0).build().sendToClient(serverLevel);
-        serverLevel.sendParticles(CoreParticles.FROST.get(),target.getX(),target.getY()+0.5f*target.getBbHeight(),target.getZ(),15,0,0,0,0.25);
-        serverLevel.playSound(null,target, SoundEvents.FIREWORK_ROCKET_BLAST, SoundSource.PLAYERS,1.25f,1.25f);
+        serverLevel.sendParticles(CoreParticles.FROST.get(),target.getX(),target.getY()+0.5f*target.getBbHeight(),target.getZ(),20,0,0,0,0.25);
+        serverLevel.playSound(null,target, SoundEvents.FIREWORK_ROCKET_BLAST, SoundSource.PLAYERS,1.5f,1.5f);
     }
 
     public boolean modifierOnProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, LivingEntity attacker, LivingEntity target) {
