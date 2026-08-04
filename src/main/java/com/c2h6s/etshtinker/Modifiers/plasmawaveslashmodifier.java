@@ -5,6 +5,7 @@ import com.c2h6s.etshtinker.Modifiers.modifiers.EtshModifieriii;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
@@ -44,17 +45,19 @@ public class plasmawaveslashmodifier extends EtshModifieriii implements GeneralI
         float amplifier = Math.min(1.25F,(float) (72000-timeLeft)/8.0F);
         if (entity instanceof Player player&&amplifier>=1){
             OffhandCooldownTracker.applyCooldown(player,10);
-            this.createslash(player,(float)tool.getStats().getInt(ToolStats.ATTACK_DAMAGE)*amplifier,tool);
+            this.createslash(player,amplifier,tool);
             OffhandCooldownTracker.swingHand(player,InteractionHand.MAIN_HAND,false);
         }
     }
     public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
         return BlockingModifier.blockWhileCharging(tool,UseAnim.SPEAR);
     }
-    public void createslash(Player player, Float damage, IToolStackView tool){
+    public void createslash(Player player, float amplifier, IToolStackView tool){
         if (player != null){
             Level world =player.level;
             plasmawaveslashentity slash =new plasmawaveslashentity(plasmawaveslashEntity.get(),world);
+            slash.notExtra = true;
+            slash.amplifier = amplifier;
             world.noCollision(slash);
             slash.noCulling=true;
             slash.setOwner(player);
